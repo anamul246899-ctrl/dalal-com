@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dalal.com - Admin Panel</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f1f8f4;
+  color:#222;
+}
+header{
+  background:#087f3e;
+  color:white;
+  padding:18px;
+  text-align:center;
+}
+.container{
+  max-width:1100px;
+  margin:20px auto;
+  padding:0 15px;
+}
+.card{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:20px;
+  box-shadow:0 2px 10px #0001;
+}
+input,select,button{
+  width:100%;
+  padding:12px;
+  margin:7px 0;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:15px;
+}
+button{
+  background:#087f3e;
+  color:white;
+  border:0;
+  cursor:pointer;
+}
+button:hover{background:#056b34}
+.logout{
+  background:#c62828;
+}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+.stat{
+  background:white;
+  padding:18px;
+  border-radius:10px;
+  text-align:center;
+  box-shadow:0 2px 8px #0001;
+}
+.stat b{
+  display:block;
+  font-size:28px;
+  color:#087f3e;
+}
+.complaint{
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:15px;
+  margin:12px 0;
+}
+.complaint h3{
+  margin-top:0;
+}
+.badge{
+  display:inline-block;
+  padding:5px 10px;
+  border-radius:15px;
+  background:#eee;
+}
+.details{
+  white-space:pre-wrap;
+  background:#f7f7f7;
+  padding:10px;
+  border-radius:8px;
+}
+.media img,.media video{
+  max-width:100%;
+  max-height:400px;
+  margin-top:10px;
+  border-radius:8px;
+}
+.hidden{display:none}
+.error{
+  color:#c62828;
+  font-weight:bold;
+}
+.success{
+  color:#087f3e;
+  font-weight:bold;
+}
+@media(max-width:700px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🛡️ Dalal.com</h1>
+  <p>Admin Panel</p>
+</header>
+
+<div class="container">
+
+<!-- LOGIN -->
+<div id="loginBox" class="card">
+  <h2>🔐 Admin Login</h2>
+
+  <input id="email" type="email" placeholder="Admin Email">
+
+  <input id="password" type="password" placeholder="Password">
+
+  <button onclick="login()">Login</button>
+
+  <p id="loginMessage"></p>
+</div>
+
+
+<!-- ADMIN AREA -->
+<div id="adminArea" class="hidden">
+
+  <div class="card">
+    <h2>📊 Dashboard</h2>
+
+    <div class="stats">
+      <div class="stat">
+        মোট
+        <b id="total">0</b>
+      </div>
+
+      <div class="stat">
+        Pending
+        <b id="pending">0</b>
+      </div>
+
+      <div class="stat">
+        Published
+        <b id="published">0</b>
+      </div>
+
+      <div class="stat">
+        Rejected
+        <b id="rejected">0</b>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <h2>📋 অভিযোগসমূহ</h2>
+
+    <button onclick="loadComplaints()">🔄 Refresh</button>
+
+    <div id="complaints"></div>
+  </div>
+
+  <div class="card">
+    <button class="logout" onclick="logout()">🚪 Logout</button>
+  </div>
+
+</div>
+
+</div>
+
+
+<script>
+
+const SUPABASE_URL =
+"https://klreqkbqyyiwmohlmgkh.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_xlqcHTsDaMpBq4n54iMs4A_S7gKpiZc";
+
+const supabaseClient =
+supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+
+// ADMIN UID
+const ADMIN_UID =
+"bd8c8bc2-6a98-4b3f-8873-06df4493196a";
+
+
+// CHECK LOGIN
+async function checkLogin(){
+
+  const {data:{session}} =
+  await supabaseClient.auth.getSession();
+
+  if(session){
+
+    if(session.user.id !== ADMIN_UID){
+
+      await supabaseClient.auth.signOut();
+
+      document.getElementById("loginMessage").innerHTML =
+      "<span class='error'>এই account-এর Admin access নেই।</span>";
+
+      return;
+    }
+
+    showAdmin();
+
+  }
+}
+
+
+// LOGIN
+async function login(){
+
+  const email =
+  document.getElementById("email").value.trim();
+
+  const password =
+  document.getElementById("password").value;
+
+  const message =
+  document.getElementById("loginMessage");
+
+  message.innerHTML="Login হচ্ছে...";
+
+  const {data,error} =
+  await supabaseClient.auth.signInWithPassword({
+    email:email,
+    password:password
+  });
+
+  if(error){
+
+    message.innerHTML =
+    "<span class='error'>Login হয়নি: "+
+    error.message+
+    "</span>";
+
+    return;
+  }
+
+  if(data.user.id !== ADMIN_UID){
+
+    await supabaseClient.auth.signOut();
+
+    message.innerHTML =
+    "<span class='error'>এই account Admin নয়।</span>";
+
+    return;
+  }
+
+  showAdmin();
+}
+
+
+// SHOW ADMIN
+function showAdmin(){
+
+  document.getElementById("loginBox")
+  .classList.add("hidden");
+
+  document.getElementById("adminArea")
+  .classList.remove("hidden");
+
+  loadComplaints();
+}
+
+
+// LOAD COMPLAINTS
+async function loadComplaints(){
+
+  const box =
+  document.getElementById("complaints");
+
+  box.innerHTML =
+  "<p>অভিযোগ লোড হচ্ছে...</p>";
+
+  const {data,error} =
+  await supabaseClient
+  .from("complaints")
+  .select("*")
+  .order("created_at",{ascending:false});
+
+  if(error){
+
+    box.innerHTML =
+    "<p class='error'>অভিযোগ লোড হয়নি: "+
+    error.message+
+    "</p>";
+
+    return;
+  }
+
+  updateStats(data);
+
+  if(!data || data.length===0){
+
+    box.innerHTML =
+    "<p>কোনো অভিযোগ পাওয়া যায়নি।</p>";
+
+    return;
+  }
+
+  box.innerHTML="";
+
+  data.forEach(c=>{
+
+    const div =
+    document.createElement("div");
+
+    div.className="complaint";
+
+    const title =
+    c.title || "শিরোনাম নেই";
+
+    const category =
+    c.category || "অন্যান্য";
+
+    const description =
+    c.description || "";
+
+    const location =
+    c.location || "উল্লেখ নেই";
+
+    const status =
+    c.status || "pending";
+
+    const name =
+    c.is_anonymous
+    ? "গোপন পরিচয়"
+    : (c.name || "নাম নেই");
+
+    const phone =
+    c.is_anonymous
+    ? "গোপন"
+    : (c.phone || c.mobile || "নেই");
+
+    div.innerHTML=`
+
+      <h3>${escapeHTML(title)}</h3>
+
+      <p>
+        <b>ধরন:</b>
+        ${escapeHTML(category)}
+      </p>
+
+      <p>
+        <b>স্থান:</b>
+        ${escapeHTML(location)}
+      </p>
+
+      <p>
+        <b>পরিচয়:</b>
+        ${escapeHTML(name)}
+      </p>
+
+      <p>
+        <b>মোবাইল:</b>
+        ${escapeHTML(phone)}
+      </p>
+
+      <p>
+        <b>Status:</b>
+        <span class="badge">
+          ${escapeHTML(status)}
+        </span>
+      </p>
+
+      <div class="details">
+        ${escapeHTML(description)}
+      </div>
+
+      <div class="media">
+
+        ${
+          c.image_url
+          ?
+          `<p>
+            <b>🖼️ ছবি:</b><br>
+            <img src="${escapeAttr(c.image_url)}">
+          </p>`
+          :
+          ""
+        }
+
+        ${
+          c.video_url
+          ?
+          `<p>
+            <b>🎥 ভিডিও:</b><br>
+            <video controls src="${escapeAttr(c.video_url)}"></video>
+          </p>`
+          :
+          ""
+        }
+
+      </div>
+
+      <select id="status-${c.id}">
+        <option value="pending"
+          ${status==="pending"?"selected":""}>
+          Pending
+        </option>
+
+        <option value="reviewing"
+          ${status==="reviewing"?"selected":""}>
+          Reviewing
+        </option>
+
+        <option value="published"
+          ${status==="published"?"selected":""}>
+          Published
+        </option>
+
+        <option value="rejected"
+          ${status==="rejected"?"selected":""}>
+          Rejected
+        </option>
+      </select>
+
+      <button onclick="updateStatus('${c.id}')">
+        💾 Status Save
+      </button>
+
+      <button
+        class="logout"
+        onclick="deleteComplaint('${c.id}')">
+        🗑️ Delete
+      </button>
+    `;
+
+    box.appendChild(div);
+
+  });
+
+}
+
+
+// UPDATE STATUS
+async function updateStatus(id){
+
+  const select =
+  document.getElementById("status-"+id);
+
+  const status =
+  select.value;
+
+  const {error} =
+  await supabaseClient
+  .from("complaints")
+  .update({status:status})
+  .eq("id",id);
+
+  if(error){
+
+    alert("Status update হয়নি:\n"+
+    error.message);
+
+    return;
+  }
+
+  alert("Status সফলভাবে পরিবর্তন হয়েছে।");
+
+  loadComplaints();
+}
+
+
+// DELETE
+async function deleteComplaint(id){
+
+  if(!confirm(
+    "আপনি কি এই অভিযোগটি Delete করতে চান?"
+  )){
+    return;
+  }
+
+  const {error} =
+  await supabaseClient
+  .from("complaints")
+  .delete()
+  .eq("id",id);
+
+  if(error){
+
+    alert(
+      "Delete হয়নি:\n"+
+      error.message
+    );
+
+    return;
+  }
+
+  alert("অভিযোগ Delete হয়েছে।");
+
+  loadComplaints();
+}
+
+
+// STATS
+function updateStats(data){
+
+  document.getElementById("total").innerText =
+  data.length;
+
+  document.getElementById("pending").innerText =
+  data.filter(x=>x.status==="pending").length;
+
+  document.getElementById("published").innerText =
+  data.filter(x=>x.status==="published").length;
+
+  document.getElementById("rejected").innerText =
+  data.filter(x=>x.status==="rejected").length;
+}
+
+
+// LOGOUT
+async function logout(){
+
+  await supabaseClient.auth.signOut();
+
+  location.reload();
+}
+
+
+// SECURITY HELPERS
+function escapeHTML(value){
+
+  return String(value)
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+}
+
+function escapeAttr(value){
+  return escapeHTML(value);
+}
+
+
+// START
+checkLogin();
+
+</script>
+
+</body>
+</html>
