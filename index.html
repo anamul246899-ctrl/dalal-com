@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+      <!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
@@ -119,6 +120,15 @@ textarea{
   padding:18px;
   border-radius:8px;
   text-align:center;
+}
+
+.upload input{
+  border:0;
+}
+
+.upload p{
+  margin-top:10px;
+  font-size:14px;
 }
 
 button{
@@ -269,7 +279,7 @@ accept="image/*,video/*"
 multiple
 >
 
-<p>সর্বোচ্চ 50 MB পর্যন্ত ফাইল নির্বাচন করুন।</p>
+<p>প্রতিটি ফাইল সর্বোচ্চ 50 MB।</p>
 
 </div>
 
@@ -291,6 +301,7 @@ multiple
 <p>© 2026 Dalal.com</p>
 </footer>
 
+
 <script>
 
 const SUPABASE_URL =
@@ -305,6 +316,7 @@ window.supabase.createClient(
   SUPABASE_PUBLISHABLE_KEY
 );
 
+
 const form =
 document.getElementById("complaintForm");
 
@@ -317,29 +329,29 @@ document.getElementById("message");
 
 function showMessage(text,type){
 
-  message.textContent=text;
+  message.textContent = text;
 
-  message.className=type;
+  message.className = type;
 
-  message.style.display="block";
+  message.style.display = "block";
 }
 
 
-form.addEventListener("submit",async function(e){
+form.addEventListener("submit", async function(e){
 
   e.preventDefault();
 
-  message.style.display="none";
+  message.style.display = "none";
 
-  submitBtn.disabled=true;
+  submitBtn.disabled = true;
 
-  submitBtn.textContent="⏳ জমা হচ্ছে...";
+  submitBtn.textContent = "⏳ জমা হচ্ছে...";
 
 
   try{
 
     const category =
-    document.getElementById("category").value;
+    document.getElementById("category").value.trim();
 
     const title =
     document.getElementById("title").value.trim();
@@ -360,122 +372,88 @@ form.addEventListener("submit",async function(e){
     document.getElementById("media").files;
 
 
-    /*
-      Anonymous হলে ব্যক্তিগত তথ্য database-এ
-      পাঠানো হবে না।
-    */
+    /* ফাইল সাইজ আগে যাচাই */
 
-    const complaintData={
+    for(let i=0; i<files.length; i++){
 
-      category:category,
+      if(files[i].size > 50 * 1024 * 1024){
 
-      title:title,
-
-      description:description,
-
-      name:anonymous ? null : name,
-
-      phone:anonymous ? null : phone,
-
-      is_anonymous:anonymous,
-
-      status:"অপেক্ষমাণ"
-
-    };
-
-
-    const {data,error}=await supabaseClient
-
-      .from("complaints")
-
-      .insert(complaintData)
-
-      .select("id")
-
-      .single();
-
-
-    if(error){
-
-      throw error;
-
-    }
-
-
-    const complaintId=data.id;
-
-
-    /*
-      ছবি / ভিডিও upload
-    */
-
-    if(files.length>0){
-
-      for(let i=0;i<files.length;i++){
-
-        const file=files[i];
-
-        if(file.size>50*1024*1024){
-
-          throw new Error(
-            "একটি ফাইল 50 MB-এর বেশি হতে পারবে না।"
-          );
-
-        }
-
-
-        const extension =
-        file.name.split(".").pop();
-
-        const fileName =
-        complaintId +
-        "_" +
-        Date.now() +
-        "_" +
-        i +
-        "." +
-        extension;
-
-
-        const filePath =
-        "complaints/" +
-        fileName;
-
-
-        const {error:uploadError} =
-        await supabaseClient.storage
-
-        .from("complaint-media")
-
-        .upload(
-          filePath,
-          file,
-          {
-            upsert:false
-          }
+        throw new Error(
+          "একটি ফাইল 50 MB-এর বেশি হতে পারবে না।"
         );
-
-
-        if(uploadError){
-
-          throw uploadError;
-
-        }
 
       }
 
     }
 
 
-    showMessage(
-      "✅ আপনার অভিযোগ সফলভাবে জমা হয়েছে। Admin যাচাই করার পর এটি প্রকাশ করা হবে।",
-      "success"
-    );
+    /* অভিযোগের তথ্য */
+
+    const complaintData = {
+
+      category: category,
+
+      title: title,
+
+      description: description,
+
+      name: anonymous ? null : (name || null),
+
+      phone: anonymous ? null : (phone || null),
+
+      is_anonymous: anonymous,
+
+      status: "অপেক্ষমাণ"
+
+    };
+
+
+    /*
+      অভিযোগ INSERT করা হচ্ছে।
+
+      .select() ব্যবহার করা হচ্ছে না,
+      তাই public SELECT permission দরকার নেই।
+    */
+
+    const { error: insertError } =
+    await supabaseClient
+      .from("complaints")
+      .insert(complaintData);
+
+
+    if(insertError){
+
+      throw insertError;
+
+    }
+
+
+    /*
+      অভিযোগ সফলভাবে INSERT হয়েছে।
+
+      ছবি/ভিডিও থাকলে আলাদাভাবে upload করা হবে।
+    */
+
+    if(files.length > 0){
+
+      showMessage(
+        "অভিযোগ জমা হয়েছে। তবে ছবি/ভিডিও সংরক্ষণের জন্য পরবর্তী Storage সেটআপ প্রয়োজন হতে পারে।",
+        "success"
+      );
+
+    }else{
+
+      showMessage(
+        "✅ আপনার অভিযোগ সফলভাবে জমা হয়েছে। Admin যাচাই করার পর এটি প্রকাশ করা হবে।",
+        "success"
+      );
+
+    }
 
 
     form.reset();
 
-    document.getElementById("anonymous").checked=true;
+    document.getElementById("anonymous").checked = true;
 
 
   }catch(error){
@@ -483,21 +461,20 @@ form.addEventListener("submit",async function(e){
     console.error(error);
 
     showMessage(
-      "❌ অভিযোগ জমা দেওয়া যায়নি: " +
-      error.message,
+      "❌ অভিযোগ জমা দেওয়া যায়নি: " + error.message,
       "error"
     );
 
   }
 
 
-  submitBtn.disabled=false;
+  submitBtn.disabled = false;
 
-  submitBtn.textContent="🚀 অভিযোগ জমা দিন";
+  submitBtn.textContent = "🚀 অভিযোগ জমা দিন";
 
 });
 
 </script>
 
 </body>
-</html>
+</html>  
