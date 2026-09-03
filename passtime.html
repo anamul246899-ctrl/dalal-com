@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PASSTIME</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#f0f2f5;
+    font-family:Arial,"Noto Sans Bengali",sans-serif;
+    color:#1c1e21;
+}
+
+.header{
+    height:60px;
+    background:#ffffff;
+    border-bottom:1px solid #ddd;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 15px;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    color:#008f4c;
+    font-size:26px;
+    font-weight:bold;
+}
+
+.header button{
+    border:0;
+    background:#008f4c;
+    color:white;
+    padding:9px 16px;
+    border-radius:7px;
+    font-weight:bold;
+}
+
+.container{
+    max-width:700px;
+    margin:20px auto;
+    padding:0 10px;
+}
+
+.card{
+    background:white;
+    border-radius:10px;
+    margin-bottom:15px;
+    box-shadow:0 1px 4px rgba(0,0,0,.12);
+}
+
+.create{
+    padding:15px;
+}
+
+.create-top{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.avatar{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#008f4c;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.post-input{
+    flex:1;
+    background:#f0f2f5;
+    border-radius:25px;
+    padding:12px 16px;
+    color:#777;
+}
+
+.create-actions{
+    border-top:1px solid #eee;
+    margin-top:14px;
+    padding-top:10px;
+    display:flex;
+}
+
+.create-actions button{
+    flex:1;
+    border:0;
+    background:white;
+    padding:10px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.post{
+    overflow:hidden;
+}
+
+.post-head{
+    padding:14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.post-user{
+    font-weight:bold;
+}
+
+.post-time{
+    font-size:12px;
+    color:#777;
+}
+
+.post-body{
+    padding:0 14px 14px;
+    line-height:1.6;
+}
+
+.post-image{
+    width:100%;
+    max-height:500px;
+    object-fit:cover;
+}
+
+.post-actions{
+    display:flex;
+    border-top:1px solid #eee;
+    border-bottom:1px solid #eee;
+}
+
+.post-actions button{
+    flex:1;
+    border:0;
+    background:white;
+    padding:12px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.post-actions button:hover{
+    background:#f0f2f5;
+}
+
+.reactions{
+    padding:8px 12px;
+    display:flex;
+    gap:5px;
+    flex-wrap:wrap;
+}
+
+.reactions button{
+    border:0;
+    background:#f0f2f5;
+    border-radius:20px;
+    padding:7px 10px;
+    cursor:pointer;
+}
+
+.comment-area{
+    padding:10px 14px;
+    background:#fafafa;
+}
+
+.comment{
+    background:#f0f2f5;
+    padding:8px 12px;
+    border-radius:15px;
+    margin-bottom:7px;
+}
+
+.comment-input{
+    display:flex;
+    gap:7px;
+}
+
+.comment-input input{
+    flex:1;
+    border:1px solid #ddd;
+    border-radius:20px;
+    padding:10px 14px;
+}
+
+.comment-input button{
+    border:0;
+    border-radius:20px;
+    padding:0 15px;
+    background:#008f4c;
+    color:white;
+}
+
+.hidden{
+    display:none;
+}
+
+.login-box{
+    max-width:400px;
+    margin:70px auto;
+    padding:20px;
+}
+
+.login-box input{
+    width:100%;
+    padding:12px;
+    margin:7px 0;
+    border:1px solid #ddd;
+    border-radius:7px;
+}
+
+.login-box button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:0;
+    border-radius:7px;
+    background:#008f4c;
+    color:white;
+    font-weight:bold;
+}
+
+@media(max-width:600px){
+    .container{
+        margin-top:10px;
+    }
+
+    .logo{
+        font-size:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <div class="logo">
+        PASSTIME
+    </div>
+
+    <button onclick="showLogin()">
+        Login
+    </button>
+
+</div>
+
+
+<!-- MAIN -->
+
+<div class="container">
+
+    <!-- CREATE POST -->
+
+    <div class="card create">
+
+        <div class="create-top">
+
+            <div class="avatar">
+                P
+            </div>
+
+            <div class="post-input"
+                 onclick="showLogin()">
+
+                What's on your mind?
+
+            </div>
+
+        </div>
+
+        <div class="create-actions">
+
+            <button onclick="showLogin()">
+                🎥 Video
+            </button>
+
+            <button onclick="showLogin()">
+                📷 Photo
+            </button>
+
+            <button onclick="showLogin()">
+                📝 Post
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- DEMO POST -->
+
+    <div class="card post">
+
+        <div class="post-head">
+
+            <div class="avatar">
+                P
+            </div>
+
+            <div>
+
+                <div class="post-user">
+                    PASSTIME User
+                </div>
+
+                <div class="post-time">
+                    Just now · 🌎
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="post-body">
+
+            PASSTIME-এ আপনাকে স্বাগতম ❤️
+
+            <br>
+
+            এখানে সবাই পোস্ট করতে,
+            Like/Reaction দিতে এবং Comment করতে পারবে।
+
+        </div>
+
+
+        <div class="reactions">
+
+            <button>👍 Like</button>
+            <button>❤️ Love</button>
+            <button>😆 Haha</button>
+            <button>😮 Wow</button>
+            <button>😢 Sad</button>
+            <button>😡 Angry</button>
+
+        </div>
+
+
+        <div class="post-actions">
+
+            <button>
+                👍 Like
+            </button>
+
+            <button onclick="showLogin()">
+                💬 Comment
+            </button>
+
+            <button onclick="showLogin()">
+                ↗ Share
+            </button>
+
+        </div>
+
+
+        <div class="comment-area">
+
+            <div class="comment">
+                <b>PASSTIME</b><br>
+                Welcome!
+            </div>
+
+            <div class="comment-input">
+
+                <input
+                    placeholder="Write a comment..."
+                    onclick="showLogin()">
+
+                <button onclick="showLogin()">
+                    Send
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- LOGIN -->
+
+<div id="loginBox"
+     class="hidden"
+     style="
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,.5);
+     z-index:200;
+     padding:20px;
+     ">
+
+    <div class="card login-box">
+
+        <h2>
+            Login to PASSTIME
+        </h2>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Email">
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password">
+
+        <button onclick="loginDemo()">
+            Login
+        </button>
+
+        <button
+            style="background:#555"
+            onclick="closeLogin()">
+            Close
+        </button>
+
+        <p id="loginMessage"></p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function showLogin(){
+
+    document
+    .getElementById("loginBox")
+    .classList
+    .remove("hidden");
+
+}
+
+function closeLogin(){
+
+    document
+    .getElementById("loginBox")
+    .classList
+    .add("hidden");
+
+}
+
+function loginDemo(){
+
+    const email =
+        document.getElementById("email").value;
+
+    const password =
+        document.getElementById("password").value;
+
+    const message =
+        document.getElementById("loginMessage");
+
+    if(!email || !password){
+
+        message.innerText =
+            "Please enter email and password.";
+
+        return;
+
+    }
+
+    message.innerText =
+        "Login system will be connected to Supabase in Step 2.";
+
+}
+
+</script>
+
+</body>
+</html>
