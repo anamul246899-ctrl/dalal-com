@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dalal.com</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+}
+
+body{
+  background:#f2fff6;
+  color:#173b24;
+}
+
+header{
+  background:#087f3e;
+  color:white;
+  padding:18px;
+}
+
+.logo{
+  max-width:1000px;
+  margin:auto;
+  font-size:28px;
+  font-weight:bold;
+}
+
+.hero{
+  background:linear-gradient(135deg,#087f3e,#12a85a);
+  color:white;
+  text-align:center;
+  padding:55px 20px;
+}
+
+.hero h1{
+  font-size:34px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  font-size:17px;
+}
+
+.container{
+  max-width:850px;
+  margin:30px auto;
+  padding:0 15px;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 5px 25px rgba(0,0,0,.08);
+}
+
+h2{
+  color:#087f3e;
+  margin-bottom:15px;
+}
+
+.notice{
+  background:#eaf9ef;
+  padding:14px;
+  border-left:5px solid #087f3e;
+  margin-bottom:20px;
+  border-radius:6px;
+}
+
+label{
+  display:block;
+  font-weight:bold;
+  margin:15px 0 7px;
+}
+
+input,select,textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #c8ddd0;
+  border-radius:8px;
+  font-size:15px;
+}
+
+textarea{
+  min-height:150px;
+  resize:vertical;
+}
+
+.anonymous{
+  background:#f3fff6;
+  padding:14px;
+  border-radius:8px;
+  margin-top:18px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.anonymous input{
+  width:auto;
+}
+
+.anonymous label{
+  margin:0;
+  font-weight:normal;
+}
+
+.upload{
+  border:2px dashed #a5cdb3;
+  padding:18px;
+  border-radius:8px;
+  text-align:center;
+}
+
+button{
+  width:100%;
+  background:#087f3e;
+  color:white;
+  border:0;
+  padding:15px;
+  margin-top:22px;
+  border-radius:9px;
+  font-size:17px;
+  font-weight:bold;
+}
+
+button:disabled{
+  background:#8aa995;
+}
+
+#message{
+  display:none;
+  margin-top:18px;
+  padding:14px;
+  border-radius:8px;
+  text-align:center;
+  font-weight:bold;
+}
+
+.success{
+  background:#e5f8eb;
+  color:#087f3e;
+}
+
+.error{
+  background:#ffe8e8;
+  color:#b00020;
+}
+
+footer{
+  margin-top:40px;
+  background:#063f21;
+  color:white;
+  text-align:center;
+  padding:30px 15px;
+}
+
+@media(max-width:600px){
+  .hero h1{
+    font-size:27px;
+  }
+
+  .card{
+    padding:18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🌿 Dalal.com</div>
+</header>
+
+<section class="hero">
+  <h1>অন্যায়ের বিরুদ্ধে আওয়াজ তুলুন</h1>
+  <p>ঘুষ, দালালি, প্রতারণা ও অনিয়মের অভিযোগ জানান।</p>
+</section>
+
+<div class="container">
+
+<div class="card">
+
+<h2>📝 অভিযোগ জমা দিন</h2>
+
+<div class="notice">
+🔒 পরিচয় গোপন রাখতে চাইলে নিচের অপশনটি চালু রাখুন।
+</div>
+
+<form id="complaintForm">
+
+<label>অভিযোগের ধরন *</label>
+
+<select id="category" required>
+<option value="">নির্বাচন করুন</option>
+<option value="ঘুষ">ঘুষ</option>
+<option value="দালালি">দালালি</option>
+<option value="প্রতারণা">প্রতারণা</option>
+<option value="চাঁদাবাজি">চাঁদাবাজি</option>
+<option value="অনিয়ম">অনিয়ম</option>
+<option value="অন্যান্য">অন্যান্য</option>
+</select>
+
+<label>অভিযোগের শিরোনাম *</label>
+
+<input
+id="title"
+type="text"
+placeholder="যেমন: চাকরি দেওয়ার নামে টাকা দাবি"
+required
+>
+
+<label>বিস্তারিত অভিযোগ *</label>
+
+<textarea
+id="description"
+placeholder="ঘটনাটি বিস্তারিত লিখুন..."
+required
+></textarea>
+
+<label>আপনার নাম</label>
+
+<input
+id="name"
+type="text"
+placeholder="নাম না চাইলে খালি রাখুন"
+>
+
+<label>মোবাইল নম্বর</label>
+
+<input
+id="phone"
+type="tel"
+placeholder="01XXXXXXXXX"
+>
+
+<div class="anonymous">
+
+<input
+id="anonymous"
+type="checkbox"
+checked
+>
+
+<label for="anonymous">
+🔒 আমার পরিচয় গোপন রাখুন
+</label>
+
+</div>
+
+<label>📷 ছবি / 🎥 ভিডিও</label>
+
+<div class="upload">
+
+<input
+id="media"
+type="file"
+accept="image/*,video/*"
+multiple
+>
+
+<p>সর্বোচ্চ 50 MB পর্যন্ত ফাইল নির্বাচন করুন।</p>
+
+</div>
+
+<button id="submitBtn" type="submit">
+🚀 অভিযোগ জমা দিন
+</button>
+
+<div id="message"></div>
+
+</form>
+
+</div>
+
+</div>
+
+<footer>
+<p>🌿 Dalal.com</p>
+<p>অন্যায়ের বিরুদ্ধে আওয়াজ</p>
+<p>© 2026 Dalal.com</p>
+</footer>
+
+<script>
+
+const SUPABASE_URL =
+"https://klreqkbqyyiwmohlmgkh.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_xlqcHTsDaMpBq4n54iMs4A_S7gKpiZc";
+
+const supabaseClient =
+window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
+const form =
+document.getElementById("complaintForm");
+
+const submitBtn =
+document.getElementById("submitBtn");
+
+const message =
+document.getElementById("message");
+
+
+function showMessage(text,type){
+
+  message.textContent=text;
+
+  message.className=type;
+
+  message.style.display="block";
+}
+
+
+form.addEventListener("submit",async function(e){
+
+  e.preventDefault();
+
+  message.style.display="none";
+
+  submitBtn.disabled=true;
+
+  submitBtn.textContent="⏳ জমা হচ্ছে...";
+
+
+  try{
+
+    const category =
+    document.getElementById("category").value;
+
+    const title =
+    document.getElementById("title").value.trim();
+
+    const description =
+    document.getElementById("description").value.trim();
+
+    const name =
+    document.getElementById("name").value.trim();
+
+    const phone =
+    document.getElementById("phone").value.trim();
+
+    const anonymous =
+    document.getElementById("anonymous").checked;
+
+    const files =
+    document.getElementById("media").files;
+
+
+    /*
+      Anonymous হলে ব্যক্তিগত তথ্য database-এ
+      পাঠানো হবে না।
+    */
+
+    const complaintData={
+
+      category:category,
+
+      title:title,
+
+      description:description,
+
+      name:anonymous ? null : name,
+
+      phone:anonymous ? null : phone,
+
+      is_anonymous:anonymous,
+
+      status:"অপেক্ষমাণ"
+
+    };
+
+
+    const {data,error}=await supabaseClient
+
+      .from("complaints")
+
+      .insert(complaintData)
+
+      .select("id")
+
+      .single();
+
+
+    if(error){
+
+      throw error;
+
+    }
+
+
+    const complaintId=data.id;
+
+
+    /*
+      ছবি / ভিডিও upload
+    */
+
+    if(files.length>0){
+
+      for(let i=0;i<files.length;i++){
+
+        const file=files[i];
+
+        if(file.size>50*1024*1024){
+
+          throw new Error(
+            "একটি ফাইল 50 MB-এর বেশি হতে পারবে না।"
+          );
+
+        }
+
+
+        const extension =
+        file.name.split(".").pop();
+
+        const fileName =
+        complaintId +
+        "_" +
+        Date.now() +
+        "_" +
+        i +
+        "." +
+        extension;
+
+
+        const filePath =
+        "complaints/" +
+        fileName;
+
+
+        const {error:uploadError} =
+        await supabaseClient.storage
+
+        .from("complaint-media")
+
+        .upload(
+          filePath,
+          file,
+          {
+            upsert:false
+          }
+        );
+
+
+        if(uploadError){
+
+          throw uploadError;
+
+        }
+
+      }
+
+    }
+
+
+    showMessage(
+      "✅ আপনার অভিযোগ সফলভাবে জমা হয়েছে। Admin যাচাই করার পর এটি প্রকাশ করা হবে।",
+      "success"
+    );
+
+
+    form.reset();
+
+    document.getElementById("anonymous").checked=true;
+
+
+  }catch(error){
+
+    console.error(error);
+
+    showMessage(
+      "❌ অভিযোগ জমা দেওয়া যায়নি: " +
+      error.message,
+      "error"
+    );
+
+  }
+
+
+  submitBtn.disabled=false;
+
+  submitBtn.textContent="🚀 অভিযোগ জমা দিন";
+
+});
+
+</script>
+
+</body>
+</html>
