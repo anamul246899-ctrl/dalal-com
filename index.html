@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dalal.com</title>
+<title>Dalal.com — অন্যায়ের বিরুদ্ধে আওয়াজ তুলুন</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -61,6 +61,7 @@ header{
   padding:25px;
   border-radius:15px;
   box-shadow:0 5px 25px rgba(0,0,0,.08);
+  margin-bottom:25px;
 }
 
 h2{
@@ -166,6 +167,61 @@ button:disabled{
   color:#b00020;
 }
 
+/* Published complaints */
+
+.complaints-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.refresh-btn{
+  width:auto;
+  margin:0;
+  padding:9px 14px;
+  font-size:14px;
+}
+
+.complaint{
+  border:1px solid #d7eadc;
+  border-radius:12px;
+  padding:18px;
+  margin-top:15px;
+  background:#fbfffc;
+}
+
+.complaint h3{
+  color:#087f3e;
+  margin-bottom:10px;
+}
+
+.badge{
+  display:inline-block;
+  background:#e5f8eb;
+  color:#087f3e;
+  padding:5px 10px;
+  border-radius:20px;
+  font-size:13px;
+  margin-bottom:10px;
+}
+
+.complaint p{
+  line-height:1.7;
+  margin-top:8px;
+}
+
+.empty{
+  text-align:center;
+  padding:25px;
+  color:#66756b;
+}
+
+.loading{
+  text-align:center;
+  padding:25px;
+}
+
 footer{
   margin-top:40px;
   background:#063f21;
@@ -175,12 +231,17 @@ footer{
 }
 
 @media(max-width:600px){
+
   .hero h1{
     font-size:27px;
   }
 
   .card{
     padding:18px;
+  }
+
+  .complaints-title{
+    align-items:flex-start;
   }
 }
 </style>
@@ -198,6 +259,8 @@ footer{
 </section>
 
 <div class="container">
+
+<!-- অভিযোগ জমা -->
 
 <div class="card">
 
@@ -292,12 +355,44 @@ multiple
 </form>
 
 </div>
+
+
+<!-- Published অভিযোগ -->
+
+<div class="card">
+
+<div class="complaints-title">
+
+<h2>📋 প্রকাশিত অভিযোগ</h2>
+
+<button
+class="refresh-btn"
+onclick="loadPublishedComplaints()"
+>
+🔄 Refresh
+</button>
+
 </div>
 
+<div id="complaintsList">
+
+<div class="loading">
+⏳ অভিযোগগুলো লোড হচ্ছে...
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
 <footer>
+
 <p>🌿 Dalal.com</p>
 <p>অন্যায়ের বিরুদ্ধে আওয়াজ</p>
 <p>© 2026 Dalal.com</p>
+
 </footer>
 
 
@@ -325,6 +420,9 @@ document.getElementById("submitBtn");
 const message =
 document.getElementById("message");
 
+const complaintsList =
+document.getElementById("complaintsList");
+
 
 function showMessage(text,type){
 
@@ -338,10 +436,12 @@ function showMessage(text,type){
     top: message.getBoundingClientRect().top +
         window.scrollY -
         120,
-    behavior: "smooth"
+    behavior:"smooth"
   });
 }
 
+
+/* অভিযোগ জমা */
 
 form.addEventListener("submit", async function(e){
 
@@ -352,7 +452,6 @@ form.addEventListener("submit", async function(e){
   submitBtn.disabled = true;
 
   submitBtn.textContent = "⏳ জমা হচ্ছে...";
-
 
   try{
 
@@ -378,9 +477,7 @@ form.addEventListener("submit", async function(e){
     document.getElementById("media").files;
 
 
-    /* ফাইল সাইজ যাচাই */
-
-    for(let i = 0; i < files.length; i++){
+    for(let i=0;i<files.length;i++){
 
       if(files[i].size > 50 * 1024 * 1024){
 
@@ -389,43 +486,35 @@ form.addEventListener("submit", async function(e){
         );
 
       }
+
     }
 
 
-    /* অভিযোগের তথ্য */
-
     const complaintData = {
 
-      category: category,
+      category:category,
 
-      title: title,
+      title:title,
 
-      description: description,
+      description:description,
 
-      name: anonymous
+      name:anonymous
         ? null
         : (name || null),
 
-      phone: anonymous
+      phone:anonymous
         ? null
         : (phone || null),
 
-      is_anonymous: anonymous
+      is_anonymous:anonymous
 
     };
 
 
-    /*
-      অভিযোগ INSERT
-
-      SELECT ব্যবহার করা হয়নি,
-      তাই public SELECT permission প্রয়োজন নেই।
-    */
-
-    const { error: insertError } =
-      await supabaseClient
-        .from("complaints")
-        .insert(complaintData);
+    const {error:insertError} =
+    await supabaseClient
+      .from("complaints")
+      .insert(complaintData);
 
 
     if(insertError){
@@ -435,25 +524,10 @@ form.addEventListener("submit", async function(e){
     }
 
 
-    /*
-      অভিযোগ সফলভাবে জমা হয়েছে।
-    */
-
-    if(files.length > 0){
-
-      showMessage(
-        "✅ অভিযোগ সফলভাবে জমা হয়েছে। ছবি/ভিডিও আপলোডের Storage সেটআপ আলাদাভাবে করতে হবে।",
-        "success"
-      );
-
-    }else{
-
-      showMessage(
-        "✅ আপনার অভিযোগ সফলভাবে জমা হয়েছে। Admin যাচাই করার পর এটি প্রকাশ করা হবে।",
-        "success"
-      );
-
-    }
+    showMessage(
+      "✅ আপনার অভিযোগ সফলভাবে জমা হয়েছে। Admin যাচাই করার পর এটি প্রকাশ করা হবে।",
+      "success"
+    );
 
 
     form.reset();
@@ -463,7 +537,7 @@ form.addEventListener("submit", async function(e){
 
   }catch(error){
 
-    console.error("Complaint Error:", error);
+    console.error("Complaint Error:",error);
 
     showMessage(
       "❌ অভিযোগ জমা দেওয়া যায়নি: " +
@@ -480,6 +554,113 @@ form.addEventListener("submit", async function(e){
     "🚀 অভিযোগ জমা দিন";
 
 });
+
+
+/* Published অভিযোগ লোড */
+
+async function loadPublishedComplaints(){
+
+  complaintsList.innerHTML =
+  '<div class="loading">⏳ অভিযোগগুলো লোড হচ্ছে...</div>';
+
+
+  try{
+
+    const {data,error} =
+    await supabaseClient
+      .from("complaints")
+      .select("category,title,description,is_anonymous,created_at")
+      .eq("status","published")
+      .order("created_at",{ascending:false});
+
+
+    if(error){
+
+      throw error;
+
+    }
+
+
+    if(!data || data.length === 0){
+
+      complaintsList.innerHTML =
+      '<div class="empty">📭 এখনো কোনো প্রকাশিত অভিযোগ নেই।</div>';
+
+      return;
+
+    }
+
+
+    complaintsList.innerHTML = "";
+
+
+    data.forEach(function(complaint){
+
+      const item =
+      document.createElement("div");
+
+      item.className = "complaint";
+
+
+      const title =
+      document.createElement("h3");
+
+      title.textContent =
+      complaint.title || "শিরোনাম নেই";
+
+
+      const badge =
+      document.createElement("span");
+
+      badge.className = "badge";
+
+      badge.textContent =
+      complaint.category || "অন্যান্য";
+
+
+      const description =
+      document.createElement("p");
+
+      description.textContent =
+      complaint.description || "";
+
+
+      const privacy =
+      document.createElement("p");
+
+      privacy.textContent =
+      "🔒 পরিচয়: গোপন";
+
+
+      item.appendChild(title);
+
+      item.appendChild(badge);
+
+      item.appendChild(description);
+
+      item.appendChild(privacy);
+
+
+      complaintsList.appendChild(item);
+
+    });
+
+
+  }catch(error){
+
+    console.error("Load Error:",error);
+
+    complaintsList.innerHTML =
+    '<div class="empty">❌ প্রকাশিত অভিযোগ লোড করা যাচ্ছে না।</div>';
+
+  }
+
+}
+
+
+/* পেজ খোলার সঙ্গে সঙ্গে Published অভিযোগ লোড */
+
+loadPublishedComplaints();
 
 </script>
 
