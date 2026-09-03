@@ -222,6 +222,83 @@ button:disabled{
   padding:25px;
 }
 
+/* Reaction */
+
+.reaction-area{
+  border-top:1px solid #dfeee4;
+  margin-top:18px;
+  padding-top:12px;
+}
+
+.reaction-buttons{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.reaction-btn{
+  width:auto;
+  margin:0;
+  padding:8px 12px;
+  background:#eef8f1;
+  color:#173b24;
+  font-size:14px;
+  border:1px solid #d4e8da;
+}
+
+.reaction-btn:hover{
+  background:#dff2e5;
+}
+
+.reaction-btn.active{
+  background:#087f3e;
+  color:white;
+}
+
+.reaction-counts{
+  margin-top:10px;
+  font-size:14px;
+  color:#53645a;
+}
+
+/* Comment */
+
+.comment-box{
+  margin-top:15px;
+  display:flex;
+  gap:8px;
+}
+
+.comment-input{
+  flex:1;
+  min-width:0;
+}
+
+.comment-submit{
+  width:auto;
+  margin:0;
+  padding:11px 16px;
+  font-size:14px;
+}
+
+.comments-list{
+  margin-top:15px;
+}
+
+.comment-item{
+  background:#f2f8f4;
+  border-radius:10px;
+  padding:10px 12px;
+  margin-top:8px;
+}
+
+.comment-time{
+  display:block;
+  font-size:11px;
+  color:#718078;
+  margin-top:4px;
+}
+
 footer{
   margin-top:40px;
   background:#063f21;
@@ -242,6 +319,14 @@ footer{
 
   .complaints-title{
     align-items:flex-start;
+  }
+
+  .comment-box{
+    flex-direction:column;
+  }
+
+  .comment-submit{
+    width:100%;
   }
 }
 </style>
@@ -556,7 +641,350 @@ form.addEventListener("submit", async function(e){
 });
 
 
-/* Published অভিযোগ লোড */
+/* =========================
+   Reaction
+========================= */
+
+async function loadReactions(complaintId, reactionArea){
+
+  const {data,error} =
+  await supabaseClient
+    .from("complaint_reactions")
+    .select("reaction")
+    .eq("complaint_id",complaintId);
+
+  if(error){
+    console.error("Reaction Error:",error);
+    return;
+  }
+
+  const counts = {};
+
+  (data || []).forEach(function(row){
+
+    counts[row.reaction] =
+      (counts[row.reaction] || 0) + 1;
+
+  });
+
+  const countBox =
+    reactionArea.querySelector(".reaction-counts");
+
+  countBox.innerHTML = "";
+
+  const reactions = [
+    ["👍","ভালো লেগেছে"],
+    ["❤️","সমর্থন"],
+    ["😢","দুঃখজনক"],
+    ["😡","ক্ষুব্ধ"]
+  ];
+
+  reactions.forEach(function(item){
+
+    const emoji = item[0];
+
+    const count = counts[emoji] || 0;
+
+    if(count > 0){
+
+      const span =
+        document.createElement("span");
+
+      span.textContent =
+        emoji + " " + count + "   ";
+
+      countBox.appendChild(span);
+
+    }
+
+  });
+
+  if(!countBox.innerHTML){
+
+    countBox.textContent =
+      "এখনো কোনো Reaction নেই।";
+
+  }
+
+}
+
+
+/* Reaction দেওয়ার চেষ্টা */
+
+async function addReaction(
+  complaintId,
+  reaction,
+  reactionArea
+){
+
+  const {
+    data:{
+      user
+    }
+  } =
+  await supabaseClient.auth.getUser();
+
+  if(!user){
+
+    alert(
+      "Reaction দিতে হলে আগে Login করতে হবে।"
+    );
+
+    return;
+
+  }
+
+
+  const {
+    data:existing,
+    error:findError
+  } =
+  await supabaseClient
+    .from("complaint_reactions")
+    .select("id,reaction")
+    .eq("complaint_id",complaintId)
+    .eq("user_id",user.id)
+    .maybeSingle();
+
+
+  if(findError){
+
+    console.error(findError);
+
+    return;
+
+  }
+
+
+  let error;
+
+
+  if(existing){
+
+    if(existing.reaction === reaction){
+
+      const result =
+      await supabaseClient
+        .from("complaint_reactions")
+        .delete()
+        .eq("id",existing.id);
+
+      error = result.error;
+
+    }else{
+
+      const result =
+      await supabaseClient
+        .from("complaint_reactions")
+        .update({
+          reaction:reaction
+        })
+        .eq("id",existing.id);
+
+      error = result.error;
+
+    }
+
+  }else{
+
+    const result =
+    await supabaseClient
+      .from("complaint_reactions")
+      .insert({
+        complaint_id:complaintId,
+        reaction:reaction,
+        user_id:user.id
+      });
+
+    error = result.error;
+
+  }
+
+
+  if(error){
+
+    alert(
+      "Reaction দেওয়া যায়নি: " +
+      error.message
+    );
+
+    return;
+
+  }
+
+
+  loadReactions(
+    complaintId,
+    reactionArea
+  );
+
+}
+
+
+/* =========================
+   Comments
+========================= */
+
+async function loadComments(
+  complaintId,
+  commentsList
+){
+
+  const {
+    data,
+    error
+  } =
+  await supabaseClient
+    .from("complaint_comments")
+    .select("comment,created_at")
+    .eq("complaint_id",complaintId)
+    .order("created_at",{
+      ascending:true
+    });
+
+
+  if(error){
+
+    console.error(
+      "Comment Error:",
+      error
+    );
+
+    return;
+
+  }
+
+
+  commentsList.innerHTML = "";
+
+
+  if(!data || data.length === 0){
+
+    commentsList.innerHTML =
+      '<div class="empty">💬 এখনো কোনো মন্তব্য নেই।</div>';
+
+    return;
+
+  }
+
+
+  data.forEach(function(row){
+
+    const div =
+      document.createElement("div");
+
+    div.className =
+      "comment-item";
+
+
+    const text =
+      document.createElement("div");
+
+    text.textContent =
+      "💬 " + row.comment;
+
+
+    const time =
+      document.createElement("span");
+
+    time.className =
+      "comment-time";
+
+    time.textContent =
+      new Date(row.created_at)
+        .toLocaleString("bn-BD");
+
+
+    div.appendChild(text);
+
+    div.appendChild(time);
+
+    commentsList.appendChild(div);
+
+  });
+
+}
+
+
+/* Comment submit */
+
+async function submitComment(
+  complaintId,
+  input,
+  commentsList
+){
+
+  const comment =
+    input.value.trim();
+
+
+  if(!comment){
+
+    alert(
+      "অনুগ্রহ করে মন্তব্য লিখুন।"
+    );
+
+    return;
+
+  }
+
+
+  const {
+    data:{
+      user
+    }
+  } =
+  await supabaseClient.auth.getUser();
+
+
+  if(!user){
+
+    alert(
+      "মন্তব্য করতে হলে আগে Login করতে হবে।"
+    );
+
+    return;
+
+  }
+
+
+  const {
+    error
+  } =
+  await supabaseClient
+    .from("complaint_comments")
+    .insert({
+      complaint_id:complaintId,
+      comment:comment,
+      user_id:user.id
+    });
+
+
+  if(error){
+
+    alert(
+      "মন্তব্য করা যায়নি: " +
+      error.message
+    );
+
+    return;
+
+  }
+
+
+  input.value = "";
+
+  loadComments(
+    complaintId,
+    commentsList
+  );
+
+}
+
+
+/* =========================
+   Published অভিযোগ
+========================= */
 
 async function loadPublishedComplaints(){
 
@@ -566,12 +994,19 @@ async function loadPublishedComplaints(){
 
   try{
 
-    const {data,error} =
+    const {
+      data,
+      error
+    } =
     await supabaseClient
       .from("complaints")
-      .select("category,title,description,is_anonymous,created_at")
+      .select(
+        "id,category,title,description,is_anonymous,created_at"
+      )
       .eq("status","published")
-      .order("created_at",{ascending:false});
+      .order("created_at",{
+        ascending:false
+      });
 
 
     if(error){
@@ -599,24 +1034,34 @@ async function loadPublishedComplaints(){
       const item =
       document.createElement("div");
 
-      item.className = "complaint";
+      item.className =
+      "complaint";
 
+
+      /* Title */
 
       const title =
       document.createElement("h3");
 
       title.textContent =
-      complaint.title || "শিরোনাম নেই";
+      complaint.title ||
+      "শিরোনাম নেই";
 
+
+      /* Category */
 
       const badge =
       document.createElement("span");
 
-      badge.className = "badge";
+      badge.className =
+      "badge";
 
       badge.textContent =
-      complaint.category || "অন্যান্য";
+      complaint.category ||
+      "অন্যান্য";
 
+
+      /* Description */
 
       const description =
       document.createElement("p");
@@ -625,12 +1070,167 @@ async function loadPublishedComplaints(){
       complaint.description || "";
 
 
+      /* Privacy */
+
       const privacy =
       document.createElement("p");
 
       privacy.textContent =
       "🔒 পরিচয়: গোপন";
 
+
+      /* Reaction area */
+
+      const reactionArea =
+      document.createElement("div");
+
+      reactionArea.className =
+      "reaction-area";
+
+
+      const reactionButtons =
+      document.createElement("div");
+
+      reactionButtons.className =
+      "reaction-buttons";
+
+
+      const reactionData = [
+        ["👍","ভালো"],
+        ["❤️","সমর্থন"],
+        ["😢","দুঃখ"],
+        ["😡","ক্ষুব্ধ"]
+      ];
+
+
+      reactionData.forEach(function(r){
+
+        const btn =
+        document.createElement("button");
+
+        btn.className =
+        "reaction-btn";
+
+        btn.textContent =
+        r[0] + " " + r[1];
+
+
+        btn.addEventListener(
+          "click",
+          function(){
+
+            addReaction(
+              complaint.id,
+              r[0],
+              reactionArea
+            );
+
+          }
+        );
+
+
+        reactionButtons.appendChild(btn);
+
+      });
+
+
+      const reactionCounts =
+      document.createElement("div");
+
+      reactionCounts.className =
+      "reaction-counts";
+
+      reactionCounts.textContent =
+      "⏳ Reaction লোড হচ্ছে...";
+
+
+      reactionArea.appendChild(
+        reactionButtons
+      );
+
+      reactionArea.appendChild(
+        reactionCounts
+      );
+
+
+      /* Comment */
+
+      const commentBox =
+      document.createElement("div");
+
+      commentBox.className =
+      "comment-box";
+
+
+      const commentInput =
+      document.createElement("input");
+
+      commentInput.className =
+      "comment-input";
+
+      commentInput.placeholder =
+      "💬 আপনার মন্তব্য লিখুন...";
+
+
+      const commentSubmit =
+      document.createElement("button");
+
+      commentSubmit.className =
+      "comment-submit";
+
+      commentSubmit.textContent =
+      "মন্তব্য করুন";
+
+
+      const commentsList =
+      document.createElement("div");
+
+      commentsList.className =
+      "comments-list";
+
+
+      commentSubmit.addEventListener(
+        "click",
+        function(){
+
+          submitComment(
+            complaint.id,
+            commentInput,
+            commentsList
+          );
+
+        }
+      );
+
+
+      commentInput.addEventListener(
+        "keydown",
+        function(e){
+
+          if(e.key === "Enter"){
+
+            submitComment(
+              complaint.id,
+              commentInput,
+              commentsList
+            );
+
+          }
+
+        }
+      );
+
+
+      commentBox.appendChild(
+        commentInput
+      );
+
+      commentBox.appendChild(
+        commentSubmit
+      );
+
+
+      /* সবকিছু যুক্ত */
 
       item.appendChild(title);
 
@@ -640,15 +1240,36 @@ async function loadPublishedComplaints(){
 
       item.appendChild(privacy);
 
+      item.appendChild(reactionArea);
+
+      item.appendChild(commentBox);
+
+      item.appendChild(commentsList);
 
       complaintsList.appendChild(item);
+
+
+      /* Data load */
+
+      loadReactions(
+        complaint.id,
+        reactionArea
+      );
+
+      loadComments(
+        complaint.id,
+        commentsList
+      );
 
     });
 
 
   }catch(error){
 
-    console.error("Load Error:",error);
+    console.error(
+      "Load Error:",
+      error
+    );
 
     complaintsList.innerHTML =
     '<div class="empty">❌ প্রকাশিত অভিযোগ লোড করা যাচ্ছে না।</div>';
@@ -658,7 +1279,7 @@ async function loadPublishedComplaints(){
 }
 
 
-/* পেজ খোলার সঙ্গে সঙ্গে Published অভিযোগ লোড */
+/* শুরু */
 
 loadPublishedComplaints();
 
