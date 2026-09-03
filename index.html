@@ -1,487 +1,518 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PASSTIME</title>
 
-<title>PASSTIME</title>
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<style>
-*{
-    box-sizing:border-box;
-}
-
-body{
-    margin:0;
-    background:#f0f2f5;
-    font-family:Arial,"Noto Sans Bengali",sans-serif;
-    color:#1c1e21;
-}
-
-.header{
-    height:60px;
-    background:#ffffff;
-    border-bottom:1px solid #ddd;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 15px;
-    position:sticky;
-    top:0;
-    z-index:100;
-}
-
-.logo{
-    color:#008f4c;
-    font-size:26px;
-    font-weight:bold;
-}
-
-.header button{
-    border:0;
-    background:#008f4c;
-    color:white;
-    padding:9px 16px;
-    border-radius:7px;
-    font-weight:bold;
-}
-
-.container{
-    max-width:700px;
-    margin:20px auto;
-    padding:0 10px;
-}
-
-.card{
-    background:white;
-    border-radius:10px;
-    margin-bottom:15px;
-    box-shadow:0 1px 4px rgba(0,0,0,.12);
-}
-
-.create{
-    padding:15px;
-}
-
-.create-top{
-    display:flex;
-    gap:10px;
-    align-items:center;
-}
-
-.avatar{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    background:#008f4c;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
-}
-
-.post-input{
-    flex:1;
-    background:#f0f2f5;
-    border-radius:25px;
-    padding:12px 16px;
-    color:#777;
-}
-
-.create-actions{
-    border-top:1px solid #eee;
-    margin-top:14px;
-    padding-top:10px;
-    display:flex;
-}
-
-.create-actions button{
-    flex:1;
-    border:0;
-    background:white;
-    padding:10px;
-    cursor:pointer;
-    font-size:15px;
-}
-
-.post{
-    overflow:hidden;
-}
-
-.post-head{
-    padding:14px;
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.post-user{
-    font-weight:bold;
-}
-
-.post-time{
-    font-size:12px;
-    color:#777;
-}
-
-.post-body{
-    padding:0 14px 14px;
-    line-height:1.6;
-}
-
-.post-image{
-    width:100%;
-    max-height:500px;
-    object-fit:cover;
-}
-
-.post-actions{
-    display:flex;
-    border-top:1px solid #eee;
-    border-bottom:1px solid #eee;
-}
-
-.post-actions button{
-    flex:1;
-    border:0;
-    background:white;
-    padding:12px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.post-actions button:hover{
-    background:#f0f2f5;
-}
-
-.reactions{
-    padding:8px 12px;
-    display:flex;
-    gap:5px;
-    flex-wrap:wrap;
-}
-
-.reactions button{
-    border:0;
-    background:#f0f2f5;
-    border-radius:20px;
-    padding:7px 10px;
-    cursor:pointer;
-}
-
-.comment-area{
-    padding:10px 14px;
-    background:#fafafa;
-}
-
-.comment{
-    background:#f0f2f5;
-    padding:8px 12px;
-    border-radius:15px;
-    margin-bottom:7px;
-}
-
-.comment-input{
-    display:flex;
-    gap:7px;
-}
-
-.comment-input input{
-    flex:1;
-    border:1px solid #ddd;
-    border-radius:20px;
-    padding:10px 14px;
-}
-
-.comment-input button{
-    border:0;
-    border-radius:20px;
-    padding:0 15px;
-    background:#008f4c;
-    color:white;
-}
-
-.hidden{
-    display:none;
-}
-
-.login-box{
-    max-width:400px;
-    margin:70px auto;
-    padding:20px;
-}
-
-.login-box input{
-    width:100%;
-    padding:12px;
-    margin:7px 0;
-    border:1px solid #ddd;
-    border-radius:7px;
-}
-
-.login-box button{
-    width:100%;
-    padding:12px;
-    margin-top:10px;
-    border:0;
-    border-radius:7px;
-    background:#008f4c;
-    color:white;
-    font-weight:bold;
-}
-
-@media(max-width:600px){
-    .container{
-        margin-top:10px;
+  <style>
+    * {
+      box-sizing: border-box;
     }
 
-    .logo{
-        font-size:22px;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      color: #222;
     }
-}
-</style>
+
+    header {
+      background: #16a34a;
+      color: white;
+      padding: 12px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      padding: 9px 14px;
+      font-size: 15px;
+    }
+
+    .login-btn {
+      background: white;
+      color: #16a34a;
+      font-weight: bold;
+    }
+
+    .logout-btn {
+      background: #dc2626;
+      color: white;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 20px auto;
+      padding: 0 12px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 15px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.12);
+    }
+
+    .user-box {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .post-input {
+      width: 100%;
+      border: 1px solid #ddd;
+      padding: 13px;
+      border-radius: 25px;
+      margin-top: 12px;
+      cursor: pointer;
+    }
+
+    .post-options {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .post-options button {
+      flex: 1;
+      background: #f3f4f6;
+    }
+
+    .post-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .reaction-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 12px;
+    }
+
+    .reaction-row button {
+      background: #f3f4f6;
+      padding: 7px 10px;
+    }
+
+    .action-row {
+      display: flex;
+      justify-content: space-around;
+      border-top: 1px solid #eee;
+      margin-top: 12px;
+      padding-top: 10px;
+    }
+
+    .action-row button {
+      background: white;
+      color: #555;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      padding: 15px;
+    }
+
+    .modal-box {
+      background: white;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .modal-box h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .modal-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 7px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .primary {
+      width: 100%;
+      background: #16a34a;
+      color: white;
+      margin-top: 8px;
+    }
+
+    .secondary {
+      width: 100%;
+      background: #e5e7eb;
+      margin-top: 8px;
+    }
+
+    #message {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
+<header>
+  <div class="logo">PASSTIME</div>
 
-<div class="header">
-
-    <div class="logo">
-        PASSTIME
-    </div>
-
-    <button onclick="showLogin()">
-        Login
-    </button>
-
-</div>
-
-
-<!-- MAIN -->
+  <div id="accountArea">
+    <button class="login-btn" onclick="openLogin()">Login</button>
+  </div>
+</header>
 
 <div class="container">
 
-    <!-- CREATE POST -->
+  <!-- User Status -->
+  <div class="card">
+    <div id="userStatus" class="user-box">
+      আপনি এখনো Login করেননি।
+    </div>
+  </div>
 
-    <div class="card create">
+  <!-- Create Post -->
+  <div class="card">
+    <b>What's on your mind?</b>
 
-        <div class="create-top">
-
-            <div class="avatar">
-                P
-            </div>
-
-            <div class="post-input"
-                 onclick="showLogin()">
-
-                What's on your mind?
-
-            </div>
-
-        </div>
-
-        <div class="create-actions">
-
-            <button onclick="showLogin()">
-                🎥 Video
-            </button>
-
-            <button onclick="showLogin()">
-                📷 Photo
-            </button>
-
-            <button onclick="showLogin()">
-                📝 Post
-            </button>
-
-        </div>
-
+    <div class="post-input" onclick="requireLogin()">
+      আপনার মনের কথা লিখুন...
     </div>
 
-
-    <!-- DEMO POST -->
-
-    <div class="card post">
-
-        <div class="post-head">
-
-            <div class="avatar">
-                P
-            </div>
-
-            <div>
-
-                <div class="post-user">
-                    PASSTIME User
-                </div>
-
-                <div class="post-time">
-                    Just now · 🌎
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="post-body">
-
-            PASSTIME-এ আপনাকে স্বাগতম ❤️
-
-            <br>
-
-            এখানে সবাই পোস্ট করতে,
-            Like/Reaction দিতে এবং Comment করতে পারবে।
-
-        </div>
-
-
-        <div class="reactions">
-
-            <button>👍 Like</button>
-            <button>❤️ Love</button>
-            <button>😆 Haha</button>
-            <button>😮 Wow</button>
-            <button>😢 Sad</button>
-            <button>😡 Angry</button>
-
-        </div>
-
-
-        <div class="post-actions">
-
-            <button>
-                👍 Like
-            </button>
-
-            <button onclick="showLogin()">
-                💬 Comment
-            </button>
-
-            <button onclick="showLogin()">
-                ↗ Share
-            </button>
-
-        </div>
-
-
-        <div class="comment-area">
-
-            <div class="comment">
-                <b>PASSTIME</b><br>
-                Welcome!
-            </div>
-
-            <div class="comment-input">
-
-                <input
-                    placeholder="Write a comment..."
-                    onclick="showLogin()">
-
-                <button onclick="showLogin()">
-                    Send
-                </button>
-
-            </div>
-
-        </div>
-
+    <div class="post-options">
+      <button onclick="requireLogin()">🎥 Video</button>
+      <button onclick="requireLogin()">📷 Photo</button>
+      <button onclick="requireLogin()">📝 Post</button>
     </div>
+  </div>
+
+  <!-- Demo Post -->
+  <div class="card">
+
+    <div class="post-title">
+      PASSTIME-এ আপনাকে স্বাগতম 👋
+    </div>
+
+    <p>
+      এখানে মানুষ পোস্ট করতে, ছবি/ভিডিও দিতে,
+      Reaction ও Comment করতে পারবে।
+    </p>
+
+    <div class="reaction-row">
+      <button onclick="requireLogin()">👍 Like</button>
+      <button onclick="requireLogin()">❤️ Love</button>
+      <button onclick="requireLogin()">😆 Haha</button>
+      <button onclick="requireLogin()">😮 Wow</button>
+      <button onclick="requireLogin()">😢 Sad</button>
+      <button onclick="requireLogin()">😡 Angry</button>
+    </div>
+
+    <div class="action-row">
+      <button onclick="requireLogin()">👍 Like</button>
+      <button onclick="requireLogin()">💬 Comment</button>
+      <button onclick="requireLogin()">↗ Share</button>
+    </div>
+
+  </div>
 
 </div>
 
 
-<!-- LOGIN -->
+<!-- Login Modal -->
+<div id="loginModal" class="modal">
 
-<div id="loginBox"
-     class="hidden"
-     style="
-     position:fixed;
-     inset:0;
-     background:rgba(0,0,0,.5);
-     z-index:200;
-     padding:20px;
-     ">
+  <div class="modal-box">
 
-    <div class="card login-box">
+    <h2>Login to PASSTIME</h2>
 
-        <h2>
-            Login to PASSTIME
-        </h2>
+    <input
+      type="email"
+      id="email"
+      placeholder="Email"
+    >
 
-        <input
-            type="email"
-            id="email"
-            placeholder="Email">
+    <input
+      type="password"
+      id="password"
+      placeholder="Password"
+    >
 
-        <input
-            type="password"
-            id="password"
-            placeholder="Password">
+    <button class="primary" onclick="login()">
+      Login
+    </button>
 
-        <button onclick="loginDemo()">
-            Login
-        </button>
+    <button class="primary" onclick="signup()">
+      Create Account
+    </button>
 
-        <button
-            style="background:#555"
-            onclick="closeLogin()">
-            Close
-        </button>
+    <button class="secondary" onclick="closeLogin()">
+      Close
+    </button>
 
-        <p id="loginMessage"></p>
+    <div id="message"></div>
 
-    </div>
+  </div>
 
 </div>
 
 
 <script>
 
-function showLogin(){
+  // ==============================
+  // SUPABASE CONNECTION
+  // ==============================
 
-    document
-    .getElementById("loginBox")
-    .classList
-    .remove("hidden");
+  const SUPABASE_URL =
+    "https://klreqkbqyyiwmohlmgkh.supabase.co";
 
-}
+  const SUPABASE_KEY =
+    "sb_publishable_xlqcHTsDaMpBq4n54iMs4A_S7gKpiZc";
 
-function closeLogin(){
+  const db = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
-    document
-    .getElementById("loginBox")
-    .classList
-    .add("hidden");
 
-}
+  // ==============================
+  // LOGIN MODAL
+  // ==============================
 
-function loginDemo(){
+  function openLogin() {
+    document.getElementById("loginModal").style.display = "flex";
+  }
+
+  function closeLogin() {
+    document.getElementById("loginModal").style.display = "none";
+    document.getElementById("message").innerText = "";
+  }
+
+
+  // ==============================
+  // LOGIN REQUIRED
+  // ==============================
+
+  async function requireLogin() {
+
+    const {
+      data: { session }
+    } = await db.auth.getSession();
+
+    if (!session) {
+      openLogin();
+      return;
+    }
+
+    alert("এই ফিচারটি পরের ধাপে চালু করা হবে।");
+  }
+
+
+  // ==============================
+  // LOGIN
+  // ==============================
+
+  async function login() {
 
     const email =
-        document.getElementById("email").value;
+      document.getElementById("email").value.trim();
 
     const password =
-        document.getElementById("password").value;
+      document.getElementById("password").value;
 
     const message =
-        document.getElementById("loginMessage");
+      document.getElementById("message");
 
-    if(!email || !password){
+    if (!email || !password) {
+      message.innerText =
+        "Email এবং Password দিন।";
+      return;
+    }
 
-        message.innerText =
-            "Please enter email and password.";
+    message.innerText = "Login হচ্ছে...";
 
-        return;
+    const { data, error } =
+      await db.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
 
+    if (error) {
+
+      message.innerText =
+        "Login failed: " + error.message;
+
+      return;
     }
 
     message.innerText =
-        "Login system will be connected to Supabase in Step 2.";
+      "Login successful ✅";
 
-}
+    setTimeout(() => {
+      closeLogin();
+    }, 800);
+  }
+
+
+  // ==============================
+  // SIGN UP
+  // ==============================
+
+  async function signup() {
+
+    const email =
+      document.getElementById("email").value.trim();
+
+    const password =
+      document.getElementById("password").value;
+
+    const message =
+      document.getElementById("message");
+
+    if (!email || !password) {
+      message.innerText =
+        "Email এবং Password দিন।";
+      return;
+    }
+
+    if (password.length < 6) {
+      message.innerText =
+        "Password কমপক্ষে 6 অক্ষরের হতে হবে।";
+      return;
+    }
+
+    message.innerText =
+      "Account তৈরি হচ্ছে...";
+
+    const { data, error } =
+      await db.auth.signUp({
+        email: email,
+        password: password
+      });
+
+    if (error) {
+
+      message.innerText =
+        "Signup failed: " + error.message;
+
+      return;
+    }
+
+    message.innerText =
+      "Account তৈরি হয়েছে ✅";
+
+    if (!data.session) {
+      message.innerText =
+        "Account তৈরি হয়েছে। Email verification লাগতে পারে।";
+    }
+  }
+
+
+  // ==============================
+  // LOGOUT
+  // ==============================
+
+  async function logout() {
+
+    await db.auth.signOut();
+
+    updateUserUI(null);
+  }
+
+
+  // ==============================
+  // UPDATE USER UI
+  // ==============================
+
+  function updateUserUI(session) {
+
+    const accountArea =
+      document.getElementById("accountArea");
+
+    const userStatus =
+      document.getElementById("userStatus");
+
+    if (session && session.user) {
+
+      const email = session.user.email;
+
+      accountArea.innerHTML = `
+        <button class="logout-btn" onclick="logout()">
+          Logout
+        </button>
+      `;
+
+      userStatus.innerHTML = `
+        আপনি Login করেছেন ✅<br>
+        <b>${email}</b>
+      `;
+
+    } else {
+
+      accountArea.innerHTML = `
+        <button class="login-btn" onclick="openLogin()">
+          Login
+        </button>
+      `;
+
+      userStatus.innerText =
+        "আপনি এখনো Login করেননি।";
+    }
+  }
+
+
+  // ==============================
+  // CHECK CURRENT LOGIN
+  // ==============================
+
+  async function checkUser() {
+
+    const {
+      data: { session }
+    } = await db.auth.getSession();
+
+    updateUserUI(session);
+  }
+
+
+  // ==============================
+  // AUTH STATE CHANGE
+  // ==============================
+
+  db.auth.onAuthStateChange(
+    (_event, session) => {
+      updateUserUI(session);
+    }
+  );
+
+
+  // Start
+  checkUser();
 
 </script>
 
