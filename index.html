@@ -3,331 +3,242 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Dalal.com — অন্যায়ের বিরুদ্ধে আওয়াজ তুলুন</title>
+<title>Dalal Dhor</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 *{
   box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,"Noto Sans Bengali",sans-serif;
 }
 
 body{
-  background:#f2fff6;
-  color:#173b24;
+  margin:0;
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+  background:#f0f2f5;
+  color:#222;
 }
 
 header{
-  background:#087f3e;
+  background:#008f4c;
   color:white;
-  padding:18px;
+  padding:14px 18px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.header{
+  max-width:850px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
 .logo{
-  max-width:1000px;
-  margin:auto;
-  font-size:28px;
+  font-size:25px;
   font-weight:bold;
 }
 
-.hero{
-  background:linear-gradient(135deg,#087f3e,#12a85a);
-  color:white;
-  text-align:center;
-  padding:55px 20px;
-}
-
-.hero h1{
-  font-size:34px;
-  margin-bottom:10px;
-}
-
-.hero p{
-  font-size:17px;
+.header button{
+  border:0;
+  border-radius:7px;
+  padding:9px 14px;
+  cursor:pointer;
+  font-weight:bold;
 }
 
 .container{
   max-width:850px;
-  margin:30px auto;
-  padding:0 15px;
+  margin:20px auto;
+  padding:0 12px;
 }
 
 .card{
   background:white;
-  padding:25px;
-  border-radius:15px;
-  box-shadow:0 5px 25px rgba(0,0,0,.08);
-  margin-bottom:25px;
+  border-radius:12px;
+  margin-bottom:18px;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  overflow:hidden;
 }
 
-h2{
-  color:#087f3e;
-  margin-bottom:15px;
+.form{
+  padding:18px;
 }
 
-.notice{
-  background:#eaf9ef;
-  padding:14px;
-  border-left:5px solid #087f3e;
-  margin-bottom:20px;
-  border-radius:6px;
+h2,h3{
+  margin-top:0;
 }
 
-label{
-  display:block;
-  font-weight:bold;
-  margin:15px 0 7px;
-}
-
-input,select,textarea{
+input,textarea,select{
   width:100%;
-  padding:13px;
-  border:1px solid #c8ddd0;
-  border-radius:8px;
+  padding:12px;
+  margin:7px 0 12px;
+  border:1px solid #ddd;
+  border-radius:7px;
   font-size:15px;
 }
 
 textarea{
-  min-height:150px;
+  min-height:110px;
   resize:vertical;
 }
 
-.anonymous{
-  background:#f3fff6;
-  padding:14px;
-  border-radius:8px;
-  margin-top:18px;
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-
-.anonymous input{
-  width:auto;
-}
-
-.anonymous label{
-  margin:0;
-  font-weight:normal;
-}
-
-.upload{
-  border:2px dashed #a5cdb3;
-  padding:18px;
-  border-radius:8px;
-  text-align:center;
-}
-
-.upload input{
-  border:0;
-}
-
-.upload p{
-  margin-top:10px;
-  font-size:14px;
-}
-
-button{
+.main-btn{
   width:100%;
-  background:#087f3e;
-  color:white;
+  padding:12px;
   border:0;
-  padding:15px;
-  margin-top:22px;
-  border-radius:9px;
-  font-size:17px;
+  border-radius:7px;
+  background:#008f4c;
+  color:white;
+  font-size:16px;
   font-weight:bold;
   cursor:pointer;
 }
 
-button:disabled{
-  background:#8aa995;
+.post{
+  padding:16px;
 }
 
-#message{
-  display:none;
-  margin-top:18px;
-  padding:14px;
-  border-radius:8px;
-  text-align:center;
-  font-weight:bold;
-}
-
-.success{
-  background:#e5f8eb;
-  color:#087f3e;
-}
-
-.error{
-  background:#ffe8e8;
-  color:#b00020;
-}
-
-/* Published complaints */
-
-.complaints-title{
+.post-head{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:10px;
-}
-
-.refresh-btn{
-  width:auto;
-  margin:0;
-  padding:9px 14px;
-  font-size:14px;
-}
-
-.complaint{
-  border:1px solid #d7eadc;
-  border-radius:12px;
-  padding:18px;
-  margin-top:15px;
-  background:#fbfffc;
-}
-
-.complaint h3{
-  color:#087f3e;
   margin-bottom:10px;
 }
 
-.badge{
+.type{
   display:inline-block;
-  background:#e5f8eb;
-  color:#087f3e;
-  padding:5px 10px;
-  border-radius:20px;
+  background:#e7f7ee;
+  color:#008f4c;
+  padding:5px 9px;
+  border-radius:15px;
   font-size:13px;
-  margin-bottom:10px;
 }
 
-.complaint p{
-  line-height:1.7;
-  margin-top:8px;
+.post-title{
+  font-size:20px;
+  font-weight:bold;
+  margin:8px 0;
 }
 
-.empty{
-  text-align:center;
-  padding:25px;
-  color:#66756b;
+.post-text{
+  white-space:pre-wrap;
+  line-height:1.6;
 }
 
-.loading{
-  text-align:center;
-  padding:25px;
-}
-
-/* Reaction */
-
-.reaction-area{
-  border-top:1px solid #dfeee4;
-  margin-top:18px;
-  padding-top:12px;
-}
-
-.reaction-buttons{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
-.reaction-btn{
-  width:auto;
-  margin:0;
-  padding:8px 12px;
-  background:#eef8f1;
-  color:#173b24;
-  font-size:14px;
-  border:1px solid #d4e8da;
-}
-
-.reaction-btn:hover{
-  background:#dff2e5;
-}
-
-.reaction-btn.active{
-  background:#087f3e;
-  color:white;
-}
-
-.reaction-counts{
-  margin-top:10px;
-  font-size:14px;
-  color:#53645a;
-}
-
-/* Comment */
-
-.comment-box{
-  margin-top:15px;
-  display:flex;
-  gap:8px;
-}
-
-.comment-input{
-  flex:1;
-  min-width:0;
-}
-
-.comment-submit{
-  width:auto;
-  margin:0;
-  padding:11px 16px;
-  font-size:14px;
-}
-
-.comments-list{
-  margin-top:15px;
-}
-
-.comment-item{
-  background:#f2f8f4;
-  border-radius:10px;
-  padding:10px 12px;
-  margin-top:8px;
-}
-
-.comment-time{
+.media{
+  width:100%;
+  max-height:500px;
+  object-fit:contain;
+  background:#000;
   display:block;
-  font-size:11px;
-  color:#718078;
+  margin-top:12px;
+}
+
+.actions{
+  display:flex;
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
+  margin-top:14px;
+}
+
+.action-btn{
+  flex:1;
+  border:0;
+  background:white;
+  padding:12px 5px;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.action-btn:hover{
+  background:#f5f5f5;
+}
+
+.liked{
+  color:#008f4c;
+  font-weight:bold;
+}
+
+.comments{
+  padding:12px;
+  background:#fafafa;
+}
+
+.comment{
+  background:white;
+  border-radius:8px;
+  padding:8px 10px;
+  margin-bottom:7px;
+}
+
+.comment-name{
+  font-weight:bold;
+  font-size:13px;
+}
+
+.comment-text{
   margin-top:4px;
 }
 
-footer{
-  margin-top:40px;
-  background:#063f21;
-  color:white;
-  text-align:center;
-  padding:30px 15px;
+.comment-box{
+  display:flex;
+  gap:7px;
 }
 
-@media(max-width:600px){
+.comment-box input{
+  margin:0;
+}
 
-  .hero h1{
-    font-size:27px;
-  }
+.comment-box button{
+  border:0;
+  background:#008f4c;
+  color:white;
+  padding:0 15px;
+  border-radius:7px;
+}
 
-  .card{
-    padding:18px;
-  }
+.hidden{
+  display:none !important;
+}
 
-  .complaints-title{
-    align-items:flex-start;
-  }
+.status{
+  text-align:center;
+  padding:12px;
+}
 
-  .comment-box{
-    flex-direction:column;
-  }
+#userInfo{
+  font-size:14px;
+}
 
-  .comment-submit{
-    width:100%;
-  }
+.small{
+  color:#777;
+  font-size:13px;
+}
+
+.logout{
+  background:#fff;
+  color:#008f4c;
+}
+
+.login-box{
+  max-width:450px;
+  margin:30px auto;
+}
+
+.refresh{
+  margin-bottom:15px;
+  background:white;
+  color:#008f4c;
+  border:1px solid #008f4c;
+}
+
+.no-post{
+  text-align:center;
+  padding:30px;
+  color:#777;
 }
 </style>
 </head>
@@ -335,955 +246,50 @@ footer{
 <body>
 
 <header>
-  <div class="logo">🌿 Dalal.com</div>
+  <div class="header">
+    <div class="logo">🟢 Dalal Dhor</div>
+
+    <div>
+      <span id="userInfo"></span>
+      <button id="loginBtn" onclick="showLogin()">Login</button>
+      <button id="logoutBtn" class="logout hidden" onclick="logout()">Logout</button>
+    </div>
+  </div>
 </header>
 
-<section class="hero">
-  <h1>অন্যায়ের বিরুদ্ধে আওয়াজ তুলুন</h1>
-  <p>ঘুষ, দালালি, প্রতারণা ও অনিয়মের অভিযোগ জানান।</p>
-</section>
 
 <div class="container">
 
-<!-- অভিযোগ জমা -->
-
-<div class="card">
-
-<h2>📝 অভিযোগ জমা দিন</h2>
-
-<div class="notice">
-🔒 পরিচয় গোপন রাখতে চাইলে নিচের অপশনটি চালু রাখুন।
-</div>
-
-<form id="complaintForm">
-
-<label>অভিযোগের ধরন *</label>
-
-<select id="category" required>
-<option value="">নির্বাচন করুন</option>
-<option value="ঘুষ">ঘুষ</option>
-<option value="দালালি">দালালি</option>
-<option value="প্রতারণা">প্রতারণা</option>
-<option value="চাঁদাবাজি">চাঁদাবাজি</option>
-<option value="অনিয়ম">অনিয়ম</option>
-<option value="অন্যান্য">অন্যান্য</option>
-</select>
-
-<label>অভিযোগের শিরোনাম *</label>
-
-<input
-id="title"
-type="text"
-placeholder="যেমন: চাকরি দেওয়ার নামে টাকা দাবি"
-required
->
-
-<label>বিস্তারিত অভিযোগ *</label>
-
-<textarea
-id="description"
-placeholder="ঘটনাটি বিস্তারিত লিখুন..."
-required
-></textarea>
-
-<label>আপনার নাম</label>
-
-<input
-id="name"
-type="text"
-placeholder="নাম না চাইলে খালি রাখুন"
->
-
-<label>মোবাইল নম্বর</label>
-
-<input
-id="phone"
-type="tel"
-placeholder="01XXXXXXXXX"
->
-
-<div class="anonymous">
-
-<input
-id="anonymous"
-type="checkbox"
-checked
->
-
-<label for="anonymous">
-🔒 আমার পরিচয় গোপন রাখুন
-</label>
-
-</div>
-
-<label>📷 ছবি / 🎥 ভিডিও</label>
-
-<div class="upload">
-
-<input
-id="media"
-type="file"
-accept="image/*,video/*"
-multiple
->
-
-<p>প্রতিটি ফাইল সর্বোচ্চ 50 MB।</p>
-
-</div>
-
-<button id="submitBtn" type="submit">
-🚀 অভিযোগ জমা দিন
-</button>
-
-<div id="message"></div>
-
-</form>
-
-</div>
-
-
-<!-- Published অভিযোগ -->
-
-<div class="card">
-
-<div class="complaints-title">
-
-<h2>📋 প্রকাশিত অভিযোগ</h2>
-
-<button
-class="refresh-btn"
-onclick="loadPublishedComplaints()"
->
-🔄 Refresh
-</button>
-
-</div>
-
-<div id="complaintsList">
-
-<div class="loading">
-⏳ অভিযোগগুলো লোড হচ্ছে...
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<footer>
-
-<p>🌿 Dalal.com</p>
-<p>অন্যায়ের বিরুদ্ধে আওয়াজ</p>
-<p>© 2026 Dalal.com</p>
-
-</footer>
-
-
-<script>
-
-const SUPABASE_URL =
-"https://klreqkbqyyiwmohlmgkh.supabase.co";
-
-const SUPABASE_PUBLISHABLE_KEY =
-"sb_publishable_xlqcHTsDaMpBq4n54iMs4A_S7gKpiZc";
-
-const supabaseClient =
-window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
-
-
-const form =
-document.getElementById("complaintForm");
-
-const submitBtn =
-document.getElementById("submitBtn");
-
-const message =
-document.getElementById("message");
-
-const complaintsList =
-document.getElementById("complaintsList");
-
-
-function showMessage(text,type){
-
-  message.textContent = text;
-
-  message.className = type;
-
-  message.style.display = "block";
-
-  window.scrollTo({
-    top: message.getBoundingClientRect().top +
-        window.scrollY -
-        120,
-    behavior:"smooth"
-  });
-}
-
-
-/* অভিযোগ জমা */
-
-form.addEventListener("submit", async function(e){
-
-  e.preventDefault();
-
-  message.style.display = "none";
-
-  submitBtn.disabled = true;
-
-  submitBtn.textContent = "⏳ জমা হচ্ছে...";
-
-  try{
-
-    const category =
-    document.getElementById("category").value.trim();
-
-    const title =
-    document.getElementById("title").value.trim();
-
-    const description =
-    document.getElementById("description").value.trim();
-
-    const name =
-    document.getElementById("name").value.trim();
-
-    const phone =
-    document.getElementById("phone").value.trim();
-
-    const anonymous =
-    document.getElementById("anonymous").checked;
-
-    const files =
-    document.getElementById("media").files;
-
-
-    for(let i=0;i<files.length;i++){
-
-      if(files[i].size > 50 * 1024 * 1024){
-
-        throw new Error(
-          "একটি ফাইল 50 MB-এর বেশি হতে পারবে না।"
-        );
-
-      }
-
-    }
-
-
-    const complaintData = {
-
-      category:category,
-
-      title:title,
-
-      description:description,
-
-      name:anonymous
-        ? null
-        : (name || null),
-
-      phone:anonymous
-        ? null
-        : (phone || null),
-
-      is_anonymous:anonymous
-
-    };
-
-
-    const {error:insertError} =
-    await supabaseClient
-      .from("complaints")
-      .insert(complaintData);
-
-
-    if(insertError){
-
-      throw insertError;
-
-    }
-
-
-    showMessage(
-      "✅ আপনার অভিযোগ সফলভাবে জমা হয়েছে। Admin যাচাই করার পর এটি প্রকাশ করা হবে।",
-      "success"
-    );
-
-
-    form.reset();
-
-    document.getElementById("anonymous").checked = true;
-
-
-  }catch(error){
-
-    console.error("Complaint Error:",error);
-
-    showMessage(
-      "❌ অভিযোগ জমা দেওয়া যায়নি: " +
-      error.message,
-      "error"
-    );
-
-  }
-
-
-  submitBtn.disabled = false;
-
-  submitBtn.textContent =
-    "🚀 অভিযোগ জমা দিন";
-
-});
-
-
-/* =========================
-   Reaction
-========================= */
-
-async function loadReactions(complaintId, reactionArea){
-
-  const {data,error} =
-  await supabaseClient
-    .from("complaint_reactions")
-    .select("reaction")
-    .eq("complaint_id",complaintId);
-
-  if(error){
-    console.error("Reaction Error:",error);
-    return;
-  }
-
-  const counts = {};
-
-  (data || []).forEach(function(row){
-
-    counts[row.reaction] =
-      (counts[row.reaction] || 0) + 1;
-
-  });
-
-  const countBox =
-    reactionArea.querySelector(".reaction-counts");
-
-  countBox.innerHTML = "";
-
-  const reactions = [
-    ["👍","ভালো লেগেছে"],
-    ["❤️","সমর্থন"],
-    ["😢","দুঃখজনক"],
-    ["😡","ক্ষুব্ধ"]
-  ];
-
-  reactions.forEach(function(item){
-
-    const emoji = item[0];
-
-    const count = counts[emoji] || 0;
-
-    if(count > 0){
-
-      const span =
-        document.createElement("span");
-
-      span.textContent =
-        emoji + " " + count + "   ";
-
-      countBox.appendChild(span);
-
-    }
-
-  });
-
-  if(!countBox.innerHTML){
-
-    countBox.textContent =
-      "এখনো কোনো Reaction নেই।";
-
-  }
-
-}
-
-
-/* Reaction দেওয়ার চেষ্টা */
-
-async function addReaction(
-  complaintId,
-  reaction,
-  reactionArea
-){
-
-  const {
-    data:{
-      user
-    }
-  } =
-  await supabaseClient.auth.getUser();
-
-  if(!user){
-
-    alert(
-      "Reaction দিতে হলে আগে Login করতে হবে।"
-    );
-
-    return;
-
-  }
-
-
-  const {
-    data:existing,
-    error:findError
-  } =
-  await supabaseClient
-    .from("complaint_reactions")
-    .select("id,reaction")
-    .eq("complaint_id",complaintId)
-    .eq("user_id",user.id)
-    .maybeSingle();
-
-
-  if(findError){
-
-    console.error(findError);
-
-    return;
-
-  }
-
-
-  let error;
-
-
-  if(existing){
-
-    if(existing.reaction === reaction){
-
-      const result =
-      await supabaseClient
-        .from("complaint_reactions")
-        .delete()
-        .eq("id",existing.id);
-
-      error = result.error;
-
-    }else{
-
-      const result =
-      await supabaseClient
-        .from("complaint_reactions")
-        .update({
-          reaction:reaction
-        })
-        .eq("id",existing.id);
-
-      error = result.error;
-
-    }
-
-  }else{
-
-    const result =
-    await supabaseClient
-      .from("complaint_reactions")
-      .insert({
-        complaint_id:complaintId,
-        reaction:reaction,
-        user_id:user.id
-      });
-
-    error = result.error;
-
-  }
-
-
-  if(error){
-
-    alert(
-      "Reaction দেওয়া যায়নি: " +
-      error.message
-    );
-
-    return;
-
-  }
-
-
-  loadReactions(
-    complaintId,
-    reactionArea
-  );
-
-}
-
-
-/* =========================
-   Comments
-========================= */
-
-async function loadComments(
-  complaintId,
-  commentsList
-){
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("complaint_comments")
-    .select("comment,created_at")
-    .eq("complaint_id",complaintId)
-    .order("created_at",{
-      ascending:true
-    });
-
-
-  if(error){
-
-    console.error(
-      "Comment Error:",
-      error
-    );
-
-    return;
-
-  }
-
-
-  commentsList.innerHTML = "";
-
-
-  if(!data || data.length === 0){
-
-    commentsList.innerHTML =
-      '<div class="empty">💬 এখনো কোনো মন্তব্য নেই।</div>';
-
-    return;
-
-  }
-
-
-  data.forEach(function(row){
-
-    const div =
-      document.createElement("div");
-
-    div.className =
-      "comment-item";
-
-
-    const text =
-      document.createElement("div");
-
-    text.textContent =
-      "💬 " + row.comment;
-
-
-    const time =
-      document.createElement("span");
-
-    time.className =
-      "comment-time";
-
-    time.textContent =
-      new Date(row.created_at)
-        .toLocaleString("bn-BD");
-
-
-    div.appendChild(text);
-
-    div.appendChild(time);
-
-    commentsList.appendChild(div);
-
-  });
-
-}
-
-
-/* Comment submit */
-
-async function submitComment(
-  complaintId,
-  input,
-  commentsList
-){
-
-  const comment =
-    input.value.trim();
-
-
-  if(!comment){
-
-    alert(
-      "অনুগ্রহ করে মন্তব্য লিখুন।"
-    );
-
-    return;
-
-  }
-
-
-  const {
-    data:{
-      user
-    }
-  } =
-  await supabaseClient.auth.getUser();
-
-
-  if(!user){
-
-    alert(
-      "মন্তব্য করতে হলে আগে Login করতে হবে।"
-    );
-
-    return;
-
-  }
-
-
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("complaint_comments")
-    .insert({
-      complaint_id:complaintId,
-      comment:comment,
-      user_id:user.id
-    });
-
-
-  if(error){
-
-    alert(
-      "মন্তব্য করা যায়নি: " +
-      error.message
-    );
-
-    return;
-
-  }
-
-
-  input.value = "";
-
-  loadComments(
-    complaintId,
-    commentsList
-  );
-
-}
-
-
-/* =========================
-   Published অভিযোগ
-========================= */
-
-async function loadPublishedComplaints(){
-
-  complaintsList.innerHTML =
-  '<div class="loading">⏳ অভিযোগগুলো লোড হচ্ছে...</div>';
-
-
-  try{
-
-    const {
-      data,
-      error
-    } =
-    await supabaseClient
-      .from("complaints")
-      .select(
-        "id,category,title,description,is_anonymous,created_at"
-      )
-      .eq("status","published")
-      .order("created_at",{
-        ascending:false
-      });
-
-
-    if(error){
-
-      throw error;
-
-    }
-
-
-    if(!data || data.length === 0){
-
-      complaintsList.innerHTML =
-      '<div class="empty">📭 এখনো কোনো প্রকাশিত অভিযোগ নেই।</div>';
-
-      return;
-
-    }
-
-
-    complaintsList.innerHTML = "";
-
-
-    data.forEach(function(complaint){
-
-      const item =
-      document.createElement("div");
-
-      item.className =
-      "complaint";
-
-
-      /* Title */
-
-      const title =
-      document.createElement("h3");
-
-      title.textContent =
-      complaint.title ||
-      "শিরোনাম নেই";
-
-
-      /* Category */
-
-      const badge =
-      document.createElement("span");
-
-      badge.className =
-      "badge";
-
-      badge.textContent =
-      complaint.category ||
-      "অন্যান্য";
-
-
-      /* Description */
-
-      const description =
-      document.createElement("p");
-
-      description.textContent =
-      complaint.description || "";
-
-
-      /* Privacy */
-
-      const privacy =
-      document.createElement("p");
-
-      privacy.textContent =
-      "🔒 পরিচয়: গোপন";
-
-
-      /* Reaction area */
-
-      const reactionArea =
-      document.createElement("div");
-
-      reactionArea.className =
-      "reaction-area";
-
-
-      const reactionButtons =
-      document.createElement("div");
-
-      reactionButtons.className =
-      "reaction-buttons";
-
-
-      const reactionData = [
-        ["👍","ভালো"],
-        ["❤️","সমর্থন"],
-        ["😢","দুঃখ"],
-        ["😡","ক্ষুব্ধ"]
-      ];
-
-
-      reactionData.forEach(function(r){
-
-        const btn =
-        document.createElement("button");
-
-        btn.className =
-        "reaction-btn";
-
-        btn.textContent =
-        r[0] + " " + r[1];
-
-
-        btn.addEventListener(
-          "click",
-          function(){
-
-            addReaction(
-              complaint.id,
-              r[0],
-              reactionArea
-            );
-
-          }
-        );
-
-
-        reactionButtons.appendChild(btn);
-
-      });
-
-
-      const reactionCounts =
-      document.createElement("div");
-
-      reactionCounts.className =
-      "reaction-counts";
-
-      reactionCounts.textContent =
-      "⏳ Reaction লোড হচ্ছে...";
-
-
-      reactionArea.appendChild(
-        reactionButtons
-      );
-
-      reactionArea.appendChild(
-        reactionCounts
-      );
-
-
-      /* Comment */
-
-      const commentBox =
-      document.createElement("div");
-
-      commentBox.className =
-      "comment-box";
-
-
-      const commentInput =
-      document.createElement("input");
-
-      commentInput.className =
-      "comment-input";
-
-      commentInput.placeholder =
-      "💬 আপনার মন্তব্য লিখুন...";
-
-
-      const commentSubmit =
-      document.createElement("button");
-
-      commentSubmit.className =
-      "comment-submit";
-
-      commentSubmit.textContent =
-      "মন্তব্য করুন";
-
-
-      const commentsList =
-      document.createElement("div");
-
-      commentsList.className =
-      "comments-list";
-
-
-      commentSubmit.addEventListener(
-        "click",
-        function(){
-
-          submitComment(
-            complaint.id,
-            commentInput,
-            commentsList
-          );
-
-        }
-      );
-
-
-      commentInput.addEventListener(
-        "keydown",
-        function(e){
-
-          if(e.key === "Enter"){
-
-            submitComment(
-              complaint.id,
-              commentInput,
-              commentsList
-            );
-
-          }
-
-        }
-      );
-
-
-      commentBox.appendChild(
-        commentInput
-      );
-
-      commentBox.appendChild(
-        commentSubmit
-      );
-
-
-      /* সবকিছু যুক্ত */
-
-      item.appendChild(title);
-
-      item.appendChild(badge);
-
-      item.appendChild(description);
-
-      item.appendChild(privacy);
-
-      item.appendChild(reactionArea);
-
-      item.appendChild(commentBox);
-
-      item.appendChild(commentsList);
-
-      complaintsList.appendChild(item);
-
-
-      /* Data load */
-
-      loadReactions(
-        complaint.id,
-        reactionArea
-      );
-
-      loadComments(
-        complaint.id,
-        commentsList
-      );
-
-    });
-
-
-  }catch(error){
-
-    console.error(
-      "Load Error:",
-      error
-    );
-
-    complaintsList.innerHTML =
-    '<div class="empty">❌ প্রকাশিত অভিযোগ লোড করা যাচ্ছে না।</div>';
-
-  }
-
-}
-
-
-/* শুরু */
-
-loadPublishedComplaints();
-
-</script>
-
-</body>
-</html>
+  <!-- LOGIN -->
+  <div id="loginSection" class="card login-box hidden">
+    <div class="form">
+
+      <h2>Login</h2>
+
+      <input
+        type="email"
+        id="email"
+        placeholder="Email"
+      >
+
+      <input
+        type="password"
+        id="password"
+        placeholder="Password"
+      >
+
+      <button class="main-btn" onclick="login()">
+        Login
+      </button>
+
+      <br><br>
+
+      <button class="main-btn"
+        style="background:#555"
+        onclick="signup()">
+        Create Account
+      </button>
+
+      <p id="authMessage" class="status"></p>
+
+    </div>
