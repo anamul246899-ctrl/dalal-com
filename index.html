@@ -140,6 +140,7 @@ button{
   border-radius:9px;
   font-size:17px;
   font-weight:bold;
+  cursor:pointer;
 }
 
 button:disabled{
@@ -291,7 +292,6 @@ multiple
 </form>
 
 </div>
-
 </div>
 
 <footer>
@@ -333,6 +333,13 @@ function showMessage(text,type){
   message.className = type;
 
   message.style.display = "block";
+
+  window.scrollTo({
+    top: message.getBoundingClientRect().top +
+        window.scrollY -
+        120,
+    behavior: "smooth"
+  });
 }
 
 
@@ -371,9 +378,9 @@ form.addEventListener("submit", async function(e){
     document.getElementById("media").files;
 
 
-    /* ফাইল সাইজ আগে যাচাই */
+    /* ফাইল সাইজ যাচাই */
 
-    for(let i=0; i<files.length; i++){
+    for(let i = 0; i < files.length; i++){
 
       if(files[i].size > 50 * 1024 * 1024){
 
@@ -382,7 +389,6 @@ form.addEventListener("submit", async function(e){
         );
 
       }
-
     }
 
 
@@ -396,28 +402,30 @@ form.addEventListener("submit", async function(e){
 
       description: description,
 
-      name: anonymous ? null : (name || null),
+      name: anonymous
+        ? null
+        : (name || null),
 
-      phone: anonymous ? null : (phone || null),
+      phone: anonymous
+        ? null
+        : (phone || null),
 
-      is_anonymous: anonymous,
-
-      status: "অপেক্ষমাণ"
+      is_anonymous: anonymous
 
     };
 
 
     /*
-      অভিযোগ INSERT করা হচ্ছে।
+      অভিযোগ INSERT
 
-      .select() ব্যবহার করা হচ্ছে না,
-      তাই public SELECT permission দরকার নেই।
+      SELECT ব্যবহার করা হয়নি,
+      তাই public SELECT permission প্রয়োজন নেই।
     */
 
     const { error: insertError } =
-    await supabaseClient
-      .from("complaints")
-      .insert(complaintData);
+      await supabaseClient
+        .from("complaints")
+        .insert(complaintData);
 
 
     if(insertError){
@@ -428,15 +436,13 @@ form.addEventListener("submit", async function(e){
 
 
     /*
-      অভিযোগ সফলভাবে INSERT হয়েছে।
-
-      ছবি/ভিডিও থাকলে আলাদাভাবে upload করা হবে।
+      অভিযোগ সফলভাবে জমা হয়েছে।
     */
 
     if(files.length > 0){
 
       showMessage(
-        "অভিযোগ জমা হয়েছে। তবে ছবি/ভিডিও সংরক্ষণের জন্য পরবর্তী Storage সেটআপ প্রয়োজন হতে পারে।",
+        "✅ অভিযোগ সফলভাবে জমা হয়েছে। ছবি/ভিডিও আপলোডের Storage সেটআপ আলাদাভাবে করতে হবে।",
         "success"
       );
 
@@ -457,10 +463,11 @@ form.addEventListener("submit", async function(e){
 
   }catch(error){
 
-    console.error(error);
+    console.error("Complaint Error:", error);
 
     showMessage(
-      "❌ অভিযোগ জমা দেওয়া যায়নি: " + error.message,
+      "❌ অভিযোগ জমা দেওয়া যায়নি: " +
+      error.message,
       "error"
     );
 
@@ -469,11 +476,12 @@ form.addEventListener("submit", async function(e){
 
   submitBtn.disabled = false;
 
-  submitBtn.textContent = "🚀 অভিযোগ জমা দিন";
+  submitBtn.textContent =
+    "🚀 অভিযোগ জমা দিন";
 
 });
 
 </script>
 
 </body>
-</html>  
+</html>
