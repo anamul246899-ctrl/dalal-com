@@ -219,7 +219,7 @@ textarea{
  color:#26372d;
 }
 
-/* PUBLIC HELP */
+/* HELP */
 
 .helpBox{
  background:linear-gradient(180deg,#ffffff,#f7fbf8);
@@ -270,12 +270,6 @@ textarea{
  padding:9px 17px;
  border-radius:8px;
  font-weight:700;
- transition:.2s;
-}
-
-.helpPostBtn:hover{
- background:#065b34;
- transform:translateY(-1px);
 }
 
 .helpTitle{
@@ -302,12 +296,6 @@ textarea{
  padding:11px;
  border-radius:10px;
  font-size:13px;
- transition:.2s;
-}
-
-.helpGrid a:hover{
- background:#e5f3eb;
- transform:translateY(-1px);
 }
 
 .helpGrid a span{
@@ -480,10 +468,6 @@ textarea{
  border-radius:7px;
 }
 
-.postMenu button:hover{
- background:#f0f2f5;
-}
-
 .deleteItem{
  color:#e41e3f!important;
 }
@@ -516,7 +500,7 @@ textarea{
  color:#087443;
 }
 
-/* MEDIA PREVIEW */
+/* PREVIEW */
 
 .preview{
  display:grid;
@@ -575,25 +559,7 @@ textarea{
  margin-top:12px;
 }
 
-.profileButtons button{
- padding:9px 15px;
- border-radius:8px;
-}
-
-/* USERS / CHAT */
-
-.userRow{
- display:flex;
- align-items:center;
- gap:10px;
- padding:10px;
- border-bottom:1px solid #eee;
- cursor:pointer;
-}
-
-.userRow:hover{
- background:#f0f5f2;
-}
+/* CHAT */
 
 .chatMessages{
  height:400px;
@@ -656,8 +622,6 @@ textarea{
  color:#68776e;
 }
 
-/* MOBILE */
-
 @media(max-width:600px){
 
  .header{
@@ -705,25 +669,13 @@ textarea{
   font-size:12px;
  }
 
- .helpHero h2{
-  font-size:16px;
- }
-
- .helpGrid{
-  grid-template-columns:1fr 1fr;
- }
-
- .helpGrid a{
-  padding:10px 8px;
- }
-
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= LOGIN ================= -->
+<!-- LOGIN -->
 
 <div id="authPage" class="auth">
 
@@ -758,18 +710,9 @@ Login
 
 <h3>🆕 Create New Account</h3>
 
-<input
- id="signupName"
- placeholder="Your Name">
-
-<input
- id="signupUsername"
- placeholder="Username">
-
-<input
- id="signupPhone"
- type="tel"
- placeholder="Phone Number">
+<input id="signupName" placeholder="Your Name">
+<input id="signupUsername" placeholder="Username">
+<input id="signupPhone" type="tel" placeholder="Phone Number">
 
 <button class="primary" onclick="signup()">
 Create Account
@@ -781,7 +724,7 @@ Create Account
 </div>
 
 
-<!-- ================= APP ================= -->
+<!-- APP -->
 
 <div id="app" class="hidden">
 
@@ -796,9 +739,7 @@ Create Account
  placeholder="Search People..."
  onkeydown="if(event.key==='Enter')quickSearchUser()">
 
-<button onclick="quickSearchUser()">
-🔍
-</button>
+<button onclick="quickSearchUser()">🔍</button>
 
 </div>
 
@@ -807,7 +748,7 @@ Create Account
 
 <main class="container">
 
-<!-- ================= HOME ================= -->
+<!-- HOME -->
 
 <section id="homePage">
 
@@ -824,21 +765,15 @@ Create Account
 </div>
 
 
-<!-- PUBLIC HELP -->
-
 <div class="helpBox">
 
 <div class="helpHero">
 
-<div class="helpEmoji">
-🟢
-</div>
+<div class="helpEmoji">🟢</div>
 
 <div>
 
-<h2>
-Share your experience on Ghus Site
-</h2>
+<h2>Share your experience on Ghus Site</h2>
 
 <p>
 পরিচয় গোপন রেখেও আপনার অভিজ্ঞতা জানাতে পারবেন।
@@ -856,68 +791,51 @@ Share your experience on Ghus Site
 
 </div>
 
-
 <div class="helpTitle">
 🆘 প্রয়োজনীয় সহায়তা
 </div>
 
-
 <div class="helpGrid">
 
-<a
- href="https://acc.org.bd"
+<a href="https://acc.org.bd"
  target="_blank"
  rel="noopener noreferrer">
 
 🛡️ <b>ঘুষ/দুর্নীতি</b>
 
-<span>
-ACC — ১০৬
-</span>
+<span>ACC — ১০৬</span>
 
 </a>
-
 
 <a href="tel:999">
 
 🚨 <b>জরুরি বিপদ</b>
 
-<span>
-জাতীয় জরুরি সেবা — ৯৯৯
-</span>
+<span>জাতীয় জরুরি সেবা — ৯৯৯</span>
 
 </a>
 
-
-<a
- href="https://www.police.gov.bd"
+<a href="https://www.police.gov.bd"
  target="_blank"
  rel="noopener noreferrer">
 
 👮 <b>পুলিশি সহায়তা</b>
 
-<span>
-বাংলাদেশ পুলিশ
-</span>
+<span>বাংলাদেশ পুলিশ</span>
 
 </a>
 
-
-<a
- href="https://gd.police.gov.bd"
+<a href="https://gd.police.gov.bd"
  target="_blank"
  rel="noopener noreferrer">
 
 📄 <b>অনলাইন জিডি</b>
 
-<span>
-Online GD
-</span>
+<span>Online GD</span>
 
 </a>
 
 </div>
-
 
 <div class="helpNote">
 
@@ -929,16 +847,11 @@ Online GD
 </div>
 
 
-<!-- CREATE POST SHORTCUT -->
-
 <div class="card">
 
 <div style="display:flex;gap:10px;align-items:center">
 
-<img
- id="homeAvatar"
- class="avatar"
- alt="avatar">
+<img id="homeAvatar" class="avatar" alt="avatar">
 
 <button
  class="secondary"
@@ -954,8 +867,6 @@ What's on your mind?
 </div>
 
 
-<!-- FEED -->
-
 <div id="feed">
 
 <div class="card center">
@@ -967,7 +878,7 @@ Post loading...
 </section>
 
 
-<!-- ================= SEARCH ================= -->
+<!-- SEARCH -->
 
 <section id="searchPage" class="hidden">
 
@@ -994,7 +905,7 @@ Search People
 </section>
 
 
-<!-- ================= CREATE POST ================= -->
+<!-- POST -->
 
 <section id="postPage" class="hidden">
 
@@ -1015,17 +926,14 @@ Only publish truthful, responsible and public-interest information.
 <br><br>
 
 <b>
-Violations may result in post removal and necessary
-account action.
+Violations may result in post removal and necessary account action.
 </b>
 
 </div>
 
-
 <textarea
  id="postContent"
  placeholder="Write something..."></textarea>
-
 
 <select id="postCategory">
 
@@ -1041,7 +949,6 @@ account action.
 
 </select>
 
-
 <label style="display:block;margin:10px 0">
 
 <input
@@ -1053,7 +960,6 @@ Post anonymously
 
 </label>
 
-
 <input
  id="mediaFile"
  type="file"
@@ -1061,18 +967,11 @@ Post anonymously
  multiple
  onchange="previewMedia()">
 
-
-<div
- class="small"
- style="margin-top:5px">
-
+<div class="small">
 📷 You can select up to 10 photos/videos.
-
 </div>
 
-
 <div id="mediaPreview" class="preview"></div>
-
 
 <button
  class="primary"
@@ -1087,7 +986,7 @@ Publish Post
 </section>
 
 
-<!-- ================= PROFILE ================= -->
+<!-- PROFILE -->
 
 <section id="profilePage" class="hidden">
 
@@ -1096,7 +995,7 @@ Publish Post
 </section>
 
 
-<!-- ================= EDIT PROFILE ================= -->
+<!-- EDIT -->
 
 <section id="editPage" class="hidden">
 
@@ -1104,26 +1003,15 @@ Publish Post
 
 <h2>✏️ Edit Profile</h2>
 
-<input
- id="editName"
- placeholder="Name">
+<input id="editName" placeholder="Name">
 
-<textarea
- id="editBio"
- placeholder="Bio"></textarea>
+<textarea id="editBio" placeholder="Bio"></textarea>
 
-<input
- id="editAvatar"
- placeholder="Avatar Image URL">
+<input id="editAvatar" placeholder="Avatar Image URL">
 
-<button
- class="primary"
- onclick="saveProfile()">
-
+<button class="primary" onclick="saveProfile()">
 Save Changes
-
 </button>
-
 
 <button
  class="secondary"
@@ -1139,7 +1027,7 @@ Logout
 </section>
 
 
-<!-- ================= CHAT ================= -->
+<!-- CHAT -->
 
 <section id="chatPage" class="hidden">
 
@@ -1153,13 +1041,11 @@ Users loading...
 
 </div>
 
-
 <div id="chatBox" class="card hidden">
 
 <h3 id="chatTitle"></h3>
 
 <div id="chatMessages" class="chatMessages"></div>
-
 
 <div style="display:flex;gap:5px;margin-top:8px">
 
@@ -1186,52 +1072,28 @@ Send
 </main>
 
 
-<!-- ================= NAV ================= -->
+<!-- NAV -->
 
 <nav class="bottomNav">
 
-<button
- id="navHome"
- onclick="showPage('homePage')">
-
+<button id="navHome" onclick="showPage('homePage')">
 🏠<br>Home
-
 </button>
 
-
-<button
- id="navSearch"
- onclick="showPage('searchPage')">
-
+<button id="navSearch" onclick="showPage('searchPage')">
 🔍<br>Search
-
 </button>
 
-
-<button
- id="navPost"
- onclick="showPage('postPage')">
-
+<button id="navPost" onclick="showPage('postPage')">
 ➕<br>Post
-
 </button>
 
-
-<button
- id="navChat"
- onclick="showPage('chatPage')">
-
+<button id="navChat" onclick="showPage('chatPage')">
 💬<br>Chat
-
 </button>
 
-
-<button
- id="navProfile"
- onclick="showPage('profilePage')">
-
+<button id="navProfile" onclick="showPage('profilePage')">
 👤<br>Profile
-
 </button>
 
 </nav>
@@ -1294,7 +1156,6 @@ function toast(message){
  setTimeout(()=>{
   if(t)t.remove();
  },3000);
-
 }
 
 
@@ -1309,7 +1170,6 @@ function escapeHTML(text){
  .replace(/>/g,"&gt;")
  .replace(/"/g,"&quot;")
  .replace(/'/g,"&#039;");
-
 }
 
 
@@ -1329,7 +1189,6 @@ function normalizePhone(phone){
   return "+880"+phone.substring(1);
 
  return phone;
-
 }
 
 
@@ -1339,9 +1198,7 @@ function makeUUID(){
   window.crypto &&
   typeof window.crypto.randomUUID==="function"
  ){
-
   return window.crypto.randomUUID();
-
  }
 
  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"
@@ -1357,7 +1214,6 @@ function makeUUID(){
   return v.toString(16);
 
  });
-
 }
 
 
@@ -1374,7 +1230,6 @@ function avatarURL(profile){
  return "https://ui-avatars.com/api/?name="+
  encodeURIComponent(name)+
  "&background=087443&color=fff";
-
 }
 
 
@@ -1400,7 +1255,65 @@ function formatDate(date){
   return "";
 
  }
+}
 
+
+/* =====================================================
+ VERIFY CURRENT PROFILE
+===================================================== */
+
+async function verifyCurrentProfile(){
+
+ if(!currentUser || !currentUser.id)
+  return null;
+
+ try{
+
+  const result=
+   await db
+   .from("profiles")
+   .select("*")
+   .eq("id",currentUser.id)
+   .maybeSingle();
+
+  if(result.error){
+
+   console.error(
+    "PROFILE VERIFY ERROR:",
+    result.error
+   );
+
+   return null;
+  }
+
+  if(!result.data)
+   return null;
+
+  currentProfile=result.data;
+
+  guestUser={
+   id:result.data.id,
+   username:result.data.username,
+   name:result.data.display_name,
+   phone:result.data.phone,
+   avatar_url:result.data.avatar_url||"",
+   bio:result.data.bio||"",
+   role:result.data.role||"user"
+  };
+
+  localStorage.setItem(
+   "ghus_guest_user",
+   JSON.stringify(guestUser)
+  );
+
+  return result.data;
+
+ }catch(err){
+
+  console.error(err);
+  return null;
+
+ }
 }
 
 
@@ -1421,7 +1334,6 @@ async function login(){
   '</div>';
 
   return;
-
  }
 
  $("loginMsg").innerHTML=
@@ -1465,7 +1377,6 @@ async function login(){
    '</div>';
 
    return;
-
   }
 
   if(!result.data){
@@ -1476,7 +1387,6 @@ async function login(){
    '</div>';
 
    return;
-
   }
 
   const user=result.data;
@@ -1490,6 +1400,12 @@ async function login(){
    bio:user.bio||"",
    role:user.role||"user"
   };
+
+  currentUser={
+   id:user.id
+  };
+
+  currentProfile=user;
 
   localStorage.setItem(
    "ghus_guest_user",
@@ -1511,7 +1427,6 @@ async function login(){
   '</div>';
 
  }
-
 }
 
 
@@ -1543,7 +1458,6 @@ async function signup(){
   '</div>';
 
   return;
-
  }
 
  if(username.length<3){
@@ -1554,7 +1468,6 @@ async function signup(){
   '</div>';
 
   return;
-
  }
 
  if(!/^[a-z0-9_.-]+$/.test(username)){
@@ -1565,7 +1478,6 @@ async function signup(){
   '</div>';
 
   return;
-
  }
 
  if(phone.replace(/\D/g,"").length<8){
@@ -1576,7 +1488,6 @@ async function signup(){
   '</div>';
 
   return;
-
  }
 
  $("signupMsg").innerHTML=
@@ -1589,7 +1500,7 @@ async function signup(){
    .from("profiles")
    .select("id")
    .ilike("username",username)
-   .maybeSingle();
+   .limit(1);
 
   if(usernameCheck.error){
 
@@ -1599,10 +1510,9 @@ async function signup(){
    '</div>';
 
    return;
-
   }
 
-  if(usernameCheck.data){
+  if((usernameCheck.data||[]).length){
 
    $("signupMsg").innerHTML=
    '<div class="status">'+
@@ -1610,7 +1520,6 @@ async function signup(){
    '</div>';
 
    return;
-
   }
 
 
@@ -1619,7 +1528,7 @@ async function signup(){
    .from("profiles")
    .select("id")
    .eq("phone",phone)
-   .maybeSingle();
+   .limit(1);
 
   if(phoneCheck.error){
 
@@ -1629,10 +1538,9 @@ async function signup(){
    '</div>';
 
    return;
-
   }
 
-  if(phoneCheck.data){
+  if((phoneCheck.data||[]).length){
 
    $("signupMsg").innerHTML=
    '<div class="status">'+
@@ -1640,13 +1548,11 @@ async function signup(){
    '</div>';
 
    return;
-
   }
 
 
   const newProfileId=
    makeUUID();
-
 
   const insertResult=
    await db
@@ -1665,7 +1571,6 @@ async function signup(){
    .select("*")
    .single();
 
-
   if(insertResult.error){
 
    console.error(
@@ -1676,19 +1581,13 @@ async function signup(){
    $("signupMsg").innerHTML=
    '<div class="status">'+
    '<b>Account creation failed</b><br>'+
-   escapeHTML(
-    insertResult.error.message
-   )+
+   escapeHTML(insertResult.error.message)+
    '</div>';
 
    return;
-
   }
 
-
-  const data=
-   insertResult.data;
-
+  const data=insertResult.data;
 
   guestUser={
    id:data.id,
@@ -1700,29 +1599,30 @@ async function signup(){
    role:data.role||"user"
   };
 
+  currentUser={
+   id:data.id
+  };
+
+  currentProfile=data;
 
   localStorage.setItem(
    "ghus_guest_user",
    JSON.stringify(guestUser)
   );
 
-
   $("signupMsg").innerHTML=
   '<div class="success">'+
   '✅ Account created successfully.'+
   '</div>';
 
-
   $("signupName").value="";
   $("signupUsername").value="";
   $("signupPhone").value="";
-
 
   setTimeout(
    openGuestApp,
    500
   );
-
 
  }catch(err){
 
@@ -1738,7 +1638,6 @@ async function signup(){
   '</div>';
 
  }
-
 }
 
 
@@ -1746,7 +1645,7 @@ async function signup(){
  RESTORE SESSION
 ===================================================== */
 
-function restoreSession(){
+async function restoreSession(){
 
  try{
 
@@ -1755,7 +1654,8 @@ function restoreSession(){
     "ghus_guest_user"
    );
 
-  if(!saved)return;
+  if(!saved)
+   return;
 
   const user=
    JSON.parse(saved);
@@ -1767,21 +1667,41 @@ function restoreSession(){
    );
 
    return;
-
   }
 
   guestUser=user;
 
-  openGuestApp();
+  currentUser={
+   id:user.id
+  };
+
+  const profile=
+   await verifyCurrentProfile();
+
+  if(!profile){
+
+   guestUser=null;
+   currentUser=null;
+   currentProfile=null;
+
+   localStorage.removeItem(
+    "ghus_guest_user"
+   );
+
+   return;
+  }
+
+  await openGuestApp();
 
  }catch(e){
+
+  console.error(e);
 
   localStorage.removeItem(
    "ghus_guest_user"
   );
 
  }
-
 }
 
 
@@ -1789,30 +1709,41 @@ function restoreSession(){
  OPEN APP
 ===================================================== */
 
-function openGuestApp(){
+async function openGuestApp(){
 
  if(!guestUser||!guestUser.id)
   return;
-
- $("authPage")
- .classList.add("hidden");
-
- $("app")
- .classList.remove("hidden");
 
  currentUser={
   id:guestUser.id
  };
 
- currentProfile={
-  id:guestUser.id,
-  display_name:guestUser.name,
-  username:guestUser.username,
-  phone:guestUser.phone,
-  avatar_url:guestUser.avatar_url||"",
-  bio:guestUser.bio||"",
-  role:guestUser.role||"user"
- };
+ const profile=
+  await verifyCurrentProfile();
+
+ if(!profile){
+
+  guestUser=null;
+  currentUser=null;
+  currentProfile=null;
+
+  localStorage.removeItem(
+   "ghus_guest_user"
+  );
+
+  $("app").classList.add("hidden");
+  $("authPage").classList.remove("hidden");
+
+  $("loginMsg").innerHTML=
+  '<div class="status">'+
+  'Session expired. Please login again.'+
+  '</div>';
+
+  return;
+ }
+
+ $("authPage").classList.add("hidden");
+ $("app").classList.remove("hidden");
 
  $("homeAvatar").src=
   avatarURL(currentProfile);
@@ -1842,7 +1773,6 @@ async function logout(){
   }catch(e){}
 
   messageChannel=null;
-
  }
 
  guestUser=null;
@@ -1854,11 +1784,8 @@ async function logout(){
   "ghus_guest_user"
  );
 
- $("app")
- .classList.add("hidden");
-
- $("authPage")
- .classList.remove("hidden");
+ $("app").classList.add("hidden");
+ $("authPage").classList.remove("hidden");
 
  $("loginIdentity").value="";
  $("loginMsg").innerHTML="";
@@ -1894,8 +1821,6 @@ async function loadDailyAwareness(){
 
  "নিজে ঘুষ দেব না, ঘুষ নেব না—এই অঙ্গীকারই পরিবর্তনের শুরু।",
 
- "অন্যায়ের বিরুদ্ধে তথ্যভিত্তিক ও দায়িত্বশীল প্রতিবাদ করুন।",
-
  "আইন ও ন্যায়ের প্রতি সম্মান একটি সুস্থ সমাজের ভিত্তি।"
 
  ];
@@ -1907,39 +1832,24 @@ async function loadDailyAwareness(){
     "get_daily_awareness"
    );
 
-  if(
-   !result.error&&
-   result.data
-  ){
+  if(!result.error&&result.data){
 
-   if(typeof result.data==="string"){
-
+   if(typeof result.data==="string")
+    box.textContent=result.data;
+   else
     box.textContent=
-     result.data;
-
-   }else{
-
-    box.textContent=
-     result.data.sentence||
-     fallback[0];
-
-   }
+     result.data.sentence||fallback[0];
 
    return;
-
   }
 
  }catch(e){}
 
  const day=
-  Math.floor(
-   Date.now()/86400000
-  );
+  Math.floor(Date.now()/86400000);
 
  box.textContent=
-  fallback[
-   day%fallback.length
-  ];
+  fallback[day%fallback.length];
 
 }
 
@@ -1968,19 +1878,16 @@ function showPage(pageId){
 
  });
 
-
  const page=$(pageId);
 
  if(page)
   page.classList.remove("hidden");
-
 
  document
  .querySelectorAll(".bottomNav button")
  .forEach(btn=>
   btn.classList.remove("active")
  );
-
 
  const navMap={
   homePage:"navHome",
@@ -1990,14 +1897,10 @@ function showPage(pageId){
   profilePage:"navProfile"
  };
 
-
  if(navMap[pageId])
-  $(navMap[pageId])
-  .classList.add("active");
-
+  $(navMap[pageId]).classList.add("active");
 
  window.scrollTo(0,0);
-
 
  if(pageId==="homePage")
   loadFeed();
@@ -2022,70 +1925,52 @@ function previewMedia(){
 
  preview.innerHTML="";
 
- const files=
-  Array.from(
-   input.files||[]
-  );
+ let files=
+  Array.from(input.files||[]);
 
  if(files.length>10){
 
-  toast(
-   "Maximum 10 photos/videos allowed."
-  );
+  toast("Maximum 10 photos/videos allowed.");
 
-  const dt=
-   new DataTransfer();
+  files=files.slice(0,10);
 
-  files
-  .slice(0,10)
-  .forEach(file=>
+  const dt=new DataTransfer();
+
+  files.forEach(file=>
    dt.items.add(file)
   );
 
   input.files=dt.files;
-
  }
-
 
  Array.from(input.files||[])
  .forEach((file,index)=>{
 
-  const item=
-   document.createElement("div");
+  const item=document.createElement("div");
 
-  item.className=
-   "previewItem";
+  item.className="previewItem";
 
+  const remove=document.createElement("button");
 
-  const remove=
-   document.createElement("button");
-
-  remove.className=
-   "removePreview";
-
+  remove.className="removePreview";
   remove.textContent="×";
 
   remove.onclick=()=>{
    removeSelectedFile(index);
   };
 
-
   if(file.type.startsWith("image/")){
 
-   const img=
-    document.createElement("img");
+   const img=document.createElement("img");
 
    img.src=
     URL.createObjectURL(file);
 
    item.appendChild(img);
 
-  }else if(
-   file.type.startsWith("video/")
-  ){
+  }else if(file.type.startsWith("video/")){
 
-   const video=
-    document.createElement("video");
+   const video=document.createElement("video");
 
    video.src=
     URL.createObjectURL(file);
@@ -2093,11 +1978,10 @@ function previewMedia(){
    video.controls=true;
 
    item.appendChild(video);
-
   }
 
-
   item.appendChild(remove);
+
   preview.appendChild(item);
 
  });
@@ -2109,8 +1993,7 @@ function removeSelectedFile(index){
 
  const input=$("mediaFile");
 
- const dt=
-  new DataTransfer();
+ const dt=new DataTransfer();
 
  Array.from(input.files)
  .forEach((file,i)=>{
@@ -2120,8 +2003,7 @@ function removeSelectedFile(index){
 
  });
 
- input.files=
-  dt.files;
+ input.files=dt.files;
 
  previewMedia();
 
@@ -2134,18 +2016,26 @@ function removeSelectedFile(index){
 
 async function createPost(){
 
- if(!currentUser){
+ if(!currentUser||!currentUser.id){
 
   toast("Please login first.");
   return;
-
  }
 
+ const profile=
+  await verifyCurrentProfile();
+
+ if(!profile){
+
+  toast(
+   "Your account was not found. Please login again."
+  );
+
+  return;
+ }
 
  const content=
-  $("postContent")
-  .value
-  .trim();
+  $("postContent").value.trim();
 
  const category=
   $("postCategory").value;
@@ -2158,7 +2048,6 @@ async function createPost(){
    $("mediaFile").files||[]
   );
 
-
  if(!content&&files.length===0){
 
   toast(
@@ -2166,9 +2055,7 @@ async function createPost(){
   );
 
   return;
-
  }
-
 
  if(files.length>10){
 
@@ -2177,9 +2064,7 @@ async function createPost(){
   );
 
   return;
-
  }
-
 
  for(const file of files){
 
@@ -2194,11 +2079,9 @@ async function createPost(){
    );
 
    return;
-
   }
 
  }
-
 
  const agree=
   confirm(
@@ -2210,15 +2093,9 @@ async function createPost(){
    "Do you want to publish this post?"
   );
 
+ if(!agree)return;
 
- if(!agree)
-  return;
-
-
- toast(
-  "Creating post..."
- );
-
+ toast("Creating post...");
 
  try{
 
@@ -2227,7 +2104,7 @@ async function createPost(){
    .from("posts")
    .insert({
 
-    user_id:currentUser.id,
+    user_id:profile.id,
     content:content,
     media_url:null,
     media_type:null,
@@ -2239,17 +2116,19 @@ async function createPost(){
    .select("*")
    .single();
 
-
   if(result.error){
+
+   console.error(
+    "POST INSERT ERROR:",
+    result.error
+   );
 
    toast(
     result.error.message
    );
 
    return;
-
   }
-
 
   const post=result.data;
 
@@ -2258,12 +2137,7 @@ async function createPost(){
 
   let uploadFailed=false;
 
-
-  for(
-   let i=0;
-   i<files.length;
-   i++
-  ){
+  for(let i=0;i<files.length;i++){
 
    const file=files[i];
 
@@ -2274,17 +2148,15 @@ async function createPost(){
      "_"
     );
 
-
    const path=
     "posts/"+
-    currentUser.id+
+    profile.id+
     "/"+
     Date.now()+
     "_"+
     i+
     "_"+
     safeName;
-
 
    const upload=
     await db.storage
@@ -2298,7 +2170,6 @@ async function createPost(){
      }
     );
 
-
    if(upload.error){
 
     console.error(
@@ -2307,36 +2178,26 @@ async function createPost(){
     );
 
     uploadFailed=true;
-
     continue;
-
    }
-
 
    const publicURL=
     db.storage
     .from("media")
     .getPublicUrl(path)
-    .data
-    .publicUrl;
-
+    .data.publicUrl;
 
    const mediaType=
     file.type.startsWith("video/")
     ?"video"
     :"image";
 
-
    if(i===0){
 
-    firstMediaURL=
-     publicURL;
-
-    firstMediaType=
-     mediaType;
+    firstMediaURL=publicURL;
+    firstMediaType=mediaType;
 
    }
-
 
    const mediaInsert=
     await db
@@ -2349,7 +2210,6 @@ async function createPost(){
 
     });
 
-
    if(mediaInsert.error){
 
     console.error(
@@ -2360,7 +2220,6 @@ async function createPost(){
    }
 
   }
-
 
   if(firstMediaURL){
 
@@ -2375,24 +2234,18 @@ async function createPost(){
     })
     .eq("id",post.id);
 
-
-   if(update.error){
-
+   if(update.error)
     console.error(
      "POST UPDATE ERROR:",
      update.error
     );
 
-   }
-
   }
-
 
   $("postContent").value="";
   $("mediaFile").value="";
   $("mediaPreview").innerHTML="";
   $("anonymousPost").checked=false;
-
 
   if(uploadFailed){
 
@@ -2408,9 +2261,7 @@ async function createPost(){
 
   }
 
-
   showPage("homePage");
-
 
  }catch(err){
 
@@ -2446,18 +2297,10 @@ async function getMedia(post){
     {ascending:true}
    );
 
-
-  if(
-   !result.error&&
-   result.data
-  ){
-
+  if(!result.error&&result.data)
    media=result.data;
 
-  }
-
  }catch(e){}
-
 
  if(
   media.length===0&&
@@ -2474,7 +2317,6 @@ async function getMedia(post){
 
  }
 
-
  return media;
 
 }
@@ -2482,8 +2324,6 @@ async function getMedia(post){
 
 /* =====================================================
  LOAD POST USERS
- IMPORTANT:
- NO posts -> profiles relationship is used.
 ===================================================== */
 
 async function loadPostUsers(posts){
@@ -2509,7 +2349,6 @@ async function loadPostUsers(posts){
    )
    .in("id",ids);
 
-
   if(result.error){
 
    console.error(
@@ -2518,26 +2357,20 @@ async function loadPostUsers(posts){
    );
 
    return {};
-
   }
-
 
   const map={};
 
   (result.data||[])
   .forEach(user=>{
-
    map[user.id]=user;
-
   });
-
 
   return map;
 
  }catch(err){
 
   console.error(err);
-
   return {};
 
  }
@@ -2547,8 +2380,6 @@ async function loadPostUsers(posts){
 
 /* =====================================================
  LOAD FEED
- FIXED:
- No relationship embedding.
 ===================================================== */
 
 async function loadFeed(){
@@ -2560,10 +2391,8 @@ async function loadFeed(){
  feed.innerHTML=
  '<div class="card center">Post loading...</div>';
 
-
  try{
 
-  /* First load posts only */
   const result=
    await db
    .from("posts")
@@ -2575,7 +2404,6 @@ async function loadFeed(){
    )
    .limit(100);
 
-
   if(result.error){
 
    console.error(
@@ -2586,19 +2414,13 @@ async function loadFeed(){
    feed.innerHTML=
    '<div class="card">'+
    '<b>Post loading failed</b><br><br>'+
-   escapeHTML(
-    result.error.message
-   )+
+   escapeHTML(result.error.message)+
    '</div>';
 
    return;
-
   }
 
-
-  const data=
-   result.data||[];
-
+  const data=result.data||[];
 
   if(!data.length){
 
@@ -2608,16 +2430,11 @@ async function loadFeed(){
    '</div>';
 
    return;
-
   }
 
-
-  /* Load profiles separately */
   const userMap=
    await loadPostUsers(data);
 
-
-  /* Attach profile object manually */
   data.forEach(post=>{
 
    post.profiles=
@@ -2625,13 +2442,9 @@ async function loadFeed(){
 
   });
 
-
   feed.innerHTML="";
 
-
-  for(
-   const post of data
-  ){
+  for(const post of data){
 
    feed.insertAdjacentHTML(
     "beforeend",
@@ -2639,7 +2452,6 @@ async function loadFeed(){
    );
 
   }
-
 
  }catch(err){
 
@@ -2651,9 +2463,7 @@ async function loadFeed(){
   feed.innerHTML=
   '<div class="card">'+
   '<b>Post loading failed</b><br><br>'+
-  escapeHTML(
-   err.message
-  )+
+  escapeHTML(err.message)+
   '</div>';
 
  }
@@ -2696,7 +2506,6 @@ async function loadCommentUsers(comments){
    );
 
    return {};
-
   }
 
   const map={};
@@ -2711,7 +2520,6 @@ async function loadCommentUsers(comments){
  }catch(e){
 
   console.error(e);
-
   return {};
 
  }
@@ -2734,12 +2542,10 @@ async function postHTML(post){
  const anonymous=
   post.is_anonymous===true;
 
-
  const name=
   anonymous
   ?"Anonymous"
   :(profile.display_name||"User");
-
 
  const avatar=
   anonymous
@@ -2748,16 +2554,14 @@ async function postHTML(post){
   :
   avatarURL(profile);
 
-
  let reactionCount=0;
-
 
  try{
 
   const result=
    await db
    .from("reactions")
-   .select("*",{count:"exact",head:true})
+   .select("id",{count:"exact",head:true})
    .eq("post_id",post.id);
 
   reactionCount=
@@ -2768,18 +2572,14 @@ async function postHTML(post){
 
  let commentsData=[];
 
-
  try{
 
   const result=
    await db
    .from("comments")
-   .select(`
-    id,
-    content,
-    created_at,
-    user_id
-   `)
+   .select(
+    "id,content,created_at,user_id"
+   )
    .eq("post_id",post.id)
    .order(
     "created_at",
@@ -2787,10 +2587,8 @@ async function postHTML(post){
    )
    .limit(20);
 
-
   if(!result.error)
-   commentsData=
-    result.data||[];
+   commentsData=result.data||[];
 
  }catch(e){
 
@@ -2801,15 +2599,12 @@ async function postHTML(post){
 
  }
 
-
  const commentUsers=
   await loadCommentUsers(
    commentsData
   );
 
-
  let mediaHTML="";
-
 
  if(media.length){
 
@@ -2824,18 +2619,13 @@ async function postHTML(post){
    ?"three"
    :"four";
 
-
   mediaHTML=
    `<div class="mediaGrid ${cls}">`;
-
 
   media.forEach(m=>{
 
    const safeURL=
-    escapeHTML(
-     m.media_url
-    );
-
+    escapeHTML(m.media_url);
 
    if(m.media_type==="video"){
 
@@ -2856,7 +2646,6 @@ async function postHTML(post){
 
   });
 
-
   mediaHTML+="</div>";
 
  }
@@ -2864,12 +2653,10 @@ async function postHTML(post){
 
  let commentsHTML="";
 
-
  commentsData.forEach(c=>{
 
   const cp=
    commentUsers[c.user_id]||{};
-
 
   commentsHTML+=
   `<div class="comment">
@@ -2877,9 +2664,7 @@ async function postHTML(post){
    <img
     class="avatar"
     style="width:32px;height:32px"
-    src="${escapeHTML(
-     avatarURL(cp)
-    )}">
+    src="${escapeHTML(avatarURL(cp))}">
 
    <div class="commentBubble">
 
@@ -2891,9 +2676,7 @@ async function postHTML(post){
 
     <br>
 
-    ${escapeHTML(
-     c.content
-    )}
+    ${escapeHTML(c.content)}
 
    </div>
 
@@ -2988,9 +2771,7 @@ async function postHTML(post){
 
      ·
 
-     ${formatDate(
-      post.created_at
-     )}
+     ${formatDate(post.created_at)}
 
     </div>
 
@@ -3087,11 +2868,8 @@ async function postHTML(post){
   </div>
 
 
-  <div
-   id="comments-${escapeHTML(post.id)}">
-
+  <div id="comments-${escapeHTML(post.id)}">
    ${commentsHTML}
-
   </div>
 
 
@@ -3128,22 +2906,15 @@ function togglePostMenu(postId){
  .querySelectorAll(".postMenu")
  .forEach(m=>{
 
-  if(
-   m.id!=="menu-"+postId
-  )
+  if(m.id!=="menu-"+postId)
    m.classList.add("hidden");
 
  });
 
-
- const menu=
-  $("menu-"+postId);
-
+ const menu=$("menu-"+postId);
 
  if(menu)
-  menu.classList.toggle(
-   "hidden"
-  );
+  menu.classList.toggle("hidden");
 
 }
 
@@ -3152,9 +2923,7 @@ document.addEventListener(
  "click",
  function(e){
 
-  if(
-   !e.target.closest(".menuWrap")
-  ){
+  if(!e.target.closest(".menuWrap")){
 
    document
    .querySelectorAll(".postMenu")
@@ -3187,22 +2956,15 @@ async function copyPostLink(postId){
   location.href.split("#")[0]+
   "#post-"+postId;
 
-
  try{
 
-  await navigator.clipboard.writeText(
-   url
-  );
+  await navigator.clipboard.writeText(url);
 
-  toast(
-   "Post link copied"
-  );
+  toast("Post link copied");
 
  }catch(e){
 
-  toast(
-   "Link: "+url
-  );
+  toast("Link: "+url);
 
  }
 
@@ -3216,9 +2978,7 @@ function savePost(postId){
   "true"
  );
 
- toast(
-  "🔖 Post saved"
- );
+ toast("🔖 Post saved");
 
 }
 
@@ -3238,71 +2998,54 @@ function reportPost(postId){
 
 async function deletePost(postId){
 
- if(!currentUser){
+ if(!currentUser||!currentUser.id){
 
   toast("Please login first.");
   return;
-
  }
 
+ const profile=
+  await verifyCurrentProfile();
+
+ if(!profile){
+
+  toast(
+   "Account verification failed."
+  );
+
+  return;
+ }
 
  const ok=
   confirm(
    "Do you want to delete this post?"
   );
 
-
  if(!ok)return;
-
 
  try{
 
-  const mediaDelete=
-   await db
-   .from("post_media")
-   .delete()
-   .eq("post_id",postId);
+  await db
+  .from("post_media")
+  .delete()
+  .eq("post_id",postId);
 
+  await db
+  .from("comments")
+  .delete()
+  .eq("post_id",postId);
 
-  if(mediaDelete.error)
-   console.warn(
-    mediaDelete.error
-   );
-
-
-  const commentsDelete=
-   await db
-   .from("comments")
-   .delete()
-   .eq("post_id",postId);
-
-
-  if(commentsDelete.error)
-   console.warn(
-    commentsDelete.error
-   );
-
-
-  const reactionDelete=
-   await db
-   .from("reactions")
-   .delete()
-   .eq("post_id",postId);
-
-
-  if(reactionDelete.error)
-   console.warn(
-    reactionDelete.error
-   );
-
+  await db
+  .from("reactions")
+  .delete()
+  .eq("post_id",postId);
 
   const result=
    await db
    .from("posts")
    .delete()
    .eq("id",postId)
-   .eq("user_id",currentUser.id);
-
+   .eq("user_id",profile.id);
 
   if(result.error){
 
@@ -3311,16 +3054,11 @@ async function deletePost(postId){
    );
 
    return;
-
   }
 
-
-  toast(
-   "Post deleted"
-  );
+  toast("Post deleted");
 
   loadFeed();
-
 
  }catch(err){
 
@@ -3343,9 +3081,7 @@ function toggleReactionMenu(postId){
   $("reaction-"+postId);
 
  if(el)
-  el.classList.toggle(
-   "hidden"
-  );
+  el.classList.toggle("hidden");
 
 }
 
@@ -3360,56 +3096,71 @@ async function toggleReaction(postId){
 }
 
 
-async function react(
- postId,
- type
-){
+async function react(postId,type){
 
- if(!currentUser){
+ if(!currentUser||!currentUser.id){
 
   toast("Please login first.");
   return;
-
  }
 
+ const profile=
+  await verifyCurrentProfile();
+
+ if(!profile){
+
+  toast(
+   "Your account was not found. Please login again."
+  );
+
+  return;
+ }
 
  try{
+
+  /*
+   IMPORTANT:
+   limit(1) ব্যবহার করা হয়েছে।
+   এতে পুরোনো duplicate reaction থাকলেও
+   maybeSingle() error হবে না।
+  */
 
   const existing=
    await db
    .from("reactions")
    .select("id,type")
    .eq("post_id",postId)
-   .eq("user_id",currentUser.id)
-   .maybeSingle();
-
+   .eq("user_id",profile.id)
+   .order("id",{ascending:true})
+   .limit(1);
 
   if(existing.error){
+
+   console.error(
+    "REACTION SELECT ERROR:",
+    existing.error
+   );
 
    toast(
     existing.error.message
    );
 
    return;
-
   }
 
+  const row=
+   (existing.data||[])[0]||null;
 
-  if(existing.data){
 
-   if(
-    existing.data.type===type
-   ){
+  if(row){
+
+   if(row.type===type){
 
     const del=
      await db
      .from("reactions")
      .delete()
-     .eq(
-      "id",
-      existing.data.id
-     );
-
+     .eq("id",row.id);
 
     if(del.error){
 
@@ -3418,7 +3169,6 @@ async function react(
      );
 
      return;
-
     }
 
    }else{
@@ -3429,11 +3179,7 @@ async function react(
      .update({
       type:type
      })
-     .eq(
-      "id",
-      existing.data.id
-     );
-
+     .eq("id",row.id);
 
     if(upd.error){
 
@@ -3442,7 +3188,6 @@ async function react(
      );
 
      return;
-
     }
 
    }
@@ -3455,33 +3200,38 @@ async function react(
     .insert({
 
      post_id:postId,
-     user_id:currentUser.id,
+     user_id:profile.id,
      type:type
 
     });
 
-
    if(ins.error){
+
+    console.error(
+     "REACTION INSERT ERROR:",
+     ins.error
+    );
 
     toast(
      ins.error.message
     );
 
     return;
-
    }
 
   }
 
-
   $("reaction-"+postId)
   ?.classList.add("hidden");
 
-
-  loadFeed();
-
+  await loadFeed();
 
  }catch(err){
+
+  console.error(
+   "REACTION ERROR:",
+   err
+  );
 
   toast(
    err.message
@@ -3501,7 +3251,6 @@ function focusComment(postId){
  const input=
   $("comment-"+postId);
 
-
  if(input){
 
   input.focus();
@@ -3518,31 +3267,32 @@ function focusComment(postId){
 
 async function addComment(postId){
 
- if(!currentUser){
+ if(!currentUser||!currentUser.id){
 
   toast("Please login first.");
   return;
-
  }
-
 
  const input=
   $("comment-"+postId);
 
- const content=
-  input.value.trim();
-
-
- if(!content){
+ if(!input){
 
   toast(
-   "Write a comment."
+   "Comment box not found."
   );
 
   return;
-
  }
 
+ const content=
+  input.value.trim();
+
+ if(!content){
+
+  toast("Write a comment.");
+  return;
+ }
 
  if(content.length>2000){
 
@@ -3551,7 +3301,25 @@ async function addComment(postId){
   );
 
   return;
+ }
 
+
+ /*
+   IMPORTANT:
+   comments.user_id -> profiles.id
+   তাই insert করার আগে profile verify করা হচ্ছে।
+ */
+
+ const profile=
+  await verifyCurrentProfile();
+
+ if(!profile){
+
+  toast(
+   "Your account was not found. Please login again."
+  );
+
+  return;
  }
 
 
@@ -3563,33 +3331,39 @@ async function addComment(postId){
    .insert({
 
     post_id:postId,
-    user_id:currentUser.id,
+    user_id:profile.id,
     content:content
 
    });
 
-
   if(result.error){
+
+   console.error(
+    "COMMENT INSERT ERROR:",
+    result.error
+   );
 
    toast(
     result.error.message
    );
 
    return;
-
   }
-
 
   input.value="";
 
   toast(
-   "Comment added"
+   "✅ Comment added"
   );
 
-  loadFeed();
-
+  await loadFeed();
 
  }catch(err){
+
+  console.error(
+   "COMMENT ERROR:",
+   err
+  );
 
   toast(
    err.message
@@ -3610,10 +3384,7 @@ async function sharePost(postId){
   location.href.split("#")[0]+
   "#post-"+postId;
 
-
- if(
-  navigator.share
- ){
+ if(navigator.share){
 
   try{
 
@@ -3631,19 +3402,13 @@ async function sharePost(postId){
 
   try{
 
-   await navigator.clipboard.writeText(
-    url
-   );
+   await navigator.clipboard.writeText(url);
 
-   toast(
-    "Post link copied"
-   );
+   toast("Post link copied");
 
   }catch(e){
 
-   toast(
-    url
-   );
+   toast(url);
 
   }
 
@@ -3653,28 +3418,19 @@ async function sharePost(postId){
 
 
 /* =====================================================
- SEARCH PEOPLE
+ SEARCH
 ===================================================== */
 
 function quickSearchUser(){
 
  const value=
-  $("quickSearch")
-  .value
-  .trim();
-
+  $("quickSearch").value.trim();
 
  if(!value)return;
 
+ $("searchInput").value=value;
 
- $("searchInput").value=
-  value;
-
-
- showPage(
-  "searchPage"
- );
-
+ showPage("searchPage");
 
  searchUsers();
 
@@ -3684,14 +3440,10 @@ function quickSearchUser(){
 async function searchUsers(){
 
  const q=
-  $("searchInput")
-  .value
-  .trim();
-
+  $("searchInput").value.trim();
 
  const box=
   $("searchResults");
-
 
  if(!q){
 
@@ -3701,58 +3453,41 @@ async function searchUsers(){
   '</div>';
 
   return;
-
  }
-
 
  box.innerHTML=
  '<div class="card center">'+
  'Searching People...'+
  '</div>';
 
-
  try{
 
   const safeQ=
-   q.replace(
-    /[%_,]/g,
-    ""
-   );
-
+   q.replace(/[%_,]/g,"");
 
   const result=
    await db
    .from("profiles")
-   .select(`
-    id,
-    display_name,
-    username,
-    avatar_url,
-    bio
-   `)
+   .select(
+    "id,display_name,username,avatar_url,bio"
+   )
    .or(
     `display_name.ilike.%${safeQ}%,username.ilike.%${safeQ}%`
    )
    .limit(30);
 
-
   if(result.error){
 
    box.innerHTML=
    '<div class="card">'+
-   escapeHTML(
-    result.error.message
-   )+
+   escapeHTML(result.error.message)+
    '</div>';
 
    return;
-
   }
-
 
   const users=
    result.data||[];
-
 
   if(!users.length){
 
@@ -3762,12 +3497,9 @@ async function searchUsers(){
    '</div>';
 
    return;
-
   }
 
-
   box.innerHTML="";
-
 
   users.forEach(user=>{
 
@@ -3780,9 +3512,7 @@ async function searchUsers(){
 
      <img
       class="avatar"
-      src="${escapeHTML(
-       avatarURL(user)
-      )}">
+      src="${escapeHTML(avatarURL(user))}">
 
      <div>
 
@@ -3806,14 +3536,11 @@ async function searchUsers(){
 
   });
 
-
  }catch(err){
 
   box.innerHTML=
   '<div class="card">'+
-  escapeHTML(
-   err.message
-  )+
+  escapeHTML(err.message)+
   '</div>';
 
  }
@@ -3836,7 +3563,6 @@ async function viewUser(userId){
    .eq("id",userId)
    .maybeSingle();
 
-
   if(result.error){
 
    toast(
@@ -3844,30 +3570,17 @@ async function viewUser(userId){
    );
 
    return;
-
   }
-
 
   if(!result.data){
 
-   toast(
-    "User not found."
-   );
-
+   toast("User not found.");
    return;
-
   }
 
+  renderProfile(result.data);
 
-  renderProfile(
-   result.data
-  );
-
-
-  showPage(
-   "profilePage"
-  );
-
+  showPage("profilePage");
 
  }catch(err){
 
@@ -3886,8 +3599,8 @@ async function viewUser(userId){
 
 async function loadProfilePage(){
 
- if(!currentUser)return;
-
+ if(!currentUser||!currentUser.id)
+  return;
 
  try{
 
@@ -3898,59 +3611,51 @@ async function loadProfilePage(){
    .eq("id",currentUser.id)
    .maybeSingle();
 
-
   if(result.error){
 
    $("profileContent").innerHTML=
    '<div class="card">'+
-   escapeHTML(
-    result.error.message
-   )+
+   escapeHTML(result.error.message)+
    '</div>';
 
    return;
-
   }
 
+  if(!result.data){
 
-  if(result.data){
-
-   currentProfile=
-    result.data;
-
-
-   guestUser.name=
-    result.data.display_name;
-
-   guestUser.username=
-    result.data.username;
-
-   guestUser.phone=
-    result.data.phone;
-
-   guestUser.avatar_url=
-    result.data.avatar_url||"";
-
-   guestUser.bio=
-    result.data.bio||"";
-
-
-   localStorage.setItem(
-    "ghus_guest_user",
-    JSON.stringify(guestUser)
+   toast(
+    "Your profile was not found."
    );
 
-
-   $("homeAvatar").src=
-    avatarURL(result.data);
-
-
-   renderProfile(
-    result.data
-   );
-
+   return;
   }
 
+  currentProfile=result.data;
+
+  guestUser.name=
+   result.data.display_name;
+
+  guestUser.username=
+   result.data.username;
+
+  guestUser.phone=
+   result.data.phone;
+
+  guestUser.avatar_url=
+   result.data.avatar_url||"";
+
+  guestUser.bio=
+   result.data.bio||"";
+
+  localStorage.setItem(
+   "ghus_guest_user",
+   JSON.stringify(guestUser)
+  );
+
+  $("homeAvatar").src=
+   avatarURL(result.data);
+
+  renderProfile(result.data);
 
  }catch(err){
 
@@ -3971,7 +3676,6 @@ function renderProfile(profile){
   currentUser&&
   currentUser.id===profile.id;
 
-
  $("profileContent").innerHTML=
 
  `
@@ -3985,9 +3689,7 @@ function renderProfile(profile){
 
    <img
     class="avatar"
-    src="${escapeHTML(
-     avatarURL(profile)
-    )}">
+    src="${escapeHTML(avatarURL(profile))}">
 
    <h2 style="margin-bottom:3px">
 
@@ -4013,7 +3715,6 @@ function renderProfile(profile){
      </p>`
     :""
    }
-
 
    ${
     own
@@ -4051,48 +3752,33 @@ async function openEditProfile(){
  if(!currentProfile)
   await loadProfilePage();
 
-
  $("editName").value=
   currentProfile?.display_name||"";
-
 
  $("editBio").value=
   currentProfile?.bio||"";
 
-
  $("editAvatar").value=
   currentProfile?.avatar_url||"";
 
-
- showPage(
-  "editPage"
- );
+ showPage("editPage");
 
 }
 
 
 async function saveProfile(){
 
- if(!currentUser)return;
-
+ if(!currentUser||!currentUser.id)
+  return;
 
  const name=
-  $("editName")
-  .value
-  .trim();
-
+  $("editName").value.trim();
 
  const bio=
-  $("editBio")
-  .value
-  .trim();
-
+  $("editBio").value.trim();
 
  const avatar=
-  $("editAvatar")
-  .value
-  .trim();
-
+  $("editAvatar").value.trim();
 
  if(!name){
 
@@ -4101,9 +3787,7 @@ async function saveProfile(){
   );
 
   return;
-
  }
-
 
  try{
 
@@ -4117,11 +3801,7 @@ async function saveProfile(){
     avatar_url:avatar
 
    })
-   .eq(
-    "id",
-    currentUser.id
-   );
-
+   .eq("id",currentUser.id);
 
   if(result.error){
 
@@ -4130,51 +3810,29 @@ async function saveProfile(){
    );
 
    return;
-
   }
 
+  guestUser.name=name;
+  guestUser.bio=bio;
+  guestUser.avatar_url=avatar;
 
-  guestUser.name=
-   name;
-
-  guestUser.bio=
-   bio;
-
-  guestUser.avatar_url=
-   avatar;
-
-
-  currentProfile.display_name=
-   name;
-
-  currentProfile.bio=
-   bio;
-
-  currentProfile.avatar_url=
-   avatar;
-
+  currentProfile.display_name=name;
+  currentProfile.bio=bio;
+  currentProfile.avatar_url=avatar;
 
   localStorage.setItem(
    "ghus_guest_user",
    JSON.stringify(guestUser)
   );
 
-
   $("homeAvatar").src=
-   avatarURL(
-    currentProfile
-   );
-
+   avatarURL(currentProfile);
 
   toast(
    "Profile updated"
   );
 
-
-  showPage(
-   "profilePage"
-  );
-
+  showPage("profilePage");
 
  }catch(err){
 
@@ -4193,54 +3851,42 @@ async function saveProfile(){
 
 async function loadChatUsers(){
 
- if(!currentUser)return;
+ if(!currentUser||!currentUser.id)
+  return;
 
-
- const box=
-  $("chatUsers");
-
+ const box=$("chatUsers");
 
  box.innerHTML=
  '<div class="loading">'+
  'Users loading...'+
  '</div>';
 
-
  try{
 
   const result=
    await db
    .from("profiles")
-   .select(`
-    id,
-    display_name,
-    username,
-    avatar_url
-   `)
+   .select(
+    "id,display_name,username,avatar_url"
+   )
    .neq(
     "id",
     currentUser.id
    )
    .limit(50);
 
-
   if(result.error){
 
    box.innerHTML=
    '<div class="status">'+
-   escapeHTML(
-    result.error.message
-   )+
+   escapeHTML(result.error.message)+
    '</div>';
 
    return;
-
   }
-
 
   const users=
    result.data||[];
-
 
   if(!users.length){
 
@@ -4250,12 +3896,9 @@ async function loadChatUsers(){
    '</div>';
 
    return;
-
   }
 
-
   box.innerHTML="";
-
 
   users.forEach(user=>{
 
@@ -4271,9 +3914,7 @@ async function loadChatUsers(){
 
       <img
        class="avatar"
-       src="${escapeHTML(
-        avatarURL(user)
-       )}">
+       src="${escapeHTML(avatarURL(user))}">
 
       <div>
 
@@ -4299,14 +3940,11 @@ async function loadChatUsers(){
 
   });
 
-
  }catch(err){
 
   box.innerHTML=
   '<div class="status">'+
-  escapeHTML(
-   err.message
-  )+
+  escapeHTML(err.message)+
   '</div>';
 
  }
@@ -4329,7 +3967,6 @@ async function openChat(userId){
    .eq("id",userId)
    .maybeSingle();
 
-
   if(result.error){
 
    toast(
@@ -4337,9 +3974,7 @@ async function openChat(userId){
    );
 
    return;
-
   }
-
 
   if(!result.data){
 
@@ -4348,19 +3983,13 @@ async function openChat(userId){
    );
 
    return;
-
   }
-
 
   selectedChatUser=
    result.data;
 
-
   $("chatBox")
-   .classList.remove(
-    "hidden"
-   );
-
+   .classList.remove("hidden");
 
   $("chatTitle").textContent=
    "💬 "+
@@ -4369,17 +3998,13 @@ async function openChat(userId){
     "User"
    );
 
-
   await loadMessages();
 
-
   setupMessageRealtime();
-
 
   $("chatBox").scrollIntoView({
    behavior:"smooth"
   });
-
 
  }catch(err){
 
@@ -4404,16 +4029,12 @@ async function loadMessages(){
  )
   return;
 
-
- const box=
-  $("chatMessages");
-
+ const box=$("chatMessages");
 
  box.innerHTML=
  '<div class="loading">'+
  'Messages loading...'+
  '</div>';
-
 
  try{
 
@@ -4434,7 +4055,6 @@ async function loadMessages(){
     {ascending:true}
    );
 
-
   const received=
    await db
    .from("messages")
@@ -4452,34 +4072,25 @@ async function loadMessages(){
     {ascending:true}
    );
 
-
   if(sent.error){
 
    box.innerHTML=
    '<div class="small">'+
-   escapeHTML(
-    sent.error.message
-   )+
+   escapeHTML(sent.error.message)+
    '</div>';
 
    return;
-
   }
-
 
   if(received.error){
 
    box.innerHTML=
    '<div class="small">'+
-   escapeHTML(
-    received.error.message
-   )+
+   escapeHTML(received.error.message)+
    '</div>';
 
    return;
-
   }
-
 
   const messages=
    [
@@ -4492,9 +4103,7 @@ async function loadMessages(){
      new Date(b.created_at)
    );
 
-
   box.innerHTML="";
-
 
   if(!messages.length){
 
@@ -4505,15 +4114,10 @@ async function loadMessages(){
 
   }
 
-
-  messages.forEach(
-   renderMessage
-  );
-
+  messages.forEach(renderMessage);
 
   box.scrollTop=
    box.scrollHeight;
-
 
  }catch(err){
 
@@ -4521,9 +4125,7 @@ async function loadMessages(){
 
   box.innerHTML=
   '<div class="small">'+
-  escapeHTML(
-   err.message
-  )+
+  escapeHTML(err.message)+
   '</div>';
 
  }
@@ -4537,16 +4139,12 @@ async function loadMessages(){
 
 function renderMessage(message){
 
- const box=
-  $("chatMessages");
-
+ const box=$("chatMessages");
 
  if(!box)return;
 
-
  const div=
   document.createElement("div");
-
 
  div.className=
   "msg "+
@@ -4557,10 +4155,8 @@ function renderMessage(message){
    :"other"
   );
 
-
  div.textContent=
   message.content||"";
-
 
  box.appendChild(div);
 
@@ -4583,21 +4179,28 @@ async function sendMessage(){
   );
 
   return;
-
  }
 
+ const profile=
+  await verifyCurrentProfile();
+
+ if(!profile){
+
+  toast(
+   "Your account was not found. Please login again."
+  );
+
+  return;
+ }
 
  const input=
   $("messageInput");
 
-
  const content=
   input.value.trim();
 
-
  if(!content)
   return;
-
 
  if(content.length>2000){
 
@@ -4606,9 +4209,7 @@ async function sendMessage(){
   );
 
   return;
-
  }
-
 
  try{
 
@@ -4617,29 +4218,29 @@ async function sendMessage(){
    .from("messages")
    .insert({
 
-    sender_id:currentUser.id,
+    sender_id:profile.id,
     receiver_id:selectedChatUser.id,
     content:content
 
    });
 
-
   if(result.error){
+
+   console.error(
+    "MESSAGE INSERT ERROR:",
+    result.error
+   );
 
    toast(
     result.error.message
    );
 
    return;
-
   }
-
 
   input.value="";
 
-
   await loadMessages();
-
 
  }catch(err){
 
@@ -4670,13 +4271,11 @@ function setupMessageRealtime(){
 
  }
 
-
  if(
   !currentUser||
   !selectedChatUser
  )
   return;
-
 
  messageChannel=
   db
@@ -4697,9 +4296,7 @@ function setupMessageRealtime(){
    },
    payload=>{
 
-    const m=
-     payload.new;
-
+    const m=payload.new;
 
     const relevant=
      (
@@ -4716,12 +4313,8 @@ function setupMessageRealtime(){
       currentUser.id
      );
 
-
-    if(relevant){
-
+    if(relevant)
      loadMessages();
-
-    }
 
    }
   )
