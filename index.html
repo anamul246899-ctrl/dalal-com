@@ -10,457 +10,165 @@
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-
 body{
  margin:0;
  font-family:Arial,"Noto Sans Bengali",sans-serif;
- background:#f4f7f5;
- color:#17251c;
+ background:#f0f2f5;
+ color:#17202a;
 }
-
 button,input,textarea,select{font:inherit}
-button{cursor:pointer;border:0}
+button{cursor:pointer}
 .hidden{display:none!important}
 
-.header{
+.topbar{
  position:sticky;
  top:0;
- z-index:100;
- background:#087443;
- color:#fff;
- min-height:58px;
+ z-index:1000;
+ height:60px;
+ background:#138a45;
+ color:white;
  display:flex;
  align-items:center;
- gap:10px;
- padding:8px 12px;
- box-shadow:0 2px 8px rgba(0,0,0,.15);
+ justify-content:space-between;
+ padding:0 14px;
+ box-shadow:0 2px 8px #0002;
 }
-
 .logo{
- font-size:23px;
- font-weight:800;
- white-space:nowrap;
+ font-size:22px;
+ font-weight:bold;
 }
-
 .searchBox{
- flex:1;
- display:flex;
- max-width:600px;
+ width:42%;
+ max-width:420px;
 }
-
 .searchBox input{
  width:100%;
  border:0;
  outline:0;
- border-radius:22px 0 0 22px;
- padding:10px 14px;
- margin:0;
-}
-
-.searchBox button{
+ border-radius:22px;
+ padding:10px 16px;
  background:#fff;
- color:#087443;
- padding:0 15px;
- border-radius:0 22px 22px 0;
 }
 
 .container{
- max-width:700px;
- margin:15px auto 80px;
- padding:0 10px;
+ width:min(1050px,100%);
+ margin:auto;
+ padding:15px;
 }
 
 .card{
- background:#fff;
+ background:white;
  border-radius:12px;
  padding:15px;
- margin-bottom:12px;
- box-shadow:0 1px 4px rgba(0,70,35,.12);
- border:1px solid #e5ece8;
-}
-
-.center{text-align:center}
-
-.primary{
- background:#087443;
- color:#fff;
- padding:11px 18px;
- border-radius:8px;
- width:100%;
- margin-top:8px;
- font-weight:700;
- transition:.2s;
-}
-
-.primary:hover{background:#065b34}
-
-.secondary{
- background:#e8f3ed;
- color:#087443;
- padding:10px 15px;
- border-radius:8px;
- font-weight:600;
-}
-
-input,textarea,select{
- width:100%;
- padding:12px;
- margin:6px 0;
- border:1px solid #cbd9d1;
- border-radius:8px;
- outline:none;
- background:#fff;
- color:#17251c;
-}
-
-input:focus,textarea:focus,select:focus{
- border-color:#087443;
- box-shadow:0 0 0 3px rgba(8,116,67,.10);
-}
-
-textarea{
- min-height:100px;
- resize:vertical;
+ margin-bottom:14px;
+ box-shadow:0 1px 4px #0001;
 }
 
 .auth{
- max-width:450px;
- margin:35px auto;
- padding:15px;
-}
-
-.auth h1{
- color:#087443;
- text-align:center;
- font-size:38px;
- margin-bottom:8px;
-}
-
-.authSubtitle{
- text-align:center;
- color:#5d6d64;
- line-height:1.6;
- margin-bottom:18px;
-}
-
-.authBox{
- background:#fff;
- padding:24px;
- border-radius:18px;
- box-shadow:0 5px 25px rgba(0,70,35,.12);
- border:1px solid #e3ebe6;
-}
-
-.authBox h2{text-align:center;color:#173c2a}
-.authBox h3{color:#087443}
-
-.loginHint{
- text-align:center;
- color:#66756c;
- font-size:13px;
- margin:10px 0 15px;
-}
-
-.small{
- color:#65736b;
- font-size:13px;
-}
-
-.status{
- padding:10px;
- background:#fff8e1;
- color:#765b00;
- border-left:4px solid #e0a800;
- border-radius:7px;
- margin:8px 0;
- line-height:1.5;
-}
-
-.success{
- padding:10px;
- background:#e8f6ee;
- color:#087443;
- border-left:4px solid #087443;
- border-radius:7px;
- margin:8px 0;
-}
-
-.warningBox{
- background:#fff5f5;
- border:1px solid #efb2b2;
- border-left:5px solid #d32f2f;
- color:#8b1e1e;
- padding:12px;
- border-radius:8px;
- line-height:1.55;
- margin:10px 0;
-}
-
-.daily{
- border-left:5px solid #087443;
- background:#fff;
- border-radius:12px;
- padding:15px;
- margin-bottom:12px;
- box-shadow:0 1px 4px rgba(0,70,35,.12);
-}
-
-.dailyTitle{
- color:#087443;
- font-weight:800;
- margin-bottom:7px;
-}
-
-.dailyText{
- font-size:16px;
- line-height:1.7;
- color:#26372d;
-}
-
-.helpBox{
- background:linear-gradient(180deg,#ffffff,#f7fbf8);
- border:1px solid #dce9e2;
- border-radius:16px;
- padding:14px;
- margin-bottom:12px;
- box-shadow:0 2px 8px rgba(0,70,35,.10);
-}
-
-.helpHero{
- display:flex;
- gap:12px;
- align-items:flex-start;
- padding:4px 2px 14px;
- border-bottom:1px solid #e5ece8;
-}
-
-.helpEmoji{
- width:44px;
- height:44px;
+ min-height:100vh;
  display:flex;
  align-items:center;
  justify-content:center;
- background:#e8f6ee;
- border-radius:50%;
- font-size:23px;
- flex-shrink:0;
+ padding:20px;
+ background:linear-gradient(135deg,#0c7439,#20a45b);
 }
-
-.helpHero h2{
- margin:2px 0 5px;
- color:#087443;
- font-size:18px;
- line-height:1.4;
+.authBox{
+ width:min(430px,100%);
+ background:white;
+ border-radius:18px;
+ padding:25px;
+ box-shadow:0 10px 35px #0004;
 }
-
-.helpHero p{
- margin:0 0 10px;
- color:#68766e;
- font-size:13px;
- line-height:1.5;
+.authLogo{
+ text-align:center;
+ color:#138a45;
+ font-size:34px;
+ font-weight:bold;
+ margin-bottom:6px;
 }
-
-.helpPostBtn{
- background:#087443;
- color:#fff;
- padding:9px 17px;
- border-radius:8px;
- font-weight:700;
+.authSub{
+ text-align:center;
+ color:#777;
+ margin-bottom:22px;
 }
-
-.helpTitle{
- font-size:16px;
- font-weight:800;
- color:#173c2a;
- margin:14px 0 9px;
+.field{
+ margin-bottom:12px;
 }
-
-.helpGrid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:8px;
+.field label{
+ display:block;
+ font-weight:bold;
+ margin-bottom:6px;
 }
-
-.helpGrid a{
- display:flex;
- flex-direction:column;
- gap:3px;
- text-decoration:none;
- color:#173c2a;
- background:#f1f7f3;
- border:1px solid #e0ebe5;
+.field input,
+.field textarea,
+.field select{
+ width:100%;
+ border:1px solid #ddd;
+ border-radius:9px;
  padding:11px;
- border-radius:10px;
- font-size:13px;
+ outline:0;
 }
-
-.helpGrid a span{
- color:#68766e;
- font-size:12px;
+.field textarea{
+ min-height:100px;
+ resize:vertical;
 }
-
-.helpNote{
- margin-top:10px;
- padding:9px 10px;
- background:#fff8e1;
- color:#765b00;
- border-radius:8px;
- font-size:12px;
- line-height:1.5;
-}
-
-.avatar{
- width:45px;
- height:45px;
- border-radius:50%;
- object-fit:cover;
- background:#ddd;
-}
-
-.postHead{
- display:flex;
- gap:10px;
- align-items:center;
- position:relative;
-}
-
-.postName{
- font-weight:800;
- color:#173c2a;
-}
-
-.postText{
- white-space:pre-wrap;
- margin:14px 0;
- line-height:1.6;
- font-size:15px;
-}
-
-.mediaGrid{
- display:grid;
- gap:4px;
- margin-top:10px;
-}
-
-.mediaGrid.one{grid-template-columns:1fr}
-.mediaGrid.two{grid-template-columns:1fr 1fr}
-.mediaGrid.three,
-.mediaGrid.four{grid-template-columns:1fr 1fr}
-
-.mediaGrid img,
-.mediaGrid video{
+.primary{
  width:100%;
- max-height:500px;
- object-fit:cover;
- border-radius:8px;
- background:#111;
- display:block;
-}
-
-.mediaGrid img{cursor:pointer}
-
-.actions{
- display:flex;
- gap:5px;
- border-top:1px solid #ddd;
- border-bottom:1px solid #ddd;
- margin-top:10px;
- padding:5px 0;
-}
-
-.actions button{
- flex:1;
- background:white;
- padding:9px 5px;
- border-radius:7px;
- color:#555;
- font-weight:600;
-}
-
-.actions button:hover{
- background:#eaf4ef;
- color:#087443;
-}
-
-.reactionMenu{
- display:flex;
- gap:4px;
- flex-wrap:wrap;
- padding:7px;
- background:#f0f5f2;
- border-radius:10px;
- margin-top:5px;
-}
-
-.reactionMenu button{
- background:white;
- padding:7px 10px;
- border-radius:20px;
-}
-
-.comment{
- display:flex;
- gap:8px;
- margin-top:9px;
-}
-
-.commentBubble{
- background:#f0f2f5;
- border-radius:15px;
- padding:8px 12px;
- flex:1;
-}
-
-.commentInput{
- display:flex;
- gap:5px;
- margin-top:10px;
-}
-
-.commentInput input{
- margin:0;
-}
-
-.commentInput button{
- background:#087443;
+ border:0;
+ border-radius:9px;
+ padding:12px;
+ background:#138a45;
  color:white;
- padding:0 15px;
- border-radius:7px;
+ font-weight:bold;
+}
+.secondary{
+ border:0;
+ border-radius:8px;
+ padding:10px 14px;
+ background:#e8f5ed;
+ color:#087334;
+ font-weight:bold;
+}
+.linkBtn{
+ border:0;
+ background:none;
+ color:#138a45;
+ font-weight:bold;
+ margin-top:12px;
+}
+.status{
+ padding:10px;
+ border-radius:8px;
+ background:#f0f7f3;
+ margin-bottom:12px;
+}
+.error{
+ color:#b00020;
+ background:#fff0f0;
+ padding:10px;
+ border-radius:8px;
+ margin-bottom:12px;
+}
+.success{
+ color:#087334;
+ background:#effaf3;
+ padding:10px;
+ border-radius:8px;
+ margin-bottom:12px;
 }
 
-.menuWrap{position:relative}
-
-.menuBtn{
- width:38px;
- height:38px;
- border-radius:50%;
- background:#f0f2f5;
- color:#555;
- font-size:22px;
+.nav{
+ display:flex;
+ gap:6px;
 }
-
-.postMenu{
- position:absolute;
- right:0;
- top:43px;
- width:190px;
- background:white;
- border-radius:10px;
- box-shadow:0 4px 18px #bbb;
- padding:6px;
- z-index:20;
+.nav button{
+ border:0;
+ background:#ffffff22;
+ color:white;
+ border-radius:8px;
+ padding:8px 10px;
 }
-
-.postMenu button{
- display:block;
- width:100%;
- text-align:left;
- padding:11px 12px;
- background:white;
- border-radius:7px;
-}
-
-.deleteItem{color:#e41e3f!important}
+.nav button:hover{background:#ffffff35}
 
 .bottomNav{
  position:fixed;
@@ -468,609 +176,635 @@ textarea{
  left:0;
  right:0;
  background:white;
- height:62px;
+ border-top:1px solid #ddd;
  display:flex;
- justify-content:center;
- box-shadow:0 -2px 8px #ccc;
- z-index:90;
+ justify-content:space-around;
+ padding:7px;
+ z-index:999;
 }
-
 .bottomNav button{
- flex:1;
- max-width:140px;
- background:white;
- color:#65676b;
+ border:0;
+ background:none;
+ color:#555;
  font-size:12px;
- font-weight:600;
+}
+.bottomNav button span{
+ display:block;
+ font-size:20px;
 }
 
-.bottomNav button.active{
- color:#087443;
+.page{
+ padding-bottom:70px;
 }
 
-.preview{
+.awareness{
+ background:linear-gradient(135deg,#e9f8ef,#fff);
+ border-left:5px solid #138a45;
+}
+.awareness h3{
+ color:#138a45;
+ margin-top:0;
+}
+.awarenessText{
+ font-size:17px;
+ line-height:1.7;
+}
+
+.create textarea{
+ width:100%;
+ border:1px solid #ddd;
+ border-radius:10px;
+ padding:12px;
+ min-height:90px;
+ resize:vertical;
+}
+.createActions{
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap;
+ margin-top:10px;
+}
+.fileLabel{
+ background:#edf8f1;
+ color:#138a45;
+ padding:9px 12px;
+ border-radius:8px;
+ font-weight:bold;
+ cursor:pointer;
+}
+.fileLabel input{display:none}
+
+.post{
+ overflow:hidden;
+}
+.postHead{
+ display:flex;
+ align-items:center;
+ gap:10px;
+}
+.avatar{
+ width:43px;
+ height:43px;
+ border-radius:50%;
+ object-fit:cover;
+ background:#dff1e6;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ color:#138a45;
+ font-weight:bold;
+ flex-shrink:0;
+}
+.postUser{
+ font-weight:bold;
+}
+.postMeta{
+ color:#777;
+ font-size:12px;
+}
+.postText{
+ margin:13px 0;
+ line-height:1.65;
+ white-space:pre-wrap;
+}
+.mediaGrid{
  display:grid;
  grid-template-columns:repeat(2,1fr);
+ gap:5px;
+ margin:0 -15px;
+}
+.mediaGrid img,
+.mediaGrid video{
+ width:100%;
+ max-height:450px;
+ object-fit:cover;
+ background:#111;
+}
+.actions{
+ display:flex;
+ gap:5px;
+ border-top:1px solid #eee;
+ border-bottom:1px solid #eee;
+ margin-top:12px;
+ padding:6px 0;
+}
+.actions button{
+ flex:1;
+ border:0;
+ background:white;
+ padding:9px 3px;
+ border-radius:7px;
+ color:#444;
+}
+.actions button:hover{
+ background:#f0f2f5;
+}
+
+.reactionWrap{
+ position:relative;
+ flex:1;
+}
+.reactionWrap>button{
+ width:100%;
+ border:0;
+ background:white;
+ padding:9px 3px;
+ border-radius:7px;
+ color:#444;
+}
+.reactionMenu{
+ position:absolute;
+ bottom:44px;
+ left:0;
+ background:white;
+ border-radius:25px;
+ box-shadow:0 3px 15px #0003;
+ padding:6px;
+ display:flex;
+ gap:3px;
+ z-index:50;
+ white-space:nowrap;
+}
+.reactionMenu button{
+ border:0;
+ background:white;
+ padding:7px;
+ border-radius:50%;
+ font-size:20px;
+}
+.reactionMenu button:hover{
+ background:#eee;
+}
+
+.commentBox{
+ display:flex;
  gap:7px;
  margin-top:10px;
 }
-
-.previewItem{position:relative}
-
-.previewItem img,
-.previewItem video{
- width:100%;
- height:180px;
- object-fit:cover;
- border-radius:8px;
+.commentBox input{
+ flex:1;
+ border:1px solid #ddd;
+ border-radius:20px;
+ padding:9px 13px;
+ outline:0;
 }
-
-.removePreview{
- position:absolute;
- right:5px;
- top:5px;
- background:#e41e3f;
+.commentBox button{
+ border:0;
+ border-radius:20px;
+ padding:8px 13px;
+ background:#138a45;
  color:white;
- border-radius:50%;
- width:28px;
- height:28px;
+}
+.comments{
+ margin-top:10px;
+}
+.comment{
+ background:#f0f2f5;
+ border-radius:12px;
+ padding:8px 11px;
+ margin-top:7px;
+}
+.commentName{
+ font-weight:bold;
+ font-size:13px;
+}
+.commentText{
+ margin-top:3px;
+ line-height:1.45;
 }
 
 .profileCover{
- background:linear-gradient(135deg,#087443,#35a66b);
+ background:linear-gradient(135deg,#138a45,#0b6633);
  height:130px;
- border-radius:10px 10px 0 0;
+ border-radius:12px 12px 0 0;
 }
-
 .profileInfo{
  text-align:center;
  margin-top:-45px;
 }
-
 .profileInfo .avatar{
  width:90px;
  height:90px;
- border:4px solid white;
  margin:auto;
+ border:4px solid white;
+ font-size:28px;
+}
+.profileName{
+ font-size:22px;
+ font-weight:bold;
+ margin-top:8px;
+}
+.profileUsername{
+ color:#777;
 }
 
-.profileButtons{
- display:flex;
- gap:8px;
- justify-content:center;
- margin-top:12px;
-}
-
-.chatMessages{
- height:400px;
- overflow-y:auto;
- background:#f0f5f2;
- padding:10px;
- border-radius:8px;
-}
-
-.msg{
- max-width:75%;
- padding:9px 12px;
- margin:5px 0;
- border-radius:15px;
- clear:both;
- word-break:break-word;
-}
-
-.msg.mine{
- float:right;
- background:#087443;
- color:white;
-}
-
-.msg.other{
- float:left;
- background:white;
-}
-
-.chatUser{
- padding:10px;
- border-bottom:1px solid #eee;
- cursor:pointer;
-}
-
-.chatUser:hover{background:#f0f5f2}
-
-.userRow{
+.row{
  display:flex;
  gap:10px;
  align-items:center;
- cursor:pointer;
+}
+.rowBetween{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+}
+
+.helpLinks a{
+ display:block;
+ padding:10px;
+ margin:7px 0;
+ border-radius:8px;
+ background:#eff8f2;
+ color:#087334;
+ text-decoration:none;
+ font-weight:bold;
 }
 
 .toast{
  position:fixed;
- bottom:75px;
  left:50%;
+ bottom:80px;
  transform:translateX(-50%);
  background:#222;
  color:white;
- padding:12px 18px;
- border-radius:20px;
- z-index:999;
- box-shadow:0 3px 12px #777;
- max-width:90%;
- text-align:center;
+ padding:11px 18px;
+ border-radius:22px;
+ z-index:5000;
+ display:none;
 }
+.toast.show{display:block}
 
 .loading{
  text-align:center;
- padding:15px;
- color:#68776e;
+ padding:25px;
+ color:#777;
 }
 
-@media(max-width:600px){
+.searchResult{
+ padding:10px;
+ border-bottom:1px solid #eee;
+ cursor:pointer;
+}
+.searchResult:hover{background:#f5f5f5}
 
- .header{
-  height:54px;
-  padding:7px 8px;
- }
-
+@media(max-width:650px){
+ .searchBox{width:38%}
  .logo{font-size:18px}
-
- .searchBox input{padding:9px 10px}
-
- .searchBox button{padding:0 10px}
-
- .container{
-  margin-top:10px;
-  padding:0 5px;
- }
-
- .card{
-  border-radius:8px;
-  padding:12px;
- }
-
- .mediaGrid img,
- .mediaGrid video{
-  max-height:420px;
- }
-
- .auth{
-  margin:15px auto;
-  padding:10px;
- }
-
- .auth h1{font-size:32px}
-
+ .topbar{padding:0 8px}
+ .container{padding:9px}
+ .card{border-radius:9px}
+ .mediaGrid{grid-template-columns:1fr}
  .actions button{font-size:12px}
+ .reactionMenu{
+  left:-20px;
+ }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= LOGIN ================= -->
-
-<div id="authPage" class="auth">
-
-<h1>ঘুষ সাইট</h1>
-
-<div class="authSubtitle">
-অন্যায়ের বিরুদ্ধে কথা বলুন।<br>
-সচেতনতা তৈরি হোক, অন্যায় রুখে দাঁড়াক বাংলাদেশ।
-</div>
+<!-- =====================================================
+ AUTH
+===================================================== -->
+<section id="authPage" class="auth">
 
 <div class="authBox">
 
+<div class="authLogo">ঘুষ সাইট</div>
+<div class="authSub">দুর্নীতি ও অনিয়মের বিরুদ্ধে সচেতনতার প্ল্যাটফর্ম</div>
+
+<!-- LOGIN -->
+<div id="loginBox">
+
 <h2>Login</h2>
-
-<input
- id="loginIdentity"
- type="text"
- placeholder="Username or Phone Number"
- autocomplete="username">
-
-<div class="loginHint">
-🔐 No Password, Email, SMS or OTP required
-</div>
-
-<button class="primary" onclick="login()">
-Login
-</button>
 
 <div id="loginMsg"></div>
 
-<hr style="border:0;border-top:1px solid #eee;margin:20px 0">
+<div class="field">
+<label>Username অথবা Phone Number</label>
+<input id="loginIdentity"
+       type="text"
+       placeholder="Username অথবা Phone Number"
+       autocomplete="username">
+</div>
 
-<h3>🆕 Create New Account</h3>
+<button class="primary" onclick="login()">Login</button>
 
-<input id="signupName" placeholder="Your Name">
-<input id="signupUsername" placeholder="Username">
-<input id="signupPhone" type="tel" placeholder="Phone Number">
-
-<button class="primary" onclick="signup()">
+<div style="text-align:center">
+<button class="linkBtn" onclick="showSignup()">
 Create Account
 </button>
+</div>
+
+</div>
+
+<!-- SIGNUP -->
+<div id="signupBox" class="hidden">
+
+<h2>Create Account</h2>
 
 <div id="signupMsg"></div>
 
+<div class="field">
+<label>আপনার নাম</label>
+<input id="signupName" type="text" placeholder="নাম">
 </div>
+
+<div class="field">
+<label>Username</label>
+<input id="signupUsername" type="text" placeholder="username">
 </div>
 
+<div class="field">
+<label>Phone Number</label>
+<input id="signupPhone" type="text" placeholder="+8801XXXXXXXXX">
+</div>
 
-<!-- ================= APP ================= -->
+<button class="primary" onclick="signup()">Create Account</button>
 
-<div id="app" class="hidden">
+<div style="text-align:center">
+<button class="linkBtn" onclick="showLogin()">
+Already have an account? Login
+</button>
+</div>
 
-<header class="header">
+</div>
+
+</div>
+</section>
+
+
+<!-- =====================================================
+ APP
+===================================================== -->
+<section id="appPage" class="hidden">
+
+<header class="topbar">
 
 <div class="logo">ঘুষ সাইট</div>
 
 <div class="searchBox">
+<input id="searchInput"
+       type="search"
+       placeholder="মানুষ বা username খুঁজুন"
+       oninput="searchUsers(this.value)">
+</div>
 
-<input
- id="quickSearch"
- placeholder="Search People..."
- onkeydown="if(event.key==='Enter')quickSearchUser()">
-
-<button onclick="quickSearchUser()">🔍</button>
-
+<div class="nav">
+<button onclick="showPage('homePage')">🏠</button>
+<button onclick="showPage('profilePage')">👤</button>
+<button onclick="logout()">↪</button>
 </div>
 
 </header>
 
+<div class="container page">
 
-<main class="container">
+<!-- SEARCH RESULTS -->
+<div id="searchResults" class="card hidden"></div>
 
-<!-- ================= HOME ================= -->
 
-<section id="homePage">
+<!-- =====================================================
+ HOME
+===================================================== -->
+<div id="homePage">
 
-<div class="daily">
-
-<div class="dailyTitle">
-🇧🇩 আজকের সচেতনতা
-</div>
-
-<div id="dailyText" class="dailyText">
+<div class="card awareness">
+<h3>🌱 আজকের সচেতনতার কথা</h3>
+<div id="awarenessText" class="awarenessText">
 লোড হচ্ছে...
 </div>
-
 </div>
 
 
-<div class="helpBox">
+<!-- CREATE POST -->
+<div class="card create">
 
-<div class="helpHero">
+<h3>📝 কী নিয়ে কথা বলতে চান?</h3>
 
-<div class="helpEmoji">🟢</div>
+<div class="field">
+<textarea id="postText"
+placeholder="আপনার সমস্যা, অভিজ্ঞতা বা সচেতনতার কথা লিখুন..."></textarea>
+</div>
 
-<div>
+<div class="field">
+<select id="postCategory">
+<option value="সাধারণ">সাধারণ</option>
+<option value="ঘুষ">ঘুষ</option>
+<option value="দুর্নীতি">দুর্নীতি</option>
+<option value="চাঁদাবাজি">চাঁদাবাজি</option>
+<option value="দালালি">দালালি</option>
+<option value="প্রতারণা">প্রতারণা</option>
+<option value="অনিয়ম">অনিয়ম</option>
+<option value="সচেতনতা">সচেতনতা</option>
+</select>
+</div>
 
-<h2>Share your experience on Ghus Site</h2>
+<div class="createActions">
 
-<p>
-পরিচয় গোপন রেখেও আপনার অভিজ্ঞতা জানাতে পারবেন।
-</p>
+<label class="fileLabel">
+📷 Photo
+<input id="photoInput"
+       type="file"
+       accept="image/*"
+       multiple>
+</label>
 
-<button
- class="helpPostBtn"
- onclick="showPage('postPage')">
-📝 Post
+<label class="fileLabel">
+🎥 Video
+<input id="videoInput"
+       type="file"
+       accept="video/*"
+       multiple>
+</label>
+
+<label style="display:flex;align-items:center;gap:5px">
+<input id="anonymousPost" type="checkbox">
+ Anonymous
+</label>
+
+</div>
+
+<div style="margin-top:10px">
+<label>
+<input id="rulesConfirm" type="checkbox">
+ আমি মিথ্যা অভিযোগ, ব্যক্তিগত আক্রমণ বা অবৈধ তথ্য প্রকাশ করব না।
+</label>
+</div>
+
+<button class="primary"
+        style="margin-top:12px"
+        onclick="createPost()">
+Post
 </button>
-
-</div>
-
-</div>
-
-<div class="helpTitle">
-🆘 প্রয়োজনীয় সহায়তা
-</div>
-
-<div class="helpGrid">
-
-<a href="https://acc.org.bd"
- target="_blank"
- rel="noopener noreferrer">
-
-🛡️ <b>ঘুষ/দুর্নীতি</b>
-
-<span>ACC — ১০৬</span>
-
-</a>
-
-<a href="tel:999">
-
-🚨 <b>জরুরি বিপদ</b>
-
-<span>জাতীয় জরুরি সেবা — ৯৯৯</span>
-
-</a>
-
-<a href="https://www.police.gov.bd"
- target="_blank"
- rel="noopener noreferrer">
-
-👮 <b>পুলিশি সহায়তা</b>
-
-<span>বাংলাদেশ পুলিশ</span>
-
-</a>
-
-<a href="https://gd.police.gov.bd"
- target="_blank"
- rel="noopener noreferrer">
-
-📄 <b>অনলাইন জিডি</b>
-
-<span>Online GD</span>
-
-</a>
-
-</div>
-
-<div class="helpNote">
-⚠️ প্রমাণ থাকলে সংরক্ষণ করুন।
-নিজের নিরাপত্তাকে অগ্রাধিকার দিন।
-</div>
-
-</div>
-
-
-<div class="card">
-
-<div style="display:flex;gap:10px;align-items:center">
-
-<img id="homeAvatar" class="avatar" alt="avatar">
-
-<button
- class="secondary"
- style="flex:1;text-align:left"
- onclick="showPage('postPage')">
-
-What's on your mind?
-
-</button>
-
-</div>
 
 </div>
 
 
 <div id="feed">
-
-<div class="card center">
-Post loading...
+<div class="loading">Post loading...</div>
 </div>
 
 </div>
 
-</section>
 
-
-<!-- ================= SEARCH ================= -->
-
-<section id="searchPage" class="hidden">
+<!-- =====================================================
+ PROFILE
+===================================================== -->
+<div id="profilePage" class="hidden">
 
 <div class="card">
 
-<h2>🔍 Search People</h2>
+<div class="profileCover"></div>
 
-<input
- id="searchInput"
- placeholder="Search by Name or Username">
+<div class="profileInfo">
 
-<button
- class="primary"
- onclick="searchUsers()">
+<div id="profileAvatar" class="avatar">
+A
+</div>
 
-Search People
+<div id="profileName" class="profileName">
+-
+</div>
 
+<div id="profileUsername" class="profileUsername">
+-
+</div>
+
+<div id="profileBio"
+     style="margin-top:8px;color:#555">
+</div>
+
+<button class="secondary"
+        style="margin-top:12px"
+        onclick="openEditProfile()">
+✏️ Edit Profile
 </button>
 
 </div>
 
-<div id="searchResults"></div>
-
-</section>
-
-
-<!-- ================= POST ================= -->
-
-<section id="postPage" class="hidden">
+</div>
 
 <div class="card">
 
-<h2>📝 Create Post</h2>
-
-<div class="warningBox">
-
-⚠️ <b>Important Rules</b><br>
-
-Uploading obscene, sexually explicit, pornographic or illegal
-photos/videos is strictly prohibited.<br>
-
-Do not publish content that harms another person's dignity.
-Only publish truthful, responsible and public-interest information.
-
-<br><br>
-
-<b>
-Violations may result in post removal and necessary account action.
-</b>
+<h3>আমার পোস্ট</h3>
+<div id="myPosts"></div>
 
 </div>
 
-<textarea
- id="postContent"
- placeholder="Write something..."></textarea>
-
-<select id="postCategory">
-
-<option value="সাধারণ">General</option>
-<option value="ঘুষ">Bribe</option>
-<option value="দালালি">Middleman</option>
-<option value="প্রতারণা">Fraud</option>
-<option value="অনিয়ম">Irregularity</option>
-<option value="দুর্নীতি">Corruption</option>
-<option value="চাঁদাবাজি">Extortion</option>
-<option value="অভিযোগ">Complaint</option>
-<option value="অন্যান্য">Other</option>
-
-</select>
-
-<label style="display:block;margin:10px 0">
-
-<input
- id="anonymousPost"
- type="checkbox"
- style="width:auto">
-
-Post anonymously
-
-</label>
-
-<input
- id="mediaFile"
- type="file"
- accept="image/*,video/*"
- multiple
- onchange="previewMedia()">
-
-<div class="small">
-📷 You can select up to 10 photos/videos.
 </div>
 
-<div id="mediaPreview" class="preview"></div>
 
-<button
- class="primary"
- onclick="createPost()">
-
-Publish Post
-
-</button>
-
-</div>
-
-</section>
-
-
-<!-- ================= PROFILE ================= -->
-
-<section id="profilePage" class="hidden">
-
-<div id="profileContent"></div>
-
-</section>
-
-
-<!-- ================= EDIT PROFILE ================= -->
-
-<section id="editPage" class="hidden">
+<!-- =====================================================
+ EDIT PROFILE
+===================================================== -->
+<div id="editProfilePage" class="hidden">
 
 <div class="card">
 
-<h2>✏️ Edit Profile</h2>
+<h3>✏️ Edit Profile</h3>
 
-<input id="editName" placeholder="Name">
+<div class="field">
+<label>নাম</label>
+<input id="editName">
+</div>
 
-<textarea id="editBio" placeholder="Bio"></textarea>
+<div class="field">
+<label>Bio</label>
+<textarea id="editBio"></textarea>
+</div>
 
-<input id="editAvatar" placeholder="Avatar Image URL">
+<div class="field">
+<label>Avatar URL</label>
+<input id="editAvatar"
+       placeholder="https://...">
+</div>
 
-<button class="primary" onclick="saveProfile()">
-Save Changes
+<button class="primary"
+        onclick="saveProfile()">
+Save
 </button>
 
-<button
- class="secondary"
- style="width:100%;margin-top:8px"
- onclick="logout()">
-
-Logout
-
-</button>
-
-</div>
-
-</section>
-
-
-<!-- ================= CHAT ================= -->
-
-<section id="chatPage" class="hidden">
-
-<div class="card">
-
-<h2>💬 Chat</h2>
-
-<div id="chatUsers">
-Users loading...
-</div>
-
-</div>
-
-<div id="chatBox" class="card hidden">
-
-<h3 id="chatTitle"></h3>
-
-<div id="chatMessages" class="chatMessages"></div>
-
-<div style="display:flex;gap:5px;margin-top:8px">
-
-<input
- id="messageInput"
- placeholder="Write a message..."
- style="margin:0"
- onkeydown="if(event.key==='Enter')sendMessage()">
-
-<button
- onclick="sendMessage()"
- style="background:#087443;color:white;padding:0 15px;border-radius:7px">
-
-Send
-
+<button class="secondary"
+        style="width:100%;margin-top:8px"
+        onclick="showPage('profilePage')">
+Cancel
 </button>
 
 </div>
 
 </div>
 
-</section>
 
-</main>
+<!-- =====================================================
+ HELP
+===================================================== -->
+<div id="helpPage" class="hidden">
+
+<div class="card helpLinks">
+
+<h2>🆘 গুরুত্বপূর্ণ সহায়তা</h2>
+
+<a href="https://acc.org.bd"
+target="_blank">
+দুর্নীতি দমন কমিশন (ACC)
+</a>
+
+<a href="https://www.police.gov.bd"
+target="_blank">
+বাংলাদেশ পুলিশ
+</a>
+
+<a href="https://gd.police.gov.bd"
+target="_blank">
+Online GD
+</a>
+
+<a href="tel:999">
+📞 জরুরি সেবা 999
+</a>
+
+</div>
+
+</div>
+
+</div>
 
 
-<!-- ================= NAV ================= -->
-
+<!-- BOTTOM NAV -->
 <nav class="bottomNav">
 
-<button id="navHome" onclick="showPage('homePage')">
-🏠<br>Home
+<button onclick="showPage('homePage')">
+<span>🏠</span>
+Home
 </button>
 
-<button id="navSearch" onclick="showPage('searchPage')">
-🔍<br>Search
+<button onclick="showPage('helpPage')">
+<span>🆘</span>
+Help
 </button>
 
-<button id="navPost" onclick="showPage('postPage')">
-➕<br>Post
+<button onclick="showPage('profilePage')">
+<span>👤</span>
+Profile
 </button>
 
-<button id="navChat" onclick="showPage('chatPage')">
-💬<br>Chat
-</button>
-
-<button id="navProfile" onclick="showPage('profilePage')">
-👤<br>Profile
+<button onclick="logout()">
+<span>↪️</span>
+Logout
 </button>
 
 </nav>
 
-</div>
+</section>
+
+
+<div id="toast" class="toast"></div>
 
 
 <script>
-
 /* =====================================================
  SUPABASE
 ===================================================== */
@@ -1089,14 +823,13 @@ supabase.createClient(
 
 
 /* =====================================================
- STATE
+ GLOBAL
 ===================================================== */
 
-let guestUser=null;
 let currentUser=null;
 let currentProfile=null;
-let selectedChatUser=null;
-let messageChannel=null;
+
+const STORAGE_KEY="ghus_guest_user";
 
 
 /* =====================================================
@@ -1107,295 +840,85 @@ function $(id){
  return document.getElementById(id);
 }
 
+function escapeHTML(value){
+ if(value===null || value===undefined) return "";
+ return String(value)
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+}
 
 function toast(message){
-
- const old=document.querySelector(".toast");
-
- if(old)old.remove();
-
- const t=document.createElement("div");
-
- t.className="toast";
- t.textContent=message;
-
- document.body.appendChild(t);
+ const el=$("toast");
+ el.textContent=message;
+ el.classList.add("show");
 
  setTimeout(()=>{
-  if(t)t.remove();
- },3000);
+  el.classList.remove("show");
+ },2500);
 }
-
-
-function escapeHTML(text){
-
- if(text===null||text===undefined)
-  return "";
-
- return String(text)
- .replace(/&/g,"&amp;")
- .replace(/</g,"&lt;")
- .replace(/>/g,"&gt;")
- .replace(/"/g,"&quot;")
- .replace(/'/g,"&#039;");
-}
-
 
 function normalizePhone(phone){
-
- phone=String(phone||"")
- .trim()
- .replace(/[^\d+]/g,"");
-
- if(phone.startsWith("+"))
-  return phone;
-
- if(phone.startsWith("880"))
-  return "+"+phone;
-
- if(phone.startsWith("0"))
-  return "+880"+phone.substring(1);
-
- return phone;
+ return String(phone||"")
+  .replace(/[^\d+]/g,"")
+  .trim();
 }
 
 
-function makeUUID(){
+/* =====================================================
+ PAGE CONTROL
+===================================================== */
 
- if(
-  window.crypto &&
-  typeof window.crypto.randomUUID==="function"
- ){
-  return window.crypto.randomUUID();
- }
+function showPage(pageId){
 
- return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"
- .replace(/[xy]/g,function(c){
-
-  const r=Math.random()*16|0;
-
-  const v=
-   c==="x"
-   ?r
-   :(r&0x3|0x8);
-
-  return v.toString(16);
-
+ [
+  "homePage",
+  "profilePage",
+  "editProfilePage",
+  "helpPage"
+ ].forEach(id=>{
+  const el=$(id);
+  if(el) el.classList.add("hidden");
  });
-}
 
+ const page=$(pageId);
 
-function avatarURL(profile){
+ if(page){
+  page.classList.remove("hidden");
+ }
 
- if(profile&&profile.avatar_url)
-  return profile.avatar_url;
+ if(pageId==="homePage"){
+  loadFeed();
+ }
 
- const name=
-  profile?.display_name||
-  profile?.username||
-  "User";
+ if(pageId==="profilePage"){
+  loadProfile();
+ }
 
- return "https://ui-avatars.com/api/?name="+
- encodeURIComponent(name)+
- "&background=087443&color=fff";
-}
-
-
-function formatDate(date){
-
- if(!date)return "";
-
- try{
-
-  return new Date(date).toLocaleString(
-   "bn-BD",
-   {
-    year:"numeric",
-    month:"short",
-    day:"numeric",
-    hour:"numeric",
-    minute:"2-digit"
-   }
-  );
-
- }catch(e){
-
-  return "";
-
+ if(pageId==="helpPage"){
+  $("searchResults").classList.add("hidden");
  }
 }
 
 
 /* =====================================================
- VERIFY CURRENT PROFILE
+ AUTH SCREEN
 ===================================================== */
 
-async function verifyCurrentProfile(){
+function showSignup(){
 
- if(!currentUser || !currentUser.id)
-  return null;
+ $("loginBox").classList.add("hidden");
+ $("signupBox").classList.remove("hidden");
 
- try{
-
-  const result=
-   await db
-   .from("profiles")
-   .select("*")
-   .eq("id",currentUser.id)
-   .maybeSingle();
-
-  if(result.error){
-
-   console.error(
-    "PROFILE VERIFY ERROR:",
-    result.error
-   );
-
-   return null;
-  }
-
-  if(!result.data)
-   return null;
-
-  currentProfile=result.data;
-
-  guestUser={
-   id:result.data.id,
-   username:result.data.username,
-   name:result.data.display_name,
-   phone:result.data.phone,
-   avatar_url:result.data.avatar_url||"",
-   bio:result.data.bio||"",
-   role:result.data.role||"user"
-  };
-
-  localStorage.setItem(
-   "ghus_guest_user",
-   JSON.stringify(guestUser)
-  );
-
-  return result.data;
-
- }catch(err){
-
-  console.error(err);
-  return null;
-
- }
 }
 
+function showLogin(){
 
-/* =====================================================
- LOGIN
-===================================================== */
+ $("signupBox").classList.add("hidden");
+ $("loginBox").classList.remove("hidden");
 
-async function login(){
-
- const identity=
-  $("loginIdentity").value.trim();
-
- if(!identity){
-
-  $("loginMsg").innerHTML=
-  '<div class="status">Enter Username or Phone Number.</div>';
-
-  return;
- }
-
- $("loginMsg").innerHTML=
- '<div class="status">Searching for account...</div>';
-
- try{
-
-  const digits=
-   identity.replace(/[^\d]/g,"");
-
-  let result;
-
-  if(digits.length>=8){
-
-   const phone=
-    normalizePhone(identity);
-
-   result=
-    await db
-    .from("profiles")
-    .select("*")
-    .eq("phone",phone)
-    .maybeSingle();
-
-  }else{
-
-   result=
-    await db
-    .from("profiles")
-    .select("*")
-    .ilike("username",identity)
-    .maybeSingle();
-
-  }
-
-  if(result.error){
-
-   $("loginMsg").innerHTML=
-   '<div class="status">'+
-   escapeHTML(result.error.message)+
-   '</div>';
-
-   return;
-  }
-
-  if(!result.data){
-
-   $("loginMsg").innerHTML=
-   '<div class="status">'+
-   'No account found for this Username/Phone Number.'+
-   '</div>';
-
-   return;
-  }
-
-  const user=result.data;
-
-  guestUser={
-   id:user.id,
-   username:user.username,
-   name:user.display_name,
-   phone:user.phone,
-   avatar_url:user.avatar_url||"",
-   bio:user.bio||"",
-   role:user.role||"user"
-  };
-
-  currentUser={
-   id:user.id
-  };
-
-  currentProfile=user;
-
-  localStorage.setItem(
-   "ghus_guest_user",
-   JSON.stringify(guestUser)
-  );
-
-  $("loginMsg").innerHTML=
-  '<div class="success">✅ Login successful</div>';
-
-  setTimeout(
-   ()=>openGuestApp(),
-   300
-  );
-
- }catch(err){
-
-  console.error(err);
-
-  $("loginMsg").innerHTML=
-  '<div class="status">'+
-  escapeHTML(err.message||"Login failed")+
-  '</div>';
-
- }
 }
 
 
@@ -1405,26 +928,16 @@ async function login(){
 
 async function signup(){
 
- const name=
-  $("signupName").value.trim();
+ const name=$("signupName").value.trim();
+ const username=$("signupUsername").value.trim().toLowerCase();
+ const phone=normalizePhone($("signupPhone").value);
 
- const username=
-  $("signupUsername").value
-  .trim()
-  .toLowerCase()
-  .replace(/\s+/g,"");
+ $("signupMsg").innerHTML="";
 
- const phone=
-  normalizePhone(
-   $("signupPhone").value
-  );
-
- if(!name||!username||!phone){
+ if(!name || !username || !phone){
 
   $("signupMsg").innerHTML=
-  '<div class="status">'+
-  'Enter Name, Username and Phone Number.'+
-  '</div>';
+   '<div class="error">সব তথ্য পূরণ করুন।</div>';
 
   return;
  }
@@ -1432,272 +945,284 @@ async function signup(){
  if(username.length<3){
 
   $("signupMsg").innerHTML=
-  '<div class="status">'+
-  'Username must be at least 3 characters.'+
-  '</div>';
+   '<div class="error">Username কমপক্ষে ৩ অক্ষরের হতে হবে।</div>';
 
   return;
  }
-
- if(!/^[a-z0-9_.-]+$/.test(username)){
-
-  $("signupMsg").innerHTML=
-  '<div class="status">'+
-  'Username can only contain English letters, numbers, _, . or -.'+
-  '</div>';
-
-  return;
- }
-
- if(phone.replace(/\D/g,"").length<8){
-
-  $("signupMsg").innerHTML=
-  '<div class="status">Enter a valid Phone Number.</div>';
-
-  return;
- }
-
- $("signupMsg").innerHTML=
- '<div class="status">Creating account...</div>';
 
  try{
 
-  const usernameCheck=
+  const checkUsername=
    await db
    .from("profiles")
    .select("id")
-   .ilike("username",username)
+   .eq("username",username)
    .limit(1);
 
-  if(usernameCheck.error){
-
-   $("signupMsg").innerHTML=
-   '<div class="status">'+
-   escapeHTML(usernameCheck.error.message)+
-   '</div>';
-
-   return;
+  if(checkUsername.error){
+   throw checkUsername.error;
   }
 
-  if((usernameCheck.data||[]).length){
+  if((checkUsername.data||[]).length){
 
    $("signupMsg").innerHTML=
-   '<div class="status">This Username is already taken.</div>';
+    '<div class="error">এই Username আগে থেকেই আছে।</div>';
 
    return;
   }
 
 
-  const phoneCheck=
+  const checkPhone=
    await db
    .from("profiles")
    .select("id")
    .eq("phone",phone)
    .limit(1);
 
-  if(phoneCheck.error){
-
-   $("signupMsg").innerHTML=
-   '<div class="status">'+
-   escapeHTML(phoneCheck.error.message)+
-   '</div>';
-
-   return;
+  if(checkPhone.error){
+   throw checkPhone.error;
   }
 
-  if((phoneCheck.data||[]).length){
+  if((checkPhone.data||[]).length){
 
    $("signupMsg").innerHTML=
-   '<div class="status">This Phone Number is already registered.</div>';
+    '<div class="error">এই Phone Number দিয়ে ইতিমধ্যে account আছে।</div>';
 
    return;
   }
 
 
-  const newProfileId=
-   makeUUID();
-
-  const insertResult=
-   await db
+  const {data,error}=await db
    .from("profiles")
    .insert({
-
-    id:newProfileId,
     display_name:name,
     username:username,
     phone:phone,
-    bio:"",
-    avatar_url:"",
     role:"user"
-
    })
    .select("*")
-   .single();
+   .limit(1);
 
-  if(insertResult.error){
-
-   console.error(
-    "PROFILE INSERT ERROR:",
-    insertResult.error
-   );
-
-   $("signupMsg").innerHTML=
-   '<div class="status">'+
-   '<b>Account creation failed</b><br>'+
-   escapeHTML(insertResult.error.message)+
-   '</div>';
-
-   return;
+  if(error){
+   throw error;
   }
 
-  const data=insertResult.data;
+  const user=(data||[])[0];
 
-  guestUser={
-   id:data.id,
-   username:data.username,
-   name:data.display_name,
-   phone:data.phone,
-   avatar_url:data.avatar_url||"",
-   bio:data.bio||"",
-   role:data.role||"user"
-  };
+  if(!user){
+   throw new Error("Account তৈরি হয়নি।");
+  }
 
-  currentUser={
-   id:data.id
-  };
-
-  currentProfile=data;
 
   localStorage.setItem(
-   "ghus_guest_user",
-   JSON.stringify(guestUser)
+   STORAGE_KEY,
+   JSON.stringify({
+    id:user.id
+   })
   );
+
+  currentUser={id:user.id};
+  currentProfile=user;
 
   $("signupMsg").innerHTML=
-  '<div class="success">✅ Account created successfully.</div>';
+   '<div class="success">Account সফলভাবে তৈরি হয়েছে।</div>';
 
-  $("signupName").value="";
-  $("signupUsername").value="";
-  $("signupPhone").value="";
-
-  setTimeout(
-   ()=>openGuestApp(),
-   500
-  );
+  setTimeout(()=>{
+   enterApp();
+  },500);
 
  }catch(err){
 
-  console.error(err);
+  console.error("SIGNUP ERROR:",err);
 
   $("signupMsg").innerHTML=
-  '<div class="status">'+
-  '<b>Account creation failed</b><br>'+
-  escapeHTML(err.message||"Account creation failed")+
-  '</div>';
-
+   '<div class="error">'+
+   escapeHTML(err.message||"Account তৈরি করতে সমস্যা হয়েছে।")+
+   '</div>';
  }
+
 }
 
 
 /* =====================================================
- RESTORE SESSION
+ LOGIN
 ===================================================== */
 
-async function restoreSession(){
+async function login(){
+
+ const identity=$("loginIdentity").value.trim();
+
+ $("loginMsg").innerHTML="";
+
+ if(!identity){
+
+  $("loginMsg").innerHTML=
+   '<div class="error">Username অথবা Phone Number দিন।</div>';
+
+  return;
+ }
+
+ $("loginMsg").innerHTML=
+  '<div class="status">Account খোঁজা হচ্ছে...</div>';
 
  try{
 
-  const saved=
-   localStorage.getItem("ghus_guest_user");
+  /*
+   প্রথমে username দিয়ে খুঁজবে।
+   না পেলে phone দিয়ে খুঁজবে।
+  */
 
-  if(!saved)return;
+  let result=
+   await db
+   .from("profiles")
+   .select("*")
+   .ilike("username",identity)
+   .limit(1);
 
-  const user=
-   JSON.parse(saved);
+  if(result.error){
+   throw result.error;
+  }
 
-  if(!user||!user.id){
+  let user=(result.data||[])[0]||null;
 
-   localStorage.removeItem("ghus_guest_user");
+
+  if(!user){
+
+   const phone=normalizePhone(identity);
+
+   const phoneResult=
+    await db
+    .from("profiles")
+    .select("*")
+    .eq("phone",phone)
+    .limit(1);
+
+   if(phoneResult.error){
+    throw phoneResult.error;
+   }
+
+   user=(phoneResult.data||[])[0]||null;
+  }
+
+
+  if(!user){
+
+   $("loginMsg").innerHTML=
+    '<div class="error">No account found.</div>';
+
    return;
   }
 
-  guestUser=user;
 
   currentUser={
    id:user.id
   };
 
-  const profile=
-   await verifyCurrentProfile();
+  currentProfile=user;
 
-  if(!profile){
 
-   guestUser=null;
-   currentUser=null;
-   currentProfile=null;
+  localStorage.setItem(
+   STORAGE_KEY,
+   JSON.stringify({
+    id:user.id
+   })
+  );
 
-   localStorage.removeItem("ghus_guest_user");
 
-   return;
-  }
+  $("loginMsg").innerHTML=
+   '<div class="success">Login successful.</div>';
 
-  await openGuestApp();
+  setTimeout(()=>{
+   enterApp();
+  },300);
 
- }catch(e){
 
-  console.error(e);
+ }catch(err){
 
-  localStorage.removeItem("ghus_guest_user");
+  console.error("LOGIN ERROR:",err);
 
+  $("loginMsg").innerHTML=
+   '<div class="error">'+
+   escapeHTML(err.message||"Login failed.")+
+   '</div>';
  }
+
 }
 
 
 /* =====================================================
- OPEN APP
+ RESTORE LOGIN
 ===================================================== */
 
-async function openGuestApp(){
+async function restoreSession(){
 
- if(!guestUser||!guestUser.id)
-  return;
+ const saved=localStorage.getItem(STORAGE_KEY);
 
- currentUser={
-  id:guestUser.id
- };
-
- const profile=
-  await verifyCurrentProfile();
-
- if(!profile){
-
-  guestUser=null;
-  currentUser=null;
-  currentProfile=null;
-
-  localStorage.removeItem("ghus_guest_user");
-
-  $("app").classList.add("hidden");
-  $("authPage").classList.remove("hidden");
-
-  $("loginMsg").innerHTML=
-  '<div class="status">'+
-  'Session expired. Please login again.'+
-  '</div>';
-
+ if(!saved){
   return;
  }
 
- $("authPage").classList.add("hidden");
- $("app").classList.remove("hidden");
+ try{
 
- $("homeAvatar").src=
-  avatarURL(currentProfile);
+  const obj=JSON.parse(saved);
+
+  if(!obj.id){
+   return;
+  }
+
+
+  const {data,error}=await db
+   .from("profiles")
+   .select("*")
+   .eq("id",obj.id)
+   .limit(1);
+
+  if(error){
+   throw error;
+  }
+
+  const user=(data||[])[0];
+
+  if(!user){
+
+   localStorage.removeItem(STORAGE_KEY);
+   return;
+  }
+
+
+  currentUser={
+   id:user.id
+  };
+
+  currentProfile=user;
+
+  enterApp();
+
+ }catch(err){
+
+  console.error("RESTORE ERROR:",err);
+
+  localStorage.removeItem(STORAGE_KEY);
+
+ }
+
+}
+
+
+/* =====================================================
+ ENTER APP
+===================================================== */
+
+function enterApp(){
+
+ $("authPage").classList.add("hidden");
+ $("appPage").classList.remove("hidden");
 
  showPage("homePage");
 
- loadDailyAwareness();
+ loadAwareness();
  loadFeed();
+
 }
 
 
@@ -1705,31 +1230,23 @@ async function openGuestApp(){
  LOGOUT
 ===================================================== */
 
-async function logout(){
+function logout(){
 
- if(messageChannel){
-
-  try{
-   await db.removeChannel(messageChannel);
-  }catch(e){}
-
-  messageChannel=null;
- }
-
- guestUser=null;
  currentUser=null;
  currentProfile=null;
- selectedChatUser=null;
 
- localStorage.removeItem("ghus_guest_user");
+ localStorage.removeItem(STORAGE_KEY);
 
- $("app").classList.add("hidden");
+ $("appPage").classList.add("hidden");
  $("authPage").classList.remove("hidden");
 
  $("loginIdentity").value="";
  $("loginMsg").innerHTML="";
 
- toast("Logout successful");
+ showLogin();
+
+ toast("Logout হয়েছে।");
+
 }
 
 
@@ -1737,208 +1254,84 @@ async function logout(){
  DAILY AWARENESS
 ===================================================== */
 
-async function loadDailyAwareness(){
+const awarenessFallback=[
 
- const box=$("dailyText");
+"ঘুষ দেওয়া ও নেওয়া—দুটিই দুর্নীতির অংশ। সচেতনতা থেকেই পরিবর্তনের শুরু।",
 
- const fallback=[
+"কোনো সেবা পাওয়ার জন্য অবৈধ অর্থ দাবি করা হলে প্রমাণ সংরক্ষণ করুন এবং আইনগতভাবে অভিযোগের পথ খুঁজুন।",
 
- "অন্যায়ের বিরুদ্ধে তথ্যভিত্তিক ও দায়িত্বশীল প্রতিবাদ করুন।",
+"দুর্নীতির বিরুদ্ধে কথা বলার আগে তথ্য যাচাই করা জরুরি।",
 
- "ঘুষ একটি মানুষের সমস্যা নয়—এটি পুরো সমাজের ক্ষতি করে।",
+"অন্যায়কে স্বাভাবিক মনে না করে আইনসম্মত পথে প্রতিকার চাওয়া নাগরিক দায়িত্ব।",
 
- "দুর্নীতির বিরুদ্ধে সবচেয়ে বড় শক্তি হলো সচেতন নাগরিক।",
+"ক্ষমতার অপব্যবহার সমাজে আস্থার সংকট তৈরি করে।",
 
- "ক্ষমতা মানুষের সেবা করার জন্য, মানুষের অধিকার কেড়ে নেওয়ার জন্য নয়।",
+"স্বচ্ছতা ও জবাবদিহিতা একটি সুন্দর সমাজের ভিত্তি।",
 
- "চাঁদাবাজির বিরুদ্ধে কথা বলা সমাজের প্রতি দায়িত্ব।",
+"ঘুষমুক্ত সেবা নাগরিকের অধিকার।",
 
- "সততা হয়তো সবসময় সহজ পথ নয়, কিন্তু এটি সবচেয়ে শক্তিশালী পথ।",
+"মিথ্যা অভিযোগ নয়—সত্য তথ্য ও দায়িত্বশীল বক্তব্যই হোক আমাদের শক্তি।",
 
- "অন্যায় দেখেও নীরব থাকা অন্যায়কে আরও সাহসী করতে পারে।",
+"অনিয়ম দেখলে আবেগের বদলে তথ্য, প্রমাণ ও আইনসম্মত পদ্ধতিকে গুরুত্ব দিন।",
 
- "নিজে ঘুষ দেব না, ঘুষ নেব না—এই অঙ্গীকারই পরিবর্তনের শুরু।",
+"দুর্নীতির বিরুদ্ধে সবচেয়ে কার্যকর অস্ত্র হলো সচেতন নাগরিক সমাজ।",
 
- "আইন ও ন্যায়ের প্রতি সম্মান একটি সুস্থ সমাজের ভিত্তি।"
+"ব্যক্তিগত আক্রমণ নয়, সমস্যার সমাধানই হওয়া উচিত আমাদের লক্ষ্য।",
 
- ];
+"সততা ছোট জায়গা থেকেই শুরু হয়।",
+
+"চাঁদাবাজি, ঘুষ ও প্রতারণার বিরুদ্ধে সামাজিক সচেতনতা তৈরি করা জরুরি।",
+
+"কোনো অভিযোগ প্রকাশের আগে ব্যক্তিগত তথ্য ও গোপনীয়তার বিষয়টি বিবেচনা করুন।",
+
+"আইনের প্রতি শ্রদ্ধা রেখে অন্যায়ের প্রতিবাদ করা যায়।"
+
+];
+
+
+async function loadAwareness(){
+
+ let text="";
 
  try{
 
-  const result=
-   await db.rpc("get_daily_awareness");
-
-  if(!result.error&&result.data){
-
-   if(typeof result.data==="string")
-    box.textContent=result.data;
-   else
-    box.textContent=
-     result.data.sentence||fallback[0];
-
-   return;
-  }
-
- }catch(e){}
-
- const day=
-  Math.floor(Date.now()/86400000);
-
- box.textContent=
-  fallback[day%fallback.length];
-}
-
-
-/* =====================================================
- NAVIGATION
-===================================================== */
-
-function showPage(pageId){
-
- const pages=[
-  "homePage",
-  "searchPage",
-  "postPage",
-  "profilePage",
-  "editPage",
-  "chatPage"
- ];
-
- pages.forEach(id=>{
-
-  const el=$(id);
-
-  if(el)
-   el.classList.add("hidden");
-
- });
-
- const page=$(pageId);
-
- if(page)
-  page.classList.remove("hidden");
-
- document
- .querySelectorAll(".bottomNav button")
- .forEach(btn=>
-  btn.classList.remove("active")
- );
-
- const navMap={
-  homePage:"navHome",
-  searchPage:"navSearch",
-  postPage:"navPost",
-  chatPage:"navChat",
-  profilePage:"navProfile"
- };
-
- if(navMap[pageId])
-  $(navMap[pageId]).classList.add("active");
-
- window.scrollTo(0,0);
-
- if(pageId==="homePage")
-  loadFeed();
-
- if(pageId==="profilePage")
-  loadProfilePage();
-
- if(pageId==="chatPage")
-  loadChatUsers();
-}
-
-
-/* =====================================================
- MEDIA PREVIEW
-===================================================== */
-
-function previewMedia(){
-
- const input=$("mediaFile");
- const preview=$("mediaPreview");
-
- preview.innerHTML="";
-
- let files=
-  Array.from(input.files||[]);
-
- if(files.length>10){
-
-  toast("Maximum 10 photos/videos allowed.");
-
-  files=files.slice(0,10);
-
-  const dt=new DataTransfer();
-
-  files.forEach(file=>
-   dt.items.add(file)
+  const {data,error}=await db.rpc(
+   "get_daily_awareness"
   );
 
-  input.files=dt.files;
- }
+  if(!error && data){
 
- Array.from(input.files||[])
- .forEach((file,index)=>{
-
-  const item=document.createElement("div");
-
-  item.className="previewItem";
-
-  const remove=document.createElement("button");
-
-  remove.className="removePreview";
-  remove.textContent="×";
-
-  remove.onclick=()=>{
-   removeSelectedFile(index);
-  };
-
-  if(file.type.startsWith("image/")){
-
-   const img=document.createElement("img");
-
-   img.src=
-    URL.createObjectURL(file);
-
-   item.appendChild(img);
-
-  }else if(file.type.startsWith("video/")){
-
-   const video=document.createElement("video");
-
-   video.src=
-    URL.createObjectURL(file);
-
-   video.controls=true;
-
-   item.appendChild(video);
+   if(typeof data==="string"){
+    text=data;
+   }else if(Array.isArray(data) && data.length){
+    text=data[0]?.text || data[0]?.sentence || "";
+   }else if(typeof data==="object"){
+    text=data.text || data.sentence || "";
+   }
   }
 
-  item.appendChild(remove);
+ }catch(err){
 
-  preview.appendChild(item);
+  console.log("Awareness RPC unavailable");
 
- });
-}
+ }
 
 
-function removeSelectedFile(index){
+ if(!text){
 
- const input=$("mediaFile");
+  const day=Math.floor(
+   Date.now()/(1000*60*60*24)
+  );
 
- const dt=new DataTransfer();
+  text=
+   awarenessFallback[
+    day%awarenessFallback.length
+   ];
+ }
 
- Array.from(input.files)
- .forEach((file,i)=>{
 
-  if(i!==index)
-   dt.items.add(file);
+ $("awarenessText").textContent=text;
 
- });
-
- input.files=dt.files;
-
- previewMedia();
 }
 
 
@@ -1948,130 +1341,115 @@ function removeSelectedFile(index){
 
 async function createPost(){
 
- if(!currentUser||!currentUser.id){
+ if(!currentUser){
 
-  toast("Please login first.");
+  toast("আগে Login করুন।");
   return;
  }
 
- const profile=
-  await verifyCurrentProfile();
+ const text=$("postText").value.trim();
+ const category=$("postCategory").value;
+ const anonymous=$("anonymousPost").checked;
+ const rules=$("rulesConfirm").checked;
 
- if(!profile){
+ const photos=[
+  ...($("photoInput").files||[])
+ ];
 
-  toast("Your account was not found. Please login again.");
-  return;
- }
+ const videos=[
+  ...($("videoInput").files||[])
+ ];
 
- const content=
-  $("postContent").value.trim();
+ const files=[...photos,...videos];
 
- const category=
-  $("postCategory").value;
 
- const anonymous=
-  $("anonymousPost").checked;
+ if(!text && !files.length){
 
- const files=
-  Array.from(
-   $("mediaFile").files||[]
-  );
-
- if(!content&&files.length===0){
-
-  toast("Write something or select a photo/video.");
+  toast("Post-এর জন্য কিছু লিখুন বা ছবি/video দিন।");
   return;
  }
 
  if(files.length>10){
 
-  toast("Maximum 10 media files allowed.");
+  toast("একটি post-এ সর্বোচ্চ ১০টি media দেওয়া যাবে।");
   return;
  }
 
- for(const file of files){
+ if(!rules){
 
-  const valid=
-   file.type.startsWith("image/")||
-   file.type.startsWith("video/");
-
-  if(!valid){
-
-   toast("Only image or video files are allowed.");
-   return;
-  }
+  toast("Rules confirmation দিন।");
+  return;
  }
 
- const agree=
-  confirm(
-   "⚠️ Please confirm before publishing:\n\n"+
-   "• No obscene/pornographic photos or videos\n"+
-   "• No sexually explicit content\n"+
-   "• No illegal or harmful content\n"+
-   "• No content that harms another person's dignity\n\n"+
-   "Do you want to publish this post?"
-  );
-
- if(!agree)return;
-
- toast("Creating post...");
 
  try{
 
-  const result=
+  /*
+   Profile আছে কি না যাচাই
+  */
+
+  const profileResult=
+   await db
+   .from("profiles")
+   .select("id")
+   .eq("id",currentUser.id)
+   .limit(1);
+
+  if(profileResult.error){
+   throw profileResult.error;
+  }
+
+  if(!(profileResult.data||[]).length){
+
+   throw new Error(
+    "আপনার profile পাওয়া যায়নি। আবার Login করুন।"
+   );
+  }
+
+
+  const {data:postData,error:postError}=
    await db
    .from("posts")
    .insert({
-
-    user_id:profile.id,
-    content:content,
-    media_url:null,
-    media_type:null,
-    status:"published",
-    is_anonymous:anonymous,
-    category:category
-
+    user_id:currentUser.id,
+    content:text,
+    category:category,
+    anonymous:anonymous,
+    status:"published"
    })
    .select("*")
-   .single();
+   .limit(1);
 
-  if(result.error){
-
-   console.error(
-    "POST INSERT ERROR:",
-    result.error
-   );
-
-   toast(result.error.message);
-   return;
+  if(postError){
+   throw postError;
   }
 
-  const post=result.data;
+  const post=(postData||[])[0];
 
-  let firstMediaURL=null;
-  let firstMediaType=null;
-  let uploadFailed=false;
+  if(!post){
+   throw new Error("Post তৈরি হয়নি।");
+  }
 
-  for(let i=0;i<files.length;i++){
 
-   const file=files[i];
+  /*
+   Upload media
+  */
+
+  for(const file of files){
 
    const safeName=
     file.name
-    .replace(
-     /[^a-zA-Z0-9._-]/g,
-     "_"
-    );
+    .replace(/[^a-zA-Z0-9._-]/g,"_");
 
    const path=
-    "posts/"+
-    profile.id+
+    currentUser.id+
     "/"+
     Date.now()+
     "_"+
-    i+
+    Math.random().toString(36).slice(2)+
     "_"+
     safeName;
+
 
    const upload=
     await db.storage
@@ -2080,10 +1458,11 @@ async function createPost(){
      path,
      file,
      {
-      upsert:false,
-      contentType:file.type
+      cacheControl:"3600",
+      upsert:false
      }
     );
+
 
    if(upload.error){
 
@@ -2092,198 +1471,67 @@ async function createPost(){
      upload.error
     );
 
-    uploadFailed=true;
     continue;
    }
 
-   const publicURL=
+
+   const publicUrl=
     db.storage
     .from("media")
     .getPublicUrl(path)
     .data.publicUrl;
 
+
    const mediaType=
     file.type.startsWith("video/")
-    ?"video"
-    :"image";
+    ? "video"
+    : "image";
 
-   if(i===0){
-
-    firstMediaURL=publicURL;
-    firstMediaType=mediaType;
-   }
 
    const mediaInsert=
     await db
     .from("post_media")
     .insert({
-
      post_id:post.id,
-     media_url:publicURL,
+     media_url:publicUrl,
      media_type:mediaType
-
     });
+
 
    if(mediaInsert.error){
 
     console.error(
-     "POST MEDIA INSERT ERROR:",
+     "MEDIA DB ERROR:",
      mediaInsert.error
     );
 
-    uploadFailed=true;
    }
+
   }
 
-  if(firstMediaURL){
 
-   const update=
-    await db
-    .from("posts")
-    .update({
-
-     media_url:firstMediaURL,
-     media_type:firstMediaType
-
-    })
-    .eq("id",post.id);
-
-   if(update.error)
-    console.error(
-     "POST UPDATE ERROR:",
-     update.error
-    );
-  }
-
-  $("postContent").value="";
-  $("mediaFile").value="";
-  $("mediaPreview").innerHTML="";
+  $("postText").value="";
+  $("photoInput").value="";
+  $("videoInput").value="";
   $("anonymousPost").checked=false;
+  $("rulesConfirm").checked=false;
 
-  if(uploadFailed){
+  toast("Post সফল হয়েছে।");
 
-   toast(
-    "Post published, but some media files failed."
-   );
+  loadFeed();
 
-  }else{
-
-   toast(
-    "✅ Post published successfully."
-   );
-  }
-
-  showPage("homePage");
 
  }catch(err){
 
-  console.error(err);
+  console.error("CREATE POST ERROR:",err);
 
   toast(
-   err.message||
-   "Post could not be created."
+   "Post failed: "+
+   (err.message||"Unknown error")
   );
- }
-}
 
-
-/* =====================================================
- GET MEDIA
-===================================================== */
-
-async function getMedia(post){
-
- let media=[];
-
- try{
-
-  const result=
-   await db
-   .from("post_media")
-   .select("*")
-   .eq("post_id",post.id)
-   .order(
-    "created_at",
-    {ascending:true}
-   );
-
-  if(!result.error&&result.data)
-   media=result.data;
-
- }catch(e){
-
-  console.error("MEDIA LOAD ERROR:",e);
  }
 
- if(
-  media.length===0&&
-  post.media_url
- ){
-
-  media.push({
-
-   media_url:post.media_url,
-   media_type:post.media_type||"image"
-
-  });
- }
-
- return media;
-}
-
-
-/* =====================================================
- LOAD POST USERS
- IMPORTANT: NO posts -> profiles embedding
-===================================================== */
-
-async function loadPostUsers(posts){
-
- const ids=[
-  ...new Set(
-   posts
-   .map(post=>post.user_id)
-   .filter(Boolean)
-  )
- ];
-
- if(!ids.length)
-  return {};
-
- try{
-
-  const result=
-   await db
-   .from("profiles")
-   .select(
-    "id,display_name,username,avatar_url"
-   )
-   .in("id",ids);
-
-  if(result.error){
-
-   console.error(
-    "POST PROFILE LOAD ERROR:",
-    result.error
-   );
-
-   return {};
-  }
-
-  const map={};
-
-  (result.data||[])
-  .forEach(user=>{
-   map[user.id]=user;
-  });
-
-  return map;
-
- }catch(err){
-
-  console.error(err);
-  return {};
- }
 }
 
 
@@ -2295,404 +1543,264 @@ async function loadFeed(){
 
  const feed=$("feed");
 
- if(!feed)return;
-
  feed.innerHTML=
- '<div class="card center">Post loading...</div>';
+  '<div class="loading">Post loading...</div>';
 
  try{
 
-  const result=
+  const postResult=
    await db
    .from("posts")
    .select("*")
    .eq("status","published")
-   .order(
-    "created_at",
-    {ascending:false}
+   .order("created_at",{ascending:false})
+   .limit(50);
+
+  if(postResult.error){
+   throw postResult.error;
+  }
+
+  const posts=postResult.data||[];
+
+
+  if(!posts.length){
+
+   feed.innerHTML=
+    '<div class="card" style="text-align:center;color:#777">'+
+    'এখনও কোনো Post নেই। প্রথম Post করুন।'+
+    '</div>';
+
+   return;
+  }
+
+
+  /*
+   IMPORTANT:
+   posts -> profiles relationship embedding ব্যবহার করা হয়নি।
+  */
+
+  const ids=[
+   ...new Set(
+    posts
+    .map(p=>p.user_id)
+    .filter(Boolean)
    )
-   .limit(100);
+  ];
 
-  if(result.error){
 
-   console.error(
-    "POST LOAD ERROR:",
-    result.error
-   );
+  let profiles=[];
 
-   feed.innerHTML=
-   '<div class="card">'+
-   '<b>Post loading failed</b><br><br>'+
-   escapeHTML(result.error.message)+
-   '</div>';
+  if(ids.length){
 
-   return;
+   const profileResult=
+    await db
+    .from("profiles")
+    .select("*")
+    .in("id",ids);
+
+   if(!profileResult.error){
+    profiles=profileResult.data||[];
+   }
   }
 
-  const data=result.data||[];
 
-  if(!data.length){
+  const userMap={};
 
-   feed.innerHTML=
-   '<div class="card center">'+
-   'No posts yet. Create the first post.'+
-   '</div>';
+  profiles.forEach(profile=>{
+   userMap[profile.id]=profile;
+  });
 
-   return;
-  }
 
-  const userMap=
-   await loadPostUsers(data);
-
-  data.forEach(post=>{
-
+  posts.forEach(post=>{
    post.profiles=
     userMap[post.user_id]||{};
-
   });
 
-  feed.innerHTML="";
 
-  for(const post of data){
+  /*
+   Load media
+  */
 
-   feed.insertAdjacentHTML(
-    "beforeend",
-    await postHTML(post)
-   );
+  const postIds=posts.map(p=>p.id);
+
+  let media=[];
+
+  if(postIds.length){
+
+   const mediaResult=
+    await db
+    .from("post_media")
+    .select("*")
+    .in("post_id",postIds)
+    .order("created_at",{ascending:true});
+
+   if(!mediaResult.error){
+    media=mediaResult.data||[];
+   }
   }
 
- }catch(err){
 
-  console.error(
-   "LOAD FEED ERROR:",
-   err
-  );
-
-  feed.innerHTML=
-  '<div class="card">'+
-  '<b>Post loading failed</b><br><br>'+
-  escapeHTML(err.message)+
-  '</div>';
- }
-}
-
-
-/* =====================================================
- LOAD COMMENT USERS
-===================================================== */
-
-async function loadCommentUsers(comments){
-
- const ids=[
-  ...new Set(
-   comments
-   .map(c=>c.user_id)
-   .filter(Boolean)
-  )
- ];
-
- if(!ids.length)
-  return {};
-
- try{
-
-  const result=
-   await db
-   .from("profiles")
-   .select(
-    "id,display_name,username,avatar_url"
-   )
-   .in("id",ids);
-
-  if(result.error){
-
-   console.error(
-    "COMMENT PROFILE ERROR:",
-    result.error
-   );
-
-   return {};
-  }
-
-  const map={};
-
-  (result.data||[])
-  .forEach(user=>{
-   map[user.id]=user;
-  });
-
-  return map;
-
- }catch(e){
-
-  console.error(e);
-  return {};
- }
-}
-
-
-/* =====================================================
- POST HTML
-===================================================== */
-
-async function postHTML(post){
-
- const profile=
-  post.profiles||{};
-
- const media=
-  await getMedia(post);
-
- const anonymous=
-  post.is_anonymous===true;
-
- const name=
-  anonymous
-  ?"Anonymous"
-  :(profile.display_name||"User");
-
- const avatar=
-  anonymous
-  ?
-  "https://ui-avatars.com/api/?name=A&background=777&color=fff"
-  :
-  avatarURL(profile);
-
- let reactionCount=0;
-
- try{
-
-  const result=
-   await db
-   .from("reactions")
-   .select("id",{count:"exact",head:true})
-   .eq("post_id",post.id);
-
-  reactionCount=
-   result.count||0;
-
- }catch(e){}
-
-
- let commentsData=[];
-
- try{
-
-  const result=
-   await db
-   .from("comments")
-   .select(
-    "id,content,created_at,user_id"
-   )
-   .eq("post_id",post.id)
-   .order(
-    "created_at",
-    {ascending:true}
-   )
-   .limit(20);
-
-  if(!result.error)
-   commentsData=result.data||[];
-
- }catch(e){
-
-  console.error(
-   "COMMENTS LOAD ERROR:",
-   e
-  );
- }
-
- const commentUsers=
-  await loadCommentUsers(
-   commentsData
-  );
-
- let mediaHTML="";
-
- if(media.length){
-
-  const cls=
-   media.length===1
-   ?"one"
-   :
-   media.length===2
-   ?"two"
-   :
-   media.length===3
-   ?"three"
-   :"four";
-
-  mediaHTML=
-   `<div class="mediaGrid ${cls}">`;
+  const mediaMap={};
 
   media.forEach(m=>{
 
-   const safeURL=
-    escapeHTML(m.media_url);
-
-   if(m.media_type==="video"){
-
-    mediaHTML+=
-    `<video controls preload="metadata">
-      <source src="${safeURL}">
-    </video>`;
-
-   }else{
-
-    mediaHTML+=
-    `<img
-      src="${safeURL}"
-      loading="lazy"
-      onclick="openMedia(decodeURIComponent('${encodeURIComponent(m.media_url)}'))">`;
-
+   if(!mediaMap[m.post_id]){
+    mediaMap[m.post_id]=[];
    }
+
+   mediaMap[m.post_id].push(m);
 
   });
 
-  mediaHTML+="</div>";
+
+  posts.forEach(post=>{
+   post.media=mediaMap[post.id]||[];
+  });
+
+
+  feed.innerHTML=
+   posts.map(renderPost).join("");
+
+
+ }catch(err){
+
+  console.error("FEED ERROR:",err);
+
+  feed.innerHTML=
+   '<div class="card error">'+
+   'Post loading failed: '+
+   escapeHTML(err.message||"Unknown error")+
+   '</div>';
+
+ }
+
+}
+
+
+/* =====================================================
+ RENDER POST
+===================================================== */
+
+function renderPost(post){
+
+ const profile=post.profiles||{};
+
+ const isAnonymous=
+  post.anonymous===true;
+
+ const displayName=
+  isAnonymous
+  ? "Anonymous"
+  : (
+    profile.display_name||
+    profile.username||
+    "User"
+   );
+
+
+ const username=
+  isAnonymous
+  ? ""
+  : (
+    profile.username
+    ? "@"+profile.username
+    : ""
+   );
+
+
+ const avatar=
+  !isAnonymous && profile.avatar_url
+  ? `<img class="avatar"
+       src="${escapeHTML(profile.avatar_url)}"
+       onerror="this.style.display='none'">`
+  : `<div class="avatar">
+      ${isAnonymous?"👤":
+       escapeHTML(
+        String(displayName).charAt(0).toUpperCase()
+       )}
+     </div>`;
+
+
+ const date=
+  post.created_at
+  ? new Date(post.created_at).toLocaleString("bn-BD")
+  : "";
+
+
+ let mediaHTML="";
+
+
+ if(post.media && post.media.length){
+
+  mediaHTML=
+   `<div class="mediaGrid">`+
+   post.media.map(m=>{
+
+    const url=escapeHTML(m.media_url||"");
+
+    if(
+     m.media_type==="video" ||
+     url.match(/\.(mp4|webm|ogg)(\?|$)/i)
+    ){
+
+     return `
+      <video
+       src="${url}"
+       controls
+       preload="metadata">
+      </video>
+     `;
+
+    }
+
+    return `
+     <img
+      src="${url}"
+      loading="lazy"
+      alt="Post image">
+    `;
+
+   }).join("")+
+   `</div>`;
  }
 
 
- let commentsHTML="";
-
- commentsData.forEach(c=>{
-
-  const cp=
-   commentUsers[c.user_id]||{};
-
-  commentsHTML+=
-  `<div class="comment">
-
-   <img
-    class="avatar"
-    style="width:32px;height:32px"
-    src="${escapeHTML(avatarURL(cp))}">
-
-   <div class="commentBubble">
-
-    <b>
-     ${escapeHTML(
-      cp.display_name||"User"
-     )}
-    </b>
-
-    <br>
-
-    ${escapeHTML(c.content)}
-
-   </div>
-
-  </div>`;
- });
-
-
- const own=
-  currentUser&&
-  post.user_id===currentUser.id;
-
-
- const menu=`
-
- <div class="menuWrap">
-
-  <button
-   class="menuBtn"
-   onclick="togglePostMenu('${escapeHTML(post.id)}')">
-   ⋯
-  </button>
-
-  <div
-   id="menu-${escapeHTML(post.id)}"
-   class="postMenu hidden">
-
-   <button
-    onclick="copyPostLink('${escapeHTML(post.id)}')">
-    🔗 Copy link
-   </button>
-
-   <button
-    onclick="savePost('${escapeHTML(post.id)}')">
-    🔖 Save Post
-   </button>
-
-   <button
-    onclick="reportPost('${escapeHTML(post.id)}')">
-    🚩 Report
-   </button>
-
-   ${
-    own
-    ?
-    `<button
-      class="deleteItem"
-      onclick="deletePost('${escapeHTML(post.id)}')">
-      🗑️ Delete Post
-     </button>`
-    :""
-   }
-
-  </div>
-
- </div>`;
-
-
  return `
-
- <article
-  class="card"
-  id="post-${escapeHTML(post.id)}">
+ <article class="card post" id="post-${escapeHTML(post.id)}">
 
   <div class="postHead">
 
-   <img
-    class="avatar"
-    src="${escapeHTML(avatar)}">
+   ${avatar}
 
-   <div style="flex:1">
-
-    <div class="postName">
-     ${escapeHTML(name)}
+   <div>
+    <div class="postUser">
+     ${escapeHTML(displayName)}
     </div>
 
-    <div class="small">
-
-     ${escapeHTML(
-      post.category||"General"
-     )}
-
-     ·
-
-     ${formatDate(post.created_at)}
-
+    <div class="postMeta">
+     ${escapeHTML(username)}
+     ${username?" · ":""}
+     ${escapeHTML(date)}
+     ${post.category
+       ? " · "+escapeHTML(post.category)
+       : ""}
     </div>
 
    </div>
-
-   ${menu}
 
   </div>
 
 
   ${
    post.content
-   ?
-   `<div class="postText">
-     ${escapeHTML(post.content)}
-    </div>`
-   :""
+   ? `<div class="postText">
+       ${escapeHTML(post.content)}
+      </div>`
+   : ""
   }
 
 
   ${mediaHTML}
-
-
-  <div
-   class="small"
-   style="margin-top:8px">
-
-   👍 ${reactionCount} reactions
-
-  </div>
 
 
   <div class="actions">
@@ -2702,15 +1810,52 @@ async function postHTML(post){
     👍 Like
    </button>
 
-   <button
-    onclick="toggleReactionMenu('${escapeHTML(post.id)}')">
-    ❤️ React
-   </button>
+
+   <div class="reactionWrap">
+
+    <button
+     onclick="toggleReactionMenu('${escapeHTML(post.id)}')">
+     ❤️ React
+    </button>
+
+    <div
+     id="reaction-${escapeHTML(post.id)}"
+     class="reactionMenu hidden">
+
+     <button onclick="react('${escapeHTML(post.id)}','like')">
+      👍
+     </button>
+
+     <button onclick="react('${escapeHTML(post.id)}','love')">
+      ❤️
+     </button>
+
+     <button onclick="react('${escapeHTML(post.id)}','haha')">
+      😂
+     </button>
+
+     <button onclick="react('${escapeHTML(post.id)}','wow')">
+      😮
+     </button>
+
+     <button onclick="react('${escapeHTML(post.id)}','sad')">
+      😢
+     </button>
+
+     <button onclick="react('${escapeHTML(post.id)}','angry')">
+      😡
+     </button>
+
+    </div>
+
+   </div>
+
 
    <button
     onclick="focusComment('${escapeHTML(post.id)}')">
     💬 Comment
    </button>
+
 
    <button
     onclick="sharePost('${escapeHTML(post.id)}')">
@@ -2720,48 +1865,11 @@ async function postHTML(post){
   </div>
 
 
-  <div
-   id="reaction-${escapeHTML(post.id)}"
-   class="reactionMenu hidden">
-
-   <button onclick="react('${escapeHTML(post.id)}','like')">
-    👍 Like
-   </button>
-
-   <button onclick="react('${escapeHTML(post.id)}','love')">
-    ❤️ Love
-   </button>
-
-   <button onclick="react('${escapeHTML(post.id)}','haha')">
-    😂 Haha
-   </button>
-
-   <button onclick="react('${escapeHTML(post.id)}','wow')">
-    😮 Wow
-   </button>
-
-   <button onclick="react('${escapeHTML(post.id)}','sad')">
-    😢 Sad
-   </button>
-
-   <button onclick="react('${escapeHTML(post.id)}','angry')">
-    😡 Angry
-   </button>
-
-  </div>
-
-
-  <div id="comments-${escapeHTML(post.id)}">
-   ${commentsHTML}
-  </div>
-
-
-  <div class="commentInput">
+  <div class="commentBox">
 
    <input
-    id="comment-${escapeHTML(post.id)}"
-    placeholder="Write a comment..."
-    onkeydown="if(event.key==='Enter')addComment('${escapeHTML(post.id)}')">
+    id="commentInput-${escapeHTML(post.id)}"
+    placeholder="Comment করুন...">
 
    <button
     onclick="addComment('${escapeHTML(post.id)}')">
@@ -2770,191 +1878,42 @@ async function postHTML(post){
 
   </div>
 
+
+  <div
+   id="comments-${escapeHTML(post.id)}"
+   class="comments">
+  </div>
+
  </article>
-
  `;
+
 }
 
 
 /* =====================================================
- POST MENU
+ REACTION MENU
 ===================================================== */
 
-function togglePostMenu(postId){
+function toggleReactionMenu(postId){
 
- document
- .querySelectorAll(".postMenu")
- .forEach(m=>{
+ const menu=
+  $("reaction-"+postId);
 
-  if(m.id!=="menu-"+postId)
-   m.classList.add("hidden");
+ if(!menu) return;
 
- });
+ menu.classList.toggle("hidden");
 
- const menu=$("menu-"+postId);
-
- if(menu)
-  menu.classList.toggle("hidden");
-}
-
-
-document.addEventListener(
- "click",
- function(e){
-
-  if(!e.target.closest(".menuWrap")){
-
-   document
-   .querySelectorAll(".postMenu")
-   .forEach(
-    m=>m.classList.add("hidden")
-   );
-  }
- });
-
-
-function openMedia(url){
-
- if(!url)return;
-
- window.open(
-  url,
-  "_blank",
-  "noopener,noreferrer"
- );
-}
-
-
-async function copyPostLink(postId){
-
- const url=
-  location.href.split("#")[0]+
-  "#post-"+postId;
-
- try{
-
-  await navigator.clipboard.writeText(url);
-
-  toast("Post link copied");
-
- }catch(e){
-
-  toast("Link: "+url);
- }
-}
-
-
-function savePost(postId){
-
- localStorage.setItem(
-  "saved_post_"+postId,
-  "true"
- );
-
- toast("🔖 Post saved");
-}
-
-
-function reportPost(postId){
-
- toast(
-  "🚩 Report option selected"
- );
 }
 
 
 /* =====================================================
- DELETE POST
+ SIMPLE LIKE
 ===================================================== */
 
-async function deletePost(postId){
+async function toggleReaction(postId){
 
- if(!currentUser||!currentUser.id){
+ await react(postId,"like");
 
-  toast("Please login first.");
-  return;
- }
-
- const profile=
-  await verifyCurrentProfile();
-
- if(!profile){
-
-  toast("Account verification failed.");
-  return;
- }
-
- const ok=
-  confirm(
-   "Do you want to delete this post?"
-  );
-
- if(!ok)return;
-
- try{
-
-  const mediaDelete=
-   await db
-   .from("post_media")
-   .delete()
-   .eq("post_id",postId);
-
-  if(mediaDelete.error){
-
-   console.error(mediaDelete.error);
-  }
-
-  const commentsDelete=
-   await db
-   .from("comments")
-   .delete()
-   .eq("post_id",postId);
-
-  if(commentsDelete.error){
-
-   console.error(commentsDelete.error);
-  }
-
-  const reactionsDelete=
-   await db
-   .from("reactions")
-   .delete()
-   .eq("post_id",postId);
-
-  if(reactionsDelete.error){
-
-   console.error(reactionsDelete.error);
-  }
-
-  const result=
-   await db
-   .from("posts")
-   .delete()
-   .eq("id",postId)
-   .eq("user_id",profile.id);
-
-  if(result.error){
-
-   toast(
-    result.error.message
-   );
-
-   return;
-  }
-
-  toast("Post deleted");
-
-  await loadFeed();
-
- }catch(err){
-
-  console.error(err);
-
-  toast(
-   err.message||
-   "Delete failed"
-  );
- }
 }
 
 
@@ -2962,166 +1921,137 @@ async function deletePost(postId){
  REACTION
 ===================================================== */
 
-function toggleReactionMenu(postId){
-
- const el=
-  $("reaction-"+postId);
-
- if(el)
-  el.classList.toggle("hidden");
-}
-
-
-async function toggleReaction(postId){
-
- await react(
-  postId,
-  "like"
- );
-}
-
-
 async function react(postId,type){
 
- if(!currentUser||!currentUser.id){
+ if(!currentUser){
 
-  toast("Please login first.");
-  return;
- }
-
- const profile=
-  await verifyCurrentProfile();
-
- if(!profile){
-
-  toast(
-   "Your account was not found. Please login again."
-  );
-
+  toast("আগে Login করুন।");
   return;
  }
 
  try{
 
   /*
-   duplicate reaction থাকলেও
-   maybeSingle() ব্যবহার করছি না।
+   Current profile exists কি না যাচাই
   */
 
-  const existing=
+  const profileResult=
+   await db
+   .from("profiles")
+   .select("id")
+   .eq("id",currentUser.id)
+   .limit(1);
+
+  if(profileResult.error){
+   throw profileResult.error;
+  }
+
+  if(!(profileResult.data||[]).length){
+
+   throw new Error(
+    "আপনার profile পাওয়া যায়নি।"
+   );
+  }
+
+
+  /*
+   IMPORTANT:
+   maybeSingle() ব্যবহার করা হয়নি।
+   কারণ duplicate থাকলেও যেন JS ভেঙে না যায়।
+  */
+
+  const result=
    await db
    .from("reactions")
    .select("id,type")
    .eq("post_id",postId)
-   .eq("user_id",profile.id)
-   .order("id",{ascending:true})
+   .eq("user_id",currentUser.id)
    .limit(1);
 
-  if(existing.error){
 
-   console.error(
-    "REACTION SELECT ERROR:",
-    existing.error
-   );
-
-   toast(
-    "Reaction failed: "+
-    existing.error.message
-   );
-
-   return;
+  if(result.error){
+   throw result.error;
   }
 
-  const row=
-   (existing.data||[])[0]||null;
+
+  const existing=
+   (result.data||[])[0]||null;
 
 
-  if(row){
+  if(existing){
 
-   if(row.type===type){
+   if(existing.type===type){
 
     const del=
      await db
      .from("reactions")
      .delete()
-     .eq("id",row.id);
+     .eq("id",existing.id);
 
     if(del.error){
-
-     toast(
-      "Could not remove reaction: "+
-      del.error.message
-     );
-
-     return;
+     throw del.error;
     }
 
    }else{
 
-    const upd=
+    const update=
      await db
      .from("reactions")
      .update({
       type:type
      })
-     .eq("id",row.id);
+     .eq("id",existing.id);
 
-    if(upd.error){
-
-     toast(
-      "Could not change reaction: "+
-      upd.error.message
-     );
-
-     return;
+    if(update.error){
+     throw update.error;
     }
+
    }
 
   }else{
 
-   const ins=
+   const insert=
     await db
     .from("reactions")
     .insert({
-
      post_id:postId,
-     user_id:profile.id,
+     user_id:currentUser.id,
      type:type
-
     });
 
-   if(ins.error){
-
-    console.error(
-     "REACTION INSERT ERROR:",
-     ins.error
-    );
-
-    toast(
-     "Could not react: "+
-     ins.error.message
-    );
-
-    return;
+   if(insert.error){
+    throw insert.error;
    }
+
   }
 
-  $("reaction-"+postId)
-  ?.classList.add("hidden");
 
-  await loadFeed();
+  const menu=
+   $("reaction-"+postId);
+
+  if(menu){
+   menu.classList.add("hidden");
+  }
+
+
+  toast(
+   type==="like"
+   ? "👍 Like"
+   : "Reaction দেওয়া হয়েছে"
+  );
+
 
  }catch(err){
 
-  console.error(
-   "REACTION ERROR:",
-   err
-  );
+  console.error("REACTION ERROR:",err);
 
   toast(
    "Reaction failed: "+
-   (err.message||"Unknown error")
+   (err.message || "Unknown error")
   );
+
+ }
+
 }
 
 
@@ -3132,7 +2062,7 @@ async function react(postId,type){
 function focusComment(postId){
 
  const input=
-  $("comment-"+postId);
+  $("commentInput-"+postId);
 
  if(input){
 
@@ -3142,111 +2072,201 @@ function focusComment(postId){
    behavior:"smooth",
    block:"center"
   });
+
  }
+
+ loadComments(postId);
+
 }
 
 
 async function addComment(postId){
 
- if(!currentUser||!currentUser.id){
+ if(!currentUser){
 
-  toast("Please login first.");
+  toast("আগে Login করুন।");
   return;
  }
 
  const input=
-  $("comment-"+postId);
+  $("commentInput-"+postId);
 
- if(!input){
+ if(!input) return;
 
-  toast("Comment box not found.");
+ const text=input.value.trim();
+
+ if(!text){
+
+  toast("Comment লিখুন।");
   return;
  }
 
- const content=
-  input.value.trim();
 
- if(!content){
+ try{
 
-  toast("Write a comment.");
-  return;
- }
+  /*
+   Profile check
+  */
 
- if(content.length>2000){
+  const profileResult=
+   await db
+   .from("profiles")
+   .select("id")
+   .eq("id",currentUser.id)
+   .limit(1);
+
+  if(profileResult.error){
+   throw profileResult.error;
+  }
+
+  if(!(profileResult.data||[]).length){
+
+   throw new Error(
+    "আপনার profile পাওয়া যায়নি।"
+   );
+  }
+
+
+  const {error}=await db
+   .from("comments")
+   .insert({
+    post_id:postId,
+    user_id:currentUser.id,
+    content:text
+   });
+
+  if(error){
+   throw error;
+  }
+
+
+  input.value="";
+
+  await loadComments(postId);
+
+  toast("Comment added");
+
+ }catch(err){
+
+  console.error("COMMENT ERROR:",err);
 
   toast(
-   "Comment can be maximum 2000 characters."
+   "Comment failed: "+
+   (err.message||"Unknown error")
   );
 
-  return;
  }
 
- /*
-  সবচেয়ে গুরুত্বপূর্ণ:
-  comments.user_id অবশ্যই profiles.id হতে হবে।
-  তাই insert-এর আগে profile verify করা হচ্ছে।
- */
+}
 
- const profile=
-  await verifyCurrentProfile();
 
- if(!profile){
+/* =====================================================
+ LOAD COMMENTS
+===================================================== */
 
-  toast(
-   "Your account was not found. Please login again."
-  );
+async function loadComments(postId){
 
-  return;
- }
+ const box=
+  $("comments-"+postId);
+
+ if(!box) return;
+
 
  try{
 
   const result=
    await db
    .from("comments")
-   .insert({
-
-    post_id:postId,
-    user_id:profile.id,
-    content:content
-
-   });
+   .select("*")
+   .eq("post_id",postId)
+   .order("created_at",{ascending:true});
 
   if(result.error){
+   throw result.error;
+  }
 
-   console.error(
-    "COMMENT INSERT ERROR:",
-    result.error
-   );
+  const comments=result.data||[];
 
-   toast(
-    "Could not add comment: "+
-    result.error.message
-   );
 
+  if(!comments.length){
+
+   box.innerHTML="";
    return;
   }
 
-  input.value="";
 
-  toast(
-   "✅ Comment added successfully"
-  );
+  const ids=[
+   ...new Set(
+    comments
+    .map(c=>c.user_id)
+    .filter(Boolean)
+   )
+  ];
 
-  await loadFeed();
+
+  let profiles=[];
+
+  if(ids.length){
+
+   const profileResult=
+    await db
+    .from("profiles")
+    .select("*")
+    .in("id",ids);
+
+   if(!profileResult.error){
+    profiles=profileResult.data||[];
+   }
+
+  }
+
+
+  const userMap={};
+
+  profiles.forEach(p=>{
+   userMap[p.id]=p;
+  });
+
+
+  box.innerHTML=
+   comments.map(comment=>{
+
+    const profile=
+     userMap[comment.user_id]||{};
+
+    const name=
+     profile.display_name||
+     profile.username||
+     "User";
+
+    return `
+     <div class="comment">
+
+      <div class="commentName">
+       ${escapeHTML(name)}
+      </div>
+
+      <div class="commentText">
+       ${escapeHTML(comment.content||"")}
+      </div>
+
+     </div>
+    `;
+
+   }).join("");
+
 
  }catch(err){
 
-  console.error(
-   "COMMENT ERROR:",
-   err
-  );
+  console.error("COMMENTS ERROR:",err);
 
-  toast(
-   "Comment failed: "+
-   (err.message||"Unknown error")
-  );
+  box.innerHTML=
+   '<div style="color:#b00020;font-size:13px">'+
+   'Comment loading failed'+
+   '</div>';
+
  }
+
 }
 
 
@@ -3260,211 +2280,46 @@ async function sharePost(postId){
   location.href.split("#")[0]+
   "#post-"+postId;
 
- if(navigator.share){
 
-  try{
+ try{
+
+  if(navigator.share){
 
    await navigator.share({
-
     title:"ঘুষ সাইট",
-    text:"A post from Ghus Site",
+    text:"ঘুষ সাইটের একটি Post",
     url:url
-
    });
 
-  }catch(e){}
-
- }else{
-
-  try{
+  }else if(navigator.clipboard){
 
    await navigator.clipboard.writeText(url);
 
    toast("Post link copied");
 
-  }catch(e){
+  }else{
 
-   toast(url);
+   prompt("এই link copy করুন:",url);
+
   }
- }
-}
-
-
-/* =====================================================
- SEARCH
-===================================================== */
-
-function quickSearchUser(){
-
- const value=
-  $("quickSearch").value.trim();
-
- if(!value)return;
-
- $("searchInput").value=value;
-
- showPage("searchPage");
-
- searchUsers();
-}
-
-
-async function searchUsers(){
-
- const q=
-  $("searchInput").value.trim();
-
- const box=
-  $("searchResults");
-
- if(!q){
-
-  box.innerHTML=
-  '<div class="card">Enter a name or username.</div>';
-
-  return;
- }
-
- box.innerHTML=
- '<div class="card center">Searching People...</div>';
-
- try{
-
-  const safeQ=
-   q.replace(/[%_,]/g,"");
-
-  if(!safeQ){
-
-   box.innerHTML=
-   '<div class="card center">Enter a valid search.</div>';
-
-   return;
-  }
-
-  const result=
-   await db
-   .from("profiles")
-   .select(
-    "id,display_name,username,avatar_url,bio"
-   )
-   .or(
-    `display_name.ilike.%${safeQ}%,username.ilike.%${safeQ}%`
-   )
-   .limit(30);
-
-  if(result.error){
-
-   box.innerHTML=
-   '<div class="card">'+
-   escapeHTML(result.error.message)+
-   '</div>';
-
-   return;
-  }
-
-  const users=
-   result.data||[];
-
-  if(!users.length){
-
-   box.innerHTML=
-   '<div class="card center">No people found.</div>';
-
-   return;
-  }
-
-  box.innerHTML="";
-
-  users.forEach(user=>{
-
-   box.insertAdjacentHTML(
-    "beforeend",
-    `
-    <div
-     class="card userRow"
-     onclick="viewUser('${escapeHTML(user.id)}')">
-
-     <img
-      class="avatar"
-      src="${escapeHTML(avatarURL(user))}">
-
-     <div>
-
-      <b>
-       ${escapeHTML(
-        user.display_name||"User"
-       )}
-      </b>
-
-      <div class="small">
-       @${escapeHTML(
-        user.username||""
-       )}
-      </div>
-
-     </div>
-
-    </div>
-    `
-   );
-  });
 
  }catch(err){
 
-  box.innerHTML=
-  '<div class="card">'+
-  escapeHTML(err.message)+
-  '</div>';
+  console.log("Share cancelled");
+
  }
+
 }
 
 
 /* =====================================================
- VIEW USER
+ PROFILE
 ===================================================== */
 
-async function viewUser(userId){
+async function loadProfile(){
 
- try{
+ if(!currentUser) return;
 
-  const result=
-   await db
-   .from("profiles")
-   .select("*")
-   .eq("id",userId)
-   .maybeSingle();
-
-  if(result.error){
-
-   toast(result.error.message);
-   return;
-  }
-
-  if(!result.data){
-
-   toast("User not found.");
-   return;
-  }
-
-  renderProfile(result.data);
-
-  showPage("profilePage");
-
- }catch(err){
-
-  toast(err.message);
- }
-}
-
-
-/* =====================================================
- LOAD OWN PROFILE
-===================================================== */
-
-async function loadProfilePage(){
-
- if(!currentUser||!currentUser.id)
-  return;
 
  try{
 
@@ -3473,140 +2328,157 @@ async function loadProfilePage(){
    .from("profiles")
    .select("*")
    .eq("id",currentUser.id)
-   .maybeSingle();
+   .limit(1);
 
   if(result.error){
+   throw result.error;
+  }
 
-   $("profileContent").innerHTML=
-   '<div class="card">'+
-   escapeHTML(result.error.message)+
-   '</div>';
+  const profile=(result.data||[])[0];
 
+  if(!profile){
    return;
   }
 
-  if(!result.data){
+  currentProfile=profile;
 
-   toast("Your profile was not found.");
-   return;
+
+  const name=
+   profile.display_name||
+   profile.username||
+   "User";
+
+  $("profileName").textContent=name;
+
+  $("profileUsername").textContent=
+   profile.username
+   ? "@"+profile.username
+   : "";
+
+  $("profileBio").textContent=
+   profile.bio||"";
+
+
+  if(profile.avatar_url){
+
+   $("profileAvatar").innerHTML=
+    `<img
+      class="avatar"
+      src="${escapeHTML(profile.avatar_url)}"
+      style="width:90px;height:90px"
+      onerror="this.outerHTML='<div class=\\'avatar\\'>${escapeHTML(String(name).charAt(0))}</div>'">`;
+
+  }else{
+
+   $("profileAvatar").textContent=
+    String(name).charAt(0).toUpperCase();
+
   }
 
-  currentProfile=result.data;
 
-  if(!guestUser)
-   guestUser={};
+  loadMyPosts();
 
-  guestUser.id=
-   result.data.id;
-
-  guestUser.name=
-   result.data.display_name;
-
-  guestUser.username=
-   result.data.username;
-
-  guestUser.phone=
-   result.data.phone;
-
-  guestUser.avatar_url=
-   result.data.avatar_url||"";
-
-  guestUser.bio=
-   result.data.bio||"";
-
-  guestUser.role=
-   result.data.role||"user";
-
-  localStorage.setItem(
-   "ghus_guest_user",
-   JSON.stringify(guestUser)
-  );
-
-  $("homeAvatar").src=
-   avatarURL(result.data);
-
-  renderProfile(result.data);
 
  }catch(err){
 
-  console.error(err);
+  console.error("PROFILE ERROR:",err);
+
  }
+
 }
 
 
 /* =====================================================
- RENDER PROFILE
+ MY POSTS
 ===================================================== */
 
-function renderProfile(profile){
+async function loadMyPosts(){
 
- const own=
-  currentUser&&
-  currentUser.id===profile.id;
+ const box=$("myPosts");
 
- $("profileContent").innerHTML=
+ box.innerHTML=
+  '<div class="loading">Loading...</div>';
 
- `
- <div
-  class="card"
-  style="padding:0;overflow:hidden">
 
-  <div class="profileCover"></div>
+ try{
 
-  <div class="profileInfo">
+  const result=
+   await db
+   .from("posts")
+   .select("*")
+   .eq("user_id",currentUser.id)
+   .order("created_at",{ascending:false})
+   .limit(30);
 
-   <img
-    class="avatar"
-    src="${escapeHTML(avatarURL(profile))}">
+  if(result.error){
+   throw result.error;
+  }
 
-   <h2 style="margin-bottom:3px">
+  const posts=result.data||[];
 
-    ${escapeHTML(
-     profile.display_name||"User"
-    )}
 
-   </h2>
+  if(!posts.length){
 
-   <div class="small">
+   box.innerHTML=
+    '<div style="text-align:center;color:#777">'+
+    'আপনার কোনো Post নেই।'+
+    '</div>';
 
-    @${escapeHTML(
-     profile.username||""
-    )}
+   return;
+  }
 
-   </div>
 
-   ${
-    profile.bio
-    ?
-    `<p style="padding:0 20px;line-height:1.6">
-     ${escapeHTML(profile.bio)}
-     </p>`
-    :""
+  const mediaResult=
+   await db
+   .from("post_media")
+   .select("*")
+   .in(
+    "post_id",
+    posts.map(p=>p.id)
+   );
+
+
+  const media=mediaResult.error
+   ? []
+   : (mediaResult.data||[]);
+
+
+  const mediaMap={};
+
+  media.forEach(m=>{
+
+   if(!mediaMap[m.post_id]){
+    mediaMap[m.post_id]=[];
    }
 
-   ${
-    own
-    ?
-    `<div class="profileButtons">
+   mediaMap[m.post_id].push(m);
 
-      <button
-       class="secondary"
-       onclick="openEditProfile()">
+  });
 
-       ✏️ Edit Profile
 
-      </button>
+  posts.forEach(post=>{
 
-     </div>`
-    :""
-   }
+   post.profiles=currentProfile||{};
+   post.media=mediaMap[post.id]||[];
 
-  </div>
+  });
 
-  <div style="height:20px"></div>
 
- </div>
- `;
+  box.innerHTML=
+   posts.map(renderPost).join("");
+
+
+ }catch(err){
+
+  console.error("MY POSTS ERROR:",err);
+
+  box.innerHTML=
+   '<div class="error">'+
+   escapeHTML(err.message||"Loading failed")+
+   '</div>';
+
+ }
+
 }
 
 
@@ -3614,116 +2486,129 @@ function renderProfile(profile){
  EDIT PROFILE
 ===================================================== */
 
-async function openEditProfile(){
+function openEditProfile(){
 
- if(!currentProfile)
-  await loadProfilePage();
+ if(!currentProfile){
+  loadProfile();
+  return;
+ }
 
  $("editName").value=
-  currentProfile?.display_name||"";
+  currentProfile.display_name||"";
 
  $("editBio").value=
-  currentProfile?.bio||"";
+  currentProfile.bio||"";
 
  $("editAvatar").value=
-  currentProfile?.avatar_url||"";
+  currentProfile.avatar_url||"";
 
- showPage("editPage");
+ showPage("editProfilePage");
+
 }
 
 
 async function saveProfile(){
 
- if(!currentUser||!currentUser.id)
-  return;
+ if(!currentUser) return;
 
- const name=
+
+ const display_name=
   $("editName").value.trim();
 
  const bio=
   $("editBio").value.trim();
 
- const avatar=
+ const avatar_url=
   $("editAvatar").value.trim();
 
- if(!name){
 
-  toast("Enter your name.");
+ if(!display_name){
+
+  toast("নাম দিন।");
   return;
  }
 
+
  try{
-
-  const profile=
-   await verifyCurrentProfile();
-
-  if(!profile){
-
-   toast(
-    "Your account was not found. Please login again."
-   );
-
-   return;
-  }
 
   const result=
    await db
    .from("profiles")
    .update({
-
-    display_name:name,
+    display_name:display_name,
     bio:bio,
-    avatar_url:avatar
-
+    avatar_url:avatar_url||null
    })
    .eq("id",currentUser.id);
 
-  if(result.error){
 
-   toast(result.error.message);
-   return;
+  if(result.error){
+   throw result.error;
   }
 
-  guestUser.name=name;
-  guestUser.bio=bio;
-  guestUser.avatar_url=avatar;
-
-  currentProfile.display_name=name;
-  currentProfile.bio=bio;
-  currentProfile.avatar_url=avatar;
-
-  localStorage.setItem(
-   "ghus_guest_user",
-   JSON.stringify(guestUser)
-  );
-
-  $("homeAvatar").src=
-   avatarURL(currentProfile);
 
   toast("Profile updated");
 
+  await loadProfile();
+
   showPage("profilePage");
+
 
  }catch(err){
 
-  toast(err.message);
+  console.error("UPDATE PROFILE ERROR:",err);
+
+  toast(
+   "Profile update failed: "+
+   (err.message||"Unknown error")
+  );
+
  }
+
 }
 
 
 /* =====================================================
- CHAT USERS
+ SEARCH USERS
 ===================================================== */
 
-async function loadChatUsers(){
+let searchTimer=null;
 
- if(!currentUser||!currentUser.id)
+function searchUsers(value){
+
+ clearTimeout(searchTimer);
+
+ const q=value.trim();
+
+ const box=$("searchResults");
+
+
+ if(!q){
+
+  box.classList.add("hidden");
+  box.innerHTML="";
   return;
 
- const box=$("chatUsers");
+ }
+
+
+ searchTimer=setTimeout(
+  ()=>doSearchUsers(q),
+  350
+ );
+
+}
+
+
+async function doSearchUsers(q){
+
+ const box=$("searchResults");
+
+ box.classList.remove("hidden");
 
  box.innerHTML=
- '<div class="loading">Users loading...</div>';
+  '<div class="loading">Searching...</div>';
+
 
  try{
 
@@ -3731,91 +2616,100 @@ async function loadChatUsers(){
    await db
    .from("profiles")
    .select(
-    "id,display_name,username,avatar_url"
+    "id,display_name,username,avatar_url,bio"
    )
-   .neq(
-    "id",
-    currentUser.id
+   .or(
+    `username.ilike.%${q}%,display_name.ilike.%${q}%`
    )
-   .limit(50);
+   .limit(15);
+
 
   if(result.error){
-
-   box.innerHTML=
-   '<div class="status">'+
-   escapeHTML(result.error.message)+
-   '</div>';
-
-   return;
+   throw result.error;
   }
 
-  const users=
-   result.data||[];
+
+  const users=result.data||[];
+
 
   if(!users.length){
 
    box.innerHTML=
-   '<div class="small">No other users found.</div>';
+    '<div style="text-align:center;color:#777">'+
+    'কোনো user পাওয়া যায়নি।'+
+    '</div>';
 
    return;
   }
 
-  box.innerHTML="";
 
-  users.forEach(user=>{
+  box.innerHTML=
+   users.map(user=>{
 
-   box.insertAdjacentHTML(
-    "beforeend",
-    `
-    <div
-     class="chatUser"
-     onclick="openChat('${escapeHTML(user.id)}')">
+    const name=
+     user.display_name||
+     user.username||
+     "User";
 
-     <div
-      style="display:flex;gap:10px;align-items:center">
+    return `
+     <div class="searchResult"
+          onclick="openUser('${escapeHTML(user.id)}')">
 
-      <img
-       class="avatar"
-       src="${escapeHTML(avatarURL(user))}">
+      <div class="row">
 
-      <div>
+       ${
+        user.avatar_url
+        ? `<img
+             class="avatar"
+             src="${escapeHTML(user.avatar_url)}">`
+        : `<div class="avatar">
+             ${escapeHTML(
+              String(name).charAt(0).toUpperCase()
+             )}
+           </div>`
+       }
 
-       <b>
-        ${escapeHTML(
-         user.display_name||"User"
-        )}
-       </b>
+       <div>
 
-       <div class="small">
-        @${escapeHTML(
-         user.username||""
-        )}
+        <div style="font-weight:bold">
+         ${escapeHTML(name)}
+        </div>
+
+        <div style="font-size:12px;color:#777">
+         ${user.username
+           ? "@"+escapeHTML(user.username)
+           : ""}
+        </div>
+
        </div>
 
       </div>
 
      </div>
+    `;
 
-    </div>
-    `
-   );
-  });
+   }).join("");
+
 
  }catch(err){
 
+  console.error("SEARCH ERROR:",err);
+
   box.innerHTML=
-  '<div class="status">'+
-  escapeHTML(err.message)+
-  '</div>';
+   '<div class="error">'+
+   escapeHTML(err.message||"Search failed")+
+   '</div>';
+
  }
+
 }
 
 
 /* =====================================================
- OPEN CHAT
+ OPEN USER
 ===================================================== */
 
-async function openChat(userId){
+async function openUser(id){
 
  try{
 
@@ -3823,348 +2717,261 @@ async function openChat(userId){
    await db
    .from("profiles")
    .select("*")
-   .eq("id",userId)
-   .maybeSingle();
+   .eq("id",id)
+   .limit(1);
 
   if(result.error){
+   throw result.error;
+  }
 
-   toast(result.error.message);
+  const user=(result.data||[])[0];
+
+  if(!user){
    return;
   }
 
-  if(!result.data){
 
-   toast("User not found.");
+  const name=
+   user.display_name||
+   user.username||
+   "User";
+
+
+  $("profileName").textContent=name;
+
+  $("profileUsername").textContent=
+   user.username
+   ? "@"+user.username
+   : "";
+
+  $("profileBio").textContent=
+   user.bio||"";
+
+
+  if(user.avatar_url){
+
+   $("profileAvatar").innerHTML=
+    `<img
+      class="avatar"
+      src="${escapeHTML(user.avatar_url)}"
+      style="width:90px;height:90px">`;
+
+  }else{
+
+   $("profileAvatar").textContent=
+    String(name).charAt(0).toUpperCase();
+
+  }
+
+
+  $("searchResults").classList.add("hidden");
+
+  $("searchInput").value="";
+
+  showPage("profilePage");
+
+
+  /*
+   Other user's posts
+  */
+
+  const postBox=$("myPosts");
+
+  postBox.innerHTML=
+   '<div class="loading">Loading...</div>';
+
+
+  const postsResult=
+   await db
+   .from("posts")
+   .select("*")
+   .eq("user_id",id)
+   .eq("status","published")
+   .order("created_at",{ascending:false})
+   .limit(30);
+
+
+  if(postsResult.error){
+   throw postsResult.error;
+  }
+
+
+  const posts=postsResult.data||[];
+
+
+  if(!posts.length){
+
+   postBox.innerHTML=
+    '<div style="text-align:center;color:#777">'+
+    'কোনো Post নেই।'+
+    '</div>';
+
    return;
   }
 
-  selectedChatUser=
-   result.data;
 
-  $("chatBox")
-   .classList.remove("hidden");
-
-  $("chatTitle").textContent=
-   "💬 "+
-   (
-    result.data.display_name||
-    "User"
+  const mediaResult=
+   await db
+   .from("post_media")
+   .select("*")
+   .in(
+    "post_id",
+    posts.map(p=>p.id)
    );
 
-  await loadMessages();
 
-  setupMessageRealtime();
+  const media=mediaResult.error
+   ? []
+   : (mediaResult.data||[]);
 
-  $("chatBox").scrollIntoView({
-   behavior:"smooth"
+
+  const mediaMap={};
+
+  media.forEach(m=>{
+
+   if(!mediaMap[m.post_id]){
+    mediaMap[m.post_id]=[];
+   }
+
+   mediaMap[m.post_id].push(m);
+
   });
 
- }catch(err){
 
-  toast(err.message);
- }
-}
+  posts.forEach(post=>{
+
+   post.profiles=user;
+   post.media=mediaMap[post.id]||[];
+
+  });
 
 
-/* =====================================================
- LOAD MESSAGES
-===================================================== */
+  postBox.innerHTML=
+   posts.map(renderPost).join("");
 
-async function loadMessages(){
-
- if(
-  !currentUser||
-  !selectedChatUser
- )
-  return;
-
- const box=$("chatMessages");
-
- box.innerHTML=
- '<div class="loading">Messages loading...</div>';
-
- try{
-
-  const sent=
-   await db
-   .from("messages")
-   .select("*")
-   .eq(
-    "sender_id",
-    currentUser.id
-   )
-   .eq(
-    "receiver_id",
-    selectedChatUser.id
-   )
-   .order(
-    "created_at",
-    {ascending:true}
-   );
-
-  const received=
-   await db
-   .from("messages")
-   .select("*")
-   .eq(
-    "sender_id",
-    selectedChatUser.id
-   )
-   .eq(
-    "receiver_id",
-    currentUser.id
-   )
-   .order(
-    "created_at",
-    {ascending:true}
-   );
-
-  if(sent.error){
-
-   box.innerHTML=
-   '<div class="small">'+
-   escapeHTML(sent.error.message)+
-   '</div>';
-
-   return;
-  }
-
-  if(received.error){
-
-   box.innerHTML=
-   '<div class="small">'+
-   escapeHTML(received.error.message)+
-   '</div>';
-
-   return;
-  }
-
-  const messages=
-   [
-    ...(sent.data||[]),
-    ...(received.data||[])
-   ]
-   .sort(
-    (a,b)=>
-     new Date(a.created_at)-
-     new Date(b.created_at)
-   );
-
-  box.innerHTML="";
-
-  if(!messages.length){
-
-   box.innerHTML=
-   '<div class="small center">'+
-   'No messages yet. Send the first message.'+
-   '</div>';
-  }
-
-  messages.forEach(renderMessage);
-
-  box.scrollTop=
-   box.scrollHeight;
 
  }catch(err){
 
-  console.error(err);
+  console.error("OPEN USER ERROR:",err);
 
-  box.innerHTML=
-  '<div class="small">'+
-  escapeHTML(err.message)+
-  '</div>';
+  toast(
+   err.message||"User loading failed"
+  );
+
  }
+
 }
 
 
 /* =====================================================
- RENDER MESSAGE
+ DELETE POST
 ===================================================== */
 
-function renderMessage(message){
+async function deletePost(postId){
 
- const box=$("chatMessages");
-
- if(!box)return;
-
- const div=
-  document.createElement("div");
-
- div.className=
-  "msg "+
-  (
-   message.sender_id===
-   currentUser.id
-   ?"mine"
-   :"other"
-  );
-
- div.textContent=
-  message.content||"";
-
- box.appendChild(div);
-}
+ if(!currentUser) return;
 
 
-/* =====================================================
- SEND MESSAGE
-===================================================== */
-
-async function sendMessage(){
-
- if(
-  !currentUser||
-  !selectedChatUser
- ){
-
-  toast("Select a user first.");
+ if(!confirm("এই Post delete করতে চান?")){
   return;
  }
 
- const profile=
-  await verifyCurrentProfile();
-
- if(!profile){
-
-  toast(
-   "Your account was not found. Please login again."
-  );
-
-  return;
- }
-
- const input=
-  $("messageInput");
-
- const content=
-  input.value.trim();
-
- if(!content)
-  return;
-
- if(content.length>2000){
-
-  toast(
-   "Message can be maximum 2000 characters."
-  );
-
-  return;
- }
 
  try{
+
+  await db
+   .from("post_media")
+   .delete()
+   .eq("post_id",postId);
+
+
+  await db
+   .from("comments")
+   .delete()
+   .eq("post_id",postId);
+
+
+  await db
+   .from("reactions")
+   .delete()
+   .eq("post_id",postId);
+
 
   const result=
    await db
-   .from("messages")
-   .insert({
+   .from("posts")
+   .delete()
+   .eq("id",postId)
+   .eq("user_id",currentUser.id);
 
-    sender_id:profile.id,
-    receiver_id:selectedChatUser.id,
-    content:content
-
-   });
 
   if(result.error){
-
-   console.error(
-    "MESSAGE INSERT ERROR:",
-    result.error
-   );
-
-   toast(
-    result.error.message
-   );
-
-   return;
+   throw result.error;
   }
 
-  input.value="";
 
-  await loadMessages();
+  toast("Post deleted");
+
+  loadFeed();
 
  }catch(err){
 
-  toast(err.message);
+  console.error("DELETE ERROR:",err);
+
+  toast(
+   "Delete failed: "+
+   (err.message||"Unknown error")
+  );
+
  }
+
 }
 
 
 /* =====================================================
- REALTIME CHAT
+ CLOSE REACTION MENUS WHEN CLICK OUTSIDE
 ===================================================== */
 
-function setupMessageRealtime(){
-
- if(messageChannel){
-
-  try{
-   db.removeChannel(messageChannel);
-  }catch(e){}
- }
+document.addEventListener("click",function(e){
 
  if(
-  !currentUser||
-  !selectedChatUser
- )
-  return;
+  !e.target.closest(".reactionWrap")
+ ){
 
- messageChannel=
-  db
-  .channel(
-   "messages-"+
-   currentUser.id+
-   "-"+
-   selectedChatUser.id+
-   "-"+
-   Date.now()
-  )
-  .on(
-   "postgres_changes",
-   {
-    event:"INSERT",
-    schema:"public",
-    table:"messages"
-   },
-   payload=>{
+  document
+   .querySelectorAll(".reactionMenu")
+   .forEach(menu=>{
+    menu.classList.add("hidden");
+   });
 
-    const m=payload.new;
+ }
 
-    const relevant=
-     (
-      m.sender_id===
-      currentUser.id&&
-      m.receiver_id===
-      selectedChatUser.id
-     )
-     ||
-     (
-      m.sender_id===
-      selectedChatUser.id&&
-      m.receiver_id===
-      currentUser.id
-     );
-
-    if(relevant)
-     loadMessages();
-
-   }
-  )
-  .subscribe();
-}
+});
 
 
 /* =====================================================
- START
+ INITIALIZE
 ===================================================== */
 
-document.addEventListener(
- "DOMContentLoaded",
- async function(){
+window.addEventListener("load",()=>{
 
-  await restoreSession();
+ restoreSession();
 
- }
-);
+});
+
+
+/* =====================================================
+ EXTRA SAFETY
+===================================================== */
+
+window.addEventListener("error",function(e){
+
+ console.error(
+  "GLOBAL JS ERROR:",
+  e.error||e.message
+ );
+
+});
 
 </script>
 
