@@ -113,7 +113,7 @@ textarea{
 
 .auth{
   max-width:420px;
-  margin:45px auto;
+  margin:35px auto;
   padding:15px;
 }
 .auth h1{
@@ -140,6 +140,16 @@ textarea{
   border-radius:50%;
   object-fit:cover;
   background:#ddd;
+}
+
+.otpBox{
+  text-align:center;
+}
+.otpBox input{
+  text-align:center;
+  font-size:25px;
+  font-weight:bold;
+  letter-spacing:8px;
 }
 
 .postHead{
@@ -239,7 +249,6 @@ textarea{
   border-radius:7px;
 }
 
-/* POST MENU */
 .menuWrap{
   position:relative;
 }
@@ -391,6 +400,13 @@ textarea{
   border-radius:7px;
   margin:8px 0;
 }
+.success{
+  padding:10px;
+  background:#d1e7dd;
+  color:#0f5132;
+  border-radius:7px;
+  margin:8px 0;
+}
 
 @media(max-width:600px){
   .header{height:54px;padding:7px 8px}
@@ -413,66 +429,167 @@ textarea{
 
 <h1>ঘুষ সাইট</h1>
 
+<!-- LOGIN -->
 <div class="authBox" id="loginBox">
+
 <h2>Login</h2>
 
-<input id="loginId"
-placeholder="Phone Number or Gmail / Email"
-autocomplete="username">
+<input
+id="loginPhone"
+type="tel"
+placeholder="Phone Number"
+autocomplete="tel">
 
-<input id="loginPassword"
+<input
+id="loginPassword"
 type="password"
 placeholder="Password"
 autocomplete="current-password">
 
-<button class="primary" onclick="login()">Login</button>
+<button class="primary" onclick="login()">
+Login
+</button>
 
-<span class="link" onclick="showForgot()">Forgot Password?</span>
-<span class="link" onclick="showSignup()">Create New Account</span>
+<span class="link" onclick="showForgot()">
+Forgot Password?
+</span>
+
+<span class="link" onclick="showSignup()">
+Create New Account
+</span>
 
 <div id="loginMsg"></div>
+
 </div>
 
+
+<!-- SIGNUP -->
 <div class="authBox hidden" id="signupBox">
+
 <h2>Create Account</h2>
 
-<input id="signupName" placeholder="Your Name">
-<input id="signupPhone" placeholder="Phone Number">
-<input id="signupEmail" placeholder="Gmail / Email">
-<input id="signupPassword" type="password" placeholder="Password">
-<input id="signupConfirm" type="password" placeholder="Confirm Password">
+<input
+id="signupName"
+placeholder="Your Name">
 
-<button class="primary" onclick="signup()">Create Account</button>
+<input
+id="signupPhone"
+type="tel"
+placeholder="Phone Number">
 
-<span class="link" onclick="showLogin()">Already have an account? Login</span>
+<input
+id="signupPassword"
+type="password"
+placeholder="Password">
+
+<input
+id="signupConfirm"
+type="password"
+placeholder="Confirm Password">
+
+<button class="primary" onclick="signup()">
+Create Account
+</button>
+
+<span class="link" onclick="showLogin()">
+Already have an account? Login
+</span>
 
 <div id="signupMsg"></div>
+
 </div>
 
+
+<!-- FORGOT PHONE -->
 <div class="authBox hidden" id="forgotBox">
+
 <h2>Forgot Password</h2>
 
-<p class="small">আপনার Email অথবা Phone Number দিন।</p>
+<p class="small">
+আপনার Phone Number দিন। SMS-এর মাধ্যমে OTP পাঠানো হবে।
+</p>
 
-<input id="forgotId"
-placeholder="Phone Number or Gmail / Email">
+<input
+id="forgotPhone"
+type="tel"
+placeholder="Phone Number"
+autocomplete="tel">
 
-<button class="primary" onclick="sendReset()">Send Reset</button>
+<button class="primary" onclick="sendResetOTP()">
+📱 Send OTP
+</button>
 
 <div id="forgotMsg"></div>
 
-<span class="link" onclick="showLogin()">Back to Login</span>
+<span class="link" onclick="showLogin()">
+Back to Login
+</span>
+
 </div>
 
+
+<!-- OTP -->
+<div class="authBox hidden otpBox" id="otpBox">
+
+<h2>🔐 Enter OTP</h2>
+
+<p class="small">
+আপনার Phone-এ পাঠানো OTP এখানে বসান।
+</p>
+
+<input
+id="otpCode"
+type="text"
+inputmode="numeric"
+autocomplete="one-time-code"
+maxlength="6"
+placeholder="••••••">
+
+<button class="primary" onclick="verifyResetOTP()">
+Verify OTP
+</button>
+
+<button
+class="secondary"
+style="width:100%;margin-top:8px"
+onclick="sendResetOTP()">
+↻ Resend OTP
+</button>
+
+<div id="otpMsg"></div>
+
+<span class="link" onclick="showForgot()">
+Change Phone Number
+</span>
+
+</div>
+
+
+<!-- NEW PASSWORD -->
 <div class="authBox hidden" id="resetBox">
-<h2>নতুন Password দিন</h2>
 
-<input id="newPassword" type="password" placeholder="New Password">
-<input id="confirmNewPassword" type="password" placeholder="Confirm New Password">
+<h2>🔑 New Password</h2>
 
-<button class="primary" onclick="updatePassword()">Update Password</button>
+<p class="small">
+OTP সঠিক হয়েছে। এখন নতুন Password দিন।
+</p>
+
+<input
+id="newPassword"
+type="password"
+placeholder="New Password">
+
+<input
+id="confirmNewPassword"
+type="password"
+placeholder="Confirm New Password">
+
+<button class="primary" onclick="updatePassword()">
+Update Password
+</button>
 
 <div id="resetMsg"></div>
+
 </div>
 
 </div>
@@ -487,10 +604,14 @@ placeholder="Phone Number or Gmail / Email">
 <div class="logo">ঘুষ সাইট</div>
 
 <div class="searchBox">
-<input id="quickSearch"
+
+<input
+id="quickSearch"
 placeholder="Search people..."
 onkeydown="if(event.key==='Enter')quickSearchUser()">
+
 <button onclick="quickSearchUser()">🔍</button>
+
 </div>
 
 </header>
@@ -503,21 +624,30 @@ onkeydown="if(event.key==='Enter')quickSearchUser()">
 <section id="homePage">
 
 <div class="card">
+
 <div style="display:flex;gap:10px;align-items:center">
 
 <img id="homeAvatar" class="avatar">
 
-<button class="secondary"
+<button
+class="secondary"
 style="flex:1;text-align:left"
 onclick="showPage('postPage')">
+
 What's on your mind?
+
 </button>
 
 </div>
+
 </div>
 
 <div id="feed">
-<div class="card center">Post loading...</div>
+
+<div class="card center">
+Post loading...
+</div>
+
 </div>
 
 </section>
@@ -528,14 +658,17 @@ What's on your mind?
 <section id="searchPage" class="hidden">
 
 <div class="card">
+
 <h2>🔍 Search</h2>
 
-<input id="searchInput"
+<input
+id="searchInput"
 placeholder="নাম দিয়ে Search করুন">
 
 <button class="primary" onclick="searchUsers()">
 Search
 </button>
+
 </div>
 
 <div id="searchResults"></div>
@@ -551,7 +684,8 @@ Search
 
 <h2>📝 Create Post</h2>
 
-<textarea id="postContent"
+<textarea
+id="postContent"
 placeholder="আপনার কথা লিখুন..."></textarea>
 
 <select id="postCategory">
@@ -569,7 +703,8 @@ placeholder="আপনার কথা লিখুন..."></textarea>
 
 <label style="display:block;margin:10px 0">
 
-<input id="anonymousPost"
+<input
+id="anonymousPost"
 type="checkbox"
 style="width:auto">
 
@@ -577,7 +712,8 @@ style="width:auto">
 
 </label>
 
-<input id="mediaFile"
+<input
+id="mediaFile"
 type="file"
 accept="image/*,video/*"
 multiple
@@ -611,10 +747,12 @@ Publish
 
 <input id="editName" placeholder="Name">
 
-<textarea id="editBio"
+<textarea
+id="editBio"
 placeholder="Bio"></textarea>
 
-<input id="editAvatar"
+<input
+id="editAvatar"
 placeholder="Avatar Image URL">
 
 <button class="primary" onclick="saveProfile()">
@@ -642,19 +780,24 @@ Save
 
 <h3 id="chatTitle"></h3>
 
-<div id="chatMessages"
+<div
+id="chatMessages"
 class="chatMessages"></div>
 
 <div style="display:flex;gap:5px;margin-top:8px">
 
-<input id="messageInput"
+<input
+id="messageInput"
 placeholder="Message..."
 style="margin:0"
 onkeydown="if(event.key==='Enter')sendMessage()">
 
-<button onclick="sendMessage()"
+<button
+onclick="sendMessage()"
 style="background:#1877f2;color:#fff;padding:0 15px;border-radius:7px">
+
 Send
+
 </button>
 
 </div>
@@ -695,7 +838,9 @@ Send
 
 <script>
 
-/* ================= SUPABASE ================= */
+/* =========================================================
+   SUPABASE
+========================================================= */
 
 const SUPABASE_URL =
 "https://klreqkbqyyiwmohlmgkh.supabase.co";
@@ -703,40 +848,51 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_xlqcHTsDaMpBq4n54iMs4A_S7gKpiZc";
 
-const db=supabase.createClient(
+const db = supabase.createClient(
 SUPABASE_URL,
 SUPABASE_KEY
 );
 
-let currentUser=null;
-let currentProfile=null;
-let selectedChatUser=null;
-let messageChannel=null;
+let currentUser = null;
+let currentProfile = null;
+let selectedChatUser = null;
+let messageChannel = null;
+
+let resetPhone = "";
 
 
-/* ================= HELPERS ================= */
+/* =========================================================
+   HELPERS
+========================================================= */
 
 function $(id){
 return document.getElementById(id);
 }
 
+
 function toast(message){
 
 const old=document.querySelector(".toast");
+
 if(old)old.remove();
 
 const t=document.createElement("div");
+
 t.className="toast";
 t.textContent=message;
 
 document.body.appendChild(t);
 
-setTimeout(()=>t.remove(),3000);
+setTimeout(()=>{
+t.remove();
+},3000);
 }
+
 
 function escapeHTML(text){
 
-if(text===null||text===undefined)return "";
+if(text===null||text===undefined)
+return "";
 
 return String(text)
 .replace(/&/g,"&amp;")
@@ -745,6 +901,36 @@ return String(text)
 .replace(/"/g,"&quot;")
 .replace(/'/g,"&#039;");
 }
+
+
+/*
+  Phone formatting
+
+  +8801XXXXXXXXX  -> stays same
+  8801XXXXXXXXX   -> +8801XXXXXXXXX
+  01XXXXXXXXX     -> +8801XXXXXXXXX
+
+  Other international numbers beginning with +
+  are kept as they are.
+*/
+function normalizePhone(phone){
+
+phone=String(phone||"")
+.trim()
+.replace(/[^\d+]/g,"");
+
+if(phone.startsWith("+"))
+return phone;
+
+if(phone.startsWith("880"))
+return "+"+phone;
+
+if(phone.startsWith("0"))
+return "+880"+phone.substring(1);
+
+return phone;
+}
+
 
 function avatarURL(profile){
 
@@ -762,47 +948,77 @@ return "https://ui-avatars.com/api/?name="
 }
 
 
-/* ================= AUTH UI ================= */
+/* =========================================================
+   AUTH UI
+========================================================= */
 
 function hideAuthBoxes(){
 
 $("loginBox").classList.add("hidden");
 $("signupBox").classList.add("hidden");
 $("forgotBox").classList.add("hidden");
+$("otpBox").classList.add("hidden");
 $("resetBox").classList.add("hidden");
 }
 
+
 function showLogin(){
+
 hideAuthBoxes();
+
 $("loginBox").classList.remove("hidden");
 }
 
+
 function showSignup(){
+
 hideAuthBoxes();
+
 $("signupBox").classList.remove("hidden");
 }
 
+
 function showForgot(){
+
 hideAuthBoxes();
+
 $("forgotBox").classList.remove("hidden");
 }
 
-function showReset(){
+
+function showOTP(){
+
 hideAuthBoxes();
+
+$("otpBox").classList.remove("hidden");
+}
+
+
+function showReset(){
+
+hideAuthBoxes();
+
 $("resetBox").classList.remove("hidden");
 }
 
 
-/* ================= LOGIN ================= */
+/* =========================================================
+   LOGIN
+========================================================= */
 
 async function login(){
 
-const id=$("loginId").value.trim();
+const phone=normalizePhone(
+$("loginPhone").value
+);
+
 const password=$("loginPassword").value;
 
-if(!id||!password){
+if(!phone||!password){
+
 $("loginMsg").innerHTML=
-'<div class="status">সব তথ্য পূরণ করুন।</div>';
+'<div class="status">Phone Number এবং Password দিন।</div>';
+
 return;
 }
 
@@ -811,40 +1027,28 @@ $("loginMsg").innerHTML=
 
 try{
 
-let email=id;
+const {data,error}=await db.auth.signInWithPassword({
 
-if(!id.includes("@")){
-
-const {data,error}=await db.rpc(
-"get_login_email",
-{p_phone:id}
-);
-
-if(error){
-$("loginMsg").innerHTML=
-'<div class="status">Phone login setup পাওয়া যায়নি। Email দিয়ে চেষ্টা করুন।</div>';
-return;
-}
-
-email=data;
-
-if(!email){
-$("loginMsg").innerHTML=
-'<div class="status">Account পাওয়া যায়নি।</div>';
-return;
-}
-}
-
-const {error}=await db.auth.signInWithPassword({
-email:email,
+phone:phone,
 password:password
+
 });
 
 if(error){
+
 $("loginMsg").innerHTML=
 '<div class="status">'+
 escapeHTML(error.message)+
 '</div>';
+
+return;
+}
+
+if(!data.session){
+
+$("loginMsg").innerHTML=
+'<div class="status">Login সম্পূর্ণ হয়নি। Phone verification প্রয়োজন হতে পারে।</div>';
+
 return;
 }
 
@@ -856,101 +1060,176 @@ $("loginMsg").innerHTML=
 '<div class="status">'+
 escapeHTML(err.message)+
 '</div>';
+
 }
 }
 
 
-/* ================= SIGNUP ================= */
+/* =========================================================
+   SIGNUP
+========================================================= */
 
 async function signup(){
 
-const name=$("signupName").value.trim();
-const phone=$("signupPhone").value.trim();
-const email=$("signupEmail").value.trim();
-const password=$("signupPassword").value;
-const confirm=$("signupConfirm").value;
+const name=
+$("signupName").value.trim();
 
-if(!name||!phone||!email||!password){
+const phone=
+normalizePhone($("signupPhone").value);
+
+const password=
+$("signupPassword").value;
+
+const confirm=
+$("signupConfirm").value;
+
+
+if(!name||!phone||!password||!confirm){
+
 $("signupMsg").innerHTML=
 '<div class="status">সব তথ্য পূরণ করুন।</div>';
+
 return;
 }
+
 
 if(password!==confirm){
+
 $("signupMsg").innerHTML=
 '<div class="status">Password মিলছে না।</div>';
+
 return;
 }
 
+
 if(password.length<6){
+
 $("signupMsg").innerHTML=
 '<div class="status">Password কমপক্ষে ৬ অক্ষরের দিন।</div>';
+
 return;
 }
+
 
 $("signupMsg").innerHTML=
 '<div class="status">Account তৈরি হচ্ছে...</div>';
 
+
 try{
 
+/*
+  Check existing profile
+*/
 const check=await db
 .from("profiles")
 .select("id")
 .eq("phone",phone)
 .maybeSingle();
 
+
 if(check.data){
+
 $("signupMsg").innerHTML=
 '<div class="status">এই Phone Number দিয়ে Account আছে।</div>';
+
 return;
 }
 
+
+/*
+  REAL SUPABASE PHONE AUTH
+*/
 const {data,error}=await db.auth.signUp({
-email:email,
-password:password
+
+phone:phone,
+
+password:password,
+
+options:{
+data:{
+display_name:name
+}
+}
+
 });
 
+
 if(error){
+
 $("signupMsg").innerHTML=
 '<div class="status">'+
 escapeHTML(error.message)+
 '</div>';
+
 return;
 }
+
 
 if(!data.user){
+
 $("signupMsg").innerHTML=
-'<div class="status">Account তৈরি হয়েছে। Email verification প্রয়োজন হতে পারে।</div>';
+'<div class="status">Account তৈরি হয়নি। আবার চেষ্টা করুন।</div>';
+
 return;
 }
 
+
+/*
+  Save profile
+*/
 const profileData={
+
 id:data.user.id,
+
 display_name:name,
+
 phone:phone,
+
 bio:"",
+
 avatar_url:"",
+
 role:"user"
+
 };
+
 
 const profile=await db
 .from("profiles")
 .upsert(profileData);
 
+
 if(profile.error){
+
 $("signupMsg").innerHTML=
 '<div class="status">Account হয়েছে, কিন্তু Profile save হয়নি: '+
 escapeHTML(profile.error.message)+
 '</div>';
+
 return;
 }
+
+
+/*
+  If phone confirmation is enabled,
+  Supabase may return no session.
+*/
+if(!data.session){
+
+$("signupMsg").innerHTML=
+'<div class="status">Account তৈরি হয়েছে। Phone verification/OTP প্রয়োজন হলে SMS-এর OTP দিয়ে verification করুন।</div>';
+
+return;
+}
+
 
 toast("Account created");
 
 $("signupMsg").innerHTML=
-'<div class="status">Account সফলভাবে তৈরি হয়েছে। Login করুন।</div>';
+'<div class="success">Account সফলভাবে তৈরি হয়েছে।</div>';
 
 setTimeout(showLogin,1200);
+
 
 }catch(err){
 
@@ -958,55 +1237,113 @@ $("signupMsg").innerHTML=
 '<div class="status">'+
 escapeHTML(err.message)+
 '</div>';
+
 }
+
 }
 
 
-/* ================= FORGOT ================= */
+/* =========================================================
+   FORGOT PASSWORD — SEND OTP
+========================================================= */
 
-async function sendReset(){
+async function sendResetOTP(){
 
-const id=$("forgotId").value.trim();
+let phone;
 
-if(!id){
+if($("forgotPhone").value.trim()){
+
+phone=normalizePhone(
+$("forgotPhone").value
+);
+
+}else{
+
+phone=resetPhone;
+}
+
+
+if(!phone){
+
 $("forgotMsg").innerHTML=
-'<div class="status">Phone অথবা Email দিন।</div>';
+'<div class="status">Phone Number দিন।</div>';
+
 return;
 }
 
-$("forgotMsg").innerHTML=
-'<div class="status">Checking...</div>';
+
+resetPhone=phone;
+
+
+/*
+  Determine which message box to use
+*/
+let msgBox=$("forgotMsg");
+
+if(!$("forgotBox").classList.contains("hidden")){
+
+msgBox=$("forgotMsg");
+
+}else{
+
+msgBox=$("otpMsg");
+
+}
+
+
+msgBox.innerHTML=
+'<div class="status">SMS OTP পাঠানো হচ্ছে...</div>';
+
 
 try{
 
-let email=id;
+/*
+  First check whether profile exists.
+*/
+const check=await db
+.from("profiles")
+.select("id")
+.eq("phone",phone)
+.maybeSingle();
 
-if(!id.includes("@")){
 
-const {data,error}=await db.rpc(
-"get_login_email",
-{p_phone:id}
-);
+if(check.error){
 
-if(error||!data){
+msgBox.innerHTML=
+'<div class="status">'+
+escapeHTML(check.error.message)+
+'</div>';
 
-$("forgotMsg").innerHTML=
+return;
+}
+
+
+if(!check.data){
+
+msgBox.innerHTML=
 '<div class="status">এই Phone Number-এর Account পাওয়া যায়নি।</div>';
 
 return;
 }
 
-email=data;
+
+/*
+  Send OTP.
+*/
+const {error}=await db.auth.signInWithOtp({
+
+phone:phone,
+
+options:{
+shouldCreateUser:false
 }
 
-const {error}=await db.auth.resetPasswordForEmail(
-email,
-{redirectTo:window.location.href}
-);
+});
+
 
 if(error){
 
-$("forgotMsg").innerHTML=
+msgBox.innerHTML=
 '<div class="status">'+
 escapeHTML(error.message)+
 '</div>';
@@ -1014,70 +1351,231 @@ escapeHTML(error.message)+
 return;
 }
 
-$("forgotMsg").innerHTML=
-'<div class="status">Password reset link আপনার Email-এ পাঠানো হয়েছে।</div>';
+
+$("otpCode").value="";
+
+
+showOTP();
+
+
+$("otpMsg").innerHTML=
+'<div class="success">OTP আপনার SMS-এ পাঠানো হয়েছে। SMS থেকে OTP কপি করে নিচের ঘরে বসান।</div>';
+
+
+toast("OTP sent");
+
 
 }catch(err){
 
-$("forgotMsg").innerHTML=
+msgBox.innerHTML=
 '<div class="status">'+
 escapeHTML(err.message)+
 '</div>';
+
 }
+
 }
 
 
-/* ================= PASSWORD ================= */
+/* =========================================================
+   VERIFY OTP
+========================================================= */
+
+async function verifyResetOTP(){
+
+const token=$("otpCode").value.trim();
+
+if(!resetPhone){
+
+$("otpMsg").innerHTML=
+'<div class="status">Phone Number পাওয়া যায়নি। আবার Send OTP করুন।</div>';
+
+return;
+}
+
+
+if(!token){
+
+$("otpMsg").innerHTML=
+'<div class="status">SMS-এর OTP বসান।</div>';
+
+return;
+}
+
+
+$("otpMsg").innerHTML=
+'<div class="status">OTP যাচাই হচ্ছে...</div>';
+
+
+try{
+
+const {data,error}=await db.auth.verifyOtp({
+
+phone:resetPhone,
+
+token:token,
+
+type:"sms"
+
+});
+
+
+if(error){
+
+$("otpMsg").innerHTML=
+'<div class="status">'+
+escapeHTML(error.message)+
+'</div>';
+
+return;
+}
+
+
+if(!data.session){
+
+$("otpMsg").innerHTML=
+'<div class="status">OTP verify হয়েছে, কিন্তু session পাওয়া যায়নি। আবার চেষ্টা করুন।</div>';
+
+return;
+}
+
+
+toast("OTP verified");
+
+showReset();
+
+
+}catch(err){
+
+$("otpMsg").innerHTML=
+'<div class="status">'+
+escapeHTML(err.message)+
+'</div>';
+
+}
+
+}
+
+
+/* =========================================================
+   UPDATE PASSWORD
+========================================================= */
 
 async function updatePassword(){
 
-const password=$("newPassword").value;
-const confirm=$("confirmNewPassword").value;
+const password=
+$("newPassword").value;
+
+const confirm=
+$("confirmNewPassword").value;
+
 
 if(!password||!confirm){
+
 $("resetMsg").innerHTML=
 '<div class="status">দুই জায়গায় Password দিন।</div>';
+
 return;
 }
+
 
 if(password!==confirm){
+
 $("resetMsg").innerHTML=
 '<div class="status">Password মিলছে না।</div>';
+
 return;
 }
+
 
 if(password.length<6){
+
 $("resetMsg").innerHTML=
 '<div class="status">Password কমপক্ষে ৬ অক্ষরের দিন।</div>';
+
 return;
 }
 
+
+$("resetMsg").innerHTML=
+'<div class="status">Password পরিবর্তন হচ্ছে...</div>';
+
+
+try{
+
+const {data}=await db.auth.getSession();
+
+
+if(!data.session){
+
+$("resetMsg").innerHTML=
+'<div class="status">OTP session পাওয়া যায়নি। আবার Forgot Password থেকে OTP নিন।</div>';
+
+return;
+}
+
+
 const {error}=await db.auth.updateUser({
+
 password:password
+
 });
 
+
 if(error){
+
 $("resetMsg").innerHTML=
 '<div class="status">'+
 escapeHTML(error.message)+
 '</div>';
+
 return;
 }
 
+
+$("newPassword").value="";
+$("confirmNewPassword").value="";
+
+
 toast("Password updated");
 
-$("resetMsg").innerHTML=
-'<div class="status">Password সফলভাবে পরিবর্তন হয়েছে।</div>';
 
-setTimeout(showLogin,1200);
+$("resetMsg").innerHTML=
+'<div class="success">Password সফলভাবে পরিবর্তন হয়েছে। এখন নতুন Password দিয়ে Login করুন।</div>';
+
+
+await db.auth.signOut();
+
+
+setTimeout(()=>{
+
+showLogin();
+
+$("loginPhone").value=resetPhone;
+
+},1500);
+
+
+}catch(err){
+
+$("resetMsg").innerHTML=
+'<div class="status">'+
+escapeHTML(err.message)+
+'</div>';
+
+}
+
 }
 
 
-/* ================= SESSION ================= */
+/* =========================================================
+   SESSION
+========================================================= */
 
 async function loadUser(){
 
 const {data}=await db.auth.getSession();
+
 
 if(data.session){
 
@@ -1090,18 +1588,24 @@ openApp();
 }else{
 
 openAuth();
+
 }
+
 }
+
 
 async function loadProfile(){
 
-if(!currentUser)return;
+if(!currentUser)
+return;
+
 
 const {data}=await db
 .from("profiles")
 .select("*")
 .eq("id",currentUser.id)
 .maybeSingle();
+
 
 if(data){
 
@@ -1110,15 +1614,24 @@ currentProfile=data;
 }else{
 
 const newProfile={
+
 id:currentUser.id,
-display_name:currentUser.email
-?currentUser.email.split("@")[0]
-:"User",
-phone:"",
+
+display_name:
+currentUser.user_metadata?.display_name||
+"User",
+
+phone:
+currentUser.phone||"",
+
 bio:"",
+
 avatar_url:"",
+
 role:"user"
+
 };
+
 
 const result=await db
 .from("profiles")
@@ -1126,18 +1639,17 @@ const result=await db
 .select()
 .single();
 
+
 if(result.data)
 currentProfile=result.data;
+
 }
+
 }
+
 
 db.auth.onAuthStateChange(
 async(event,session)=>{
-
-if(event==="PASSWORD_RECOVERY"){
-showReset();
-return;
-}
 
 if(session){
 
@@ -1150,248 +1662,386 @@ openApp();
 }else{
 
 currentUser=null;
+
 currentProfile=null;
 
 openAuth();
+
 }
+
 });
 
 
 function openAuth(){
 
 $("authPage").classList.remove("hidden");
+
 $("app").classList.add("hidden");
+
 }
+
 
 async function openApp(){
 
 $("authPage").classList.add("hidden");
+
 $("app").classList.remove("hidden");
 
+
 if(currentProfile)
-$("homeAvatar").src=avatarURL(currentProfile);
+$("homeAvatar").src=
+avatarURL(currentProfile);
+
 
 showPage("homePage");
 
 await loadFeed();
+
 }
 
 
-/* ================= NAVIGATION ================= */
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 function showPage(pageId){
 
 const pages=[
+
 "homePage",
 "searchPage",
 "postPage",
 "profilePage",
 "editPage",
 "chatPage"
+
 ];
 
+
 pages.forEach(id=>{
+
 const el=$(id);
-if(el)el.classList.add("hidden");
+
+if(el)
+el.classList.add("hidden");
+
 });
+
 
 $(pageId).classList.remove("hidden");
 
+
 window.scrollTo(0,0);
 
-if(pageId==="homePage")loadFeed();
-if(pageId==="profilePage")loadProfilePage();
-if(pageId==="chatPage")loadChatUsers();
+
+if(pageId==="homePage")
+loadFeed();
+
+if(pageId==="profilePage")
+loadProfilePage();
+
+if(pageId==="chatPage")
+loadChatUsers();
+
 }
 
 
-/* ================= MEDIA PREVIEW ================= */
+/* =========================================================
+   MEDIA PREVIEW
+========================================================= */
 
 function previewMedia(){
 
 const input=$("mediaFile");
+
 const preview=$("mediaPreview");
 
 preview.innerHTML="";
 
-if(!input.files||!input.files.length)return;
+
+if(!input.files||!input.files.length)
+return;
+
 
 Array.from(input.files).forEach((file,index)=>{
 
 const item=document.createElement("div");
+
 item.className="previewItem";
+
 
 const remove=document.createElement("button");
 
 remove.className="removePreview";
+
 remove.textContent="×";
 
+
 remove.onclick=()=>{
+
 removeSelectedFile(index);
+
 };
+
 
 if(file.type.startsWith("image/")){
 
 const img=document.createElement("img");
+
 img.src=URL.createObjectURL(file);
+
 item.appendChild(img);
+
 
 }else if(file.type.startsWith("video/")){
 
 const video=document.createElement("video");
+
 video.src=URL.createObjectURL(file);
+
 video.controls=true;
+
 item.appendChild(video);
+
 }
 
+
 item.appendChild(remove);
+
 preview.appendChild(item);
+
 });
+
 }
+
 
 function removeSelectedFile(index){
 
 const input=$("mediaFile");
+
 const dt=new DataTransfer();
 
+
 Array.from(input.files).forEach((file,i)=>{
-if(i!==index)dt.items.add(file);
+
+if(i!==index)
+dt.items.add(file);
+
 });
+
 
 input.files=dt.files;
 
 previewMedia();
+
 }
 
 
-/* ================= CREATE POST ================= */
+/* =========================================================
+   CREATE POST
+========================================================= */
 
 async function createPost(){
 
 if(!currentUser){
+
 toast("আগে Login করুন");
+
 return;
+
 }
 
-const content=$("postContent").value.trim();
-const category=$("postCategory").value;
-const anonymous=$("anonymousPost").checked;
-const files=Array.from($("mediaFile").files||[]);
+
+const content=
+$("postContent").value.trim();
+
+const category=
+$("postCategory").value;
+
+const anonymous=
+$("anonymousPost").checked;
+
+const files=
+Array.from($("mediaFile").files||[]);
+
 
 if(!content&&files.length===0){
+
 toast("কিছু লিখুন অথবা ছবি/ভিডিও দিন");
+
 return;
+
 }
+
 
 try{
 
 toast("Post তৈরি হচ্ছে...");
 
+
 const {data:post,error:postError}=await db
 .from("posts")
 .insert({
+
 user_id:currentUser.id,
+
 content:content,
+
 media_url:null,
+
 media_type:null,
+
 status:"published",
+
 is_anonymous:anonymous,
+
 category:category
+
 })
 .select()
 .single();
 
+
 if(postError){
+
 toast(postError.message);
+
 return;
+
 }
 
+
 let firstMediaURL=null;
+
 let firstMediaType=null;
+
 
 for(let i=0;i<files.length;i++){
 
 const file=files[i];
 
-const ext=(file.name.split(".").pop()||"bin").toLowerCase();
+const ext=
+(file.name.split(".").pop()||"bin")
+.toLowerCase();
+
 
 const path=
 "posts/"+
 currentUser.id+"/"+
 Date.now()+"_"+i+"."+ext;
 
+
 const upload=await db.storage
 .from("media")
-.upload(path,file,{
+.upload(
+path,
+file,
+{
 upsert:false,
 contentType:file.type
-});
+}
+);
+
 
 if(upload.error){
+
 console.log(upload.error);
+
 continue;
+
 }
 
-const publicURL=db.storage
+
+const publicURL=
+db.storage
 .from("media")
 .getPublicUrl(path)
 .data.publicUrl;
+
 
 const mediaType=
 file.type.startsWith("video/")
 ?"video"
 :"image";
 
+
 if(i===0){
+
 firstMediaURL=publicURL;
+
 firstMediaType=mediaType;
+
 }
+
 
 const mediaInsert=await db
 .from("post_media")
 .insert({
+
 post_id:post.id,
+
 media_url:publicURL,
+
 media_type:mediaType
+
 });
+
 
 if(mediaInsert.error)
 console.log(mediaInsert.error);
+
 }
+
 
 if(firstMediaURL){
 
 await db
 .from("posts")
 .update({
+
 media_url:firstMediaURL,
+
 media_type:firstMediaType
+
 })
 .eq("id",post.id);
+
 }
 
+
 $("postContent").value="";
+
 $("mediaFile").value="";
+
 $("mediaPreview").innerHTML="";
+
 $("anonymousPost").checked=false;
+
 
 toast("Post Published");
 
 showPage("homePage");
 
+
 }catch(err){
 
 console.error(err);
+
 toast(err.message);
+
 }
+
 }
 
 
-/* ================= GET MEDIA ================= */
+/* =========================================================
+   GET MEDIA
+========================================================= */
 
 async function getMedia(post){
 
 let media=[];
+
 
 try{
 
@@ -1401,33 +2051,49 @@ const {data,error}=await db
 .eq("post_id",post.id)
 .order("created_at",{ascending:true});
 
+
 if(!error&&data)
 media=data;
 
+
 }catch(e){
+
 console.log(e);
+
 }
+
 
 if(media.length===0&&post.media_url){
 
 media.push({
+
 media_url:post.media_url,
-media_type:post.media_type||"image"
+
+media_type:
+post.media_type||"image"
+
 });
+
 }
+
 
 return media;
+
 }
 
 
-/* ================= FEED ================= */
+/* =========================================================
+   FEED
+========================================================= */
 
 async function loadFeed(){
 
 const feed=$("feed");
 
+
 feed.innerHTML=
 '<div class="card center">Post loading...</div>';
+
 
 const {data,error}=await db
 .from("posts")
@@ -1442,6 +2108,7 @@ avatar_url
 .eq("status","published")
 .order("created_at",{ascending:false});
 
+
 if(error){
 
 feed.innerHTML=
@@ -1451,7 +2118,9 @@ escapeHTML(error.message)+
 '</div>';
 
 return;
+
 }
+
 
 if(!data||data.length===0){
 
@@ -1459,34 +2128,50 @@ feed.innerHTML=
 '<div class="card center">এখনো কোনো Post নেই।</div>';
 
 return;
+
 }
 
+
 feed.innerHTML="";
+
 
 for(const post of data){
 
 feed.insertAdjacentHTML(
+
 "beforeend",
+
 await postHTML(post)
+
 );
+
 }
+
 }
 
 
-/* ================= POST HTML ================= */
+/* =========================================================
+   POST HTML
+========================================================= */
 
 async function postHTML(post){
 
 const profile=post.profiles||{};
+
 const media=await getMedia(post);
 
-const anonymous=post.is_anonymous===true;
+const anonymous=
+post.is_anonymous===true;
 
-const name=anonymous
+
+const name=
+anonymous
 ?"Anonymous"
 :(profile.display_name||"User");
 
-const avatar=anonymous
+
+const avatar=
+anonymous
 ?"https://ui-avatars.com/api/?name=A&background=777&color=fff"
 :avatarURL(profile);
 
@@ -1495,10 +2180,12 @@ const avatar=anonymous
 
 let reactionCount=0;
 
+
 const reactions=await db
 .from("reactions")
 .select("*",{count:"exact",head:true})
 .eq("post_id",post.id);
+
 
 if(reactions.count)
 reactionCount=reactions.count;
@@ -1522,7 +2209,9 @@ avatar_url
 .order("created_at",{ascending:true})
 .limit(20);
 
+
 let mediaHTML="";
+
 
 if(media.length){
 
@@ -1535,8 +2224,10 @@ media.length===1
 ?"three"
 :"four";
 
+
 mediaHTML=
 `<div class="mediaGrid ${cls}">`;
+
 
 media.forEach(m=>{
 
@@ -1553,21 +2244,26 @@ mediaHTML+=
 `<img src="${escapeHTML(m.media_url)}"
 loading="lazy"
 onclick="openMedia('${escapeHTML(m.media_url)}')">`;
+
 }
 
 });
 
+
 mediaHTML+="</div>";
+
 }
 
 
 let commentsHTML="";
+
 
 if(comments.data){
 
 comments.data.forEach(c=>{
 
 const cp=c.profiles||{};
+
 
 commentsHTML+=
 `<div class="comment">
@@ -1585,27 +2281,39 @@ ${escapeHTML(c.content)}
 </div>
 
 </div>`;
+
 });
+
 }
 
 
-const own=currentUser&&post.user_id===currentUser.id;
+const own=
+currentUser&&
+post.user_id===currentUser.id;
 
-const admin=currentProfile&&currentProfile.role==="admin";
+
+const admin=
+currentProfile&&
+currentProfile.role==="admin";
+
 
 let menuHTML="";
+
 
 if(own||admin){
 
 menuHTML=`
+
 <div class="menuWrap">
 
-<button class="menuBtn"
+<button
+class="menuBtn"
 onclick="togglePostMenu('${escapeHTML(post.id)}')">
 ⋯
 </button>
 
-<div id="menu-${escapeHTML(post.id)}"
+<div
+id="menu-${escapeHTML(post.id)}"
 class="postMenu hidden">
 
 <button onclick="copyPostLink('${escapeHTML(post.id)}')">
@@ -1620,7 +2328,8 @@ class="postMenu hidden">
 🚩 Report
 </button>
 
-<button class="deleteItem"
+<button
+class="deleteItem"
 onclick="deletePost('${escapeHTML(post.id)}')">
 🗑️ Delete Post
 </button>
@@ -1628,17 +2337,21 @@ onclick="deletePost('${escapeHTML(post.id)}')">
 </div>
 
 </div>`;
+
 }else{
 
 menuHTML=`
+
 <div class="menuWrap">
 
-<button class="menuBtn"
+<button
+class="menuBtn"
 onclick="togglePostMenu('${escapeHTML(post.id)}')">
 ⋯
 </button>
 
-<div id="menu-${escapeHTML(post.id)}"
+<div
+id="menu-${escapeHTML(post.id)}"
 class="postMenu hidden">
 
 <button onclick="copyPostLink('${escapeHTML(post.id)}')">
@@ -1656,15 +2369,20 @@ class="postMenu hidden">
 </div>
 
 </div>`;
+
 }
 
 
 return `
-<article class="card" id="post-${escapeHTML(post.id)}">
+
+<article
+class="card"
+id="post-${escapeHTML(post.id)}">
 
 <div class="postHead">
 
-<img class="avatar"
+<img
+class="avatar"
 src="${escapeHTML(avatar)}">
 
 <div style="flex:1">
@@ -1674,8 +2392,13 @@ ${escapeHTML(name)}
 </div>
 
 <div class="small">
+
 ${escapeHTML(post.category||"সাধারণ")}
- · ${formatDate(post.created_at)}
+
+ ·
+
+${formatDate(post.created_at)}
+
 </div>
 
 </div>
@@ -1687,18 +2410,23 @@ ${menuHTML}
 
 ${
 post.content
-?`<div class="postText">
+?
+`<div class="postText">
 ${escapeHTML(post.content)}
 </div>`
 :""
 }
 
+
 ${mediaHTML}
 
 
-<div class="small"
+<div
+class="small"
 style="margin-top:8px">
+
 👍 ${reactionCount} reactions
+
 </div>
 
 
@@ -1723,15 +2451,33 @@ style="margin-top:8px">
 </div>
 
 
-<div id="reaction-${escapeHTML(post.id)}"
+<div
+id="reaction-${escapeHTML(post.id)}"
 class="reactionMenu hidden">
 
-<button onclick="react('${escapeHTML(post.id)}','like')">👍 Like</button>
-<button onclick="react('${escapeHTML(post.id)}','love')">❤️ Love</button>
-<button onclick="react('${escapeHTML(post.id)}','haha')">😂 Haha</button>
-<button onclick="react('${escapeHTML(post.id)}','wow')">😮 Wow</button>
-<button onclick="react('${escapeHTML(post.id)}','sad')">😢 Sad</button>
-<button onclick="react('${escapeHTML(post.id)}','angry')">😡 Angry</button>
+<button onclick="react('${escapeHTML(post.id)}','like')">
+👍 Like
+</button>
+
+<button onclick="react('${escapeHTML(post.id)}','love')">
+❤️ Love
+</button>
+
+<button onclick="react('${escapeHTML(post.id)}','haha')">
+😂 Haha
+</button>
+
+<button onclick="react('${escapeHTML(post.id)}','wow')">
+😮 Wow
+</button>
+
+<button onclick="react('${escapeHTML(post.id)}','sad')">
+😢 Sad
+</button>
+
+<button onclick="react('${escapeHTML(post.id)}','angry')">
+😡 Angry
+</button>
 
 </div>
 
@@ -1754,14 +2500,18 @@ Send
 </div>
 
 </article>`;
+
 }
 
 
-/* ================= POST MENU ================= */
+/* =========================================================
+   POST MENU
+========================================================= */
 
 function togglePostMenu(postId){
 
-document.querySelectorAll(".postMenu")
+document
+.querySelectorAll(".postMenu")
 .forEach(menu=>{
 
 if(menu.id!=="menu-"+postId)
@@ -1769,10 +2519,13 @@ menu.classList.add("hidden");
 
 });
 
+
 const menu=$("menu-"+postId);
+
 
 if(menu)
 menu.classList.toggle("hidden");
+
 }
 
 
@@ -1780,10 +2533,14 @@ document.addEventListener("click",function(e){
 
 if(!e.target.closest(".menuWrap")){
 
-document.querySelectorAll(".postMenu")
-.forEach(menu=>menu.classList.add("hidden"));
+document
+.querySelectorAll(".postMenu")
+.forEach(menu=>
+menu.classList.add("hidden")
+);
 
 }
+
 });
 
 
@@ -1791,6 +2548,7 @@ function openMedia(url){
 
 if(url)
 window.open(url,"_blank");
+
 }
 
 
@@ -1801,29 +2559,38 @@ window.location.origin+
 window.location.pathname+
 "#post-"+postId;
 
-navigator.clipboard.writeText(url)
+
+navigator.clipboard
+.writeText(url)
 .then(()=>toast("Post link copied"))
 .catch(()=>toast("Link copy করা যায়নি"));
+
 }
 
 
 function savePost(postId){
 
 toast("Post Save feature প্রস্তুত আছে");
+
 }
 
 
 function reportPost(postId){
 
 toast("Report পাঠানোর ব্যবস্থা পরে যুক্ত করা যাবে");
+
 }
 
 
-/* ================= DATE ================= */
+/* =========================================================
+   DATE
+========================================================= */
 
 function formatDate(date){
 
-if(!date)return "";
+if(!date)
+return "";
+
 
 try{
 
@@ -1838,11 +2605,15 @@ timeStyle:"short"
 }catch(e){
 
 return "";
+
 }
+
 }
 
 
-/* ================= REACTION ================= */
+/* =========================================================
+   REACTION
+========================================================= */
 
 function toggleReactionMenu(postId){
 
@@ -1850,19 +2621,27 @@ const el=$("reaction-"+postId);
 
 if(el)
 el.classList.toggle("hidden");
+
 }
+
 
 async function toggleReaction(postId){
 
 await react(postId,"like");
+
 }
+
 
 async function react(postId,type){
 
 if(!currentUser){
+
 toast("Login করুন");
+
 return;
+
 }
+
 
 try{
 
@@ -1872,6 +2651,7 @@ const existing=await db
 .eq("post_id",postId)
 .eq("user_id",currentUser.id)
 .maybeSingle();
+
 
 if(existing.data){
 
@@ -1890,6 +2670,7 @@ await db
 reaction_type:type
 })
 .eq("id",existing.data.id);
+
 }
 
 }else{
@@ -1897,81 +2678,122 @@ reaction_type:type
 await db
 .from("reactions")
 .insert({
+
 post_id:postId,
+
 user_id:currentUser.id,
+
 reaction_type:type
+
 });
+
 }
 
+
 await loadFeed();
+
 
 }catch(err){
 
 toast(err.message);
+
 }
+
 }
 
 
-/* ================= COMMENT ================= */
+/* =========================================================
+   COMMENT
+========================================================= */
 
 function focusComment(postId){
 
 const input=$("comment-"+postId);
+
 
 if(input){
 
 input.focus();
 
 input.scrollIntoView({
+
 behavior:"smooth",
+
 block:"center"
+
 });
+
 }
+
 }
+
 
 async function addComment(postId){
 
 if(!currentUser){
+
 toast("Login করুন");
+
 return;
+
 }
+
 
 const input=$("comment-"+postId);
 
 const content=input.value.trim();
 
-if(!content)return;
+
+if(!content)
+return;
+
 
 const {error}=await db
 .from("comments")
 .insert({
+
 post_id:postId,
+
 user_id:currentUser.id,
+
 content:content
+
 });
+
 
 if(error){
 
 toast(error.message);
+
 return;
+
 }
+
 
 input.value="";
 
+
 toast("Comment added");
 
+
 await loadFeed();
+
 }
 
 
-/* ================= DELETE ================= */
+/* =========================================================
+   DELETE
+========================================================= */
 
 async function deletePost(postId){
 
-if(!currentUser)return;
+if(!currentUser)
+return;
+
 
 if(!confirm("এই Post Delete করবেন?"))
 return;
+
 
 try{
 
@@ -1979,6 +2801,7 @@ let query=db
 .from("posts")
 .delete()
 .eq("id",postId);
+
 
 if(
 !currentProfile||
@@ -1989,28 +2812,40 @@ query=query.eq(
 "user_id",
 currentUser.id
 );
+
 }
 
+
 const {error}=await query;
+
 
 if(error){
 
 toast(error.message);
+
 return;
+
 }
+
 
 toast("Post deleted");
 
+
 await loadFeed();
+
 
 }catch(err){
 
 toast(err.message);
+
 }
+
 }
 
 
-/* ================= SHARE ================= */
+/* =========================================================
+   SHARE
+========================================================= */
 
 async function sharePost(postId){
 
@@ -2019,14 +2854,19 @@ window.location.origin+
 window.location.pathname+
 "#post-"+postId;
 
+
 try{
 
 if(navigator.share){
 
 await navigator.share({
+
 title:"ঘুষ সাইট",
+
 text:"এই Post টি দেখুন",
+
 url:url
+
 });
 
 }else{
@@ -2034,26 +2874,37 @@ url:url
 await navigator.clipboard.writeText(url);
 
 toast("Post link copied");
+
 }
 
 }catch(e){}
+
 }
 
 
-/* ================= SEARCH ================= */
+/* =========================================================
+   SEARCH
+========================================================= */
 
 function quickSearchUser(){
 
 const q=$("quickSearch").value.trim();
 
-if(!q)return;
+
+if(!q)
+return;
+
 
 $("searchInput").value=q;
 
+
 showPage("searchPage");
 
+
 searchUsers();
+
 }
+
 
 async function searchUsers(){
 
@@ -2061,22 +2912,30 @@ const q=$("searchInput").value.trim();
 
 const box=$("searchResults");
 
+
 if(!q){
 
 box.innerHTML=
 '<div class="card">Search text দিন।</div>';
 
 return;
+
 }
+
 
 box.innerHTML=
 '<div class="card">Searching...</div>';
 
+
 const {data,error}=await db
 .from("profiles")
 .select("id,display_name,avatar_url,bio")
-.ilike("display_name","%"+q+"%")
+.ilike(
+"display_name",
+"%"+q+"%"
+)
 .limit(30);
+
 
 if(error){
 
@@ -2086,7 +2945,9 @@ escapeHTML(error.message)+
 '</div>';
 
 return;
+
 }
+
 
 if(!data.length){
 
@@ -2094,23 +2955,32 @@ box.innerHTML=
 '<div class="card">কোনো User পাওয়া যায়নি।</div>';
 
 return;
+
 }
 
+
 box.innerHTML="";
+
 
 data.forEach(user=>{
 
 box.insertAdjacentHTML(
+
 "beforeend",
-`<div class="card userRow"
+
+`<div
+class="card userRow"
 onclick="viewUserProfile('${escapeHTML(user.id)}')">
 
-<img class="avatar"
+<img
+class="avatar"
 src="${escapeHTML(avatarURL(user))}">
 
 <div>
 
-<b>${escapeHTML(user.display_name)}</b>
+<b>
+${escapeHTML(user.display_name)}
+</b>
 
 <div class="small">
 ${escapeHTML(user.bio||"")}
@@ -2119,20 +2989,29 @@ ${escapeHTML(user.bio||"")}
 </div>
 
 </div>`
+
 );
+
 });
+
 }
 
 
-/* ================= PROFILE ================= */
+/* =========================================================
+   PROFILE
+========================================================= */
 
 async function loadProfilePage(){
 
-if(!currentUser)return;
+if(!currentUser)
+return;
+
 
 await loadProfile();
 
+
 const p=currentProfile||{};
+
 
 const {data:posts}=await db
 .from("posts")
@@ -2140,13 +3019,17 @@ const {data:posts}=await db
 .eq("user_id",currentUser.id)
 .order("created_at",{ascending:false});
 
+
 let postsHTML="";
+
 
 if(posts){
 
 for(const post of posts)
 postsHTML+=await postHTML(post);
+
 }
+
 
 $("profileContent").innerHTML=`
 
@@ -2156,19 +3039,26 @@ $("profileContent").innerHTML=`
 
 <div class="profileInfo">
 
-<img class="avatar"
+<img
+class="avatar"
 src="${escapeHTML(avatarURL(p))}">
 
-<h2>${escapeHTML(p.display_name||"User")}</h2>
+<h2>
+${escapeHTML(p.display_name||"User")}
+</h2>
 
-<p>${escapeHTML(p.bio||"")}</p>
+<p>
+${escapeHTML(p.bio||"")}
+</p>
 
-<button class="primary"
+<button
+class="primary"
 onclick="openEditProfile()">
 ✏️ Edit Profile
 </button>
 
-<button class="secondary"
+<button
+class="secondary"
 style="width:100%;margin-top:8px"
 onclick="logout()">
 Logout
@@ -2182,13 +3072,21 @@ Logout
 
 ${postsHTML||
 '<div class="card">কোনো Post নেই।</div>'}
+
 `;
+
 }
 
 
+/* =========================================================
+   VIEW USER PROFILE
+========================================================= */
+
 async function viewUserProfile(userId){
 
-if(!userId)return;
+if(!userId)
+return;
+
 
 const {data:user,error}=await db
 .from("profiles")
@@ -2196,11 +3094,15 @@ const {data:user,error}=await db
 .eq("id",userId)
 .maybeSingle();
 
+
 if(error||!user){
 
 toast("Profile পাওয়া যায়নি");
+
 return;
+
 }
+
 
 const {data:posts}=await db
 .from("posts")
@@ -2209,13 +3111,17 @@ const {data:posts}=await db
 .eq("status","published")
 .order("created_at",{ascending:false});
 
+
 let postsHTML="";
+
 
 if(posts){
 
 for(const post of posts)
 postsHTML+=await postHTML(post);
+
 }
+
 
 $("profileContent").innerHTML=`
 
@@ -2225,91 +3131,164 @@ $("profileContent").innerHTML=`
 
 <div class="profileInfo">
 
-<img class="avatar"
+<img
+class="avatar"
 src="${escapeHTML(avatarURL(user))}">
 
-<h2>${escapeHTML(user.display_name)}</h2>
+<h2>
+${escapeHTML(user.display_name)}
+</h2>
 
-<p>${escapeHTML(user.bio||"")}</p>
+<p>
+${escapeHTML(user.bio||"")}
+</p>
 
 </div>
 
 </div>
 
-<h3>${escapeHTML(user.display_name)}-এর Posts</h3>
+<h3>
+${escapeHTML(user.display_name)}-এর Posts
+</h3>
 
 ${postsHTML||
 '<div class="card">কোনো Post নেই।</div>'}
+
 `;
 
-showPage("profilePage");
+
+showPageOnly("profilePage");
+
 }
 
 
-/* ================= EDIT PROFILE ================= */
+function showPageOnly(pageId){
+
+const pages=[
+"homePage",
+"searchPage",
+"postPage",
+"profilePage",
+"editPage",
+"chatPage"
+];
+
+
+pages.forEach(id=>{
+
+const el=$(id);
+
+if(el)
+el.classList.add("hidden");
+
+});
+
+
+$(pageId).classList.remove("hidden");
+
+window.scrollTo(0,0);
+
+}
+
+
+/* =========================================================
+   EDIT PROFILE
+========================================================= */
 
 function openEditProfile(){
 
-if(!currentProfile)return;
+if(!currentProfile)
+return;
+
 
 $("editName").value=
 currentProfile.display_name||"";
 
+
 $("editBio").value=
 currentProfile.bio||"";
+
 
 $("editAvatar").value=
 currentProfile.avatar_url||"";
 
+
 showPage("editPage");
+
 }
+
 
 async function saveProfile(){
 
-const name=$("editName").value.trim();
-const bio=$("editBio").value.trim();
-const avatar=$("editAvatar").value.trim();
+const name=
+$("editName").value.trim();
+
+const bio=
+$("editBio").value.trim();
+
+const avatar=
+$("editAvatar").value.trim();
+
 
 if(!name){
 
 toast("Name দিন");
+
 return;
+
 }
+
 
 const {error}=await db
 .from("profiles")
 .update({
+
 display_name:name,
+
 bio:bio,
+
 avatar_url:avatar
+
 })
 .eq("id",currentUser.id);
+
 
 if(error){
 
 toast(error.message);
+
 return;
+
 }
 
+
 await loadProfile();
+
 
 $("homeAvatar").src=
 avatarURL(currentProfile);
 
+
 toast("Profile updated");
 
+
 showPage("profilePage");
+
 }
 
 
-/* ================= CHAT USERS ================= */
+/* =========================================================
+   CHAT USERS
+========================================================= */
 
 async function loadChatUsers(){
 
 const box=$("chatUsers");
 
+
 box.innerHTML=
 '<div class="small">Loading users...</div>';
+
 
 const {data,error}=await db
 .from("profiles")
@@ -2317,6 +3296,7 @@ const {data,error}=await db
 .neq("id",currentUser.id)
 .order("display_name")
 .limit(50);
+
 
 if(error){
 
@@ -2326,7 +3306,9 @@ escapeHTML(error.message)+
 '</div>';
 
 return;
+
 }
+
 
 if(!data.length){
 
@@ -2334,23 +3316,32 @@ box.innerHTML=
 '<div class="small">কোনো অন্য User নেই।</div>';
 
 return;
+
 }
 
+
 box.innerHTML="";
+
 
 data.forEach(user=>{
 
 box.insertAdjacentHTML(
+
 "beforeend",
-`<div class="userRow"
+
+`<div
+class="userRow"
 onclick="startChat('${escapeHTML(user.id)}')">
 
-<img class="avatar"
+<img
+class="avatar"
 src="${escapeHTML(avatarURL(user))}">
 
 <div>
 
-<b>${escapeHTML(user.display_name)}</b>
+<b>
+${escapeHTML(user.display_name)}
+</b>
 
 <div class="small">
 ${escapeHTML(user.bio||"")}
@@ -2359,12 +3350,17 @@ ${escapeHTML(user.bio||"")}
 </div>
 
 </div>`
+
 );
+
 });
+
 }
 
 
-/* ================= CHAT ================= */
+/* =========================================================
+   CHAT
+========================================================= */
 
 async function startChat(userId){
 
@@ -2374,25 +3370,37 @@ const {data:user}=await db
 .eq("id",userId)
 .maybeSingle();
 
-if(!user)return;
+
+if(!user)
+return;
+
 
 selectedChatUser=user;
+
 
 $("chatTitle").textContent=
 "💬 "+user.display_name;
 
+
 $("chatBox").classList.remove("hidden");
+
 
 await loadMessages();
 
+
 subscribeMessages();
+
 }
+
 
 async function loadMessages(){
 
-if(!selectedChatUser)return;
+if(!selectedChatUser)
+return;
+
 
 const box=$("chatMessages");
+
 
 const {data,error}=await db
 .from("messages")
@@ -2405,6 +3413,7 @@ const {data,error}=await db
 )
 .order("created_at",{ascending:true});
 
+
 if(error){
 
 box.innerHTML=
@@ -2413,79 +3422,118 @@ escapeHTML(error.message)+
 '</div>';
 
 return;
+
 }
 
+
 box.innerHTML="";
+
 
 data.forEach(msg=>{
 
 const mine=
 msg.sender_id===currentUser.id;
 
+
 const div=document.createElement("div");
+
 
 div.className=
 "msg "+(mine?"mine":"other");
 
+
 div.textContent=msg.content;
 
+
 box.appendChild(div);
+
 });
 
+
 box.scrollTop=box.scrollHeight;
+
 }
+
 
 async function sendMessage(){
 
-if(!selectedChatUser)return;
+if(!selectedChatUser)
+return;
+
 
 const input=$("messageInput");
+
 const content=input.value.trim();
 
-if(!content)return;
+
+if(!content)
+return;
+
 
 const {error}=await db
 .from("messages")
 .insert({
+
 sender_id:currentUser.id,
+
 receiver_id:selectedChatUser.id,
+
 content:content
+
 });
+
 
 if(error){
 
 toast(error.message);
+
 return;
+
 }
+
 
 input.value="";
 
+
 await loadMessages();
+
 }
 
 
-/* ================= REALTIME CHAT ================= */
+/* =========================================================
+   REALTIME CHAT
+========================================================= */
 
 function subscribeMessages(){
 
 if(messageChannel){
 
 db.removeChannel(messageChannel);
+
 }
+
 
 messageChannel=
 db
 .channel("messages-"+currentUser.id)
 .on(
+
 "postgres_changes",
+
 {
+
 event:"INSERT",
+
 schema:"public",
+
 table:"messages"
+
 },
+
 payload=>{
 
 const msg=payload.new;
+
 
 if(
 msg.sender_id===currentUser.id||
@@ -2493,36 +3541,53 @@ msg.receiver_id===currentUser.id
 ){
 
 loadMessages();
+
 }
+
 }
+
 )
 .subscribe();
+
 }
 
 
-/* ================= LOGOUT ================= */
+/* =========================================================
+   LOGOUT
+========================================================= */
 
 async function logout(){
 
 await db.auth.signOut();
 
+
 currentUser=null;
+
 currentProfile=null;
+
 
 if(messageChannel){
 
 db.removeChannel(messageChannel);
+
 messageChannel=null;
+
 }
+
 
 openAuth();
+
 showLogin();
 
+
 toast("Logged out");
+
 }
 
 
-/* ================= START ================= */
+/* =========================================================
+   START
+========================================================= */
 
 loadUser();
 
