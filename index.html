@@ -31,7 +31,6 @@ button{cursor:pointer}
  color:white;
  display:flex;
  align-items:center;
- justify-content:space-between;
  gap:10px;
  padding:0 14px;
  box-shadow:0 2px 8px #0002;
@@ -62,6 +61,7 @@ button{cursor:pointer}
  display:flex;
  gap:4px;
  align-items:center;
+ margin-left:auto;
 }
 
 .nav button{
@@ -122,9 +122,7 @@ button{cursor:pointer}
  margin-bottom:22px;
 }
 
-.field{
- margin-bottom:12px;
-}
+.field{margin-bottom:12px}
 
 .field label{
  display:block;
@@ -215,6 +213,7 @@ button{cursor:pointer}
  background:none;
  color:#555;
  font-size:11px;
+ min-width:70px;
 }
 
 .bottomNav button span{
@@ -224,7 +223,7 @@ button{cursor:pointer}
 }
 
 .page{
- padding-bottom:70px;
+ padding-bottom:75px;
 }
 
 .awareness{
@@ -267,13 +266,9 @@ button{cursor:pointer}
  cursor:pointer;
 }
 
-.fileLabel input{
- display:none;
-}
+.fileLabel input{display:none}
 
-.post{
- overflow:hidden;
-}
+.post{overflow:hidden}
 
 .postHead{
  display:flex;
@@ -295,9 +290,7 @@ button{cursor:pointer}
  flex-shrink:0;
 }
 
-.postUser{
- font-weight:bold;
-}
+.postUser{font-weight:bold}
 
 .postMeta{
  color:#777;
@@ -343,9 +336,7 @@ button{cursor:pointer}
  color:#444;
 }
 
-.actions button:hover{
- background:#f0f2f5;
-}
+.actions button:hover{background:#f0f2f5}
 
 .reactionWrap{
  position:relative;
@@ -383,9 +374,7 @@ button{cursor:pointer}
  font-size:20px;
 }
 
-.reactionMenu button:hover{
- background:#eee;
-}
+.reactionMenu button:hover{background:#eee}
 
 .commentBox{
  display:flex;
@@ -409,9 +398,7 @@ button{cursor:pointer}
  color:white;
 }
 
-.comments{
- margin-top:10px;
-}
+.comments{margin-top:10px}
 
 .comment{
  background:#f0f2f5;
@@ -455,21 +442,12 @@ button{cursor:pointer}
  margin-top:8px;
 }
 
-.profileUsername{
- color:#777;
-}
+.profileUsername{color:#777}
 
 .row{
  display:flex;
  gap:10px;
  align-items:center;
-}
-
-.rowBetween{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:10px;
 }
 
 .helpLinks a{
@@ -481,6 +459,67 @@ button{cursor:pointer}
  color:#087334;
  text-decoration:none;
  font-weight:bold;
+}
+
+.newsItem{
+ display:flex;
+ gap:12px;
+ padding:13px 4px;
+ border-bottom:1px solid #eee;
+ align-items:center;
+}
+
+.newsIcon{
+ width:48px;
+ height:48px;
+ border-radius:10px;
+ background:#e9f7ef;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:24px;
+ flex-shrink:0;
+}
+
+.newsItem h3{
+ margin:0 0 4px;
+ font-size:16px;
+}
+
+.newsItem p{
+ margin:0;
+ color:#777;
+ font-size:12px;
+ line-height:1.5;
+}
+
+.newsItem a{
+ text-decoration:none;
+ color:#17202a;
+}
+
+.newsHeader{
+ background:linear-gradient(135deg,#e9f8ef,#fff);
+ border-left:5px solid #138a45;
+}
+
+.publicHeader{
+ background:linear-gradient(135deg,#eef8ff,#fff);
+ border-left:5px solid #138a45;
+}
+
+.searchResult{
+ padding:10px;
+ border-bottom:1px solid #eee;
+ cursor:pointer;
+}
+
+.searchResult:hover{background:#f5f5f5}
+
+.searchTitle{
+ font-weight:bold;
+ padding:5px 10px 10px;
+ color:#138a45;
 }
 
 .toast{
@@ -498,9 +537,7 @@ button{cursor:pointer}
  text-align:center;
 }
 
-.toast.show{
- display:block;
-}
+.toast.show{display:block}
 
 .loading{
  text-align:center;
@@ -508,66 +545,45 @@ button{cursor:pointer}
  color:#777;
 }
 
-.searchResult{
- padding:10px;
- border-bottom:1px solid #eee;
- cursor:pointer;
-}
-
-.searchResult:hover{
- background:#f5f5f5;
-}
-
-.searchTitle{
- font-weight:bold;
- padding:5px 10px 10px;
- color:#138a45;
-}
-
 @media(max-width:650px){
 
  .topbar{
   min-height:56px;
   padding:0 7px;
-  gap:6px;
+  gap:5px;
  }
 
- .logo{
-  font-size:17px;
- }
+ .logo{font-size:17px}
 
- .searchBox{
-  max-width:none;
- }
+ .searchBox{max-width:none}
 
  .searchBox input{
-  padding:8px 12px;
-  font-size:13px;
+  padding:8px 11px;
+  font-size:12px;
+ }
+
+ .nav{
+  gap:2px;
  }
 
  .nav button{
-  padding:7px 6px;
-  font-size:11px;
+  padding:7px 5px;
+  font-size:10px;
  }
 
- .container{
-  padding:9px;
- }
+ .container{padding:9px}
 
- .card{
-  border-radius:9px;
- }
+ .card{border-radius:9px}
 
- .mediaGrid{
-  grid-template-columns:1fr;
- }
+ .mediaGrid{grid-template-columns:1fr}
 
- .actions button{
-  font-size:11px;
- }
+ .actions button{font-size:11px}
 
- .reactionMenu{
-  left:-20px;
+ .reactionMenu{left:-20px}
+
+ .bottomNav button{
+  min-width:55px;
+  font-size:10px;
  }
 
 }
@@ -575,6 +591,8 @@ button{cursor:pointer}
 </head>
 
 <body>
+
+<!-- ================= LOGIN ================= -->
 
 <section id="authPage" class="auth">
 
@@ -595,9 +613,9 @@ button{cursor:pointer}
 <div class="field">
 <label>Username অথবা Phone Number</label>
 <input id="loginIdentity"
-       type="text"
-       placeholder="Username অথবা Phone Number"
-       autocomplete="username">
+type="text"
+placeholder="Username অথবা Phone Number"
+autocomplete="username">
 </div>
 
 <button class="primary" onclick="login()">
@@ -631,8 +649,8 @@ Create Account
 <div class="field">
 <label>Phone Number</label>
 <input id="signupPhone"
-       type="text"
-       placeholder="+8801XXXXXXXXX">
+type="text"
+placeholder="+8801XXXXXXXXX">
 </div>
 
 <button class="primary" onclick="signup()">
@@ -651,33 +669,32 @@ Already have an account? Login
 </section>
 
 
+<!-- ================= APP ================= -->
+
 <section id="appPage" class="hidden">
 
 <header class="topbar">
 
 <div class="logo">
-ঘুষ সাইট
+🌱 ঘুষ সাইট
 </div>
 
 <div class="searchBox">
-<input id="searchInput"
-       type="search"
-       placeholder="Search people"
-       oninput="searchUsers(this.value)">
+<input
+id="searchInput"
+type="search"
+placeholder="🔍 Search people"
+oninput="searchUsers(this.value)">
 </div>
 
 <div class="nav">
 
-<button onclick="showPage('homePage')">
-Home
-</button>
-
 <button onclick="showPage('profilePage')">
-Profile
+👤 Profile
 </button>
 
 <button onclick="logout()">
-Logout
+↪️ Logout
 </button>
 
 </div>
@@ -687,8 +704,12 @@ Logout
 
 <div class="container page">
 
+<!-- SEARCH -->
+
 <div id="searchResults" class="card hidden"></div>
 
+
+<!-- ================= HOME ================= -->
 
 <div id="homePage">
 
@@ -709,7 +730,8 @@ Logout
 
 <div class="field">
 
-<textarea id="postText"
+<textarea
+id="postText"
 placeholder="আপনার সমস্যা, অভিজ্ঞতা বা সচেতনতার কথা লিখুন..."></textarea>
 
 </div>
@@ -731,23 +753,22 @@ placeholder="আপনার সমস্যা, অভিজ্ঞতা বা
 
 </div>
 
-
 <div class="createActions">
 
 <label class="fileLabel">
 📷 Photo
 <input id="photoInput"
-       type="file"
-       accept="image/*"
-       multiple>
+type="file"
+accept="image/*"
+multiple>
 </label>
 
 <label class="fileLabel">
 🎥 Video
 <input id="videoInput"
-       type="file"
-       accept="video/*"
-       multiple>
+type="file"
+accept="video/*"
+multiple>
 </label>
 
 <label style="display:flex;align-items:center;gap:5px">
@@ -756,7 +777,6 @@ Anonymous
 </label>
 
 </div>
-
 
 <div style="margin-top:10px">
 
@@ -770,10 +790,9 @@ Anonymous
 
 </div>
 
-
 <button class="primary"
-        style="margin-top:12px"
-        onclick="createPost()">
+style="margin-top:12px"
+onclick="createPost()">
 
 Post
 
@@ -781,6 +800,24 @@ Post
 
 </div>
 
+</div>
+
+
+<!-- ================= PUBLIC POST ================= -->
+
+<div id="publicPostPage" class="hidden">
+
+<div class="card publicHeader">
+
+<h2 style="margin-top:0">
+📰 Public Post
+</h2>
+
+<p style="margin-bottom:0;color:#666">
+সবার প্রকাশিত পোস্ট এখানে দেখা যাবে।
+</p>
+
+</div>
 
 <div id="feed">
 
@@ -792,6 +829,8 @@ Post loading...
 
 </div>
 
+
+<!-- ================= PROFILE ================= -->
 
 <div id="profilePage" class="hidden">
 
@@ -814,12 +853,12 @@ A
 </div>
 
 <div id="profileBio"
-     style="margin-top:8px;color:#555">
+style="margin-top:8px;color:#555">
 </div>
 
 <button class="secondary"
-        style="margin-top:12px"
-        onclick="openEditProfile()">
+style="margin-top:12px"
+onclick="openEditProfile()">
 
 ✏️ Edit Profile
 
@@ -828,7 +867,6 @@ A
 </div>
 
 </div>
-
 
 <div class="card">
 
@@ -840,6 +878,8 @@ A
 
 </div>
 
+
+<!-- ================= EDIT PROFILE ================= -->
 
 <div id="editProfilePage" class="hidden">
 
@@ -860,17 +900,17 @@ A
 <div class="field">
 <label>Avatar URL</label>
 <input id="editAvatar"
-       placeholder="https://...">
+placeholder="https://...">
 </div>
 
 <button class="primary"
-        onclick="saveProfile()">
+onclick="saveProfile()">
 Save
 </button>
 
 <button class="secondary"
-        style="width:100%;margin-top:8px"
-        onclick="showPage('profilePage')">
+style="width:100%;margin-top:8px"
+onclick="showPage('profilePage')">
 Cancel
 </button>
 
@@ -879,24 +919,27 @@ Cancel
 </div>
 
 
+<!-- ================= HELP ================= -->
+
 <div id="helpPage" class="hidden">
 
 <div class="card helpLinks">
 
 <h2>🆘 Help</h2>
 
-<a href="https://acc.org.bd"
-target="_blank">
+<p style="color:#666">
+জরুরি বা আইনগত সহায়তার প্রয়োজন হলে নিচের সরকারি/বিশ্বস্ত সেবাগুলো ব্যবহার করুন।
+</p>
+
+<a href="https://acc.org.bd" target="_blank">
 দুর্নীতি দমন কমিশন (ACC)
 </a>
 
-<a href="https://www.police.gov.bd"
-target="_blank">
+<a href="https://www.police.gov.bd" target="_blank">
 বাংলাদেশ পুলিশ
 </a>
 
-<a href="https://gd.police.gov.bd"
-target="_blank">
+<a href="https://gd.police.gov.bd" target="_blank">
 Online GD
 </a>
 
@@ -908,8 +951,240 @@ Online GD
 
 </div>
 
+
+<!-- ================= NEWS ================= -->
+
+<div id="newsPage" class="hidden">
+
+<div class="card newsHeader">
+
+<h2 style="margin-top:0">
+🗞️ News
+</h2>
+
+<p style="margin-bottom:0;color:#666">
+বাংলাদেশ ও বিশ্বের গুরুত্বপূর্ণ সংবাদমাধ্যমের সর্বশেষ খবর দেখতে ভিজিট করুন।
+</p>
+
 </div>
 
+
+<div class="card">
+
+<!-- BBC -->
+
+<div class="newsItem">
+
+<div class="newsIcon">🌍</div>
+
+<div>
+
+<a href="https://www.bbc.com/bengali" target="_blank">
+
+<h3>BBC News বাংলা</h3>
+
+<p>
+বাংলাদেশ ও বিশ্বের খবর — BBC-এর বাংলা সংবাদ।
+</p>
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- Prothom Alo -->
+
+<div class="newsItem">
+
+<div class="newsIcon">📰</div>
+
+<div>
+
+<a href="https://www.prothomalo.com" target="_blank">
+
+<h3>প্রথম আলো</h3>
+
+<p>
+বাংলাদেশ, রাজনীতি, অর্থনীতি, খেলাধুলা ও বিশ্বের খবর।
+</p>
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- bdnews24 -->
+
+<div class="newsItem">
+
+<div class="newsIcon">🔴</div>
+
+<div>
+
+<a href="https://bdnews24.com" target="_blank">
+
+<h3>bdnews24.com</h3>
+
+<p>
+বাংলাদেশ ও আন্তর্জাতিক সংবাদ।
+</p>
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- Somoy -->
+
+<div class="newsItem">
+
+<div class="newsIcon">📺</div>
+
+<div>
+
+<a href="https://www.somoynews.tv" target="_blank">
+
+<h3>Somoy TV</h3>
+
+<p>
+বাংলাদেশের টেলিভিশন ও অনলাইন সংবাদ।
+</p>
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- Jamuna -->
+
+<div class="newsItem">
+
+<div class="newsIcon">📺</div>
+
+<div>
+
+<a href="https://jamuna.tv" target="_blank">
+
+<h3>Jamuna TV</h3>
+
+<p>
+দেশের সর্বশেষ সংবাদ ও বিশেষ প্রতিবেদন।
+</p>
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- Channel 24 -->
+
+<div class="newsItem">
+
+<div class="newsIcon">📺</div>
+
+<div>
+
+<a href="https://www.channel24bd.tv" target="_blank">
+
+<h3>Channel 24</h3>
+
+<p>
+বাংলাদেশ ও আন্তর্জাতিক সংবাদ।
+</p>
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- Ekattor -->
+
+<div class="newsItem">
+
+<div class="newsIcon">📺</div>
+
+<div>
+
+<a href="https://ekattor.tv" target="_blank">
+
+<h3>Ekattor TV</h3>
+
+<p>
+সর্বশেষ দেশি ও আন্তর্জাতিক খবর।
+</p>
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- News24 -->
+
+<div class="newsItem">
+
+<div class="newsIcon">📺</div>
+
+<div>
+
+<a href="https://www.news24bd.tv" target="_blank">
+
+<h3>News24</h3>
+
+<p>
+বাংলাদেশের সর্বশেষ সংবাদ।
+</p>
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- The Daily Star -->
+
+<div class="newsItem">
+
+<div class="newsIcon">⭐</div>
+
+<div>
+
+<a href="https://www.thedailystar.net" target="_blank">
+
+<h3>The Daily Star</h3>
+
+<p>
+বাংলাদেশের ইংরেজি সংবাদপত্র।
+</p>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= BOTTOM NAV ================= -->
 
 <nav class="bottomNav">
 
@@ -923,14 +1198,14 @@ Home
 Help
 </button>
 
-<button onclick="showPage('profilePage')">
-<span>👤</span>
-Profile
+<button onclick="showPage('publicPostPage')">
+<span>📰</span>
+Public Post
 </button>
 
-<button onclick="logout()">
-<span>↪️</span>
-Logout
+<button onclick="showPage('newsPage')">
+<span>🗞️</span>
+News
 </button>
 
 </nav>
@@ -955,7 +1230,6 @@ supabase.createClient(
  SUPABASE_KEY
 );
 
-
 let currentUser=null;
 let currentProfile=null;
 
@@ -974,11 +1248,11 @@ function escapeHTML(value){
  }
 
  return String(value)
-  .replace(/&/g,"&amp;")
-  .replace(/</g,"&lt;")
-  .replace(/>/g,"&gt;")
-  .replace(/"/g,"&quot;")
-  .replace(/'/g,"&#039;");
+ .replace(/&/g,"&amp;")
+ .replace(/</g,"&lt;")
+ .replace(/>/g,"&gt;")
+ .replace(/"/g,"&quot;")
+ .replace(/'/g,"&#039;");
 
 }
 
@@ -1001,19 +1275,23 @@ function toast(message){
 function normalizePhone(phone){
 
  return String(phone||"")
-  .replace(/[^\d+]/g,"")
-  .trim();
+ .replace(/[^\d+]/g,"")
+ .trim();
 
 }
 
+
+/* ================= PAGE SYSTEM ================= */
 
 function showPage(pageId){
 
  [
   "homePage",
+  "publicPostPage",
   "profilePage",
   "editProfilePage",
-  "helpPage"
+  "helpPage",
+  "newsPage"
  ].forEach(id=>{
 
   const el=$(id);
@@ -1032,7 +1310,15 @@ function showPage(pageId){
  }
 
 
+ $("searchResults").classList.add("hidden");
+
+
  if(pageId==="homePage"){
+  loadAwareness();
+ }
+
+
+ if(pageId==="publicPostPage"){
   loadFeed();
  }
 
@@ -1041,15 +1327,10 @@ function showPage(pageId){
   loadProfile();
  }
 
-
- if(pageId==="helpPage"){
-
-  $("searchResults").classList.add("hidden");
-
- }
-
 }
 
+
+/* ================= AUTH ================= */
 
 function showSignup(){
 
@@ -1425,8 +1706,6 @@ function enterApp(){
 
  loadAwareness();
 
- loadFeed();
-
 }
 
 
@@ -1458,6 +1737,8 @@ function logout(){
 
 }
 
+
+/* ================= AWARENESS ================= */
 
 const awarenessFallback=[
 
@@ -1568,6 +1849,8 @@ async function loadAwareness(){
 }
 
 
+/* ================= CREATE POST ================= */
+
 async function createPost(){
 
  if(!currentUser){
@@ -1667,12 +1950,6 @@ async function createPost(){
 
   }
 
-
-  /*
-   FIX:
-   posts table-এ anonymous নয়,
-   is_anonymous column ব্যবহার করা হচ্ছে।
-  */
 
   const {data:postData,error:postError}=
    await db
@@ -1804,7 +2081,7 @@ async function createPost(){
   );
 
 
-  loadFeed();
+  showPage("publicPostPage");
 
 
  }catch(err){
@@ -1827,6 +2104,8 @@ async function createPost(){
 
 }
 
+
+/* ================= FEED ================= */
 
 async function loadFeed(){
 
@@ -1864,7 +2143,7 @@ async function loadFeed(){
 
    feed.innerHTML=
     '<div class="card" style="text-align:center;color:#777">'+
-    'এখনও কোনো Post নেই। প্রথম Post করুন।'+
+    'এখনও কোনো Public Post নেই। প্রথম Post করুন।'+
     '</div>';
 
    return;
@@ -1907,17 +2186,13 @@ async function loadFeed(){
 
 
   profiles.forEach(profile=>{
-
    userMap[profile.id]=profile;
-
   });
 
 
   posts.forEach(post=>{
-
    post.profiles=
     userMap[post.user_id]||{};
-
   });
 
 
@@ -1957,9 +2232,7 @@ async function loadFeed(){
   media.forEach(m=>{
 
    if(!mediaMap[m.post_id]){
-
     mediaMap[m.post_id]=[];
-
    }
 
    mediaMap[m.post_id].push(m);
@@ -1968,17 +2241,13 @@ async function loadFeed(){
 
 
   posts.forEach(post=>{
-
    post.media=
     mediaMap[post.id]||[];
-
   });
 
 
   feed.innerHTML=
-   posts
-   .map(renderPost)
-   .join("");
+   posts.map(renderPost).join("");
 
 
  }catch(err){
@@ -2003,17 +2272,13 @@ async function loadFeed(){
 }
 
 
+/* ================= RENDER POST ================= */
+
 function renderPost(post){
 
  const profile=
   post.profiles||{};
 
-
- /*
-  FIX:
-  anonymous column-এর বদলে
-  is_anonymous ব্যবহার।
- */
 
  const isAnonymous=
   post.is_anonymous===true;
@@ -2120,8 +2385,8 @@ function renderPost(post){
 
  return `
  <article
-  class="card post"
-  id="post-${escapeHTML(post.id)}">
+ class="card post"
+ id="post-${escapeHTML(post.id)}">
 
   <div class="postHead">
 
@@ -2260,6 +2525,8 @@ function renderPost(post){
 }
 
 
+/* ================= REACTIONS ================= */
+
 function toggleReactionMenu(postId){
 
  const menu=
@@ -2302,34 +2569,6 @@ async function react(postId,type){
 
 
  try{
-
-  const profileResult=
-   await db
-   .from("profiles")
-   .select("id")
-   .eq("id",currentUser.id)
-   .limit(1);
-
-
-  if(profileResult.error){
-   throw profileResult.error;
-  }
-
-
-  if(!(profileResult.data||[]).length){
-
-   throw new Error(
-    "আপনার profile পাওয়া যায়নি।"
-   );
-
-  }
-
-
-  /*
-   FIX:
-   reactions table-এর সঠিক column হলো
-   reaction_type
-  */
 
   const result=
    await db
@@ -2401,11 +2640,6 @@ async function react(postId,type){
 
   }else{
 
-   /*
-    FIX:
-    reaction_type অবশ্যই পাঠানো হচ্ছে।
-   */
-
    const insert=
     await db
     .from("reactions")
@@ -2428,11 +2662,7 @@ async function react(postId,type){
 
 
   if(menu){
-
-   menu.classList.add(
-    "hidden"
-   );
-
+   menu.classList.add("hidden");
   }
 
 
@@ -2464,6 +2694,8 @@ async function react(postId,type){
 }
 
 
+/* ================= COMMENTS ================= */
+
 function focusComment(postId){
 
  const input=
@@ -2473,7 +2705,6 @@ function focusComment(postId){
  if(input){
 
   input.focus();
-
 
   input.scrollIntoView({
    behavior:"smooth",
@@ -2526,28 +2757,6 @@ async function addComment(postId){
 
 
  try{
-
-  const profileResult=
-   await db
-   .from("profiles")
-   .select("id")
-   .eq("id",currentUser.id)
-   .limit(1);
-
-
-  if(profileResult.error){
-   throw profileResult.error;
-  }
-
-
-  if(!(profileResult.data||[]).length){
-
-   throw new Error(
-    "আপনার profile পাওয়া যায়নি।"
-   );
-
-  }
-
 
   const {error}=
    await db
@@ -2678,9 +2887,7 @@ async function loadComments(postId){
 
 
   profiles.forEach(p=>{
-
    userMap[p.id]=p;
-
   });
 
 
@@ -2736,6 +2943,8 @@ async function loadComments(postId){
 }
 
 
+/* ================= SHARE ================= */
+
 async function sharePost(postId){
 
  const url=
@@ -2749,7 +2958,7 @@ async function sharePost(postId){
 
    await navigator.share({
     title:"ঘুষ সাইট",
-    text:"ঘুষ সাইটের একটি Post",
+    text:"ঘুষ সাইটের একটি Public Post",
     url:url
    });
 
@@ -2786,6 +2995,8 @@ async function sharePost(postId){
 
 }
 
+
+/* ================= PROFILE ================= */
 
 async function loadProfile(){
 
@@ -2948,11 +3159,8 @@ async function loadMyPosts(){
   media.forEach(m=>{
 
    if(!mediaMap[m.post_id]){
-
     mediaMap[m.post_id]=[];
-
    }
-
 
    mediaMap[m.post_id].push(m);
 
@@ -3112,6 +3320,8 @@ async function saveProfile(){
 }
 
 
+/* ================= PEOPLE SEARCH ================= */
+
 let searchTimer=null;
 
 
@@ -3168,11 +3378,6 @@ async function doSearchUsers(q){
 
 
  try{
-
-  /*
-   Search input নিরাপদ করার জন্য
-   special character escape করা হচ্ছে।
-  */
 
   const safeQ=
    q.replace(
@@ -3455,11 +3660,8 @@ async function openUser(id){
   media.forEach(m=>{
 
    if(!mediaMap[m.post_id]){
-
     mediaMap[m.post_id]=[];
-
    }
-
 
    mediaMap[m.post_id].push(m);
 
@@ -3499,6 +3701,8 @@ async function openUser(id){
 
 }
 
+
+/* ================= DELETE POST ================= */
 
 async function deletePost(postId){
 
@@ -3591,6 +3795,8 @@ async function deletePost(postId){
 }
 
 
+/* ================= CLOSE REACTION MENU ================= */
+
 document.addEventListener(
  "click",
  function(e){
@@ -3618,6 +3824,8 @@ document.addEventListener(
  }
 );
 
+
+/* ================= START ================= */
 
 window.addEventListener(
  "load",
