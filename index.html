@@ -196,8 +196,6 @@ textarea{
  margin:10px 0;
 }
 
-/* DAILY */
-
 .daily{
  border-left:5px solid #087443;
  background:#fff;
@@ -218,8 +216,6 @@ textarea{
  line-height:1.7;
  color:#26372d;
 }
-
-/* HELP */
 
 .helpBox{
  background:linear-gradient(180deg,#ffffff,#f7fbf8);
@@ -313,8 +309,6 @@ textarea{
  line-height:1.5;
 }
 
-/* POSTS */
-
 .avatar{
  width:45px;
  height:45px;
@@ -351,9 +345,7 @@ textarea{
 .mediaGrid.one{grid-template-columns:1fr}
 .mediaGrid.two{grid-template-columns:1fr 1fr}
 .mediaGrid.three,
-.mediaGrid.four{
- grid-template-columns:1fr 1fr;
-}
+.mediaGrid.four{grid-template-columns:1fr 1fr}
 
 .mediaGrid img,
 .mediaGrid video{
@@ -468,11 +460,7 @@ textarea{
  border-radius:7px;
 }
 
-.deleteItem{
- color:#e41e3f!important;
-}
-
-/* NAV */
+.deleteItem{color:#e41e3f!important}
 
 .bottomNav{
  position:fixed;
@@ -500,8 +488,6 @@ textarea{
  color:#087443;
 }
 
-/* PREVIEW */
-
 .preview{
  display:grid;
  grid-template-columns:repeat(2,1fr);
@@ -509,9 +495,7 @@ textarea{
  margin-top:10px;
 }
 
-.previewItem{
- position:relative;
-}
+.previewItem{position:relative}
 
 .previewItem img,
 .previewItem video{
@@ -531,8 +515,6 @@ textarea{
  width:28px;
  height:28px;
 }
-
-/* PROFILE */
 
 .profileCover{
  background:linear-gradient(135deg,#087443,#35a66b);
@@ -558,8 +540,6 @@ textarea{
  justify-content:center;
  margin-top:12px;
 }
-
-/* CHAT */
 
 .chatMessages{
  height:400px;
@@ -595,11 +575,14 @@ textarea{
  cursor:pointer;
 }
 
-.chatUser:hover{
- background:#f0f5f2;
-}
+.chatUser:hover{background:#f0f5f2}
 
-/* TOAST */
+.userRow{
+ display:flex;
+ gap:10px;
+ align-items:center;
+ cursor:pointer;
+}
 
 .toast{
  position:fixed;
@@ -629,17 +612,11 @@ textarea{
   padding:7px 8px;
  }
 
- .logo{
-  font-size:18px;
- }
+ .logo{font-size:18px}
 
- .searchBox input{
-  padding:9px 10px;
- }
+ .searchBox input{padding:9px 10px}
 
- .searchBox button{
-  padding:0 10px;
- }
+ .searchBox button{padding:0 10px}
 
  .container{
   margin-top:10px;
@@ -661,21 +638,16 @@ textarea{
   padding:10px;
  }
 
- .auth h1{
-  font-size:32px;
- }
+ .auth h1{font-size:32px}
 
- .actions button{
-  font-size:12px;
- }
-
+ .actions button{font-size:12px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
+<!-- ================= LOGIN ================= -->
 
 <div id="authPage" class="auth">
 
@@ -724,7 +696,7 @@ Create Account
 </div>
 
 
-<!-- APP -->
+<!-- ================= APP ================= -->
 
 <div id="app" class="hidden">
 
@@ -748,7 +720,7 @@ Create Account
 
 <main class="container">
 
-<!-- HOME -->
+<!-- ================= HOME ================= -->
 
 <section id="homePage">
 
@@ -782,9 +754,7 @@ Create Account
 <button
  class="helpPostBtn"
  onclick="showPage('postPage')">
-
 📝 Post
-
 </button>
 
 </div>
@@ -838,10 +808,8 @@ Create Account
 </div>
 
 <div class="helpNote">
-
 ⚠️ প্রমাণ থাকলে সংরক্ষণ করুন।
 নিজের নিরাপত্তাকে অগ্রাধিকার দিন।
-
 </div>
 
 </div>
@@ -878,7 +846,7 @@ Post loading...
 </section>
 
 
-<!-- SEARCH -->
+<!-- ================= SEARCH ================= -->
 
 <section id="searchPage" class="hidden">
 
@@ -905,7 +873,7 @@ Search People
 </section>
 
 
-<!-- POST -->
+<!-- ================= POST ================= -->
 
 <section id="postPage" class="hidden">
 
@@ -986,7 +954,7 @@ Publish Post
 </section>
 
 
-<!-- PROFILE -->
+<!-- ================= PROFILE ================= -->
 
 <section id="profilePage" class="hidden">
 
@@ -995,7 +963,7 @@ Publish Post
 </section>
 
 
-<!-- EDIT -->
+<!-- ================= EDIT PROFILE ================= -->
 
 <section id="editPage" class="hidden">
 
@@ -1027,7 +995,7 @@ Logout
 </section>
 
 
-<!-- CHAT -->
+<!-- ================= CHAT ================= -->
 
 <section id="chatPage" class="hidden">
 
@@ -1072,7 +1040,7 @@ Send
 </main>
 
 
-<!-- NAV -->
+<!-- ================= NAV ================= -->
 
 <nav class="bottomNav">
 
@@ -1329,9 +1297,7 @@ async function login(){
  if(!identity){
 
   $("loginMsg").innerHTML=
-  '<div class="status">'+
-  'Enter Username or Phone Number.'+
-  '</div>';
+  '<div class="status">Enter Username or Phone Number.</div>';
 
   return;
  }
@@ -1415,7 +1381,10 @@ async function login(){
   $("loginMsg").innerHTML=
   '<div class="success">✅ Login successful</div>';
 
-  setTimeout(openGuestApp,300);
+  setTimeout(
+   ()=>openGuestApp(),
+   300
+  );
 
  }catch(err){
 
@@ -1483,9 +1452,7 @@ async function signup(){
  if(phone.replace(/\D/g,"").length<8){
 
   $("signupMsg").innerHTML=
-  '<div class="status">'+
-  'Enter a valid Phone Number.'+
-  '</div>';
+  '<div class="status">Enter a valid Phone Number.</div>';
 
   return;
  }
@@ -1515,9 +1482,7 @@ async function signup(){
   if((usernameCheck.data||[]).length){
 
    $("signupMsg").innerHTML=
-   '<div class="status">'+
-   'This Username is already taken.'+
-   '</div>';
+   '<div class="status">This Username is already taken.</div>';
 
    return;
   }
@@ -1543,9 +1508,7 @@ async function signup(){
   if((phoneCheck.data||[]).length){
 
    $("signupMsg").innerHTML=
-   '<div class="status">'+
-   'This Phone Number is already registered.'+
-   '</div>';
+   '<div class="status">This Phone Number is already registered.</div>';
 
    return;
   }
@@ -1611,16 +1574,14 @@ async function signup(){
   );
 
   $("signupMsg").innerHTML=
-  '<div class="success">'+
-  '✅ Account created successfully.'+
-  '</div>';
+  '<div class="success">✅ Account created successfully.</div>';
 
   $("signupName").value="";
   $("signupUsername").value="";
   $("signupPhone").value="";
 
   setTimeout(
-   openGuestApp,
+   ()=>openGuestApp(),
    500
   );
 
@@ -1631,10 +1592,7 @@ async function signup(){
   $("signupMsg").innerHTML=
   '<div class="status">'+
   '<b>Account creation failed</b><br>'+
-  escapeHTML(
-   err.message||
-   "Account creation failed"
-  )+
+  escapeHTML(err.message||"Account creation failed")+
   '</div>';
 
  }
@@ -1650,22 +1608,16 @@ async function restoreSession(){
  try{
 
   const saved=
-   localStorage.getItem(
-    "ghus_guest_user"
-   );
+   localStorage.getItem("ghus_guest_user");
 
-  if(!saved)
-   return;
+  if(!saved)return;
 
   const user=
    JSON.parse(saved);
 
   if(!user||!user.id){
 
-   localStorage.removeItem(
-    "ghus_guest_user"
-   );
-
+   localStorage.removeItem("ghus_guest_user");
    return;
   }
 
@@ -1684,9 +1636,7 @@ async function restoreSession(){
    currentUser=null;
    currentProfile=null;
 
-   localStorage.removeItem(
-    "ghus_guest_user"
-   );
+   localStorage.removeItem("ghus_guest_user");
 
    return;
   }
@@ -1697,9 +1647,7 @@ async function restoreSession(){
 
   console.error(e);
 
-  localStorage.removeItem(
-   "ghus_guest_user"
-  );
+  localStorage.removeItem("ghus_guest_user");
 
  }
 }
@@ -1727,9 +1675,7 @@ async function openGuestApp(){
   currentUser=null;
   currentProfile=null;
 
-  localStorage.removeItem(
-   "ghus_guest_user"
-  );
+  localStorage.removeItem("ghus_guest_user");
 
   $("app").classList.add("hidden");
   $("authPage").classList.remove("hidden");
@@ -1752,7 +1698,6 @@ async function openGuestApp(){
 
  loadDailyAwareness();
  loadFeed();
-
 }
 
 
@@ -1765,11 +1710,7 @@ async function logout(){
  if(messageChannel){
 
   try{
-
-   await db.removeChannel(
-    messageChannel
-   );
-
+   await db.removeChannel(messageChannel);
   }catch(e){}
 
   messageChannel=null;
@@ -1780,9 +1721,7 @@ async function logout(){
  currentProfile=null;
  selectedChatUser=null;
 
- localStorage.removeItem(
-  "ghus_guest_user"
- );
+ localStorage.removeItem("ghus_guest_user");
 
  $("app").classList.add("hidden");
  $("authPage").classList.remove("hidden");
@@ -1791,7 +1730,6 @@ async function logout(){
  $("loginMsg").innerHTML="";
 
  toast("Logout successful");
-
 }
 
 
@@ -1828,9 +1766,7 @@ async function loadDailyAwareness(){
  try{
 
   const result=
-   await db.rpc(
-    "get_daily_awareness"
-   );
+   await db.rpc("get_daily_awareness");
 
   if(!result.error&&result.data){
 
@@ -1850,7 +1786,6 @@ async function loadDailyAwareness(){
 
  box.textContent=
   fallback[day%fallback.length];
-
 }
 
 
@@ -1910,7 +1845,6 @@ function showPage(pageId){
 
  if(pageId==="chatPage")
   loadChatUsers();
-
 }
 
 
@@ -1985,7 +1919,6 @@ function previewMedia(){
   preview.appendChild(item);
 
  });
-
 }
 
 
@@ -2006,7 +1939,6 @@ function removeSelectedFile(index){
  input.files=dt.files;
 
  previewMedia();
-
 }
 
 
@@ -2027,10 +1959,7 @@ async function createPost(){
 
  if(!profile){
 
-  toast(
-   "Your account was not found. Please login again."
-  );
-
+  toast("Your account was not found. Please login again.");
   return;
  }
 
@@ -2050,19 +1979,13 @@ async function createPost(){
 
  if(!content&&files.length===0){
 
-  toast(
-   "Write something or select a photo/video."
-  );
-
+  toast("Write something or select a photo/video.");
   return;
  }
 
  if(files.length>10){
 
-  toast(
-   "Maximum 10 media files allowed."
-  );
-
+  toast("Maximum 10 media files allowed.");
   return;
  }
 
@@ -2074,13 +1997,9 @@ async function createPost(){
 
   if(!valid){
 
-   toast(
-    "Only image or video files are allowed."
-   );
-
+   toast("Only image or video files are allowed.");
    return;
   }
-
  }
 
  const agree=
@@ -2123,10 +2042,7 @@ async function createPost(){
     result.error
    );
 
-   toast(
-    result.error.message
-   );
-
+   toast(result.error.message);
    return;
   }
 
@@ -2134,7 +2050,6 @@ async function createPost(){
 
   let firstMediaURL=null;
   let firstMediaType=null;
-
   let uploadFailed=false;
 
   for(let i=0;i<files.length;i++){
@@ -2196,7 +2111,6 @@ async function createPost(){
 
     firstMediaURL=publicURL;
     firstMediaType=mediaType;
-
    }
 
    const mediaInsert=
@@ -2217,8 +2131,8 @@ async function createPost(){
      mediaInsert.error
     );
 
+    uploadFailed=true;
    }
-
   }
 
   if(firstMediaURL){
@@ -2239,7 +2153,6 @@ async function createPost(){
      "POST UPDATE ERROR:",
      update.error
     );
-
   }
 
   $("postContent").value="";
@@ -2250,7 +2163,7 @@ async function createPost(){
   if(uploadFailed){
 
    toast(
-    "Post published, but some media files failed to upload."
+    "Post published, but some media files failed."
    );
 
   }else{
@@ -2258,7 +2171,6 @@ async function createPost(){
    toast(
     "✅ Post published successfully."
    );
-
   }
 
   showPage("homePage");
@@ -2271,9 +2183,7 @@ async function createPost(){
    err.message||
    "Post could not be created."
   );
-
  }
-
 }
 
 
@@ -2300,7 +2210,10 @@ async function getMedia(post){
   if(!result.error&&result.data)
    media=result.data;
 
- }catch(e){}
+ }catch(e){
+
+  console.error("MEDIA LOAD ERROR:",e);
+ }
 
  if(
   media.length===0&&
@@ -2310,20 +2223,18 @@ async function getMedia(post){
   media.push({
 
    media_url:post.media_url,
-   media_type:
-    post.media_type||"image"
+   media_type:post.media_type||"image"
 
   });
-
  }
 
  return media;
-
 }
 
 
 /* =====================================================
  LOAD POST USERS
+ IMPORTANT: NO posts -> profiles embedding
 ===================================================== */
 
 async function loadPostUsers(posts){
@@ -2372,9 +2283,7 @@ async function loadPostUsers(posts){
 
   console.error(err);
   return {};
-
  }
-
 }
 
 
@@ -2450,7 +2359,6 @@ async function loadFeed(){
     "beforeend",
     await postHTML(post)
    );
-
   }
 
  }catch(err){
@@ -2465,9 +2373,7 @@ async function loadFeed(){
   '<b>Post loading failed</b><br><br>'+
   escapeHTML(err.message)+
   '</div>';
-
  }
-
 }
 
 
@@ -2521,9 +2427,7 @@ async function loadCommentUsers(comments){
 
   console.error(e);
   return {};
-
  }
-
 }
 
 
@@ -2596,7 +2500,6 @@ async function postHTML(post){
    "COMMENTS LOAD ERROR:",
    e
   );
-
  }
 
  const commentUsers=
@@ -2647,7 +2550,6 @@ async function postHTML(post){
   });
 
   mediaHTML+="</div>";
-
  }
 
 
@@ -2681,7 +2583,6 @@ async function postHTML(post){
    </div>
 
   </div>`;
-
  });
 
 
@@ -2697,9 +2598,7 @@ async function postHTML(post){
   <button
    class="menuBtn"
    onclick="togglePostMenu('${escapeHTML(post.id)}')">
-
    ⋯
-
   </button>
 
   <div
@@ -2708,23 +2607,17 @@ async function postHTML(post){
 
    <button
     onclick="copyPostLink('${escapeHTML(post.id)}')">
-
     🔗 Copy link
-
    </button>
 
    <button
     onclick="savePost('${escapeHTML(post.id)}')">
-
     🔖 Save Post
-
    </button>
 
    <button
     onclick="reportPost('${escapeHTML(post.id)}')">
-
     🚩 Report
-
    </button>
 
    ${
@@ -2733,9 +2626,7 @@ async function postHTML(post){
     `<button
       class="deleteItem"
       onclick="deletePost('${escapeHTML(post.id)}')">
-
       🗑️ Delete Post
-
      </button>`
     :""
    }
@@ -2808,30 +2699,22 @@ async function postHTML(post){
 
    <button
     onclick="toggleReaction('${escapeHTML(post.id)}')">
-
     👍 Like
-
    </button>
 
    <button
     onclick="toggleReactionMenu('${escapeHTML(post.id)}')">
-
     ❤️ React
-
    </button>
 
    <button
     onclick="focusComment('${escapeHTML(post.id)}')">
-
     💬 Comment
-
    </button>
 
    <button
     onclick="sharePost('${escapeHTML(post.id)}')">
-
     ↗️ Share
-
    </button>
 
   </div>
@@ -2882,9 +2765,7 @@ async function postHTML(post){
 
    <button
     onclick="addComment('${escapeHTML(post.id)}')">
-
     Send
-
    </button>
 
   </div>
@@ -2892,7 +2773,6 @@ async function postHTML(post){
  </article>
 
  `;
-
 }
 
 
@@ -2915,7 +2795,6 @@ function togglePostMenu(postId){
 
  if(menu)
   menu.classList.toggle("hidden");
-
 }
 
 
@@ -2930,11 +2809,8 @@ document.addEventListener(
    .forEach(
     m=>m.classList.add("hidden")
    );
-
   }
-
- }
-);
+ });
 
 
 function openMedia(url){
@@ -2946,7 +2822,6 @@ function openMedia(url){
   "_blank",
   "noopener,noreferrer"
  );
-
 }
 
 
@@ -2965,9 +2840,7 @@ async function copyPostLink(postId){
  }catch(e){
 
   toast("Link: "+url);
-
  }
-
 }
 
 
@@ -2979,7 +2852,6 @@ function savePost(postId){
  );
 
  toast("🔖 Post saved");
-
 }
 
 
@@ -2988,7 +2860,6 @@ function reportPost(postId){
  toast(
   "🚩 Report option selected"
  );
-
 }
 
 
@@ -3009,10 +2880,7 @@ async function deletePost(postId){
 
  if(!profile){
 
-  toast(
-   "Account verification failed."
-  );
-
+  toast("Account verification failed.");
   return;
  }
 
@@ -3025,20 +2893,38 @@ async function deletePost(postId){
 
  try{
 
-  await db
-  .from("post_media")
-  .delete()
-  .eq("post_id",postId);
+  const mediaDelete=
+   await db
+   .from("post_media")
+   .delete()
+   .eq("post_id",postId);
 
-  await db
-  .from("comments")
-  .delete()
-  .eq("post_id",postId);
+  if(mediaDelete.error){
 
-  await db
-  .from("reactions")
-  .delete()
-  .eq("post_id",postId);
+   console.error(mediaDelete.error);
+  }
+
+  const commentsDelete=
+   await db
+   .from("comments")
+   .delete()
+   .eq("post_id",postId);
+
+  if(commentsDelete.error){
+
+   console.error(commentsDelete.error);
+  }
+
+  const reactionsDelete=
+   await db
+   .from("reactions")
+   .delete()
+   .eq("post_id",postId);
+
+  if(reactionsDelete.error){
+
+   console.error(reactionsDelete.error);
+  }
 
   const result=
    await db
@@ -3058,16 +2944,17 @@ async function deletePost(postId){
 
   toast("Post deleted");
 
-  loadFeed();
+  await loadFeed();
 
  }catch(err){
 
+  console.error(err);
+
   toast(
-   err.message
+   err.message||
+   "Delete failed"
   );
-
  }
-
 }
 
 
@@ -3082,7 +2969,6 @@ function toggleReactionMenu(postId){
 
  if(el)
   el.classList.toggle("hidden");
-
 }
 
 
@@ -3092,7 +2978,6 @@ async function toggleReaction(postId){
   postId,
   "like"
  );
-
 }
 
 
@@ -3119,10 +3004,8 @@ async function react(postId,type){
  try{
 
   /*
-   IMPORTANT:
-   limit(1) ব্যবহার করা হয়েছে।
-   এতে পুরোনো duplicate reaction থাকলেও
-   maybeSingle() error হবে না।
+   duplicate reaction থাকলেও
+   maybeSingle() ব্যবহার করছি না।
   */
 
   const existing=
@@ -3142,6 +3025,7 @@ async function react(postId,type){
    );
 
    toast(
+    "Reaction failed: "+
     existing.error.message
    );
 
@@ -3165,6 +3049,7 @@ async function react(postId,type){
     if(del.error){
 
      toast(
+      "Could not remove reaction: "+
       del.error.message
      );
 
@@ -3184,12 +3069,12 @@ async function react(postId,type){
     if(upd.error){
 
      toast(
+      "Could not change reaction: "+
       upd.error.message
      );
 
      return;
     }
-
    }
 
   }else{
@@ -3213,12 +3098,12 @@ async function react(postId,type){
     );
 
     toast(
+     "Could not react: "+
      ins.error.message
     );
 
     return;
    }
-
   }
 
   $("reaction-"+postId)
@@ -3234,11 +3119,9 @@ async function react(postId,type){
   );
 
   toast(
-   err.message
+   "Reaction failed: "+
+   (err.message||"Unknown error")
   );
-
- }
-
 }
 
 
@@ -3259,9 +3142,7 @@ function focusComment(postId){
    behavior:"smooth",
    block:"center"
   });
-
  }
-
 }
 
 
@@ -3278,10 +3159,7 @@ async function addComment(postId){
 
  if(!input){
 
-  toast(
-   "Comment box not found."
-  );
-
+  toast("Comment box not found.");
   return;
  }
 
@@ -3303,11 +3181,10 @@ async function addComment(postId){
   return;
  }
 
-
  /*
-   IMPORTANT:
-   comments.user_id -> profiles.id
-   তাই insert করার আগে profile verify করা হচ্ছে।
+  সবচেয়ে গুরুত্বপূর্ণ:
+  comments.user_id অবশ্যই profiles.id হতে হবে।
+  তাই insert-এর আগে profile verify করা হচ্ছে।
  */
 
  const profile=
@@ -3321,7 +3198,6 @@ async function addComment(postId){
 
   return;
  }
-
 
  try{
 
@@ -3344,6 +3220,7 @@ async function addComment(postId){
    );
 
    toast(
+    "Could not add comment: "+
     result.error.message
    );
 
@@ -3353,7 +3230,7 @@ async function addComment(postId){
   input.value="";
 
   toast(
-   "✅ Comment added"
+   "✅ Comment added successfully"
   );
 
   await loadFeed();
@@ -3366,11 +3243,10 @@ async function addComment(postId){
   );
 
   toast(
-   err.message
+   "Comment failed: "+
+   (err.message||"Unknown error")
   );
-
  }
-
 }
 
 
@@ -3409,11 +3285,8 @@ async function sharePost(postId){
   }catch(e){
 
    toast(url);
-
   }
-
  }
-
 }
 
 
@@ -3433,7 +3306,6 @@ function quickSearchUser(){
  showPage("searchPage");
 
  searchUsers();
-
 }
 
 
@@ -3448,22 +3320,26 @@ async function searchUsers(){
  if(!q){
 
   box.innerHTML=
-  '<div class="card">'+
-  'Enter a name or username.'+
-  '</div>';
+  '<div class="card">Enter a name or username.</div>';
 
   return;
  }
 
  box.innerHTML=
- '<div class="card center">'+
- 'Searching People...'+
- '</div>';
+ '<div class="card center">Searching People...</div>';
 
  try{
 
   const safeQ=
    q.replace(/[%_,]/g,"");
+
+  if(!safeQ){
+
+   box.innerHTML=
+   '<div class="card center">Enter a valid search.</div>';
+
+   return;
+  }
 
   const result=
    await db
@@ -3492,9 +3368,7 @@ async function searchUsers(){
   if(!users.length){
 
    box.innerHTML=
-   '<div class="card center">'+
-   'No people found.'+
-   '</div>';
+   '<div class="card center">No people found.</div>';
 
    return;
   }
@@ -3533,7 +3407,6 @@ async function searchUsers(){
     </div>
     `
    );
-
   });
 
  }catch(err){
@@ -3542,9 +3415,7 @@ async function searchUsers(){
   '<div class="card">'+
   escapeHTML(err.message)+
   '</div>';
-
  }
-
 }
 
 
@@ -3565,10 +3436,7 @@ async function viewUser(userId){
 
   if(result.error){
 
-   toast(
-    result.error.message
-   );
-
+   toast(result.error.message);
    return;
   }
 
@@ -3584,12 +3452,8 @@ async function viewUser(userId){
 
  }catch(err){
 
-  toast(
-   err.message
-  );
-
+  toast(err.message);
  }
-
 }
 
 
@@ -3623,14 +3487,17 @@ async function loadProfilePage(){
 
   if(!result.data){
 
-   toast(
-    "Your profile was not found."
-   );
-
+   toast("Your profile was not found.");
    return;
   }
 
   currentProfile=result.data;
+
+  if(!guestUser)
+   guestUser={};
+
+  guestUser.id=
+   result.data.id;
 
   guestUser.name=
    result.data.display_name;
@@ -3647,6 +3514,9 @@ async function loadProfilePage(){
   guestUser.bio=
    result.data.bio||"";
 
+  guestUser.role=
+   result.data.role||"user";
+
   localStorage.setItem(
    "ghus_guest_user",
    JSON.stringify(guestUser)
@@ -3660,9 +3530,7 @@ async function loadProfilePage(){
  }catch(err){
 
   console.error(err);
-
  }
-
 }
 
 
@@ -3739,7 +3607,6 @@ function renderProfile(profile){
 
  </div>
  `;
-
 }
 
 
@@ -3762,7 +3629,6 @@ async function openEditProfile(){
   currentProfile?.avatar_url||"";
 
  showPage("editPage");
-
 }
 
 
@@ -3782,14 +3648,23 @@ async function saveProfile(){
 
  if(!name){
 
-  toast(
-   "Enter your name."
-  );
-
+  toast("Enter your name.");
   return;
  }
 
  try{
+
+  const profile=
+   await verifyCurrentProfile();
+
+  if(!profile){
+
+   toast(
+    "Your account was not found. Please login again."
+   );
+
+   return;
+  }
 
   const result=
    await db
@@ -3805,10 +3680,7 @@ async function saveProfile(){
 
   if(result.error){
 
-   toast(
-    result.error.message
-   );
-
+   toast(result.error.message);
    return;
   }
 
@@ -3828,20 +3700,14 @@ async function saveProfile(){
   $("homeAvatar").src=
    avatarURL(currentProfile);
 
-  toast(
-   "Profile updated"
-  );
+  toast("Profile updated");
 
   showPage("profilePage");
 
  }catch(err){
 
-  toast(
-   err.message
-  );
-
+  toast(err.message);
  }
-
 }
 
 
@@ -3857,9 +3723,7 @@ async function loadChatUsers(){
  const box=$("chatUsers");
 
  box.innerHTML=
- '<div class="loading">'+
- 'Users loading...'+
- '</div>';
+ '<div class="loading">Users loading...</div>';
 
  try{
 
@@ -3891,9 +3755,7 @@ async function loadChatUsers(){
   if(!users.length){
 
    box.innerHTML=
-   '<div class="small">'+
-   'No other users found.'+
-   '</div>';
+   '<div class="small">No other users found.</div>';
 
    return;
   }
@@ -3937,7 +3799,6 @@ async function loadChatUsers(){
     </div>
     `
    );
-
   });
 
  }catch(err){
@@ -3946,9 +3807,7 @@ async function loadChatUsers(){
   '<div class="status">'+
   escapeHTML(err.message)+
   '</div>';
-
  }
-
 }
 
 
@@ -3969,19 +3828,13 @@ async function openChat(userId){
 
   if(result.error){
 
-   toast(
-    result.error.message
-   );
-
+   toast(result.error.message);
    return;
   }
 
   if(!result.data){
 
-   toast(
-    "User not found."
-   );
-
+   toast("User not found.");
    return;
   }
 
@@ -4008,12 +3861,8 @@ async function openChat(userId){
 
  }catch(err){
 
-  toast(
-   err.message
-  );
-
+  toast(err.message);
  }
-
 }
 
 
@@ -4032,9 +3881,7 @@ async function loadMessages(){
  const box=$("chatMessages");
 
  box.innerHTML=
- '<div class="loading">'+
- 'Messages loading...'+
- '</div>';
+ '<div class="loading">Messages loading...</div>';
 
  try{
 
@@ -4111,7 +3958,6 @@ async function loadMessages(){
    '<div class="small center">'+
    'No messages yet. Send the first message.'+
    '</div>';
-
   }
 
   messages.forEach(renderMessage);
@@ -4127,9 +3973,7 @@ async function loadMessages(){
   '<div class="small">'+
   escapeHTML(err.message)+
   '</div>';
-
  }
-
 }
 
 
@@ -4159,7 +4003,6 @@ function renderMessage(message){
   message.content||"";
 
  box.appendChild(div);
-
 }
 
 
@@ -4174,10 +4017,7 @@ async function sendMessage(){
   !selectedChatUser
  ){
 
-  toast(
-   "Select a user first."
-  );
-
+  toast("Select a user first.");
   return;
  }
 
@@ -4244,12 +4084,8 @@ async function sendMessage(){
 
  }catch(err){
 
-  toast(
-   err.message
-  );
-
+  toast(err.message);
  }
-
 }
 
 
@@ -4262,13 +4098,8 @@ function setupMessageRealtime(){
  if(messageChannel){
 
   try{
-
-   db.removeChannel(
-    messageChannel
-   );
-
+   db.removeChannel(messageChannel);
   }catch(e){}
-
  }
 
  if(
@@ -4319,7 +4150,6 @@ function setupMessageRealtime(){
    }
   )
   .subscribe();
-
 }
 
 
@@ -4329,9 +4159,9 @@ function setupMessageRealtime(){
 
 document.addEventListener(
  "DOMContentLoaded",
- function(){
+ async function(){
 
-  restoreSession();
+  await restoreSession();
 
  }
 );
