@@ -84,6 +84,7 @@ button{cursor:pointer;border:0}
  transition:.2s;
 }
 .primary:hover{background:#065b34}
+
 .secondary{
  background:#e8f3ed;
  color:#087443;
@@ -102,10 +103,12 @@ input,textarea,select{
  background:#fff;
  color:#17251c;
 }
+
 input:focus,textarea:focus,select:focus{
  border-color:#087443;
  box-shadow:0 0 0 3px rgba(8,116,67,.10);
 }
+
 textarea{
  min-height:100px;
  resize:vertical;
@@ -150,16 +153,19 @@ textarea{
  font-weight:700;
  line-height:1.55;
 }
+
 .loginHint{
  text-align:center;
  color:#66756c;
  font-size:13px;
  margin:10px 0 15px;
 }
+
 .small{
  color:#65736b;
  font-size:13px;
 }
+
 .status{
  padding:10px;
  background:#fff8e1;
@@ -169,6 +175,7 @@ textarea{
  margin:8px 0;
  line-height:1.5;
 }
+
 .success{
  padding:10px;
  background:#e8f6ee;
@@ -176,6 +183,17 @@ textarea{
  border-left:4px solid #087443;
  border-radius:7px;
  margin:8px 0;
+}
+
+.warningBox{
+ background:#fff5f5;
+ border:1px solid #efb2b2;
+ border-left:5px solid #d32f2f;
+ color:#8b1e1e;
+ padding:12px;
+ border-radius:8px;
+ line-height:1.55;
+ margin:10px 0;
 }
 
 .daily{
@@ -186,11 +204,13 @@ textarea{
  margin-bottom:12px;
  box-shadow:0 1px 4px rgba(0,70,35,.12);
 }
+
 .dailyTitle{
  color:#087443;
  font-weight:800;
  margin-bottom:7px;
 }
+
 .dailyText{
  font-size:16px;
  line-height:1.7;
@@ -211,25 +231,33 @@ textarea{
  align-items:center;
  position:relative;
 }
+
 .postName{
  font-weight:800;
  color:#173c2a;
 }
+
 .postText{
  white-space:pre-wrap;
  margin:14px 0;
  line-height:1.6;
  font-size:15px;
 }
+
 .mediaGrid{
  display:grid;
  gap:4px;
  margin-top:10px;
 }
+
 .mediaGrid.one{grid-template-columns:1fr}
 .mediaGrid.two{grid-template-columns:1fr 1fr}
-.mediaGrid.three,.mediaGrid.four{grid-template-columns:1fr 1fr}
-.mediaGrid img,.mediaGrid video{
+.mediaGrid.three,.mediaGrid.four{
+ grid-template-columns:1fr 1fr;
+}
+
+.mediaGrid img,
+.mediaGrid video{
  width:100%;
  max-height:500px;
  object-fit:cover;
@@ -237,6 +265,7 @@ textarea{
  background:#111;
  display:block;
 }
+
 .mediaGrid img{cursor:pointer}
 
 .actions{
@@ -247,6 +276,7 @@ textarea{
  margin-top:10px;
  padding:5px 0;
 }
+
 .actions button{
  flex:1;
  background:white;
@@ -255,6 +285,7 @@ textarea{
  color:#555;
  font-weight:600;
 }
+
 .actions button:hover{
  background:#eaf4ef;
  color:#087443;
@@ -269,6 +300,7 @@ textarea{
  border-radius:10px;
  margin-top:5px;
 }
+
 .reactionMenu button{
  background:white;
  padding:7px 10px;
@@ -280,18 +312,24 @@ textarea{
  gap:8px;
  margin-top:9px;
 }
+
 .commentBubble{
  background:#f0f2f5;
  border-radius:15px;
  padding:8px 12px;
  flex:1;
 }
+
 .commentInput{
  display:flex;
  gap:5px;
  margin-top:10px;
 }
-.commentInput input{margin:0}
+
+.commentInput input{
+ margin:0;
+}
+
 .commentInput button{
  background:#087443;
  color:white;
@@ -300,6 +338,7 @@ textarea{
 }
 
 .menuWrap{position:relative}
+
 .menuBtn{
  width:38px;
  height:38px;
@@ -308,6 +347,7 @@ textarea{
  color:#555;
  font-size:22px;
 }
+
 .postMenu{
  position:absolute;
  right:0;
@@ -319,6 +359,7 @@ textarea{
  padding:6px;
  z-index:20;
 }
+
 .postMenu button{
  display:block;
  width:100%;
@@ -327,8 +368,14 @@ textarea{
  background:white;
  border-radius:7px;
 }
-.postMenu button:hover{background:#f0f2f5}
-.deleteItem{color:#e41e3f!important}
+
+.postMenu button:hover{
+ background:#f0f2f5;
+}
+
+.deleteItem{
+ color:#e41e3f!important;
+}
 
 .bottomNav{
  position:fixed;
@@ -342,6 +389,7 @@ textarea{
  box-shadow:0 -2px 8px #ccc;
  z-index:90;
 }
+
 .bottomNav button{
  flex:1;
  max-width:140px;
@@ -350,7 +398,10 @@ textarea{
  font-size:12px;
  font-weight:600;
 }
-.bottomNav button.active{color:#087443}
+
+.bottomNav button.active{
+ color:#087443;
+}
 
 .preview{
  display:grid;
@@ -358,13 +409,19 @@ textarea{
  gap:7px;
  margin-top:10px;
 }
-.previewItem{position:relative}
-.previewItem img,.previewItem video{
+
+.previewItem{
+ position:relative;
+}
+
+.previewItem img,
+.previewItem video{
  width:100%;
  height:180px;
  object-fit:cover;
  border-radius:8px;
 }
+
 .removePreview{
  position:absolute;
  right:5px;
@@ -381,22 +438,26 @@ textarea{
  height:130px;
  border-radius:10px 10px 0 0;
 }
+
 .profileInfo{
  text-align:center;
  margin-top:-45px;
 }
+
 .profileInfo .avatar{
  width:90px;
  height:90px;
  border:4px solid white;
  margin:auto;
 }
+
 .profileButtons{
  display:flex;
  gap:8px;
  justify-content:center;
  margin-top:12px;
 }
+
 .profileButtons button{
  padding:9px 15px;
  border-radius:8px;
@@ -410,36 +471,48 @@ textarea{
  border-bottom:1px solid #eee;
  cursor:pointer;
 }
-.userRow:hover{background:#f0f5f2}
+
+.userRow:hover{
+ background:#f0f5f2;
+}
 
 .chatMessages{
  height:400px;
  overflow-y:auto;
  background:#f0f5f2;
  padding:10px;
+ border-radius:8px;
 }
+
 .msg{
  max-width:75%;
  padding:9px 12px;
  margin:5px 0;
  border-radius:15px;
  clear:both;
+ word-break:break-word;
 }
+
 .msg.mine{
  float:right;
  background:#087443;
  color:white;
 }
+
 .msg.other{
  float:left;
  background:white;
 }
+
 .chatUser{
  padding:10px;
  border-bottom:1px solid #eee;
  cursor:pointer;
 }
-.chatUser:hover{background:#f0f5f2}
+
+.chatUser:hover{
+ background:#f0f5f2;
+}
 
 .toast{
  position:fixed;
@@ -452,38 +525,70 @@ textarea{
  border-radius:20px;
  z-index:999;
  box-shadow:0 3px 12px #777;
+ max-width:90%;
+ text-align:center;
+}
+
+.loading{
+ text-align:center;
+ padding:15px;
+ color:#68776e;
 }
 
 @media(max-width:600px){
+
  .header{
   height:54px;
   padding:7px 8px;
  }
- .logo{font-size:18px}
- .searchBox input{padding:9px 10px}
- .searchBox button{padding:0 10px}
+
+ .logo{
+  font-size:18px;
+ }
+
+ .searchBox input{
+  padding:9px 10px;
+ }
+
+ .searchBox button{
+  padding:0 10px;
+ }
+
  .container{
   margin-top:10px;
   padding:0 5px;
  }
+
  .card{
   border-radius:8px;
   padding:12px;
  }
- .mediaGrid img,.mediaGrid video{max-height:420px}
+
+ .mediaGrid img,
+ .mediaGrid video{
+  max-height:420px;
+ }
+
  .auth{
   margin:15px auto;
   padding:10px;
  }
- .auth h1{font-size:32px}
- .actions button{font-size:12px}
+
+ .auth h1{
+  font-size:32px;
+ }
+
+ .actions button{
+  font-size:12px;
+ }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
+<!-- ================= LOGIN ================= -->
 
 <div id="authPage" class="auth">
 
@@ -512,7 +617,9 @@ textarea{
 🔐 Password, Email, SMS বা OTP লাগবে না
 </div>
 
-<button class="primary" onclick="login()">Login</button>
+<button class="primary" onclick="login()">
+Login
+</button>
 
 <div id="loginMsg"></div>
 
@@ -520,11 +627,18 @@ textarea{
 
 <h3>🆕 Create New Account</h3>
 
-<input id="signupName" placeholder="আপনার নাম">
+<input
+ id="signupName"
+ placeholder="আপনার নাম">
 
-<input id="signupUsername" placeholder="Username">
+<input
+ id="signupUsername"
+ placeholder="Username">
 
-<input id="signupPhone" type="tel" placeholder="Phone Number">
+<input
+ id="signupPhone"
+ type="tel"
+ placeholder="Phone Number">
 
 <button class="primary" onclick="signup()">
 Create Account
@@ -536,7 +650,7 @@ Create Account
 </div>
 
 
-<!-- APP -->
+<!-- ================= APP ================= -->
 
 <div id="app" class="hidden">
 
@@ -551,7 +665,9 @@ Create Account
  placeholder="মানুষ খুঁজুন..."
  onkeydown="if(event.key==='Enter')quickSearchUser()">
 
-<button onclick="quickSearchUser()">🔍</button>
+<button onclick="quickSearchUser()">
+🔍
+</button>
 
 </div>
 
@@ -560,13 +676,15 @@ Create Account
 
 <main class="container">
 
-<!-- HOME -->
+<!-- ================= HOME ================= -->
 
 <section id="homePage">
 
 <div class="daily">
 
-<div class="dailyTitle">🇧🇩 আজকের সচেতনতা</div>
+<div class="dailyTitle">
+🇧🇩 আজকের সচেতনতা
+</div>
 
 <div id="dailyText" class="dailyText">
 লোড হচ্ছে...
@@ -578,13 +696,18 @@ Create Account
 
 <div style="display:flex;gap:10px;align-items:center">
 
-<img id="homeAvatar" class="avatar">
+<img
+ id="homeAvatar"
+ class="avatar"
+ alt="avatar">
 
 <button
  class="secondary"
  style="flex:1;text-align:left"
  onclick="showPage('postPage')">
+
 আপনার মনে কী আছে?
+
 </button>
 
 </div>
@@ -592,13 +715,15 @@ Create Account
 </div>
 
 <div id="feed">
-<div class="card center">Post loading...</div>
+<div class="card center">
+Post loading...
+</div>
 </div>
 
 </section>
 
 
-<!-- SEARCH -->
+<!-- ================= SEARCH ================= -->
 
 <section id="searchPage" class="hidden">
 
@@ -621,13 +746,30 @@ Search
 </section>
 
 
-<!-- POST -->
+<!-- ================= CREATE POST ================= -->
 
 <section id="postPage" class="hidden">
 
 <div class="card">
 
 <h2>📝 Create Post</h2>
+
+<div class="warningBox">
+
+⚠️ <b>গুরুত্বপূর্ণ নিয়ম</b><br>
+
+অশ্লীল, যৌনভাবে স্পষ্ট, পর্নোগ্রাফিক বা অবৈধ ছবি/ভিডিও
+আপলোড করা সম্পূর্ণ নিষিদ্ধ।<br>
+
+অন্যের সম্মানহানি করে এমন কনটেন্টও প্রকাশ করবেন না।
+শুধু সত্য, দায়িত্বশীল ও জনস্বার্থমূলক তথ্য প্রকাশ করুন।
+
+<br><br>
+
+<b>নিয়ম ভঙ্গ করলে পোস্ট সরানো এবং প্রয়োজনীয়
+account action নেওয়া হতে পারে।</b>
+
+</div>
 
 <textarea
  id="postContent"
@@ -665,10 +807,22 @@ Search
  multiple
  onchange="previewMedia()">
 
+<div
+ class="small"
+ style="margin-top:5px">
+
+📷 ছবি / 🎥 ভিডিও সর্বোচ্চ 10টি নির্বাচন করতে পারবেন।
+
+</div>
+
 <div id="mediaPreview" class="preview"></div>
 
-<button class="primary" onclick="createPost()">
+<button
+ class="primary"
+ onclick="createPost()">
+
 Publish
+
 </button>
 
 </div>
@@ -676,14 +830,16 @@ Publish
 </section>
 
 
-<!-- PROFILE -->
+<!-- ================= PROFILE ================= -->
 
 <section id="profilePage" class="hidden">
+
 <div id="profileContent"></div>
+
 </section>
 
 
-<!-- EDIT -->
+<!-- ================= EDIT PROFILE ================= -->
 
 <section id="editPage" class="hidden">
 
@@ -691,21 +847,33 @@ Publish
 
 <h2>✏️ Edit Profile</h2>
 
-<input id="editName" placeholder="Name">
+<input
+ id="editName"
+ placeholder="Name">
 
-<textarea id="editBio" placeholder="Bio"></textarea>
+<textarea
+ id="editBio"
+ placeholder="Bio"></textarea>
 
-<input id="editAvatar" placeholder="Avatar Image URL">
+<input
+ id="editAvatar"
+ placeholder="Avatar Image URL">
 
-<button class="primary" onclick="saveProfile()">
+<button
+ class="primary"
+ onclick="saveProfile()">
+
 Save
+
 </button>
 
 <button
  class="secondary"
  style="width:100%;margin-top:8px"
  onclick="logout()">
+
 Logout
+
 </button>
 
 </div>
@@ -713,7 +881,7 @@ Logout
 </section>
 
 
-<!-- CHAT -->
+<!-- ================= CHAT ================= -->
 
 <section id="chatPage" class="hidden">
 
@@ -744,7 +912,9 @@ Logout
 <button
  onclick="sendMessage()"
  style="background:#087443;color:white;padding:0 15px;border-radius:7px">
+
 Send
+
 </button>
 
 </div>
@@ -756,26 +926,48 @@ Send
 </main>
 
 
+<!-- ================= NAV ================= -->
+
 <nav class="bottomNav">
 
-<button id="navHome" onclick="showPage('homePage')">
+<button
+ id="navHome"
+ onclick="showPage('homePage')">
+
 🏠<br>Home
+
 </button>
 
-<button id="navSearch" onclick="showPage('searchPage')">
+<button
+ id="navSearch"
+ onclick="showPage('searchPage')">
+
 🔍<br>Search
+
 </button>
 
-<button id="navPost" onclick="showPage('postPage')">
+<button
+ id="navPost"
+ onclick="showPage('postPage')">
+
 ➕<br>Post
+
 </button>
 
-<button id="navChat" onclick="showPage('chatPage')">
+<button
+ id="navChat"
+ onclick="showPage('chatPage')">
+
 💬<br>Chat
+
 </button>
 
-<button id="navProfile" onclick="showPage('profilePage')">
+<button
+ id="navProfile"
+ onclick="showPage('profilePage')">
+
 👤<br>Profile
+
 </button>
 
 </nav>
@@ -821,6 +1013,7 @@ function $(id){
  return document.getElementById(id);
 }
 
+
 function toast(message){
 
  const old=document.querySelector(".toast");
@@ -835,14 +1028,14 @@ function toast(message){
  document.body.appendChild(t);
 
  setTimeout(()=>{
-  t.remove();
+  if(t)t.remove();
  },3000);
 }
 
 
 function escapeHTML(text){
 
- if(text===null || text===undefined)
+ if(text===null||text===undefined)
   return "";
 
  return String(text)
@@ -873,15 +1066,42 @@ function normalizePhone(phone){
 }
 
 
+function makeUUID(){
+
+ if(
+  window.crypto &&
+  typeof window.crypto.randomUUID==="function"
+ ){
+
+  return window.crypto.randomUUID();
+
+ }
+
+ return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"
+ .replace(/[xy]/g,function(c){
+
+  const r=Math.random()*16|0;
+
+  const v=
+   c==="x"
+   ?r
+   :(r&0x3|0x8);
+
+  return v.toString(16);
+
+ });
+}
+
+
 function avatarURL(profile){
 
- if(profile && profile.avatar_url)
+ if(profile&&profile.avatar_url)
   return profile.avatar_url;
 
  const name=
- profile?.display_name ||
- profile?.username ||
- "User";
+  profile?.display_name||
+  profile?.username||
+  "User";
 
  return "https://ui-avatars.com/api/?name="+
  encodeURIComponent(name)+
@@ -922,14 +1142,17 @@ function formatDate(date){
 async function login(){
 
  const identity=
- $("loginIdentity").value.trim();
+  $("loginIdentity").value.trim();
 
  if(!identity){
 
   $("loginMsg").innerHTML=
-  '<div class="status">Username অথবা Phone Number দিন।</div>';
+  '<div class="status">'+
+  'Username অথবা Phone Number দিন।'+
+  '</div>';
 
   return;
+
  }
 
  $("loginMsg").innerHTML=
@@ -940,14 +1163,14 @@ async function login(){
   const digits=
    identity.replace(/[^\d]/g,"");
 
-  let query;
+  let result;
 
   if(digits.length>=8){
 
    const phone=
     normalizePhone(identity);
 
-   query=
+   result=
     await db
     .from("profiles")
     .select("*")
@@ -956,7 +1179,7 @@ async function login(){
 
   }else{
 
-   query=
+   result=
     await db
     .from("profiles")
     .select("*")
@@ -965,17 +1188,18 @@ async function login(){
 
   }
 
-  if(query.error){
+  if(result.error){
 
    $("loginMsg").innerHTML=
    '<div class="status">'+
-   escapeHTML(query.error.message)+
+   escapeHTML(result.error.message)+
    '</div>';
 
    return;
+
   }
 
-  if(!query.data){
+  if(!result.data){
 
    $("loginMsg").innerHTML=
    '<div class="status">'+
@@ -983,9 +1207,10 @@ async function login(){
    '</div>';
 
    return;
+
   }
 
-  const user=query.data;
+  const user=result.data;
 
   guestUser={
    id:user.id,
@@ -1028,18 +1253,18 @@ async function login(){
 async function signup(){
 
  const name=
- $("signupName").value.trim();
+  $("signupName").value.trim();
 
  const username=
- $("signupUsername").value
- .trim()
- .toLowerCase()
- .replace(/\s+/g,"");
+  $("signupUsername").value
+  .trim()
+  .toLowerCase()
+  .replace(/\s+/g,"");
 
  const phone=
- normalizePhone(
-  $("signupPhone").value
- );
+  normalizePhone(
+   $("signupPhone").value
+  );
 
  if(!name||!username||!phone){
 
@@ -1049,6 +1274,7 @@ async function signup(){
   '</div>';
 
   return;
+
  }
 
  if(username.length<3){
@@ -1059,6 +1285,29 @@ async function signup(){
   '</div>';
 
   return;
+
+ }
+
+ if(!/^[a-z0-9_.-]+$/.test(username)){
+
+  $("signupMsg").innerHTML=
+  '<div class="status">'+
+  'Username-এ শুধু English letter, number, _ , . অথবা - ব্যবহার করুন।'+
+  '</div>';
+
+  return;
+
+ }
+
+ if(phone.replace(/\D/g,"").length<8){
+
+  $("signupMsg").innerHTML=
+  '<div class="status">'+
+  'সঠিক Phone Number দিন।'+
+  '</div>';
+
+  return;
+
  }
 
  $("signupMsg").innerHTML=
@@ -1066,26 +1315,27 @@ async function signup(){
 
  try{
 
-  /* Username check */
+  /* Username */
 
-  const existingUsername=
+  const usernameCheck=
    await db
    .from("profiles")
    .select("id")
    .ilike("username",username)
    .maybeSingle();
 
-  if(existingUsername.error){
+  if(usernameCheck.error){
 
    $("signupMsg").innerHTML=
    '<div class="status">'+
-   escapeHTML(existingUsername.error.message)+
+   escapeHTML(usernameCheck.error.message)+
    '</div>';
 
    return;
+
   }
 
-  if(existingUsername.data){
+  if(usernameCheck.data){
 
    $("signupMsg").innerHTML=
    '<div class="status">'+
@@ -1093,29 +1343,31 @@ async function signup(){
    '</div>';
 
    return;
+
   }
 
 
-  /* Phone check */
+  /* Phone */
 
-  const existingPhone=
+  const phoneCheck=
    await db
    .from("profiles")
    .select("id")
    .eq("phone",phone)
    .maybeSingle();
 
-  if(existingPhone.error){
+  if(phoneCheck.error){
 
    $("signupMsg").innerHTML=
    '<div class="status">'+
-   escapeHTML(existingPhone.error.message)+
+   escapeHTML(phoneCheck.error.message)+
    '</div>';
 
    return;
+
   }
 
-  if(existingPhone.data){
+  if(phoneCheck.data){
 
    $("signupMsg").innerHTML=
    '<div class="status">'+
@@ -1123,34 +1375,18 @@ async function signup(){
    '</div>';
 
    return;
-  }
-
-
-  /* =================================================
-     IMPORTANT FIX
-     Explicit UUID generated in browser
-  ================================================= */
-
-  let newProfileId;
-
-  if(window.crypto && crypto.randomUUID){
-
-   newProfileId=crypto.randomUUID();
-
-  }else{
-
-   newProfileId=
-    "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"
-    .replace(/[xy]/g,function(c){
-
-     const r=Math.random()*16|0;
-     const v=c==="x"?r:(r&0x3|0x8);
-
-     return v.toString(16);
-
-    });
 
   }
+
+
+  /*
+   IMPORTANT:
+   Browser থেকে UUID তৈরি করা হচ্ছে।
+   এতে profiles.id কখনো null যাবে না।
+  */
+
+  const newProfileId=
+   makeUUID();
 
 
   const insertResult=
@@ -1173,19 +1409,27 @@ async function signup(){
 
   if(insertResult.error){
 
-   console.error(insertResult.error);
+   console.error(
+    "PROFILE INSERT ERROR:",
+    insertResult.error
+   );
 
    $("signupMsg").innerHTML=
    '<div class="status">'+
    '<b>Account তৈরি হয়নি</b><br>'+
-   escapeHTML(insertResult.error.message)+
+   escapeHTML(
+    insertResult.error.message
+   )+
    '</div>';
 
    return;
+
   }
 
 
-  const data=insertResult.data;
+  const data=
+   insertResult.data;
+
 
   guestUser={
    id:data.id,
@@ -1196,6 +1440,7 @@ async function signup(){
    bio:data.bio||"",
    role:data.role||"user"
   };
+
 
   localStorage.setItem(
    "ghus_guest_user",
@@ -1208,11 +1453,17 @@ async function signup(){
   '✅ Account সফলভাবে তৈরি হয়েছে।'+
   '</div>';
 
+
   $("signupName").value="";
   $("signupUsername").value="";
   $("signupPhone").value="";
 
-  setTimeout(openGuestApp,500);
+
+  setTimeout(
+   openGuestApp,
+   500
+  );
+
 
  }catch(err){
 
@@ -1220,7 +1471,11 @@ async function signup(){
 
   $("signupMsg").innerHTML=
   '<div class="status">'+
-  escapeHTML(err.message||"Account creation failed")+
+  '<b>Account তৈরি হয়নি</b><br>'+
+  escapeHTML(
+   err.message||
+   "Account creation failed"
+  )+
   '</div>';
 
  }
@@ -1229,7 +1484,7 @@ async function signup(){
 
 
 /* =====================================================
- RESTORE
+ RESTORE SESSION
 ===================================================== */
 
 function restoreSession(){
@@ -1237,13 +1492,24 @@ function restoreSession(){
  try{
 
   const saved=
-   localStorage.getItem("ghus_guest_user");
+   localStorage.getItem(
+    "ghus_guest_user"
+   );
 
   if(!saved)return;
 
-  const user=JSON.parse(saved);
+  const user=
+   JSON.parse(saved);
 
-  if(!user||!user.id)return;
+  if(!user||!user.id){
+
+   localStorage.removeItem(
+    "ghus_guest_user"
+   );
+
+   return;
+
+  }
 
   guestUser=user;
 
@@ -1251,7 +1517,9 @@ function restoreSession(){
 
  }catch(e){
 
-  localStorage.removeItem("ghus_guest_user");
+  localStorage.removeItem(
+   "ghus_guest_user"
+  );
 
  }
 
@@ -1264,10 +1532,14 @@ function restoreSession(){
 
 function openGuestApp(){
 
- if(!guestUser)return;
+ if(!guestUser||!guestUser.id)
+  return;
 
- $("authPage").classList.add("hidden");
- $("app").classList.remove("hidden");
+ $("authPage")
+ .classList.add("hidden");
+
+ $("app")
+ .classList.remove("hidden");
 
  currentUser={
   id:guestUser.id
@@ -1284,7 +1556,7 @@ function openGuestApp(){
  };
 
  $("homeAvatar").src=
- avatarURL(currentProfile);
+  avatarURL(currentProfile);
 
  showPage("homePage");
 
@@ -1298,12 +1570,16 @@ function openGuestApp(){
  LOGOUT
 ===================================================== */
 
-function logout(){
+async function logout(){
 
  if(messageChannel){
 
   try{
-   db.removeChannel(messageChannel);
+
+   await db.removeChannel(
+    messageChannel
+   );
+
   }catch(e){}
 
   messageChannel=null;
@@ -1315,10 +1591,15 @@ function logout(){
  currentProfile=null;
  selectedChatUser=null;
 
- localStorage.removeItem("ghus_guest_user");
+ localStorage.removeItem(
+  "ghus_guest_user"
+ );
 
- $("app").classList.add("hidden");
- $("authPage").classList.remove("hidden");
+ $("app")
+ .classList.add("hidden");
+
+ $("authPage")
+ .classList.remove("hidden");
 
  $("loginIdentity").value="";
  $("loginMsg").innerHTML="";
@@ -1329,7 +1610,7 @@ function logout(){
 
 
 /* =====================================================
- DAILY
+ DAILY AWARENESS
 ===================================================== */
 
 async function loadDailyAwareness(){
@@ -1363,15 +1644,27 @@ async function loadDailyAwareness(){
  try{
 
   const result=
-   await db.rpc("get_daily_awareness");
+   await db.rpc(
+    "get_daily_awareness"
+   );
 
-  if(!result.error&&result.data){
+  if(
+   !result.error&&
+   result.data
+  ){
 
-   if(typeof result.data==="string")
-    box.textContent=result.data;
-   else
+   if(typeof result.data==="string"){
+
     box.textContent=
-     result.data.sentence||fallback[0];
+     result.data;
+
+   }else{
+
+    box.textContent=
+     result.data.sentence||
+     fallback[0];
+
+   }
 
    return;
 
@@ -1380,16 +1673,20 @@ async function loadDailyAwareness(){
  }catch(e){}
 
  const day=
-  Math.floor(Date.now()/86400000);
+  Math.floor(
+   Date.now()/86400000
+  );
 
  box.textContent=
-  fallback[day%fallback.length];
+  fallback[
+   day%fallback.length
+  ];
 
 }
 
 
 /* =====================================================
- NAV
+ NAVIGATION
 ===================================================== */
 
 function showPage(pageId){
@@ -1412,14 +1709,19 @@ function showPage(pageId){
 
  });
 
+
  const page=$(pageId);
 
  if(page)
   page.classList.remove("hidden");
 
+
  document
  .querySelectorAll(".bottomNav button")
- .forEach(btn=>btn.classList.remove("active"));
+ .forEach(btn=>
+  btn.classList.remove("active")
+ );
+
 
  const navMap={
   homePage:"navHome",
@@ -1429,10 +1731,14 @@ function showPage(pageId){
   profilePage:"navProfile"
  };
 
+
  if(navMap[pageId])
-  $(navMap[pageId]).classList.add("active");
+  $(navMap[pageId])
+  .classList.add("active");
+
 
  window.scrollTo(0,0);
+
 
  if(pageId==="homePage")
   loadFeed();
@@ -1457,39 +1763,80 @@ function previewMedia(){
 
  preview.innerHTML="";
 
+ const files=
+  Array.from(
+   input.files||[]
+  );
+
+ if(files.length>10){
+
+  toast(
+   "সর্বোচ্চ ১০টি ছবি/ভিডিও দিতে পারবেন।"
+  );
+
+  const dt=
+   new DataTransfer();
+
+  files
+  .slice(0,10)
+  .forEach(file=>
+   dt.items.add(file)
+  );
+
+  input.files=dt.files;
+
+ }
+
+
  Array.from(input.files||[])
  .forEach((file,index)=>{
 
-  const item=document.createElement("div");
-  item.className="previewItem";
+  const item=
+   document.createElement("div");
 
-  const remove=document.createElement("button");
+  item.className=
+   "previewItem";
 
-  remove.className="removePreview";
+
+  const remove=
+   document.createElement("button");
+
+  remove.className=
+   "removePreview";
+
   remove.textContent="×";
 
   remove.onclick=()=>{
    removeSelectedFile(index);
   };
 
+
   if(file.type.startsWith("image/")){
 
-   const img=document.createElement("img");
+   const img=
+    document.createElement("img");
 
-   img.src=URL.createObjectURL(file);
+   img.src=
+    URL.createObjectURL(file);
 
    item.appendChild(img);
 
-  }else if(file.type.startsWith("video/")){
+  }else if(
+   file.type.startsWith("video/")
+  ){
 
-   const video=document.createElement("video");
+   const video=
+    document.createElement("video");
 
-   video.src=URL.createObjectURL(file);
+   video.src=
+    URL.createObjectURL(file);
+
    video.controls=true;
 
    item.appendChild(video);
 
   }
+
 
   item.appendChild(remove);
   preview.appendChild(item);
@@ -1503,7 +1850,8 @@ function removeSelectedFile(index){
 
  const input=$("mediaFile");
 
- const dt=new DataTransfer();
+ const dt=
+  new DataTransfer();
 
  Array.from(input.files)
  .forEach((file,i)=>{
@@ -1513,7 +1861,8 @@ function removeSelectedFile(index){
 
  });
 
- input.files=dt.files;
+ input.files=
+  dt.files;
 
  previewMedia();
 
@@ -1533,8 +1882,11 @@ async function createPost(){
 
  }
 
+
  const content=
-  $("postContent").value.trim();
+  $("postContent")
+  .value
+  .trim();
 
  const category=
   $("postCategory").value;
@@ -1547,16 +1899,81 @@ async function createPost(){
    $("mediaFile").files||[]
   );
 
+
  if(!content&&files.length===0){
 
-  toast("কিছু লিখুন অথবা ছবি/ভিডিও দিন");
+  toast(
+   "কিছু লিখুন অথবা ছবি/ভিডিও দিন"
+  );
+
   return;
 
  }
 
- toast("Post তৈরি হচ্ছে...");
+
+ if(files.length>10){
+
+  toast(
+   "সর্বোচ্চ ১০টি media দিতে পারবেন।"
+  );
+
+  return;
+
+ }
+
+
+ /*
+  Browser-level file type safety
+ */
+
+ for(const file of files){
+
+  const valid=
+   file.type.startsWith("image/")||
+   file.type.startsWith("video/");
+
+  if(!valid){
+
+   toast(
+    "শুধু ছবি অথবা ভিডিও upload করা যাবে।"
+   );
+
+   return;
+
+  }
+
+ }
+
+
+ /*
+  User must confirm community rules
+ */
+
+ const agree=
+  confirm(
+   "⚠️ পোস্ট করার আগে নিশ্চিত করুন:\n\n"+
+   "• অশ্লীল/পর্নোগ্রাফিক ছবি বা ভিডিও নয়\n"+
+   "• যৌনভাবে স্পষ্ট কনটেন্ট নয়\n"+
+   "• অবৈধ বা ক্ষতিকর কনটেন্ট নয়\n"+
+   "• অন্যের সম্মানহানি হয় এমন কনটেন্ট নয়\n\n"+
+   "আপনি কি নিয়ম মেনে পোস্টটি Publish করতে চান?"
+  );
+
+
+ if(!agree)
+  return;
+
+
+ toast(
+  "Post তৈরি হচ্ছে..."
+ );
+
 
  try{
+
+  /*
+   1. Create post
+  */
 
   const result=
    await db
@@ -1575,31 +1992,55 @@ async function createPost(){
    .select("*")
    .single();
 
+
   if(result.error){
 
-   toast(result.error.message);
+   toast(
+    result.error.message
+   );
+
    return;
 
   }
+
 
   const post=result.data;
 
   let firstMediaURL=null;
   let firstMediaType=null;
 
+  let uploadFailed=false;
 
-  for(let i=0;i<files.length;i++){
+
+  /*
+   2. Upload media
+  */
+
+  for(
+   let i=0;
+   i<files.length;
+   i++
+  ){
 
    const file=files[i];
 
    const safeName=
     file.name
-    .replace(/[^a-zA-Z0-9._-]/g,"_");
+    .replace(
+     /[^a-zA-Z0-9._-]/g,
+     "_"
+    );
+
 
    const path=
     "posts/"+
-    currentUser.id+"/"+
-    Date.now()+"_"+i+"_"+safeName;
+    currentUser.id+
+    "/"+
+    Date.now()+
+    "_"+
+    i+
+    "_"+
+    safeName;
 
 
    const upload=
@@ -1614,9 +2055,15 @@ async function createPost(){
      }
     );
 
+
    if(upload.error){
 
-    console.error(upload.error);
+    console.error(
+     "MEDIA UPLOAD ERROR:",
+     upload.error
+    );
+
+    uploadFailed=true;
 
     continue;
 
@@ -1627,7 +2074,8 @@ async function createPost(){
     db.storage
     .from("media")
     .getPublicUrl(path)
-    .data.publicUrl;
+    .data
+    .publicUrl;
 
 
    const mediaType=
@@ -1638,8 +2086,11 @@ async function createPost(){
 
    if(i===0){
 
-    firstMediaURL=publicURL;
-    firstMediaType=mediaType;
+    firstMediaURL=
+     publicURL;
+
+    firstMediaType=
+     mediaType;
 
    }
 
@@ -1655,11 +2106,22 @@ async function createPost(){
 
     });
 
-   if(mediaInsert.error)
-    console.error(mediaInsert.error);
+
+   if(mediaInsert.error){
+
+    console.error(
+     "POST MEDIA INSERT ERROR:",
+     mediaInsert.error
+    );
+
+   }
 
   }
 
+
+  /*
+   3. Save first media to posts
+  */
 
   if(firstMediaURL){
 
@@ -1674,26 +2136,55 @@ async function createPost(){
     })
     .eq("id",post.id);
 
-   if(update.error)
-    console.error(update.error);
+
+   if(update.error){
+
+    console.error(
+     "POST UPDATE ERROR:",
+     update.error
+    );
+
+   }
 
   }
 
+
+  /*
+   4. Clean form
+  */
 
   $("postContent").value="";
   $("mediaFile").value="";
   $("mediaPreview").innerHTML="";
   $("anonymousPost").checked=false;
 
-  toast("✅ Post Published");
+
+  if(uploadFailed){
+
+   toast(
+    "Post প্রকাশ হয়েছে, তবে কিছু media upload হয়নি।"
+   );
+
+  }else{
+
+   toast(
+    "✅ Post Published"
+   );
+
+  }
+
 
   showPage("homePage");
+
 
  }catch(err){
 
   console.error(err);
 
-  toast(err.message);
+  toast(
+   err.message||
+   "Post তৈরি করা যায়নি।"
+  );
 
  }
 
@@ -1715,24 +2206,39 @@ async function getMedia(post){
    .from("post_media")
    .select("*")
    .eq("post_id",post.id)
-   .order("created_at",{ascending:true});
+   .order(
+    "created_at",
+    {ascending:true}
+   );
 
-  if(!result.error&&result.data)
+
+  if(
+   !result.error&&
+   result.data
+  ){
+
    media=result.data;
+
+  }
 
  }catch(e){}
 
 
- if(media.length===0&&post.media_url){
+ if(
+  media.length===0&&
+  post.media_url
+ ){
 
   media.push({
 
    media_url:post.media_url,
-   media_type:post.media_type||"image"
+   media_type:
+    post.media_type||"image"
 
   });
 
  }
+
 
  return media;
 
@@ -1740,7 +2246,7 @@ async function getMedia(post){
 
 
 /* =====================================================
- FEED
+ LOAD FEED
 ===================================================== */
 
 async function loadFeed(){
@@ -1749,6 +2255,7 @@ async function loadFeed(){
 
  feed.innerHTML=
  '<div class="card center">Post loading...</div>';
+
 
  try{
 
@@ -1765,21 +2272,31 @@ async function loadFeed(){
     )
    `)
    .eq("status","published")
-   .order("created_at",{ascending:false});
+   .order(
+    "created_at",
+    {ascending:false}
+   )
+   .limit(100);
+
 
   if(result.error){
 
    feed.innerHTML=
    '<div class="card">'+
    '<b>Post loading failed</b><br><br>'+
-   escapeHTML(result.error.message)+
+   escapeHTML(
+    result.error.message
+   )+
    '</div>';
 
    return;
 
   }
 
-  const data=result.data||[];
+
+  const data=
+   result.data||[];
+
 
   if(!data.length){
 
@@ -1792,9 +2309,13 @@ async function loadFeed(){
 
   }
 
+
   feed.innerHTML="";
 
-  for(const post of data){
+
+  for(
+   const post of data
+  ){
 
    feed.insertAdjacentHTML(
     "beforeend",
@@ -1803,13 +2324,16 @@ async function loadFeed(){
 
   }
 
+
  }catch(err){
 
   console.error(err);
 
   feed.innerHTML=
   '<div class="card">'+
-  escapeHTML(err.message)+
+  escapeHTML(
+   err.message
+  )+
   '</div>';
 
  }
@@ -1823,23 +2347,32 @@ async function loadFeed(){
 
 async function postHTML(post){
 
- const profile=post.profiles||{};
- const media=await getMedia(post);
+ const profile=
+  post.profiles||{};
 
- const anonymous=post.is_anonymous===true;
+ const media=
+  await getMedia(post);
+
+ const anonymous=
+  post.is_anonymous===true;
+
 
  const name=
   anonymous
   ?"Anonymous"
   :(profile.display_name||"User");
 
+
  const avatar=
   anonymous
-  ?"https://ui-avatars.com/api/?name=A&background=777&color=fff"
-  :avatarURL(profile);
+  ?
+  "https://ui-avatars.com/api/?name=A&background=777&color=fff"
+  :
+  avatarURL(profile);
 
 
  let reactionCount=0;
+
 
  try{
 
@@ -1849,12 +2382,14 @@ async function postHTML(post){
    .select("*",{count:"exact",head:true})
    .eq("post_id",post.id);
 
-  reactionCount=result.count||0;
+  reactionCount=
+   result.count||0;
 
  }catch(e){}
 
 
  let commentsData=[];
+
 
  try{
 
@@ -1872,51 +2407,68 @@ async function postHTML(post){
     )
    `)
    .eq("post_id",post.id)
-   .order("created_at",{ascending:true})
+   .order(
+    "created_at",
+    {ascending:true}
+   )
    .limit(20);
 
+
   if(!result.error)
-   commentsData=result.data||[];
+   commentsData=
+    result.data||[];
 
  }catch(e){}
 
 
  let mediaHTML="";
 
+
  if(media.length){
 
   const cls=
    media.length===1
    ?"one"
-   :media.length===2
+   :
+   media.length===2
    ?"two"
-   :media.length===3
+   :
+   media.length===3
    ?"three"
    :"four";
+
 
   mediaHTML=
    `<div class="mediaGrid ${cls}">`;
 
+
   media.forEach(m=>{
+
+   const safeURL=
+    escapeHTML(
+     m.media_url
+    );
+
 
    if(m.media_type==="video"){
 
     mediaHTML+=
     `<video controls preload="metadata">
-     <source src="${escapeHTML(m.media_url)}">
+      <source src="${safeURL}">
     </video>`;
 
    }else{
 
     mediaHTML+=
     `<img
-     src="${escapeHTML(m.media_url)}"
-     loading="lazy"
-     onclick="openMedia('${escapeHTML(m.media_url)}')">`;
+      src="${safeURL}"
+      loading="lazy"
+      onclick="openMedia(decodeURIComponent('${encodeURIComponent(m.media_url)}'))">`;
 
    }
 
   });
+
 
   mediaHTML+="</div>";
 
@@ -1925,9 +2477,12 @@ async function postHTML(post){
 
  let commentsHTML="";
 
+
  commentsData.forEach(c=>{
 
-  const cp=c.profiles||{};
+  const cp=
+   c.profiles||{};
+
 
   commentsHTML+=
   `<div class="comment">
@@ -1935,13 +2490,23 @@ async function postHTML(post){
    <img
     class="avatar"
     style="width:32px;height:32px"
-    src="${escapeHTML(avatarURL(cp))}">
+    src="${escapeHTML(
+     avatarURL(cp)
+    )}">
 
    <div class="commentBubble">
 
-    <b>${escapeHTML(cp.display_name||"User")}</b><br>
+    <b>
+     ${escapeHTML(
+      cp.display_name||"User"
+     )}
+    </b>
 
-    ${escapeHTML(c.content)}
+    <br>
+
+    ${escapeHTML(
+     c.content
+    )}
 
    </div>
 
@@ -1961,24 +2526,35 @@ async function postHTML(post){
 
   <button
    class="menuBtn"
-   onclick="togglePostMenu('${post.id}')">
+   onclick="togglePostMenu('${escapeHTML(post.id)}')">
+
    ⋯
+
   </button>
 
   <div
-   id="menu-${post.id}"
+   id="menu-${escapeHTML(post.id)}"
    class="postMenu hidden">
 
-   <button onclick="copyPostLink('${post.id}')">
+   <button
+    onclick="copyPostLink('${escapeHTML(post.id)}')">
+
     🔗 Copy link
+
    </button>
 
-   <button onclick="savePost('${post.id}')">
+   <button
+    onclick="savePost('${escapeHTML(post.id)}')">
+
     🔖 Save Post
+
    </button>
 
-   <button onclick="reportPost('${post.id}')">
+   <button
+    onclick="reportPost('${escapeHTML(post.id)}')">
+
     🚩 Report
+
    </button>
 
    ${
@@ -1986,8 +2562,10 @@ async function postHTML(post){
     ?
     `<button
       class="deleteItem"
-      onclick="deletePost('${post.id}')">
+      onclick="deletePost('${escapeHTML(post.id)}')">
+
       🗑️ Delete Post
+
      </button>`
     :""
    }
@@ -2016,9 +2594,17 @@ async function postHTML(post){
     </div>
 
     <div class="small">
-     ${escapeHTML(post.category||"সাধারণ")}
+
+     ${escapeHTML(
+      post.category||"সাধারণ"
+     )}
+
      ·
-     ${formatDate(post.created_at)}
+
+     ${formatDate(
+      post.created_at
+     )}
+
     </div>
 
    </div>
@@ -2032,7 +2618,7 @@ async function postHTML(post){
    post.content
    ?
    `<div class="postText">
-    ${escapeHTML(post.content)}
+     ${escapeHTML(post.content)}
     </div>`
    :""
   }
@@ -2044,76 +2630,96 @@ async function postHTML(post){
   <div
    class="small"
    style="margin-top:8px">
+
    👍 ${reactionCount} reactions
+
   </div>
 
 
   <div class="actions">
 
-   <button onclick="toggleReaction('${post.id}')">
+   <button
+    onclick="toggleReaction('${escapeHTML(post.id)}')">
+
     👍 Like
+
    </button>
 
-   <button onclick="toggleReactionMenu('${post.id}')">
+   <button
+    onclick="toggleReactionMenu('${escapeHTML(post.id)}')">
+
     ❤️ React
+
    </button>
 
-   <button onclick="focusComment('${post.id}')">
+   <button
+    onclick="focusComment('${escapeHTML(post.id)}')">
+
     💬 Comment
+
    </button>
 
-   <button onclick="sharePost('${post.id}')">
+   <button
+    onclick="sharePost('${escapeHTML(post.id)}')">
+
     ↗️ Share
+
    </button>
 
   </div>
 
 
   <div
-   id="reaction-${post.id}"
+   id="reaction-${escapeHTML(post.id)}"
    class="reactionMenu hidden">
 
-   <button onclick="react('${post.id}','like')">
+   <button onclick="react('${escapeHTML(post.id)}','like')">
     👍 Like
    </button>
 
-   <button onclick="react('${post.id}','love')">
+   <button onclick="react('${escapeHTML(post.id)}','love')">
     ❤️ Love
    </button>
 
-   <button onclick="react('${post.id}','haha')">
+   <button onclick="react('${escapeHTML(post.id)}','haha')">
     😂 Haha
    </button>
 
-   <button onclick="react('${post.id}','wow')">
+   <button onclick="react('${escapeHTML(post.id)}','wow')">
     😮 Wow
    </button>
 
-   <button onclick="react('${post.id}','sad')">
+   <button onclick="react('${escapeHTML(post.id)}','sad')">
     😢 Sad
    </button>
 
-   <button onclick="react('${post.id}','angry')">
+   <button onclick="react('${escapeHTML(post.id)}','angry')">
     😡 Angry
    </button>
 
   </div>
 
 
-  <div id="comments-${post.id}">
+  <div
+   id="comments-${escapeHTML(post.id)}">
+
    ${commentsHTML}
+
   </div>
 
 
   <div class="commentInput">
 
    <input
-    id="comment-${post.id}"
+    id="comment-${escapeHTML(post.id)}"
     placeholder="Write a comment..."
-    onkeydown="if(event.key==='Enter')addComment('${post.id}')">
+    onkeydown="if(event.key==='Enter')addComment('${escapeHTML(post.id)}')">
 
-   <button onclick="addComment('${post.id}')">
+   <button
+    onclick="addComment('${escapeHTML(post.id)}')">
+
     Send
+
    </button>
 
   </div>
@@ -2135,34 +2741,56 @@ function togglePostMenu(postId){
  .querySelectorAll(".postMenu")
  .forEach(m=>{
 
-  if(m.id!=="menu-"+postId)
+  if(
+   m.id!=="menu-"+postId
+  )
    m.classList.add("hidden");
 
  });
 
- const menu=$("menu-"+postId);
+
+ const menu=
+  $("menu-"+postId);
+
 
  if(menu)
-  menu.classList.toggle("hidden");
+  menu.classList.toggle(
+   "hidden"
+  );
 
 }
 
 
-document.addEventListener("click",e=>{
+document.addEventListener(
+ "click",
+ function(e){
 
- if(!e.target.closest(".menuWrap")){
+  if(
+   !e.target.closest(".menuWrap")
+  ){
 
-  document
-  .querySelectorAll(".postMenu")
-  .forEach(m=>m.classList.add("hidden"));
+   document
+   .querySelectorAll(".postMenu")
+   .forEach(
+    m=>m.classList.add("hidden")
+   );
+
+  }
 
  }
-
-});
+);
 
 
 function openMedia(url){
- window.open(url,"_blank");
+
+ if(!url)return;
+
+ window.open(
+  url,
+  "_blank",
+  "noopener,noreferrer"
+ );
+
 }
 
 
@@ -2172,14 +2800,22 @@ async function copyPostLink(postId){
   location.href.split("#")[0]+
   "#post-"+postId;
 
+
  try{
 
-  await navigator.clipboard.writeText(url);
-  toast("Post link copied");
+  await navigator.clipboard.writeText(
+   url
+  );
+
+  toast(
+   "Post link copied"
+  );
 
  }catch(e){
 
-  toast(url);
+  toast(
+   "Link: "+url
+  );
 
  }
 
@@ -2193,20 +2829,24 @@ function savePost(postId){
   "true"
  );
 
- toast("🔖 Post saved");
+ toast(
+  "🔖 Post saved"
+ );
 
 }
 
 
 function reportPost(postId){
 
- toast("🚩 Report option নির্বাচিত হয়েছে");
+ toast(
+  "🚩 Report option নির্বাচিত হয়েছে"
+ );
 
 }
 
 
 /* =====================================================
- DELETE
+ DELETE POST
 ===================================================== */
 
 async function deletePost(postId){
@@ -2218,10 +2858,72 @@ async function deletePost(postId){
 
  }
 
- if(!confirm("এই Post টি Delete করতে চান?"))
-  return;
+
+ const ok=
+  confirm(
+   "এই Post টি Delete করতে চান?"
+  );
+
+
+ if(!ok)return;
+
 
  try{
+
+  /*
+   First delete post_media
+  */
+
+  const mediaDelete=
+   await db
+   .from("post_media")
+   .delete()
+   .eq("post_id",postId);
+
+
+  if(mediaDelete.error)
+   console.warn(
+    mediaDelete.error
+   );
+
+
+  /*
+   Delete comments
+  */
+
+  const commentsDelete=
+   await db
+   .from("comments")
+   .delete()
+   .eq("post_id",postId);
+
+
+  if(commentsDelete.error)
+   console.warn(
+    commentsDelete.error
+   );
+
+
+  /*
+   Delete reactions
+  */
+
+  const reactionDelete=
+   await db
+   .from("reactions")
+   .delete()
+   .eq("post_id",postId);
+
+
+  if(reactionDelete.error)
+   console.warn(
+    reactionDelete.error
+   );
+
+
+  /*
+   Finally delete post
+  */
 
   const result=
    await db
@@ -2230,19 +2932,30 @@ async function deletePost(postId){
    .eq("id",postId)
    .eq("user_id",currentUser.id);
 
+
   if(result.error){
 
-   toast(result.error.message);
+   toast(
+    result.error.message
+   );
+
    return;
 
   }
 
-  toast("Post deleted");
+
+  toast(
+   "Post deleted"
+  );
+
   loadFeed();
+
 
  }catch(err){
 
-  toast(err.message);
+  toast(
+   err.message
+  );
 
  }
 
@@ -2255,22 +2968,31 @@ async function deletePost(postId){
 
 function toggleReactionMenu(postId){
 
- const el=$("reaction-"+postId);
+ const el=
+  $("reaction-"+postId);
 
  if(el)
-  el.classList.toggle("hidden");
+  el.classList.toggle(
+   "hidden"
+  );
 
 }
 
 
 async function toggleReaction(postId){
 
- await react(postId,"like");
+ await react(
+  postId,
+  "like"
+ );
 
 }
 
 
-async function react(postId,type){
+async function react(
+ postId,
+ type
+){
 
  if(!currentUser){
 
@@ -2278,6 +3000,7 @@ async function react(postId,type){
   return;
 
  }
+
 
  try{
 
@@ -2289,26 +3012,40 @@ async function react(postId,type){
    .eq("user_id",currentUser.id)
    .maybeSingle();
 
+
   if(existing.error){
 
-   toast(existing.error.message);
+   toast(
+    existing.error.message
+   );
+
    return;
 
   }
 
+
   if(existing.data){
 
-   if(existing.data.type===type){
+   if(
+    existing.data.type===type
+   ){
 
     const del=
      await db
      .from("reactions")
      .delete()
-     .eq("id",existing.data.id);
+     .eq(
+      "id",
+      existing.data.id
+     );
+
 
     if(del.error){
 
-     toast(del.error.message);
+     toast(
+      del.error.message
+     );
+
      return;
 
     }
@@ -2318,12 +3055,21 @@ async function react(postId,type){
     const upd=
      await db
      .from("reactions")
-     .update({type:type})
-     .eq("id",existing.data.id);
+     .update({
+      type:type
+     })
+     .eq(
+      "id",
+      existing.data.id
+     );
+
 
     if(upd.error){
 
-     toast(upd.error.message);
+     toast(
+      upd.error.message
+     );
+
      return;
 
     }
@@ -2343,22 +3089,32 @@ async function react(postId,type){
 
     });
 
+
    if(ins.error){
 
-    toast(ins.error.message);
+    toast(
+     ins.error.message
+    );
+
     return;
 
    }
 
   }
 
-  $("reaction-"+postId)?.classList.add("hidden");
+
+  $("reaction-"+postId)
+  ?.classList.add("hidden");
+
 
   loadFeed();
 
+
  }catch(err){
 
-  toast(err.message);
+  toast(
+   err.message
+  );
 
  }
 
@@ -2371,7 +3127,9 @@ async function react(postId,type){
 
 function focusComment(postId){
 
- const input=$("comment-"+postId);
+ const input=
+  $("comment-"+postId);
+
 
  if(input){
 
@@ -2396,16 +3154,35 @@ async function addComment(postId){
 
  }
 
- const input=$("comment-"+postId);
 
- const content=input.value.trim();
+ const input=
+  $("comment-"+postId);
+
+ const content=
+  input.value.trim();
+
 
  if(!content){
 
-  toast("Comment লিখুন");
+  toast(
+   "Comment লিখুন"
+  );
+
   return;
 
  }
+
+
+ if(content.length>2000){
+
+  toast(
+   "Comment সর্বোচ্চ ২০০০ অক্ষর হতে পারে।"
+  );
+
+  return;
+
+ }
+
 
  try{
 
@@ -2420,22 +3197,32 @@ async function addComment(postId){
 
    });
 
+
   if(result.error){
 
-   toast(result.error.message);
+   toast(
+    result.error.message
+   );
+
    return;
 
   }
 
+
   input.value="";
 
-  toast("Comment added");
+  toast(
+   "Comment added"
+  );
 
   loadFeed();
 
+
  }catch(err){
 
-  toast(err.message);
+  toast(
+   err.message
+  );
 
  }
 
@@ -2452,7 +3239,10 @@ async function sharePost(postId){
   location.href.split("#")[0]+
   "#post-"+postId;
 
- if(navigator.share){
+
+ if(
+  navigator.share
+ ){
 
   try{
 
@@ -2470,12 +3260,19 @@ async function sharePost(postId){
 
   try{
 
-   await navigator.clipboard.writeText(url);
-   toast("Post link copied");
+   await navigator.clipboard.writeText(
+    url
+   );
+
+   toast(
+    "Post link copied"
+   );
 
   }catch(e){
 
-   toast(url);
+   toast(
+    url
+   );
 
   }
 
@@ -2491,13 +3288,22 @@ async function sharePost(postId){
 function quickSearchUser(){
 
  const value=
-  $("quickSearch").value.trim();
+  $("quickSearch")
+  .value
+  .trim();
+
 
  if(!value)return;
 
- $("searchInput").value=value;
 
- showPage("searchPage");
+ $("searchInput").value=
+  value;
+
+
+ showPage(
+  "searchPage"
+ );
+
 
  searchUsers();
 
@@ -2507,26 +3313,41 @@ function quickSearchUser(){
 async function searchUsers(){
 
  const q=
-  $("searchInput").value.trim();
+  $("searchInput")
+  .value
+  .trim();
 
- const box=$("searchResults");
+
+ const box=
+  $("searchResults");
+
 
  if(!q){
 
   box.innerHTML=
-  '<div class="card">নাম অথবা Username লিখুন।</div>';
+  '<div class="card">'+
+  'নাম অথবা Username লিখুন।'+
+  '</div>';
 
   return;
 
  }
 
+
  box.innerHTML=
- '<div class="card center">Search হচ্ছে...</div>';
+ '<div class="card center">'+
+ 'Search হচ্ছে...'+
+ '</div>';
+
 
  try{
 
   const safeQ=
-   q.replace(/[%_,]/g,"");
+   q.replace(
+    /[%_,]/g,
+    ""
+   );
+
 
   const result=
    await db
@@ -2543,18 +3364,24 @@ async function searchUsers(){
    )
    .limit(30);
 
+
   if(result.error){
 
    box.innerHTML=
    '<div class="card">'+
-   escapeHTML(result.error.message)+
+   escapeHTML(
+    result.error.message
+   )+
    '</div>';
 
    return;
 
   }
 
-  const users=result.data||[];
+
+  const users=
+   result.data||[];
+
 
   if(!users.length){
 
@@ -2567,7 +3394,9 @@ async function searchUsers(){
 
   }
 
+
   box.innerHTML="";
+
 
   users.forEach(user=>{
 
@@ -2576,20 +3405,26 @@ async function searchUsers(){
     `
     <div
      class="card userRow"
-     onclick="viewUser('${user.id}')">
+     onclick="viewUser('${escapeHTML(user.id)}')">
 
      <img
       class="avatar"
-      src="${escapeHTML(avatarURL(user))}">
+      src="${escapeHTML(
+       avatarURL(user)
+      )}">
 
      <div>
 
       <b>
-       ${escapeHTML(user.display_name||"User")}
+       ${escapeHTML(
+        user.display_name||"User"
+       )}
       </b>
 
       <div class="small">
-       @${escapeHTML(user.username||"")}
+       @${escapeHTML(
+        user.username||""
+       )}
       </div>
 
      </div>
@@ -2600,11 +3435,14 @@ async function searchUsers(){
 
   });
 
+
  }catch(err){
 
   box.innerHTML=
   '<div class="card">'+
-  escapeHTML(err.message)+
+  escapeHTML(
+   err.message
+  )+
   '</div>';
 
  }
@@ -2627,27 +3465,44 @@ async function viewUser(userId){
    .eq("id",userId)
    .maybeSingle();
 
+
   if(result.error){
 
-   toast(result.error.message);
+   toast(
+    result.error.message
+   );
+
    return;
 
   }
+
 
   if(!result.data){
 
-   toast("User পাওয়া যায়নি");
+   toast(
+    "User পাওয়া যায়নি"
+   );
+
    return;
 
   }
 
-  renderProfile(result.data);
 
-  showPage("profilePage");
+  renderProfile(
+   result.data
+  );
+
+
+  showPage(
+   "profilePage"
+  );
+
 
  }catch(err){
 
-  toast(err.message);
+  toast(
+   err.message
+  );
 
  }
 
@@ -2655,12 +3510,13 @@ async function viewUser(userId){
 
 
 /* =====================================================
- PROFILE
+ LOAD OWN PROFILE
 ===================================================== */
 
 async function loadProfilePage(){
 
  if(!currentUser)return;
+
 
  try{
 
@@ -2671,38 +3527,59 @@ async function loadProfilePage(){
    .eq("id",currentUser.id)
    .maybeSingle();
 
+
   if(result.error){
 
    $("profileContent").innerHTML=
    '<div class="card">'+
-   escapeHTML(result.error.message)+
+   escapeHTML(
+    result.error.message
+   )+
    '</div>';
 
    return;
 
   }
 
+
   if(result.data){
 
-   currentProfile=result.data;
+   currentProfile=
+    result.data;
 
-   guestUser.name=result.data.display_name;
-   guestUser.username=result.data.username;
-   guestUser.phone=result.data.phone;
-   guestUser.avatar_url=result.data.avatar_url||"";
-   guestUser.bio=result.data.bio||"";
+
+   guestUser.name=
+    result.data.display_name;
+
+   guestUser.username=
+    result.data.username;
+
+   guestUser.phone=
+    result.data.phone;
+
+   guestUser.avatar_url=
+    result.data.avatar_url||"";
+
+   guestUser.bio=
+    result.data.bio||"";
+
 
    localStorage.setItem(
     "ghus_guest_user",
     JSON.stringify(guestUser)
    );
 
+
    $("homeAvatar").src=
     avatarURL(result.data);
 
-   renderProfile(result.data);
+
+   renderProfile(
+    result.data
+   );
 
   }
+
 
  }catch(err){
 
@@ -2713,16 +3590,23 @@ async function loadProfilePage(){
 }
 
 
+/* =====================================================
+ RENDER PROFILE
+===================================================== */
+
 function renderProfile(profile){
 
  const own=
   currentUser&&
   currentUser.id===profile.id;
 
+
  $("profileContent").innerHTML=
 
  `
- <div class="card" style="padding:0;overflow:hidden">
+ <div
+  class="card"
+  style="padding:0;overflow:hidden">
 
   <div class="profileCover"></div>
 
@@ -2730,14 +3614,24 @@ function renderProfile(profile){
 
    <img
     class="avatar"
-    src="${escapeHTML(avatarURL(profile))}">
+    src="${escapeHTML(
+     avatarURL(profile)
+    )}">
 
    <h2 style="margin-bottom:3px">
-    ${escapeHTML(profile.display_name||"User")}
+
+    ${escapeHTML(
+     profile.display_name||"User"
+    )}
+
    </h2>
 
    <div class="small">
-    @${escapeHTML(profile.username||"")}
+
+    @${escapeHTML(
+     profile.username||""
+    )}
+
    </div>
 
    ${
@@ -2749,6 +3643,7 @@ function renderProfile(profile){
     :""
    }
 
+
    ${
     own
     ?
@@ -2757,7 +3652,9 @@ function renderProfile(profile){
       <button
        class="secondary"
        onclick="openEditProfile()">
+
        ✏️ Edit Profile
+
       </button>
 
      </div>`
@@ -2783,16 +3680,22 @@ async function openEditProfile(){
  if(!currentProfile)
   await loadProfilePage();
 
+
  $("editName").value=
   currentProfile?.display_name||"";
+
 
  $("editBio").value=
   currentProfile?.bio||"";
 
+
  $("editAvatar").value=
   currentProfile?.avatar_url||"";
 
- showPage("editPage");
+
+ showPage(
+  "editPage"
+ );
 
 }
 
@@ -2801,21 +3704,35 @@ async function saveProfile(){
 
  if(!currentUser)return;
 
+
  const name=
-  $("editName").value.trim();
+  $("editName")
+  .value
+  .trim();
+
 
  const bio=
-  $("editBio").value.trim();
+  $("editBio")
+  .value
+  .trim();
+
 
  const avatar=
-  $("editAvatar").value.trim();
+  $("editAvatar")
+  .value
+  .trim();
+
 
  if(!name){
 
-  toast("Name দিন");
+  toast(
+   "Name দিন"
+  );
+
   return;
 
  }
+
 
  try{
 
@@ -2829,38 +3746,70 @@ async function saveProfile(){
     avatar_url:avatar
 
    })
-   .eq("id",currentUser.id);
+   .eq(
+    "id",
+    currentUser.id
+   );
+
 
   if(result.error){
 
-   toast(result.error.message);
+   toast(
+    result.error.message
+   );
+
    return;
 
   }
 
-  guestUser.name=name;
-  guestUser.bio=bio;
-  guestUser.avatar_url=avatar;
 
-  currentProfile.display_name=name;
-  currentProfile.bio=bio;
-  currentProfile.avatar_url=avatar;
+  guestUser.name=
+   name;
+
+  guestUser.bio=
+   bio;
+
+  guestUser.avatar_url=
+   avatar;
+
+
+  currentProfile.display_name=
+   name;
+
+  currentProfile.bio=
+   bio;
+
+  currentProfile.avatar_url=
+   avatar;
+
 
   localStorage.setItem(
    "ghus_guest_user",
    JSON.stringify(guestUser)
   );
 
+
   $("homeAvatar").src=
-   avatarURL(currentProfile);
+   avatarURL(
+    currentProfile
+   );
 
-  toast("Profile updated");
 
-  showPage("profilePage");
+  toast(
+   "Profile updated"
+  );
+
+
+  showPage(
+   "profilePage"
+  );
+
 
  }catch(err){
 
-  toast(err.message);
+  toast(
+   err.message
+  );
 
  }
 
@@ -2875,10 +3824,16 @@ async function loadChatUsers(){
 
  if(!currentUser)return;
 
- const box=$("chatUsers");
+
+ const box=
+  $("chatUsers");
+
 
  box.innerHTML=
- '<div class="small">Users loading...</div>';
+ '<div class="loading">'+
+ 'Users loading...'+
+ '</div>';
+
 
  try{
 
@@ -2891,21 +3846,30 @@ async function loadChatUsers(){
     username,
     avatar_url
    `)
-   .neq("id",currentUser.id)
+   .neq(
+    "id",
+    currentUser.id
+   )
    .limit(50);
+
 
   if(result.error){
 
    box.innerHTML=
    '<div class="status">'+
-   escapeHTML(result.error.message)+
+   escapeHTML(
+    result.error.message
+   )+
    '</div>';
 
    return;
 
   }
 
-  const users=result.data||[];
+
+  const users=
+   result.data||[];
+
 
   if(!users.length){
 
@@ -2918,7 +3882,9 @@ async function loadChatUsers(){
 
   }
 
+
   box.innerHTML="";
+
 
   users.forEach(user=>{
 
@@ -2927,22 +3893,29 @@ async function loadChatUsers(){
     `
     <div
      class="chatUser"
-     onclick="openChat('${user.id}')">
+     onclick="openChat('${escapeHTML(user.id)}')">
 
-     <div style="display:flex;gap:10px;align-items:center">
+     <div
+      style="display:flex;gap:10px;align-items:center">
 
       <img
        class="avatar"
-       src="${escapeHTML(avatarURL(user))}">
+       src="${escapeHTML(
+        avatarURL(user)
+       )}">
 
       <div>
 
        <b>
-        ${escapeHTML(user.display_name||"User")}
+        ${escapeHTML(
+         user.display_name||"User"
+        )}
        </b>
 
        <div class="small">
-        @${escapeHTML(user.username||"")}
+        @${escapeHTML(
+         user.username||""
+        )}
        </div>
 
       </div>
@@ -2955,11 +3928,14 @@ async function loadChatUsers(){
 
   });
 
+
  }catch(err){
 
   box.innerHTML=
   '<div class="status">'+
-  escapeHTML(err.message)+
+  escapeHTML(
+   err.message
+  )+
   '</div>';
 
  }
@@ -2982,35 +3958,63 @@ async function openChat(userId){
    .eq("id",userId)
    .maybeSingle();
 
+
   if(result.error){
 
-   toast(result.error.message);
+   toast(
+    result.error.message
+   );
+
    return;
 
   }
 
-  if(!result.data)return;
 
-  selectedChatUser=result.data;
+  if(!result.data){
 
-  $("chatBox").classList.remove("hidden");
+   toast(
+    "User পাওয়া যায়নি"
+   );
+
+   return;
+
+  }
+
+
+  selectedChatUser=
+   result.data;
+
+
+  $("chatBox")
+   .classList.remove(
+    "hidden"
+   );
+
 
   $("chatTitle").textContent=
-   "💬 "+(
-    result.data.display_name||"User"
+   "💬 "+
+   (
+    result.data.display_name||
+    "User"
    );
+
 
   await loadMessages();
 
+
   setupMessageRealtime();
+
 
   $("chatBox").scrollIntoView({
    behavior:"smooth"
   });
 
+
  }catch(err){
 
-  toast(err.message);
+  toast(
+   err.message
+  );
 
  }
 
@@ -3018,71 +4022,179 @@ async function openChat(userId){
 
 
 /* =====================================================
- MESSAGES
+ LOAD MESSAGES
 ===================================================== */
 
 async function loadMessages(){
 
- if(!currentUser||!selectedChatUser)return;
+ if(
+  !currentUser||
+  !selectedChatUser
+ )
+  return;
 
- const box=$("chatMessages");
+
+ const box=
+  $("chatMessages");
+
 
  box.innerHTML=
- '<div class="small center">Messages loading...</div>';
+ '<div class="loading">'+
+ 'Messages loading...'+
+ '</div>';
+
 
  try{
 
-  const result=
+  /*
+   দুইটা query করা হয়েছে।
+   এতে complex OR query-এর সমস্যা কমে।
+  */
+
+  const sent=
    await db
    .from("messages")
    .select("*")
-   .or(
-    `and(sender_id.eq.${currentUser.id},receiver_id.eq.${selectedChatUser.id}),and(sender_id.eq.${selectedChatUser.id},receiver_id.eq.${currentUser.id})`
+   .eq(
+    "sender_id",
+    currentUser.id
    )
-   .order("created_at",{ascending:true});
+   .eq(
+    "receiver_id",
+    selectedChatUser.id
+   )
+   .order(
+    "created_at",
+    {ascending:true}
+   );
 
-  if(result.error){
+
+  const received=
+   await db
+   .from("messages")
+   .select("*")
+   .eq(
+    "sender_id",
+    selectedChatUser.id
+   )
+   .eq(
+    "receiver_id",
+    currentUser.id
+   )
+   .order(
+    "created_at",
+    {ascending:true}
+   );
+
+
+  if(sent.error){
 
    box.innerHTML=
    '<div class="small">'+
-   escapeHTML(result.error.message)+
+   escapeHTML(
+    sent.error.message
+   )+
    '</div>';
 
    return;
 
   }
 
+
+  if(received.error){
+
+   box.innerHTML=
+   '<div class="small">'+
+   escapeHTML(
+    received.error.message
+   )+
+   '</div>';
+
+   return;
+
+  }
+
+
+  const messages=
+   [
+    ...(sent.data||[]),
+    ...(received.data||[])
+   ]
+   .sort(
+    (a,b)=>
+     new Date(a.created_at)-
+     new Date(b.created_at)
+   );
+
+
   box.innerHTML="";
 
-  (result.data||[]).forEach(renderMessage);
 
-  box.scrollTop=box.scrollHeight;
+  if(!messages.length){
+
+   box.innerHTML=
+   '<div class="small center">'+
+   'এখনো কোনো Message নেই। প্রথম Message পাঠান।'+
+   '</div>';
+
+  }
+
+
+  messages.forEach(
+   renderMessage
+  );
+
+
+  box.scrollTop=
+   box.scrollHeight;
+
 
  }catch(err){
 
   console.error(err);
+
+  box.innerHTML=
+  '<div class="small">'+
+  escapeHTML(
+   err.message
+  )+
+  '</div>';
 
  }
 
 }
 
 
+/* =====================================================
+ RENDER MESSAGE
+===================================================== */
+
 function renderMessage(message){
 
- const box=$("chatMessages");
+ const box=
+  $("chatMessages");
 
- const div=document.createElement("div");
+
+ if(!box)return;
+
+
+ const div=
+  document.createElement("div");
+
 
  div.className=
   "msg "+
   (
-   message.sender_id===currentUser.id
+   message.sender_id===
+   currentUser.id
    ?"mine"
    :"other"
   );
 
+
  div.textContent=
   message.content||"";
+
 
  box.appendChild(div);
 
@@ -3095,19 +4207,42 @@ function renderMessage(message){
 
 async function sendMessage(){
 
- if(!currentUser||!selectedChatUser){
+ if(
+  !currentUser||
+  !selectedChatUser
+ ){
 
-  toast("একজন User নির্বাচন করুন");
+  toast(
+   "একজন User নির্বাচন করুন"
+  );
+
   return;
 
  }
 
- const input=$("messageInput");
+
+ const input=
+  $("messageInput");
+
 
  const content=
   input.value.trim();
 
- if(!content)return;
+
+ if(!content)
+  return;
+
+
+ if(content.length>2000){
+
+  toast(
+   "Message সর্বোচ্চ ২০০০ অক্ষর হতে পারে।"
+  );
+
+  return;
+
+ }
+
 
  try{
 
@@ -3122,20 +4257,29 @@ async function sendMessage(){
 
    });
 
+
   if(result.error){
 
-   toast(result.error.message);
+   toast(
+    result.error.message
+   );
+
    return;
 
   }
 
+
   input.value="";
+
 
   await loadMessages();
 
+
  }catch(err){
 
-  toast(err.message);
+  toast(
+   err.message
+  );
 
  }
 
@@ -3151,13 +4295,22 @@ function setupMessageRealtime(){
  if(messageChannel){
 
   try{
-   db.removeChannel(messageChannel);
+
+   db.removeChannel(
+    messageChannel
+   );
+
   }catch(e){}
 
  }
 
- if(!currentUser||!selectedChatUser)
+
+ if(
+  !currentUser||
+  !selectedChatUser
+ )
   return;
+
 
  messageChannel=
   db
@@ -3165,7 +4318,9 @@ function setupMessageRealtime(){
    "messages-"+
    currentUser.id+
    "-"+
-   selectedChatUser.id
+   selectedChatUser.id+
+   "-"+
+   Date.now()
   )
   .on(
    "postgres_changes",
@@ -3176,20 +4331,31 @@ function setupMessageRealtime(){
    },
    payload=>{
 
-    const m=payload.new;
+    const m=
+     payload.new;
+
 
     const relevant=
      (
-      m.sender_id===currentUser.id&&
-      m.receiver_id===selectedChatUser.id
-     )||
+      m.sender_id===
+      currentUser.id&&
+      m.receiver_id===
+      selectedChatUser.id
+     )
+     ||
      (
-      m.sender_id===selectedChatUser.id&&
-      m.receiver_id===currentUser.id
+      m.sender_id===
+      selectedChatUser.id&&
+      m.receiver_id===
+      currentUser.id
      );
 
-    if(relevant)
+
+    if(relevant){
+
      loadMessages();
+
+    }
 
    }
   )
@@ -3204,8 +4370,10 @@ function setupMessageRealtime(){
 
 document.addEventListener(
  "DOMContentLoaded",
- ()=>{
+ function(){
+
   restoreSession();
+
  }
 );
 
