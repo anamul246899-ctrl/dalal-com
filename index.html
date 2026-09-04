@@ -10,12 +10,14 @@
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+
 body{
  margin:0;
  font-family:Arial,"Noto Sans Bengali",sans-serif;
  background:#f4f7f5;
  color:#17251c;
 }
+
 button,input,textarea,select{font:inherit}
 button{cursor:pointer;border:0}
 .hidden{display:none!important}
@@ -739,11 +741,11 @@ textarea{
 <input
  id="loginIdentity"
  type="text"
- placeholder="Username অথবা Phone Number"
+ placeholder="Username or Phone Number"
  autocomplete="username">
 
 <div class="loginHint">
-🔐 Password, Email, SMS বা OTP লাগবে না
+🔐 No Password, Email, SMS or OTP required
 </div>
 
 <button class="primary" onclick="login()">
@@ -758,7 +760,7 @@ Login
 
 <input
  id="signupName"
- placeholder="আপনার নাম">
+ placeholder="Your Name">
 
 <input
  id="signupUsername"
@@ -791,7 +793,7 @@ Create Account
 
 <input
  id="quickSearch"
- placeholder="মানুষ খুঁজুন..."
+ placeholder="Search People..."
  onkeydown="if(event.key==='Enter')quickSearchUser()">
 
 <button onclick="quickSearchUser()">
@@ -971,17 +973,17 @@ Post loading...
 
 <div class="card">
 
-<h2>🔍 Search</h2>
+<h2>🔍 Search People</h2>
 
 <input
  id="searchInput"
- placeholder="নাম বা Username দিয়ে খুঁজুন">
+ placeholder="Search by Name or Username">
 
 <button
  class="primary"
  onclick="searchUsers()">
 
-Search
+Search People
 
 </button>
 
@@ -1002,19 +1004,19 @@ Search
 
 <div class="warningBox">
 
-⚠️ <b>গুরুত্বপূর্ণ নিয়ম</b><br>
+⚠️ <b>Important Rules</b><br>
 
-অশ্লীল, যৌনভাবে স্পষ্ট, পর্নোগ্রাফিক বা অবৈধ ছবি/ভিডিও
-আপলোড করা সম্পূর্ণ নিষিদ্ধ।<br>
+Uploading obscene, sexually explicit, pornographic or illegal
+photos/videos is strictly prohibited.<br>
 
-অন্যের সম্মানহানি করে এমন কনটেন্টও প্রকাশ করবেন না।
-শুধু সত্য, দায়িত্বশীল ও জনস্বার্থমূলক তথ্য প্রকাশ করুন।
+Do not publish content that harms another person's dignity.
+Only publish truthful, responsible and public-interest information.
 
 <br><br>
 
 <b>
-নিয়ম ভঙ্গ করলে পোস্ট সরানো এবং প্রয়োজনীয়
-account action নেওয়া হতে পারে।
+Violations may result in post removal and necessary
+account action.
 </b>
 
 </div>
@@ -1022,20 +1024,20 @@ account action নেওয়া হতে পারে।
 
 <textarea
  id="postContent"
- placeholder="আপনার কথা লিখুন..."></textarea>
+ placeholder="Write something..."></textarea>
 
 
 <select id="postCategory">
 
-<option value="সাধারণ">সাধারণ</option>
-<option value="ঘুষ">ঘুষ</option>
-<option value="দালালি">দালালি</option>
-<option value="প্রতারণা">প্রতারণা</option>
-<option value="অনিয়ম">অনিয়ম</option>
-<option value="দুর্নীতি">দুর্নীতি</option>
-<option value="চাঁদাবাজি">চাঁদাবাজি</option>
-<option value="অভিযোগ">অভিযোগ</option>
-<option value="অন্যান্য">অন্যান্য</option>
+<option value="সাধারণ">General</option>
+<option value="ঘুষ">Bribe</option>
+<option value="দালালি">Middleman</option>
+<option value="প্রতারণা">Fraud</option>
+<option value="অনিয়ম">Irregularity</option>
+<option value="দুর্নীতি">Corruption</option>
+<option value="চাঁদাবাজি">Extortion</option>
+<option value="অভিযোগ">Complaint</option>
+<option value="অন্যান্য">Other</option>
 
 </select>
 
@@ -1047,7 +1049,7 @@ account action নেওয়া হতে পারে।
  type="checkbox"
  style="width:auto">
 
-পরিচয় গোপন রাখুন
+Post anonymously
 
 </label>
 
@@ -1064,7 +1066,7 @@ account action নেওয়া হতে পারে।
  class="small"
  style="margin-top:5px">
 
-📷 ছবি / 🎥 ভিডিও সর্বোচ্চ 10টি নির্বাচন করতে পারবেন।
+📷 You can select up to 10 photos/videos.
 
 </div>
 
@@ -1076,7 +1078,7 @@ account action নেওয়া হতে পারে।
  class="primary"
  onclick="createPost()">
 
-Publish
+Publish Post
 
 </button>
 
@@ -1118,7 +1120,7 @@ Publish
  class="primary"
  onclick="saveProfile()">
 
-Save
+Save Changes
 
 </button>
 
@@ -1146,7 +1148,7 @@ Logout
 <h2>💬 Chat</h2>
 
 <div id="chatUsers">
-লোড হচ্ছে...
+Users loading...
 </div>
 
 </div>
@@ -1163,7 +1165,7 @@ Logout
 
 <input
  id="messageInput"
- placeholder="Message..."
+ placeholder="Write a message..."
  style="margin:0"
  onkeydown="if(event.key==='Enter')sendMessage()">
 
@@ -1415,7 +1417,7 @@ async function login(){
 
   $("loginMsg").innerHTML=
   '<div class="status">'+
-  'Username অথবা Phone Number দিন।'+
+  'Enter Username or Phone Number.'+
   '</div>';
 
   return;
@@ -1423,7 +1425,7 @@ async function login(){
  }
 
  $("loginMsg").innerHTML=
- '<div class="status">Account খোঁজা হচ্ছে...</div>';
+ '<div class="status">Searching for account...</div>';
 
  try{
 
@@ -1470,7 +1472,7 @@ async function login(){
 
    $("loginMsg").innerHTML=
    '<div class="status">'+
-   'এই Username/Phone Number-এর কোনো Account পাওয়া যায়নি।'+
+   'No account found for this Username/Phone Number.'+
    '</div>';
 
    return;
@@ -1537,7 +1539,7 @@ async function signup(){
 
   $("signupMsg").innerHTML=
   '<div class="status">'+
-  'Name, Username ও Phone Number দিন।'+
+  'Enter Name, Username and Phone Number.'+
   '</div>';
 
   return;
@@ -1548,7 +1550,7 @@ async function signup(){
 
   $("signupMsg").innerHTML=
   '<div class="status">'+
-  'Username কমপক্ষে ৩ অক্ষরের হতে হবে।'+
+  'Username must be at least 3 characters.'+
   '</div>';
 
   return;
@@ -1559,7 +1561,7 @@ async function signup(){
 
   $("signupMsg").innerHTML=
   '<div class="status">'+
-  'Username-এ শুধু English letter, number, _ , . অথবা - ব্যবহার করুন।'+
+  'Username can only contain English letters, numbers, _, . or -.'+
   '</div>';
 
   return;
@@ -1570,7 +1572,7 @@ async function signup(){
 
   $("signupMsg").innerHTML=
   '<div class="status">'+
-  'সঠিক Phone Number দিন।'+
+  'Enter a valid Phone Number.'+
   '</div>';
 
   return;
@@ -1578,7 +1580,7 @@ async function signup(){
  }
 
  $("signupMsg").innerHTML=
- '<div class="status">Account তৈরি হচ্ছে...</div>';
+ '<div class="status">Creating account...</div>';
 
  try{
 
@@ -1604,7 +1606,7 @@ async function signup(){
 
    $("signupMsg").innerHTML=
    '<div class="status">'+
-   'এই Username ইতিমধ্যে ব্যবহার করা হয়েছে।'+
+   'This Username is already taken.'+
    '</div>';
 
    return;
@@ -1634,7 +1636,7 @@ async function signup(){
 
    $("signupMsg").innerHTML=
    '<div class="status">'+
-   'এই Phone Number ইতিমধ্যে ব্যবহার করা হয়েছে।'+
+   'This Phone Number is already registered.'+
    '</div>';
 
    return;
@@ -1673,7 +1675,7 @@ async function signup(){
 
    $("signupMsg").innerHTML=
    '<div class="status">'+
-   '<b>Account তৈরি হয়নি</b><br>'+
+   '<b>Account creation failed</b><br>'+
    escapeHTML(
     insertResult.error.message
    )+
@@ -1707,7 +1709,7 @@ async function signup(){
 
   $("signupMsg").innerHTML=
   '<div class="success">'+
-  '✅ Account সফলভাবে তৈরি হয়েছে।'+
+  '✅ Account created successfully.'+
   '</div>';
 
 
@@ -1728,7 +1730,7 @@ async function signup(){
 
   $("signupMsg").innerHTML=
   '<div class="status">'+
-  '<b>Account তৈরি হয়নি</b><br>'+
+  '<b>Account creation failed</b><br>'+
   escapeHTML(
    err.message||
    "Account creation failed"
@@ -1876,7 +1878,7 @@ async function loadDailyAwareness(){
 
  const fallback=[
 
- "অন্যায়ের সামনে থেমে যেও না—তোমার একটি প্রতিবাদই হতে পারে পরিবর্তনের শুরু।",
+ "অন্যায়ের বিরুদ্ধে তথ্যভিত্তিক ও দায়িত্বশীল প্রতিবাদ করুন।",
 
  "ঘুষ একটি মানুষের সমস্যা নয়—এটি পুরো সমাজের ক্ষতি করে।",
 
@@ -2028,7 +2030,7 @@ function previewMedia(){
  if(files.length>10){
 
   toast(
-   "সর্বোচ্চ ১০টি ছবি/ভিডিও দিতে পারবেন।"
+   "Maximum 10 photos/videos allowed."
   );
 
   const dt=
@@ -2134,7 +2136,7 @@ async function createPost(){
 
  if(!currentUser){
 
-  toast("Login করুন");
+  toast("Please login first.");
   return;
 
  }
@@ -2160,7 +2162,7 @@ async function createPost(){
  if(!content&&files.length===0){
 
   toast(
-   "কিছু লিখুন অথবা ছবি/ভিডিও দিন"
+   "Write something or select a photo/video."
   );
 
   return;
@@ -2171,7 +2173,7 @@ async function createPost(){
  if(files.length>10){
 
   toast(
-   "সর্বোচ্চ ১০টি media দিতে পারবেন।"
+   "Maximum 10 media files allowed."
   );
 
   return;
@@ -2188,7 +2190,7 @@ async function createPost(){
   if(!valid){
 
    toast(
-    "শুধু ছবি অথবা ভিডিও upload করা যাবে।"
+    "Only image or video files are allowed."
    );
 
    return;
@@ -2200,12 +2202,12 @@ async function createPost(){
 
  const agree=
   confirm(
-   "⚠️ পোস্ট করার আগে নিশ্চিত করুন:\n\n"+
-   "• অশ্লীল/পর্নোগ্রাফিক ছবি বা ভিডিও নয়\n"+
-   "• যৌনভাবে স্পষ্ট কনটেন্ট নয়\n"+
-   "• অবৈধ বা ক্ষতিকর কনটেন্ট নয়\n"+
-   "• অন্যের সম্মানহানি হয় এমন কনটেন্ট নয়\n\n"+
-   "আপনি কি নিয়ম মেনে পোস্টটি Publish করতে চান?"
+   "⚠️ Please confirm before publishing:\n\n"+
+   "• No obscene/pornographic photos or videos\n"+
+   "• No sexually explicit content\n"+
+   "• No illegal or harmful content\n"+
+   "• No content that harms another person's dignity\n\n"+
+   "Do you want to publish this post?"
   );
 
 
@@ -2214,7 +2216,7 @@ async function createPost(){
 
 
  toast(
-  "Post তৈরি হচ্ছে..."
+  "Creating post..."
  );
 
 
@@ -2395,13 +2397,13 @@ async function createPost(){
   if(uploadFailed){
 
    toast(
-    "Post প্রকাশ হয়েছে, তবে কিছু media upload হয়নি।"
+    "Post published, but some media files failed to upload."
    );
 
   }else{
 
    toast(
-    "✅ Post Published"
+    "✅ Post published successfully."
    );
 
   }
@@ -2416,7 +2418,7 @@ async function createPost(){
 
   toast(
    err.message||
-   "Post তৈরি করা যায়নি।"
+   "Post could not be created."
   );
 
  }
@@ -2479,14 +2481,81 @@ async function getMedia(post){
 
 
 /* =====================================================
- LOAD FEED
+ LOAD POST USERS
  IMPORTANT:
- Explicit FK used to solve ambiguous relationship.
+ NO posts -> profiles relationship is used.
+===================================================== */
+
+async function loadPostUsers(posts){
+
+ const ids=[
+  ...new Set(
+   posts
+   .map(post=>post.user_id)
+   .filter(Boolean)
+  )
+ ];
+
+ if(!ids.length)
+  return {};
+
+ try{
+
+  const result=
+   await db
+   .from("profiles")
+   .select(
+    "id,display_name,username,avatar_url"
+   )
+   .in("id",ids);
+
+
+  if(result.error){
+
+   console.error(
+    "POST PROFILE LOAD ERROR:",
+    result.error
+   );
+
+   return {};
+
+  }
+
+
+  const map={};
+
+  (result.data||[])
+  .forEach(user=>{
+
+   map[user.id]=user;
+
+  });
+
+
+  return map;
+
+ }catch(err){
+
+  console.error(err);
+
+  return {};
+
+ }
+
+}
+
+
+/* =====================================================
+ LOAD FEED
+ FIXED:
+ No relationship embedding.
 ===================================================== */
 
 async function loadFeed(){
 
  const feed=$("feed");
+
+ if(!feed)return;
 
  feed.innerHTML=
  '<div class="card center">Post loading...</div>';
@@ -2494,18 +2563,11 @@ async function loadFeed(){
 
  try{
 
+  /* First load posts only */
   const result=
    await db
    .from("posts")
-   .select(`
-    *,
-    profiles!posts_user_id_profiles_fkey(
-     id,
-     display_name,
-     username,
-     avatar_url
-    )
-   `)
+   .select("*")
    .eq("status","published")
    .order(
     "created_at",
@@ -2542,12 +2604,26 @@ async function loadFeed(){
 
    feed.innerHTML=
    '<div class="card center">'+
-   'এখনো কোনো Post নেই। প্রথম Post আপনিই করুন।'+
+   'No posts yet. Create the first post.'+
    '</div>';
 
    return;
 
   }
+
+
+  /* Load profiles separately */
+  const userMap=
+   await loadPostUsers(data);
+
+
+  /* Attach profile object manually */
+  data.forEach(post=>{
+
+   post.profiles=
+    userMap[post.user_id]||{};
+
+  });
 
 
   feed.innerHTML="";
@@ -2587,7 +2663,6 @@ async function loadFeed(){
 
 /* =====================================================
  LOAD COMMENT USERS
- This avoids ambiguous comments -> profiles embedding.
 ===================================================== */
 
 async function loadCommentUsers(comments){
@@ -2908,7 +2983,7 @@ async function postHTML(post){
     <div class="small">
 
      ${escapeHTML(
-      post.category||"সাধারণ"
+      post.category||"General"
      )}
 
      ·
@@ -3151,7 +3226,7 @@ function savePost(postId){
 function reportPost(postId){
 
  toast(
-  "🚩 Report option নির্বাচিত হয়েছে"
+  "🚩 Report option selected"
  );
 
 }
@@ -3165,7 +3240,7 @@ async function deletePost(postId){
 
  if(!currentUser){
 
-  toast("Login করুন");
+  toast("Please login first.");
   return;
 
  }
@@ -3173,7 +3248,7 @@ async function deletePost(postId){
 
  const ok=
   confirm(
-   "এই Post টি Delete করতে চান?"
+   "Do you want to delete this post?"
   );
 
 
@@ -3292,7 +3367,7 @@ async function react(
 
  if(!currentUser){
 
-  toast("Login করুন");
+  toast("Please login first.");
   return;
 
  }
@@ -3445,7 +3520,7 @@ async function addComment(postId){
 
  if(!currentUser){
 
-  toast("Login করুন");
+  toast("Please login first.");
   return;
 
  }
@@ -3461,7 +3536,7 @@ async function addComment(postId){
  if(!content){
 
   toast(
-   "Comment লিখুন"
+   "Write a comment."
   );
 
   return;
@@ -3472,7 +3547,7 @@ async function addComment(postId){
  if(content.length>2000){
 
   toast(
-   "Comment সর্বোচ্চ ২০০০ অক্ষর হতে পারে।"
+   "Comment can be maximum 2000 characters."
   );
 
   return;
@@ -3545,7 +3620,7 @@ async function sharePost(postId){
    await navigator.share({
 
     title:"ঘুষ সাইট",
-    text:"ঘুষ সাইটের একটি Post",
+    text:"A post from Ghus Site",
     url:url
 
    });
@@ -3578,7 +3653,7 @@ async function sharePost(postId){
 
 
 /* =====================================================
- SEARCH
+ SEARCH PEOPLE
 ===================================================== */
 
 function quickSearchUser(){
@@ -3622,7 +3697,7 @@ async function searchUsers(){
 
   box.innerHTML=
   '<div class="card">'+
-  'নাম অথবা Username লিখুন।'+
+  'Enter a name or username.'+
   '</div>';
 
   return;
@@ -3632,7 +3707,7 @@ async function searchUsers(){
 
  box.innerHTML=
  '<div class="card center">'+
- 'Search হচ্ছে...'+
+ 'Searching People...'+
  '</div>';
 
 
@@ -3683,7 +3758,7 @@ async function searchUsers(){
 
    box.innerHTML=
    '<div class="card center">'+
-   'কোনো User পাওয়া যায়নি।'+
+   'No people found.'+
    '</div>';
 
    return;
@@ -3776,7 +3851,7 @@ async function viewUser(userId){
   if(!result.data){
 
    toast(
-    "User পাওয়া যায়নি"
+    "User not found."
    );
 
    return;
@@ -4022,7 +4097,7 @@ async function saveProfile(){
  if(!name){
 
   toast(
-   "Name দিন"
+   "Enter your name."
   );
 
   return;
@@ -4171,7 +4246,7 @@ async function loadChatUsers(){
 
    box.innerHTML=
    '<div class="small">'+
-   'অন্য কোনো User নেই।'+
+   'No other users found.'+
    '</div>';
 
    return;
@@ -4269,7 +4344,7 @@ async function openChat(userId){
   if(!result.data){
 
    toast(
-    "User পাওয়া যায়নি"
+    "User not found."
    );
 
    return;
@@ -4425,7 +4500,7 @@ async function loadMessages(){
 
    box.innerHTML=
    '<div class="small center">'+
-   'এখনো কোনো Message নেই। প্রথম Message পাঠান।'+
+   'No messages yet. Send the first message.'+
    '</div>';
 
   }
@@ -4504,7 +4579,7 @@ async function sendMessage(){
  ){
 
   toast(
-   "একজন User নির্বাচন করুন"
+   "Select a user first."
   );
 
   return;
@@ -4527,7 +4602,7 @@ async function sendMessage(){
  if(content.length>2000){
 
   toast(
-   "Message সর্বোচ্চ ২০০০ অক্ষর হতে পারে।"
+   "Message can be maximum 2000 characters."
   );
 
   return;
