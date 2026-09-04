@@ -33,16 +33,19 @@ button{cursor:pointer;border:0}
  padding:8px 12px;
  box-shadow:0 2px 8px rgba(0,0,0,.15);
 }
+
 .logo{
  font-size:23px;
  font-weight:800;
  white-space:nowrap;
 }
+
 .searchBox{
  flex:1;
  display:flex;
  max-width:600px;
 }
+
 .searchBox input{
  width:100%;
  border:0;
@@ -51,6 +54,7 @@ button{cursor:pointer;border:0}
  padding:10px 14px;
  margin:0;
 }
+
 .searchBox button{
  background:#fff;
  color:#087443;
@@ -63,6 +67,7 @@ button{cursor:pointer;border:0}
  margin:15px auto 80px;
  padding:0 10px;
 }
+
 .card{
  background:#fff;
  border-radius:12px;
@@ -71,6 +76,7 @@ button{cursor:pointer;border:0}
  box-shadow:0 1px 4px rgba(0,70,35,.12);
  border:1px solid #e5ece8;
 }
+
 .center{text-align:center}
 
 .primary{
@@ -83,6 +89,7 @@ button{cursor:pointer;border:0}
  font-weight:700;
  transition:.2s;
 }
+
 .primary:hover{background:#065b34}
 
 .secondary{
@@ -119,18 +126,21 @@ textarea{
  margin:35px auto;
  padding:15px;
 }
+
 .auth h1{
  color:#087443;
  text-align:center;
  font-size:38px;
  margin-bottom:8px;
 }
+
 .authSubtitle{
  text-align:center;
  color:#5d6d64;
  line-height:1.6;
  margin-bottom:18px;
 }
+
 .authBox{
  background:#fff;
  padding:24px;
@@ -138,6 +148,7 @@ textarea{
  box-shadow:0 5px 25px rgba(0,70,35,.12);
  border:1px solid #e3ebe6;
 }
+
 .authBox h2{text-align:center;color:#173c2a}
 .authBox h3{color:#087443}
 
@@ -196,6 +207,8 @@ textarea{
  margin:10px 0;
 }
 
+/* ================= DAILY ================= */
+
 .daily{
  border-left:5px solid #087443;
  background:#fff;
@@ -216,6 +229,116 @@ textarea{
  line-height:1.7;
  color:#26372d;
 }
+
+
+/* ================= PUBLIC HELP ================= */
+
+.helpBox{
+ background:linear-gradient(180deg,#ffffff,#f7fbf8);
+ border:1px solid #dce9e2;
+ border-radius:16px;
+ padding:14px;
+ margin-bottom:12px;
+ box-shadow:0 2px 8px rgba(0,70,35,.10);
+}
+
+.helpHero{
+ display:flex;
+ gap:12px;
+ align-items:flex-start;
+ padding:4px 2px 14px;
+ border-bottom:1px solid #e5ece8;
+}
+
+.helpEmoji{
+ width:44px;
+ height:44px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:#e8f6ee;
+ border-radius:50%;
+ font-size:23px;
+ flex-shrink:0;
+}
+
+.helpHero h2{
+ margin:2px 0 5px;
+ color:#087443;
+ font-size:18px;
+ line-height:1.4;
+}
+
+.helpHero p{
+ margin:0 0 10px;
+ color:#68766e;
+ font-size:13px;
+ line-height:1.5;
+}
+
+.helpPostBtn{
+ background:#087443;
+ color:#fff;
+ padding:9px 17px;
+ border-radius:8px;
+ font-weight:700;
+ transition:.2s;
+}
+
+.helpPostBtn:hover{
+ background:#065b34;
+ transform:translateY(-1px);
+}
+
+.helpTitle{
+ font-size:16px;
+ font-weight:800;
+ color:#173c2a;
+ margin:14px 0 9px;
+}
+
+.helpGrid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:8px;
+}
+
+.helpGrid a{
+ display:flex;
+ flex-direction:column;
+ gap:3px;
+ text-decoration:none;
+ color:#173c2a;
+ background:#f1f7f3;
+ border:1px solid #e0ebe5;
+ padding:11px;
+ border-radius:10px;
+ font-size:13px;
+ transition:.2s;
+}
+
+.helpGrid a:hover{
+ background:#e5f3eb;
+ transform:translateY(-1px);
+}
+
+.helpGrid a span{
+ color:#68766e;
+ font-size:12px;
+}
+
+.helpNote{
+ margin-top:10px;
+ padding:9px 10px;
+ background:#fff8e1;
+ color:#765b00;
+ border-radius:8px;
+ font-size:12px;
+ line-height:1.5;
+}
+
+
+/* ================= POSTS ================= */
 
 .avatar{
  width:45px;
@@ -377,6 +500,9 @@ textarea{
  color:#e41e3f!important;
 }
 
+
+/* ================= NAV ================= */
+
 .bottomNav{
  position:fixed;
  bottom:0;
@@ -402,6 +528,9 @@ textarea{
 .bottomNav button.active{
  color:#087443;
 }
+
+
+/* ================= MEDIA PREVIEW ================= */
 
 .preview{
  display:grid;
@@ -433,6 +562,9 @@ textarea{
  height:28px;
 }
 
+
+/* ================= PROFILE ================= */
+
 .profileCover{
  background:linear-gradient(135deg,#087443,#35a66b);
  height:130px;
@@ -462,6 +594,9 @@ textarea{
  padding:9px 15px;
  border-radius:8px;
 }
+
+
+/* ================= USERS / CHAT ================= */
 
 .userRow{
  display:flex;
@@ -514,6 +649,9 @@ textarea{
  background:#f0f5f2;
 }
 
+
+/* ================= TOAST ================= */
+
 .toast{
  position:fixed;
  bottom:75px;
@@ -534,6 +672,9 @@ textarea{
  padding:15px;
  color:#68776e;
 }
+
+
+/* ================= MOBILE ================= */
 
 @media(max-width:600px){
 
@@ -582,11 +723,24 @@ textarea{
   font-size:12px;
  }
 
+ .helpHero h2{
+  font-size:16px;
+ }
+
+ .helpGrid{
+  grid-template-columns:1fr 1fr;
+ }
+
+ .helpGrid a{
+  padding:10px 8px;
+ }
+
 }
 </style>
 </head>
 
 <body>
+
 
 <!-- ================= LOGIN ================= -->
 
@@ -676,9 +830,12 @@ Create Account
 
 <main class="container">
 
+
 <!-- ================= HOME ================= -->
 
 <section id="homePage">
+
+<!-- DAILY AWARENESS -->
 
 <div class="daily">
 
@@ -691,6 +848,116 @@ Create Account
 </div>
 
 </div>
+
+
+<!-- ================= PUBLIC HELP ================= -->
+
+<div class="helpBox">
+
+<div class="helpHero">
+
+<div class="helpEmoji">
+🟢
+</div>
+
+<div>
+
+<h2>
+নিজের অভিজ্ঞতা জানাতে ঘুষ সাইটে পোস্ট করুন
+</h2>
+
+<p>
+পরিচয় গোপন রেখেও আপনার অভিজ্ঞতা জানাতে পারবেন।
+</p>
+
+<button
+ class="helpPostBtn"
+ onclick="showPage('postPage')">
+
+📝 পোস্ট করুন
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="helpTitle">
+🆘 প্রয়োজনীয় সহায়তা
+</div>
+
+
+<div class="helpGrid">
+
+
+<a
+ href="https://acc.org.bd"
+ target="_blank"
+ rel="noopener noreferrer">
+
+🛡️ <b>ঘুষ/দুর্নীতি</b>
+
+<span>
+ACC — ১০৬
+</span>
+
+</a>
+
+
+<a href="tel:999">
+
+🚨 <b>জরুরি বিপদ</b>
+
+<span>
+জাতীয় জরুরি সেবা — ৯৯৯
+</span>
+
+</a>
+
+
+<a
+ href="https://www.police.gov.bd"
+ target="_blank"
+ rel="noopener noreferrer">
+
+👮 <b>পুলিশি সহায়তা</b>
+
+<span>
+বাংলাদেশ পুলিশ
+</span>
+
+</a>
+
+
+<a
+ href="https://gd.police.gov.bd"
+ target="_blank"
+ rel="noopener noreferrer">
+
+📄 <b>অনলাইন জিডি</b>
+
+<span>
+Online GD
+</span>
+
+</a>
+
+
+</div>
+
+
+<div class="helpNote">
+
+⚠️ প্রমাণ থাকলে সংরক্ষণ করুন।
+নিজের নিরাপত্তাকে অগ্রাধিকার দিন।
+
+</div>
+
+</div>
+
+
+<!-- ================= CREATE POST SHORTCUT ================= -->
 
 <div class="card">
 
@@ -714,10 +981,15 @@ Create Account
 
 </div>
 
+
+<!-- ================= FEED ================= -->
+
 <div id="feed">
+
 <div class="card center">
 Post loading...
 </div>
+
 </div>
 
 </section>
@@ -735,8 +1007,12 @@ Post loading...
  id="searchInput"
  placeholder="নাম বা Username দিয়ে খুঁজুন">
 
-<button class="primary" onclick="searchUsers()">
+<button
+ class="primary"
+ onclick="searchUsers()">
+
 Search
+
 </button>
 
 </div>
@@ -754,6 +1030,7 @@ Search
 
 <h2>📝 Create Post</h2>
 
+
 <div class="warningBox">
 
 ⚠️ <b>গুরুত্বপূর্ণ নিয়ম</b><br>
@@ -766,14 +1043,18 @@ Search
 
 <br><br>
 
-<b>নিয়ম ভঙ্গ করলে পোস্ট সরানো এবং প্রয়োজনীয়
-account action নেওয়া হতে পারে।</b>
+<b>
+নিয়ম ভঙ্গ করলে পোস্ট সরানো এবং প্রয়োজনীয়
+account action নেওয়া হতে পারে।
+</b>
 
 </div>
+
 
 <textarea
  id="postContent"
  placeholder="আপনার কথা লিখুন..."></textarea>
+
 
 <select id="postCategory">
 
@@ -789,6 +1070,7 @@ account action নেওয়া হতে পারে।</b>
 
 </select>
 
+
 <label style="display:block;margin:10px 0">
 
 <input
@@ -800,12 +1082,14 @@ account action নেওয়া হতে পারে।</b>
 
 </label>
 
+
 <input
  id="mediaFile"
  type="file"
  accept="image/*,video/*"
  multiple
  onchange="previewMedia()">
+
 
 <div
  class="small"
@@ -815,7 +1099,9 @@ account action নেওয়া হতে পারে।</b>
 
 </div>
 
+
 <div id="mediaPreview" class="preview"></div>
+
 
 <button
  class="primary"
@@ -867,6 +1153,7 @@ Save
 
 </button>
 
+
 <button
  class="secondary"
  style="width:100%;margin-top:8px"
@@ -895,11 +1182,13 @@ Logout
 
 </div>
 
+
 <div id="chatBox" class="card hidden">
 
 <h3 id="chatTitle"></h3>
 
 <div id="chatMessages" class="chatMessages"></div>
+
 
 <div style="display:flex;gap:5px;margin-top:8px">
 
@@ -938,6 +1227,7 @@ Send
 
 </button>
 
+
 <button
  id="navSearch"
  onclick="showPage('searchPage')">
@@ -945,6 +1235,7 @@ Send
 🔍<br>Search
 
 </button>
+
 
 <button
  id="navPost"
@@ -954,6 +1245,7 @@ Send
 
 </button>
 
+
 <button
  id="navChat"
  onclick="showPage('chatPage')">
@@ -961,6 +1253,7 @@ Send
 💬<br>Chat
 
 </button>
+
 
 <button
  id="navProfile"
@@ -1023,6 +1316,7 @@ function toast(message){
  const t=document.createElement("div");
 
  t.className="toast";
+
  t.textContent=message;
 
  document.body.appendChild(t);
@@ -1030,6 +1324,7 @@ function toast(message){
  setTimeout(()=>{
   if(t)t.remove();
  },3000);
+
 }
 
 
@@ -1044,6 +1339,7 @@ function escapeHTML(text){
  .replace(/>/g,"&gt;")
  .replace(/"/g,"&quot;")
  .replace(/'/g,"&#039;");
+
 }
 
 
@@ -1063,6 +1359,7 @@ function normalizePhone(phone){
   return "+880"+phone.substring(1);
 
  return phone;
+
 }
 
 
@@ -1090,6 +1387,7 @@ function makeUUID(){
   return v.toString(16);
 
  });
+
 }
 
 
@@ -1106,6 +1404,7 @@ function avatarURL(profile){
  return "https://ui-avatars.com/api/?name="+
  encodeURIComponent(name)+
  "&background=087443&color=fff";
+
 }
 
 
@@ -1315,8 +1614,6 @@ async function signup(){
 
  try{
 
-  /* Username */
-
   const usernameCheck=
    await db
    .from("profiles")
@@ -1347,8 +1644,6 @@ async function signup(){
   }
 
 
-  /* Phone */
-
   const phoneCheck=
    await db
    .from("profiles")
@@ -1378,12 +1673,6 @@ async function signup(){
 
   }
 
-
-  /*
-   IMPORTANT:
-   Browser থেকে UUID তৈরি করা হচ্ছে।
-   এতে profiles.id কখনো null যাবে না।
-  */
 
   const newProfileId=
    makeUUID();
@@ -1922,10 +2211,6 @@ async function createPost(){
  }
 
 
- /*
-  Browser-level file type safety
- */
-
  for(const file of files){
 
   const valid=
@@ -1944,10 +2229,6 @@ async function createPost(){
 
  }
 
-
- /*
-  User must confirm community rules
- */
 
  const agree=
   confirm(
@@ -1970,10 +2251,6 @@ async function createPost(){
 
 
  try{
-
-  /*
-   1. Create post
-  */
 
   const result=
    await db
@@ -2011,10 +2288,6 @@ async function createPost(){
 
   let uploadFailed=false;
 
-
-  /*
-   2. Upload media
-  */
 
   for(
    let i=0;
@@ -2119,10 +2392,6 @@ async function createPost(){
   }
 
 
-  /*
-   3. Save first media to posts
-  */
-
   if(firstMediaURL){
 
    const update=
@@ -2148,10 +2417,6 @@ async function createPost(){
 
   }
 
-
-  /*
-   4. Clean form
-  */
 
   $("postContent").value="";
   $("mediaFile").value="";
@@ -2870,10 +3135,6 @@ async function deletePost(postId){
 
  try{
 
-  /*
-   First delete post_media
-  */
-
   const mediaDelete=
    await db
    .from("post_media")
@@ -2886,10 +3147,6 @@ async function deletePost(postId){
     mediaDelete.error
    );
 
-
-  /*
-   Delete comments
-  */
 
   const commentsDelete=
    await db
@@ -2904,10 +3161,6 @@ async function deletePost(postId){
    );
 
 
-  /*
-   Delete reactions
-  */
-
   const reactionDelete=
    await db
    .from("reactions")
@@ -2920,10 +3173,6 @@ async function deletePost(postId){
     reactionDelete.error
    );
 
-
-  /*
-   Finally delete post
-  */
 
   const result=
    await db
@@ -4045,11 +4294,6 @@ async function loadMessages(){
 
 
  try{
-
-  /*
-   দুইটা query করা হয়েছে।
-   এতে complex OR query-এর সমস্যা কমে।
-  */
 
   const sent=
    await db
