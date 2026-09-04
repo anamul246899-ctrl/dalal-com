@@ -1,735 +1,537 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>PASSTIME</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-
-*{
- box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#f0f2f5;
- color:#222;
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f0f2f5;
+  color:#222;
 }
 
 header{
- background:#16a34a;
- color:white;
- height:60px;
- padding:0 15px;
- display:flex;
- align-items:center;
- justify-content:space-between;
- position:sticky;
- top:0;
- z-index:50;
- box-shadow:0 2px 5px #0003;
+  background:#1877f2;
+  color:#fff;
+  padding:14px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.header-inner{
+  max-width:700px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
 .logo{
- font-size:25px;
- font-weight:bold;
-}
-
-.container{
- width:100%;
- max-width:680px;
- margin:18px auto;
- padding:0 10px;
-}
-
-.card{
- background:white;
- border-radius:12px;
- margin-bottom:15px;
- padding:15px;
- box-shadow:0 1px 4px #0002;
+  font-size:24px;
+  font-weight:bold;
 }
 
 button{
- border:0;
- border-radius:8px;
- padding:9px 13px;
- cursor:pointer;
- font-size:14px;
-}
-
-.login{
- background:white;
- color:#16a34a;
- font-weight:bold;
+  border:0;
+  border-radius:8px;
+  padding:10px 14px;
+  cursor:pointer;
+  font-size:15px;
 }
 
 .logout{
- background:#dc2626;
- color:white;
+  background:#fff;
+  color:#1877f2;
 }
 
-.create{
- display:flex;
- gap:10px;
+.container{
+  max-width:700px;
+  margin:20px auto;
+  padding:0 10px;
 }
 
-.create input{
- width:100%;
- padding:13px 17px;
- border-radius:25px;
- border:1px solid #ddd;
- outline:none;
- cursor:pointer;
+.card{
+  background:#fff;
+  border-radius:12px;
+  padding:15px;
+  margin-bottom:15px;
+  box-shadow:0 1px 4px rgba(0,0,0,.12);
 }
 
-.media-buttons{
- display:flex;
- gap:7px;
- margin-top:12px;
+h2,h3{
+  margin-top:0;
 }
 
-.media-buttons button{
- flex:1;
- background:#f3f4f6;
+input,textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  margin-bottom:10px;
+  font-size:15px;
 }
 
-.media-buttons button:hover{
- background:#e5e7eb;
-}
-
-.user{
- color:#555;
- font-size:14px;
-}
-
-.post-head{
- display:flex;
- justify-content:space-between;
- align-items:center;
-}
-
-.post-user{
- font-weight:bold;
- color:#111;
-}
-
-.post-date{
- font-size:11px;
- color:#888;
-}
-
-.post-text{
- white-space:pre-wrap;
- margin:13px 0;
- line-height:1.5;
-}
-
-.post-media{
- width:100%;
- max-height:520px;
- object-fit:contain;
- border-radius:10px;
- background:#111;
- margin-top:5px;
-}
-
-.reactions{
- display:flex;
- flex-wrap:wrap;
- gap:5px;
- margin-top:12px;
-}
-
-.reactions button{
- background:#f3f4f6;
- padding:7px 9px;
-}
-
-.reactions button.active{
- background:#dcfce7;
- color:#15803d;
- font-weight:bold;
-}
-
-.actions{
- border-top:1px solid #eee;
- margin-top:12px;
- padding-top:8px;
- display:flex;
- justify-content:space-around;
-}
-
-.actions button{
- background:white;
- color:#555;
-}
-
-.actions button:hover{
- background:#f3f4f6;
-}
-
-.comments{
- margin-top:12px;
- border-top:1px solid #eee;
- padding-top:10px;
-}
-
-.comment{
- background:#f3f4f6;
- border-radius:10px;
- padding:9px 10px;
- margin:7px 0;
- font-size:14px;
- position:relative;
-}
-
-.comment-user{
- font-weight:bold;
-}
-
-.comment-date{
- color:#888;
- font-size:10px;
-}
-
-.comment-delete{
- float:right;
- background:#fee2e2;
- color:#dc2626;
- padding:3px 6px;
- font-size:11px;
-}
-
-.comment-input{
- display:flex;
- gap:6px;
- margin-top:10px;
-}
-
-.comment-input input{
- flex:1;
- padding:10px;
- border:1px solid #ddd;
- border-radius:20px;
- outline:none;
-}
-
-.comment-input button{
- background:#16a34a;
- color:white;
-}
-
-.delete-post{
- background:#fee2e2;
- color:#dc2626;
- font-size:12px;
- padding:6px 9px;
-}
-
-.modal{
- display:none;
- position:fixed;
- inset:0;
- background:#0009;
- z-index:100;
- align-items:center;
- justify-content:center;
- padding:15px;
- overflow:auto;
-}
-
-.modal-box{
- width:100%;
- max-width:440px;
- background:white;
- border-radius:15px;
- padding:20px;
- position:relative;
-}
-
-.close{
- position:absolute;
- right:10px;
- top:10px;
- border-radius:50%;
- background:#eee;
- font-size:18px;
-}
-
-.modal h2{
- text-align:center;
- color:#16a34a;
- margin-top:5px;
-}
-
-.modal input,
-.modal select,
-.modal textarea{
- width:100%;
- padding:11px;
- margin:6px 0;
- border:1px solid #ccc;
- border-radius:8px;
- font-size:15px;
+textarea{
+  min-height:90px;
+  resize:vertical;
 }
 
 .primary{
- width:100%;
- background:#16a34a;
- color:white;
- margin-top:7px;
+  width:100%;
+  background:#1877f2;
+  color:#fff;
 }
 
 .secondary{
- width:100%;
- background:#e5e7eb;
- margin-top:7px;
+  background:#e4e6eb;
 }
 
-.tabs{
- display:flex;
- gap:5px;
- margin-bottom:10px;
+.danger{
+  background:#ffe5e5;
+  color:#d00;
 }
 
-.tabs button{
- flex:1;
- background:#e5e7eb;
-}
-
-.tabs .active{
- background:#16a34a;
- color:white;
-}
-
-.phone-row{
- display:flex;
- gap:5px;
-}
-
-.phone-row select{
- width:40%;
-}
-
-.phone-row input{
- width:60%;
+.link{
+  background:none;
+  color:#1877f2;
+  padding:5px;
 }
 
 .hidden{
- display:none;
+  display:none!important;
 }
 
-.msg{
- text-align:center;
- font-size:14px;
- margin:8px 0;
+.tabs{
+  display:flex;
+  gap:8px;
+  margin-bottom:15px;
 }
 
-.file-name{
- font-size:12px;
- color:#666;
- margin-top:5px;
+.tabs button{
+  flex:1;
 }
 
-.empty{
- text-align:center;
- color:#777;
- padding:25px;
+.active{
+  background:#1877f2;
+  color:#fff;
 }
 
-.loading{
- text-align:center;
- padding:20px;
- color:#777;
+.status{
+  padding:10px;
+  border-radius:8px;
+  margin-bottom:10px;
+  background:#f0f2f5;
+}
+
+.success{
+  background:#dff6e4;
+  color:#08752a;
 }
 
 .error{
- color:#dc2626;
- text-align:center;
+  background:#ffe1e1;
+  color:#a00;
 }
 
-hr{
- border:0;
- border-top:1px solid #eee;
- margin:10px 0;
+.preview{
+  width:100%;
+  max-height:500px;
+  object-fit:contain;
+  border-radius:10px;
+  margin-top:10px;
+}
+
+.post-time{
+  color:#777;
+  font-size:13px;
+}
+
+.actions{
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+  border-top:1px solid #eee;
+  margin-top:10px;
+  padding-top:10px;
+}
+
+.actions button{
+  background:#f0f2f5;
+  flex:1;
+  min-width:75px;
+}
+
+.reactions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:10px;
+  font-size:14px;
+}
+
+.reactions span{
+  background:#f0f2f5;
+  padding:6px 9px;
+  border-radius:15px;
+}
+
+.comments{
+  margin-top:10px;
+  border-top:1px solid #eee;
+  padding-top:10px;
+}
+
+.comment{
+  background:#f0f2f5;
+  border-radius:10px;
+  padding:8px 10px;
+  margin-bottom:7px;
+}
+
+.comment small{
+  color:#777;
+}
+
+.comment-row{
+  display:flex;
+  gap:6px;
+}
+
+.comment-row input{
+  margin:0;
+}
+
+.comment-row button{
+  white-space:nowrap;
+}
+
+.empty{
+  text-align:center;
+  color:#777;
+  padding:30px;
+}
+
+.file-label{
+  display:inline-block;
+  background:#e4e6eb;
+  padding:10px 15px;
+  border-radius:8px;
+  cursor:pointer;
+  margin-bottom:10px;
+}
+
+#fileInput{
+  display:none;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+  padding:15px;
+}
+
+.modal-box{
+  background:#fff;
+  width:100%;
+  max-width:430px;
+  max-height:90vh;
+  overflow:auto;
+  border-radius:15px;
+  padding:20px;
+}
+
+.close{
+  float:right;
+  background:#eee;
 }
 
 @media(max-width:500px){
+  .container{
+    margin-top:10px;
+  }
 
- .logo{
-  font-size:21px;
- }
+  .logo{
+    font-size:20px;
+  }
 
- .media-buttons button{
-  font-size:12px;
-  padding:8px 4px;
- }
-
- .reactions button{
-  font-size:12px;
-  padding:6px;
- }
-
- .actions button{
-  font-size:12px;
- }
-
+  button{
+    padding:9px 10px;
+  }
 }
-
 </style>
 </head>
 
-
 <body>
 
-
 <header>
+  <div class="header-inner">
 
-<div class="logo">
-PASSTIME
-</div>
+    <div class="logo">
+      PASSTIME
+    </div>
 
-<div id="accountArea">
+    <button
+      id="logoutBtn"
+      class="logout hidden"
+      onclick="logout()">
+      Logout
+    </button>
 
-<button class="login"
-onclick="openLogin()">
-Login
-</button>
-
-</div>
-
+  </div>
 </header>
 
 
 <div class="container">
 
+  <!-- LOGIN / REGISTRATION -->
 
-<div class="card">
+  <div id="authArea" class="card">
 
-<div id="userStatus" class="user">
+    <h2>Login to PASSTIME</h2>
 
-আপনি এখনো Login করেননি।
+    <div id="authMessage"></div>
 
-</div>
+    <div class="tabs">
 
-</div>
+      <button
+        id="loginTab"
+        class="active"
+        onclick="showAuth('login')">
+        Login
+      </button>
 
+      <button
+        id="signupTab"
+        onclick="showAuth('signup')">
+        Create Account
+      </button>
 
-<!-- CREATE POST -->
-
-<div class="card">
-
-<div class="create">
-
-<input
-id="quickPost"
-placeholder="What's on your mind?"
-readonly
-onclick="openPostBox('text')"
->
-
-</div>
+    </div>
 
 
-<div class="media-buttons">
+    <!-- LOGIN -->
 
-<button onclick="openPostBox('photo')">
-📷 Photo
-</button>
+    <div id="loginForm">
 
-<button onclick="openPostBox('video')">
-🎥 Video
-</button>
+      <input
+        id="loginPhone"
+        type="tel"
+        placeholder="Phone Number (+880...)"
+        autocomplete="tel">
 
-<button onclick="openPostBox('text')">
-📝 Post
-</button>
+      <input
+        id="loginPassword"
+        type="password"
+        placeholder="Password"
+        autocomplete="current-password">
 
-</div>
+      <button
+        class="primary"
+        onclick="login()">
+        Login
+      </button>
 
-</div>
+      <br><br>
 
+      <button
+        class="link"
+        onclick="showForgot()">
+        Forgot Password?
+      </button>
 
-<!-- FEED -->
-
-<div id="feed">
-
-<div class="card loading">
-Post loading...
-</div>
-
-</div>
-
-
-</div>
-
-
-<!-- =====================================
-LOGIN MODAL
-===================================== -->
-
-<div id="loginModal" class="modal">
-
-<div class="modal-box">
-
-<button class="close"
-onclick="closeLogin()">
-×
-</button>
-
-<h2>PASSTIME Login</h2>
+    </div>
 
 
-<div class="tabs">
+    <!-- CREATE ACCOUNT -->
 
-<button
-id="emailTab"
-class="active"
-onclick="emailMode()">
-Email
-</button>
+    <div id="signupForm" class="hidden">
 
-<button
-id="phoneTab"
-onclick="phoneMode()">
-Phone
-</button>
+      <input
+        id="signupPhone"
+        type="tel"
+        placeholder="Phone Number (+880...)"
+        autocomplete="tel">
 
-</div>
+      <input
+        id="signupEmail"
+        type="email"
+        placeholder="Recovery Email"
+        autocomplete="email">
 
+      <input
+        id="signupPassword"
+        type="password"
+        placeholder="Password (minimum 6 characters)"
+        autocomplete="new-password">
 
-<!-- EMAIL -->
+      <input
+        id="signupConfirm"
+        type="password"
+        placeholder="Confirm Password"
+        autocomplete="new-password">
 
-<div id="emailArea">
+      <button
+        class="primary"
+        onclick="signup()">
+        Create Account
+      </button>
 
-<input
-id="email"
-type="email"
-placeholder="Email"
->
+    </div>
 
-<input
-id="password"
-type="password"
-placeholder="Password"
->
-
-<button
-class="primary"
-onclick="loginEmail()">
-Login
-</button>
-
-<button
-class="primary"
-onclick="signupEmail()">
-Create Account
-</button>
-
-<button
-class="secondary"
-onclick="forgotMode()">
-Forgot Password?
-</button>
-
-</div>
+  </div>
 
 
-<!-- PHONE -->
+  <!-- MAIN APP -->
 
-<div id="phoneArea"
-class="hidden">
+  <div id="appArea" class="hidden">
 
-<div class="phone-row">
+    <!-- CREATE POST -->
 
-<select id="countryCode">
+    <div class="card">
 
-<option value="+880">🇧🇩 +880</option>
-<option value="+91">🇮🇳 +91</option>
-<option value="+92">🇵🇰 +92</option>
-<option value="+977">🇳🇵 +977</option>
-<option value="+94">🇱🇰 +94</option>
-<option value="+1">🇺🇸 +1</option>
-<option value="+44">🇬🇧 +44</option>
-<option value="+61">🇦🇺 +61</option>
-<option value="+81">🇯🇵 +81</option>
-<option value="+82">🇰🇷 +82</option>
-<option value="+86">🇨🇳 +86</option>
-<option value="+49">🇩🇪 +49</option>
-<option value="+33">🇫🇷 +33</option>
-<option value="+39">🇮🇹 +39</option>
-<option value="+34">🇪🇸 +34</option>
-<option value="+971">🇦🇪 +971</option>
-<option value="+966">🇸🇦 +966</option>
-<option value="+974">🇶🇦 +974</option>
-<option value="+965">🇰🇼 +965</option>
-<option value="+968">🇴🇲 +968</option>
-<option value="+973">🇧🇭 +973</option>
-<option value="+60">🇲🇾 +60</option>
-<option value="+65">🇸🇬 +65</option>
-<option value="+66">🇹🇭 +66</option>
-<option value="+84">🇻🇳 +84</option>
-<option value="+27">🇿🇦 +27</option>
-<option value="+20">🇪🇬 +20</option>
-<option value="+90">🇹🇷 +90</option>
+      <h3>Create Post</h3>
 
-</select>
+      <textarea
+        id="postText"
+        placeholder="What's on your mind?">
+      </textarea>
 
-<input
-id="phone"
-type="tel"
-placeholder="Phone number"
->
+      <label class="file-label">
+
+        📷 Photo / 🎥 Video
+
+        <input
+          id="fileInput"
+          type="file"
+          accept="image/*,video/*"
+          onchange="previewFile()">
+
+      </label>
+
+      <div id="filePreview"></div>
+
+      <br>
+
+      <button
+        class="primary"
+        onclick="createPost()">
+        Publish
+      </button>
+
+    </div>
+
+
+    <!-- FEED -->
+
+    <div class="card">
+
+      <h3>Posts</h3>
+
+      <div id="feed">
+
+        <div class="empty">
+          Post loading...
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
 
 
-<button
-class="primary"
-onclick="sendOTP()">
-Send OTP
-</button>
+<!-- FORGOT PASSWORD MODAL -->
 
+<div
+  id="forgotModal"
+  class="modal hidden">
 
-<div id="otpArea"
-class="hidden">
+  <div class="modal-box">
 
-<input
-id="otp"
-maxlength="6"
-placeholder="6 digit OTP"
-inputmode="numeric"
->
+    <button
+      class="close"
+      onclick="closeForgot()">
+      ✕
+    </button>
 
-<button
-class="primary"
-onclick="verifyOTP()">
-Verify OTP
-</button>
+    <h2>Forgot Password</h2>
 
-</div>
+    <p>
+      আপনার Recovery Email দিন।
+    </p>
 
-</div>
+    <input
+      id="forgotEmail"
+      type="email"
+      placeholder="Recovery Email">
 
+    <button
+      class="primary"
+      onclick="sendReset()">
+      Send Reset Link
+    </button>
 
-<!-- FORGOT -->
+    <div id="forgotMessage"></div>
 
-<div id="forgotArea"
-class="hidden">
-
-<input
-id="resetEmail"
-type="email"
-placeholder="Your Email"
->
-
-<button
-class="primary"
-onclick="resetPassword()">
-Send Reset Link
-</button>
-
-<button
-class="secondary"
-onclick="emailMode()">
-Back to Login
-</button>
+  </div>
 
 </div>
 
 
-<div id="loginMsg"
-class="msg">
-</div>
+<!-- NEW PASSWORD MODAL -->
 
+<div
+  id="resetModal"
+  class="modal hidden">
 
-<button
-class="secondary"
-onclick="closeLogin()">
-Close
-</button>
+  <div class="modal-box">
 
+    <h2>Set New Password</h2>
 
-</div>
+    <input
+      id="newPassword"
+      type="password"
+      placeholder="New Password">
 
-</div>
+    <input
+      id="newPasswordConfirm"
+      type="password"
+      placeholder="Confirm New Password">
 
+    <button
+      class="primary"
+      onclick="updatePassword()">
+      Update Password
+    </button>
 
-<!-- =====================================
-POST MODAL
-===================================== -->
+    <div id="resetMessage"></div>
 
-<div id="postModal"
-class="modal">
-
-<div class="modal-box">
-
-<button
-class="close"
-onclick="closePostBox()">
-×
-</button>
-
-<h2>Create Post</h2>
-
-
-<textarea
-id="postText"
-rows="5"
-placeholder="What's on your mind?"
-></textarea>
-
-
-<input
-id="mediaFile"
-type="file"
-accept="image/*,video/*"
-onchange="showFileName()"
->
-
-
-<div id="fileName"
-class="file-name">
-</div>
-
-
-<button
-class="primary"
-onclick="publishPost()">
-Publish
-</button>
-
-
-<button
-class="secondary"
-onclick="closePostBox()">
-Cancel
-</button>
-
-
-<div id="postMsg"
-class="msg">
-</div>
-
-</div>
+  </div>
 
 </div>
 
 
 <script>
 
-/* =====================================
-SUPABASE
-===================================== */
+/* =========================================
+   SUPABASE CONFIG
+========================================= */
 
 const SUPABASE_URL =
 "https://klreqkbqyyiwmohlmgkh.supabase.co";
@@ -739,1869 +541,1729 @@ const SUPABASE_KEY =
 
 const db =
 supabase.createClient(
- SUPABASE_URL,
- SUPABASE_KEY
+  SUPABASE_URL,
+  SUPABASE_KEY
 );
 
+let currentUser = null;
 
-/* =====================================
-HELPERS
-===================================== */
 
-function escapeHTML(value){
+/* =========================================
+   HELPER
+========================================= */
 
- if(value === null || value === undefined){
-  return "";
- }
+function normalizePhone(phone){
 
- return String(value)
- .replace(/&/g,"&amp;")
- .replace(/</g,"&lt;")
- .replace(/>/g,"&gt;")
- .replace(/"/g,"&quot;")
- .replace(/'/g,"&#039;");
+  return phone
+    .trim()
+    .replace(/[\s\-()]/g,"");
+
 }
 
 
-function escapeAttr(value){
- return escapeHTML(value);
+function escapeHtml(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
 }
 
 
-function formatDate(date){
+function showMessage(id,text,type="error"){
 
- if(!date) return "";
+  const el =
+    document.getElementById(id);
 
- const d=new Date(date);
+  el.innerHTML =
+    `<div class="status ${type}">
+      ${escapeHtml(text)}
+    </div>`;
 
- return d.toLocaleString(
-  "en-BD",
-  {
-   dateStyle:"medium",
-   timeStyle:"short"
+}
+
+
+/* =========================================
+   AUTH TAB
+========================================= */
+
+function showAuth(type){
+
+  document
+    .getElementById("loginForm")
+    .classList.toggle(
+      "hidden",
+      type !== "login"
+    );
+
+  document
+    .getElementById("signupForm")
+    .classList.toggle(
+      "hidden",
+      type !== "signup"
+    );
+
+  document
+    .getElementById("loginTab")
+    .classList.toggle(
+      "active",
+      type === "login"
+    );
+
+  document
+    .getElementById("signupTab")
+    .classList.toggle(
+      "active",
+      type === "signup"
+    );
+
+  document
+    .getElementById("authMessage")
+    .innerHTML = "";
+
+}
+
+
+/* =========================================
+   CREATE ACCOUNT
+========================================= */
+
+async function signup(){
+
+  const phone =
+    normalizePhone(
+      document.getElementById("signupPhone").value
+    );
+
+  const email =
+    document.getElementById("signupEmail")
+      .value
+      .trim()
+      .toLowerCase();
+
+  const password =
+    document.getElementById("signupPassword")
+      .value;
+
+  const confirm =
+    document.getElementById("signupConfirm")
+      .value;
+
+
+  if(!phone){
+
+    showMessage(
+      "authMessage",
+      "Phone Number দিন।"
+    );
+
+    return;
   }
- );
 
-}
 
+  if(phone.length < 6){
 
-/* =====================================
-LOGIN
-===================================== */
+    showMessage(
+      "authMessage",
+      "সঠিক Phone Number দিন।"
+    );
 
-function openLogin(){
-
- document.getElementById(
-  "loginModal"
- ).style.display="flex";
-
-}
-
-
-function closeLogin(){
-
- document.getElementById(
-  "loginModal"
- ).style.display="none";
-
-}
-
-
-function emailMode(){
-
- document.getElementById("emailArea")
- .classList.remove("hidden");
-
- document.getElementById("phoneArea")
- .classList.add("hidden");
-
- document.getElementById("forgotArea")
- .classList.add("hidden");
-
- document.getElementById("emailTab")
- .classList.add("active");
-
- document.getElementById("phoneTab")
- .classList.remove("active");
-
-}
-
-
-function phoneMode(){
-
- document.getElementById("emailArea")
- .classList.add("hidden");
-
- document.getElementById("phoneArea")
- .classList.remove("hidden");
-
- document.getElementById("forgotArea")
- .classList.add("hidden");
-
- document.getElementById("emailTab")
- .classList.remove("active");
-
- document.getElementById("phoneTab")
- .classList.add("active");
-
-}
-
-
-function forgotMode(){
-
- document.getElementById("emailArea")
- .classList.add("hidden");
-
- document.getElementById("phoneArea")
- .classList.add("hidden");
-
- document.getElementById("forgotArea")
- .classList.remove("hidden");
-
-}
-
-
-function showLoginMsg(message){
-
- document.getElementById(
-  "loginMsg"
- ).innerText=message;
-
-}
-
-
-async function loginEmail(){
-
- const email=
- document.getElementById("email")
- .value.trim();
-
- const password=
- document.getElementById("password")
- .value;
-
-
- if(!email || !password){
-
-  showLoginMsg(
-   "Email ও Password দিন।"
-  );
-
-  return;
- }
-
-
- showLoginMsg("Login হচ্ছে...");
-
-
- const {error}=
- await db.auth.signInWithPassword({
-  email,
-  password
- });
-
-
- if(error){
-
-  showLoginMsg(
-   "Login failed: "+error.message
-  );
-
-  return;
- }
-
-
- showLoginMsg(
-  "Login successful ✅"
- );
-
-
- setTimeout(
-  closeLogin,
-  700
- );
-
-}
-
-
-async function signupEmail(){
-
- const email=
- document.getElementById("email")
- .value.trim();
-
- const password=
- document.getElementById("password")
- .value;
-
-
- if(!email || !password){
-
-  showLoginMsg(
-   "Email ও Password দিন।"
-  );
-
-  return;
- }
-
-
- if(password.length < 6){
-
-  showLoginMsg(
-   "Password কমপক্ষে 6 অক্ষরের হতে হবে।"
-  );
-
-  return;
- }
-
-
- showLoginMsg(
-  "Account তৈরি হচ্ছে..."
- );
-
-
- const {data,error}=
- await db.auth.signUp({
-  email,
-  password
- });
-
-
- if(error){
-
-  showLoginMsg(
-   "Signup failed: "+
-   error.message
-  );
-
-  return;
- }
-
-
- if(data.session){
-
-  showLoginMsg(
-   "Account তৈরি হয়েছে ✅"
-  );
-
- }else{
-
-  showLoginMsg(
-   "Account তৈরি হয়েছে। আপনার Email verification করুন।"
-  );
-
- }
-
-}
-
-
-async function resetPassword(){
-
- const email=
- document.getElementById("resetEmail")
- .value.trim();
-
-
- if(!email){
-
-  showLoginMsg("Email দিন।");
-
-  return;
- }
-
-
- showLoginMsg(
-  "Reset link পাঠানো হচ্ছে..."
- );
-
-
- const redirectUrl=
- window.location.origin+
- window.location.pathname;
-
-
- const {error}=
- await db.auth.resetPasswordForEmail(
-  email,
-  {
-   redirectTo:redirectUrl
+    return;
   }
- );
 
 
- if(error){
+  if(!email){
 
-  showLoginMsg(
-   "Reset failed: "+
-   error.message
-  );
+    showMessage(
+      "authMessage",
+      "Recovery Email দিন।"
+    );
 
-  return;
- }
-
-
- showLoginMsg(
-  "Password reset link Email-এ পাঠানো হয়েছে ✅"
- );
-
-}
-
-
-/* =====================================
-PHONE OTP
-===================================== */
-
-function fullPhone(){
-
- let phone=
- document.getElementById("phone")
- .value.trim();
-
- phone=
- phone.replace(
-  /[\s\-()]/g,
-  ""
- );
-
-
- if(phone.startsWith("+")){
-
-  return phone;
-
- }
-
-
- return document.getElementById(
-  "countryCode"
- ).value + phone;
-
-}
-
-
-async function sendOTP(){
-
- const phone=fullPhone();
-
-
- if(phone.length < 8){
-
-  showLoginMsg(
-   "সঠিক Phone Number দিন।"
-  );
-
-  return;
- }
-
-
- showLoginMsg(
-  "OTP পাঠানো হচ্ছে..."
- );
-
-
- const {error}=
- await db.auth.signInWithOtp({
-  phone:phone,
-  options:{
-   shouldCreateUser:true
+    return;
   }
- });
 
 
- if(error){
+  if(password.length < 6){
 
-  showLoginMsg(
-   "OTP failed: "+
-   error.message
+    showMessage(
+      "authMessage",
+      "Password কমপক্ষে ৬ অক্ষরের হতে হবে।"
+    );
+
+    return;
+  }
+
+
+  if(password !== confirm){
+
+    showMessage(
+      "authMessage",
+      "দুইটি Password একই নয়।"
+    );
+
+    return;
+  }
+
+
+  showMessage(
+    "authMessage",
+    "Account তৈরি হচ্ছে...",
+    "success"
   );
 
-  return;
- }
+
+  try{
+
+    /* Check duplicate phone */
+
+    const {data:existing,error:checkError}
+      = await db
+      .from("profiles")
+      .select("id")
+      .eq("phone",phone)
+      .maybeSingle();
 
 
- document.getElementById(
-  "otpArea"
- ).classList.remove("hidden");
+    if(checkError){
+
+      throw checkError;
+
+    }
 
 
- showLoginMsg(
-  "OTP পাঠানো হয়েছে 📱"
- );
+    if(existing){
+
+      showMessage(
+        "authMessage",
+        "এই Phone Number দিয়ে Account আগে থেকেই আছে।"
+      );
+
+      return;
+    }
+
+
+    /* Create Auth Account */
+
+    const {data,error}
+      = await db.auth.signUp({
+
+        email:email,
+
+        password:password
+
+      });
+
+
+    if(error){
+
+      throw error;
+
+    }
+
+
+    if(!data.user){
+
+      throw new Error(
+        "Account তৈরি করা যায়নি।"
+      );
+
+    }
+
+
+    /*
+      Email confirmation OFF থাকলে
+      session পাওয়া যাবে।
+    */
+
+    if(data.session){
+
+      const {error:profileError}
+        = await db
+        .from("profiles")
+        .insert({
+
+          id:data.user.id,
+
+          phone:phone,
+
+          recovery_email:email
+
+        });
+
+
+      if(profileError){
+
+        throw profileError;
+
+      }
+
+
+      showMessage(
+        "authMessage",
+        "Account সফলভাবে তৈরি হয়েছে।",
+        "success"
+      );
+
+
+      await loadUser();
+
+
+    }else{
+
+      showMessage(
+        "authMessage",
+        "Account তৈরি হয়েছে। Supabase-এ Confirm Email OFF আছে কিনা দেখুন।"
+      );
+
+    }
+
+
+  }catch(error){
+
+    console.error(error);
+
+    showMessage(
+      "authMessage",
+      signupError(error)
+    );
+
+  }
 
 }
 
 
-async function verifyOTP(){
+/* =========================================
+   SIGNUP ERROR
+========================================= */
 
- const phone=fullPhone();
+function signupError(error){
 
- const token=
- document.getElementById("otp")
- .value.trim();
+  const msg =
+    String(error?.message || error);
 
 
- if(!token){
+  if(
+    msg.toLowerCase()
+      .includes("already registered")
+  ){
 
-  showLoginMsg(
-   "OTP দিন।"
+    return "এই Recovery Email দিয়ে Account আগে থেকেই আছে।";
+
+  }
+
+
+  if(
+    msg.toLowerCase()
+      .includes("invalid email")
+  ){
+
+    return "সঠিক Recovery Email দিন।";
+
+  }
+
+
+  return msg;
+
+}
+
+
+/* =========================================
+   LOGIN
+========================================= */
+
+async function login(){
+
+  const phone =
+    normalizePhone(
+      document.getElementById("loginPhone").value
+    );
+
+  const password =
+    document.getElementById("loginPassword")
+      .value;
+
+
+  if(!phone || !password){
+
+    showMessage(
+      "authMessage",
+      "Phone Number এবং Password দিন।"
+    );
+
+    return;
+  }
+
+
+  showMessage(
+    "authMessage",
+    "Login হচ্ছে...",
+    "success"
   );
 
-  return;
- }
+
+  try{
+
+    /*
+      Phone থেকে Recovery Email খোঁজা
+    */
+
+    const {data:email,error:lookupError}
+      = await db.rpc(
+        "get_login_email",
+        {
+          p_phone:phone
+        }
+      );
 
 
- showLoginMsg(
-  "OTP যাচাই হচ্ছে..."
- );
+    if(lookupError){
+
+      throw lookupError;
+
+    }
 
 
- const {error}=
- await db.auth.verifyOtp({
-  phone:phone,
-  token:token,
-  type:"sms"
- });
+    if(!email){
+
+      showMessage(
+        "authMessage",
+        "এই Phone Number দিয়ে কোনো Account পাওয়া যায়নি।"
+      );
+
+      return;
+    }
 
 
- if(error){
+    /*
+      Email + Password দিয়ে
+      Supabase authentication
+    */
 
-  showLoginMsg(
-   "OTP failed: "+
-   error.message
-  );
+    const {error}
+      = await db.auth.signInWithPassword({
 
-  return;
- }
+        email:email,
 
+        password:password
 
- showLoginMsg(
-  "Phone Login successful ✅"
- );
-
-
- setTimeout(
-  closeLogin,
-  700
- );
-
-}
+      });
 
 
-/* =====================================
-USER
-===================================== */
+    if(error){
 
-async function getUser(){
+      throw error;
 
- const {
-  data:{session}
- }=
- await db.auth.getSession();
-
- return session?.user || null;
-
-}
+    }
 
 
-function updateUser(user){
-
- const area=
- document.getElementById(
-  "accountArea"
- );
-
- const status=
- document.getElementById(
-  "userStatus"
- );
+    showMessage(
+      "authMessage",
+      "Login সফল হয়েছে।",
+      "success"
+    );
 
 
- if(user){
-
-  const identity=
-  user.email ||
-  user.phone ||
-  "PASSTIME User";
+    await loadUser();
 
 
-  area.innerHTML=
-  `<button
-   class="logout"
-   onclick="logout()">
-   Logout
-   </button>`;
+  }catch(error){
 
+    console.error(error);
 
-  status.innerHTML=
-  `আপনি Login করেছেন ✅<br>
-   <b>${escapeHTML(identity)}</b>`;
+    showMessage(
+      "authMessage",
+      "Phone Number অথবা Password ভুল।"
+    );
 
- }else{
-
-  area.innerHTML=
-  `<button
-   class="login"
-   onclick="openLogin()">
-   Login
-   </button>`;
-
-
-  status.innerText=
-  "আপনি এখনো Login করেননি।";
-
- }
+  }
 
 }
 
+
+/* =========================================
+   LOGOUT
+========================================= */
 
 async function logout(){
 
- await db.auth.signOut();
+  await db.auth.signOut();
 
- updateUser(null);
+  currentUser = null;
 
- loadFeed();
+  document
+    .getElementById("authArea")
+    .classList.remove("hidden");
 
-}
+  document
+    .getElementById("appArea")
+    .classList.add("hidden");
 
+  document
+    .getElementById("logoutBtn")
+    .classList.add("hidden");
 
-/* =====================================
-AUTH LISTENER
-===================================== */
-
-db.auth.onAuthStateChange(
- (_event,session)=>{
-
-  updateUser(
-   session?.user || null
-  );
-
-  loadFeed();
-
- }
-);
-
-
-/* =====================================
-POST BOX
-===================================== */
-
-async function requireLogin(){
-
- const user=await getUser();
-
- if(!user){
-
-  openLogin();
-
-  return false;
-
- }
-
- return true;
+  showAuth("login");
 
 }
 
 
-async function openPostBox(type){
+/* =========================================
+   LOAD USER
+========================================= */
 
- const ok=
- await requireLogin();
+async function loadUser(){
 
- if(!ok) return;
+  const {data}
+    = await db.auth.getSession();
 
+  currentUser =
+    data.session?.user || null;
 
- document.getElementById(
-  "postModal"
- ).style.display="flex";
 
+  if(currentUser){
 
- const file=
- document.getElementById(
-  "mediaFile"
- );
+    document
+      .getElementById("authArea")
+      .classList.add("hidden");
 
+    document
+      .getElementById("appArea")
+      .classList.remove("hidden");
 
- const text=
- document.getElementById(
-  "postText"
- );
+    document
+      .getElementById("logoutBtn")
+      .classList.remove("hidden");
 
-
- if(type==="photo"){
-
-  file.accept="image/*";
-
-  text.placeholder=
-  "Photo সম্পর্কে কিছু লিখুন...";
-
- }else if(type==="video"){
-
-  file.accept="video/*";
-
-  text.placeholder=
-  "Video সম্পর্কে কিছু লিখুন...";
-
- }else{
-
-  file.accept="image/*,video/*";
-
-  text.placeholder=
-  "What's on your mind?";
-
- }
-
-}
-
-
-function closePostBox(){
-
- document.getElementById(
-  "postModal"
- ).style.display="none";
-
-
- document.getElementById(
-  "postMsg"
- ).innerText="";
-
-}
-
-
-function showFileName(){
-
- const file=
- document.getElementById(
-  "mediaFile"
- ).files[0];
-
-
- document.getElementById(
-  "fileName"
- ).innerText=
- file
- ?
- "Selected: "+file.name
- :
- "";
-
-}
-
-
-/* =====================================
-PUBLISH POST
-===================================== */
-
-async function publishPost(){
-
- const user=
- await getUser();
-
-
- if(!user){
-
-  closePostBox();
-
-  openLogin();
-
-  return;
- }
-
-
- const text=
- document.getElementById(
-  "postText"
- ).value.trim();
-
-
- const file=
- document.getElementById(
-  "mediaFile"
- ).files[0];
-
-
- if(!text && !file){
-
-  document.getElementById(
-   "postMsg"
-  ).innerText=
-  "Post বা Photo/Video দিন।";
-
-  return;
-
- }
-
-
- const msg=
- document.getElementById(
-  "postMsg"
- );
-
-
- msg.innerText=
- "Publishing...";
-
-
- let media_url=null;
-
- let media_type=null;
-
-
- /* FILE */
-
- if(file){
-
-  if(
-   file.size >
-   50 * 1024 * 1024
-  ){
-
-   msg.innerText=
-   "File সর্বোচ্চ 50MB হতে পারবে।";
-
-   return;
-
-  }
-
-
-  media_type=
-  file.type.startsWith("video/")
-  ?
-  "video"
-  :
-  "image";
-
-
-  const extension=
-  file.name
-  .split(".")
-  .pop()
-  .toLowerCase();
-
-
-  const safeExtension=
-  extension.replace(
-   /[^a-z0-9]/g,
-   ""
-  ) || "file";
-
-
-  const path=
-  user.id+
-  "/"+
-  Date.now()+
-  "-" +
-  Math.random()
-  .toString(36)
-  .substring(2,8)+
-  "."+
-  safeExtension;
-
-
-  const {
-   error:uploadError
-  }=
-  await db.storage
-  .from("complaint-media")
-  .upload(
-   path,
-   file,
-   {
-    upsert:false,
-    contentType:file.type
-   }
-  );
-
-
-  if(uploadError){
-
-   msg.innerText=
-   "Upload failed: "+
-   uploadError.message;
-
-   return;
-
-  }
-
-
-  const {
-   data:urlData
-  }=
-  db.storage
-  .from("complaint-media")
-  .getPublicUrl(path);
-
-
-  media_url=
-  urlData.publicUrl;
-
- }
-
-
- /* DATABASE */
-
- const {
-  error
- }=
- await db
- .from("posts")
- .insert({
-
-  user_id:user.id,
-
-  content:text,
-
-  media_url:media_url,
-
-  media_type:media_type
-
- });
-
-
- if(error){
-
-  msg.innerText=
-  "Post failed: "+
-  error.message;
-
-  return;
-
- }
-
-
- msg.innerText=
- "Published successfully ✅";
-
-
- document.getElementById(
-  "postText"
- ).value="";
-
-
- document.getElementById(
-  "mediaFile"
- ).value="";
-
-
- document.getElementById(
-  "fileName"
- ).innerText="";
-
-
- setTimeout(
-  ()=>{
-   closePostBox();
-   loadFeed();
-  },
-  700
- );
-
-}
-
-
-/* =====================================
-LOAD FEED
-===================================== */
-
-async function loadFeed(){
-
- const feed=
- document.getElementById(
-  "feed"
- );
-
-
- if(!feed) return;
-
-
- feed.innerHTML=
- `<div class="card loading">
-  Post loading...
- </div>`;
-
-
- const {
-  data:posts,
-  error
- }=
- await db
- .from("posts")
- .select("*")
- .order(
-  "created_at",
-  {
-   ascending:false
-  }
- );
-
-
- if(error){
-
-  feed.innerHTML=
-  `<div class="card error">
-   Feed load failed.<br>
-   ${escapeHTML(error.message)}
-  </div>`;
-
-  return;
-
- }
-
-
- if(
-  !posts ||
-  posts.length===0
- ){
-
-  feed.innerHTML=
-  `<div class="card empty">
-   এখনো কোনো Post নেই।<br>
-   প্রথম Post আপনিই করুন 😊
-  </div>`;
-
-  return;
-
- }
-
-
- let html="";
-
-
- for(
-  const post of posts
- ){
-
-  html +=
-  await renderPost(post);
-
- }
-
-
- feed.innerHTML=html;
-
-}
-
-
-/* =====================================
-RENDER POST
-===================================== */
-
-async function renderPost(post){
-
- const user=
- await getUser();
-
-
- const reactions=
- await getReactionCounts(
-  post.id
- );
-
-
- const comments=
- await getComments(
-  post.id
- );
-
-
- const myReaction=
- user
- ?
- await getMyReaction(
-  post.id,
-  user.id
- )
- :
- null;
-
-
- const isOwner=
- user &&
- user.id===post.user_id;
-
-
- let media="";
-
-
- if(post.media_url){
-
-  if(
-   post.media_type==="video"
-  ){
-
-   media=
-   `<video
-    class="post-media"
-    controls
-    preload="metadata"
-    src="${escapeAttr(post.media_url)}">
-   </video>`;
+    await loadFeed();
 
   }else{
 
-   media=
-   `<img
-    class="post-media"
-    src="${escapeAttr(post.media_url)}"
-    alt="Post image"
-    loading="lazy"
-    onclick="openImage('${escapeAttr(post.media_url)}')">`;
+    document
+      .getElementById("authArea")
+      .classList.remove("hidden");
+
+    document
+      .getElementById("appArea")
+      .classList.add("hidden");
+
+    document
+      .getElementById("logoutBtn")
+      .classList.add("hidden");
 
   }
 
- }
+}
 
 
- let commentHTML="";
+/* =========================================
+   FORGOT PASSWORD
+========================================= */
+
+function showForgot(){
+
+  document
+    .getElementById("forgotModal")
+    .classList.remove("hidden");
+
+}
 
 
- for(
-  const comment of comments
- ){
+function closeForgot(){
 
-  const canDelete=
-  user &&
-  user.id===comment.user_id;
+  document
+    .getElementById("forgotModal")
+    .classList.add("hidden");
 
-
-  commentHTML +=
-  `<div class="comment">
-
-   ${
-    canDelete
-    ?
-    `<button
-     class="comment-delete"
-     onclick="deleteComment(${comment.id})">
-     Delete
-     </button>`
-    :
-    ""
-   }
-
-   <div class="comment-user">
-    User
-   </div>
-
-   <div>
-    ${escapeHTML(comment.content)}
-   </div>
-
-   <div class="comment-date">
-    ${formatDate(comment.created_at)}
-   </div>
-
-  </div>`;
-
- }
+}
 
 
- return `
+async function sendReset(){
 
- <div class="card">
+  const email =
+    document
+      .getElementById("forgotEmail")
+      .value
+      .trim()
+      .toLowerCase();
 
-  <div class="post-head">
 
-   <div class="post-user">
-    👤 PASSTIME User
-   </div>
+  if(!email){
 
-   <div>
+    showMessage(
+      "forgotMessage",
+      "Recovery Email দিন।"
+    );
 
-    ${
-     isOwner
-     ?
-     `<button
-      class="delete-post"
-      onclick="deletePost(${post.id}, '${escapeAttr(post.media_url || "")}')">
-      🗑 Delete
-      </button>`
-     :
-     ""
+    return;
+  }
+
+
+  try{
+
+    const {error}
+      = await db.auth
+      .resetPasswordForEmail(
+        email,
+        {
+          redirectTo:
+            window.location.origin +
+            window.location.pathname
+        }
+      );
+
+
+    if(error){
+
+      throw error;
+
     }
 
-   </div>
 
-  </div>
-
-
-  <div class="post-date">
-   ${formatDate(post.created_at)}
-  </div>
+    showMessage(
+      "forgotMessage",
+      "Password reset link আপনার Recovery Email-এ পাঠানো হয়েছে।",
+      "success"
+    );
 
 
-  ${
-   post.content
-   ?
-   `<div class="post-text">
-    ${escapeHTML(post.content)}
-   </div>`
-   :
-   ""
+  }catch(error){
+
+    console.error(error);
+
+    showMessage(
+      "forgotMessage",
+      "Reset link পাঠানো যায়নি: " +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   UPDATE PASSWORD
+========================================= */
+
+async function updatePassword(){
+
+  const password =
+    document
+      .getElementById("newPassword")
+      .value;
+
+  const confirm =
+    document
+      .getElementById("newPasswordConfirm")
+      .value;
+
+
+  if(password.length < 6){
+
+    showMessage(
+      "resetMessage",
+      "Password কমপক্ষে ৬ অক্ষরের হতে হবে।"
+    );
+
+    return;
   }
 
 
-  ${media}
+  if(password !== confirm){
+
+    showMessage(
+      "resetMessage",
+      "Password দুটি একই নয়।"
+    );
+
+    return;
+  }
 
 
-  <div class="reactions">
+  try{
 
-   ${reactionButton(
-    "👍",
-    "Like",
-    reactions.like,
-    myReaction==="like",
-    post.id
-   )}
+    const {error}
+      = await db.auth.updateUser({
 
-   ${reactionButton(
-    "❤️",
-    "Love",
-    reactions.love,
-    myReaction==="love",
-    post.id
-   )}
+        password:password
 
-   ${reactionButton(
-    "😂",
-    "Haha",
-    reactions.haha,
-    myReaction==="haha",
-    post.id
-   )}
-
-   ${reactionButton(
-    "😮",
-    "Wow",
-    reactions.wow,
-    myReaction==="wow",
-    post.id
-   )}
-
-   ${reactionButton(
-    "😢",
-    "Sad",
-    reactions.sad,
-    myReaction==="sad",
-    post.id
-   )}
-
-   ${reactionButton(
-    "😡",
-    "Angry",
-    reactions.angry,
-    myReaction==="angry",
-    post.id
-   )}
-
-  </div>
+      });
 
 
-  <div class="actions">
+    if(error){
 
-   <button
-   onclick="reactToPost(${post.id},'like')">
-   👍 Like
-   </button>
+      throw error;
 
-   <button
-   onclick="focusComment(${post.id})">
-   💬 Comment
-   </button>
-
-  </div>
-
-
-  <div class="comments">
-
-   <b>
-    💬 Comments
-   </b>
-
-
-   <div id="comments-${post.id}">
-
-    ${
-     commentHTML ||
-     `<div style="color:#888;font-size:13px;margin-top:8px">
-      No comments yet.
-     </div>`
     }
 
-   </div>
+
+    showMessage(
+      "resetMessage",
+      "Password সফলভাবে পরিবর্তন হয়েছে।",
+      "success"
+    );
 
 
-   ${
-    user
-    ?
-    `<div class="comment-input">
+    setTimeout(()=>{
 
-     <input
-      id="comment-${post.id}"
-      placeholder="Write a comment..."
-      onkeydown="commentEnter(event,${post.id})">
+      document
+        .getElementById("resetModal")
+        .classList.add("hidden");
 
-     <button
-      onclick="addComment(${post.id})">
-      Send
-     </button>
-
-    </div>`
-    :
-    `<div style="margin-top:10px;color:#777;font-size:13px">
-     Comment করতে Login করুন।
-     </div>`
-   }
-
-  </div>
-
- </div>
-
- `;
-
-}
+    },1500);
 
 
-/* =====================================
-REACTION BUTTON
-===================================== */
+  }catch(error){
 
-function reactionButton(
- emoji,
- name,
- count,
- active,
- postId
-){
-
- return `
- <button
- class="${active ? "active" : ""}"
- onclick="reactToPost(${postId},'${name.toLowerCase()}')">
- ${emoji} ${name} ${count || ""}
- </button>
- `;
-
-}
-
-
-/* =====================================
-REACTIONS
-===================================== */
-
-async function getReactionCounts(postId){
-
- const {
-  data,
-  error
- }=
- await db
- .from("reactions")
- .select(
-  "reaction_type"
- )
- .eq(
-  "post_id",
-  postId
- );
-
-
- const result={
-  like:0,
-  love:0,
-  haha:0,
-  wow:0,
-  sad:0,
-  angry:0
- };
-
-
- if(error) return result;
-
-
- (data || []).forEach(
-  r=>{
-
-   if(
-    Object.prototype
-    .hasOwnProperty
-    .call(
-     result,
-     r.reaction_type
-    )
-   ){
-
-    result[
-     r.reaction_type
-    ]++;
-
-   }
+    showMessage(
+      "resetMessage",
+      error.message
+    );
 
   }
- );
-
-
- return result;
 
 }
 
 
-async function getMyReaction(
- postId,
- userId
-){
+/* =========================================
+   FILE PREVIEW
+========================================= */
 
- const {
-  data
- }=
- await db
- .from("reactions")
- .select("reaction_type")
- .eq("post_id",postId)
- .eq("user_id",userId)
- .maybeSingle();
+function previewFile(){
+
+  const file =
+    document
+      .getElementById("fileInput")
+      .files[0];
+
+  const preview =
+    document.getElementById("filePreview");
 
 
- return data
- ? data.reaction_type
- : null;
+  preview.innerHTML = "";
+
+
+  if(!file){
+
+    return;
+  }
+
+
+  const url =
+    URL.createObjectURL(file);
+
+
+  if(file.type.startsWith("image/")){
+
+    preview.innerHTML =
+      `<img
+        class="preview"
+        src="${url}">
+      `;
+
+  }else if(file.type.startsWith("video/")){
+
+    preview.innerHTML =
+      `<video
+        class="preview"
+        controls
+        src="${url}">
+      </video>`;
+
+  }
 
 }
 
 
-async function reactToPost(
- postId,
- type
+/* =========================================
+   CREATE POST
+========================================= */
+
+async function createPost(){
+
+  if(!currentUser){
+
+    showAuth("login");
+
+    return;
+  }
+
+
+  const content =
+    document
+      .getElementById("postText")
+      .value
+      .trim();
+
+  const file =
+    document
+      .getElementById("fileInput")
+      .files[0];
+
+
+  if(!content && !file){
+
+    alert(
+      "কিছু লিখুন অথবা Photo/Video দিন।"
+    );
+
+    return;
+  }
+
+
+  try{
+
+    let media_url = null;
+
+    let media_type = null;
+
+
+    /* Upload Photo / Video */
+
+    if(file){
+
+      const extension =
+        file.name
+          .split(".")
+          .pop()
+          .toLowerCase();
+
+
+      const fileName =
+        currentUser.id +
+        "_" +
+        Date.now() +
+        "." +
+        extension;
+
+
+      const filePath =
+        "posts/" + fileName;
+
+
+      const {error:uploadError}
+        = await db.storage
+        .from("complaint-media")
+        .upload(
+          filePath,
+          file,
+          {
+            upsert:false
+          }
+        );
+
+
+      if(uploadError){
+
+        throw uploadError;
+
+      }
+
+
+      const {data:urlData}
+        = db.storage
+        .from("complaint-media")
+        .getPublicUrl(
+          filePath
+        );
+
+
+      media_url =
+        urlData.publicUrl;
+
+
+      media_type =
+        file.type.startsWith("video/")
+        ? "video"
+        : "image";
+
+    }
+
+
+    /* Insert Post */
+
+    const {error}
+      = await db
+      .from("posts")
+      .insert({
+
+        user_id:currentUser.id,
+
+        content:content,
+
+        media_url:media_url,
+
+        media_type:media_type
+
+      });
+
+
+    if(error){
+
+      throw error;
+
+    }
+
+
+    document
+      .getElementById("postText")
+      .value = "";
+
+
+    document
+      .getElementById("fileInput")
+      .value = "";
+
+
+    document
+      .getElementById("filePreview")
+      .innerHTML = "";
+
+
+    await loadFeed();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Post করা যায়নি: " +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   LOAD FEED
+========================================= */
+
+async function loadFeed(){
+
+  const feed =
+    document.getElementById("feed");
+
+
+  feed.innerHTML =
+    `<div class="empty">
+      Post loading...
+    </div>`;
+
+
+  try{
+
+    const {data:posts,error}
+      = await db
+      .from("posts")
+      .select("*")
+      .order(
+        "created_at",
+        {ascending:false}
+      );
+
+
+    if(error){
+
+      throw error;
+
+    }
+
+
+    if(!posts || posts.length===0){
+
+      feed.innerHTML =
+        `<div class="empty">
+          এখনো কোনো Post নেই।
+        </div>`;
+
+      return;
+    }
+
+
+    feed.innerHTML = "";
+
+
+    for(const post of posts){
+
+      await renderPost(
+        post,
+        feed
+      );
+
+    }
+
+
+  }catch(error){
+
+    console.error(error);
+
+    feed.innerHTML =
+      `<div class="status error">
+        Feed load করা যায়নি:
+        ${escapeHtml(error.message)}
+      </div>`;
+
+  }
+
+}
+
+
+/* =========================================
+   RENDER POST
+========================================= */
+
+async function renderPost(
+  post,
+  feed
 ){
 
- const user=
- await getUser();
+  const div =
+    document.createElement("div");
+
+  div.className = "card";
 
 
- if(!user){
-
-  openLogin();
-
-  return;
-
- }
+  let media = "";
 
 
- const current=
- await getMyReaction(
+  if(post.media_type === "image"){
+
+    media =
+      `<img
+        class="preview"
+        src="${escapeHtml(post.media_url)}"
+        loading="lazy">`;
+
+  }
+
+
+  if(post.media_type === "video"){
+
+    media =
+      `<video
+        class="preview"
+        controls
+        preload="metadata"
+        src="${escapeHtml(post.media_url)}">
+      </video>`;
+
+  }
+
+
+  const time =
+    new Date(post.created_at)
+      .toLocaleString("bn-BD");
+
+
+  div.innerHTML = `
+
+    <div>
+
+      <strong>PASSTIME User</strong>
+
+      <div class="post-time">
+        ${time}
+      </div>
+
+    </div>
+
+    ${
+      post.content
+      ?
+      `<p>${escapeHtml(post.content)}</p>`
+      :
+      ""
+    }
+
+    ${media}
+
+    <div id="reaction_${post.id}">
+      Loading reactions...
+    </div>
+
+    <div class="actions">
+
+      <button
+        onclick="reactPost(${post.id},'like')">
+        👍 Like
+      </button>
+
+      <button
+        onclick="reactPost(${post.id},'love')">
+        ❤️ Love
+      </button>
+
+      <button
+        onclick="reactPost(${post.id},'haha')">
+        😂 Haha
+      </button>
+
+      <button
+        onclick="reactPost(${post.id},'wow')">
+        😮 Wow
+      </button>
+
+      <button
+        onclick="reactPost(${post.id},'sad')">
+        😢 Sad
+      </button>
+
+      <button
+        onclick="reactPost(${post.id},'angry')">
+        😡 Angry
+      </button>
+
+      ${
+        currentUser &&
+        currentUser.id === post.user_id
+        ?
+        `<button
+          class="danger"
+          onclick="deletePost(${post.id})">
+          🗑️ Delete
+        </button>`
+        :
+        ""
+      }
+
+    </div>
+
+    <div class="comments">
+
+      <div id="comments_${post.id}">
+        Loading comments...
+      </div>
+
+      ${
+        currentUser
+        ?
+        `
+        <div class="comment-row">
+
+          <input
+            id="commentInput_${post.id}"
+            placeholder="Write a comment...">
+
+          <button
+            class="primary"
+            onclick="addComment(${post.id})">
+            Send
+          </button>
+
+        </div>
+        `
+        :
+        ""
+      }
+
+    </div>
+
+  `;
+
+
+  feed.appendChild(div);
+
+
+  await loadReactions(post.id);
+
+  await loadComments(post.id);
+
+}
+
+
+/* =========================================
+   REACTIONS
+========================================= */
+
+async function loadReactions(postId){
+
+  const box =
+    document.getElementById(
+      "reaction_" + postId
+    );
+
+
+  const {data,error}
+    = await db
+    .from("reactions")
+    .select("reaction_type")
+    .eq("post_id",postId);
+
+
+  if(error){
+
+    box.innerHTML = "";
+
+    return;
+  }
+
+
+  const counts = {};
+
+
+  (data || []).forEach(r=>{
+
+    counts[r.reaction_type] =
+      (counts[r.reaction_type] || 0) + 1;
+
+  });
+
+
+  box.innerHTML =
+    `<div class="reactions">
+
+      ${Object.entries(counts)
+        .map(
+          ([type,count]) =>
+          `<span>
+            ${reactionEmoji(type)}
+            ${count}
+          </span>`
+        )
+        .join("")}
+
+    </div>`;
+
+}
+
+
+function reactionEmoji(type){
+
+  const map = {
+
+    like:"👍",
+
+    love:"❤️",
+
+    haha:"😂",
+
+    wow:"😮",
+
+    sad:"😢",
+
+    angry:"😡"
+
+  };
+
+  return map[type] || "👍";
+
+}
+
+
+async function reactPost(
   postId,
-  user.id
- );
+  type
+){
 
+  if(!currentUser){
 
- /* SAME REACTION = REMOVE */
+    showAuth("login");
 
- if(current===type){
-
-  const {
-   error
-  }=
-  await db
-  .from("reactions")
-  .delete()
-  .eq("post_id",postId)
-  .eq("user_id",user.id);
-
-
-  if(error){
-
-   alert(
-    "Reaction failed: "+
-    error.message
-   );
-
-   return;
-
+    return;
   }
 
- }else{
 
-  /* OTHER REACTION = UPDATE/INSERT */
+  try{
 
-  const {
-   error
-  }=
-  await db
-  .from("reactions")
-  .upsert(
-   {
-    post_id:postId,
-    user_id:user.id,
-    reaction_type:type
-   },
-   {
-    onConflict:
-    "post_id,user_id"
-   }
-  );
+    const {data:existing,error:findError}
+      = await db
+      .from("reactions")
+      .select("id,reaction_type")
+      .eq("post_id",postId)
+      .eq("user_id",currentUser.id)
+      .maybeSingle();
 
 
-  if(error){
+    if(findError){
 
-   alert(
-    "Reaction failed: "+
-    error.message
-   );
+      throw findError;
 
-   return;
+    }
+
+
+    if(existing){
+
+      if(existing.reaction_type === type){
+
+        const {error}
+          = await db
+          .from("reactions")
+          .delete()
+          .eq("id",existing.id);
+
+        if(error){
+
+          throw error;
+
+        }
+
+      }else{
+
+        const {error}
+          = await db
+          .from("reactions")
+          .update({
+            reaction_type:type
+          })
+          .eq("id",existing.id);
+
+        if(error){
+
+          throw error;
+
+        }
+
+      }
+
+    }else{
+
+      const {error}
+        = await db
+        .from("reactions")
+        .insert({
+
+          post_id:postId,
+
+          user_id:currentUser.id,
+
+          reaction_type:type
+
+        });
+
+
+      if(error){
+
+        throw error;
+
+      }
+
+    }
+
+
+    await loadReactions(postId);
+
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Reaction করা যায়নি: " +
+      error.message
+    );
 
   }
-
- }
-
-
- loadFeed();
 
 }
 
 
-/* =====================================
-COMMENTS
-===================================== */
+/* =========================================
+   COMMENTS
+========================================= */
 
-async function getComments(postId){
+async function loadComments(postId){
 
- const {
-  data,
-  error
- }=
- await db
- .from("comments")
- .select("*")
- .eq("post_id",postId)
- .order(
-  "created_at",
-  {
-   ascending:true
+  const box =
+    document.getElementById(
+      "comments_" + postId
+    );
+
+
+  const {data,error}
+    = await db
+    .from("comments")
+    .select("*")
+    .eq("post_id",postId)
+    .order(
+      "created_at",
+      {ascending:true}
+    );
+
+
+  if(error){
+
+    box.innerHTML = "";
+
+    return;
   }
- );
 
 
- if(error) return [];
+  if(!data || data.length===0){
+
+    box.innerHTML =
+      `<div class="post-time">
+        No comments yet.
+      </div>`;
+
+    return;
+  }
 
 
- return data || [];
+  box.innerHTML =
+    data.map(comment=>{
+
+      const time =
+        new Date(comment.created_at)
+          .toLocaleString("bn-BD");
+
+
+      return `
+
+        <div class="comment">
+
+          <strong>PASSTIME User</strong>
+
+          <div>
+            ${escapeHtml(comment.content)}
+          </div>
+
+          <small>
+            ${time}
+          </small>
+
+          ${
+            currentUser &&
+            currentUser.id === comment.user_id
+            ?
+            `
+            <br>
+
+            <button
+              class="link"
+              onclick="deleteComment(
+                ${comment.id},
+                ${postId}
+              )">
+              Delete
+            </button>
+            `
+            :
+            ""
+          }
+
+        </div>
+
+      `;
+
+    }).join("");
 
 }
 
 
 async function addComment(postId){
 
- const user=
- await getUser();
+  if(!currentUser){
+
+    showAuth("login");
+
+    return;
+  }
 
 
- if(!user){
-
-  openLogin();
-
-  return;
-
- }
+  const input =
+    document.getElementById(
+      "commentInput_" + postId
+    );
 
 
- const input=
- document.getElementById(
-  "comment-"+postId
- );
+  const content =
+    input.value.trim();
 
 
- if(!input) return;
+  if(!content){
+
+    return;
+  }
 
 
- const content=
- input.value.trim();
+  try{
+
+    const {error}
+      = await db
+      .from("comments")
+      .insert({
+
+        post_id:postId,
+
+        user_id:currentUser.id,
+
+        content:content
+
+      });
 
 
- if(!content){
+    if(error){
 
-  return;
+      throw error;
 
- }
-
-
- input.disabled=true;
+    }
 
 
- const {
-  error
- }=
- await db
- .from("comments")
- .insert({
-
-  post_id:postId,
-
-  user_id:user.id,
-
-  content:content
-
- });
+    input.value = "";
 
 
- input.disabled=false;
+    await loadComments(postId);
 
 
- if(error){
+  }catch(error){
 
-  alert(
-   "Comment failed: "+
-   error.message
-  );
+    console.error(error);
 
-  return;
+    alert(
+      "Comment করা যায়নি: " +
+      error.message
+    );
 
- }
-
-
- input.value="";
-
-
- loadFeed();
-
-}
-
-
-function commentEnter(
- event,
- postId
-){
-
- if(event.key==="Enter"){
-
-  event.preventDefault();
-
-  addComment(postId);
-
- }
-
-}
-
-
-function focusComment(postId){
-
- const input=
- document.getElementById(
-  "comment-"+postId
- );
-
-
- if(input){
-
-  input.focus();
-
- }else{
-
-  openLogin();
-
- }
+  }
 
 }
 
 
 async function deleteComment(
- commentId
+  id,
+  postId
 ){
 
- const user=
- await getUser();
+  if(!currentUser){
+
+    return;
+  }
 
 
- if(!user){
+  if(!confirm(
+    "Comment delete করবেন?"
+  )){
 
-  openLogin();
-
-  return;
-
- }
-
-
- if(
-  !confirm(
-   "এই comment delete করবেন?"
-  )
- ){
-
-  return;
-
- }
+    return;
+  }
 
 
- const {
-  error
- }=
- await db
- .from("comments")
- .delete()
- .eq("id",commentId)
- .eq("user_id",user.id);
+  const {error}
+    = await db
+    .from("comments")
+    .delete()
+    .eq("id",id)
+    .eq("user_id",currentUser.id);
 
 
- if(error){
+  if(error){
 
-  alert(
-   "Delete failed: "+
-   error.message
-  );
+    alert(error.message);
 
-  return;
-
- }
+    return;
+  }
 
 
- loadFeed();
+  await loadComments(postId);
 
 }
 
 
-/* =====================================
-DELETE POST
-===================================== */
+/* =========================================
+   DELETE POST
+========================================= */
 
-async function deletePost(
- postId,
- mediaUrl
-){
+async function deletePost(postId){
 
- const user=
- await getUser();
+  if(!currentUser){
 
-
- if(!user){
-
-  openLogin();
-
-  return;
-
- }
+    return;
+  }
 
 
- if(
-  !confirm(
-   "এই Post delete করবেন?"
-  )
- ){
+  if(!confirm(
+    "এই Post delete করবেন?"
+  )){
 
-  return;
+    return;
+  }
 
- }
-
-
- const {
-  error
- }=
- await db
- .from("posts")
- .delete()
- .eq("id",postId)
- .eq("user_id",user.id);
-
-
- if(error){
-
-  alert(
-   "Delete failed: "+
-   error.message
-  );
-
-  return;
-
- }
-
-
- /* STORAGE FILE DELETE */
-
- if(mediaUrl){
 
   try{
 
-   const marker=
-   "/object/public/complaint-media/";
+    const {data:post,error:findError}
+      = await db
+      .from("posts")
+      .select("media_url")
+      .eq("id",postId)
+      .eq("user_id",currentUser.id)
+      .maybeSingle();
 
-   const index=
-   mediaUrl.indexOf(marker);
+
+    if(findError){
+
+      throw findError;
+
+    }
 
 
-   if(index!==-1){
+    const {error}
+      = await db
+      .from("posts")
+      .delete()
+      .eq("id",postId)
+      .eq("user_id",currentUser.id);
 
-    const path=
-    decodeURIComponent(
-     mediaUrl.substring(
-      index+marker.length
-     )
+
+    if(error){
+
+      throw error;
+
+    }
+
+
+    /*
+      Storage media delete
+    */
+
+    if(post?.media_url){
+
+      try{
+
+        const marker =
+          "/complaint-media/";
+
+        const index =
+          post.media_url.indexOf(marker);
+
+
+        if(index !== -1){
+
+          const path =
+            post.media_url.substring(
+              index + marker.length
+            );
+
+
+          await db.storage
+            .from("complaint-media")
+            .remove([path]);
+
+        }
+
+      }catch(storageError){
+
+        console.log(
+          "Storage delete:",
+          storageError
+        );
+
+      }
+
+    }
+
+
+    await loadFeed();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Post delete করা যায়নি: " +
+      error.message
     );
-
-
-    await db.storage
-    .from("complaint-media")
-    .remove([path]);
-
-   }
-
-  }catch(e){
-
-   console.log(
-    "Media delete skipped",
-    e
-   );
 
   }
 
- }
-
-
- loadFeed();
-
 }
 
 
-/* =====================================
-IMAGE VIEW
-===================================== */
+/* =========================================
+   AUTH STATE
+========================================= */
 
-function openImage(url){
+db.auth.onAuthStateChange(
+  async (event,session)=>{
 
- const win=
- window.open(
-  "",
-  "_blank"
- );
+    currentUser =
+      session?.user || null;
 
 
- if(!win) return;
+    if(currentUser){
+
+      document
+        .getElementById("authArea")
+        .classList.add("hidden");
+
+      document
+        .getElementById("appArea")
+        .classList.remove("hidden");
+
+      document
+        .getElementById("logoutBtn")
+        .classList.remove("hidden");
+
+      await loadFeed();
+
+    }else{
+
+      document
+        .getElementById("authArea")
+        .classList.remove("hidden");
+
+      document
+        .getElementById("appArea")
+        .classList.add("hidden");
+
+      document
+        .getElementById("logoutBtn")
+        .classList.add("hidden");
+
+    }
+
+  }
+);
 
 
- win.document.write(`
-
- <html>
-
- <head>
-
- <title>PASSTIME Image</title>
-
- <style>
-
- body{
-  margin:0;
-  background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  min-height:100vh;
- }
-
- img{
-  max-width:100%;
-  max-height:100vh;
-  object-fit:contain;
- }
-
- </style>
-
- </head>
-
- <body>
-
- <img src="${escapeAttr(url)}">
-
- </body>
-
- </html>
-
- `);
-
-}
-
-
-/* =====================================
-INITIAL LOAD
-===================================== */
+/* =========================================
+   INITIALIZE
+========================================= */
 
 async function init(){
 
- const user=
- await getUser();
+  const {data}
+    = await db.auth.getSession();
 
 
- updateUser(user);
+  currentUser =
+    data.session?.user || null;
 
 
- await loadFeed();
+  /*
+    Password recovery link থেকে এলে
+    New Password window খুলবে।
+  */
+
+  if(
+    window.location.hash
+      .includes("type=recovery")
+  ){
+
+    document
+      .getElementById("resetModal")
+      .classList.remove("hidden");
+
+  }
+
+
+  if(currentUser){
+
+    await loadUser();
+
+  }
 
 }
 
 
 init();
-
-
-/* =====================================
-AUTH STATE
-===================================== */
-
-db.auth.onAuthStateChange(
- (event,session)=>{
-
-  updateUser(
-   session?.user || null
-  );
-
-  if(
-   event !== "INITIAL_SESSION"
-  ){
-
-   setTimeout(
-    loadFeed,
-    100
-   );
-
-  }
-
- }
-);
-
-
-/* =====================================
-CLOSE MODALS OUTSIDE
-===================================== */
-
-window.addEventListener(
- "click",
- function(event){
-
-  const loginModal=
-  document.getElementById(
-   "loginModal"
-  );
-
-  const postModal=
-  document.getElementById(
-   "postModal"
-  );
-
-
-  if(
-   event.target===loginModal
-  ){
-
-   closeLogin();
-
-  }
-
-
-  if(
-   event.target===postModal
-  ){
-
-   closePostBox();
-
-  }
-
- }
-);
 
 </script>
 
