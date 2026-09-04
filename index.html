@@ -9,186 +9,359 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#f0f2f5;
- color:#1c1e21;
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f0f2f5;
+  color:#1c1e21
 }
+
 header{
- background:#1877f2;
- color:white;
- padding:12px 15px;
- position:sticky;
- top:0;
- z-index:20;
- display:flex;
- justify-content:space-between;
- align-items:center;
+  position:sticky;
+  top:0;
+  z-index:100;
+  height:60px;
+  background:#1877f2;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 15px;
+  box-shadow:0 2px 5px #0003
 }
-.logo{font-size:25px;font-weight:bold}
-.header-right{display:flex;gap:7px;align-items:center}
-button{
- border:0;
- border-radius:7px;
- padding:9px 13px;
- cursor:pointer;
- font-weight:bold;
+
+.logo{
+  font-size:25px;
+  font-weight:bold
 }
-.blue{background:#1877f2;color:white}
-.gray{background:#e4e6eb;color:#050505}
-.red{background:#e41e3f;color:white}
-.green{background:#42b72a;color:white}
+
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:7px
+}
+
+header button{
+  border:0;
+  border-radius:8px;
+  padding:8px 12px;
+  font-weight:bold;
+  cursor:pointer
+}
+
+.lang{
+  border:0;
+  border-radius:7px;
+  padding:7px
+}
 
 .container{
- max-width:700px;
- margin:20px auto;
- padding:0 10px;
+  width:100%;
+  max-width:720px;
+  margin:18px auto;
+  padding:0 10px
 }
+
 .card{
- background:white;
- border-radius:10px;
- padding:15px;
- margin-bottom:15px;
- box-shadow:0 1px 4px #0002;
+  background:white;
+  border-radius:12px;
+  padding:15px;
+  margin-bottom:15px;
+  box-shadow:0 1px 4px #0002
 }
+
 input,textarea,select{
- width:100%;
- padding:12px;
- margin:6px 0 10px;
- border:1px solid #ccd0d5;
- border-radius:7px;
- font-size:15px;
-}
-textarea{min-height:90px;resize:vertical}
-.hidden{display:none!important}
-
-.profile-head{text-align:center;padding:10px}
-
-.avatar{
- width:85px;
- height:85px;
- border-radius:50%;
- object-fit:cover;
- background:#ddd;
- display:block;
- margin:5px auto 10px;
- border:3px solid white;
- box-shadow:0 1px 5px #0003;
+  width:100%;
+  border:1px solid #ccd0d5;
+  border-radius:8px;
+  padding:12px;
+  font-size:15px;
+  margin:6px 0 10px;
+  outline:none
 }
 
-.avatar.small{
- width:45px;
- height:45px;
- margin:0;
- border:0;
- box-shadow:none;
+input:focus,textarea:focus{
+  border-color:#1877f2
 }
 
-.post-user{
- display:flex;
- align-items:center;
- gap:10px;
- margin-bottom:10px;
- cursor:pointer;
+textarea{
+  min-height:90px;
+  resize:vertical
 }
 
-.post-user-info b{display:block}
-.post-user-info small{color:#65676b}
-
-.media{
- width:100%;
- max-height:500px;
- object-fit:contain;
- background:#000;
- border-radius:8px;
- margin-top:10px;
+label{
+  display:block;
+  font-weight:bold;
+  margin-top:8px
 }
 
-.actions{
- display:flex;
- gap:5px;
- flex-wrap:wrap;
- margin-top:10px;
- border-top:1px solid #ddd;
- padding-top:10px;
-}
+button{cursor:pointer}
 
-.actions button{
- background:#f0f2f5;
- flex:1;
- min-width:70px;
-}
+.blue{background:#1877f2;color:white}
+.green{background:#42b72a;color:white}
+.gray{background:#e4e6eb;color:#050505}
+.red{background:#e41e3f;color:white}
 
-.reaction-count{
- color:#65676b;
- font-size:14px;
- margin-top:7px;
-}
+.full{width:100%}
 
-.comment{
- background:#f0f2f5;
- border-radius:10px;
- padding:8px 10px;
- margin-top:7px;
-}
-
-.comment-top{
- display:flex;
- justify-content:space-between;
-}
-
-.comment small{color:#65676b}
-
-.lang-box{
- display:flex;
- gap:8px;
- align-items:center;
-}
-
-.lang-box select{
- width:auto;
- margin:0;
- padding:7px;
+.hidden{
+  display:none!important
 }
 
 #message{
- position:fixed;
- top:70px;
- left:50%;
- transform:translateX(-50%);
- z-index:100;
- background:#222;
- color:white;
- padding:10px 18px;
- border-radius:8px;
- display:none;
+  position:fixed;
+  top:70px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#222;
+  color:white;
+  padding:11px 18px;
+  border-radius:8px;
+  z-index:1000;
+  display:none;
+  max-width:90%;
+  text-align:center
 }
 
-.center{text-align:center}
+.profile-head{text-align:center}
 
-label{
- font-weight:bold;
- display:block;
- margin-top:8px;
+.avatar{
+  width:95px;
+  height:95px;
+  object-fit:cover;
+  border-radius:50%;
+  display:block;
+  margin:5px auto 10px;
+  background:#ddd;
+  border:3px solid white;
+  box-shadow:0 1px 5px #0004
 }
 
-hr{
- border:0;
- border-top:1px solid #ddd;
- margin:15px 0;
+.avatar-small{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  object-fit:cover
 }
 
-.profile-posts-title{
- font-size:18px;
- font-weight:bold;
- margin-bottom:10px;
+.home-nav{
+  display:flex;
+  justify-content:space-around;
+  gap:5px;
+  background:white;
+  border-radius:10px;
+  padding:7px;
+  margin-bottom:15px;
+  box-shadow:0 1px 3px #0002
+}
+
+.home-nav button{
+  flex:1;
+  background:white;
+  border:0;
+  padding:10px 5px;
+  border-radius:8px;
+  font-weight:bold
+}
+
+.home-nav button:hover{
+  background:#e4e6eb
+}
+
+.create-top{
+  display:flex;
+  align-items:center;
+  gap:10px
+}
+
+.create-top img{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  object-fit:cover
+}
+
+.create-text{
+  flex:1;
+  background:#f0f2f5;
+  border-radius:25px;
+  padding:12px 15px;
+  cursor:pointer
+}
+
+.post-header{
+  display:flex;
+  align-items:center;
+  gap:10px
+}
+
+.post-user{flex:1}
+
+.post-user b{
+  display:block
+}
+
+.post-user small{
+  color:#65676b
+}
+
+.post-content{
+  margin-top:12px;
+  white-space:pre-wrap;
+  word-break:break-word
+}
+
+.media{
+  width:100%;
+  max-height:520px;
+  object-fit:contain;
+  background:#000;
+  border-radius:8px;
+  margin-top:12px
+}
+
+.reaction-summary{
+  color:#65676b;
+  font-size:14px;
+  padding:8px 0
+}
+
+.reaction-buttons{
+  display:flex;
+  gap:4px;
+  flex-wrap:wrap;
+  border-top:1px solid #ddd;
+  border-bottom:1px solid #ddd;
+  padding:7px 0
+}
+
+.reaction-buttons button{
+  flex:1;
+  min-width:65px;
+  background:#f0f2f5;
+  border:0;
+  border-radius:7px;
+  padding:9px 4px;
+  font-size:13px
+}
+
+.reaction-buttons button:hover{
+  background:#d8dadf
+}
+
+.comment-box{
+  display:flex;
+  gap:5px;
+  margin-top:9px
+}
+
+.comment-box input{
+  margin:0
+}
+
+.comment-box button{
+  border:0;
+  border-radius:8px;
+  padding:0 13px
+}
+
+.comment{
+  background:#f0f2f5;
+  border-radius:12px;
+  padding:8px 11px;
+  margin-top:7px
+}
+
+.comment-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center
+}
+
+.comment small{
+  color:#65676b
+}
+
+.search-box{
+  display:flex;
+  gap:5px
+}
+
+.search-box input{margin:0}
+
+.profile-post-title{
+  font-size:19px;
+  font-weight:bold;
+  margin-bottom:10px
+}
+
+#preview img,
+#preview video{
+  width:100%;
+  max-height:400px;
+  object-fit:contain;
+  border-radius:8px;
+  margin-top:8px
+}
+
+.center{
+  text-align:center;
+  padding:20px;
+  color:#65676b
+}
+
+.user-result{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px;
+  border-bottom:1px solid #ddd;
+  cursor:pointer
+}
+
+.user-result:hover{
+  background:#f0f2f5
+}
+
+.post-menu{
+  background:#e4e6eb;
+  border:0;
+  border-radius:50%;
+  width:35px;
+  height:35px;
+  font-size:20px
+}
+
+.delete-btn{
+  border:0;
+  background:#ffe5e5;
+  color:#d00;
+  padding:6px 9px;
+  border-radius:7px
 }
 
 @media(max-width:600px){
- .container{margin:10px auto}
- header{padding:10px}
- .logo{font-size:21px}
+  header{
+    height:55px;
+    padding:0 9px
+  }
+
+  .logo{font-size:21px}
+
+  header button{
+    padding:7px 8px;
+    font-size:12px
+  }
+
+  .container{
+    margin:10px auto
+  }
+
+  .reaction-buttons button{
+    min-width:55px;
+    font-size:12px
+  }
 }
 </style>
 </head>
@@ -198,414 +371,400 @@ hr{
 <div id="message"></div>
 
 <header>
- <div class="logo">PASSTIME</div>
 
- <div class="header-right">
+<div class="logo">PASSTIME</div>
 
-  <div class="lang-box">
-   <select id="languageSelect" onchange="changeLanguage(this.value)">
-    <option value="en">English</option>
-    <option value="bn">বাংলা</option>
-   </select>
-  </div>
+<div class="header-right">
 
-  <button class="gray hidden"
-          id="profileBtn"
-          onclick="openMyProfile()">
-   Profile
-  </button>
+<select id="languageSelect"
+class="lang"
+onchange="changeLanguage(this.value)">
+<option value="en">English</option>
+<option value="bn">বাংলা</option>
+</select>
 
-  <button class="red hidden"
-          id="logoutBtn"
-          onclick="logout()">
-   Logout
-  </button>
+<button id="headerProfileBtn"
+class="gray hidden"
+onclick="openMyProfile()">
+Profile
+</button>
 
- </div>
+<button id="logoutBtn"
+class="red hidden"
+onclick="logout()">
+Logout
+</button>
+
+</div>
 </header>
 
 
-<!-- ================= AUTH ================= -->
+<!-- LOGIN -->
 
-<div class="container" id="authSection">
+<div id="authSection" class="container">
 
- <div class="card">
+<div class="card">
 
-  <h2 id="loginTitle">Login</h2>
+<h2 id="loginTitle">Login</h2>
 
-  <label id="phoneLabel">
-   Phone Number or Gmail
-  </label>
+<label id="loginLabel">
+Phone Number or Gmail
+</label>
 
-  <input
-   id="loginPhone"
-   type="text"
-   placeholder="Phone Number or Gmail"
-   autocomplete="username">
+<input
+id="loginPhone"
+type="text"
+placeholder="Phone Number or Gmail"
+autocomplete="username">
 
-  <label id="passwordLabel">
-   Password
-  </label>
+<label>Password</label>
 
-  <input
-   id="loginPassword"
-   type="password"
-   placeholder="Password"
-   autocomplete="current-password">
+<input
+id="loginPassword"
+type="password"
+placeholder="Password"
+autocomplete="current-password">
 
-  <button
-   class="blue"
-   style="width:100%"
-   onclick="login()"
-   id="loginBtn">
-   Login
-  </button>
+<button
+class="blue full"
+style="padding:12px;border:0;border-radius:8px"
+onclick="login()">
+Login
+</button>
 
-  <button
-   class="gray"
-   style="width:100%;margin-top:8px"
-   onclick="showSignup()"
-   id="signupOpenBtn">
-   Create Account
-  </button>
+<button
+class="green full"
+style="padding:12px;border:0;border-radius:8px;margin-top:8px"
+onclick="showSignup()">
+Create Account
+</button>
 
-  <button
-   class="gray"
-   style="width:100%;margin-top:8px"
-   onclick="showForgot()"
-   id="forgotBtn">
-   Forgot Password?
-  </button>
-
- </div>
-
-
- <!-- ================= SIGNUP ================= -->
-
- <div class="card hidden" id="signupBox">
-
-  <h2 id="signupTitle">
-   Create Account
-  </h2>
-
-  <label id="nameLabel">
-   Name
-  </label>
-
-  <input
-   id="signupName"
-   type="text"
-   placeholder="Your name">
-
-  <label id="signupPhoneLabel">
-   Phone Number
-  </label>
-
-  <input
-   id="signupPhone"
-   type="tel"
-   placeholder="Phone Number">
-
-  <label id="emailLabel">
-   Recovery Email
-  </label>
-
-  <input
-   id="signupEmail"
-   type="email"
-   placeholder="Gmail / Email">
-
-  <label id="signupPasswordLabel">
-   Password
-  </label>
-
-  <input
-   id="signupPassword"
-   type="password"
-   placeholder="Password">
-
-  <label id="confirmLabel">
-   Confirm Password
-  </label>
-
-  <input
-   id="signupConfirm"
-   type="password"
-   placeholder="Confirm Password">
-
-  <button
-   class="green"
-   style="width:100%"
-   onclick="signup()"
-   id="signupBtn">
-   Create Account
-  </button>
-
-  <button
-   class="gray"
-   style="width:100%;margin-top:8px"
-   onclick="hideSignup()"
-   id="backLoginBtn">
-   Back to Login
-  </button>
-
- </div>
+<button
+class="gray full"
+style="padding:12px;border:0;border-radius:8px;margin-top:8px"
+onclick="showForgot()">
+Forgot Password?
+</button>
 
 </div>
 
 
-<!-- ================= APP ================= -->
+<!-- SIGNUP -->
 
-<div class="container hidden" id="appSection">
+<div id="signupBox" class="card hidden">
 
+<h2>Create Account</h2>
 
- <!-- MY PROFILE -->
+<label>Name</label>
 
- <div class="card" id="myProfileCard">
+<input id="signupName"
+type="text"
+placeholder="Your name">
 
-  <div class="profile-head">
+<label>Phone Number</label>
 
-   <img
-    id="myAvatar"
-    class="avatar"
-    src="https://ui-avatars.com/api/?name=PASSTIME&background=1877f2&color=fff">
+<input id="signupPhone"
+type="tel"
+placeholder="Phone Number">
 
-   <h2 id="myName">
-    PASSTIME User
-   </h2>
+<label>Gmail / Recovery Email</label>
 
-   <p id="myBio">
-    No bio
-   </p>
+<input id="signupEmail"
+type="email"
+placeholder="Gmail / Email">
 
-   <button
-    class="blue"
-    onclick="editProfile()"
-    id="editProfileBtn">
-    Edit Profile
-   </button>
+<label>Password</label>
 
-  </div>
+<input id="signupPassword"
+type="password"
+placeholder="Password">
 
- </div>
+<label>Confirm Password</label>
 
+<input id="signupConfirm"
+type="password"
+placeholder="Confirm Password">
 
- <!-- CREATE POST -->
+<button
+class="green full"
+style="padding:12px;border:0;border-radius:8px"
+onclick="signup()">
+Create Account
+</button>
 
- <div class="card">
+<button
+class="gray full"
+style="padding:12px;border:0;border-radius:8px;margin-top:8px"
+onclick="hideSignup()">
+Back to Login
+</button>
 
-  <h3 id="createPostTitle">
-   Create Post
-  </h3>
-
-  <textarea
-   id="postText"
-   placeholder="What's on your mind?">
-  </textarea>
-
-  <input
-   id="mediaFile"
-   type="file"
-   accept="image/*,video/*"
-   onchange="previewFile()">
-
-  <div id="preview"></div>
-
-  <button
-   class="blue"
-   style="width:100%;margin-top:8px"
-   onclick="createPost()"
-   id="publishBtn">
-   Publish
-  </button>
-
- </div>
-
-
- <!-- FEED -->
-
- <div class="card">
-
-  <h3 id="postsTitle">
-   Posts
-  </h3>
-
-  <div id="feed">
-   Loading...
-  </div>
-
- </div>
+</div>
 
 </div>
 
 
-<!-- ================= VIEW PROFILE ================= -->
+<!-- FORGOT -->
 
-<div class="container hidden"
-     id="profileViewSection">
+<div id="forgotSection" class="container hidden">
 
- <div class="card">
+<div class="card">
 
-  <button
-   class="gray"
-   onclick="closeProfileView()">
-   ← Back
-  </button>
+<h2>Forgot Password</h2>
 
-  <div class="profile-head">
+<p>Enter your Gmail / Recovery Email.</p>
 
-   <img
-    id="viewAvatar"
-    class="avatar">
+<input
+id="forgotEmail"
+type="email"
+placeholder="Gmail / Email">
 
-   <h2 id="viewName"></h2>
+<button
+class="blue full"
+style="padding:12px;border:0;border-radius:8px"
+onclick="sendReset()">
+Send Reset Link
+</button>
 
-   <p id="viewBio"></p>
+<button
+class="gray full"
+style="padding:12px;border:0;border-radius:8px;margin-top:8px"
+onclick="closeForgot()">
+Back
+</button>
 
-  </div>
+</div>
+</div>
 
-  <hr>
 
-  <div
-   class="profile-posts-title"
-   id="profilePostsTitle">
-   Posts
-  </div>
+<!-- NEW PASSWORD -->
 
-  <div id="profilePosts"></div>
+<div id="passwordSection" class="container hidden">
 
- </div>
+<div class="card">
+
+<h2>New Password</h2>
+
+<input
+id="newPassword"
+type="password"
+placeholder="New Password">
+
+<button
+class="blue full"
+style="padding:12px;border:0;border-radius:8px"
+onclick="updatePassword()">
+Update Password
+</button>
+
+</div>
+</div>
+
+
+<!-- APP -->
+
+<div id="appSection" class="container hidden">
+
+<div class="home-nav">
+
+<button onclick="showHome()">🏠 Home</button>
+
+<button onclick="openMyProfile()">👤 Profile</button>
+
+<button onclick="focusCreatePost()">➕ Post</button>
 
 </div>
 
 
-<!-- ================= EDIT PROFILE ================= -->
+<!-- SEARCH -->
 
-<div class="container hidden"
-     id="editProfileSection">
+<div class="card">
 
- <div class="card">
+<div class="search-box">
 
-  <button
-   class="gray"
-   onclick="closeEditProfile()">
-   ← Back
-  </button>
+<input
+id="searchInput"
+placeholder="Search people or posts..."
+onkeydown="if(event.key==='Enter')searchContent()">
 
-  <h2 id="editTitle">
-   Edit Profile
-  </h2>
+<button
+class="blue"
+onclick="searchContent()">
+🔍
+</button>
 
-  <label id="editNameLabel">
-   Name
-  </label>
+</div>
 
-  <input id="editName">
-
-  <label id="bioLabel">
-   Bio
-  </label>
-
-  <textarea id="editBio"></textarea>
-
-  <label id="photoLabel">
-   Profile Photo
-  </label>
-
-  <input
-   id="profilePhoto"
-   type="file"
-   accept="image/*">
-
-  <button
-   class="blue"
-   style="width:100%"
-   onclick="saveProfile()"
-   id="saveProfileBtn">
-   Save
-  </button>
-
- </div>
+<div id="searchResults"></div>
 
 </div>
 
 
-<!-- ================= FORGOT PASSWORD ================= -->
+<!-- MY PROFILE -->
 
-<div class="container hidden"
-     id="forgotSection">
+<div id="myProfileCard" class="card">
 
- <div class="card">
+<div class="profile-head">
 
-  <h2 id="forgotTitle">
-   Forgot Password
-  </h2>
+<img id="myAvatar"
+class="avatar"
+src="">
 
-  <p id="forgotText">
-   Enter your recovery email.
-  </p>
+<h2 id="myName">PASSTIME User</h2>
 
-  <input
-   id="forgotEmail"
-   type="email"
-   placeholder="Gmail / Email">
+<p id="myBio">No bio</p>
 
-  <button
-   class="blue"
-   style="width:100%"
-   onclick="sendReset()"
-   id="sendResetBtn">
-   Send Reset Link
-  </button>
+<button
+class="blue"
+style="border:0;border-radius:8px;padding:10px 15px"
+onclick="editProfile()">
+Edit Profile
+</button>
 
-  <button
-   class="gray"
-   style="width:100%;margin-top:8px"
-   onclick="closeForgot()"
-   id="forgotBackBtn">
-   Back
-  </button>
+</div>
+</div>
 
- </div>
+
+<!-- CREATE POST -->
+
+<div id="createPostCard" class="card">
+
+<div class="create-top">
+
+<img id="createAvatar" src="">
+
+<div
+class="create-text"
+onclick="document.getElementById('postText').focus()">
+What's on your mind?
+</div>
+
+</div>
+
+<textarea
+id="postText"
+placeholder="What's on your mind?"></textarea>
+
+<label>📷 Photo / 🎥 Video</label>
+
+<input
+id="mediaFile"
+type="file"
+accept="image/*,video/*"
+onchange="previewFile()">
+
+<div id="preview"></div>
+
+<button
+class="blue full"
+style="border:0;border-radius:8px;padding:12px;margin-top:8px"
+onclick="createPost()">
+Publish
+</button>
 
 </div>
 
 
-<!-- ================= NEW PASSWORD ================= -->
+<!-- FEED -->
 
-<div class="container hidden"
-     id="passwordSection">
+<div class="card">
 
- <div class="card">
+<h3>📰 News Feed</h3>
 
-  <h2 id="newPasswordTitle">
-   New Password
-  </h2>
+<div id="feed">Loading...</div>
 
-  <input
-   id="newPassword"
-   type="password"
-   placeholder="New Password">
+</div>
 
-  <button
-   class="blue"
-   style="width:100%"
-   onclick="updatePassword()"
-   id="updatePasswordBtn">
-   Update Password
-  </button>
+</div>
 
- </div>
 
+<!-- OTHER PROFILE -->
+
+<div id="profileViewSection" class="container hidden">
+
+<div class="card">
+
+<button
+class="gray"
+style="border:0;border-radius:8px;padding:9px 13px"
+onclick="showHome()">
+← Back
+</button>
+
+<div class="profile-head">
+
+<img id="viewAvatar"
+class="avatar"
+src="">
+
+<h2 id="viewName"></h2>
+
+<p id="viewBio"></p>
+
+</div>
+</div>
+
+<div class="card">
+
+<div class="profile-post-title">
+📰 Posts
+</div>
+
+<div id="profilePosts"></div>
+
+</div>
+
+</div>
+
+
+<!-- EDIT PROFILE -->
+
+<div id="editProfileSection" class="container hidden">
+
+<div class="card">
+
+<button
+class="gray"
+style="border:0;border-radius:8px;padding:9px 13px"
+onclick="showHome()">
+← Back
+</button>
+
+<h2>Edit Profile</h2>
+
+<label>Name</label>
+
+<input id="editName">
+
+<label>Bio</label>
+
+<textarea
+id="editBio"
+placeholder="Write something about yourself"></textarea>
+
+<label>Profile Photo</label>
+
+<input
+id="profilePhoto"
+type="file"
+accept="image/*">
+
+<button
+class="blue full"
+style="border:0;border-radius:8px;padding:12px"
+onclick="saveProfile()">
+Save Profile
+</button>
+
+</div>
 </div>
 
 
 <script>
 
-
-// =====================================================
-// SUPABASE
-// =====================================================
+/* =========================
+SUPABASE
+========================= */
 
 const SUPABASE_URL =
 "https://klreqkbqyyiwmohlmgkh.supabase.co";
@@ -613,1809 +772,1814 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_xlqcHTsDaMpBq4n54iMs4A_S7gKpiZc";
 
-const db =
-supabase.createClient(
- SUPABASE_URL,
- SUPABASE_KEY
+const db=supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
 );
 
+let currentUser=null;
+let currentProfile=null;
 
-let currentUser = null;
-let currentProfile = null;
-
-let language =
-localStorage.getItem("passtime_language") || "en";
+let language=
+localStorage.getItem("passtime_language")||"en";
 
 
-// =====================================================
-// LANGUAGE
-// =====================================================
+/* =========================
+LANGUAGE
+========================= */
 
-const T = {
+const LANG={
 
- en:{
-  login:"Login",
-  phone:"Phone Number or Gmail",
-  password:"Password",
-  create:"Create Account",
-  forgot:"Forgot Password?",
-  name:"Name",
-  email:"Recovery Email",
-  confirm:"Confirm Password",
-  back:"Back to Login",
-  createPost:"Create Post",
-  whats:"What's on your mind?",
-  publish:"Publish",
-  posts:"Posts",
-  profile:"Profile",
-  logout:"Logout",
-  edit:"Edit Profile",
-  noBio:"No bio",
-  bio:"Bio",
-  photo:"Profile Photo",
-  save:"Save",
-  reset:"Send Reset Link",
-  newPassword:"New Password",
-  update:"Update Password",
-  comment:"Comment",
-  delete:"Delete",
-  loading:"Loading...",
-  noPosts:"No posts yet.",
-  accountCreated:"Account created successfully.",
-  loggedIn:"Login successful.",
-  loggedOut:"Logged out.",
-  profileSaved:"Profile saved.",
-  commentPlaceholder:"Write a comment...",
-  deleteConfirm:"Delete this post?",
-  passwordMismatch:"Passwords do not match.",
-  enterName:"Please enter your name.",
-  loginError:"Phone Number/Gmail or Password is incorrect.",
-  accountNotFound:"No account found with this Phone Number.",
-  resetSent:"Password reset link sent to your email."
- },
+en:{
+login:"Login",
+phone:"Phone Number or Gmail",
+password:"Password",
+create:"Create Account",
+forgot:"Forgot Password?",
+publish:"Publish",
+noPosts:"No posts yet.",
+loading:"Loading...",
+comment:"Comment",
+delete:"Delete",
+noBio:"No bio",
+saved:"Profile saved.",
+loggedIn:"Login successful.",
+loggedOut:"Logged out.",
+wrong:"Phone Number or Gmail / Password is incorrect.",
+phoneNotFound:"No account found with this Phone Number."
+},
 
- bn:{
-  login:"Login",
-  phone:"Phone Number or Gmail",
-  password:"Password",
-  create:"Create Account",
-  forgot:"Forgot Password?",
-  name:"Name",
-  email:"Recovery Email",
-  confirm:"Confirm Password",
-  back:"Back to Login",
-  createPost:"Create Post",
-  whats:"What's on your mind?",
-  publish:"Publish",
-  posts:"Posts",
-  profile:"Profile",
-  logout:"Logout",
-  edit:"Edit Profile",
-  noBio:"No bio",
-  bio:"Bio",
-  photo:"Profile Photo",
-  save:"Save",
-  reset:"Send Reset Link",
-  newPassword:"New Password",
-  update:"Update Password",
-  comment:"Comment",
-  delete:"Delete",
-  loading:"Loading...",
-  noPosts:"No posts yet.",
-  accountCreated:"Account created successfully.",
-  loggedIn:"Login successful.",
-  loggedOut:"Logged out.",
-  profileSaved:"Profile saved.",
-  commentPlaceholder:"Write a comment...",
-  deleteConfirm:"Delete this post?",
-  passwordMismatch:"Passwords do not match.",
-  enterName:"Please enter your name.",
-  loginError:"Phone Number/Gmail or Password is incorrect.",
-  accountNotFound:"No account found with this Phone Number.",
-  resetSent:"Password reset link sent to your email."
- }
+bn:{
+login:"Login",
+phone:"Phone Number or Gmail",
+password:"Password",
+create:"Create Account",
+forgot:"Forgot Password?",
+publish:"Publish",
+noPosts:"এখনো কোনো পোস্ট নেই।",
+loading:"লোড হচ্ছে...",
+comment:"Comment",
+delete:"Delete",
+noBio:"No bio",
+saved:"Profile saved.",
+loggedIn:"Login successful.",
+loggedOut:"Logged out.",
+wrong:"Phone Number or Gmail / Password is incorrect.",
+phoneNotFound:"এই Phone Number দিয়ে কোনো account পাওয়া যায়নি।"
+}
 
 };
 
 
-function changeLanguage(l){
+function changeLanguage(value){
 
- language = l;
+language=value;
 
- localStorage.setItem(
-  "passtime_language",
-  l
- );
+localStorage.setItem(
+"passtime_language",
+value
+);
 
- applyLanguage();
+applyLanguage();
+
 }
 
 
 function applyLanguage(){
 
- const t = T[language];
+const t=LANG[language];
 
- document.getElementById("loginTitle").innerText =
-  t.login;
+document.getElementById("loginTitle").innerText=t.login;
 
- document.getElementById("phoneLabel").innerText =
-  t.phone;
+document.getElementById("loginLabel").innerText=t.phone;
 
- document.getElementById("loginPhone").placeholder =
-  t.phone;
+document.getElementById("loginPhone").placeholder=t.phone;
 
- document.getElementById("passwordLabel").innerText =
-  t.password;
+document.getElementById("loginPassword").placeholder=t.password;
 
- document.getElementById("loginBtn").innerText =
-  t.login;
-
- document.getElementById("signupOpenBtn").innerText =
-  t.create;
-
- document.getElementById("forgotBtn").innerText =
-  t.forgot;
-
- document.getElementById("signupTitle").innerText =
-  t.create;
-
- document.getElementById("nameLabel").innerText =
-  t.name;
-
- document.getElementById("signupPhoneLabel").innerText =
-  t.phone;
-
- document.getElementById("emailLabel").innerText =
-  t.email;
-
- document.getElementById("signupPasswordLabel").innerText =
-  t.password;
-
- document.getElementById("confirmLabel").innerText =
-  t.confirm;
-
- document.getElementById("signupBtn").innerText =
-  t.create;
-
- document.getElementById("backLoginBtn").innerText =
-  t.back;
-
- document.getElementById("createPostTitle").innerText =
-  t.createPost;
-
- document.getElementById("postText").placeholder =
-  t.whats;
-
- document.getElementById("publishBtn").innerText =
-  t.publish;
-
- document.getElementById("postsTitle").innerText =
-  t.posts;
-
- document.getElementById("profileBtn").innerText =
-  t.profile;
-
- document.getElementById("logoutBtn").innerText =
-  t.logout;
-
- document.getElementById("editProfileBtn").innerText =
-  t.edit;
-
- document.getElementById("editTitle").innerText =
-  t.edit;
-
- document.getElementById("editNameLabel").innerText =
-  t.name;
-
- document.getElementById("bioLabel").innerText =
-  t.bio;
-
- document.getElementById("photoLabel").innerText =
-  t.photo;
-
- document.getElementById("saveProfileBtn").innerText =
-  t.save;
-
- document.getElementById("forgotTitle").innerText =
-  t.forgot;
-
- document.getElementById("sendResetBtn").innerText =
-  t.reset;
-
- document.getElementById("newPasswordTitle").innerText =
-  t.newPassword;
-
- document.getElementById("updatePasswordBtn").innerText =
-  t.update;
 }
 
+
+document.getElementById("languageSelect").value=language;
 
 applyLanguage();
 
 
-// =====================================================
-// HELPERS
-// =====================================================
+/* =========================
+HELPERS
+========================= */
 
 function normalizePhone(phone){
 
- return String(phone || "")
-  .trim()
-  .replace(/[\s\-()]/g,"");
+return String(phone||"")
+.trim()
+.replace(/[\s\-()]/g,"");
+
 }
 
 
-function escapeHtml(str){
+function escapeHtml(text){
 
- return String(str || "")
-  .replace(/&/g,"&amp;")
-  .replace(/</g,"&lt;")
-  .replace(/>/g,"&gt;")
-  .replace(/"/g,"&quot;")
-  .replace(/'/g,"&#039;");
+return String(text||"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
 }
 
 
-function showMessage(msg){
+function avatarUrl(profile){
 
- const el =
-  document.getElementById("message");
+if(profile&&profile.avatar_url)
+return profile.avatar_url;
 
- el.innerText = msg;
- el.style.display = "block";
+const name=
+profile?.display_name||
+"PASSTIME";
 
- setTimeout(()=>{
-  el.style.display = "none";
- },3000);
+return "https://ui-avatars.com/api/?name="+
+encodeURIComponent(name)+
+"&background=1877f2&color=fff";
+
+}
+
+
+function showMessage(text){
+
+const box=document.getElementById("message");
+
+box.innerText=text;
+
+box.style.display="block";
+
+clearTimeout(window.messageTimer);
+
+window.messageTimer=setTimeout(()=>{
+box.style.display="none";
+},3000);
+
+}
+
+
+/* =========================
+SCREEN
+========================= */
+
+function hideAllScreens(){
+
+[
+"authSection",
+"forgotSection",
+"passwordSection",
+"appSection",
+"profileViewSection",
+"editProfileSection"
+].forEach(id=>{
+document.getElementById(id)
+.classList.add("hidden");
+});
+
 }
 
 
 function showAuth(){
 
- document.getElementById("authSection")
-  .classList.remove("hidden");
+hideAllScreens();
 
- document.getElementById("appSection")
-  .classList.add("hidden");
+document.getElementById("authSection")
+.classList.remove("hidden");
 
- document.getElementById("profileViewSection")
-  .classList.add("hidden");
+document.getElementById("logoutBtn")
+.classList.add("hidden");
 
- document.getElementById("editProfileSection")
-  .classList.add("hidden");
+document.getElementById("headerProfileBtn")
+.classList.add("hidden");
 
- document.getElementById("forgotSection")
-  .classList.add("hidden");
-
- document.getElementById("passwordSection")
-  .classList.add("hidden");
-
- document.getElementById("logoutBtn")
-  .classList.add("hidden");
-
- document.getElementById("profileBtn")
-  .classList.add("hidden");
 }
 
 
-function showApp(){
+function showHome(){
 
- document.getElementById("authSection")
-  .classList.add("hidden");
+hideAllScreens();
 
- document.getElementById("forgotSection")
-  .classList.add("hidden");
+document.getElementById("appSection")
+.classList.remove("hidden");
 
- document.getElementById("passwordSection")
-  .classList.add("hidden");
+document.getElementById("logoutBtn")
+.classList.remove("hidden");
 
- document.getElementById("editProfileSection")
-  .classList.add("hidden");
+document.getElementById("headerProfileBtn")
+.classList.remove("hidden");
 
- document.getElementById("profileViewSection")
-  .classList.add("hidden");
-
- document.getElementById("appSection")
-  .classList.remove("hidden");
-
- document.getElementById("logoutBtn")
-  .classList.remove("hidden");
-
- document.getElementById("profileBtn")
-  .classList.remove("hidden");
 }
 
-
-// =====================================================
-// SIGNUP
-// =====================================================
-
-function showSignup(){
-
- document.getElementById("signupBox")
-  .classList.remove("hidden");
-}
-
-
-function hideSignup(){
-
- document.getElementById("signupBox")
-  .classList.add("hidden");
-}
-
-
-async function signup(){
-
- const name =
-  document.getElementById("signupName")
-  .value.trim();
-
- const phone =
-  normalizePhone(
-   document.getElementById("signupPhone").value
-  );
-
- const email =
-  document.getElementById("signupEmail")
-  .value.trim()
-  .toLowerCase();
-
- const password =
-  document.getElementById("signupPassword")
-  .value;
-
- const confirm =
-  document.getElementById("signupConfirm")
-  .value;
-
- if(!name){
-  showMessage(T[language].enterName);
-  return;
- }
-
- if(!phone || !email || !password){
-  showMessage("Please fill all required fields.");
-  return;
- }
-
- if(password !== confirm){
-  showMessage(T[language].passwordMismatch);
-  return;
- }
-
- try{
-
-  const {data:existing,error:checkError} =
-   await db
-    .from("profiles")
-    .select("id")
-    .eq("phone",phone)
-    .maybeSingle();
-
-  if(checkError) throw checkError;
-
-  if(existing){
-   showMessage(
-    "This Phone Number is already registered."
-   );
-   return;
-  }
-
-  const {data,error} =
-   await db.auth.signUp({
-    email:email,
-    password:password
-   });
-
-  if(error) throw error;
-
-  if(data.user){
-
-   if(data.session){
-
-    const {error:pError} =
-     await db
-      .from("profiles")
-      .upsert({
-       id:data.user.id,
-       display_name:name,
-       phone:phone,
-       recovery_email:email,
-       role:"user"
-      });
-
-    if(pError) throw pError;
-
-    showMessage(
-     T[language].accountCreated
-    );
-
-    await loadUser();
-
-   }else{
-
-    showMessage(
-     "Account created. Please confirm your email, then login."
-    );
-   }
-  }
-
- }catch(err){
-
-  console.error(err);
-
-  showMessage(
-   err.message || "Signup failed."
-  );
- }
-}
-
-
-// =====================================================
-// LOGIN
-// PHONE OR EMAIL
-// =====================================================
-
-async function login(){
-
- const input =
-  document.getElementById("loginPhone")
-  .value.trim();
-
- const password =
-  document.getElementById("loginPassword")
-  .value;
-
- if(!input || !password){
-
-  showMessage(
-   "Please enter Phone Number or Gmail and Password."
-  );
-
-  return;
- }
-
- try{
-
-  let email = "";
-
-  // =========================
-  // EMAIL / GMAIL
-  // =========================
-
-  if(input.includes("@")){
-
-   email =
-    input
-     .trim()
-     .toLowerCase();
-
-  }
-
-  // =========================
-  // PHONE
-  // =========================
-
-  else{
-
-   const phone =
-    normalizePhone(input);
-
-   const {data:profile,error:pError} =
-    await db
-     .from("profiles")
-     .select("recovery_email")
-     .eq("phone",phone)
-     .maybeSingle();
-
-   if(pError){
-
-    console.error(pError);
-
-    showMessage(
-     "Login error. Please try again."
-    );
-
-    return;
-   }
-
-   if(!profile || !profile.recovery_email){
-
-    showMessage(
-     "No account found with this Phone Number."
-    );
-
-    return;
-   }
-
-   email =
-    profile.recovery_email
-     .trim()
-     .toLowerCase();
-  }
-
-
-  // =========================
-  // SUPABASE AUTH
-  // =========================
-
-  const {data,error} =
-   await db.auth.signInWithPassword({
-    email:email,
-    password:password
-   });
-
-  if(error){
-
-   console.error(error);
-
-   showMessage(
-    T[language].loginError
-   );
-
-   return;
-  }
-
-  if(data.user){
-
-   showMessage(
-    T[language].loggedIn
-   );
-
-   await loadUser();
-  }
-
- }catch(err){
-
-  console.error(err);
-
-  showMessage(
-   T[language].loginError
-  );
- }
-}
-
-
-// =====================================================
-// LOGOUT
-// =====================================================
-
-async function logout(){
-
- await db.auth.signOut();
-
- currentUser=null;
- currentProfile=null;
-
- showMessage(
-  T[language].loggedOut
- );
-
- showAuth();
-}
-
-
-// =====================================================
-// LOAD USER
-// =====================================================
-
-async function loadUser(){
-
- const {data:{user}} =
-  await db.auth.getUser();
-
- if(!user){
-
-  showAuth();
-  return;
- }
-
- currentUser=user;
-
- let {data:profile,error} =
-  await db
-   .from("profiles")
-   .select("*")
-   .eq("id",user.id)
-   .maybeSingle();
-
- if(error){
-  console.error(error);
- }
-
- if(!profile){
-
-  const {data:newProfile,error:newError} =
-   await db
-    .from("profiles")
-    .insert({
-     id:user.id,
-     display_name:"PASSTIME User",
-     recovery_email:user.email || "",
-     role:"user"
-    })
-    .select()
-    .single();
-
-  if(newError){
-
-   console.error(newError);
-
-  }else{
-
-   profile=newProfile;
-  }
- }
-
- currentProfile=profile;
-
- showApp();
-
- updateMyProfile();
-
- await loadFeed();
-}
-
-
-// =====================================================
-// MY PROFILE
-// =====================================================
-
-function updateMyProfile(){
-
- if(!currentProfile) return;
-
- document.getElementById("myName")
-  .innerText =
-   currentProfile.display_name ||
-   "PASSTIME User";
-
- document.getElementById("myBio")
-  .innerText =
-   currentProfile.bio ||
-   T[language].noBio;
-
- if(currentProfile.avatar_url){
-
-  document.getElementById("myAvatar").src =
-   currentProfile.avatar_url;
-
- }else{
-
-  document.getElementById("myAvatar").src =
-   "https://ui-avatars.com/api/?name="+
-   encodeURIComponent(
-    currentProfile.display_name ||
-    "PASSTIME"
-   )+
-   "&background=1877f2&color=fff";
- }
-}
-
-
-function openMyProfile(){
-
- document.getElementById("myProfileCard")
-  .scrollIntoView({
-   behavior:"smooth"
-  });
-}
-
-
-function editProfile(){
-
- document.getElementById("appSection")
-  .classList.add("hidden");
-
- document.getElementById("editProfileSection")
-  .classList.remove("hidden");
-
- document.getElementById("editName").value =
-  currentProfile?.display_name || "";
-
- document.getElementById("editBio").value =
-  currentProfile?.bio || "";
-}
-
-
-function closeEditProfile(){
-
- document.getElementById("editProfileSection")
-  .classList.add("hidden");
-
- document.getElementById("appSection")
-  .classList.remove("hidden");
-}
-
-
-async function saveProfile(){
-
- if(!currentUser) return;
-
- const name =
-  document.getElementById("editName")
-  .value.trim();
-
- const bio =
-  document.getElementById("editBio")
-  .value.trim();
-
- const file =
-  document.getElementById("profilePhoto")
-  .files[0];
-
- if(!name){
-
-  showMessage(
-   T[language].enterName
-  );
-
-  return;
- }
-
- let avatar_url =
-  currentProfile?.avatar_url || null;
-
- try{
-
-  if(file){
-
-   const ext =
-    file.name.split(".").pop();
-
-   const filePath =
-    currentUser.id+
-    "/avatar_"+Date.now()+
-    "."+ext;
-
-   const {error:uploadError} =
-    await db.storage
-     .from("profile-media")
-     .upload(
-      filePath,
-      file,
-      {
-       upsert:true,
-       contentType:file.type
-      }
-     );
-
-   if(uploadError)
-    throw uploadError;
-
-   const {data:urlData} =
-    db.storage
-     .from("profile-media")
-     .getPublicUrl(filePath);
-
-   avatar_url =
-    urlData.publicUrl;
-  }
-
-
-  const {data,error} =
-   await db
-    .from("profiles")
-    .update({
-     display_name:name,
-     bio:bio,
-     avatar_url:avatar_url
-    })
-    .eq("id",currentUser.id)
-    .select()
-    .single();
-
-  if(error) throw error;
-
-  currentProfile=data;
-
-  updateMyProfile();
-
-  closeEditProfile();
-
-  showMessage(
-   T[language].profileSaved
-  );
-
-  await loadFeed();
-
- }catch(err){
-
-  console.error(err);
-
-  showMessage(
-   err.message ||
-   "Profile update failed."
-  );
- }
-}
-
-
-// =====================================================
-// FORGOT PASSWORD
-// =====================================================
 
 function showForgot(){
 
- document.getElementById("authSection")
-  .classList.add("hidden");
+hideAllScreens();
 
- document.getElementById("forgotSection")
-  .classList.remove("hidden");
+document.getElementById("forgotSection")
+.classList.remove("hidden");
+
 }
 
 
 function closeForgot(){
 
- document.getElementById("forgotSection")
-  .classList.add("hidden");
+showAuth();
 
- document.getElementById("authSection")
-  .classList.remove("hidden");
 }
 
 
-async function sendReset(){
+function showSignup(){
 
- const email =
-  document.getElementById("forgotEmail")
-  .value.trim()
-  .toLowerCase();
+document.getElementById("signupBox")
+.classList.remove("hidden");
 
- if(!email){
-
-  showMessage(
-   "Enter your recovery email."
-  );
-
-  return;
- }
-
- try{
-
-  const {error} =
-   await db.auth.resetPasswordForEmail(
-    email,
-    {
-     redirectTo:
-      window.location.origin+
-      window.location.pathname
-    }
-   );
-
-  if(error) throw error;
-
-  showMessage(
-   T[language].resetSent
-  );
-
- }catch(err){
-
-  console.error(err);
-
-  showMessage(
-   err.message ||
-   "Reset failed."
-  );
- }
 }
 
 
-async function updatePassword(){
+function hideSignup(){
 
- const password =
-  document.getElementById("newPassword")
-  .value;
+document.getElementById("signupBox")
+.classList.add("hidden");
 
- if(!password){
-
-  showMessage(
-   "Enter new password."
-  );
-
-  return;
- }
-
- const {error} =
-  await db.auth.updateUser({
-   password:password
-  });
-
- if(error){
-
-  showMessage(error.message);
-  return;
- }
-
- showMessage(
-  "Password updated."
- );
-
- document.getElementById("passwordSection")
-  .classList.add("hidden");
-
- await loadUser();
 }
 
 
-// =====================================================
-// FILE PREVIEW
-// =====================================================
+/* =========================
+SIGNUP
+========================= */
+
+async function signup(){
+
+const name=document.getElementById("signupName").value.trim();
+
+const phone=normalizePhone(
+document.getElementById("signupPhone").value
+);
+
+const email=document.getElementById("signupEmail").value
+.trim()
+.toLowerCase();
+
+const password=document.getElementById("signupPassword").value;
+
+const confirm=document.getElementById("signupConfirm").value;
+
+
+if(!name){
+showMessage("Please enter your name.");
+return;
+}
+
+if(!phone){
+showMessage("Please enter Phone Number.");
+return;
+}
+
+if(!email){
+showMessage("Please enter Gmail / Email.");
+return;
+}
+
+if(password.length<6){
+showMessage("Password must be at least 6 characters.");
+return;
+}
+
+if(password!==confirm){
+showMessage("Passwords do not match.");
+return;
+}
+
+
+try{
+
+const {data:existing,error:checkError}=await db
+.from("profiles")
+.select("id")
+.eq("phone",phone)
+.maybeSingle();
+
+if(checkError) throw checkError;
+
+if(existing){
+showMessage("This Phone Number is already registered.");
+return;
+}
+
+
+const {data,error}=await db.auth.signUp({
+email:email,
+password:password
+});
+
+if(error) throw error;
+
+if(!data.user){
+showMessage("Account could not be created.");
+return;
+}
+
+
+if(!data.session){
+
+showMessage(
+"Account created. Please confirm your email, then login."
+);
+
+return;
+
+}
+
+
+const {error:profileError}=await db
+.from("profiles")
+.upsert({
+id:data.user.id,
+display_name:name,
+phone:phone,
+recovery_email:email,
+role:"user"
+});
+
+if(profileError) throw profileError;
+
+
+showMessage("Account created successfully.");
+
+await loadUser();
+
+}catch(error){
+
+console.error(error);
+
+showMessage(
+error.message||"Signup failed."
+);
+
+}
+
+}
+
+
+/* =========================
+LOGIN
+========================= */
+
+async function login(){
+
+const input=document
+.getElementById("loginPhone")
+.value.trim();
+
+const password=document
+.getElementById("loginPassword")
+.value;
+
+if(!input||!password){
+
+showMessage(
+"Please enter Phone Number or Gmail and Password."
+);
+
+return;
+}
+
+
+try{
+
+let email="";
+
+
+if(input.includes("@")){
+
+email=input.toLowerCase();
+
+}else{
+
+const phone=normalizePhone(input);
+
+const {data,error}=await db.rpc(
+"get_login_email",
+{
+p_phone:phone
+}
+);
+
+if(error){
+
+console.error(error);
+
+showMessage(
+"Phone Number login error."
+);
+
+return;
+}
+
+if(!data){
+
+showMessage(
+LANG[language].phoneNotFound
+);
+
+return;
+}
+
+email=String(data).trim().toLowerCase();
+
+}
+
+
+const {data,error}=await db.auth.signInWithPassword({
+email:email,
+password:password
+});
+
+
+if(error){
+
+console.error(error);
+
+showMessage(LANG[language].wrong);
+
+return;
+}
+
+
+if(data.user){
+
+currentUser=data.user;
+
+showMessage(LANG[language].loggedIn);
+
+await loadUser();
+
+}
+
+}catch(error){
+
+console.error(error);
+
+showMessage(
+LANG[language].wrong
+);
+
+}
+
+}
+
+
+/* =========================
+LOAD USER
+========================= */
+
+async function loadUser(){
+
+const {
+data:{user}
+}=await db.auth.getUser();
+
+
+if(!user){
+
+currentUser=null;
+currentProfile=null;
+
+showAuth();
+
+return;
+}
+
+
+currentUser=user;
+
+
+let {data:profile,error}=await db
+.from("profiles")
+.select("*")
+.eq("id",user.id)
+.maybeSingle();
+
+
+if(error)
+console.error(error);
+
+
+if(!profile){
+
+const {data:newProfile,error:newError}=await db
+.from("profiles")
+.insert({
+id:user.id,
+display_name:user.email?.split("@")[0]||"PASSTIME User",
+phone:"",
+recovery_email:user.email||"",
+role:"user"
+})
+.select()
+.single();
+
+if(!newError)
+profile=newProfile;
+
+}
+
+
+currentProfile=profile;
+
+updateMyProfile();
+
+showHome();
+
+await loadFeed();
+
+}
+
+
+/* =========================
+PROFILE UI
+========================= */
+
+function updateMyProfile(){
+
+if(!currentProfile)return;
+
+const name=
+currentProfile.display_name||
+"PASSTIME User";
+
+const avatar=avatarUrl(currentProfile);
+
+document.getElementById("myName").innerText=name;
+
+document.getElementById("myBio").innerText=
+currentProfile.bio||
+LANG[language].noBio;
+
+document.getElementById("myAvatar").src=avatar;
+
+document.getElementById("createAvatar").src=avatar;
+
+}
+
+
+function openMyProfile(){
+
+if(!currentProfile)return;
+
+showHome();
+
+document.getElementById("myProfileCard")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+function editProfile(){
+
+if(!currentProfile)return;
+
+hideAllScreens();
+
+document.getElementById("editProfileSection")
+.classList.remove("hidden");
+
+document.getElementById("editName").value=
+currentProfile.display_name||"";
+
+document.getElementById("editBio").value=
+currentProfile.bio||"";
+
+}
+
+
+/* =========================
+SAVE PROFILE
+========================= */
+
+async function saveProfile(){
+
+if(!currentUser)return;
+
+const name=document.getElementById("editName")
+.value.trim();
+
+const bio=document.getElementById("editBio")
+.value.trim();
+
+if(!name){
+
+showMessage("Name is required.");
+
+return;
+}
+
+
+try{
+
+let avatar_url=currentProfile?.avatar_url||null;
+
+const file=document.getElementById("profilePhoto")
+.files[0];
+
+
+if(file){
+
+const ext=file.name.split(".").pop();
+
+const path=
+"avatars/"+currentUser.id+"."+ext;
+
+const {error:uploadError}=await db.storage
+.from("media")
+.upload(path,file,{
+upsert:true,
+contentType:file.type
+});
+
+if(uploadError)throw uploadError;
+
+const {data}=db.storage
+.from("media")
+.getPublicUrl(path);
+
+avatar_url=data.publicUrl;
+
+}
+
+
+const {data,error}=await db
+.from("profiles")
+.update({
+display_name:name,
+bio:bio,
+avatar_url:avatar_url
+})
+.eq("id",currentUser.id)
+.select()
+.single();
+
+if(error)throw error;
+
+currentProfile=data;
+
+updateMyProfile();
+
+showMessage(LANG[language].saved);
+
+showHome();
+
+}catch(error){
+
+console.error(error);
+
+showMessage(
+error.message||"Profile update failed."
+);
+
+}
+
+}
+
+
+/* =========================
+POST PREVIEW
+========================= */
 
 function previewFile(){
 
- const file =
-  document.getElementById("mediaFile")
-  .files[0];
+const file=document.getElementById("mediaFile")
+.files[0];
 
- const preview =
-  document.getElementById("preview");
+const preview=document.getElementById("preview");
 
- preview.innerHTML="";
+preview.innerHTML="";
 
- if(!file) return;
+if(!file)return;
 
- const url =
-  URL.createObjectURL(file);
+const url=URL.createObjectURL(file);
 
- if(file.type.startsWith("image/")){
+if(file.type.startsWith("image/")){
 
-  preview.innerHTML =
-   `<img class="media" src="${url}">`;
+const img=document.createElement("img");
 
- }else if(file.type.startsWith("video/")){
+img.src=url;
 
-  preview.innerHTML =
-   `<video class="media"
-           src="${url}"
-           controls></video>`;
- }
+preview.appendChild(img);
+
+}else if(file.type.startsWith("video/")){
+
+const video=document.createElement("video");
+
+video.src=url;
+
+video.controls=true;
+
+preview.appendChild(video);
+
+}
+
 }
 
 
-// =====================================================
-// CREATE POST
-// =====================================================
+/* =========================
+CREATE POST
+========================= */
 
 async function createPost(){
 
- if(!currentUser){
+if(!currentUser){
 
-  showAuth();
-  return;
- }
+showMessage("Please login first.");
 
- const text =
-  document.getElementById("postText")
-  .value.trim();
-
- const file =
-  document.getElementById("mediaFile")
-  .files[0];
-
- if(!text && !file){
-
-  showMessage(
-   "Write something or select a photo/video."
-  );
-
-  return;
- }
-
- try{
-
-  let media_url=null;
-  let media_type=null;
-
-  if(file){
-
-   const ext =
-    file.name.split(".").pop();
-
-   const path =
-    "posts/"+
-    currentUser.id+
-    "_"+
-    Date.now()+
-    "."+
-    ext;
-
-   const {error:uploadError} =
-    await db.storage
-     .from("complaint-media")
-     .upload(
-      path,
-      file,
-      {
-       upsert:false,
-       contentType:file.type
-      }
-     );
-
-   if(uploadError)
-    throw uploadError;
-
-   const {data:urlData} =
-    db.storage
-     .from("complaint-media")
-     .getPublicUrl(path);
-
-   media_url =
-    urlData.publicUrl;
-
-   media_type =
-    file.type.startsWith("video/")
-    ? "video"
-    : "image";
-  }
-
-
-  const {error} =
-   await db
-    .from("posts")
-    .insert({
-     user_id:currentUser.id,
-     content:text,
-     media_url:media_url,
-     media_type:media_type
-    });
-
-  if(error) throw error;
-
-  document.getElementById("postText")
-   .value="";
-
-  document.getElementById("mediaFile")
-   .value="";
-
-  document.getElementById("preview")
-   .innerHTML="";
-
-  await loadFeed();
-
- }catch(err){
-
-  console.error(err);
-
-  showMessage(
-   err.message ||
-   "Post failed."
-  );
- }
+return;
 }
 
 
-// =====================================================
-// PROFILES MAP
-// =====================================================
+const text=document
+.getElementById("postText")
+.value.trim();
 
-async function getProfiles(){
+const file=document
+.getElementById("mediaFile")
+.files[0];
 
- const {data,error} =
-  await db
-   .from("profiles")
-   .select(
-    "id,display_name,avatar_url,bio"
-   );
 
- if(error){
+if(!text&&!file){
 
-  console.error(error);
-  return {};
- }
+showMessage("Write something or select a photo/video.");
 
- const map={};
-
- (data || []).forEach(p=>{
-  map[p.id]=p;
- });
-
- return map;
+return;
 }
 
 
-// =====================================================
-// LOAD FEED
-// =====================================================
+try{
+
+let media_url=null;
+let media_type=null;
+
+
+if(file){
+
+const ext=file.name.split(".").pop();
+
+const filename=
+Date.now()+"-"+Math.random()
+.toString(36)
+.substring(2)+
+"."+
+ext;
+
+const path=
+"posts/"+currentUser.id+"/"+filename;
+
+
+const {error:uploadError}=await db.storage
+.from("media")
+.upload(path,file,{
+contentType:file.type
+});
+
+if(uploadError)throw uploadError;
+
+
+const {data}=db.storage
+.from("media")
+.getPublicUrl(path);
+
+media_url=data.publicUrl;
+
+media_type=
+file.type.startsWith("image/")
+?"image":
+"video";
+
+}
+
+
+const {error}=await db
+.from("posts")
+.insert({
+user_id:currentUser.id,
+content:text,
+media_url:media_url,
+media_type:media_type
+});
+
+if(error)throw error;
+
+
+document.getElementById("postText").value="";
+
+document.getElementById("mediaFile").value="";
+
+document.getElementById("preview").innerHTML="";
+
+showMessage("Post published successfully.");
+
+await loadFeed();
+
+}catch(error){
+
+console.error(error);
+
+showMessage(
+error.message||"Post failed."
+);
+
+}
+
+}
+
+
+/* =========================
+LOAD FEED
+========================= */
 
 async function loadFeed(){
 
- const feed =
-  document.getElementById("feed");
+const feed=document.getElementById("feed");
 
- feed.innerHTML =
-  T[language].loading;
+feed.innerHTML=
+"<div class='center'>Loading...</div>";
 
- const {data:posts,error} =
-  await db
-   .from("posts")
-   .select("*")
-   .order(
-    "created_at",
-    {ascending:false}
-   );
 
- if(error){
+const {data:posts,error}=await db
+.from("posts")
+.select(`
+*,
+profiles:user_id(
+id,
+display_name,
+avatar_url
+)
+`)
+.order("created_at",{ascending:false})
+.limit(50);
 
-  feed.innerHTML =
-   escapeHtml(error.message);
 
-  return;
- }
+if(error){
 
- if(!posts || posts.length===0){
+console.error(error);
 
-  feed.innerHTML =
-   `<div class="center">
-     ${T[language].noPosts}
-    </div>`;
+feed.innerHTML=
+"<div class='center'>Could not load posts.</div>";
 
-  return;
- }
-
- const profiles =
-  await getProfiles();
-
- feed.innerHTML="";
-
- for(const post of posts){
-
-  await renderPost(
-   post,
-   profiles,
-   feed
-  );
- }
+return;
 }
 
 
-// =====================================================
-// RENDER POST
-// =====================================================
+if(!posts||posts.length===0){
 
-async function renderPost(
- post,
- profiles,
- container
-){
+feed.innerHTML=
+"<div class='center'>"+
+LANG[language].noPosts+
+"</div>";
 
- const profile =
-  profiles[post.user_id] ||
-  {
-   display_name:"PASSTIME User",
-   avatar_url:null
-  };
-
- let avatar =
-  profile.avatar_url;
-
- if(!avatar){
-
-  avatar =
-   "https://ui-avatars.com/api/?name="+
-   encodeURIComponent(
-    profile.display_name
-   )+
-   "&background=1877f2&color=fff";
- }
-
- const card =
-  document.createElement("div");
-
- card.className="card";
-
- let media="";
-
- if(post.media_url){
-
-  if(post.media_type==="video"){
-
-   media =
-    `<video class="media"
-            src="${escapeHtml(post.media_url)}"
-            controls></video>`;
-
-  }else{
-
-   media =
-    `<img class="media"
-          src="${escapeHtml(post.media_url)}">`;
-  }
- }
-
- const own =
-  post.user_id ===
-  currentUser?.id;
-
-
- card.innerHTML = `
-
-  <div class="post-user"
-       onclick="openUserProfile('${post.user_id}')">
-
-   <img
-    class="avatar small"
-    src="${escapeHtml(avatar)}">
-
-   <div class="post-user-info">
-
-    <b>
-     ${escapeHtml(
-      profile.display_name
-     )}
-    </b>
-
-    <small>
-     ${new Date(
-      post.created_at
-     ).toLocaleString()}
-    </small>
-
-   </div>
-
-  </div>
-
-  <div>
-   ${escapeHtml(post.content || "")}
-  </div>
-
-  ${media}
-
-  <div
-   class="reaction-count"
-   id="reaction-count-${post.id}">
-  </div>
-
-  <div class="actions">
-
-   <button onclick="reactPost(${post.id},'Like')">
-    👍 Like
-   </button>
-
-   <button onclick="reactPost(${post.id},'Love')">
-    ❤️ Love
-   </button>
-
-   <button onclick="reactPost(${post.id},'Haha')">
-    😂 Haha
-   </button>
-
-   <button onclick="reactPost(${post.id},'Wow')">
-    😮 Wow
-   </button>
-
-   <button onclick="reactPost(${post.id},'Sad')">
-    😢 Sad
-   </button>
-
-   <button onclick="reactPost(${post.id},'Angry')">
-    😡 Angry
-   </button>
-
-  </div>
-
-  <div id="comments-${post.id}">
-  </div>
-
-  <div
-   style="display:flex;gap:5px;margin-top:8px">
-
-   <input
-    id="comment-input-${post.id}"
-    placeholder="${T[language].commentPlaceholder}"
-    style="margin:0">
-
-   <button
-    class="blue"
-    onclick="addComment(${post.id})">
-
-    ${T[language].comment}
-
-   </button>
-
-  </div>
-
-  ${
-   own
-   ?
-   `<button
-     class="red"
-     style="margin-top:10px;width:100%"
-     onclick="deletePost(${post.id})">
-
-     🗑️ ${T[language].delete}
-
-    </button>`
-   :""
-  }
-
- `;
-
- container.appendChild(card);
-
- await loadReactions(post.id);
-
- await loadComments(post.id);
+return;
 }
 
 
-// =====================================================
-// REACTIONS
-// =====================================================
+feed.innerHTML="";
+
+for(const post of posts){
+
+feed.appendChild(
+await createPostElement(post)
+);
+
+}
+
+}
+
+
+/* =========================
+POST ELEMENT
+========================= */
+
+async function createPostElement(post){
+
+const div=document.createElement("div");
+
+div.className="card";
+
+const profile=post.profiles||{};
+
+const avatar=avatarUrl(profile);
+
+const name=
+profile.display_name||
+"PASSTIME User";
+
+
+let media="";
+
+if(post.media_url){
+
+if(post.media_type==="video"){
+
+media=
+`<video class="media" controls playsinline src="${escapeHtml(post.media_url)}"></video>`;
+
+}else{
+
+media=
+`<img class="media" src="${escapeHtml(post.media_url)}" loading="lazy">`;
+
+}
+
+}
+
+
+const time=post.created_at?
+new Date(post.created_at).toLocaleString():
+"";
+
+
+let deleteButton="";
+
+if(currentUser&&post.user_id===currentUser.id){
+
+deleteButton=
+`<button class="delete-btn"
+onclick="deletePost('${post.id}')">
+Delete
+</button>`;
+
+}
+
+
+div.innerHTML=`
+
+<div class="post-header">
+
+<img
+class="avatar-small"
+src="${escapeHtml(avatar)}">
+
+<div class="post-user">
+
+<b
+style="cursor:pointer"
+onclick="openUserProfile('${post.user_id}')">
+${escapeHtml(name)}
+</b>
+
+<small>${escapeHtml(time)}</small>
+
+</div>
+
+${deleteButton}
+
+</div>
+
+${post.content?
+`<div class="post-content">
+${escapeHtml(post.content)}
+</div>`:""}
+
+${media}
+
+<div id="summary-${post.id}"
+class="reaction-summary">
+Loading reactions...
+</div>
+
+<div class="reaction-buttons">
+
+<button onclick="reactPost('${post.id}','Like')">
+👍 Like
+</button>
+
+<button onclick="reactPost('${post.id}','Love')">
+❤️ Love
+</button>
+
+<button onclick="reactPost('${post.id}','Haha')">
+😂 Haha
+</button>
+
+<button onclick="reactPost('${post.id}','Wow')">
+😮 Wow
+</button>
+
+<button onclick="reactPost('${post.id}','Sad')">
+😢 Sad
+</button>
+
+<button onclick="reactPost('${post.id}','Angry')">
+😡 Angry
+</button>
+
+</div>
+
+<div class="comment-box">
+
+<input
+id="comment-${post.id}"
+placeholder="Write a comment...">
+
+<button
+class="blue"
+onclick="addComment('${post.id}')">
+Comment
+</button>
+
+</div>
+
+<div id="comments-${post.id}">
+</div>
+`;
+
+
+loadReactions(post.id);
+
+loadComments(post.id);
+
+
+return div;
+
+}
+
+
+/* =========================
+REACTIONS
+========================= */
+
+async function reactPost(postId,type){
+
+if(!currentUser){
+
+showMessage("Please login first.");
+
+return;
+}
+
+
+try{
+
+const {data:old}=await db
+.from("reactions")
+.select("id,reaction_type")
+.eq("post_id",postId)
+.eq("user_id",currentUser.id)
+.maybeSingle();
+
+
+if(old){
+
+if(old.reaction_type===type){
+
+await db
+.from("reactions")
+.delete()
+.eq("id",old.id);
+
+}else{
+
+await db
+.from("reactions")
+.update({
+reaction_type:type
+})
+.eq("id",old.id);
+
+}
+
+}else{
+
+await db
+.from("reactions")
+.insert({
+post_id:postId,
+user_id:currentUser.id,
+reaction_type:type
+});
+
+}
+
+
+await loadReactions(postId);
+
+}catch(error){
+
+console.error(error);
+
+showMessage(
+error.message||"Reaction failed."
+);
+
+}
+
+}
+
+
+/* =========================
+REACTION SUMMARY
+========================= */
 
 async function loadReactions(postId){
 
- const {data,error} =
-  await db
-   .from("reactions")
-   .select(
-    "reaction_type,user_id"
-   )
-   .eq("post_id",postId);
+const {data,error}=await db
+.from("reactions")
+.select("reaction_type,user_id")
+.eq("post_id",postId);
 
- if(error) return;
 
- const counts={};
+if(error){
 
- (data || []).forEach(r=>{
+console.error(error);
 
-  counts[r.reaction_type] =
-   (counts[r.reaction_type] || 0)+1;
- });
-
- let html="";
-
- Object.keys(counts).forEach(k=>{
-
-  html +=
-   `${reactionEmoji(k)} ${k}: ${counts[k]} &nbsp;`;
- });
-
- const el =
-  document.getElementById(
-   "reaction-count-"+postId
-  );
-
- if(el)
-  el.innerHTML=html;
+return;
 }
 
 
-function reactionEmoji(type){
+const counts={};
 
- const e={
-  Like:"👍",
-  Love:"❤️",
-  Haha:"😂",
-  Wow:"😮",
-  Sad:"😢",
-  Angry:"😡"
- };
+(data||[]).forEach(r=>{
 
- return e[type] || "";
+counts[r.reaction_type]=
+(counts[r.reaction_type]||0)+1;
+
+});
+
+
+const total=(data||[]).length;
+
+const summary=document
+.getElementById("summary-"+postId);
+
+if(!summary)return;
+
+
+if(!total){
+
+summary.innerText="";
+
+return;
 }
 
 
-async function reactPost(
- postId,
- type
-){
+summary.innerText=
+"👍 "+(counts.Like||0)+
+"  ❤️ "+(counts.Love||0)+
+"  😂 "+(counts.Haha||0)+
+"  😮 "+(counts.Wow||0)+
+"  😢 "+(counts.Sad||0)+
+"  😡 "+(counts.Angry||0)+
+" • "+total+" reactions";
 
- if(!currentUser) return;
-
- try{
-
-  const {data:old} =
-   await db
-    .from("reactions")
-    .select(
-     "id,reaction_type"
-    )
-    .eq(
-     "post_id",
-     postId
-    )
-    .eq(
-     "user_id",
-     currentUser.id
-    )
-    .maybeSingle();
-
-  if(old){
-
-   if(old.reaction_type === type){
-
-    await db
-     .from("reactions")
-     .delete()
-     .eq("id",old.id);
-
-   }else{
-
-    await db
-     .from("reactions")
-     .update({
-      reaction_type:type
-     })
-     .eq("id",old.id);
-   }
-
-  }else{
-
-   await db
-    .from("reactions")
-    .insert({
-     post_id:postId,
-     user_id:currentUser.id,
-     reaction_type:type
-    });
-  }
-
-  await loadReactions(postId);
-
- }catch(err){
-
-  console.error(err);
- }
 }
 
 
-// =====================================================
-// COMMENTS
-// =====================================================
-
-async function loadComments(postId){
-
- const box =
-  document.getElementById(
-   "comments-"+postId
-  );
-
- if(!box) return;
-
- const {data,error} =
-  await db
-   .from("comments")
-   .select("*")
-   .eq("post_id",postId)
-   .order(
-    "created_at",
-    {ascending:true}
-   );
-
- if(error) return;
-
- const profiles =
-  await getProfiles();
-
- box.innerHTML="";
-
- (data || []).forEach(comment=>{
-
-  const p =
-   profiles[comment.user_id] ||
-   {
-    display_name:"PASSTIME User"
-   };
-
-  const own =
-   comment.user_id ===
-   currentUser?.id;
-
-  const div =
-   document.createElement("div");
-
-  div.className="comment";
-
-  div.innerHTML = `
-
-   <div class="comment-top">
-
-    <b>
-     ${escapeHtml(
-      p.display_name
-     )}
-    </b>
-
-    ${
-     own
-     ?
-     `<button
-       class="red"
-       style="padding:3px 7px"
-       onclick="deleteComment(
-        ${comment.id},
-        ${postId}
-       )">
-       ×
-      </button>`
-     :""
-    }
-
-   </div>
-
-   <div>
-    ${escapeHtml(
-     comment.content
-    )}
-   </div>
-
-   <small>
-    ${new Date(
-     comment.created_at
-    ).toLocaleString()}
-   </small>
-
-  `;
-
-  box.appendChild(div);
- });
-}
-
+/* =========================
+COMMENTS
+========================= */
 
 async function addComment(postId){
 
- if(!currentUser) return;
+if(!currentUser){
 
- const input =
-  document.getElementById(
-   "comment-input-"+postId
-  );
+showMessage("Please login first.");
 
- const text =
-  input.value.trim();
-
- if(!text) return;
-
- const {error} =
-  await db
-   .from("comments")
-   .insert({
-    post_id:postId,
-    user_id:currentUser.id,
-    content:text
-   });
-
- if(error){
-
-  showMessage(error.message);
-  return;
- }
-
- input.value="";
-
- await loadComments(postId);
+return;
 }
 
 
-async function deleteComment(
- commentId,
- postId
-){
+const input=document
+.getElementById("comment-"+postId);
 
- const {error} =
-  await db
-   .from("comments")
-   .delete()
-   .eq("id",commentId)
-   .eq(
-    "user_id",
-    currentUser.id
-   );
+const text=input.value.trim();
 
- if(error){
+if(!text)return;
 
-  showMessage(error.message);
-  return;
- }
 
- await loadComments(postId);
+try{
+
+const {error}=await db
+.from("comments")
+.insert({
+post_id:postId,
+user_id:currentUser.id,
+content:text
+});
+
+if(error)throw error;
+
+input.value="";
+
+await loadComments(postId);
+
+}catch(error){
+
+console.error(error);
+
+showMessage(
+error.message||"Comment failed."
+);
+
+}
+
 }
 
 
-// =====================================================
-// DELETE POST
-// =====================================================
+async function loadComments(postId){
+
+const box=document
+.getElementById("comments-"+postId);
+
+if(!box)return;
+
+
+const {data:comments,error}=await db
+.from("comments")
+.select(`
+*,
+profiles:user_id(
+id,
+display_name,
+avatar_url
+)
+`)
+.eq("post_id",postId)
+.order("created_at",{ascending:true});
+
+
+if(error){
+
+console.error(error);
+
+return;
+}
+
+
+box.innerHTML="";
+
+
+(comments||[]).forEach(comment=>{
+
+const profile=comment.profiles||{};
+
+const name=
+profile.display_name||
+"User";
+
+
+const div=document.createElement("div");
+
+div.className="comment";
+
+let del="";
+
+if(currentUser&&comment.user_id===currentUser.id){
+
+del=
+`<button
+class="delete-btn"
+onclick="deleteComment('${comment.id}','${postId}')">
+Delete
+</button>`;
+
+}
+
+
+div.innerHTML=`
+
+<div class="comment-head">
+
+<b>${escapeHtml(name)}</b>
+
+${del}
+
+</div>
+
+<div>
+${escapeHtml(comment.content)}
+</div>
+
+<small>
+${comment.created_at?
+new Date(comment.created_at).toLocaleString():
+""}
+</small>
+`;
+
+box.appendChild(div);
+
+});
+
+}
+
+
+/* =========================
+DELETE COMMENT
+========================= */
+
+async function deleteComment(commentId,postId){
+
+if(!currentUser)return;
+
+if(!confirm("Delete this comment?"))return;
+
+
+const {error}=await db
+.from("comments")
+.delete()
+.eq("id",commentId)
+.eq("user_id",currentUser.id);
+
+
+if(error){
+
+console.error(error);
+
+showMessage(error.message);
+
+return;
+
+}
+
+await loadComments(postId);
+
+}
+
+
+/* =========================
+DELETE POST
+========================= */
 
 async function deletePost(postId){
 
- if(!confirm(
-  T[language].deleteConfirm
- )) return;
+if(!currentUser)return;
 
- const {error} =
-  await db
-   .from("posts")
-   .delete()
-   .eq("id",postId)
-   .eq(
-    "user_id",
-    currentUser.id
-   );
+if(!confirm("Delete this post?"))return;
 
- if(error){
 
-  showMessage(error.message);
-  return;
- }
+const {error}=await db
+.from("posts")
+.delete()
+.eq("id",postId)
+.eq("user_id",currentUser.id);
 
- await loadFeed();
+
+if(error){
+
+console.error(error);
+
+showMessage(error.message);
+
+return;
+
 }
 
 
-// =====================================================
-// USER PROFILE
-// =====================================================
+showMessage("Post deleted.");
 
-async function openUserProfile(
- userId
-){
+await loadFeed();
 
- const {data:profile,error} =
-  await db
-   .from("profiles")
-   .select("*")
-   .eq("id",userId)
-   .maybeSingle();
-
- if(error || !profile){
-
-  showMessage(
-   "Profile not found."
-  );
-
-  return;
- }
-
- document.getElementById("appSection")
-  .classList.add("hidden");
-
- document.getElementById("profileViewSection")
-  .classList.remove("hidden");
-
- document.getElementById("viewName")
-  .innerText =
-   profile.display_name ||
-   "PASSTIME User";
-
- document.getElementById("viewBio")
-  .innerText =
-   profile.bio ||
-   T[language].noBio;
-
- document.getElementById("viewAvatar")
-  .src =
-   profile.avatar_url ||
-   "https://ui-avatars.com/api/?name="+
-   encodeURIComponent(
-    profile.display_name ||
-    "PASSTIME"
-   )+
-   "&background=1877f2&color=fff";
-
-
- const {data:posts} =
-  await db
-   .from("posts")
-   .select("*")
-   .eq("user_id",userId)
-   .order(
-    "created_at",
-    {ascending:false}
-   );
-
- const box =
-  document.getElementById(
-   "profilePosts"
-  );
-
- box.innerHTML="";
-
- if(!posts || posts.length===0){
-
-  box.innerHTML =
-   `<p class="center">
-     ${T[language].noPosts}
-    </p>`;
-
-  return;
- }
-
- const profiles =
-  await getProfiles();
-
- for(const post of posts){
-
-  await renderPost(
-   post,
-   profiles,
-   box
-  );
- }
 }
 
 
-function closeProfileView(){
+/* =========================
+SEARCH
+========================= */
 
- document.getElementById(
-  "profileViewSection"
- )
- .classList.add("hidden");
+async function searchContent(){
 
- document.getElementById(
-  "appSection"
- )
- .classList.remove("hidden");
+const q=document
+.getElementById("searchInput")
+.value.trim();
+
+
+const box=document
+.getElementById("searchResults");
+
+
+if(!q){
+
+box.innerHTML="";
+
+return;
+
 }
 
 
-// =====================================================
-// AUTH STATE
-// =====================================================
+box.innerHTML=
+"<div class='center'>Searching...</div>";
 
-db.auth.onAuthStateChange(
- async(event,session)=>{
 
-  if(session){
+const {data:users,error:userError}=await db
+.from("profiles")
+.select("id,display_name,avatar_url,bio")
+.ilike("display_name","%"+q+"%")
+.limit(10);
 
-   currentUser =
-    session.user;
 
-   if(event ===
-      "PASSWORD_RECOVERY"){
+if(userError){
 
-    document.getElementById(
-     "authSection"
-    ).classList.add("hidden");
+console.error(userError);
 
-    document.getElementById(
-     "passwordSection"
-    ).classList.remove("hidden");
+box.innerHTML=
+"<div class='center'>Search failed.</div>";
 
-   }else{
+return;
 
-    await loadUser();
-   }
+}
 
-  }else{
 
-   currentUser=null;
-   currentProfile=null;
+box.innerHTML="";
 
-   showAuth();
-  }
- }
+
+if(users&&users.length){
+
+const title=document.createElement("h4");
+
+title.innerText="People";
+
+box.appendChild(title);
+
+
+users.forEach(user=>{
+
+const div=document.createElement("div");
+
+div.className="user-result";
+
+div.innerHTML=`
+
+<img
+class="avatar-small"
+src="${escapeHtml(avatarUrl(user))}">
+
+<div>
+
+<b>${escapeHtml(user.display_name)}</b>
+
+<div style="color:#65676b">
+${escapeHtml(user.bio||"")}
+</div>
+
+</div>
+`;
+
+div.onclick=()=>{
+openUserProfile(user.id);
+};
+
+box.appendChild(div);
+
+});
+
+}else{
+
+box.innerHTML=
+"<div class='center'>No people found.</div>";
+
+}
+
+}
+
+
+/* =========================
+OTHER PROFILE
+========================= */
+
+async function openUserProfile(userId){
+
+const {data:profile,error}=await db
+.from("profiles")
+.select("*")
+.eq("id",userId)
+.maybeSingle();
+
+
+if(error||!profile){
+
+showMessage("Profile not found.");
+
+return;
+
+}
+
+
+hideAllScreens();
+
+document.getElementById("profileViewSection")
+.classList.remove("hidden");
+
+document.getElementById("viewAvatar").src=
+avatarUrl(profile);
+
+document.getElementById("viewName").innerText=
+profile.display_name||"PASSTIME User";
+
+document.getElementById("viewBio").innerText=
+profile.bio||"No bio";
+
+
+await loadProfilePosts(userId);
+
+}
+
+
+async function loadProfilePosts(userId){
+
+const box=document
+.getElementById("profilePosts");
+
+box.innerHTML=
+"<div class='center'>Loading...</div>";
+
+
+const {data:posts,error}=await db
+.from("posts")
+.select(`
+*,
+profiles:user_id(
+id,
+display_name,
+avatar_url
+)
+`)
+.eq("user_id",userId)
+.order("created_at",{ascending:false});
+
+
+if(error){
+
+console.error(error);
+
+box.innerHTML=
+"<div class='center'>Could not load posts.</div>";
+
+return;
+
+}
+
+
+if(!posts||!posts.length){
+
+box.innerHTML=
+"<div class='center'>No posts yet.</div>";
+
+return;
+
+}
+
+
+box.innerHTML="";
+
+
+for(const post of posts){
+
+box.appendChild(
+await createPostElement(post)
+);
+
+}
+
+}
+
+
+/* =========================
+FOCUS POST
+========================= */
+
+function focusCreatePost(){
+
+showHome();
+
+setTimeout(()=>{
+
+document.getElementById("createPostCard")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+document.getElementById("postText").focus();
+
+},100);
+
+}
+
+
+/* =========================
+LOGOUT
+========================= */
+
+async function logout(){
+
+try{
+
+await db.auth.signOut();
+
+}catch(error){
+
+console.error(error);
+
+}
+
+currentUser=null;
+
+currentProfile=null;
+
+showAuth();
+
+showMessage(
+LANG[language].loggedOut
+);
+
+}
+
+
+/* =========================
+FORGOT PASSWORD
+========================= */
+
+async function sendReset(){
+
+const email=document
+.getElementById("forgotEmail")
+.value.trim()
+.toLowerCase();
+
+
+if(!email){
+
+showMessage("Please enter your Gmail / Email.");
+
+return;
+}
+
+
+try{
+
+const redirectTo=
+window.location.origin+
+window.location.pathname;
+
+
+const {error}=await db.auth
+.resetPasswordForEmail(
+email,
+{
+redirectTo:redirectTo
+}
 );
 
 
-// =====================================================
-// INIT
-// =====================================================
+if(error)throw error;
 
-async function init(){
 
- document.getElementById(
-  "languageSelect"
- ).value=language;
+showMessage(
+"Password reset link has been sent to your email."
+);
 
- applyLanguage();
 
- const {data:{session}} =
-  await db.auth.getSession();
+}catch(error){
 
- if(session){
+console.error(error);
 
-  currentUser=session.user;
+showMessage(
+error.message||"Reset email failed."
+);
 
-  await loadUser();
-
- }else{
-
-  showAuth();
- }
 }
 
-init();
+}
+
+
+/* =========================
+PASSWORD UPDATE
+========================= */
+
+async function updatePassword(){
+
+const password=document
+.getElementById("newPassword")
+.value;
+
+
+if(password.length<6){
+
+showMessage(
+"Password must be at least 6 characters."
+);
+
+return;
+
+}
+
+
+try{
+
+const {error}=await db.auth
+.updateUser({
+password:password
+});
+
+
+if(error)throw error;
+
+
+showMessage(
+"Password updated successfully."
+);
+
+await db.auth.signOut();
+
+showAuth();
+
+
+}catch(error){
+
+console.error(error);
+
+showMessage(
+error.message||"Password update failed."
+);
+
+}
+
+}
+
+
+/* =========================
+AUTH STATE
+========================= */
+
+db.auth.onAuthStateChange(
+async(event,session)=>{
+
+if(event==="PASSWORD_RECOVERY"){
+
+hideAllScreens();
+
+document.getElementById("passwordSection")
+.classList.remove("hidden");
+
+return;
+
+}
+
+
+if(session&&session.user){
+
+currentUser=session.user;
+
+await loadUser();
+
+}else{
+
+currentUser=null;
+currentProfile=null;
+
+showAuth();
+
+}
+
+});
+
+
+/* =========================
+INITIAL LOAD
+========================= */
+
+(async()=>{
+
+try{
+
+const {
+data:{session}
+}=await db.auth.getSession();
+
+
+if(session){
+
+await loadUser();
+
+}else{
+
+showAuth();
+
+}
+
+}catch(error){
+
+console.error(error);
+
+showAuth();
+
+}
+
+})();
 
 </script>
 
