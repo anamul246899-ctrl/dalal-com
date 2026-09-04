@@ -17,9 +17,7 @@ body{
 }
 button,input,textarea,select{font:inherit}
 button{cursor:pointer;border:0}
-.hidden{display:none!important}
-
-header{
+.header{
   position:sticky;
   top:0;
   z-index:100;
@@ -28,647 +26,535 @@ header{
   height:58px;
   display:flex;
   align-items:center;
-  padding:0 12px;
-  box-shadow:0 2px 8px #0002;
+  gap:10px;
+  padding:8px 12px;
+  box-shadow:0 1px 4px #999;
 }
 .logo{
-  font-size:24px;
+  font-size:23px;
   font-weight:bold;
   white-space:nowrap;
 }
-.header-search{
-  margin-left:auto;
-  margin-right:8px;
+.searchBox{
+  flex:1;
+  display:flex;
+  max-width:600px;
 }
-.header-search input{
-  width:190px;
+.searchBox input{
+  width:100%;
   border:0;
   outline:0;
-  border-radius:20px;
-  padding:9px 14px;
+  border-radius:20px 0 0 20px;
+  padding:10px 14px;
+  background:#fff;
 }
-.icon-btn{
-  background:#ffffff22;
-  color:white;
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  font-size:20px;
+.searchBox button{
+  background:#fff;
+  color:#1877f2;
+  padding:0 15px;
+  border-radius:0 20px 20px 0;
 }
-
 .container{
-  max-width:720px;
-  margin:auto;
-  padding:12px 8px 80px;
+  max-width:700px;
+  margin:15px auto 80px;
+  padding:0 10px;
 }
-
 .card{
   background:white;
-  border-radius:12px;
-  padding:14px;
-  margin-bottom:10px;
-  box-shadow:0 1px 3px #0001;
+  border-radius:10px;
+  padding:15px;
+  margin-bottom:12px;
+  box-shadow:0 1px 3px #ddd;
 }
-
-.auth{
-  max-width:430px;
-  margin:35px auto;
-}
-.auth h1{
-  text-align:center;
-  color:#1877f2;
-  margin-bottom:5px;
-}
-.auth-sub{
-  text-align:center;
-  color:#65676b;
-  margin-bottom:20px;
-}
-input,textarea,select{
-  width:100%;
-  border:1px solid #ccd0d5;
-  border-radius:8px;
-  padding:12px;
-  outline:none;
-  margin-bottom:10px;
-  background:white;
-}
-textarea{
-  min-height:90px;
-  resize:vertical;
-}
-input:focus,textarea:focus,select:focus{
-  border-color:#1877f2;
-}
+.hidden{display:none!important}
+.center{text-align:center}
 .primary{
-  width:100%;
-  padding:12px;
   background:#1877f2;
   color:white;
-  border-radius:8px;
-  font-weight:bold;
+  padding:11px 18px;
+  border-radius:7px;
+  width:100%;
+  margin-top:8px;
 }
-.green{
-  background:#42b72a;
-}
-.gray{
+.secondary{
   background:#e4e6eb;
-  color:#050505;
+  color:#111;
+  padding:10px 15px;
+  border-radius:7px;
 }
 .danger{
   background:#e41e3f;
   color:white;
+  padding:8px 12px;
+  border-radius:6px;
+}
+input,textarea,select{
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  border:1px solid #ccd0d5;
+  border-radius:7px;
+  outline:none;
+}
+textarea{
+  min-height:100px;
+  resize:vertical;
+}
+.auth{
+  max-width:420px;
+  margin:45px auto;
+  padding:15px;
+}
+.auth h1{
+  color:#1877f2;
+  text-align:center;
+  font-size:34px;
+}
+.authBox{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 2px 10px #ccc;
 }
 .link{
   color:#1877f2;
-  background:none;
-  padding:8px;
+  cursor:pointer;
+  text-align:center;
   display:block;
-  margin:auto;
-}
-.divider{
-  border-top:1px solid #ddd;
-  margin:16px 0;
-}
-
-.nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  z-index:100;
-  background:white;
-  border-top:1px solid #ddd;
-  display:flex;
-  justify-content:center;
-}
-.nav button{
-  flex:1;
-  max-width:145px;
-  padding:8px 2px;
-  background:white;
-  color:#65676b;
-  font-size:12px;
-}
-.nav button.active{
-  color:#1877f2;
-  font-weight:bold;
-}
-.nav-icon{
-  display:block;
-  font-size:22px;
-}
-
-.post-box{
-  display:flex;
-  gap:10px;
-  align-items:center;
+  margin:12px;
 }
 .avatar{
-  width:42px;
-  height:42px;
+  width:45px;
+  height:45px;
   border-radius:50%;
   object-fit:cover;
   background:#ddd;
 }
-.fake-input{
-  flex:1;
-  background:#f0f2f5;
-  border-radius:22px;
-  padding:12px 15px;
-  color:#65676b;
-}
-
-.post-head{
+.postHead{
   display:flex;
-  align-items:center;
   gap:10px;
+  align-items:center;
 }
-.post-user{
-  flex:1;
-}
-.post-user strong{display:block}
-.post-time{
+.postName{font-weight:bold}
+.small{
   color:#65676b;
-  font-size:12px;
+  font-size:13px;
 }
-.post-text{
+.postText{
   white-space:pre-wrap;
-  margin:12px 0;
+  margin:14px 0;
   line-height:1.5;
 }
-.post-media{
-  width:100%;
-  max-height:550px;
-  object-fit:contain;
-  border-radius:8px;
-  background:#000;
-}
-.post-actions{
-  display:flex;
-  border-top:1px solid #eee;
-  border-bottom:1px solid #eee;
+.mediaGrid{
+  display:grid;
+  gap:4px;
   margin-top:10px;
 }
-.post-actions button{
+.mediaGrid.one{grid-template-columns:1fr}
+.mediaGrid.two{grid-template-columns:1fr 1fr}
+.mediaGrid.three,
+.mediaGrid.four{
+  grid-template-columns:1fr 1fr;
+}
+.mediaGrid img,
+.mediaGrid video{
+  width:100%;
+  max-height:500px;
+  object-fit:cover;
+  border-radius:7px;
+  background:#111;
+}
+.actions{
+  display:flex;
+  gap:5px;
+  border-top:1px solid #ddd;
+  border-bottom:1px solid #ddd;
+  margin-top:10px;
+  padding:5px 0;
+}
+.actions button{
   flex:1;
   background:white;
-  padding:10px 2px;
-  color:#65676b;
+  padding:9px 5px;
+  border-radius:6px;
 }
-.post-actions button:hover{background:#f0f2f5}
-.reaction-active{
-  color:#1877f2!important;
-  font-weight:bold;
-}
-
-.reactions{
-  position:relative;
-}
-.reaction-menu{
-  position:absolute;
-  bottom:43px;
-  left:0;
-  background:white;
-  border-radius:25px;
-  padding:6px;
-  box-shadow:0 2px 12px #0003;
+.actions button:hover{background:#f0f2f5}
+.reactionMenu{
   display:flex;
   gap:4px;
+  flex-wrap:wrap;
+  padding:7px;
+  background:#f0f2f5;
+  border-radius:8px;
+  margin-top:5px;
 }
-.reaction-menu button{
+.reactionMenu button{
   background:white;
-  font-size:23px;
-  padding:4px;
+  padding:7px 9px;
+  border-radius:20px;
 }
-
 .comment{
   display:flex;
   gap:8px;
-  margin-top:10px;
+  margin-top:9px;
 }
-.comment-body{
+.commentBubble{
   background:#f0f2f5;
-  padding:8px 11px;
   border-radius:15px;
+  padding:8px 12px;
   flex:1;
 }
-.comment-name{
-  font-weight:bold;
-  font-size:13px;
-}
-.comment-text{
-  font-size:14px;
-  margin-top:3px;
-}
-.comment-form{
+.commentInput{
   display:flex;
+  gap:5px;
+  margin-top:10px;
+}
+.commentInput input{margin:0}
+.commentInput button{
+  background:#1877f2;
+  color:white;
+  padding:0 15px;
+  border-radius:7px;
+}
+.bottomNav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:white;
+  height:60px;
+  display:flex;
+  justify-content:center;
+  box-shadow:0 -2px 8px #ccc;
+  z-index:90;
+}
+.bottomNav button{
+  flex:1;
+  max-width:140px;
+  background:white;
+  color:#555;
+}
+.bottomNav button.active{color:#1877f2}
+.preview{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
   gap:7px;
   margin-top:10px;
 }
-.comment-form input{
-  margin:0;
+.previewItem{
+  position:relative;
 }
-.comment-form button{
-  width:45px;
-  background:#1877f2;
+.previewItem img,
+.previewItem video{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:7px;
+}
+.removePreview{
+  position:absolute;
+  right:5px;
+  top:5px;
+  background:#e41e3f;
   color:white;
-  border-radius:8px;
+  border-radius:50%;
+  width:28px;
+  height:28px;
 }
-
-.profile-cover{
+.profileCover{
+  background:#1877f2;
+  height:130px;
+  border-radius:10px 10px 0 0;
+}
+.profileInfo{
   text-align:center;
+  margin-top:-45px;
 }
-.profile-big{
+.profileInfo .avatar{
   width:90px;
   height:90px;
-  border-radius:50%;
-  object-fit:cover;
+  border:4px solid white;
   margin:auto;
 }
-.profile-name{
-  font-size:22px;
-  font-weight:bold;
-  margin:8px;
-}
-.bio{
-  color:#65676b;
-}
-
-.media-preview{
-  max-width:100%;
-  max-height:300px;
-  border-radius:8px;
-  margin:8px 0;
-}
-
-.search-result{
+.userRow{
   display:flex;
   align-items:center;
   gap:10px;
   padding:10px;
   border-bottom:1px solid #eee;
+  cursor:pointer;
 }
-.search-result button{
-  background:none;
-  text-align:left;
-  flex:1;
-}
-
-.chat-layout{
-  background:white;
-  border-radius:12px;
-  overflow:hidden;
-}
-.chat-top{
-  padding:12px;
-  border-bottom:1px solid #ddd;
-  font-weight:bold;
-}
-.chat-users{
-  max-height:230px;
-  overflow:auto;
-  border-bottom:1px solid #ddd;
-}
-.chat-user{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  width:100%;
+.userRow:hover{background:#f0f2f5}
+.chatMessages{
+  height:400px;
+  overflow-y:auto;
+  background:#f0f2f5;
   padding:10px;
-  background:white;
-  border-bottom:1px solid #eee;
-  text-align:left;
 }
-.chat-window{
-  height:430px;
-  display:flex;
-  flex-direction:column;
-}
-.messages{
-  flex:1;
-  overflow:auto;
-  padding:12px;
-}
-.message{
+.msg{
   max-width:75%;
   padding:9px 12px;
-  border-radius:17px;
-  margin-bottom:7px;
+  margin:5px 0;
+  border-radius:15px;
   clear:both;
 }
-.mine{
+.msg.mine{
   float:right;
   background:#1877f2;
   color:white;
-  border-bottom-right-radius:4px;
 }
-.theirs{
+.msg.other{
   float:left;
-  background:#e4e6eb;
-  border-bottom-left-radius:4px;
+  background:white;
 }
-.message-time{
-  font-size:10px;
-  opacity:.7;
-  margin-top:3px;
-}
-.chat-send{
-  display:flex;
-  gap:7px;
-  padding:8px;
-  border-top:1px solid #ddd;
-}
-.chat-send input{
-  margin:0;
-}
-.chat-send button{
-  width:50px;
-  background:#1877f2;
-  color:white;
-  border-radius:8px;
-}
-
 .toast{
   position:fixed;
-  left:50%;
   bottom:75px;
+  left:50%;
   transform:translateX(-50%);
   background:#222;
   color:white;
-  padding:10px 16px;
-  border-radius:20px;
+  padding:12px 18px;
+  border-radius:8px;
   z-index:999;
-  display:none;
 }
-.toast.show{display:block}
-
-.empty{
-  text-align:center;
-  color:#65676b;
-  padding:25px;
+.status{
+  padding:10px;
+  background:#fff3cd;
+  border-radius:7px;
+  margin:8px 0;
 }
-
-label{
-  display:block;
-  font-weight:bold;
-  margin:7px 0;
-}
-
 @media(max-width:600px){
-  .header-search input{width:130px}
-  .logo{font-size:21px}
-  .container{padding-left:5px;padding-right:5px}
-  .card{border-radius:8px}
+  .header{height:54px}
+  .logo{font-size:18px}
+  .container{margin-top:10px}
+  .card{border-radius:7px}
 }
 </style>
 </head>
 
 <body>
 
-<header id="header" class="hidden">
-  <div class="logo">ঘুষ সাইট</div>
-  <div class="header-search">
-    <input id="topSearch" placeholder="Search...">
+<div id="authPage" class="auth">
+  <h1>ঘুষ সাইট</h1>
+
+  <div class="authBox" id="loginBox">
+    <h2>Login</h2>
+
+    <input id="loginId"
+      placeholder="Phone Number or Gmail / Email"
+      autocomplete="username">
+
+    <input id="loginPassword"
+      type="password"
+      placeholder="Password"
+      autocomplete="current-password">
+
+    <button class="primary" onclick="login()">Login</button>
+
+    <span class="link" onclick="showForgot()">Forgot Password?</span>
+    <span class="link" onclick="showSignup()">Create New Account</span>
+
+    <div id="loginMsg"></div>
   </div>
-  <button class="icon-btn" onclick="openSearch()">🔍</button>
-</header>
 
-<!-- AUTH -->
-<section id="authPage">
-  <div class="card auth">
+  <div class="authBox hidden" id="signupBox">
+    <h2>Create Account</h2>
 
-    <h1>ঘুষ সাইট</h1>
-    <div class="auth-sub">
-      অন্যায়, ঘুষ, দালালি ও অনিয়মের বিরুদ্ধে আওয়াজ তুলুন
-    </div>
+    <input id="signupName" placeholder="Your Name">
+    <input id="signupPhone" placeholder="Phone Number">
+    <input id="signupEmail" placeholder="Gmail / Email">
+    <input id="signupPassword" type="password" placeholder="Password">
+    <input id="signupConfirm" type="password" placeholder="Confirm Password">
 
-    <div id="loginBox">
-      <input id="loginId" placeholder="Phone Number or Gmail">
-      <input id="loginPassword" type="password" placeholder="Password">
+    <button class="primary" onclick="signup()">Create Account</button>
 
-      <button class="primary" onclick="login()">Login</button>
+    <span class="link" onclick="showLogin()">Already have an account? Login</span>
 
-      <button class="link" onclick="showForgot()">
-        Forgot Password?
-      </button>
-
-      <div class="divider"></div>
-
-      <button class="primary green" onclick="showSignup()">
-        Create New Account
-      </button>
-    </div>
-
-    <!-- SIGNUP -->
-    <div id="signupBox" class="hidden">
-      <h3>Create Account</h3>
-
-      <input id="signupName" placeholder="Full Name">
-      <input id="signupPhone" placeholder="Phone Number">
-      <input id="signupEmail" type="email" placeholder="Gmail / Recovery Email">
-      <input id="signupPassword" type="password" placeholder="Password">
-      <input id="signupConfirm" type="password" placeholder="Confirm Password">
-
-      <button class="primary green" onclick="signup()">
-        Create Account
-      </button>
-
-      <button class="link" onclick="showLogin()">
-        Already have an account? Login
-      </button>
-    </div>
-
-    <!-- FORGOT -->
-    <div id="forgotBox" class="hidden">
-      <h3>Reset Password</h3>
-
-      <input id="forgotEmail" type="email" placeholder="Your Gmail">
-
-      <button class="primary" onclick="sendReset()">
-        Send Reset Link
-      </button>
-
-      <button class="link" onclick="showLogin()">
-        Back to Login
-      </button>
-    </div>
-
+    <div id="signupMsg"></div>
   </div>
-</section>
 
-<!-- APP -->
-<section id="appPage" class="hidden">
+  <div class="authBox hidden" id="forgotBox">
+    <h2>Forgot Password</h2>
+
+    <p class="small">
+      আপনার Email অথবা Phone Number দিন।
+    </p>
+
+    <input id="forgotId"
+      placeholder="Phone Number or Gmail / Email">
+
+    <button class="primary" onclick="sendReset()">Send Reset</button>
+
+    <div id="forgotMsg"></div>
+
+    <span class="link" onclick="showLogin()">Back to Login</span>
+  </div>
+
+  <div class="authBox hidden" id="resetBox">
+    <h2>নতুন Password দিন</h2>
+
+    <input id="newPassword" type="password" placeholder="New Password">
+    <input id="confirmNewPassword" type="password" placeholder="Confirm New Password">
+
+    <button class="primary" onclick="updatePassword()">Update Password</button>
+
+    <div id="resetMsg"></div>
+  </div>
+</div>
+
+
+<div id="app" class="hidden">
+
+  <header class="header">
+    <div class="logo">ঘুষ সাইট</div>
+
+    <div class="searchBox">
+      <input id="quickSearch"
+        placeholder="Search people..."
+        onkeydown="if(event.key==='Enter') quickSearchUser()">
+      <button onclick="quickSearchUser()">🔍</button>
+    </div>
+  </header>
+
 
   <main class="container">
 
     <!-- HOME -->
-    <div id="homePage">
-
+    <section id="homePage">
       <div class="card">
-        <div class="post-box">
-          <img id="miniAvatar" class="avatar">
-          <div class="fake-input" onclick="openPost()">
+        <div style="display:flex;gap:10px;align-items:center">
+          <img id="homeAvatar" class="avatar">
+          <button class="secondary"
+            style="flex:1;text-align:left"
+            onclick="showPage('postPage')">
             What's on your mind?
-          </div>
+          </button>
         </div>
       </div>
 
       <div id="feed">
-        <div class="empty">Post loading...</div>
+        <div class="card center">Post loading...</div>
       </div>
+    </section>
 
-    </div>
 
     <!-- SEARCH -->
-    <div id="searchPage" class="hidden">
+    <section id="searchPage" class="hidden">
       <div class="card">
-        <h3>🔍 Search</h3>
-        <input id="searchInput" placeholder="Search people..." oninput="searchUsers()">
-        <div id="searchResults"></div>
+        <h2>🔍 Search</h2>
+        <input id="searchInput" placeholder="নাম দিয়ে Search করুন">
+        <button class="primary" onclick="searchUsers()">Search</button>
       </div>
-    </div>
+
+      <div id="searchResults"></div>
+    </section>
+
 
     <!-- POST -->
-    <div id="postPage" class="hidden">
+    <section id="postPage" class="hidden">
       <div class="card">
-        <h3>📝 Create Post</h3>
+        <h2>📝 Create Post</h2>
 
         <textarea id="postContent"
-          placeholder="আপনার অভিযোগ বা ঘটনা লিখুন..."></textarea>
+          placeholder="আপনার কথা লিখুন..."></textarea>
 
-        <label>অভিযোগের ধরন</label>
         <select id="postCategory">
-          <option value="">নির্বাচন করুন</option>
-          <option>ঘুষ</option>
-          <option>দালালি</option>
-          <option>প্রতারণা</option>
-          <option>চাঁদাবাজি</option>
-          <option>অনিয়ম</option>
-          <option>দুর্নীতি</option>
-          <option>অন্যান্য</option>
+          <option value="সাধারণ">সাধারণ</option>
+          <option value="ঘুষ">ঘুষ</option>
+          <option value="দালালি">দালালি</option>
+          <option value="প্রতারণা">প্রতারণা</option>
+          <option value="অনিয়ম">অনিয়ম</option>
+          <option value="দুর্নীতি">দুর্নীতি</option>
+          <option value="অভিযোগ">অভিযোগ</option>
+          <option value="অন্যান্য">অন্যান্য</option>
         </select>
 
-        <label>
-          <input id="anonymousPost" type="checkbox" style="width:auto">
-          পরিচয় গোপন রাখতে চাই
+        <label style="display:block;margin:10px 0">
+          <input id="anonymousPost"
+            type="checkbox"
+            style="width:auto">
+          পরিচয় গোপন রাখুন
         </label>
 
-        <label>📷 ছবি / 🎥 ভিডিও</label>
-        <input id="mediaFile" type="file" accept="image/*,video/*">
+        <input id="mediaFile"
+          type="file"
+          accept="image/*,video/*"
+          multiple
+          onchange="previewMedia()">
 
-        <div id="preview"></div>
+        <div id="mediaPreview" class="preview"></div>
 
         <button class="primary" onclick="createPost()">
           Publish
         </button>
       </div>
-    </div>
+    </section>
+
 
     <!-- PROFILE -->
-    <div id="profilePage" class="hidden">
-      <div class="card profile-cover">
-        <img id="profileAvatar" class="profile-big">
-        <div id="profileName" class="profile-name"></div>
-        <div id="profileBio" class="bio"></div>
-        <button class="primary" style="margin-top:12px" onclick="openEditProfile()">
-          Edit Profile
-        </button>
-        <button class="primary danger" style="margin-top:8px" onclick="logout()">
-          Logout
-        </button>
-      </div>
+    <section id="profilePage" class="hidden">
+      <div id="profileContent"></div>
+    </section>
 
-      <div id="myPosts"></div>
-    </div>
 
     <!-- EDIT PROFILE -->
-    <div id="editProfilePage" class="hidden">
+    <section id="editPage" class="hidden">
       <div class="card">
-        <h3>Edit Profile</h3>
+        <h2>✏️ Edit Profile</h2>
 
         <input id="editName" placeholder="Name">
         <textarea id="editBio" placeholder="Bio"></textarea>
-
-        <label>Profile Photo</label>
-        <input id="avatarFile" type="file" accept="image/*">
+        <input id="editAvatar" placeholder="Avatar Image URL">
 
         <button class="primary" onclick="saveProfile()">
           Save
         </button>
-
-        <button class="primary gray" style="margin-top:8px"
-          onclick="showPage('profile')">
-          Cancel
-        </button>
       </div>
-    </div>
+    </section>
+
 
     <!-- CHAT -->
-    <div id="chatPage" class="hidden">
+    <section id="chatPage" class="hidden">
+      <div class="card">
+        <h2>💬 Chat</h2>
 
-      <div class="chat-layout">
-
-        <div class="chat-top">
-          💬 Chat
-        </div>
-
-        <div class="chat-users" id="chatUsers">
-          <div class="empty">Users loading...</div>
-        </div>
-
-        <div id="chatWindow" class="chat-window hidden">
-
-          <div id="chatTitle" class="chat-top"></div>
-
-          <div id="messages" class="messages"></div>
-
-          <div class="chat-send">
-            <input id="messageInput" placeholder="Write a message..."
-              onkeydown="if(event.key==='Enter')sendMessage()">
-            <button onclick="sendMessage()">➤</button>
-          </div>
-
-        </div>
-
+        <div id="chatUsers"></div>
       </div>
-    </div>
+
+      <div id="chatBox" class="card hidden">
+        <h3 id="chatTitle"></h3>
+
+        <div id="chatMessages" class="chatMessages"></div>
+
+        <div style="display:flex;gap:5px;margin-top:8px">
+          <input id="messageInput"
+            placeholder="Message..."
+            style="margin:0"
+            onkeydown="if(event.key==='Enter') sendMessage()">
+
+          <button
+            onclick="sendMessage()"
+            style="background:#1877f2;color:white;padding:0 15px;border-radius:7px">
+            Send
+          </button>
+        </div>
+      </div>
+    </section>
 
   </main>
 
-  <!-- BOTTOM NAV -->
-  <nav class="nav">
 
-    <button id="navHome" onclick="showPage('home')" class="active">
-      <span class="nav-icon">🏠</span>
-      Home
-    </button>
-
-    <button id="navSearch" onclick="showPage('search')">
-      <span class="nav-icon">🔍</span>
-      Search
-    </button>
-
-    <button id="navPost" onclick="showPage('post')">
-      <span class="nav-icon">➕</span>
-      Post
-    </button>
-
-    <button id="navChat" onclick="showPage('chat')">
-      <span class="nav-icon">💬</span>
-      Chat
-    </button>
-
-    <button id="navProfile" onclick="showPage('profile')">
-      <span class="nav-icon">👤</span>
-      Profile
-    </button>
-
+  <nav class="bottomNav">
+    <button onclick="showPage('homePage')">🏠<br>Home</button>
+    <button onclick="showPage('searchPage')">🔍<br>Search</button>
+    <button onclick="showPage('postPage')">➕<br>Post</button>
+    <button onclick="showPage('chatPage');loadChatUsers()">💬<br>Chat</button>
+    <button onclick="showPage('profilePage');loadProfilePage()">👤<br>Profile</button>
   </nav>
 
-</section>
+</div>
 
-<div id="toast" class="toast"></div>
 
 <script>
 
@@ -687,10 +573,11 @@ const db = supabase.createClient(
   SUPABASE_KEY
 );
 
+
 let currentUser = null;
 let currentProfile = null;
 let selectedChatUser = null;
-let messageSubscription = null;
+let messageChannel = null;
 
 
 /* =========================
@@ -702,38 +589,40 @@ function $(id){
 }
 
 function toast(message){
-  $("toast").textContent = message;
-  $("toast").classList.add("show");
+  const old = document.querySelector(".toast");
+  if(old) old.remove();
 
-  setTimeout(()=>{
-    $("toast").classList.remove("show");
-  },2500);
+  const t = document.createElement("div");
+  t.className = "toast";
+  t.textContent = message;
+  document.body.appendChild(t);
+
+  setTimeout(()=>t.remove(),3000);
 }
 
-function avatar(url,name="User"){
-  return url ||
-    "https://ui-avatars.com/api/?name="+
-    encodeURIComponent(name)+"&background=random";
-}
+function escapeHTML(text){
+  if(text === null || text === undefined) return "";
 
-function escapeHTML(text=""){
   return String(text)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
-function timeAgo(date){
-  const diff = Math.floor(
-    (Date.now()-new Date(date).getTime())/1000
-  );
+function avatarURL(profile){
+  if(profile && profile.avatar_url)
+    return profile.avatar_url;
 
-  if(diff<60) return "Just now";
-  if(diff<3600) return Math.floor(diff/60)+"m";
-  if(diff<86400) return Math.floor(diff/3600)+"h";
-  return new Date(date).toLocaleDateString();
+  const name =
+    profile && profile.display_name
+    ? profile.display_name
+    : "User";
+
+  return "https://ui-avatars.com/api/?name="
+    + encodeURIComponent(name)
+    + "&background=1877f2&color=fff";
 }
 
 
@@ -741,22 +630,31 @@ function timeAgo(date){
    AUTH UI
 ========================= */
 
-function showLogin(){
-  $("loginBox").classList.remove("hidden");
+function hideAuthBoxes(){
+  $("loginBox").classList.add("hidden");
   $("signupBox").classList.add("hidden");
   $("forgotBox").classList.add("hidden");
+  $("resetBox").classList.add("hidden");
+}
+
+function showLogin(){
+  hideAuthBoxes();
+  $("loginBox").classList.remove("hidden");
 }
 
 function showSignup(){
-  $("loginBox").classList.add("hidden");
+  hideAuthBoxes();
   $("signupBox").classList.remove("hidden");
-  $("forgotBox").classList.add("hidden");
 }
 
 function showForgot(){
-  $("loginBox").classList.add("hidden");
-  $("signupBox").classList.add("hidden");
+  hideAuthBoxes();
   $("forgotBox").classList.remove("hidden");
+}
+
+function showReset(){
+  hideAuthBoxes();
+  $("resetBox").classList.remove("hidden");
 }
 
 
@@ -770,56 +668,67 @@ async function login(){
   const password = $("loginPassword").value;
 
   if(!id || !password){
-    toast("সব তথ্য দিন");
+    $("loginMsg").innerHTML =
+      '<div class="status">সব তথ্য পূরণ করুন।</div>';
     return;
   }
+
+  $("loginMsg").innerHTML =
+    '<div class="status">Login হচ্ছে...</div>';
 
   try{
 
     let email = id;
 
     /*
-      Gmail হলে সরাসরি login।
-      Phone হলে profiles থেকে recovery_email খোঁজা হবে।
+      Email না হলে Phone থেকে
+      account email বের করার চেষ্টা।
     */
 
     if(!id.includes("@")){
 
-      const {data,error} = await db.rpc(
-        "get_login_email",
-        {p_phone:id}
-      );
+      const {data,error} =
+        await db.rpc("get_login_email",{
+          p_phone:id
+        });
 
-      if(error) throw error;
-
-      if(!data){
-        toast("এই Phone Number দিয়ে কোনো account পাওয়া যায়নি");
+      if(error){
+        $("loginMsg").innerHTML =
+          '<div class="status">Phone login setup পাওয়া যায়নি। Email দিয়ে চেষ্টা করুন।</div>';
         return;
       }
 
       email = data;
+
+      if(!email){
+        $("loginMsg").innerHTML =
+          '<div class="status">Account পাওয়া যায়নি।</div>';
+        return;
+      }
     }
 
     const {error} =
       await db.auth.signInWithPassword({
-        email,
-        password
+        email:email,
+        password:password
       });
 
-    if(error) throw error;
+    if(error){
+      $("loginMsg").innerHTML =
+        '<div class="status">'
+        + escapeHTML(error.message)
+        + '</div>';
+      return;
+    }
 
     toast("Login successful");
 
-    await loadUser();
+  }catch(err){
 
-  }catch(error){
-
-    console.error(error);
-
-    toast(
-      error.message ||
-      "Login failed"
-    );
+    $("loginMsg").innerHTML =
+      '<div class="status">'
+      + escapeHTML(err.message)
+      + '</div>';
   }
 }
 
@@ -846,78 +755,96 @@ async function signup(){
     $("signupConfirm").value;
 
   if(!name || !phone || !email || !password){
-    toast("সব তথ্য পূরণ করুন");
+    $("signupMsg").innerHTML =
+      '<div class="status">সব তথ্য পূরণ করুন।</div>';
     return;
   }
 
   if(password !== confirm){
-    toast("Password মিলছে না");
+    $("signupMsg").innerHTML =
+      '<div class="status">Password মিলছে না।</div>';
     return;
   }
 
   if(password.length < 6){
-    toast("Password কমপক্ষে ৬ অক্ষরের দিন");
+    $("signupMsg").innerHTML =
+      '<div class="status">Password কমপক্ষে ৬ অক্ষরের দিন।</div>';
     return;
   }
 
+  $("signupMsg").innerHTML =
+    '<div class="status">Account তৈরি হচ্ছে...</div>';
+
   try{
 
-    /* phone duplicate check */
-
-    const {data:existing} =
+    const check =
       await db
       .from("profiles")
       .select("id")
       .eq("phone",phone)
       .maybeSingle();
 
-    if(existing){
-      toast("এই Phone Number আগে থেকেই ব্যবহার হয়েছে");
+    if(check.data){
+      $("signupMsg").innerHTML =
+        '<div class="status">এই Phone Number দিয়ে Account আছে।</div>';
       return;
     }
 
     const {data,error} =
       await db.auth.signUp({
-        email,
-        password
+        email:email,
+        password:password
       });
 
-    if(error) throw error;
-
-    if(!data.user){
-      toast("Account তৈরি হয়েছে। Email verify করুন।");
+    if(error){
+      $("signupMsg").innerHTML =
+        '<div class="status">'
+        + escapeHTML(error.message)
+        + '</div>';
       return;
     }
 
-    const {error:profileError} =
+    if(!data.user){
+      $("signupMsg").innerHTML =
+        '<div class="status">Account তৈরি হয়েছে। Email verification প্রয়োজন হতে পারে।</div>';
+      return;
+    }
+
+    const profileData = {
+      id:data.user.id,
+      display_name:name,
+      phone:phone,
+      bio:"",
+      avatar_url:"",
+      role:"user"
+    };
+
+    const profile =
       await db
       .from("profiles")
-      .upsert({
-        id:data.user.id,
-        display_name:name,
-        phone:phone,
-        recovery_email:email,
-        bio:"",
-        avatar_url:"",
-        role:"user"
-      });
+      .upsert(profileData);
 
-    if(profileError) throw profileError;
+    if(profile.error){
+      $("signupMsg").innerHTML =
+        '<div class="status">Account হয়েছে, কিন্তু Profile save হয়নি: '
+        + escapeHTML(profile.error.message)
+        + '</div>';
+      return;
+    }
 
-    toast(
-      "Account তৈরি হয়েছে। এখন Login করুন।"
-    );
+    toast("Account created");
 
-    showLogin();
+    $("signupMsg").innerHTML =
+      '<div class="status">Account সফলভাবে তৈরি হয়েছে। Login করুন।</div>';
 
-  }catch(error){
+    setTimeout(showLogin,1200);
 
-    console.error(error);
+  }catch(err){
 
-    toast(
-      error.message ||
-      "Signup failed"
-    );
+    $("signupMsg").innerHTML =
+      '<div class="status">'
+      + escapeHTML(err.message)
+      + '</div>';
   }
 }
 
@@ -928,80 +855,184 @@ async function signup(){
 
 async function sendReset(){
 
-  const email =
-    $("forgotEmail").value.trim();
+  const id =
+    $("forgotId").value.trim();
 
-  if(!email){
-    toast("Gmail দিন");
+  if(!id){
+    $("forgotMsg").innerHTML =
+      '<div class="status">Phone অথবা Email দিন।</div>';
     return;
   }
 
+  $("forgotMsg").innerHTML =
+    '<div class="status">Checking...</div>';
+
   try{
 
-    const redirectTo =
-      window.location.origin +
-      window.location.pathname;
+    let email = id;
+
+    /*
+      Email হলে সরাসরি।
+      Phone হলে get_login_email RPC দিয়ে
+      account email বের করা হবে।
+    */
+
+    if(!id.includes("@")){
+
+      const {data,error} =
+        await db.rpc("get_login_email",{
+          p_phone:id
+        });
+
+      if(error || !data){
+
+        $("forgotMsg").innerHTML =
+          '<div class="status">'
+          + "এই Phone Number-এর Account পাওয়া যায়নি।"
+          + '</div>';
+
+        return;
+      }
+
+      email = data;
+    }
 
     const {error} =
       await db.auth.resetPasswordForEmail(
         email,
-        {redirectTo}
+        {
+          redirectTo:
+            window.location.href
+        }
       );
 
-    if(error) throw error;
+    if(error){
 
-    toast(
-      "Password reset link আপনার email-এ পাঠানো হয়েছে"
-    );
+      $("forgotMsg").innerHTML =
+        '<div class="status">'
+        + escapeHTML(error.message)
+        + '</div>';
 
-  }catch(error){
+      return;
+    }
 
-    toast(
-      error.message ||
-      "Reset failed"
-    );
+    $("forgotMsg").innerHTML =
+      '<div class="status">'
+      + "Password reset link আপনার Email-এ পাঠানো হয়েছে।"
+      + '</div>';
+
+  }catch(err){
+
+    $("forgotMsg").innerHTML =
+      '<div class="status">'
+      + escapeHTML(err.message)
+      + '</div>';
   }
 }
 
 
 /* =========================
-   LOAD USER
+   PASSWORD UPDATE
+========================= */
+
+async function updatePassword(){
+
+  const password =
+    $("newPassword").value;
+
+  const confirm =
+    $("confirmNewPassword").value;
+
+  if(!password || !confirm){
+    $("resetMsg").innerHTML =
+      '<div class="status">দুই জায়গায় Password দিন।</div>';
+    return;
+  }
+
+  if(password !== confirm){
+    $("resetMsg").innerHTML =
+      '<div class="status">Password মিলছে না।</div>';
+    return;
+  }
+
+  if(password.length < 6){
+    $("resetMsg").innerHTML =
+      '<div class="status">Password কমপক্ষে ৬ অক্ষরের দিন।</div>';
+    return;
+  }
+
+  const {error} =
+    await db.auth.updateUser({
+      password:password
+    });
+
+  if(error){
+
+    $("resetMsg").innerHTML =
+      '<div class="status">'
+      + escapeHTML(error.message)
+      + '</div>';
+
+    return;
+  }
+
+  toast("Password updated");
+
+  $("resetMsg").innerHTML =
+    '<div class="status">Password সফলভাবে পরিবর্তন হয়েছে।</div>';
+
+  setTimeout(showLogin,1200);
+}
+
+
+/* =========================
+   SESSION
 ========================= */
 
 async function loadUser(){
 
-  const {
-    data:{user}
-  } = await db.auth.getUser();
+  const {data} =
+    await db.auth.getSession();
 
-  if(!user){
-    currentUser=null;
-    $("authPage").classList.remove("hidden");
-    $("appPage").classList.add("hidden");
-    $("header").classList.add("hidden");
-    return;
+  if(data.session){
+
+    currentUser =
+      data.session.user;
+
+    await loadProfile();
+
+    openApp();
+
+  }else{
+
+    openAuth();
   }
+}
 
-  currentUser=user;
+async function loadProfile(){
 
-  let {data:profile,error} =
+  if(!currentUser) return;
+
+  const {data,error} =
     await db
     .from("profiles")
     .select("*")
-    .eq("id",user.id)
+    .eq("id",currentUser.id)
     .maybeSingle();
 
-  if(error){
-    console.error(error);
-  }
+  if(data){
 
-  if(!profile){
+    currentProfile = data;
 
-    const newProfile={
-      id:user.id,
-      display_name:user.email?.split("@")[0] || "User",
+  }else{
+
+    const newProfile = {
+      id:currentUser.id,
+      display_name:
+        currentUser.email
+        ? currentUser.email.split("@")[0]
+        : "User",
       phone:"",
-      recovery_email:user.email,
       bio:"",
       avatar_url:"",
       role:"user"
@@ -1010,121 +1041,193 @@ async function loadUser(){
     const result =
       await db
       .from("profiles")
-      .insert(newProfile)
+      .upsert(newProfile)
       .select()
       .single();
 
-    profile=result.data;
+    if(result.data)
+      currentProfile = result.data;
   }
+}
 
-  currentProfile=profile;
+
+db.auth.onAuthStateChange(
+  async (event,session)=>{
+
+    if(event === "PASSWORD_RECOVERY"){
+      showReset();
+      return;
+    }
+
+    if(session){
+
+      currentUser = session.user;
+
+      await loadProfile();
+
+      openApp();
+
+    }else{
+
+      currentUser = null;
+      currentProfile = null;
+
+      openAuth();
+    }
+  }
+);
+
+
+function openAuth(){
+
+  $("authPage").classList.remove("hidden");
+  $("app").classList.add("hidden");
+}
+
+async function openApp(){
 
   $("authPage").classList.add("hidden");
-  $("appPage").classList.remove("hidden");
-  $("header").classList.remove("hidden");
+  $("app").classList.remove("hidden");
 
-  $("miniAvatar").src =
-    avatar(
-      profile.avatar_url,
-      profile.display_name
-    );
+  if(currentProfile){
+    $("homeAvatar").src =
+      avatarURL(currentProfile);
+  }
 
+  showPage("homePage");
   await loadFeed();
 }
 
 
 /* =========================
-   LOGOUT
+   NAVIGATION
 ========================= */
 
-async function logout(){
+function showPage(pageId){
 
-  await db.auth.signOut();
-
-  currentUser=null;
-  currentProfile=null;
-
-  if(messageSubscription){
-    await db.removeChannel(messageSubscription);
-    messageSubscription=null;
-  }
-
-  showLogin();
-
-  $("appPage").classList.add("hidden");
-  $("header").classList.add("hidden");
-  $("authPage").classList.remove("hidden");
-
-  toast("Logout successful");
-}
-
-
-/* =========================
-   PAGE NAVIGATION
-========================= */
-
-function hidePages(){
-
-  [
+  const pages = [
     "homePage",
     "searchPage",
     "postPage",
     "profilePage",
-    "editProfilePage",
+    "editPage",
     "chatPage"
-  ].forEach(id=>{
-    $(id).classList.add("hidden");
+  ];
+
+  pages.forEach(id=>{
+    const el = $(id);
+
+    if(el)
+      el.classList.add("hidden");
   });
 
-  document
-    .querySelectorAll(".nav button")
-    .forEach(btn=>{
-      btn.classList.remove("active");
-    });
+  $(pageId).classList.remove("hidden");
+
+  window.scrollTo(0,0);
+
+  if(pageId === "homePage")
+    loadFeed();
+
+  if(pageId === "profilePage")
+    loadProfilePage();
+
+  if(pageId === "chatPage")
+    loadChatUsers();
 }
 
-async function showPage(page){
 
-  hidePages();
+/* =========================
+   MEDIA PREVIEW
+========================= */
 
-  if(page==="home"){
-    $("homePage").classList.remove("hidden");
-    $("navHome").classList.add("active");
-    await loadFeed();
-  }
+function previewMedia(){
 
-  if(page==="search"){
-    $("searchPage").classList.remove("hidden");
-    $("navSearch").classList.add("active");
-  }
+  const input =
+    $("mediaFile");
 
-  if(page==="post"){
-    $("postPage").classList.remove("hidden");
-    $("navPost").classList.add("active");
-  }
+  const preview =
+    $("mediaPreview");
 
-  if(page==="chat"){
-    $("chatPage").classList.remove("hidden");
-    $("navChat").classList.add("active");
-    await loadChatUsers();
-  }
+  preview.innerHTML = "";
 
-  if(page==="profile"){
-    $("profilePage").classList.remove("hidden");
-    $("navProfile").classList.add("active");
-    await loadProfilePage();
-  }
+  if(!input.files || !input.files.length)
+    return;
+
+  Array.from(input.files).forEach(
+    (file,index)=>{
+
+      const item =
+        document.createElement("div");
+
+      item.className =
+        "previewItem";
+
+      const remove =
+        document.createElement("button");
+
+      remove.className =
+        "removePreview";
+
+      remove.textContent = "×";
+
+      remove.onclick = ()=>{
+        removeSelectedFile(index);
+      };
+
+      if(file.type.startsWith("image/")){
+
+        const img =
+          document.createElement("img");
+
+        img.src =
+          URL.createObjectURL(file);
+
+        item.appendChild(img);
+
+      }else if(file.type.startsWith("video/")){
+
+        const video =
+          document.createElement("video");
+
+        video.src =
+          URL.createObjectURL(file);
+
+        video.controls = true;
+
+        item.appendChild(video);
+      }
+
+      item.appendChild(remove);
+
+      preview.appendChild(item);
+    }
+  );
 }
 
-function openPost(){
-  showPage("post");
-}
 
-function openSearch(){
-  showPage("search");
-  setTimeout(()=>{
-    $("searchInput").focus();
-  },100);
+/*
+  FileList সরাসরি edit করা যায় না।
+  তাই preview remove-এর জন্য DataTransfer ব্যবহার।
+*/
+
+function removeSelectedFile(index){
+
+  const input =
+    $("mediaFile");
+
+  const dt =
+    new DataTransfer();
+
+  Array.from(input.files).forEach(
+    (file,i)=>{
+      if(i !== index)
+        dt.items.add(file);
+    }
+  );
+
+  input.files = dt.files;
+
+  previewMedia();
 }
 
 
@@ -1132,28 +1235,12 @@ function openSearch(){
    CREATE POST
 ========================= */
 
-$("mediaFile").addEventListener("change",function(){
+async function createPost(){
 
-  const file=this.files[0];
-
-  if(!file){
-    $("preview").innerHTML="";
+  if(!currentUser){
+    toast("আগে Login করুন");
     return;
   }
-
-  const url=URL.createObjectURL(file);
-
-  if(file.type.startsWith("image/")){
-    $("preview").innerHTML=
-      `<img class="media-preview" src="${url}">`;
-  }else if(file.type.startsWith("video/")){
-    $("preview").innerHTML=
-      `<video class="media-preview" src="${url}" controls></video>`;
-  }
-});
-
-
-async function createPost(){
 
   const content =
     $("postContent").value.trim();
@@ -1164,104 +1251,214 @@ async function createPost(){
   const anonymous =
     $("anonymousPost").checked;
 
-  const file =
-    $("mediaFile").files[0];
+  const files =
+    Array.from($("mediaFile").files || []);
 
-  if(!content && !file){
+  if(!content && files.length === 0){
+
     toast("কিছু লিখুন অথবা ছবি/ভিডিও দিন");
+
     return;
   }
 
   try{
 
-    let media_url=null;
-    let media_type=null;
+    toast("Post তৈরি হচ্ছে...");
 
-    if(file){
+    /*
+      প্রথমে Post তৈরি।
+    */
+
+    const {data:post,error:postError} =
+      await db
+      .from("posts")
+      .insert({
+        user_id:currentUser.id,
+        content:content,
+        media_url:null,
+        media_type:null,
+        status:"published",
+        is_anonymous:anonymous,
+        category:category
+      })
+      .select()
+      .single();
+
+    if(postError){
+
+      toast(postError.message);
+
+      return;
+    }
+
+
+    /*
+      সব Media Upload
+    */
+
+    let firstMediaURL = null;
+    let firstMediaType = null;
+
+    for(let i=0;i<files.length;i++){
+
+      const file = files[i];
 
       const ext =
         file.name.split(".").pop();
 
       const path =
-        `posts/${currentUser.id}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+        "posts/"
+        + currentUser.id
+        + "/"
+        + Date.now()
+        + "_"
+        + i
+        + "."
+        + ext;
 
-      const {error:uploadError} =
+      const upload =
         await db.storage
         .from("media")
         .upload(path,file,{
           upsert:false
         });
 
-      if(uploadError) throw uploadError;
+      if(upload.error){
 
-      const {data:urlData} =
+        console.log(upload.error);
+
+        continue;
+      }
+
+      const publicURL =
         db.storage
         .from("media")
-        .getPublicUrl(path);
+        .getPublicUrl(path)
+        .data.publicUrl;
 
-      media_url=urlData.publicUrl;
-
-      media_type =
+      const mediaType =
         file.type.startsWith("video/")
         ? "video"
         : "image";
+
+      if(i === 0){
+
+        firstMediaURL =
+          publicURL;
+
+        firstMediaType =
+          mediaType;
+      }
+
+      /*
+        Multiple media table
+      */
+
+      const mediaInsert =
+        await db
+        .from("post_media")
+        .insert({
+          post_id:post.id,
+          media_url:publicURL,
+          media_type:mediaType
+        });
+
+      if(mediaInsert.error)
+        console.log(
+          "post_media error:",
+          mediaInsert.error
+        );
     }
 
-    const finalContent =
-      category
-      ? `【${category}】\n${content}`
-      : content;
 
-    const {error} =
+    /*
+      Existing posts table-এর
+      প্রথম media-ও save করছি।
+    */
+
+    if(firstMediaURL){
+
       await db
       .from("posts")
-      .insert({
-        user_id:currentUser.id,
-        content:finalContent,
-        media_url,
-        media_type,
-        status:"published",
-        is_anonymous:anonymous
-      });
+      .update({
+        media_url:firstMediaURL,
+        media_type:firstMediaType
+      })
+      .eq("id",post.id);
+    }
 
-    if(error) throw error;
 
-    $("postContent").value="";
-    $("postCategory").value="";
-    $("anonymousPost").checked=false;
-    $("mediaFile").value="";
-    $("preview").innerHTML="";
+    $("postContent").value = "";
+    $("mediaFile").value = "";
+    $("mediaPreview").innerHTML = "";
+    $("anonymousPost").checked = false;
 
-    toast(
-      "Post প্রকাশ হয়েছে"
-    );
+    toast("Post Published");
 
-    await showPage("home");
+    showPage("homePage");
 
-  }catch(error){
+  }catch(err){
 
-    console.error(error);
-
-    toast(
-      error.message ||
-      "Post করা যায়নি"
-    );
+    toast(err.message);
   }
 }
 
 
 /* =========================
-   FEED
+   GET POST MEDIA
+========================= */
+
+async function getMedia(post){
+
+  let media = [];
+
+  try{
+
+    const {data,error} =
+      await db
+      .from("post_media")
+      .select("*")
+      .eq("post_id",post.id)
+      .order("created_at",{ascending:true});
+
+    if(!error && data)
+      media = data;
+
+  }catch(e){
+    console.log(e);
+  }
+
+
+  /*
+    পুরোনো post হলে posts.media_url
+    থেকেও দেখাবে।
+  */
+
+  if(media.length === 0 && post.media_url){
+
+    media.push({
+      media_url:post.media_url,
+      media_type:post.media_type || "image"
+    });
+  }
+
+  return media;
+}
+
+
+/* =========================
+   LOAD FEED
 ========================= */
 
 async function loadFeed(){
 
-  const feed=$("feed");
+  const feed =
+    $("feed");
 
-  feed.innerHTML=
-    `<div class="empty">Post loading...</div>`;
+  feed.innerHTML =
+    '<div class="card center">Post loading...</div>';
 
-  const {data:posts,error} =
+  const {data,error} =
     await db
     .from("posts")
     .select(`
@@ -1272,31 +1469,33 @@ async function loadFeed(){
         avatar_url
       )
     `)
+    .eq("status","published")
     .order("created_at",{ascending:false});
 
   if(error){
 
-    console.error(error);
-
-    feed.innerHTML=
-      `<div class="empty">Post loading failed</div>`;
-
-    return;
-  }
-
-  if(!posts || !posts.length){
-
-    feed.innerHTML=
-      `<div class="card empty">
-        এখনো কোনো Post নেই।
-      </div>`;
+    feed.innerHTML =
+      '<div class="card">'
+      + '<b>Post loading failed</b><br><br>'
+      + escapeHTML(error.message)
+      + '</div>';
 
     return;
   }
 
-  feed.innerHTML="";
+  if(!data || data.length === 0){
 
-  for(const post of posts){
+    feed.innerHTML =
+      '<div class="card center">'
+      + 'এখনো কোনো Post নেই।'
+      + '</div>';
+
+    return;
+  }
+
+  feed.innerHTML = "";
+
+  for(const post of data){
 
     feed.insertAdjacentHTML(
       "beforeend",
@@ -1312,222 +1511,308 @@ async function loadFeed(){
 
 async function postHTML(post){
 
+  const profile =
+    post.profiles || {};
+
+  const media =
+    await getMedia(post);
+
   const anonymous =
     post.is_anonymous === true;
 
-  const profile =
-    post.profiles;
-
   const name =
     anonymous
-    ? "গোপন পরিচয়"
-    : (profile?.display_name || "User");
+    ? "Anonymous"
+    : (profile.display_name || "User");
 
-  const avatarUrl =
+  const avatar =
     anonymous
-    ? "https://ui-avatars.com/api/?name=%E2%80%A2%E2%80%A2%E2%80%A2"
-    : avatar(
-        profile?.avatar_url,
-        name
-      );
+    ? "https://ui-avatars.com/api/?name=A&background=777&color=fff"
+    : avatarURL(profile);
 
-  const {data:reactions} =
+
+  /*
+    Reactions
+  */
+
+  let reactionCount = 0;
+
+  const reactions =
     await db
     .from("reactions")
-    .select("reaction_type,user_id")
+    .select("*",{
+      count:"exact",
+      head:true
+    })
     .eq("post_id",post.id);
 
-  const counts={};
+  if(reactions.count)
+    reactionCount = reactions.count;
 
-  (reactions||[]).forEach(r=>{
-    counts[r.reaction_type] =
-      (counts[r.reaction_type]||0)+1;
-  });
 
-  const myReaction =
-    reactions?.find(
-      r=>r.user_id===currentUser?.id
-    )?.reaction_type;
+  /*
+    Comments
+  */
 
-  const {data:comments} =
+  const comments =
     await db
     .from("comments")
     .select(`
-      *,
+      id,
+      content,
+      created_at,
+      user_id,
       profiles:user_id(
         display_name,
         avatar_url
       )
     `)
     .eq("post_id",post.id)
-    .order("created_at",{ascending:true});
+    .order("created_at",{ascending:true})
+    .limit(20);
 
-  let media="";
 
-  if(post.media_url){
+  let mediaHTML = "";
 
-    if(post.media_type==="video"){
+  if(media.length){
 
-      media=
-        `<video class="post-media"
-          src="${post.media_url}"
-          controls
-          preload="metadata"></video>`;
+    const cls =
+      media.length === 1
+      ? "one"
+      : media.length === 2
+      ? "two"
+      : media.length === 3
+      ? "three"
+      : "four";
 
-    }else{
+    mediaHTML =
+      `<div class="mediaGrid ${cls}">`;
 
-      media=
-        `<img class="post-media"
-          src="${post.media_url}"
-          loading="lazy">`;
-    }
+    media.forEach(m=>{
+
+      if(m.media_type === "video"){
+
+        mediaHTML +=
+          `<video controls preload="metadata">
+             <source src="${escapeHTML(m.media_url)}">
+           </video>`;
+
+      }else{
+
+        mediaHTML +=
+          `<img src="${escapeHTML(m.media_url)}"
+                loading="lazy"
+                onclick="window.open('${escapeHTML(m.media_url)}','_blank')">`;
+      }
+
+    });
+
+    mediaHTML += "</div>";
   }
 
-  const commentsHTML =
-    (comments||[])
-    .map(c=>{
 
-      const cName =
-        c.profiles?.display_name ||
-        "User";
+  let commentsHTML = "";
 
-      return `
-        <div class="comment">
+  if(comments.data){
+
+    comments.data.forEach(c=>{
+
+      const cp =
+        c.profiles || {};
+
+      commentsHTML +=
+        `<div class="comment">
           <img class="avatar"
-            src="${avatar(
-              c.profiles?.avatar_url,
-              cName
-            )}">
-          <div class="comment-body">
-            <div class="comment-name">
-              ${escapeHTML(cName)}
-            </div>
-            <div class="comment-text">
-              ${escapeHTML(c.content)}
-            </div>
+               style="width:32px;height:32px"
+               src="${escapeHTML(avatarURL(cp))}">
+          <div class="commentBubble">
+            <b>${escapeHTML(cp.display_name || "User")}</b><br>
+            ${escapeHTML(c.content)}
           </div>
-        </div>
-      `;
-    })
-    .join("");
+        </div>`;
+    });
+  }
 
-  const totalReactions =
-    reactions?.length || 0;
+
+  const own =
+    currentUser &&
+    post.user_id === currentUser.id;
+
+  const admin =
+    currentProfile &&
+    currentProfile.role === "admin";
+
 
   return `
-  <article class="card">
+  <article class="card" id="post-${escapeHTML(post.id)}">
 
-    <div class="post-head">
+    <div class="postHead">
 
       <img class="avatar"
-        src="${avatarUrl}">
+           src="${escapeHTML(avatar)}">
 
-      <div class="post-user">
-
-        <strong>
+      <div style="flex:1">
+        <div class="postName">
           ${escapeHTML(name)}
-        </strong>
-
-        <div class="post-time">
-          ${timeAgo(post.created_at)}
         </div>
 
+        <div class="small">
+          ${escapeHTML(post.category || "সাধারণ")}
+          · ${formatDate(post.created_at)}
+        </div>
       </div>
 
       ${
-        post.user_id===currentUser?.id
-        ? `<button class="gray"
-            style="padding:7px 10px;border-radius:7px"
-            onclick="deletePost('${post.id}')">
-            🗑️
-          </button>`
+        own || admin
+        ? `<button
+             class="danger"
+             onclick="deletePost('${escapeHTML(post.id)}')">
+             Delete
+           </button>`
         : ""
       }
 
     </div>
 
-    <div class="post-text">
-      ${escapeHTML(post.content || "")}
-    </div>
 
-    ${media}
+    ${
+      post.content
+      ? `<div class="postText">
+           ${escapeHTML(post.content)}
+         </div>`
+      : ""
+    }
 
-    <div style="margin-top:8px;color:#65676b;font-size:13px">
-      ${totalReactions} reactions
-      · ${(comments||[]).length} comments
-    </div>
+    ${mediaHTML}
 
-    <div class="post-actions">
 
-      <div class="reactions">
+    <div class="actions">
 
-        <button
-          class="${myReaction?'reaction-active':''}"
-          onclick="toggleReactionMenu('${post.id}')">
-          👍 ${myReaction || "Like"}
-        </button>
+      <button onclick="toggleReaction('${escapeHTML(post.id)}')">
+        👍 Like
+      </button>
 
-        <div id="reaction-${post.id}"
-          class="reaction-menu hidden">
+      <button onclick="toggleReactionMenu('${escapeHTML(post.id)}')">
+        ❤️ React
+      </button>
 
-          <button onclick="react('${post.id}','Like')">👍</button>
-          <button onclick="react('${post.id}','Love')">❤️</button>
-          <button onclick="react('${post.id}','Haha')">😂</button>
-          <button onclick="react('${post.id}','Wow')">😮</button>
-          <button onclick="react('${post.id}','Sad')">😢</button>
-          <button onclick="react('${post.id}','Angry')">😡</button>
-
-        </div>
-
-      </div>
-
-      <button onclick="focusComment('${post.id}')">
+      <button onclick="focusComment('${escapeHTML(post.id)}')">
         💬 Comment
       </button>
 
-      <button onclick="sharePost('${post.id}')">
-        ↗ Share
+      <button onclick="sharePost('${escapeHTML(post.id)}')">
+        ↗️ Share
       </button>
 
     </div>
 
-    <div id="comments-${post.id}">
+
+    <div id="reaction-${escapeHTML(post.id)}"
+         class="reactionMenu hidden">
+
+      <button onclick="react('${escapeHTML(post.id)}','like')">
+        👍 Like
+      </button>
+
+      <button onclick="react('${escapeHTML(post.id)}','love')">
+        ❤️ Love
+      </button>
+
+      <button onclick="react('${escapeHTML(post.id)}','haha')">
+        😂 Haha
+      </button>
+
+      <button onclick="react('${escapeHTML(post.id)}','wow')">
+        😮 Wow
+      </button>
+
+      <button onclick="react('${escapeHTML(post.id)}','sad')">
+        😢 Sad
+      </button>
+
+      <button onclick="react('${escapeHTML(post.id)}','angry')">
+        😡 Angry
+      </button>
+
+    </div>
+
+
+    <div class="small" style="margin-top:8px">
+      👍 ${reactionCount} reactions
+    </div>
+
+
+    <div id="comments-${escapeHTML(post.id)}">
       ${commentsHTML}
     </div>
 
-    <div class="comment-form">
+
+    <div class="commentInput">
 
       <input
-        id="comment-${post.id}"
+        id="comment-${escapeHTML(post.id)}"
         placeholder="Write a comment...">
 
-      <button onclick="addComment('${post.id}')">
-        ➤
+      <button
+        onclick="addComment('${escapeHTML(post.id)}')">
+        Send
       </button>
 
     </div>
 
-  </article>
-  `;
+  </article>`;
+}
+
+
+function formatDate(date){
+
+  if(!date) return "";
+
+  try{
+
+    return new Date(date)
+      .toLocaleString("bn-BD",{
+        dateStyle:"medium",
+        timeStyle:"short"
+      });
+
+  }catch(e){
+
+    return "";
+  }
 }
 
 
 /* =========================
-   REACTIONS
+   REACTION
 ========================= */
 
-function toggleReactionMenu(id){
+function toggleReactionMenu(postId){
 
-  const menu=$("reaction-"+id);
+  const el =
+    $("reaction-"+postId);
 
-  menu.classList.toggle("hidden");
+  if(el)
+    el.classList.toggle("hidden");
 }
+
+
+async function toggleReaction(postId){
+
+  await react(postId,"like");
+}
+
 
 async function react(postId,type){
 
+  if(!currentUser){
+    toast("Login করুন");
+    return;
+  }
+
   try{
 
-    const {data:existing} =
+    const existing =
       await db
       .from("reactions")
       .select("id,reaction_type")
@@ -1535,90 +1820,101 @@ async function react(postId,type){
       .eq("user_id",currentUser.id)
       .maybeSingle();
 
-    if(existing){
+    if(existing.data){
 
-      if(existing.reaction_type===type){
+      if(existing.data.reaction_type === type){
 
         await db
-          .from("reactions")
-          .delete()
-          .eq("id",existing.id);
+        .from("reactions")
+        .delete()
+        .eq("id",existing.data.id);
 
       }else{
 
         await db
-          .from("reactions")
-          .update({
-            reaction_type:type
-          })
-          .eq("id",existing.id);
+        .from("reactions")
+        .update({
+          reaction_type:type
+        })
+        .eq("id",existing.data.id);
       }
 
     }else{
 
       await db
-        .from("reactions")
-        .insert({
-          post_id:postId,
-          user_id:currentUser.id,
-          reaction_type:type
-        });
+      .from("reactions")
+      .insert({
+        post_id:postId,
+        user_id:currentUser.id,
+        reaction_type:type
+      });
     }
 
-    await loadFeed();
+    loadFeed();
 
-  }catch(error){
+  }catch(err){
 
-    console.error(error);
-    toast("Reaction করা যায়নি");
+    toast(err.message);
   }
 }
 
 
 /* =========================
-   COMMENTS
+   COMMENT
 ========================= */
 
-function focusComment(id){
-  const input=$("comment-"+id);
+function focusComment(postId){
+
+  const input =
+    $("comment-"+postId);
+
   if(input){
     input.focus();
+    input.scrollIntoView({
+      behavior:"smooth",
+      block:"center"
+    });
   }
 }
 
+
 async function addComment(postId){
 
-  const input=$("comment-"+postId);
-  const text=input.value.trim();
-
-  if(!text) return;
-
-  try{
-
-    const {error} =
-      await db
-      .from("comments")
-      .insert({
-        post_id:postId,
-        user_id:currentUser.id,
-        content:text
-      });
-
-    if(error) throw error;
-
-    input.value="";
-
-    await loadFeed();
-
-  }catch(error){
-
-    console.error(error);
-
-    toast(
-      error.message ||
-      "Comment করা যায়নি"
-    );
+  if(!currentUser){
+    toast("Login করুন");
+    return;
   }
+
+  const input =
+    $("comment-"+postId);
+
+  const content =
+    input.value.trim();
+
+  if(!content)
+    return;
+
+  const {error} =
+    await db
+    .from("comments")
+    .insert({
+      post_id:postId,
+      user_id:currentUser.id,
+      content:content
+    });
+
+  if(error){
+
+    toast(error.message);
+
+    return;
+  }
+
+  input.value = "";
+
+  toast("Comment added");
+
+  loadFeed();
 }
 
 
@@ -1626,27 +1922,55 @@ async function addComment(postId){
    DELETE POST
 ========================= */
 
-async function deletePost(id){
+async function deletePost(postId){
 
-  if(!confirm("এই Post delete করবেন?")){
+  if(!currentUser)
     return;
-  }
 
-  const {error} =
-    await db
-    .from("posts")
-    .delete()
-    .eq("id",id)
-    .eq("user_id",currentUser.id);
-
-  if(error){
-    toast(error.message);
+  if(!confirm("এই Post Delete করবেন?"))
     return;
+
+  try{
+
+    let query =
+      db
+      .from("posts")
+      .delete()
+      .eq("id",postId);
+
+    /*
+      UI থেকে owner/admin উভয়কে
+      allow করা হচ্ছে।
+      Database RLS-এ admin policy থাকাও
+      প্রয়োজন।
+    */
+
+    if(
+      !currentProfile ||
+      currentProfile.role !== "admin"
+    ){
+      query =
+        query.eq("user_id",currentUser.id);
+    }
+
+    const {error} =
+      await query;
+
+    if(error){
+
+      toast(error.message);
+
+      return;
+    }
+
+    toast("Post deleted");
+
+    loadFeed();
+
+  }catch(err){
+
+    toast(err.message);
   }
-
-  toast("Post deleted");
-
-  await loadFeed();
 }
 
 
@@ -1654,95 +1978,123 @@ async function deletePost(id){
    SHARE
 ========================= */
 
-async function sharePost(id){
+async function sharePost(postId){
 
   const url =
-    window.location.origin+
-    window.location.pathname+
-    "?post="+id;
+    window.location.origin +
+    window.location.pathname +
+    "#post-" +
+    postId;
 
-  if(navigator.share){
+  try{
 
-    await navigator.share({
-      title:"ঘুষ সাইট",
-      text:"ঘুষ সাইটের একটি Post",
-      url
-    });
+    if(navigator.share){
 
-  }else{
+      await navigator.share({
+        title:"ঘুষ সাইট",
+        text:"এই Post টি দেখুন",
+        url:url
+      });
 
-    await navigator.clipboard.writeText(url);
+    }else{
 
-    toast("Post link copied");
+      await navigator.clipboard.writeText(url);
+
+      toast("Post link copied");
+    }
+
+  }catch(e){
+    console.log(e);
   }
 }
 
 
 /* =========================
-   SEARCH USERS
+   SEARCH
 ========================= */
+
+function quickSearchUser(){
+
+  const q =
+    $("quickSearch").value.trim();
+
+  if(!q)
+    return;
+
+  $("searchInput").value = q;
+
+  showPage("searchPage");
+
+  searchUsers();
+}
+
 
 async function searchUsers(){
 
   const q =
     $("searchInput").value.trim();
 
-  const box=$("searchResults");
+  const box =
+    $("searchResults");
 
   if(!q){
-    box.innerHTML="";
+
+    box.innerHTML =
+      '<div class="card">Search text দিন।</div>';
+
     return;
   }
+
+  box.innerHTML =
+    '<div class="card">Searching...</div>';
 
   const {data,error} =
     await db
     .from("profiles")
-    .select("id,display_name,avatar_url")
+    .select("id,display_name,avatar_url,bio")
     .ilike("display_name","%"+q+"%")
     .limit(30);
 
   if(error){
 
-    box.innerHTML=
-      `<div class="empty">Search failed</div>`;
+    box.innerHTML =
+      '<div class="card">'
+      + escapeHTML(error.message)
+      + '</div>';
 
     return;
   }
 
   if(!data.length){
 
-    box.innerHTML=
-      `<div class="empty">কোনো User পাওয়া যায়নি</div>`;
+    box.innerHTML =
+      '<div class="card">কোনো User পাওয়া যায়নি।</div>';
 
     return;
   }
 
-  box.innerHTML =
-    data.map(user=>`
+  box.innerHTML = "";
 
-      <div class="search-result">
+  data.forEach(user=>{
+
+    box.insertAdjacentHTML(
+      "beforeend",
+      `<div class="card userRow"
+            onclick="viewUserProfile('${escapeHTML(user.id)}')">
 
         <img class="avatar"
-          src="${avatar(
-            user.avatar_url,
-            user.display_name
-          )}">
+             src="${escapeHTML(avatarURL(user))}">
 
-        <button onclick="startChat('${user.id}')">
-
-          <strong>
-            ${escapeHTML(user.display_name)}
-          </strong>
-
-          <div style="color:#65676b">
-            Message
+        <div>
+          <b>${escapeHTML(user.display_name)}</b>
+          <div class="small">
+            ${escapeHTML(user.bio || "")}
           </div>
+        </div>
 
-        </button>
-
-      </div>
-
-    `).join("");
+      </div>`
+    );
+  });
 }
 
 
@@ -1752,72 +2104,151 @@ async function searchUsers(){
 
 async function loadProfilePage(){
 
-  if(!currentProfile) return;
+  if(!currentUser)
+    return;
 
-  $("profileAvatar").src =
-    avatar(
-      currentProfile.avatar_url,
-      currentProfile.display_name
-    );
+  await loadProfile();
 
-  $("profileName").textContent =
-    currentProfile.display_name || "User";
-
-  $("profileBio").textContent =
-    currentProfile.bio || "No bio";
+  const p =
+    currentProfile || {};
 
   const {data:posts} =
     await db
     .from("posts")
-    .select(`
-      *,
-      profiles:user_id(
-        id,
-        display_name,
-        avatar_url
-      )
-    `)
+    .select("*")
     .eq("user_id",currentUser.id)
     .order("created_at",{ascending:false});
 
-  $("myPosts").innerHTML="";
+  let postsHTML = "";
 
-  if(!posts?.length){
+  if(posts){
 
-    $("myPosts").innerHTML=
-      `<div class="card empty">
-        আপনি এখনো কোনো Post করেননি।
-      </div>`;
+    for(const post of posts){
+
+      postsHTML +=
+        await postHTML(post);
+    }
+  }
+
+  $("profileContent").innerHTML = `
+    <div class="card">
+
+      <div class="profileCover"></div>
+
+      <div class="profileInfo">
+
+        <img class="avatar"
+             src="${escapeHTML(avatarURL(p))}">
+
+        <h2>${escapeHTML(p.display_name || "User")}</h2>
+
+        <p>${escapeHTML(p.bio || "")}</p>
+
+        <button class="primary"
+                onclick="openEditProfile()">
+          ✏️ Edit Profile
+        </button>
+
+        <button class="secondary"
+                style="width:100%;margin-top:8px"
+                onclick="logout()">
+          Logout
+        </button>
+
+      </div>
+
+    </div>
+
+    <h3>My Posts</h3>
+
+    ${postsHTML || '<div class="card">কোনো Post নেই।</div>'}
+  `;
+}
+
+
+async function viewUserProfile(userId){
+
+  if(!userId)
+    return;
+
+  const {data:user,error} =
+    await db
+    .from("profiles")
+    .select("*")
+    .eq("id",userId)
+    .maybeSingle();
+
+  if(error || !user){
+
+    toast("Profile পাওয়া যায়নি");
 
     return;
   }
 
-  for(const post of posts){
+  const {data:posts} =
+    await db
+    .from("posts")
+    .select("*")
+    .eq("user_id",userId)
+    .eq("status","published")
+    .order("created_at",{ascending:false});
 
-    $("myPosts").insertAdjacentHTML(
-      "beforeend",
-      await postHTML(post)
-    );
+  let postsHTML = "";
+
+  if(posts){
+
+    for(const post of posts)
+      postsHTML += await postHTML(post);
   }
-}
 
-function openEditProfile(){
+  $("profileContent").innerHTML = `
+    <div class="card">
 
-  $("editName").value =
-    currentProfile?.display_name || "";
+      <div class="profileCover"></div>
 
-  $("editBio").value =
-    currentProfile?.bio || "";
+      <div class="profileInfo">
 
-  hidePages();
+        <img class="avatar"
+             src="${escapeHTML(avatarURL(user))}">
 
-  $("editProfilePage").classList.remove("hidden");
+        <h2>${escapeHTML(user.display_name)}</h2>
+
+        <p>${escapeHTML(user.bio || "")}</p>
+
+      </div>
+
+    </div>
+
+    <h3>${escapeHTML(user.display_name)}-এর Posts</h3>
+
+    ${postsHTML || '<div class="card">কোনো Post নেই।</div>'}
+  `;
+
+  showPage("profilePage");
 }
 
 
 /* =========================
-   SAVE PROFILE
+   EDIT PROFILE
 ========================= */
+
+function openEditProfile(){
+
+  if(!currentProfile)
+    return;
+
+  $("editName").value =
+    currentProfile.display_name || "";
+
+  $("editBio").value =
+    currentProfile.bio || "";
+
+  $("editAvatar").value =
+    currentProfile.avatar_url || "";
+
+  showPage("editPage");
+}
+
 
 async function saveProfile(){
 
@@ -1827,80 +2258,41 @@ async function saveProfile(){
   const bio =
     $("editBio").value.trim();
 
-  const file =
-    $("avatarFile").files[0];
+  const avatar =
+    $("editAvatar").value.trim();
 
   if(!name){
 
     toast("Name দিন");
+
     return;
   }
 
-  try{
+  const {error} =
+    await db
+    .from("profiles")
+    .update({
+      display_name:name,
+      bio:bio,
+      avatar_url:avatar
+    })
+    .eq("id",currentUser.id);
 
-    let avatar_url =
-      currentProfile.avatar_url || "";
+  if(error){
 
-    if(file){
+    toast(error.message);
 
-      const ext =
-        file.name.split(".").pop();
-
-      const path =
-        `avatars/${currentUser.id}.${ext}`;
-
-      const {error} =
-        await db.storage
-        .from("media")
-        .upload(
-          path,
-          file,
-          {upsert:true}
-        );
-
-      if(error) throw error;
-
-      const {data:urlData} =
-        db.storage
-        .from("media")
-        .getPublicUrl(path);
-
-      avatar_url =
-        urlData.publicUrl+
-        "?v="+Date.now();
-    }
-
-    const {data,error} =
-      await db
-      .from("profiles")
-      .update({
-        display_name:name,
-        bio,
-        avatar_url
-      })
-      .eq("id",currentUser.id)
-      .select()
-      .single();
-
-    if(error) throw error;
-
-    currentProfile=data;
-
-    $("avatarFile").value="";
-
-    toast("Profile updated");
-
-    await showPage("profile");
-
-  }catch(error){
-
-    console.error(error);
-
-    toast(
-      error.message ||
-      "Profile update failed"
-    );
+    return;
   }
+
+  await loadProfile();
+
+  $("homeAvatar").src =
+    avatarURL(currentProfile);
+
+  toast("Profile updated");
+
+  showPage("profilePage");
 }
 
 
@@ -1910,57 +2302,60 @@ async function saveProfile(){
 
 async function loadChatUsers(){
 
-  const box=$("chatUsers");
+  const box =
+    $("chatUsers");
+
+  box.innerHTML =
+    '<div class="small">Loading users...</div>';
 
   const {data,error} =
     await db
     .from("profiles")
-    .select("id,display_name,avatar_url")
+    .select("id,display_name,avatar_url,bio")
     .neq("id",currentUser.id)
     .order("display_name")
-    .limit(100);
+    .limit(50);
 
   if(error){
 
-    console.error(error);
-
-    box.innerHTML=
-      `<div class="empty">
-        Users loading failed
-      </div>`;
+    box.innerHTML =
+      '<div class="status">'
+      + escapeHTML(error.message)
+      + '</div>';
 
     return;
   }
 
-  if(!data?.length){
+  if(!data.length){
 
-    box.innerHTML=
-      `<div class="empty">
-        Chat করার মতো User নেই।
-      </div>`;
+    box.innerHTML =
+      '<div class="small">কোনো অন্য User নেই।</div>';
 
     return;
   }
 
-  box.innerHTML =
-    data.map(user=>`
+  box.innerHTML = "";
 
-      <button class="chat-user"
-        onclick="startChat('${user.id}')">
+  data.forEach(user=>{
+
+    box.insertAdjacentHTML(
+      "beforeend",
+      `<div class="userRow"
+            onclick="startChat('${escapeHTML(user.id)}')">
 
         <img class="avatar"
-          src="${avatar(
-            user.avatar_url,
-            user.display_name
-          )}">
+             src="${escapeHTML(avatarURL(user))}">
 
-        <strong>
-          ${escapeHTML(user.display_name)}
-        </strong>
+        <div>
+          <b>${escapeHTML(user.display_name)}</b>
+          <div class="small">
+            ${escapeHTML(user.bio || "")}
+          </div>
+        </div>
 
-      </button>
-
-    `).join("");
+      </div>`
+    );
+  });
 }
 
 
@@ -1970,31 +2365,22 @@ async function loadChatUsers(){
 
 async function startChat(userId){
 
-  if(userId===currentUser.id) return;
-
-  const {data:user,error} =
+  const {data:user} =
     await db
     .from("profiles")
-    .select("id,display_name,avatar_url")
+    .select("*")
     .eq("id",userId)
-    .single();
+    .maybeSingle();
 
-  if(error){
-
-    toast("User পাওয়া যায়নি");
+  if(!user)
     return;
-  }
 
-  selectedChatUser=user;
+  selectedChatUser = user;
 
-  $("chatWindow").classList.remove("hidden");
+  $("chatTitle").textContent =
+    "💬 " + user.display_name;
 
-  $("chatTitle").innerHTML =
-    `<div style="display:flex;align-items:center;gap:8px">
-      <img class="avatar"
-        src="${avatar(user.avatar_url,user.display_name)}">
-      ${escapeHTML(user.display_name)}
-    </div>`;
+  $("chatBox").classList.remove("hidden");
 
   await loadMessages();
 
@@ -2008,72 +2394,55 @@ async function startChat(userId){
 
 async function loadMessages(){
 
-  if(!selectedChatUser) return;
+  if(!selectedChatUser)
+    return;
+
+  const box =
+    $("chatMessages");
 
   const {data,error} =
     await db
     .from("messages")
     .select("*")
     .or(
-      `and(sender_id.eq.${currentUser.id},receiver_id.eq.${selectedChatUser.id}),and(sender_id.eq.${selectedChatUser.id},receiver_id.eq.${currentUser.id})`
+      "and(sender_id.eq."+currentUser.id+
+      ",receiver_id.eq."+selectedChatUser.id+"),"+
+      "and(sender_id.eq."+selectedChatUser.id+
+      ",receiver_id.eq."+currentUser.id+")"
     )
     .order("created_at",{ascending:true});
 
   if(error){
 
-    console.error(error);
-
-    $("messages").innerHTML=
-      `<div class="empty">
-        Messages loading failed
-      </div>`;
+    box.innerHTML =
+      '<div class="status">'
+      + escapeHTML(error.message)
+      + '</div>';
 
     return;
   }
 
-  const box=$("messages");
+  box.innerHTML = "";
 
-  box.innerHTML =
-    (data||[]).map(message=>{
+  data.forEach(msg=>{
 
-      const mine =
-        message.sender_id===currentUser.id;
+    const mine =
+      msg.sender_id === currentUser.id;
 
-      return `
-        <div class="message ${mine?'mine':'theirs'}">
+    const div =
+      document.createElement("div");
 
-          ${escapeHTML(message.content || "")}
+    div.className =
+      "msg " + (mine ? "mine" : "other");
 
-          <div class="message-time">
-            ${new Date(
-              message.created_at
-            ).toLocaleTimeString([],{
-              hour:"2-digit",
-              minute:"2-digit"
-            })}
+    div.textContent =
+      msg.content;
 
-            ${
-              mine
-              ? (message.is_read ? " ✓✓" : " ✓")
-              : ""
-            }
-          </div>
+    box.appendChild(div);
+  });
 
-        </div>
-      `;
-
-    }).join("");
-
-  box.scrollTop=box.scrollHeight;
-
-  /* mark received messages read */
-
-  await db
-    .from("messages")
-    .update({is_read:true})
-    .eq("sender_id",selectedChatUser.id)
-    .eq("receiver_id",currentUser.id)
-    .eq("is_read",false);
+  box.scrollTop =
+    box.scrollHeight;
 }
 
 
@@ -2083,41 +2452,37 @@ async function loadMessages(){
 
 async function sendMessage(){
 
-  if(!selectedChatUser) return;
+  if(!selectedChatUser)
+    return;
 
-  const input=$("messageInput");
+  const input =
+    $("messageInput");
 
-  const text=input.value.trim();
+  const content =
+    input.value.trim();
 
-  if(!text) return;
+  if(!content)
+    return;
 
-  try{
+  const {error} =
+    await db
+    .from("messages")
+    .insert({
+      sender_id:currentUser.id,
+      receiver_id:selectedChatUser.id,
+      content:content
+    });
 
-    const {error} =
-      await db
-      .from("messages")
-      .insert({
-        sender_id:currentUser.id,
-        receiver_id:selectedChatUser.id,
-        content:text,
-        is_read:false
-      });
+  if(error){
 
-    if(error) throw error;
+    toast(error.message);
 
-    input.value="";
-
-    await loadMessages();
-
-  }catch(error){
-
-    console.error(error);
-
-    toast(
-      error.message ||
-      "Message পাঠানো যায়নি"
-    );
+    return;
   }
+
+  input.value = "";
+
+  await loadMessages();
 }
 
 
@@ -2127,44 +2492,34 @@ async function sendMessage(){
 
 function subscribeMessages(){
 
-  if(messageSubscription){
+  if(messageChannel){
 
     db.removeChannel(
-      messageSubscription
+      messageChannel
     );
-
-    messageSubscription=null;
   }
 
-  messageSubscription =
+  messageChannel =
     db
-    .channel(
-      "chat-"+currentUser.id+
-      "-"+selectedChatUser.id
-    )
+    .channel("messages-"+currentUser.id)
     .on(
       "postgres_changes",
       {
-        event:"*",
+        event:"INSERT",
         schema:"public",
         table:"messages"
       },
-      async payload=>{
+      payload=>{
 
-        if(!selectedChatUser) return;
-
-        const row =
-          payload.new || payload.old;
+        const msg =
+          payload.new;
 
         if(
-          row.sender_id===currentUser.id &&
-          row.receiver_id===selectedChatUser.id
-          ||
-          row.sender_id===selectedChatUser.id &&
-          row.receiver_id===currentUser.id
+          msg.sender_id === currentUser.id ||
+          msg.receiver_id === currentUser.id
         ){
 
-          await loadMessages();
+          loadMessages();
         }
       }
     )
@@ -2173,64 +2528,29 @@ function subscribeMessages(){
 
 
 /* =========================
-   AUTH STATE
+   LOGOUT
 ========================= */
 
-db.auth.onAuthStateChange(
-  async (event,session)=>{
+async function logout(){
 
-    if(
-      event==="PASSWORD_RECOVERY"
-    ){
+  await db.auth.signOut();
 
-      toast(
-        "নতুন Password সেট করুন"
-      );
+  currentUser = null;
+  currentProfile = null;
 
-      /*
-        প্রয়োজনে এখানে আলাদা password
-        reset form যোগ করা যাবে।
-      */
-    }
+  openAuth();
 
-    if(session?.user){
+  showLogin();
 
-      setTimeout(
-        ()=>loadUser(),
-        0
-      );
-
-    }else{
-
-      $("authPage").classList.remove("hidden");
-      $("appPage").classList.add("hidden");
-      $("header").classList.add("hidden");
-    }
-  }
-);
+  toast("Logged out");
+}
 
 
 /* =========================
    INITIAL
 ========================= */
 
-(async function(){
-
-  const {
-    data:{session}
-  } =
-    await db.auth.getSession();
-
-  if(session?.user){
-
-    await loadUser();
-
-  }else{
-
-    showLogin();
-  }
-
-})();
+loadUser();
 
 </script>
 
