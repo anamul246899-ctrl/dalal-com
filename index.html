@@ -9,140 +9,277 @@
 
 <style>
 *{box-sizing:border-box}
+
 html{scroll-behavior:smooth}
+
 body{
  margin:0;
  font-family:Arial,"Noto Sans Bengali",sans-serif;
- background:#f0f2f5;
- color:#1c1e21
+ background:#f4f7f5;
+ color:#17251c;
 }
+
 button,input,textarea,select{font:inherit}
 button{cursor:pointer;border:0}
 .hidden{display:none!important}
 
+/* HEADER */
+
 .header{
- position:sticky;top:0;z-index:100;
- background:#1877f2;color:white;
+ position:sticky;
+ top:0;
+ z-index:100;
+ background:#087443;
+ color:#fff;
  min-height:58px;
- display:flex;align-items:center;gap:10px;
+ display:flex;
+ align-items:center;
+ gap:10px;
  padding:8px 12px;
- box-shadow:0 1px 5px #aaa
+ box-shadow:0 2px 8px rgba(0,0,0,.15);
 }
-.logo{font-size:23px;font-weight:800;white-space:nowrap}
-.searchBox{flex:1;display:flex;max-width:600px}
+
+.logo{
+ font-size:23px;
+ font-weight:800;
+ white-space:nowrap;
+}
+
+.searchBox{
+ flex:1;
+ display:flex;
+ max-width:600px;
+}
+
 .searchBox input{
- width:100%;border:0;outline:0;
+ width:100%;
+ border:0;
+ outline:0;
  border-radius:22px 0 0 22px;
- padding:10px 14px
+ padding:10px 14px;
+ margin:0;
 }
+
 .searchBox button{
- background:white;color:#1877f2;
+ background:#fff;
+ color:#087443;
  padding:0 15px;
- border-radius:0 22px 22px 0
+ border-radius:0 22px 22px 0;
 }
+
+/* CONTAINER */
 
 .container{
  max-width:700px;
  margin:15px auto 80px;
- padding:0 10px
+ padding:0 10px;
 }
+
 .card{
- background:white;border-radius:12px;
- padding:15px;margin-bottom:12px;
- box-shadow:0 1px 3px #ddd
-}
-.center{text-align:center}
-
-.primary{
- background:#1877f2;color:white;
- padding:11px 18px;border-radius:8px;
- width:100%;margin-top:8px
-}
-.secondary{
- background:#e4e6eb;color:#111;
- padding:10px 15px;border-radius:8px
-}
-
-input,textarea,select{
- width:100%;padding:12px;margin:6px 0;
- border:1px solid #ccd0d5;
- border-radius:8px;outline:none;
- background:white
-}
-textarea{min-height:100px;resize:vertical}
-
-.auth{
- max-width:430px;
- margin:25px auto;
- padding:15px
-}
-.auth h1{
- color:#1877f2;text-align:center;font-size:34px
-}
-.authBox{
- background:white;padding:20px;
- border-radius:15px;
- box-shadow:0 2px 15px #ccc
-}
-
-.redMessage{
- border-top:3px solid #d40000;
- border-bottom:3px solid #d40000;
- color:#c40000;
- padding:11px 7px;
- margin:14px 0;
- text-align:center;
- font-weight:700;
- line-height:1.55
-}
-
-.avatar{
- width:45px;height:45px;
- border-radius:50%;
- object-fit:cover;
- background:#ddd
-}
-
-.small{color:#65676b;font-size:13px}
-
-.daily{
- border-left:5px solid #d40000;
- background:white;
+ background:#fff;
  border-radius:12px;
  padding:15px;
  margin-bottom:12px;
- box-shadow:0 1px 3px #ddd
+ box-shadow:0 1px 4px rgba(0,70,35,.12);
+ border:1px solid #e5ece8;
 }
+
+.center{text-align:center}
+
+/* BUTTONS */
+
+.primary{
+ background:#087443;
+ color:#fff;
+ padding:11px 18px;
+ border-radius:8px;
+ width:100%;
+ margin-top:8px;
+ font-weight:700;
+ transition:.2s;
+}
+
+.primary:hover{
+ background:#065b34;
+ transform:translateY(-1px);
+}
+
+.secondary{
+ background:#e8f3ed;
+ color:#087443;
+ padding:10px 15px;
+ border-radius:8px;
+ font-weight:600;
+}
+
+/* INPUT */
+
+input,textarea,select{
+ width:100%;
+ padding:12px;
+ margin:6px 0;
+ border:1px solid #cbd9d1;
+ border-radius:8px;
+ outline:none;
+ background:#fff;
+ color:#17251c;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+ border-color:#087443;
+ box-shadow:0 0 0 3px rgba(8,116,67,.10);
+}
+
+textarea{
+ min-height:100px;
+ resize:vertical;
+}
+
+/* AUTH */
+
+.auth{
+ max-width:450px;
+ margin:35px auto;
+ padding:15px;
+}
+
+.auth h1{
+ color:#087443;
+ text-align:center;
+ font-size:38px;
+ margin-bottom:8px;
+}
+
+.authSubtitle{
+ text-align:center;
+ color:#5d6d64;
+ line-height:1.6;
+ margin-bottom:18px;
+}
+
+.authBox{
+ background:#fff;
+ padding:24px;
+ border-radius:18px;
+ box-shadow:0 5px 25px rgba(0,70,35,.12);
+ border:1px solid #e3ebe6;
+}
+
+.authBox h2{
+ text-align:center;
+ color:#173c2a;
+}
+
+.authBox h3{
+ color:#087443;
+}
+
+.redMessage{
+ border-top:3px solid #c62828;
+ border-bottom:3px solid #c62828;
+ background:#fff8f8;
+ color:#a51d1d;
+ border-radius:8px;
+ padding:11px 8px;
+ margin:14px 0;
+ text-align:center;
+ font-weight:700;
+ line-height:1.55;
+}
+
+.loginHint{
+ text-align:center;
+ color:#66756c;
+ font-size:13px;
+ margin:10px 0 15px;
+}
+
+.small{
+ color:#65736b;
+ font-size:13px;
+}
+
+.status{
+ padding:10px;
+ background:#fff8e1;
+ color:#765b00;
+ border-left:4px solid #e0a800;
+ border-radius:7px;
+ margin:8px 0;
+ line-height:1.5;
+}
+
+.success{
+ padding:10px;
+ background:#e8f6ee;
+ color:#087443;
+ border-left:4px solid #087443;
+ border-radius:7px;
+ margin:8px 0;
+}
+
+/* DAILY */
+
+.daily{
+ border-left:5px solid #087443;
+ background:#fff;
+ border-radius:12px;
+ padding:15px;
+ margin-bottom:12px;
+ box-shadow:0 1px 4px rgba(0,70,35,.12);
+}
+
 .dailyTitle{
- color:#087f23;
+ color:#087443;
  font-weight:800;
- margin-bottom:7px
+ margin-bottom:7px;
 }
+
 .dailyText{
  font-size:16px;
- line-height:1.7
+ line-height:1.7;
+ color:#26372d;
 }
+
+/* AVATAR */
+
+.avatar{
+ width:45px;
+ height:45px;
+ border-radius:50%;
+ object-fit:cover;
+ background:#ddd;
+}
+
+/* POST */
 
 .postHead{
  display:flex;
  gap:10px;
  align-items:center;
- position:relative
+ position:relative;
 }
-.postName{font-weight:800}
+
+.postName{
+ font-weight:800;
+ color:#173c2a;
+}
 
 .postText{
  white-space:pre-wrap;
  margin:14px 0;
- line-height:1.55;
- font-size:15px
+ line-height:1.6;
+ font-size:15px;
 }
 
 .mediaGrid{
  display:grid;
  gap:4px;
- margin-top:10px
+ margin-top:10px;
 }
+
 .mediaGrid.one{grid-template-columns:1fr}
 .mediaGrid.two{grid-template-columns:1fr 1fr}
 .mediaGrid.three,
@@ -155,197 +292,355 @@ textarea{min-height:100px;resize:vertical}
  object-fit:cover;
  border-radius:8px;
  background:#111;
- display:block
+ display:block;
 }
+
 .mediaGrid img{cursor:pointer}
 
+/* ACTIONS */
+
 .actions{
- display:flex;gap:5px;
+ display:flex;
+ gap:5px;
  border-top:1px solid #ddd;
  border-bottom:1px solid #ddd;
  margin-top:10px;
- padding:5px 0
+ padding:5px 0;
 }
+
 .actions button{
- flex:1;background:white;
+ flex:1;
+ background:white;
  padding:9px 5px;
  border-radius:7px;
  color:#555;
- font-weight:600
+ font-weight:600;
 }
-.actions button:hover{background:#f0f2f5}
+
+.actions button:hover{
+ background:#eaf4ef;
+ color:#087443;
+}
 
 .reactionMenu{
- display:flex;gap:4px;
+ display:flex;
+ gap:4px;
  flex-wrap:wrap;
  padding:7px;
- background:#f0f2f5;
+ background:#f0f5f2;
  border-radius:10px;
- margin-top:5px
-}
-.reactionMenu button{
- background:white;padding:7px 10px;
- border-radius:20px
+ margin-top:5px;
 }
 
-.comment{
- display:flex;gap:8px;margin-top:9px
+.reactionMenu button{
+ background:white;
+ padding:7px 10px;
+ border-radius:20px;
 }
+
+/* COMMENTS */
+
+.comment{
+ display:flex;
+ gap:8px;
+ margin-top:9px;
+}
+
 .commentBubble{
  background:#f0f2f5;
  border-radius:15px;
  padding:8px 12px;
- flex:1
-}
-.commentInput{
- display:flex;gap:5px;margin-top:10px
-}
-.commentInput input{margin:0}
-.commentInput button{
- background:#1877f2;color:white;
- padding:0 15px;border-radius:7px
+ flex:1;
 }
 
-.menuWrap{position:relative}
+.commentInput{
+ display:flex;
+ gap:5px;
+ margin-top:10px;
+}
+
+.commentInput input{
+ margin:0;
+}
+
+.commentInput button{
+ background:#087443;
+ color:white;
+ padding:0 15px;
+ border-radius:7px;
+}
+
+/* POST MENU */
+
+.menuWrap{
+ position:relative;
+}
+
 .menuBtn{
- width:38px;height:38px;
+ width:38px;
+ height:38px;
  border-radius:50%;
  background:#f0f2f5;
- color:#555;font-size:22px
+ color:#555;
+ font-size:22px;
 }
+
 .postMenu{
  position:absolute;
- right:0;top:43px;
- width:190px;background:white;
+ right:0;
+ top:43px;
+ width:190px;
+ background:white;
  border-radius:10px;
  box-shadow:0 4px 18px #bbb;
- padding:6px;z-index:20
+ padding:6px;
+ z-index:20;
 }
+
 .postMenu button{
- display:block;width:100%;
- text-align:left;padding:11px 12px;
- background:white;border-radius:7px
+ display:block;
+ width:100%;
+ text-align:left;
+ padding:11px 12px;
+ background:white;
+ border-radius:7px;
 }
-.postMenu button:hover{background:#f0f2f5}
-.deleteItem{color:#e41e3f}
+
+.postMenu button:hover{
+ background:#f0f2f5;
+}
+
+.deleteItem{
+ color:#e41e3f!important;
+}
+
+/* BOTTOM NAV */
 
 .bottomNav{
- position:fixed;bottom:0;left:0;right:0;
- background:white;height:62px;
- display:flex;justify-content:center;
+ position:fixed;
+ bottom:0;
+ left:0;
+ right:0;
+ background:white;
+ height:62px;
+ display:flex;
+ justify-content:center;
  box-shadow:0 -2px 8px #ccc;
- z-index:90
+ z-index:90;
 }
+
 .bottomNav button{
- flex:1;max-width:140px;
- background:white;color:#65676b;
- font-size:12px;font-weight:600
+ flex:1;
+ max-width:140px;
+ background:white;
+ color:#65676b;
+ font-size:12px;
+ font-weight:600;
 }
-.bottomNav button.active{color:#1877f2}
+
+.bottomNav button.active{
+ color:#087443;
+}
+
+/* PREVIEW */
 
 .preview{
  display:grid;
  grid-template-columns:repeat(2,1fr);
- gap:7px;margin-top:10px
+ gap:7px;
+ margin-top:10px;
 }
-.previewItem{position:relative}
+
+.previewItem{
+ position:relative;
+}
+
 .previewItem img,
 .previewItem video{
- width:100%;height:180px;
- object-fit:cover;border-radius:8px
+ width:100%;
+ height:180px;
+ object-fit:cover;
+ border-radius:8px;
 }
+
 .removePreview{
- position:absolute;right:5px;top:5px;
- background:#e41e3f;color:white;
- border-radius:50%;width:28px;height:28px
+ position:absolute;
+ right:5px;
+ top:5px;
+ background:#e41e3f;
+ color:white;
+ border-radius:50%;
+ width:28px;
+ height:28px;
 }
+
+/* PROFILE */
 
 .profileCover{
- background:linear-gradient(135deg,#1877f2,#42b72a);
+ background:linear-gradient(135deg,#087443,#35a66b);
  height:130px;
- border-radius:10px 10px 0 0
-}
-.profileInfo{
- text-align:center;
- margin-top:-45px
-}
-.profileInfo .avatar{
- width:90px;height:90px;
- border:4px solid white;
- margin:auto
+ border-radius:10px 10px 0 0;
 }
 
-.userRow{
- display:flex;align-items:center;
- gap:10px;padding:10px;
- border-bottom:1px solid #eee;
- cursor:pointer
+.profileInfo{
+ text-align:center;
+ margin-top:-45px;
 }
-.userRow:hover{background:#f0f2f5}
+
+.profileInfo .avatar{
+ width:90px;
+ height:90px;
+ border:4px solid white;
+ margin:auto;
+}
+
+.profileButtons{
+ display:flex;
+ gap:8px;
+ justify-content:center;
+ margin-top:12px;
+}
+
+.profileButtons button{
+ padding:9px 15px;
+ border-radius:8px;
+}
+
+/* USER SEARCH */
+
+.userRow{
+ display:flex;
+ align-items:center;
+ gap:10px;
+ padding:10px;
+ border-bottom:1px solid #eee;
+ cursor:pointer;
+}
+
+.userRow:hover{
+ background:#f0f5f2;
+}
+
+/* CHAT */
 
 .chatMessages{
  height:400px;
  overflow-y:auto;
- background:#f0f2f5;
- padding:10px
+ background:#f0f5f2;
+ padding:10px;
 }
+
 .msg{
  max-width:75%;
  padding:9px 12px;
  margin:5px 0;
  border-radius:15px;
- clear:both
-}
-.msg.mine{
- float:right;background:#1877f2;color:white
-}
-.msg.other{
- float:left;background:white
+ clear:both;
 }
 
+.msg.mine{
+ float:right;
+ background:#087443;
+ color:white;
+}
+
+.msg.other{
+ float:left;
+ background:white;
+}
+
+.chatUser{
+ padding:10px;
+ border-bottom:1px solid #eee;
+ cursor:pointer;
+}
+
+.chatUser:hover{
+ background:#f0f5f2;
+}
+
+/* TOAST */
+
 .toast{
- position:fixed;bottom:75px;left:50%;
+ position:fixed;
+ bottom:75px;
+ left:50%;
  transform:translateX(-50%);
- background:#222;color:white;
+ background:#222;
+ color:white;
  padding:12px 18px;
  border-radius:20px;
  z-index:999;
- box-shadow:0 3px 12px #777
+ box-shadow:0 3px 12px #777;
 }
 
-.status{
- padding:10px;
- background:#fff3cd;
- border-radius:7px;
- margin:8px 0
-}
-.success{
- padding:10px;
- background:#d1e7dd;
- color:#0f5132;
- border-radius:7px;
- margin:8px 0
-}
+/* RESPONSIVE */
 
 @media(max-width:600px){
- .header{height:54px;padding:7px 8px}
- .logo{font-size:18px}
- .searchBox input{padding:9px 10px}
- .searchBox button{padding:0 10px}
- .container{margin-top:10px;padding:0 5px}
- .card{border-radius:8px;padding:12px}
- .mediaGrid img,.mediaGrid video{max-height:420px}
+
+ .header{
+  height:54px;
+  padding:7px 8px;
+ }
+
+ .logo{
+  font-size:18px;
+ }
+
+ .searchBox input{
+  padding:9px 10px;
+ }
+
+ .searchBox button{
+  padding:0 10px;
+ }
+
+ .container{
+  margin-top:10px;
+  padding:0 5px;
+ }
+
+ .card{
+  border-radius:8px;
+  padding:12px;
+ }
+
+ .mediaGrid img,
+ .mediaGrid video{
+  max-height:420px;
+ }
+
+ .auth{
+  margin:15px auto;
+  padding:10px;
+ }
+
+ .auth h1{
+  font-size:32px;
+ }
+
+ .actions button{
+  font-size:12px;
+ }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= LOGIN ================= -->
+<!-- =====================================================
+ LOGIN
+===================================================== -->
 
 <div id="authPage" class="auth">
 
 <h1>ঘুষ সাইট</h1>
+
+<div class="authSubtitle">
+অন্যায়ের বিরুদ্ধে কথা বলুন।<br>
+সচেতনতা তৈরি হোক, অন্যায় রুখে দাঁড়াক বাংলাদেশ।
+</div>
 
 <div class="authBox">
 
@@ -353,31 +648,27 @@ textarea{min-height:100px;resize:vertical}
 অন্যায়ের সামনে থেমে যেও না—তোমার একটি প্রতিবাদই হতে পারে পরিবর্তনের শুরু।
 </div>
 
-<h2 style="text-align:center">Login</h2>
+<h2>Login</h2>
 
 <input
  id="loginIdentity"
  type="text"
  placeholder="Username অথবা Phone Number"
- autocomplete="off">
+ autocomplete="username">
+
+<div class="loginHint">
+🔐 Password, Email, SMS বা OTP লাগবে না
+</div>
 
 <button class="primary" onclick="login()">
 Login
 </button>
 
-<div class="redMessage">
-আপনার দেখা ঘুষের ঘটনা তুলে ধরুন—সচেতনতা তৈরি হোক, অন্যায় রুখে দাঁড়াক বাংলাদেশ।
-</div>
-
-<div class="small" style="text-align:center">
-Password, Email, SMS বা OTP লাগবে না।
-</div>
-
 <div id="loginMsg"></div>
 
-<hr style="border:0;border-top:1px solid #eee;margin:18px 0">
+<hr style="border:0;border-top:1px solid #eee;margin:20px 0">
 
-<h3>Create New Account</h3>
+<h3>🆕 Create New Account</h3>
 
 <input
  id="signupName"
@@ -402,13 +693,17 @@ Create Account
 </div>
 
 
-<!-- ================= APP ================= -->
+<!-- =====================================================
+ APP
+===================================================== -->
 
 <div id="app" class="hidden">
 
 <header class="header">
 
-<div class="logo">ঘুষ সাইট</div>
+<div class="logo">
+ঘুষ সাইট
+</div>
 
 <div class="searchBox">
 
@@ -442,7 +737,6 @@ Create Account
 
 </div>
 
-
 <div class="card">
 
 <div style="display:flex;gap:10px;align-items:center">
@@ -461,7 +755,6 @@ Create Account
 </div>
 
 </div>
-
 
 <div id="feed">
 
@@ -569,7 +862,9 @@ Publish
 
 <h2>✏️ Edit Profile</h2>
 
-<input id="editName" placeholder="Name">
+<input
+ id="editName"
+ placeholder="Name">
 
 <textarea
  id="editBio"
@@ -581,6 +876,13 @@ Publish
 
 <button class="primary" onclick="saveProfile()">
 Save
+</button>
+
+<button
+ class="secondary"
+ style="width:100%;margin-top:8px"
+ onclick="logout()">
+Logout
 </button>
 
 </div>
@@ -596,7 +898,9 @@ Save
 
 <h2>💬 Chat</h2>
 
-<div id="chatUsers"></div>
+<div id="chatUsers">
+লোড হচ্ছে...
+</div>
 
 </div>
 
@@ -616,7 +920,7 @@ Save
 
 <button
  onclick="sendMessage()"
- style="background:#1877f2;color:white;padding:0 15px;border-radius:7px">
+ style="background:#087443;color:white;padding:0 15px;border-radius:7px">
 Send
 </button>
 
@@ -629,25 +933,29 @@ Send
 </main>
 
 
+<!-- =====================================================
+ BOTTOM NAV
+===================================================== -->
+
 <nav class="bottomNav">
 
-<button onclick="showPage('homePage')">
+<button id="navHome" onclick="showPage('homePage')">
 🏠<br>Home
 </button>
 
-<button onclick="showPage('searchPage')">
+<button id="navSearch" onclick="showPage('searchPage')">
 🔍<br>Search
 </button>
 
-<button onclick="showPage('postPage')">
+<button id="navPost" onclick="showPage('postPage')">
 ➕<br>Post
 </button>
 
-<button onclick="showPage('chatPage')">
+<button id="navChat" onclick="showPage('chatPage')">
 💬<br>Chat
 </button>
 
-<button onclick="showPage('profilePage')">
+<button id="navProfile" onclick="showPage('profilePage')">
 👤<br>Profile
 </button>
 
@@ -679,11 +987,11 @@ supabase.createClient(
  STATE
 ===================================================== */
 
-let guestUser=null;
-let currentUser=null;
-let currentProfile=null;
-let selectedChatUser=null;
-let messageChannel=null;
+let guestUser = null;
+let currentUser = null;
+let currentProfile = null;
+let selectedChatUser = null;
+let messageChannel = null;
 
 
 /* =====================================================
@@ -708,13 +1016,16 @@ function toast(message){
 
  document.body.appendChild(t);
 
- setTimeout(()=>t.remove(),3000);
+ setTimeout(()=>{
+  if(t)t.remove();
+ },3000);
 }
 
 
 function escapeHTML(text){
 
- if(text===null||text===undefined)return "";
+ if(text===null || text===undefined)
+  return "";
 
  return String(text)
  .replace(/&/g,"&amp;")
@@ -731,13 +1042,14 @@ function normalizePhone(phone){
  .trim()
  .replace(/[^\d+]/g,"");
 
- if(phone.startsWith("+"))return phone;
+ if(phone.startsWith("+"))
+  return phone;
 
  if(phone.startsWith("880"))
- return "+"+phone;
+  return "+"+phone;
 
  if(phone.startsWith("0"))
- return "+880"+phone.substring(1);
+  return "+880"+phone.substring(1);
 
  return phone;
 }
@@ -745,105 +1057,330 @@ function normalizePhone(phone){
 
 function avatarURL(profile){
 
- if(profile&&profile.avatar_url)
- return profile.avatar_url;
+ if(profile && profile.avatar_url)
+  return profile.avatar_url;
 
  const name=
- profile?.display_name||
- profile?.username||
+ profile?.display_name ||
+ profile?.username ||
  "User";
 
  return "https://ui-avatars.com/api/?name="+
  encodeURIComponent(name)+
- "&background=1877f2&color=fff";
+ "&background=087443&color=fff";
+}
+
+
+function formatDate(date){
+
+ if(!date)
+  return "";
+
+ try{
+
+  return new Date(date).toLocaleString(
+   "bn-BD",
+   {
+    year:"numeric",
+    month:"short",
+    day:"numeric",
+    hour:"numeric",
+    minute:"2-digit"
+   }
+  );
+
+ }catch(e){
+
+  return "";
+
+ }
 }
 
 
 /* =====================================================
- PASSWORDLESS GUEST LOGIN
+ LOGIN
 ===================================================== */
 
 async function login(){
 
- const identity=
+ const identity =
  $("loginIdentity").value.trim();
 
  if(!identity){
 
-  $("loginMsg").innerHTML=
+  $("loginMsg").innerHTML =
   '<div class="status">Username অথবা Phone Number দিন।</div>';
 
   return;
  }
 
-
- $("loginMsg").innerHTML=
+ $("loginMsg").innerHTML =
  '<div class="status">Account খোঁজা হচ্ছে...</div>';
-
 
  try{
 
-  const {data,error}=await db
-  .rpc("find_login_user",{
-   login_value:identity
-  });
+  let query;
 
+  const digits =
+   identity.replace(/[^\d]/g,"");
 
-  if(error){
+  /*
+   Phone number detect
+  */
 
-   $("loginMsg").innerHTML=
+  if(digits.length >= 8){
+
+   const phone =
+    normalizePhone(identity);
+
+   query =
+    await db
+    .from("profiles")
+    .select(`
+      id,
+      display_name,
+      username,
+      phone,
+      avatar_url,
+      bio,
+      role
+    `)
+    .eq("phone",phone)
+    .maybeSingle();
+
+  }else{
+
+   /*
+    Username login
+   */
+
+   query =
+    await db
+    .from("profiles")
+    .select(`
+      id,
+      display_name,
+      username,
+      phone,
+      avatar_url,
+      bio,
+      role
+    `)
+    .ilike("username",identity)
+    .maybeSingle();
+
+  }
+
+  if(query.error){
+
+   console.error(query.error);
+
+   $("loginMsg").innerHTML =
    '<div class="status">'+
-   escapeHTML(error.message)+
-   '</div>';
+   'Login করা যাচ্ছে না।<br><small>'+
+   escapeHTML(query.error.message)+
+   '</small></div>';
 
    return;
   }
 
-
-  const user=
-   Array.isArray(data)?data[0]:data;
-
+  const user=query.data;
 
   if(!user){
 
-   $("loginMsg").innerHTML=
-   '<div class="status">এই Username/Phone পাওয়া যায়নি। আগে Account তৈরি করুন।</div>';
+   $("loginMsg").innerHTML =
+   '<div class="status">এই Username/Phone Number-এর কোনো Account পাওয়া যায়নি।</div>';
 
    return;
   }
-
-
-  /*
-   IMPORTANT:
-   This is a guest-style local session.
-   It does NOT create a Supabase Auth session.
-  */
 
   guestUser={
    id:user.id,
    username:user.username,
    name:user.display_name,
    phone:user.phone,
-   avatar_url:user.avatar_url
+   avatar_url:user.avatar_url || "",
+   bio:user.bio || "",
+   role:user.role || "user"
   };
-
 
   localStorage.setItem(
    "ghus_guest_user",
    JSON.stringify(guestUser)
   );
 
+  $("loginMsg").innerHTML =
+  '<div class="success">✅ Login successful</div>';
 
-  $("loginMsg").innerHTML=
-  '<div class="success">Login successful</div>';
-
-
-  openGuestApp();
-
+  setTimeout(()=>{
+   openGuestApp();
+  },300);
 
  }catch(err){
 
-  $("loginMsg").innerHTML=
+  console.error(err);
+
+  $("loginMsg").innerHTML =
+  '<div class="status">'+
+  escapeHTML(err.message || "Login failed")+
+  '</div>';
+
+ }
+
+}
+
+
+/* =====================================================
+ SIGNUP
+===================================================== */
+
+async function signup(){
+
+ const name =
+ $("signupName").value.trim();
+
+ const username =
+ $("signupUsername").value
+ .trim()
+ .toLowerCase()
+ .replace(/\s+/g,"");
+
+ const phone =
+ normalizePhone(
+  $("signupPhone").value
+ );
+
+ if(!name || !username || !phone){
+
+  $("signupMsg").innerHTML =
+  '<div class="status">Name, Username ও Phone Number দিন।</div>';
+
+  return;
+ }
+
+ if(username.length < 3){
+
+  $("signupMsg").innerHTML =
+  '<div class="status">Username কমপক্ষে ৩ অক্ষরের হতে হবে।</div>';
+
+  return;
+ }
+
+ $("signupMsg").innerHTML =
+ '<div class="status">Account তৈরি হচ্ছে...</div>';
+
+ try{
+
+  const existingUsername =
+   await db
+   .from("profiles")
+   .select("id")
+   .ilike("username",username)
+   .maybeSingle();
+
+  if(existingUsername.error){
+
+   $("signupMsg").innerHTML =
+   '<div class="status">'+
+   escapeHTML(existingUsername.error.message)+
+   '</div>';
+
+   return;
+  }
+
+  if(existingUsername.data){
+
+   $("signupMsg").innerHTML =
+   '<div class="status">এই Username ইতিমধ্যে ব্যবহার করা হয়েছে।</div>';
+
+   return;
+  }
+
+
+  const existingPhone =
+   await db
+   .from("profiles")
+   .select("id")
+   .eq("phone",phone)
+   .maybeSingle();
+
+  if(existingPhone.error){
+
+   $("signupMsg").innerHTML =
+   '<div class="status">'+
+   escapeHTML(existingPhone.error.message)+
+   '</div>';
+
+   return;
+  }
+
+  if(existingPhone.data){
+
+   $("signupMsg").innerHTML =
+   '<div class="status">এই Phone Number ইতিমধ্যে ব্যবহার করা হয়েছে।</div>';
+
+   return;
+  }
+
+
+  const insertResult =
+   await db
+   .from("profiles")
+   .insert({
+
+    display_name:name,
+    username:username,
+    phone:phone,
+    bio:"",
+    avatar_url:"",
+    role:"user"
+
+   })
+   .select()
+   .single();
+
+
+  if(insertResult.error){
+
+   $("signupMsg").innerHTML =
+   '<div class="status">'+
+   '<b>Account তৈরি হয়নি</b><br>'+
+   escapeHTML(insertResult.error.message)+
+   '</div>';
+
+   return;
+  }
+
+
+  const data=insertResult.data;
+
+  guestUser={
+   id:data.id,
+   username:data.username,
+   name:data.display_name,
+   phone:data.phone,
+   avatar_url:data.avatar_url || "",
+   bio:data.bio || "",
+   role:data.role || "user"
+  };
+
+  localStorage.setItem(
+   "ghus_guest_user",
+   JSON.stringify(guestUser)
+  );
+
+  $("signupMsg").innerHTML =
+  '<div class="success">✅ Account সফলভাবে তৈরি হয়েছে।</div>';
+
+  setTimeout(()=>{
+   openGuestApp();
+  },500);
+
+ }catch(err){
+
+  console.error(err);
+
+  $("signupMsg").innerHTML =
   '<div class="status">'+
   escapeHTML(err.message)+
   '</div>';
@@ -854,140 +1391,31 @@ async function login(){
 
 
 /* =====================================================
- CREATE ACCOUNT
+ RESTORE LOGIN
 ===================================================== */
 
-async function signup(){
-
- const name=
- $("signupName").value.trim();
-
- const username=
- $("signupUsername").value.trim()
- .toLowerCase();
-
- const phone=
- normalizePhone(
-  $("signupPhone").value
- );
-
-
- if(!name||!username||!phone){
-
-  $("signupMsg").innerHTML=
-  '<div class="status">Name, Username ও Phone Number দিন।</div>';
-
-  return;
- }
-
-
- $("signupMsg").innerHTML=
- '<div class="status">Account তৈরি হচ্ছে...</div>';
-
+function restoreSession(){
 
  try{
 
-  const existingUsername=
-   await db
-   .from("profiles")
-   .select("id")
-   .ilike("username",username)
-   .maybeSingle();
+  const saved =
+   localStorage.getItem("ghus_guest_user");
 
-
-  if(existingUsername.data){
-
-   $("signupMsg").innerHTML=
-   '<div class="status">এই Username ইতিমধ্যে ব্যবহার করা হয়েছে।</div>';
-
+  if(!saved)
    return;
-  }
 
+  const user=JSON.parse(saved);
 
-  const existingPhone=
-   await db
-   .from("profiles")
-   .select("id")
-   .eq("phone",phone)
-   .maybeSingle();
-
-
-  if(existingPhone.data){
-
-   $("signupMsg").innerHTML=
-   '<div class="status">এই Phone Number ইতিমধ্যে ব্যবহার করা হয়েছে।</div>';
-
+  if(!user || !user.id)
    return;
-  }
 
-
-  /*
-   NOTE:
-   This creates a profile record.
-   It is intentionally NOT creating
-   a passwordless Supabase Auth user.
-  */
-
-  const {data,error}=await db
-  .from("profiles")
-  .insert({
-
-   display_name:name,
-
-   username:username,
-
-   phone:phone,
-
-   bio:"",
-
-   avatar_url:"",
-
-   role:"user"
-
-  })
-  .select()
-  .single();
-
-
-  if(error){
-
-   $("signupMsg").innerHTML=
-   '<div class="status">'+
-   escapeHTML(error.message)+
-   '</div>';
-
-   return;
-  }
-
-
-  guestUser={
-   id:data.id,
-   username:data.username,
-   name:data.display_name,
-   phone:data.phone,
-   avatar_url:data.avatar_url
-  };
-
-
-  localStorage.setItem(
-   "ghus_guest_user",
-   JSON.stringify(guestUser)
-  );
-
-
-  $("signupMsg").innerHTML=
-  '<div class="success">Account সফলভাবে তৈরি হয়েছে।</div>';
-
+  guestUser=user;
 
   openGuestApp();
 
+ }catch(e){
 
- }catch(err){
-
-  $("signupMsg").innerHTML=
-  '<div class="status">'+
-  escapeHTML(err.message)+
-  '</div>';
+  localStorage.removeItem("ghus_guest_user");
 
  }
 
@@ -999,6 +1427,9 @@ async function signup(){
 ===================================================== */
 
 function openGuestApp(){
+
+ if(!guestUser)
+  return;
 
  $("authPage").classList.add("hidden");
 
@@ -1013,29 +1444,54 @@ function openGuestApp(){
   display_name:guestUser.name,
   username:guestUser.username,
   phone:guestUser.phone,
-  avatar_url:guestUser.avatar_url||"",
-  role:"user"
+  avatar_url:guestUser.avatar_url || "",
+  bio:guestUser.bio || "",
+  role:guestUser.role || "user"
  };
 
-
- if(currentProfile.avatar_url){
-
-  $("homeAvatar").src=
-   currentProfile.avatar_url;
-
- }else{
-
-  $("homeAvatar").src=
-   avatarURL(currentProfile);
-
- }
-
+ $("homeAvatar").src =
+ avatarURL(currentProfile);
 
  showPage("homePage");
 
  loadDailyAwareness();
-
  loadFeed();
+
+}
+
+
+/* =====================================================
+ LOGOUT
+===================================================== */
+
+function logout(){
+
+ if(messageChannel){
+
+  try{
+   db.removeChannel(messageChannel);
+  }catch(e){}
+
+  messageChannel=null;
+
+ }
+
+ guestUser=null;
+ currentUser=null;
+ currentProfile=null;
+ selectedChatUser=null;
+
+ localStorage.removeItem(
+  "ghus_guest_user"
+ );
+
+ $("app").classList.add("hidden");
+ $("authPage").classList.remove("hidden");
+
+ $("loginIdentity").value="";
+ $("loginMsg").innerHTML="";
+
+ toast("Logout successful");
 
 }
 
@@ -1048,52 +1504,53 @@ async function loadDailyAwareness(){
 
  const box=$("dailyText");
 
- box.textContent="লোড হচ্ছে...";
+ const fallback=[
 
+  "অন্যায়ের সামনে থেমে যেও না—তোমার একটি প্রতিবাদই হতে পারে পরিবর্তনের শুরু।",
+
+  "ঘুষ একটি মানুষের সমস্যা নয়—এটি পুরো সমাজের ক্ষতি করে।",
+
+  "দুর্নীতির বিরুদ্ধে সবচেয়ে বড় শক্তি হলো সচেতন নাগরিক।",
+
+  "ক্ষমতা মানুষের সেবা করার জন্য, মানুষের অধিকার কেড়ে নেওয়ার জন্য নয়।",
+
+  "চাঁদাবাজির বিরুদ্ধে কথা বলা সমাজের প্রতি দায়িত্ব।",
+
+  "সততা হয়তো সবসময় সহজ পথ নয়, কিন্তু এটি সবচেয়ে শক্তিশালী পথ।",
+
+  "অন্যায় দেখেও নীরব থাকা অন্যায়কে আরও সাহসী করতে পারে।",
+
+  "নিজে ঘুষ দেব না, ঘুষ নেব না—এই অঙ্গীকারই পরিবর্তনের শুরু।",
+
+  "অন্যায়ের বিরুদ্ধে তথ্যভিত্তিক ও দায়িত্বশীল প্রতিবাদ করুন।",
+
+  "আইন ও ন্যায়ের প্রতি সম্মান একটি সুস্থ সমাজের ভিত্তি।"
+
+ ];
 
  try{
 
-  const {data,error}=await db
-  .rpc("get_daily_awareness");
+  const result =
+   await db
+   .rpc("get_daily_awareness");
 
+  if(!result.error && result.data){
 
-  if(!error&&data){
-
-   box.textContent=
-    data.sentence;
+   if(typeof result.data==="string")
+    box.textContent=result.data;
+   else
+    box.textContent=result.data.sentence || fallback[0];
 
    return;
   }
 
+ }catch(e){}
 
- }catch(e){
+ const day =
+  Math.floor(Date.now()/86400000);
 
-  console.log(e);
-
- }
-
-
- /*
-  fallback
- */
-
- const fallback=[
-  "অন্যায়ের সামনে থেমে যেও না—তোমার একটি প্রতিবাদই হতে পারে পরিবর্তনের শুরু।",
-  "ঘুষ একটি মানুষের সমস্যা নয়—এটি পুরো সমাজের ক্ষতি করে।",
-  "দুর্নীতির বিরুদ্ধে সবচেয়ে বড় শক্তি হলো সচেতন নাগরিক।",
-  "ক্ষমতা মানুষের সেবা করার জন্য, মানুষের অধিকার কেড়ে নেওয়ার জন্য নয়।",
-  "চাঁদাবাজির বিরুদ্ধে কথা বলা সমাজের প্রতি দায়িত্ব।",
-  "সততা হয়তো সবসময় সহজ পথ নয়, কিন্তু এটি সবচেয়ে শক্তিশালী পথ।",
-  "অন্যায় দেখেও নীরব থাকা অন্যায়কে আরও সাহসী করতে পারে।"
- ];
-
-
- const day=
- Math.floor(Date.now()/86400000)
- %fallback.length;
-
-
- box.textContent=fallback[day];
+ box.textContent =
+  fallback[day % fallback.length];
 
 }
 
@@ -1113,29 +1570,45 @@ function showPage(pageId){
   "chatPage"
  ];
 
-
  pages.forEach(id=>{
 
   const el=$(id);
 
-  if(el)el.classList.add("hidden");
+  if(el)
+   el.classList.add("hidden");
 
  });
 
+ const page=$(pageId);
 
- $(pageId).classList.remove("hidden");
+ if(page)
+  page.classList.remove("hidden");
+
+ document
+ .querySelectorAll(".bottomNav button")
+ .forEach(btn=>btn.classList.remove("active"));
+
+ const navMap={
+  homePage:"navHome",
+  searchPage:"navSearch",
+  postPage:"navPost",
+  chatPage:"navChat",
+  profilePage:"navProfile"
+ };
+
+ if(navMap[pageId])
+  $(navMap[pageId]).classList.add("active");
 
  window.scrollTo(0,0);
 
-
  if(pageId==="homePage")
- loadFeed();
+  loadFeed();
 
  if(pageId==="profilePage")
- loadProfilePage();
+  loadProfilePage();
 
  if(pageId==="chatPage")
- loadChatUsers();
+  loadChatUsers();
 
 }
 
@@ -1147,31 +1620,27 @@ function showPage(pageId){
 function previewMedia(){
 
  const input=$("mediaFile");
-
  const preview=$("mediaPreview");
 
  preview.innerHTML="";
 
-
  Array.from(input.files||[])
  .forEach((file,index)=>{
 
-  const item=document.createElement("div");
+  const item=
+   document.createElement("div");
 
   item.className="previewItem";
-
 
   const remove=
    document.createElement("button");
 
   remove.className="removePreview";
-
   remove.textContent="×";
 
   remove.onclick=()=>{
    removeSelectedFile(index);
   };
-
 
   if(file.type.startsWith("image/")){
 
@@ -1183,10 +1652,7 @@ function previewMedia(){
 
    item.appendChild(img);
 
-  }
-
-
-  if(file.type.startsWith("video/")){
+  }else if(file.type.startsWith("video/")){
 
    const video=
     document.createElement("video");
@@ -1199,7 +1665,6 @@ function previewMedia(){
    item.appendChild(video);
 
   }
-
 
   item.appendChild(remove);
 
@@ -1216,7 +1681,6 @@ function removeSelectedFile(index){
 
  const dt=new DataTransfer();
 
-
  Array.from(input.files)
  .forEach((file,i)=>{
 
@@ -1224,7 +1688,6 @@ function removeSelectedFile(index){
    dt.items.add(file);
 
  });
-
 
  input.files=dt.files;
 
@@ -1242,10 +1705,9 @@ async function createPost(){
  if(!currentUser){
 
   toast("Login করুন");
-
   return;
- }
 
+ }
 
  const content=
   $("postContent").value.trim();
@@ -1257,55 +1719,48 @@ async function createPost(){
   $("anonymousPost").checked;
 
  const files=
-  Array.from($("mediaFile").files||[]);
+  Array.from(
+   $("mediaFile").files || []
+  );
 
-
- if(!content&&files.length===0){
+ if(!content && files.length===0){
 
   toast("কিছু লিখুন অথবা ছবি/ভিডিও দিন");
-
   return;
+
  }
 
+ toast("Post তৈরি হচ্ছে...");
 
  try{
 
-  toast("Post তৈরি হচ্ছে...");
+  const result =
+   await db
+   .from("posts")
+   .insert({
 
+    user_id:currentUser.id,
+    content:content,
+    media_url:null,
+    media_type:null,
+    status:"published",
+    is_anonymous:anonymous,
+    category:category
 
-  const {data:post,error}=await db
-  .from("posts")
-  .insert({
+   })
+   .select()
+   .single();
 
-   user_id:currentUser.id,
+  if(result.error){
 
-   content:content,
-
-   media_url:null,
-
-   media_type:null,
-
-   status:"published",
-
-   is_anonymous:anonymous,
-
-   category:category
-
-  })
-  .select()
-  .single();
-
-
-  if(error){
-
-   toast(error.message);
-
+   toast(result.error.message);
    return;
+
   }
 
+  const post=result.data;
 
   let firstMediaURL=null;
-
   let firstMediaType=null;
 
 
@@ -1313,15 +1768,14 @@ async function createPost(){
 
    const file=files[i];
 
-   const ext=
-    (file.name.split(".").pop()||"bin")
-    .toLowerCase();
-
+   const safeName=
+    file.name
+    .replace(/[^a-zA-Z0-9._-]/g,"_");
 
    const path=
     "posts/"+
     currentUser.id+"/"+
-    Date.now()+"_"+i+"."+ext;
+    Date.now()+"_"+i+"_"+safeName;
 
 
    const upload=
@@ -1339,9 +1793,9 @@ async function createPost(){
 
    if(upload.error){
 
-    console.log(upload.error);
-
+    console.error(upload.error);
     continue;
+
    }
 
 
@@ -1361,7 +1815,6 @@ async function createPost(){
    if(i===0){
 
     firstMediaURL=publicURL;
-
     firstMediaType=mediaType;
 
    }
@@ -1373,16 +1826,14 @@ async function createPost(){
     .insert({
 
      post_id:post.id,
-
      media_url:publicURL,
-
      media_type:mediaType
 
     });
 
 
    if(mediaInsert.error)
-    console.log(mediaInsert.error);
+    console.error(mediaInsert.error);
 
   }
 
@@ -1394,7 +1845,6 @@ async function createPost(){
    .update({
 
     media_url:firstMediaURL,
-
     media_type:firstMediaType
 
    })
@@ -1404,18 +1854,13 @@ async function createPost(){
 
 
   $("postContent").value="";
-
   $("mediaFile").value="";
-
   $("mediaPreview").innerHTML="";
-
   $("anonymousPost").checked=false;
 
-
-  toast("Post Published");
+  toast("✅ Post Published");
 
   showPage("homePage");
-
 
  }catch(err){
 
@@ -1436,35 +1881,34 @@ async function getMedia(post){
 
  let media=[];
 
-
  try{
 
-  const {data,error}=await db
-  .from("post_media")
-  .select("*")
-  .eq("post_id",post.id)
-  .order("created_at",{ascending:true});
+  const result=
+   await db
+   .from("post_media")
+   .select("*")
+   .eq("post_id",post.id)
+   .order(
+    "created_at",
+    {ascending:true}
+   );
 
-
-  if(!error&&data)
-   media=data;
+  if(!result.error && result.data)
+   media=result.data;
 
  }catch(e){}
 
 
- if(media.length===0&&post.media_url){
+ if(media.length===0 && post.media_url){
 
   media.push({
 
    media_url:post.media_url,
-
-   media_type:
-    post.media_type||"image"
+   media_type:post.media_type || "image"
 
   });
 
  }
-
 
  return media;
 
@@ -1480,54 +1924,72 @@ async function loadFeed(){
  const feed=$("feed");
 
  feed.innerHTML=
-  '<div class="card center">Post loading...</div>';
+ '<div class="card center">Post loading...</div>';
 
+ try{
 
- const {data,error}=await db
- .from("posts")
- .select(`
-  *,
-  profiles:user_id(
-   id,
-   display_name,
-   username,
-   avatar_url
-  )
- `)
- .eq("status","published")
- .order("created_at",{ascending:false});
+  const result=
+   await db
+   .from("posts")
+   .select(`
+    *,
+    profiles:user_id(
+     id,
+     display_name,
+     username,
+     avatar_url
+    )
+   `)
+   .eq("status","published")
+   .order(
+    "created_at",
+    {ascending:false}
+   );
 
+  if(result.error){
 
- if(error){
+   feed.innerHTML=
+   '<div class="card">'+
+   '<b>Post loading failed</b><br><br>'+
+   escapeHTML(result.error.message)+
+   '</div>';
+
+   return;
+
+  }
+
+  const data=result.data;
+
+  if(!data || !data.length){
+
+   feed.innerHTML=
+   '<div class="card center">'+
+   'এখনো কোনো Post নেই। প্রথম Post আপনিই করুন।'+
+   '</div>';
+
+   return;
+
+  }
+
+  feed.innerHTML="";
+
+  for(const post of data){
+
+   feed.insertAdjacentHTML(
+    "beforeend",
+    await postHTML(post)
+   );
+
+  }
+
+ }catch(err){
+
+  console.error(err);
 
   feed.innerHTML=
   '<div class="card">'+
-  '<b>Post loading failed</b><br><br>'+
-  escapeHTML(error.message)+
+  escapeHTML(err.message)+
   '</div>';
-
-  return;
- }
-
-
- if(!data||!data.length){
-
-  feed.innerHTML=
-  '<div class="card center">এখনো কোনো Post নেই।</div>';
-
-  return;
- }
-
-
- feed.innerHTML="";
-
-
- for(const post of data){
-
-  feed.insertAdjacentHTML(
-   "beforeend",
-   await postHTML(post)
-  );
 
  }
 
@@ -1540,9 +2002,11 @@ async function loadFeed(){
 
 async function postHTML(post){
 
- const profile=post.profiles||{};
+ const profile=
+  post.profiles || {};
 
- const media=await getMedia(post);
+ const media=
+  await getMedia(post);
 
  const anonymous=
   post.is_anonymous===true;
@@ -1550,8 +2014,7 @@ async function postHTML(post){
  const name=
   anonymous
   ?"Anonymous"
-  :(profile.display_name||"User");
-
+  :(profile.display_name || "User");
 
  const avatar=
   anonymous
@@ -1559,49 +2022,66 @@ async function postHTML(post){
   :avatarURL(profile);
 
 
- const reactions=
-  await db
-  .from("reactions")
-  .select("*",{count:"exact",head:true})
-  .eq("post_id",post.id);
+ let reactionCount=0;
+
+ try{
+
+  const result=
+   await db
+   .from("reactions")
+   .select("*",{count:"exact",head:true})
+   .eq("post_id",post.id);
+
+  reactionCount=result.count || 0;
+
+ }catch(e){}
 
 
- const reactionCount=
-  reactions.count||0;
+ let commentsData=[];
 
+ try{
 
- const comments=
-  await db
-  .from("comments")
-  .select(`
-   id,
-   content,
-   created_at,
-   user_id,
-   profiles:user_id(
-    display_name,
-    avatar_url
+  const result=
+   await db
+   .from("comments")
+   .select(`
+    id,
+    content,
+    created_at,
+    user_id,
+    profiles:user_id(
+     display_name,
+     avatar_url
+    )
+   `)
+   .eq("post_id",post.id)
+   .order(
+    "created_at",
+    {ascending:true}
    )
-  `)
-  .eq("post_id",post.id)
-  .order("created_at",{ascending:true})
-  .limit(20);
+   .limit(20);
+
+  if(!result.error)
+   commentsData=result.data || [];
+
+ }catch(e){}
 
 
  let mediaHTML="";
 
-
  if(media.length){
 
   const cls=
-   media.length===1?"one":
-   media.length===2?"two":
-   media.length===3?"three":"four";
-
+   media.length===1
+   ?"one"
+   :media.length===2
+   ?"two"
+   :media.length===3
+   ?"three"
+   :"four";
 
   mediaHTML=
    `<div class="mediaGrid ${cls}">`;
-
 
   media.forEach(m=>{
 
@@ -1609,21 +2089,20 @@ async function postHTML(post){
 
     mediaHTML+=
     `<video controls preload="metadata">
-     <source src="${escapeHTML(m.media_url)}">
-    </video>`;
+      <source src="${escapeHTML(m.media_url)}">
+     </video>`;
 
    }else{
 
     mediaHTML+=
     `<img
-     src="${escapeHTML(m.media_url)}"
-     loading="lazy"
-     onclick="openMedia('${escapeHTML(m.media_url)}')">`;
+      src="${escapeHTML(m.media_url)}"
+      loading="lazy"
+      onclick="openMedia('${escapeHTML(m.media_url)}')">`;
 
    }
 
   });
-
 
   mediaHTML+="</div>";
 
@@ -1632,45 +2111,40 @@ async function postHTML(post){
 
  let commentsHTML="";
 
+ commentsData.forEach(c=>{
 
- if(comments.data){
+  const cp=
+   c.profiles || {};
 
-  comments.data.forEach(c=>{
+  commentsHTML+=
+  `<div class="comment">
 
-   const cp=c.profiles||{};
+   <img
+    class="avatar"
+    style="width:32px;height:32px"
+    src="${escapeHTML(avatarURL(cp))}">
 
+   <div class="commentBubble">
 
-   commentsHTML+=
-   `<div class="comment">
+    <b>
+     ${escapeHTML(cp.display_name || "User")}
+    </b><br>
 
-    <img
-     class="avatar"
-     style="width:32px;height:32px"
-     src="${escapeHTML(avatarURL(cp))}">
+    ${escapeHTML(c.content)}
 
-    <div class="commentBubble">
+   </div>
 
-     <b>
-      ${escapeHTML(cp.display_name||"User")}
-     </b><br>
+  </div>`;
 
-     ${escapeHTML(c.content)}
-
-    </div>
-
-   </div>`;
-
-  });
-
- }
+ });
 
 
  const own=
-  currentUser&&
+  currentUser &&
   post.user_id===currentUser.id;
 
 
- let menu=`
+ const menu=`
 
  <div class="menuWrap">
 
@@ -1734,7 +2208,7 @@ async function postHTML(post){
     </div>
 
     <div class="small">
-     ${escapeHTML(post.category||"সাধারণ")}
+     ${escapeHTML(post.category || "সাধারণ")}
      ·
      ${formatDate(post.created_at)}
     </div>
@@ -1750,8 +2224,8 @@ async function postHTML(post){
    post.content
    ?
    `<div class="postText">
-    ${escapeHTML(post.content)}
-   </div>`
+     ${escapeHTML(post.content)}
+    </div>`
    :""
   }
 
@@ -1759,7 +2233,9 @@ async function postHTML(post){
   ${mediaHTML}
 
 
-  <div class="small" style="margin-top:8px">
+  <div
+   class="small"
+   style="margin-top:8px">
    👍 ${reactionCount} reactions
   </div>
 
@@ -1793,12 +2269,35 @@ async function postHTML(post){
    id="reaction-${post.id}"
    class="reactionMenu hidden">
 
-   <button onclick="react('${post.id}','like')">👍 Like</button>
-   <button onclick="react('${post.id}','love')">❤️ Love</button>
-   <button onclick="react('${post.id}','haha')">😂 Haha</button>
-   <button onclick="react('${post.id}','wow')">😮 Wow</button>
-   <button onclick="react('${post.id}','sad')">😢 Sad</button>
-   <button onclick="react('${post.id}','angry')">😡 Angry</button>
+   <button
+    onclick="react('${post.id}','like')">
+    👍 Like
+   </button>
+
+   <button
+    onclick="react('${post.id}','love')">
+    ❤️ Love
+   </button>
+
+   <button
+    onclick="react('${post.id}','haha')">
+    😂 Haha
+   </button>
+
+   <button
+    onclick="react('${post.id}','wow')">
+    😮 Wow
+   </button>
+
+   <button
+    onclick="react('${post.id}','sad')">
+    😢 Sad
+   </button>
+
+   <button
+    onclick="react('${post.id}','angry')">
+    😡 Angry
+   </button>
 
   </div>
 
@@ -1838,12 +2337,14 @@ function togglePostMenu(postId){
  document
  .querySelectorAll(".postMenu")
  .forEach(m=>{
+
   if(m.id!=="menu-"+postId)
    m.classList.add("hidden");
+
  });
 
-
- const menu=$("menu-"+postId);
+ const menu=
+  $("menu-"+postId);
 
  if(menu)
   menu.classList.toggle("hidden");
@@ -1857,7 +2358,9 @@ document.addEventListener("click",e=>{
 
   document
   .querySelectorAll(".postMenu")
-  .forEach(m=>m.classList.add("hidden"));
+  .forEach(m=>{
+   m.classList.add("hidden");
+  });
 
  }
 
@@ -1871,31 +2374,87 @@ function openMedia(url){
 }
 
 
-function copyPostLink(postId){
+async function copyPostLink(postId){
 
  const url=
-  location.origin+
-  location.pathname+
+  location.href.split("#")[0]+
   "#post-"+postId;
 
+ try{
 
- navigator.clipboard
- .writeText(url)
- .then(()=>toast("Post link copied"));
+  await navigator.clipboard.writeText(url);
+
+  toast("Post link copied");
+
+ }catch(e){
+
+  toast(url);
+
+ }
 
 }
 
 
-function savePost(){
+function savePost(postId){
 
- toast("Save feature শিগগির আরও উন্নত করা হবে");
+ localStorage.setItem(
+  "saved_post_"+postId,
+  "true"
+ );
+
+ toast("🔖 Post saved");
 
 }
 
 
-function reportPost(){
+function reportPost(postId){
 
- toast("Report option নির্বাচিত হয়েছে");
+ toast("🚩 Report option নির্বাচিত হয়েছে");
+
+}
+
+
+/* =====================================================
+ DELETE POST
+===================================================== */
+
+async function deletePost(postId){
+
+ if(!currentUser){
+
+  toast("Login করুন");
+  return;
+
+ }
+
+ if(!confirm("এই Post টি Delete করতে চান?"))
+  return;
+
+ try{
+
+  const result=
+   await db
+   .from("posts")
+   .delete()
+   .eq("id",postId)
+   .eq("user_id",currentUser.id);
+
+  if(result.error){
+
+   toast(result.error.message);
+   return;
+
+  }
+
+  toast("Post deleted");
+
+  loadFeed();
+
+ }catch(err){
+
+  toast(err.message);
+
+ }
 
 }
 
@@ -1906,7 +2465,8 @@ function reportPost(){
 
 function toggleReactionMenu(postId){
 
- const el=$("reaction-"+postId);
+ const el=
+  $("reaction-"+postId);
 
  if(el)
   el.classList.toggle("hidden");
@@ -1926,11 +2486,961 @@ async function react(postId,type){
  if(!currentUser){
 
   toast("Login করুন");
-
   return;
- }
 
+ }
 
  try{
 
-  const existing
+  const existing=
+   await db
+   .from("reactions")
+   .select("id,type")
+   .eq("post_id",postId)
+   .eq("user_id",currentUser.id)
+   .maybeSingle();
+
+
+  if(existing.error){
+
+   toast(existing.error.message);
+   return;
+
+  }
+
+
+  if(existing.data){
+
+   if(existing.data.type===type){
+
+    const del=
+     await db
+     .from("reactions")
+     .delete()
+     .eq("id",existing.data.id);
+
+    if(del.error){
+
+     toast(del.error.message);
+     return;
+
+    }
+
+   }else{
+
+    const upd=
+     await db
+     .from("reactions")
+     .update({
+      type:type
+     })
+     .eq("id",existing.data.id);
+
+    if(upd.error){
+
+     toast(upd.error.message);
+     return;
+
+    }
+
+   }
+
+  }else{
+
+   const ins=
+    await db
+    .from("reactions")
+    .insert({
+
+     post_id:postId,
+     user_id:currentUser.id,
+     type:type
+
+    });
+
+   if(ins.error){
+
+    toast(ins.error.message);
+    return;
+
+   }
+
+  }
+
+  $("reaction-"+postId)?.classList.add("hidden");
+
+  loadFeed();
+
+ }catch(err){
+
+  toast(err.message);
+
+ }
+
+}
+
+
+/* =====================================================
+ COMMENTS
+===================================================== */
+
+function focusComment(postId){
+
+ const input=
+  $("comment-"+postId);
+
+ if(input){
+
+  input.focus();
+
+  input.scrollIntoView({
+   behavior:"smooth",
+   block:"center"
+  });
+
+ }
+
+}
+
+
+async function addComment(postId){
+
+ if(!currentUser){
+
+  toast("Login করুন");
+  return;
+
+ }
+
+ const input=
+  $("comment-"+postId);
+
+ const content=
+  input.value.trim();
+
+ if(!content){
+
+  toast("Comment লিখুন");
+  return;
+
+ }
+
+ try{
+
+  const result=
+   await db
+   .from("comments")
+   .insert({
+
+    post_id:postId,
+    user_id:currentUser.id,
+    content:content
+
+   });
+
+  if(result.error){
+
+   toast(result.error.message);
+   return;
+
+  }
+
+  input.value="";
+
+  toast("Comment added");
+
+  loadFeed();
+
+ }catch(err){
+
+  toast(err.message);
+
+ }
+
+}
+
+
+/* =====================================================
+ SHARE
+===================================================== */
+
+async function sharePost(postId){
+
+ const url=
+  location.href.split("#")[0]+
+  "#post-"+postId;
+
+ if(navigator.share){
+
+  try{
+
+   await navigator.share({
+    title:"ঘুষ সাইট",
+    text:"ঘুষ সাইটের একটি Post",
+    url:url
+   });
+
+  }catch(e){}
+
+ }else{
+
+  try{
+
+   await navigator.clipboard.writeText(url);
+
+   toast("Post link copied");
+
+  }catch(e){
+
+   toast(url);
+
+  }
+
+ }
+
+}
+
+
+/* =====================================================
+ SEARCH
+===================================================== */
+
+function quickSearchUser(){
+
+ const value=
+  $("quickSearch").value.trim();
+
+ if(!value)
+  return;
+
+ $("searchInput").value=value;
+
+ showPage("searchPage");
+
+ searchUsers();
+
+}
+
+
+async function searchUsers(){
+
+ const q=
+  $("searchInput").value.trim();
+
+ const box=
+  $("searchResults");
+
+ if(!q){
+
+  box.innerHTML=
+  '<div class="card">নাম অথবা Username লিখুন।</div>';
+
+  return;
+
+ }
+
+ box.innerHTML=
+ '<div class="card center">Search হচ্ছে...</div>';
+
+ try{
+
+  const result=
+   await db
+   .from("profiles")
+   .select(`
+    id,
+    display_name,
+    username,
+    avatar_url,
+    bio
+   `)
+   .or(
+    `display_name.ilike.%${q}%,username.ilike.%${q}%`
+   )
+   .limit(30);
+
+
+  if(result.error){
+
+   box.innerHTML=
+   '<div class="card">'+
+   escapeHTML(result.error.message)+
+   '</div>';
+
+   return;
+
+  }
+
+  const users=result.data || [];
+
+  if(!users.length){
+
+   box.innerHTML=
+   '<div class="card center">কোনো User পাওয়া যায়নি।</div>';
+
+   return;
+
+  }
+
+  box.innerHTML="";
+
+  users.forEach(user=>{
+
+   box.insertAdjacentHTML(
+    "beforeend",
+    `
+    <div
+     class="card userRow"
+     onclick="viewUser('${user.id}')">
+
+     <img
+      class="avatar"
+      src="${escapeHTML(avatarURL(user))}">
+
+     <div>
+
+      <b>
+       ${escapeHTML(user.display_name || "User")}
+      </b>
+
+      <div class="small">
+       @${escapeHTML(user.username || "")}
+      </div>
+
+     </div>
+
+    </div>
+    `
+   );
+
+  });
+
+ }catch(err){
+
+  box.innerHTML=
+  '<div class="card">'+
+  escapeHTML(err.message)+
+  '</div>';
+
+ }
+
+}
+
+
+/* =====================================================
+ VIEW USER
+===================================================== */
+
+async function viewUser(userId){
+
+ try{
+
+  const result=
+   await db
+   .from("profiles")
+   .select("*")
+   .eq("id",userId)
+   .maybeSingle();
+
+  if(result.error){
+
+   toast(result.error.message);
+   return;
+
+  }
+
+  if(!result.data){
+
+   toast("User পাওয়া যায়নি");
+   return;
+
+  }
+
+  renderProfile(result.data);
+
+  showPage("profilePage");
+
+ }catch(err){
+
+  toast(err.message);
+
+ }
+
+}
+
+
+/* =====================================================
+ PROFILE
+===================================================== */
+
+async function loadProfilePage(){
+
+ if(!currentUser)
+  return;
+
+ try{
+
+  const result=
+   await db
+   .from("profiles")
+   .select("*")
+   .eq("id",currentUser.id)
+   .maybeSingle();
+
+  if(result.error){
+
+   $("profileContent").innerHTML=
+   '<div class="card">'+
+   escapeHTML(result.error.message)+
+   '</div>';
+
+   return;
+
+  }
+
+  if(result.data){
+
+   currentProfile=result.data;
+
+   guestUser.name=
+    result.data.display_name;
+
+   guestUser.username=
+    result.data.username;
+
+   guestUser.phone=
+    result.data.phone;
+
+   guestUser.avatar_url=
+    result.data.avatar_url || "";
+
+   guestUser.bio=
+    result.data.bio || "";
+
+   localStorage.setItem(
+    "ghus_guest_user",
+    JSON.stringify(guestUser)
+   );
+
+   renderProfile(result.data);
+
+  }
+
+ }catch(err){
+
+  console.error(err);
+
+ }
+
+}
+
+
+function renderProfile(profile){
+
+ const own=
+  currentUser &&
+  currentUser.id===profile.id;
+
+ $("profileContent").innerHTML=
+
+ `
+ <div class="card" style="padding:0;overflow:hidden">
+
+  <div class="profileCover"></div>
+
+  <div class="profileInfo">
+
+   <img
+    class="avatar"
+    src="${escapeHTML(avatarURL(profile))}">
+
+   <h2 style="margin-bottom:3px">
+    ${escapeHTML(profile.display_name || "User")}
+   </h2>
+
+   <div class="small">
+    @${escapeHTML(profile.username || "")}
+   </div>
+
+   ${
+    profile.bio
+    ?
+    `<p style="padding:0 20px;line-height:1.6">
+      ${escapeHTML(profile.bio)}
+     </p>`
+    :""
+   }
+
+   ${
+    own
+    ?
+    `<div class="profileButtons">
+      <button
+       class="secondary"
+       onclick="openEditProfile()">
+       ✏️ Edit Profile
+      </button>
+     </div>`
+    :""
+   }
+
+  </div>
+
+  <div style="height:20px"></div>
+
+ </div>
+ `;
+
+}
+
+
+/* =====================================================
+ EDIT PROFILE
+===================================================== */
+
+async function openEditProfile(){
+
+ if(!currentProfile){
+
+  await loadProfilePage();
+
+ }
+
+ $("editName").value=
+  currentProfile?.display_name || "";
+
+ $("editBio").value=
+  currentProfile?.bio || "";
+
+ $("editAvatar").value=
+  currentProfile?.avatar_url || "";
+
+ showPage("editPage");
+
+}
+
+
+async function saveProfile(){
+
+ if(!currentUser)
+  return;
+
+ const name=
+  $("editName").value.trim();
+
+ const bio=
+  $("editBio").value.trim();
+
+ const avatar=
+  $("editAvatar").value.trim();
+
+ if(!name){
+
+  toast("Name দিন");
+  return;
+
+ }
+
+ try{
+
+  const result=
+   await db
+   .from("profiles")
+   .update({
+
+    display_name:name,
+    bio:bio,
+    avatar_url:avatar
+
+   })
+   .eq("id",currentUser.id);
+
+  if(result.error){
+
+   toast(result.error.message);
+   return;
+
+  }
+
+  guestUser.name=name;
+  guestUser.bio=bio;
+  guestUser.avatar_url=avatar;
+
+  currentProfile.display_name=name;
+  currentProfile.bio=bio;
+  currentProfile.avatar_url=avatar;
+
+  localStorage.setItem(
+   "ghus_guest_user",
+   JSON.stringify(guestUser)
+  );
+
+  $("homeAvatar").src=
+   avatarURL(currentProfile);
+
+  toast("Profile updated");
+
+  showPage("profilePage");
+
+ }catch(err){
+
+  toast(err.message);
+
+ }
+
+}
+
+
+/* =====================================================
+ CHAT USERS
+===================================================== */
+
+async function loadChatUsers(){
+
+ if(!currentUser)
+  return;
+
+ const box=$("chatUsers");
+
+ box.innerHTML=
+ '<div class="small">Users loading...</div>';
+
+ try{
+
+  const result=
+   await db
+   .from("profiles")
+   .select(`
+    id,
+    display_name,
+    username,
+    avatar_url
+   `)
+   .neq("id",currentUser.id)
+   .limit(50);
+
+  if(result.error){
+
+   box.innerHTML=
+   '<div class="status">'+
+   escapeHTML(result.error.message)+
+   '</div>';
+
+   return;
+
+  }
+
+  const users=result.data || [];
+
+  if(!users.length){
+
+   box.innerHTML=
+   '<div class="small">অন্য কোনো User নেই।</div>';
+
+   return;
+
+  }
+
+  box.innerHTML="";
+
+  users.forEach(user=>{
+
+   box.insertAdjacentHTML(
+    "beforeend",
+    `
+    <div
+     class="chatUser"
+     onclick="openChat('${user.id}')">
+
+     <div style="display:flex;gap:10px;align-items:center">
+
+      <img
+       class="avatar"
+       src="${escapeHTML(avatarURL(user))}">
+
+      <div>
+
+       <b>
+        ${escapeHTML(user.display_name || "User")}
+       </b>
+
+       <div class="small">
+        @${escapeHTML(user.username || "")}
+       </div>
+
+      </div>
+
+     </div>
+
+    </div>
+    `
+   );
+
+  });
+
+ }catch(err){
+
+  box.innerHTML=
+  '<div class="status">'+
+  escapeHTML(err.message)+
+  '</div>';
+
+ }
+
+}
+
+
+/* =====================================================
+ OPEN CHAT
+===================================================== */
+
+async function openChat(userId){
+
+ try{
+
+  const result=
+   await db
+   .from("profiles")
+   .select("*")
+   .eq("id",userId)
+   .maybeSingle();
+
+  if(result.error){
+
+   toast(result.error.message);
+   return;
+
+  }
+
+  if(!result.data)
+   return;
+
+  selectedChatUser=result.data;
+
+  $("chatBox").classList.remove("hidden");
+
+  $("chatTitle").textContent=
+   "💬 "+(
+    result.data.display_name || "User"
+   );
+
+  await loadMessages();
+
+  setupMessageRealtime();
+
+  $("chatBox").scrollIntoView({
+   behavior:"smooth"
+  });
+
+ }catch(err){
+
+  toast(err.message);
+
+ }
+
+}
+
+
+/* =====================================================
+ MESSAGES
+===================================================== */
+
+async function loadMessages(){
+
+ if(!currentUser || !selectedChatUser)
+  return;
+
+ const box=$("chatMessages");
+
+ box.innerHTML=
+ '<div class="small center">Messages loading...</div>';
+
+ try{
+
+  const result=
+   await db
+   .from("messages")
+   .select("*")
+   .or(
+    `and(sender_id.eq.${currentUser.id},receiver_id.eq.${selectedChatUser.id}),and(sender_id.eq.${selectedChatUser.id},receiver_id.eq.${currentUser.id})`
+   )
+   .order(
+    "created_at",
+    {ascending:true}
+   );
+
+  if(result.error){
+
+   box.innerHTML=
+   '<div class="small">'+
+   escapeHTML(result.error.message)+
+   '</div>';
+
+   return;
+
+  }
+
+  box.innerHTML="";
+
+  (result.data || []).forEach(renderMessage);
+
+  box.scrollTop=box.scrollHeight;
+
+ }catch(err){
+
+  console.error(err);
+
+ }
+
+
+}
+
+
+function renderMessage(message){
+
+ const box=$("chatMessages");
+
+ const div=
+  document.createElement("div");
+
+ div.className=
+  "msg "+
+  (
+   message.sender_id===currentUser.id
+   ?"mine"
+   :"other"
+  );
+
+ div.textContent=
+  message.content || "";
+
+ box.appendChild(div);
+
+}
+
+
+/* =====================================================
+ SEND MESSAGE
+===================================================== */
+
+async function sendMessage(){
+
+ if(!currentUser || !selectedChatUser){
+
+  toast("একজন User নির্বাচন করুন");
+  return;
+
+ }
+
+ const input=$("messageInput");
+
+ const content=
+  input.value.trim();
+
+ if(!content)
+  return;
+
+ try{
+
+  const result=
+   await db
+   .from("messages")
+   .insert({
+
+    sender_id:currentUser.id,
+    receiver_id:selectedChatUser.id,
+    content:content
+
+   });
+
+  if(result.error){
+
+   toast(result.error.message);
+   return;
+
+  }
+
+  input.value="";
+
+  await loadMessages();
+
+ }catch(err){
+
+  toast(err.message);
+
+ }
+
+}
+
+
+/* =====================================================
+ REALTIME CHAT
+===================================================== */
+
+function setupMessageRealtime(){
+
+ if(messageChannel){
+
+  try{
+   db.removeChannel(messageChannel);
+  }catch(e){}
+
+ }
+
+ if(!currentUser || !selectedChatUser)
+  return;
+
+ messageChannel=
+  db
+  .channel(
+   "messages-"+currentUser.id+"-"+selectedChatUser.id
+  )
+  .on(
+   "postgres_changes",
+   {
+    event:"INSERT",
+    schema:"public",
+    table:"messages"
+   },
+   payload=>{
+
+    const m=payload.new;
+
+    const relevant=
+     (
+      m.sender_id===currentUser.id &&
+      m.receiver_id===selectedChatUser.id
+     ) ||
+     (
+      m.sender_id===selectedChatUser.id &&
+      m.receiver_id===currentUser.id
+     );
+
+    if(relevant){
+
+     loadMessages();
+
+    }
+
+   }
+  )
+  .subscribe();
+
+}
+
+
+/* =====================================================
+ START
+===================================================== */
+
+document.addEventListener(
+ "DOMContentLoaded",
+ ()=>{
+  restoreSession();
+ }
+);
+
+</script>
+
+</body>
+</html>
