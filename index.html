@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>PASSTIME</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+ box-sizing:border-box;
+}
+
 body{
  margin:0;
  font-family:Arial,sans-serif;
  background:#f0f2f5;
- color:#222
+ color:#222;
 }
+
 header{
  background:#16a34a;
- color:#fff;
+ color:white;
  height:60px;
  padding:0 15px;
  display:flex;
@@ -25,132 +34,207 @@ header{
  justify-content:space-between;
  position:sticky;
  top:0;
- z-index:50
+ z-index:50;
+ box-shadow:0 2px 5px #0003;
 }
-.logo{font-size:26px;font-weight:bold}
+
+.logo{
+ font-size:25px;
+ font-weight:bold;
+}
+
+.container{
+ width:100%;
+ max-width:680px;
+ margin:18px auto;
+ padding:0 10px;
+}
+
+.card{
+ background:white;
+ border-radius:12px;
+ margin-bottom:15px;
+ padding:15px;
+ box-shadow:0 1px 4px #0002;
+}
+
 button{
  border:0;
  border-radius:8px;
  padding:9px 13px;
  cursor:pointer;
- font-size:14px
+ font-size:14px;
 }
+
 .login{
- background:#fff;
+ background:white;
  color:#16a34a;
- font-weight:bold
+ font-weight:bold;
 }
+
 .logout{
  background:#dc2626;
- color:#fff
+ color:white;
 }
-.container{
- width:100%;
- max-width:680px;
- margin:18px auto;
- padding:0 10px
-}
-.card{
- background:#fff;
- border-radius:12px;
- margin-bottom:15px;
- padding:15px;
- box-shadow:0 1px 4px #0002
-}
-.user{
- color:#555;
- font-size:14px
-}
+
 .create{
  display:flex;
  gap:10px;
- align-items:center
 }
+
 .create input{
- flex:1;
- padding:12px;
+ width:100%;
+ padding:13px 17px;
  border-radius:25px;
  border:1px solid #ddd;
- outline:none
+ outline:none;
+ cursor:pointer;
 }
+
 .media-buttons{
  display:flex;
- gap:8px;
- margin-top:12px
+ gap:7px;
+ margin-top:12px;
 }
+
 .media-buttons button{
  flex:1;
- background:#f3f4f6
+ background:#f3f4f6;
 }
+
+.media-buttons button:hover{
+ background:#e5e7eb;
+}
+
+.user{
+ color:#555;
+ font-size:14px;
+}
+
 .post-head{
  display:flex;
  justify-content:space-between;
- align-items:center
+ align-items:center;
 }
+
 .post-user{
  font-weight:bold;
- color:#111
+ color:#111;
 }
+
 .post-date{
  font-size:11px;
- color:#888
+ color:#888;
 }
+
 .post-text{
  white-space:pre-wrap;
- margin:13px 0
+ margin:13px 0;
+ line-height:1.5;
 }
+
 .post-media{
  width:100%;
- max-height:500px;
+ max-height:520px;
  object-fit:contain;
  border-radius:10px;
  background:#111;
- margin-top:5px
+ margin-top:5px;
 }
+
 .reactions{
  display:flex;
  flex-wrap:wrap;
  gap:5px;
- margin-top:10px
+ margin-top:12px;
 }
+
 .reactions button{
  background:#f3f4f6;
- padding:7px 9px
+ padding:7px 9px;
 }
+
+.reactions button.active{
+ background:#dcfce7;
+ color:#15803d;
+ font-weight:bold;
+}
+
 .actions{
  border-top:1px solid #eee;
  margin-top:12px;
  padding-top:8px;
  display:flex;
- justify-content:space-around
+ justify-content:space-around;
 }
+
 .actions button{
- background:#fff;
- color:#555
+ background:white;
+ color:#555;
 }
+
+.actions button:hover{
+ background:#f3f4f6;
+}
+
 .comments{
  margin-top:12px;
  border-top:1px solid #eee;
- padding-top:10px
+ padding-top:10px;
 }
+
 .comment{
  background:#f3f4f6;
  border-radius:10px;
- padding:8px 10px;
- margin:6px 0;
- font-size:14px
+ padding:9px 10px;
+ margin:7px 0;
+ font-size:14px;
+ position:relative;
 }
+
+.comment-user{
+ font-weight:bold;
+}
+
+.comment-date{
+ color:#888;
+ font-size:10px;
+}
+
+.comment-delete{
+ float:right;
+ background:#fee2e2;
+ color:#dc2626;
+ padding:3px 6px;
+ font-size:11px;
+}
+
 .comment-input{
  display:flex;
  gap:6px;
- margin-top:8px
+ margin-top:10px;
 }
+
 .comment-input input{
  flex:1;
- padding:9px;
+ padding:10px;
  border:1px solid #ddd;
- border-radius:20px
+ border-radius:20px;
+ outline:none;
 }
+
+.comment-input button{
+ background:#16a34a;
+ color:white;
+}
+
+.delete-post{
+ background:#fee2e2;
+ color:#dc2626;
+ font-size:12px;
+ padding:6px 9px;
+}
+
 .modal{
  display:none;
  position:fixed;
@@ -160,291 +244,491 @@ button{
  align-items:center;
  justify-content:center;
  padding:15px;
- overflow:auto
+ overflow:auto;
 }
+
 .modal-box{
  width:100%;
- max-width:430px;
- background:#fff;
+ max-width:440px;
+ background:white;
  border-radius:15px;
  padding:20px;
- position:relative
+ position:relative;
 }
+
 .close{
  position:absolute;
  right:10px;
  top:10px;
  border-radius:50%;
- background:#eee
+ background:#eee;
+ font-size:18px;
 }
+
 .modal h2{
  text-align:center;
  color:#16a34a;
- margin-top:5px
+ margin-top:5px;
 }
-.modal input,.modal select,.modal textarea{
+
+.modal input,
+.modal select,
+.modal textarea{
  width:100%;
  padding:11px;
  margin:6px 0;
  border:1px solid #ccc;
  border-radius:8px;
- font-size:15px
+ font-size:15px;
 }
+
 .primary{
  width:100%;
  background:#16a34a;
  color:white;
- margin-top:7px
+ margin-top:7px;
 }
+
 .secondary{
  width:100%;
  background:#e5e7eb;
- margin-top:7px
+ margin-top:7px;
 }
+
 .tabs{
  display:flex;
  gap:5px;
- margin-bottom:10px
+ margin-bottom:10px;
 }
+
 .tabs button{
  flex:1;
- background:#e5e7eb
+ background:#e5e7eb;
 }
+
 .tabs .active{
  background:#16a34a;
- color:#fff
+ color:white;
 }
+
 .phone-row{
  display:flex;
- gap:5px
+ gap:5px;
 }
-.phone-row select{width:40%}
-.phone-row input{width:60%}
-.hidden{display:none}
+
+.phone-row select{
+ width:40%;
+}
+
+.phone-row input{
+ width:60%;
+}
+
+.hidden{
+ display:none;
+}
+
 .msg{
  text-align:center;
  font-size:14px;
- margin:8px 0
+ margin:8px 0;
 }
+
 .file-name{
  font-size:12px;
  color:#666;
- margin-top:5px
+ margin-top:5px;
 }
+
 .empty{
  text-align:center;
  color:#777;
- padding:25px
+ padding:25px;
 }
+
+.loading{
+ text-align:center;
+ padding:20px;
+ color:#777;
+}
+
+.error{
+ color:#dc2626;
+ text-align:center;
+}
+
+hr{
+ border:0;
+ border-top:1px solid #eee;
+ margin:10px 0;
+}
+
 @media(max-width:500px){
- .logo{font-size:22px}
- .actions button{font-size:12px}
- .reactions button{font-size:12px}
+
+ .logo{
+  font-size:21px;
+ }
+
+ .media-buttons button{
+  font-size:12px;
+  padding:8px 4px;
+ }
+
+ .reactions button{
+  font-size:12px;
+  padding:6px;
+ }
+
+ .actions button{
+  font-size:12px;
+ }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
+
 <header>
- <div class="logo">PASSTIME</div>
- <div id="accountArea">
-  <button class="login" onclick="openLogin()">Login</button>
- </div>
+
+<div class="logo">
+PASSTIME
+</div>
+
+<div id="accountArea">
+
+<button class="login"
+onclick="openLogin()">
+Login
+</button>
+
+</div>
+
 </header>
+
 
 <div class="container">
 
- <div class="card">
-  <div id="userStatus" class="user">
-   আপনি এখনো Login করেননি।
-  </div>
- </div>
 
- <!-- CREATE POST -->
- <div class="card">
+<div class="card">
 
-  <div class="create">
-   <input
-    id="quickPost"
-    placeholder="What's on your mind?"
-    onclick="requireLogin()"
-    readonly
-   >
-  </div>
+<div id="userStatus" class="user">
 
-  <div class="media-buttons">
-   <button onclick="openPostBox('photo')">📷 Photo</button>
-   <button onclick="openPostBox('video')">🎥 Video</button>
-   <button onclick="openPostBox('text')">📝 Post</button>
-  </div>
+আপনি এখনো Login করেননি।
 
- </div>
-
- <div id="feed">
-  <div class="card empty">Post loading...</div>
- </div>
+</div>
 
 </div>
 
 
-<!-- LOGIN -->
+<!-- CREATE POST -->
+
+<div class="card">
+
+<div class="create">
+
+<input
+id="quickPost"
+placeholder="What's on your mind?"
+readonly
+onclick="openPostBox('text')"
+>
+
+</div>
+
+
+<div class="media-buttons">
+
+<button onclick="openPostBox('photo')">
+📷 Photo
+</button>
+
+<button onclick="openPostBox('video')">
+🎥 Video
+</button>
+
+<button onclick="openPostBox('text')">
+📝 Post
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FEED -->
+
+<div id="feed">
+
+<div class="card loading">
+Post loading...
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =====================================
+LOGIN MODAL
+===================================== -->
 
 <div id="loginModal" class="modal">
+
 <div class="modal-box">
 
-<button class="close" onclick="closeLogin()">×</button>
+<button class="close"
+onclick="closeLogin()">
+×
+</button>
 
 <h2>PASSTIME Login</h2>
 
+
 <div class="tabs">
- <button id="emailTab" class="active" onclick="emailMode()">Email</button>
- <button id="phoneTab" onclick="phoneMode()">Phone</button>
+
+<button
+id="emailTab"
+class="active"
+onclick="emailMode()">
+Email
+</button>
+
+<button
+id="phoneTab"
+onclick="phoneMode()">
+Phone
+</button>
+
 </div>
+
+
+<!-- EMAIL -->
 
 <div id="emailArea">
 
- <input id="email" type="email" placeholder="Email">
+<input
+id="email"
+type="email"
+placeholder="Email"
+>
 
- <input id="password" type="password" placeholder="Password">
+<input
+id="password"
+type="password"
+placeholder="Password"
+>
 
- <button class="primary" onclick="loginEmail()">Login</button>
+<button
+class="primary"
+onclick="loginEmail()">
+Login
+</button>
 
- <button class="primary" onclick="signupEmail()">Create Account</button>
+<button
+class="primary"
+onclick="signupEmail()">
+Create Account
+</button>
 
- <button class="secondary" onclick="forgotMode()">
-  Forgot Password?
- </button>
+<button
+class="secondary"
+onclick="forgotMode()">
+Forgot Password?
+</button>
 
 </div>
 
 
-<div id="phoneArea" class="hidden">
+<!-- PHONE -->
 
- <div class="phone-row">
+<div id="phoneArea"
+class="hidden">
 
-  <select id="countryCode">
-   <option value="+880">🇧🇩 +880</option>
-   <option value="+91">🇮🇳 +91</option>
-   <option value="+92">🇵🇰 +92</option>
-   <option value="+977">🇳🇵 +977</option>
-   <option value="+94">🇱🇰 +94</option>
-   <option value="+1">🇺🇸 +1</option>
-   <option value="+44">🇬🇧 +44</option>
-   <option value="+61">🇦🇺 +61</option>
-   <option value="+81">🇯🇵 +81</option>
-   <option value="+82">🇰🇷 +82</option>
-   <option value="+86">🇨🇳 +86</option>
-   <option value="+49">🇩🇪 +49</option>
-   <option value="+33">🇫🇷 +33</option>
-   <option value="+39">🇮🇹 +39</option>
-   <option value="+34">🇪🇸 +34</option>
-   <option value="+971">🇦🇪 +971</option>
-   <option value="+966">🇸🇦 +966</option>
-   <option value="+974">🇶🇦 +974</option>
-   <option value="+965">🇰🇼 +965</option>
-   <option value="+968">🇴🇲 +968</option>
-   <option value="+973">🇧🇭 +973</option>
-   <option value="+60">🇲🇾 +60</option>
-   <option value="+65">🇸🇬 +65</option>
-   <option value="+66">🇹🇭 +66</option>
-   <option value="+84">🇻🇳 +84</option>
-   <option value="+27">🇿🇦 +27</option>
-   <option value="+20">🇪🇬 +20</option>
-   <option value="+90">🇹🇷 +90</option>
-  </select>
+<div class="phone-row">
 
-  <input id="phone" type="tel" placeholder="Phone number">
+<select id="countryCode">
 
- </div>
+<option value="+880">🇧🇩 +880</option>
+<option value="+91">🇮🇳 +91</option>
+<option value="+92">🇵🇰 +92</option>
+<option value="+977">🇳🇵 +977</option>
+<option value="+94">🇱🇰 +94</option>
+<option value="+1">🇺🇸 +1</option>
+<option value="+44">🇬🇧 +44</option>
+<option value="+61">🇦🇺 +61</option>
+<option value="+81">🇯🇵 +81</option>
+<option value="+82">🇰🇷 +82</option>
+<option value="+86">🇨🇳 +86</option>
+<option value="+49">🇩🇪 +49</option>
+<option value="+33">🇫🇷 +33</option>
+<option value="+39">🇮🇹 +39</option>
+<option value="+34">🇪🇸 +34</option>
+<option value="+971">🇦🇪 +971</option>
+<option value="+966">🇸🇦 +966</option>
+<option value="+974">🇶🇦 +974</option>
+<option value="+965">🇰🇼 +965</option>
+<option value="+968">🇴🇲 +968</option>
+<option value="+973">🇧🇭 +973</option>
+<option value="+60">🇲🇾 +60</option>
+<option value="+65">🇸🇬 +65</option>
+<option value="+66">🇹🇭 +66</option>
+<option value="+84">🇻🇳 +84</option>
+<option value="+27">🇿🇦 +27</option>
+<option value="+20">🇪🇬 +20</option>
+<option value="+90">🇹🇷 +90</option>
 
- <button class="primary" onclick="sendOTP()">Send OTP</button>
+</select>
 
- <div id="otpArea" class="hidden">
+<input
+id="phone"
+type="tel"
+placeholder="Phone number"
+>
 
-  <input id="otp" maxlength="6"
-   placeholder="6 digit OTP"
-   inputmode="numeric">
+</div>
 
-  <button class="primary" onclick="verifyOTP()">
-   Verify OTP
-  </button>
 
- </div>
+<button
+class="primary"
+onclick="sendOTP()">
+Send OTP
+</button>
+
+
+<div id="otpArea"
+class="hidden">
+
+<input
+id="otp"
+maxlength="6"
+placeholder="6 digit OTP"
+inputmode="numeric"
+>
+
+<button
+class="primary"
+onclick="verifyOTP()">
+Verify OTP
+</button>
+
+</div>
 
 </div>
 
 
 <!-- FORGOT -->
 
-<div id="forgotArea" class="hidden">
+<div id="forgotArea"
+class="hidden">
 
- <input id="resetEmail"
-  type="email"
-  placeholder="Your Email">
+<input
+id="resetEmail"
+type="email"
+placeholder="Your Email"
+>
 
- <button class="primary" onclick="resetPassword()">
-  Send Reset Link
- </button>
+<button
+class="primary"
+onclick="resetPassword()">
+Send Reset Link
+</button>
 
- <button class="secondary" onclick="emailMode()">
-  Back to Login
- </button>
+<button
+class="secondary"
+onclick="emailMode()">
+Back to Login
+</button>
 
 </div>
 
-<div id="loginMsg" class="msg"></div>
 
-<button class="secondary" onclick="closeLogin()">Close</button>
-
-</div>
+<div id="loginMsg"
+class="msg">
 </div>
 
 
+<button
+class="secondary"
+onclick="closeLogin()">
+Close
+</button>
 
-<!-- POST MODAL -->
 
-<div id="postModal" class="modal">
+</div>
+
+</div>
+
+
+<!-- =====================================
+POST MODAL
+===================================== -->
+
+<div id="postModal"
+class="modal">
+
 <div class="modal-box">
 
-<button class="close" onclick="closePostBox()">×</button>
+<button
+class="close"
+onclick="closePostBox()">
+×
+</button>
 
 <h2>Create Post</h2>
 
+
 <textarea
- id="postText"
- rows="5"
- placeholder="What's on your mind?"
+id="postText"
+rows="5"
+placeholder="What's on your mind?"
 ></textarea>
 
+
 <input
- id="mediaFile"
- type="file"
- accept="image/*,video/*"
- onchange="showFileName()"
+id="mediaFile"
+type="file"
+accept="image/*,video/*"
+onchange="showFileName()"
 >
 
-<div id="fileName" class="file-name"></div>
 
-<button class="primary" onclick="publishPost()">
- Publish
-</button>
-
-<button class="secondary" onclick="closePostBox()">
- Cancel
-</button>
-
-<div id="postMsg" class="msg"></div>
-
-</div>
+<div id="fileName"
+class="file-name">
 </div>
 
+
+<button
+class="primary"
+onclick="publishPost()">
+Publish
+</button>
+
+
+<button
+class="secondary"
+onclick="closePostBox()">
+Cancel
+</button>
+
+
+<div id="postMsg"
+class="msg">
+</div>
+
+</div>
+
+</div>
 
 
 <script>
 
 /* =====================================
-   SUPABASE
+SUPABASE
 ===================================== */
 
 const SUPABASE_URL =
@@ -461,146 +745,336 @@ supabase.createClient(
 
 
 /* =====================================
-   AUTH
+HELPERS
+===================================== */
+
+function escapeHTML(value){
+
+ if(value === null || value === undefined){
+  return "";
+ }
+
+ return String(value)
+ .replace(/&/g,"&amp;")
+ .replace(/</g,"&lt;")
+ .replace(/>/g,"&gt;")
+ .replace(/"/g,"&quot;")
+ .replace(/'/g,"&#039;");
+}
+
+
+function escapeAttr(value){
+ return escapeHTML(value);
+}
+
+
+function formatDate(date){
+
+ if(!date) return "";
+
+ const d=new Date(date);
+
+ return d.toLocaleString(
+  "en-BD",
+  {
+   dateStyle:"medium",
+   timeStyle:"short"
+  }
+ );
+
+}
+
+
+/* =====================================
+LOGIN
 ===================================== */
 
 function openLogin(){
- document.getElementById("loginModal").style.display="flex";
+
+ document.getElementById(
+  "loginModal"
+ ).style.display="flex";
+
 }
 
+
 function closeLogin(){
- document.getElementById("loginModal").style.display="none";
+
+ document.getElementById(
+  "loginModal"
+ ).style.display="none";
+
 }
+
 
 function emailMode(){
 
- document.getElementById("emailArea").classList.remove("hidden");
- document.getElementById("phoneArea").classList.add("hidden");
- document.getElementById("forgotArea").classList.add("hidden");
+ document.getElementById("emailArea")
+ .classList.remove("hidden");
 
- document.getElementById("emailTab").classList.add("active");
- document.getElementById("phoneTab").classList.remove("active");
+ document.getElementById("phoneArea")
+ .classList.add("hidden");
+
+ document.getElementById("forgotArea")
+ .classList.add("hidden");
+
+ document.getElementById("emailTab")
+ .classList.add("active");
+
+ document.getElementById("phoneTab")
+ .classList.remove("active");
 
 }
+
 
 function phoneMode(){
 
- document.getElementById("emailArea").classList.add("hidden");
- document.getElementById("phoneArea").classList.remove("hidden");
- document.getElementById("forgotArea").classList.add("hidden");
+ document.getElementById("emailArea")
+ .classList.add("hidden");
 
- document.getElementById("emailTab").classList.remove("active");
- document.getElementById("phoneTab").classList.add("active");
+ document.getElementById("phoneArea")
+ .classList.remove("hidden");
+
+ document.getElementById("forgotArea")
+ .classList.add("hidden");
+
+ document.getElementById("emailTab")
+ .classList.remove("active");
+
+ document.getElementById("phoneTab")
+ .classList.add("active");
 
 }
 
+
 function forgotMode(){
 
- document.getElementById("emailArea").classList.add("hidden");
- document.getElementById("phoneArea").classList.add("hidden");
- document.getElementById("forgotArea").classList.remove("hidden");
+ document.getElementById("emailArea")
+ .classList.add("hidden");
+
+ document.getElementById("phoneArea")
+ .classList.add("hidden");
+
+ document.getElementById("forgotArea")
+ .classList.remove("hidden");
+
+}
+
+
+function showLoginMsg(message){
+
+ document.getElementById(
+  "loginMsg"
+ ).innerText=message;
 
 }
 
 
 async function loginEmail(){
 
- const email=document.getElementById("email").value.trim();
- const password=document.getElementById("password").value;
+ const email=
+ document.getElementById("email")
+ .value.trim();
+
+ const password=
+ document.getElementById("password")
+ .value;
+
 
  if(!email || !password){
-  return showLoginMsg("Email ও Password দিন।");
+
+  showLoginMsg(
+   "Email ও Password দিন।"
+  );
+
+  return;
  }
+
 
  showLoginMsg("Login হচ্ছে...");
 
- const {error}=await db.auth.signInWithPassword({
+
+ const {error}=
+ await db.auth.signInWithPassword({
   email,
   password
  });
 
+
  if(error){
-  showLoginMsg("Login failed: "+error.message);
+
+  showLoginMsg(
+   "Login failed: "+error.message
+  );
+
   return;
  }
 
- showLoginMsg("Login successful ✅");
 
- setTimeout(closeLogin,700);
+ showLoginMsg(
+  "Login successful ✅"
+ );
+
+
+ setTimeout(
+  closeLogin,
+  700
+ );
+
 }
 
 
 async function signupEmail(){
 
- const email=document.getElementById("email").value.trim();
- const password=document.getElementById("password").value;
+ const email=
+ document.getElementById("email")
+ .value.trim();
+
+ const password=
+ document.getElementById("password")
+ .value;
+
 
  if(!email || !password){
-  return showLoginMsg("Email ও Password দিন।");
+
+  showLoginMsg(
+   "Email ও Password দিন।"
+  );
+
+  return;
  }
 
- if(password.length<6){
-  return showLoginMsg("Password কমপক্ষে 6 অক্ষরের হতে হবে।");
+
+ if(password.length < 6){
+
+  showLoginMsg(
+   "Password কমপক্ষে 6 অক্ষরের হতে হবে।"
+  );
+
+  return;
  }
 
- showLoginMsg("Account তৈরি হচ্ছে...");
 
- const {data,error}=await db.auth.signUp({
+ showLoginMsg(
+  "Account তৈরি হচ্ছে..."
+ );
+
+
+ const {data,error}=
+ await db.auth.signUp({
   email,
   password
  });
 
+
  if(error){
-  showLoginMsg("Signup failed: "+error.message);
+
+  showLoginMsg(
+   "Signup failed: "+
+   error.message
+  );
+
   return;
  }
 
- if(!data.session){
+
+ if(data.session){
+
   showLoginMsg(
-   "Account তৈরি হয়েছে। Email verification করুন।"
+   "Account তৈরি হয়েছে ✅"
   );
+
  }else{
-  showLoginMsg("Account তৈরি হয়েছে ✅");
+
+  showLoginMsg(
+   "Account তৈরি হয়েছে। আপনার Email verification করুন।"
+  );
+
  }
+
 }
 
 
 async function resetPassword(){
 
- const email=document.getElementById("resetEmail").value.trim();
+ const email=
+ document.getElementById("resetEmail")
+ .value.trim();
+
 
  if(!email){
-  return showLoginMsg("Email দিন।");
- }
 
- const redirectUrl=window.location.origin+
- window.location.pathname;
+  showLoginMsg("Email দিন।");
 
- const {error}=await db.auth.resetPasswordForEmail(
-  email,
-  {redirectTo:redirectUrl}
- );
-
- if(error){
-  showLoginMsg("Reset failed: "+error.message);
   return;
  }
+
+
+ showLoginMsg(
+  "Reset link পাঠানো হচ্ছে..."
+ );
+
+
+ const redirectUrl=
+ window.location.origin+
+ window.location.pathname;
+
+
+ const {error}=
+ await db.auth.resetPasswordForEmail(
+  email,
+  {
+   redirectTo:redirectUrl
+  }
+ );
+
+
+ if(error){
+
+  showLoginMsg(
+   "Reset failed: "+
+   error.message
+  );
+
+  return;
+ }
+
 
  showLoginMsg(
   "Password reset link Email-এ পাঠানো হয়েছে ✅"
  );
+
 }
 
 
+/* =====================================
+PHONE OTP
+===================================== */
+
 function fullPhone(){
 
- let phone=document.getElementById("phone").value.trim();
+ let phone=
+ document.getElementById("phone")
+ .value.trim();
 
- phone=phone.replace(/[\s\-()]/g,"");
+ phone=
+ phone.replace(
+  /[\s\-()]/g,
+  ""
+ );
 
- if(phone.startsWith("+")) return phone;
 
- return document.getElementById("countryCode").value+phone;
+ if(phone.startsWith("+")){
+
+  return phone;
+
+ }
+
+
+ return document.getElementById(
+  "countryCode"
+ ).value + phone;
+
 }
 
 
@@ -608,28 +1082,51 @@ async function sendOTP(){
 
  const phone=fullPhone();
 
- if(phone.length<8){
-  return showLoginMsg("সঠিক Phone Number দিন।");
+
+ if(phone.length < 8){
+
+  showLoginMsg(
+   "সঠিক Phone Number দিন।"
+  );
+
+  return;
  }
 
- showLoginMsg("OTP পাঠানো হচ্ছে...");
 
- const {error}=await db.auth.signInWithOtp({
+ showLoginMsg(
+  "OTP পাঠানো হচ্ছে..."
+ );
+
+
+ const {error}=
+ await db.auth.signInWithOtp({
   phone:phone,
   options:{
    shouldCreateUser:true
   }
  });
 
+
  if(error){
-  showLoginMsg("OTP failed: "+error.message);
+
+  showLoginMsg(
+   "OTP failed: "+
+   error.message
+  );
+
   return;
  }
 
- document.getElementById("otpArea")
- .classList.remove("hidden");
 
- showLoginMsg("OTP পাঠানো হয়েছে 📱");
+ document.getElementById(
+  "otpArea"
+ ).classList.remove("hidden");
+
+
+ showLoginMsg(
+  "OTP পাঠানো হয়েছে 📱"
+ );
+
 }
 
 
@@ -637,28 +1134,122 @@ async function verifyOTP(){
 
  const phone=fullPhone();
 
- const token=document.getElementById("otp").value.trim();
+ const token=
+ document.getElementById("otp")
+ .value.trim();
+
 
  if(!token){
-  return showLoginMsg("OTP দিন।");
- }
 
- showLoginMsg("OTP যাচাই হচ্ছে...");
+  showLoginMsg(
+   "OTP দিন।"
+  );
 
- const {error}=await db.auth.verifyOtp({
-  phone,
-  token,
-  type:"sms"
- });
-
- if(error){
-  showLoginMsg("OTP failed: "+error.message);
   return;
  }
 
- showLoginMsg("Phone Login successful ✅");
 
- setTimeout(closeLogin,700);
+ showLoginMsg(
+  "OTP যাচাই হচ্ছে..."
+ );
+
+
+ const {error}=
+ await db.auth.verifyOtp({
+  phone:phone,
+  token:token,
+  type:"sms"
+ });
+
+
+ if(error){
+
+  showLoginMsg(
+   "OTP failed: "+
+   error.message
+  );
+
+  return;
+ }
+
+
+ showLoginMsg(
+  "Phone Login successful ✅"
+ );
+
+
+ setTimeout(
+  closeLogin,
+  700
+ );
+
+}
+
+
+/* =====================================
+USER
+===================================== */
+
+async function getUser(){
+
+ const {
+  data:{session}
+ }=
+ await db.auth.getSession();
+
+ return session?.user || null;
+
+}
+
+
+function updateUser(user){
+
+ const area=
+ document.getElementById(
+  "accountArea"
+ );
+
+ const status=
+ document.getElementById(
+  "userStatus"
+ );
+
+
+ if(user){
+
+  const identity=
+  user.email ||
+  user.phone ||
+  "PASSTIME User";
+
+
+  area.innerHTML=
+  `<button
+   class="logout"
+   onclick="logout()">
+   Logout
+   </button>`;
+
+
+  status.innerHTML=
+  `আপনি Login করেছেন ✅<br>
+   <b>${escapeHTML(identity)}</b>`;
+
+ }else{
+
+  area.innerHTML=
+  `<button
+   class="login"
+   onclick="openLogin()">
+   Login
+   </button>`;
+
+
+  status.innerText=
+  "আপনি এখনো Login করেননি।";
+
+ }
+
 }
 
 
@@ -669,164 +1260,291 @@ async function logout(){
  updateUser(null);
 
  loadFeed();
+
 }
 
 
-async function getUser(){
-
- const {
-  data:{session}
- }=await db.auth.getSession();
-
- return session?.user || null;
-}
-
-
-function updateUser(user){
-
- const area=document.getElementById("accountArea");
- const status=document.getElementById("userStatus");
-
- if(user){
-
-  const identity=user.email || user.phone || "User";
-
-  area.innerHTML=
-  `<button class="logout" onclick="logout()">Logout</button>`;
-
-  status.innerHTML=
-  `আপনি Login করেছেন ✅<br><b>${escapeHTML(identity)}</b>`;
-
- }else{
-
-  area.innerHTML=
-  `<button class="login" onclick="openLogin()">Login</button>`;
-
-  status.innerText="আপনি এখনো Login করেননি।";
- }
-}
-
+/* =====================================
+AUTH LISTENER
+===================================== */
 
 db.auth.onAuthStateChange(
  (_event,session)=>{
-  updateUser(session?.user||null);
+
+  updateUser(
+   session?.user || null
+  );
+
   loadFeed();
+
  }
 );
 
 
 /* =====================================
-   POST
+POST BOX
 ===================================== */
 
-function openPostBox(type){
+async function requireLogin(){
 
- requireLogin(async function(){
+ const user=await getUser();
 
-  document.getElementById("postModal").style.display="flex";
+ if(!user){
 
-  const file=document.getElementById("mediaFile");
+  openLogin();
 
-  if(type==="photo"){
-   file.accept="image/*";
-  }
+  return false;
 
-  if(type==="video"){
-   file.accept="video/*";
-  }
+ }
 
- });
+ return true;
+
+}
+
+
+async function openPostBox(type){
+
+ const ok=
+ await requireLogin();
+
+ if(!ok) return;
+
+
+ document.getElementById(
+  "postModal"
+ ).style.display="flex";
+
+
+ const file=
+ document.getElementById(
+  "mediaFile"
+ );
+
+
+ const text=
+ document.getElementById(
+  "postText"
+ );
+
+
+ if(type==="photo"){
+
+  file.accept="image/*";
+
+  text.placeholder=
+  "Photo সম্পর্কে কিছু লিখুন...";
+
+ }else if(type==="video"){
+
+  file.accept="video/*";
+
+  text.placeholder=
+  "Video সম্পর্কে কিছু লিখুন...";
+
+ }else{
+
+  file.accept="image/*,video/*";
+
+  text.placeholder=
+  "What's on your mind?";
+
+ }
 
 }
 
 
 function closePostBox(){
- document.getElementById("postModal").style.display="none";
+
+ document.getElementById(
+  "postModal"
+ ).style.display="none";
+
+
+ document.getElementById(
+  "postMsg"
+ ).innerText="";
+
 }
 
 
 function showFileName(){
 
- const file=document.getElementById("mediaFile").files[0];
+ const file=
+ document.getElementById(
+  "mediaFile"
+ ).files[0];
 
- document.getElementById("fileName").innerText=
- file ? "Selected: "+file.name : "";
+
+ document.getElementById(
+  "fileName"
+ ).innerText=
+ file
+ ?
+ "Selected: "+file.name
+ :
+ "";
 
 }
 
 
+/* =====================================
+PUBLISH POST
+===================================== */
+
 async function publishPost(){
 
- const user=await getUser();
+ const user=
+ await getUser();
+
 
  if(!user){
+
   closePostBox();
+
   openLogin();
+
   return;
  }
+
 
  const text=
- document.getElementById("postText").value.trim();
+ document.getElementById(
+  "postText"
+ ).value.trim();
+
 
  const file=
- document.getElementById("mediaFile").files[0];
+ document.getElementById(
+  "mediaFile"
+ ).files[0];
+
 
  if(!text && !file){
-  document.getElementById("postMsg").innerText=
+
+  document.getElementById(
+   "postMsg"
+  ).innerText=
   "Post বা Photo/Video দিন।";
+
   return;
+
  }
 
- document.getElementById("postMsg").innerText=
+
+ const msg=
+ document.getElementById(
+  "postMsg"
+ );
+
+
+ msg.innerText=
  "Publishing...";
 
+
  let media_url=null;
+
  let media_type=null;
+
+
+ /* FILE */
 
  if(file){
 
-  if(file.size>50*1024*1024){
-   document.getElementById("postMsg").innerText=
+  if(
+   file.size >
+   50 * 1024 * 1024
+  ){
+
+   msg.innerText=
    "File সর্বোচ্চ 50MB হতে পারবে।";
+
    return;
+
   }
 
-  media_type=
-   file.type.startsWith("video/")
-   ? "video"
-   : "image";
 
-  const ext=file.name.split(".").pop();
+  media_type=
+  file.type.startsWith("video/")
+  ?
+  "video"
+  :
+  "image";
+
+
+  const extension=
+  file.name
+  .split(".")
+  .pop()
+  .toLowerCase();
+
+
+  const safeExtension=
+  extension.replace(
+   /[^a-z0-9]/g,
+   ""
+  ) || "file";
+
 
   const path=
-   user.id+"/"+Date.now()+"."+ext;
+  user.id+
+  "/"+
+  Date.now()+
+  "-" +
+  Math.random()
+  .toString(36)
+  .substring(2,8)+
+  "."+
+  safeExtension;
 
-  const {error:uploadError}=
-   await db.storage
-   .from("complaint-media")
-   .upload(path,file,{
-    upsert:false
-   });
+
+  const {
+   error:uploadError
+  }=
+  await db.storage
+  .from("complaint-media")
+  .upload(
+   path,
+   file,
+   {
+    upsert:false,
+    contentType:file.type
+   }
+  );
+
 
   if(uploadError){
 
-   document.getElementById("postMsg").innerText=
-   "Upload failed: "+uploadError.message;
+   msg.innerText=
+   "Upload failed: "+
+   uploadError.message;
 
    return;
+
   }
 
-  const {data:urlData}=
-   db.storage
-   .from("complaint-media")
-   .getPublicUrl(path);
 
-  media_url=urlData.publicUrl;
+  const {
+   data:urlData
+  }=
+  db.storage
+  .from("complaint-media")
+  .getPublicUrl(path);
+
+
+  media_url=
+  urlData.publicUrl;
+
  }
 
 
- const {error}=
- await db.from("posts").insert({
+ /* DATABASE */
+
+ const {
+  error
+ }=
+ await db
+ .from("posts")
+ .insert({
 
   user_id:user.id,
 
@@ -841,111 +1559,192 @@ async function publishPost(){
 
  if(error){
 
-  document.getElementById("postMsg").innerText=
-  "Post failed: "+error.message;
+  msg.innerText=
+  "Post failed: "+
+  error.message;
 
   return;
+
  }
 
 
- document.getElementById("postMsg").innerText=
- "Published ✅";
+ msg.innerText=
+ "Published successfully ✅";
 
- document.getElementById("postText").value="";
- document.getElementById("mediaFile").value="";
- document.getElementById("fileName").innerText="";
 
- setTimeout(()=>{
+ document.getElementById(
+  "postText"
+ ).value="";
 
-  closePostBox();
-  loadFeed();
 
- },700);
+ document.getElementById(
+  "mediaFile"
+ ).value="";
+
+
+ document.getElementById(
+  "fileName"
+ ).innerText="";
+
+
+ setTimeout(
+  ()=>{
+   closePostBox();
+   loadFeed();
+  },
+  700
+ );
 
 }
 
 
 /* =====================================
-   FEED
+LOAD FEED
 ===================================== */
 
 async function loadFeed(){
 
- const feed=document.getElementById("feed");
+ const feed=
+ document.getElementById(
+  "feed"
+ );
 
- const {data:posts,error}=
- await db.from("posts")
+
+ if(!feed) return;
+
+
+ feed.innerHTML=
+ `<div class="card loading">
+  Post loading...
+ </div>`;
+
+
+ const {
+  data:posts,
+  error
+ }=
+ await db
+ .from("posts")
  .select("*")
- .order("created_at",{ascending:false});
+ .order(
+  "created_at",
+  {
+   ascending:false
+  }
+ );
 
 
  if(error){
 
   feed.innerHTML=
-  `<div class="card empty">
-   Feed load failed.<br>${escapeHTML(error.message)}
+  `<div class="card error">
+   Feed load failed.<br>
+   ${escapeHTML(error.message)}
   </div>`;
 
   return;
+
  }
 
 
- if(!posts || posts.length===0){
+ if(
+  !posts ||
+  posts.length===0
+ ){
 
   feed.innerHTML=
   `<div class="card empty">
-   এখনো কোনো Post নেই।
+   এখনো কোনো Post নেই।<br>
+   প্রথম Post আপনিই করুন 😊
   </div>`;
 
   return;
+
  }
 
 
  let html="";
 
- for(const post of posts){
 
-  html+=await renderPost(post);
+ for(
+  const post of posts
+ ){
+
+  html +=
+  await renderPost(post);
 
  }
+
 
  feed.innerHTML=html;
 
 }
 
 
+/* =====================================
+RENDER POST
+===================================== */
+
 async function renderPost(post){
 
+ const user=
+ await getUser();
+
+
  const reactions=
- await getReactionCounts(post.id);
+ await getReactionCounts(
+  post.id
+ );
+
 
  const comments=
- await getComments(post.id);
+ await getComments(
+  post.id
+ );
 
- const identity=
- post.user_id
- ? "PASSTIME User"
- : "User";
+
+ const myReaction=
+ user
+ ?
+ await getMyReaction(
+  post.id,
+  user.id
+ )
+ :
+ null;
+
+
+ const isOwner=
+ user &&
+ user.id===post.user_id;
 
 
  let media="";
 
+
  if(post.media_url){
 
-  if(post.media_type==="video"){
+  if(
+   post.media_type==="video"
+  ){
 
    media=
-   `<video class="post-media"
+   `<video
+    class="post-media"
     controls
+    preload="metadata"
     src="${escapeAttr(post.media_url)}">
    </video>`;
 
   }else{
 
    media=
-   `<img class="post-media"
+   `<img
+    class="post-media"
     src="${escapeAttr(post.media_url)}"
-    alt="Post image">`;
+    alt="Post image"
+    loading="lazy"
+    onclick="openImage('${escapeAttr(post.media_url)}')">`;
 
   }
 
@@ -954,28 +1753,857 @@ async function renderPost(post){
 
  let commentHTML="";
 
- comments.forEach(c=>{
 
-  commentHTML+=
+ for(
+  const comment of comments
+ ){
+
+  const canDelete=
+  user &&
+  user.id===comment.user_id;
+
+
+  commentHTML +=
   `<div class="comment">
-   <b>User</b><br>
-   ${escapeHTML(c.content)}
+
+   ${
+    canDelete
+    ?
+    `<button
+     class="comment-delete"
+     onclick="deleteComment(${comment.id})">
+     Delete
+     </button>`
+    :
+    ""
+   }
+
+   <div class="comment-user">
+    User
+   </div>
+
+   <div>
+    ${escapeHTML(comment.content)}
+   </div>
+
+   <div class="comment-date">
+    ${formatDate(comment.created_at)}
+   </div>
+
   </div>`;
 
- });
+ }
 
 
  return `
+
  <div class="card">
 
   <div class="post-head">
 
    <div class="post-user">
-    ${identity}
+    👤 PASSTIME User
    </div>
 
-   <div class="post-date">
-    ${formatDate(post.created_at)}
+   <div>
+
+    ${
+     isOwner
+     ?
+     `<button
+      class="delete-post"
+      onclick="deletePost(${post.id}, '${escapeAttr(post.media_url || "")}')">
+      🗑 Delete
+      </button>`
+     :
+     ""
+    }
+
    </div>
 
- 
+  </div>
+
+
+  <div class="post-date">
+   ${formatDate(post.created_at)}
+  </div>
+
+
+  ${
+   post.content
+   ?
+   `<div class="post-text">
+    ${escapeHTML(post.content)}
+   </div>`
+   :
+   ""
+  }
+
+
+  ${media}
+
+
+  <div class="reactions">
+
+   ${reactionButton(
+    "👍",
+    "Like",
+    reactions.like,
+    myReaction==="like",
+    post.id
+   )}
+
+   ${reactionButton(
+    "❤️",
+    "Love",
+    reactions.love,
+    myReaction==="love",
+    post.id
+   )}
+
+   ${reactionButton(
+    "😂",
+    "Haha",
+    reactions.haha,
+    myReaction==="haha",
+    post.id
+   )}
+
+   ${reactionButton(
+    "😮",
+    "Wow",
+    reactions.wow,
+    myReaction==="wow",
+    post.id
+   )}
+
+   ${reactionButton(
+    "😢",
+    "Sad",
+    reactions.sad,
+    myReaction==="sad",
+    post.id
+   )}
+
+   ${reactionButton(
+    "😡",
+    "Angry",
+    reactions.angry,
+    myReaction==="angry",
+    post.id
+   )}
+
+  </div>
+
+
+  <div class="actions">
+
+   <button
+   onclick="reactToPost(${post.id},'like')">
+   👍 Like
+   </button>
+
+   <button
+   onclick="focusComment(${post.id})">
+   💬 Comment
+   </button>
+
+  </div>
+
+
+  <div class="comments">
+
+   <b>
+    💬 Comments
+   </b>
+
+
+   <div id="comments-${post.id}">
+
+    ${
+     commentHTML ||
+     `<div style="color:#888;font-size:13px;margin-top:8px">
+      No comments yet.
+     </div>`
+    }
+
+   </div>
+
+
+   ${
+    user
+    ?
+    `<div class="comment-input">
+
+     <input
+      id="comment-${post.id}"
+      placeholder="Write a comment..."
+      onkeydown="commentEnter(event,${post.id})">
+
+     <button
+      onclick="addComment(${post.id})">
+      Send
+     </button>
+
+    </div>`
+    :
+    `<div style="margin-top:10px;color:#777;font-size:13px">
+     Comment করতে Login করুন।
+     </div>`
+   }
+
+  </div>
+
+ </div>
+
+ `;
+
+}
+
+
+/* =====================================
+REACTION BUTTON
+===================================== */
+
+function reactionButton(
+ emoji,
+ name,
+ count,
+ active,
+ postId
+){
+
+ return `
+ <button
+ class="${active ? "active" : ""}"
+ onclick="reactToPost(${postId},'${name.toLowerCase()}')">
+ ${emoji} ${name} ${count || ""}
+ </button>
+ `;
+
+}
+
+
+/* =====================================
+REACTIONS
+===================================== */
+
+async function getReactionCounts(postId){
+
+ const {
+  data,
+  error
+ }=
+ await db
+ .from("reactions")
+ .select(
+  "reaction_type"
+ )
+ .eq(
+  "post_id",
+  postId
+ );
+
+
+ const result={
+  like:0,
+  love:0,
+  haha:0,
+  wow:0,
+  sad:0,
+  angry:0
+ };
+
+
+ if(error) return result;
+
+
+ (data || []).forEach(
+  r=>{
+
+   if(
+    Object.prototype
+    .hasOwnProperty
+    .call(
+     result,
+     r.reaction_type
+    )
+   ){
+
+    result[
+     r.reaction_type
+    ]++;
+
+   }
+
+  }
+ );
+
+
+ return result;
+
+}
+
+
+async function getMyReaction(
+ postId,
+ userId
+){
+
+ const {
+  data
+ }=
+ await db
+ .from("reactions")
+ .select("reaction_type")
+ .eq("post_id",postId)
+ .eq("user_id",userId)
+ .maybeSingle();
+
+
+ return data
+ ? data.reaction_type
+ : null;
+
+}
+
+
+async function reactToPost(
+ postId,
+ type
+){
+
+ const user=
+ await getUser();
+
+
+ if(!user){
+
+  openLogin();
+
+  return;
+
+ }
+
+
+ const current=
+ await getMyReaction(
+  postId,
+  user.id
+ );
+
+
+ /* SAME REACTION = REMOVE */
+
+ if(current===type){
+
+  const {
+   error
+  }=
+  await db
+  .from("reactions")
+  .delete()
+  .eq("post_id",postId)
+  .eq("user_id",user.id);
+
+
+  if(error){
+
+   alert(
+    "Reaction failed: "+
+    error.message
+   );
+
+   return;
+
+  }
+
+ }else{
+
+  /* OTHER REACTION = UPDATE/INSERT */
+
+  const {
+   error
+  }=
+  await db
+  .from("reactions")
+  .upsert(
+   {
+    post_id:postId,
+    user_id:user.id,
+    reaction_type:type
+   },
+   {
+    onConflict:
+    "post_id,user_id"
+   }
+  );
+
+
+  if(error){
+
+   alert(
+    "Reaction failed: "+
+    error.message
+   );
+
+   return;
+
+  }
+
+ }
+
+
+ loadFeed();
+
+}
+
+
+/* =====================================
+COMMENTS
+===================================== */
+
+async function getComments(postId){
+
+ const {
+  data,
+  error
+ }=
+ await db
+ .from("comments")
+ .select("*")
+ .eq("post_id",postId)
+ .order(
+  "created_at",
+  {
+   ascending:true
+  }
+ );
+
+
+ if(error) return [];
+
+
+ return data || [];
+
+}
+
+
+async function addComment(postId){
+
+ const user=
+ await getUser();
+
+
+ if(!user){
+
+  openLogin();
+
+  return;
+
+ }
+
+
+ const input=
+ document.getElementById(
+  "comment-"+postId
+ );
+
+
+ if(!input) return;
+
+
+ const content=
+ input.value.trim();
+
+
+ if(!content){
+
+  return;
+
+ }
+
+
+ input.disabled=true;
+
+
+ const {
+  error
+ }=
+ await db
+ .from("comments")
+ .insert({
+
+  post_id:postId,
+
+  user_id:user.id,
+
+  content:content
+
+ });
+
+
+ input.disabled=false;
+
+
+ if(error){
+
+  alert(
+   "Comment failed: "+
+   error.message
+  );
+
+  return;
+
+ }
+
+
+ input.value="";
+
+
+ loadFeed();
+
+}
+
+
+function commentEnter(
+ event,
+ postId
+){
+
+ if(event.key==="Enter"){
+
+  event.preventDefault();
+
+  addComment(postId);
+
+ }
+
+}
+
+
+function focusComment(postId){
+
+ const input=
+ document.getElementById(
+  "comment-"+postId
+ );
+
+
+ if(input){
+
+  input.focus();
+
+ }else{
+
+  openLogin();
+
+ }
+
+}
+
+
+async function deleteComment(
+ commentId
+){
+
+ const user=
+ await getUser();
+
+
+ if(!user){
+
+  openLogin();
+
+  return;
+
+ }
+
+
+ if(
+  !confirm(
+   "এই comment delete করবেন?"
+  )
+ ){
+
+  return;
+
+ }
+
+
+ const {
+  error
+ }=
+ await db
+ .from("comments")
+ .delete()
+ .eq("id",commentId)
+ .eq("user_id",user.id);
+
+
+ if(error){
+
+  alert(
+   "Delete failed: "+
+   error.message
+  );
+
+  return;
+
+ }
+
+
+ loadFeed();
+
+}
+
+
+/* =====================================
+DELETE POST
+===================================== */
+
+async function deletePost(
+ postId,
+ mediaUrl
+){
+
+ const user=
+ await getUser();
+
+
+ if(!user){
+
+  openLogin();
+
+  return;
+
+ }
+
+
+ if(
+  !confirm(
+   "এই Post delete করবেন?"
+  )
+ ){
+
+  return;
+
+ }
+
+
+ const {
+  error
+ }=
+ await db
+ .from("posts")
+ .delete()
+ .eq("id",postId)
+ .eq("user_id",user.id);
+
+
+ if(error){
+
+  alert(
+   "Delete failed: "+
+   error.message
+  );
+
+  return;
+
+ }
+
+
+ /* STORAGE FILE DELETE */
+
+ if(mediaUrl){
+
+  try{
+
+   const marker=
+   "/object/public/complaint-media/";
+
+   const index=
+   mediaUrl.indexOf(marker);
+
+
+   if(index!==-1){
+
+    const path=
+    decodeURIComponent(
+     mediaUrl.substring(
+      index+marker.length
+     )
+    );
+
+
+    await db.storage
+    .from("complaint-media")
+    .remove([path]);
+
+   }
+
+  }catch(e){
+
+   console.log(
+    "Media delete skipped",
+    e
+   );
+
+  }
+
+ }
+
+
+ loadFeed();
+
+}
+
+
+/* =====================================
+IMAGE VIEW
+===================================== */
+
+function openImage(url){
+
+ const win=
+ window.open(
+  "",
+  "_blank"
+ );
+
+
+ if(!win) return;
+
+
+ win.document.write(`
+
+ <html>
+
+ <head>
+
+ <title>PASSTIME Image</title>
+
+ <style>
+
+ body{
+  margin:0;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+ }
+
+ img{
+  max-width:100%;
+  max-height:100vh;
+  object-fit:contain;
+ }
+
+ </style>
+
+ </head>
+
+ <body>
+
+ <img src="${escapeAttr(url)}">
+
+ </body>
+
+ </html>
+
+ `);
+
+}
+
+
+/* =====================================
+INITIAL LOAD
+===================================== */
+
+async function init(){
+
+ const user=
+ await getUser();
+
+
+ updateUser(user);
+
+
+ await loadFeed();
+
+}
+
+
+init();
+
+
+/* =====================================
+AUTH STATE
+===================================== */
+
+db.auth.onAuthStateChange(
+ (event,session)=>{
+
+  updateUser(
+   session?.user || null
+  );
+
+  if(
+   event !== "INITIAL_SESSION"
+  ){
+
+   setTimeout(
+    loadFeed,
+    100
+   );
+
+  }
+
+ }
+);
+
+
+/* =====================================
+CLOSE MODALS OUTSIDE
+===================================== */
+
+window.addEventListener(
+ "click",
+ function(event){
+
+  const loginModal=
+  document.getElementById(
+   "loginModal"
+  );
+
+  const postModal=
+  document.getElementById(
+   "postModal"
+  );
+
+
+  if(
+   event.target===loginModal
+  ){
+
+   closeLogin();
+
+  }
+
+
+  if(
+   event.target===postModal
+  ){
+
+   closePostBox();
+
+  }
+
+ }
+);
+
+</script>
+
+</body>
+</html>
