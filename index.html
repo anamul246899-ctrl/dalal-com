@@ -26,15 +26,17 @@ body{
   min-height:100vh;
 }
 
-button,
-input,
-textarea,
-select{
+button,input,textarea,select{
   font:inherit;
 }
 
 button{
   cursor:pointer;
+}
+
+button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
 }
 
 .hidden{
@@ -208,7 +210,7 @@ button{
 
 .topbar-inner{
   width:100%;
-  max-width:1150px;
+  max-width:1100px;
   margin:auto;
   display:flex;
   align-items:center;
@@ -279,9 +281,9 @@ button{
 
 .main{
   width:100%;
-  max-width:1150px;
+  max-width:1100px;
   margin:auto;
-  padding:22px 15px 100px;
+  padding:20px 15px 95px;
 }
 
 .page{
@@ -315,17 +317,11 @@ button{
   line-height:1.6;
 }
 
-.home-grid{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 330px;
-  gap:18px;
-}
-
 .card{
   background:#0a2117;
   border:1px solid #193e2d;
   border-radius:17px;
-  padding:18px;
+  padding:17px;
   margin-bottom:16px;
 }
 
@@ -333,35 +329,6 @@ button{
   font-size:17px;
   font-weight:bold;
   margin-bottom:13px;
-}
-
-.action-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-
-.action-btn{
-  border:1px solid #22543c;
-  background:#0b291c;
-  color:#d5f3e2;
-  padding:15px;
-  border-radius:12px;
-  text-align:left;
-}
-
-.action-btn:hover{
-  border-color:#35c979;
-  background:#0e3323;
-}
-
-.action-btn strong{
-  display:block;
-  margin-bottom:4px;
-}
-
-.action-btn small{
-  color:#83a696;
 }
 
 /* =========================
@@ -390,7 +357,7 @@ button{
 
 .composer textarea{
   width:100%;
-  min-height:110px;
+  min-height:105px;
   resize:vertical;
   border:1px solid #244b38;
   background:#06170f;
@@ -492,8 +459,8 @@ button{
 }
 
 .story-ring{
-  width:66px;
-  height:66px;
+  width:68px;
+  height:68px;
   margin:auto;
   padding:2px;
   border-radius:50%;
@@ -511,10 +478,26 @@ button{
   overflow:hidden;
 }
 
-.story-inner img{
+.story-inner img,
+.story-inner video{
   width:100%;
   height:100%;
   object-fit:cover;
+}
+
+.story-text-circle{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:7px;
+  text-align:center;
+  font-size:10px;
+  line-height:1.2;
+  color:#d9f6e5;
+  background:#103d29;
+  overflow:hidden;
 }
 
 .story-name{
@@ -530,8 +513,8 @@ button{
   border:1px dashed #357354;
   background:#0a2117;
   color:#86b39a;
-  width:66px;
-  height:66px;
+  width:68px;
+  height:68px;
   border-radius:50%;
   font-size:25px;
 }
@@ -681,27 +664,234 @@ button{
 }
 
 /* =========================
-   HELP
+   CHAT
 ========================= */
 
-.help-item{
-  border:1px solid #1c4431;
-  border-radius:12px;
-  padding:14px;
-  margin-bottom:10px;
+.chat-layout{
+  display:grid;
+  grid-template-columns:290px minmax(0,1fr);
+  min-height:650px;
   background:#0a2117;
+  border:1px solid #193e2d;
+  border-radius:17px;
+  overflow:hidden;
 }
 
-.help-item h3{
-  font-size:15px;
-  margin-bottom:5px;
-  color:#d9f5e5;
+.chat-users{
+  border-right:1px solid #193e2d;
+  background:#081d14;
 }
 
-.help-item p{
-  color:#92ae9f;
-  line-height:1.55;
+.chat-search{
+  padding:13px;
+  border-bottom:1px solid #193e2d;
+}
+
+.chat-search input{
+  width:100%;
+  background:#06170f;
+  color:#fff;
+  border:1px solid #244b38;
+  border-radius:10px;
+  padding:10px 12px;
+  outline:none;
+}
+
+.user-list{
+  max-height:580px;
+  overflow-y:auto;
+}
+
+.chat-user{
+  width:100%;
+  border:0;
+  background:transparent;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px;
+  text-align:left;
+  border-bottom:1px solid #102c20;
+}
+
+.chat-user:hover,
+.chat-user.active{
+  background:#103624;
+}
+
+.chat-user-info{
+  min-width:0;
+}
+
+.chat-user-info strong{
+  display:block;
   font-size:13px;
+}
+
+.chat-user-info small{
+  color:#779889;
+  display:block;
+  margin-top:2px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.chat-window{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+
+.chat-header{
+  min-height:65px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 15px;
+  border-bottom:1px solid #193e2d;
+}
+
+.chat-header-info{
+  flex:1;
+  min-width:0;
+}
+
+.chat-header-info strong{
+  display:block;
+}
+
+.chat-header-info small{
+  color:#779889;
+}
+
+.call-btn{
+  border:1px solid #2c714e;
+  background:#0c3021;
+  color:#69e6a1;
+  border-radius:9px;
+  padding:8px 11px;
+}
+
+.messages-box{
+  flex:1;
+  min-height:450px;
+  max-height:520px;
+  overflow-y:auto;
+  padding:15px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  background:#06170f;
+}
+
+.message-row{
+  display:flex;
+}
+
+.message-row.mine{
+  justify-content:flex-end;
+}
+
+.message{
+  max-width:78%;
+  border-radius:15px;
+  padding:9px 12px;
+  background:#102c20;
+  color:#d9eee2;
+  overflow-wrap:anywhere;
+}
+
+.message-row.mine .message{
+  background:#15945a;
+  color:#fff;
+}
+
+.message-time{
+  font-size:9px;
+  opacity:.65;
+  margin-top:4px;
+}
+
+.message-media{
+  max-width:240px;
+  max-height:300px;
+  border-radius:10px;
+  display:block;
+  margin-bottom:5px;
+}
+
+.chat-input-area{
+  border-top:1px solid #193e2d;
+  padding:10px;
+}
+
+.chat-file-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:7px;
+}
+
+.chat-file-label{
+  border:1px solid #285a42;
+  background:#0b2a1d;
+  color:#bdebd1;
+  border-radius:8px;
+  padding:7px 10px;
+  font-size:12px;
+  cursor:pointer;
+}
+
+.chat-file-label input{
+  display:none;
+}
+
+.chat-selected-file{
+  color:#7fa391;
+  font-size:11px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.chat-send-row{
+  display:flex;
+  gap:7px;
+}
+
+.chat-send-row textarea{
+  flex:1;
+  min-width:0;
+  resize:none;
+  min-height:43px;
+  max-height:100px;
+  background:#06170f;
+  color:#fff;
+  border:1px solid #244b38;
+  border-radius:10px;
+  padding:10px;
+  outline:none;
+}
+
+.chat-send-row button{
+  border:0;
+  background:#15945a;
+  color:#fff;
+  border-radius:10px;
+  padding:0 15px;
+  font-weight:bold;
+}
+
+.chat-empty{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#6f8e7e;
+  text-align:center;
+  padding:30px;
 }
 
 /* =========================
@@ -763,10 +953,41 @@ button{
   line-height:1.5;
 }
 
+.profile-phone{
+  color:#759888;
+  font-size:13px;
+  margin-top:8px;
+}
+
 .profile-actions{
   display:flex;
+  flex-wrap:wrap;
   gap:8px;
   margin-top:14px;
+}
+
+/* =========================
+   HELP
+========================= */
+
+.help-item{
+  border:1px solid #1c4431;
+  border-radius:12px;
+  padding:14px;
+  margin-bottom:10px;
+  background:#0a2117;
+}
+
+.help-item h3{
+  font-size:15px;
+  margin-bottom:5px;
+  color:#d9f5e5;
+}
+
+.help-item p{
+  color:#92ae9f;
+  line-height:1.55;
+  font-size:13px;
 }
 
 /* =========================
@@ -880,17 +1101,59 @@ button{
   font-size:23px;
 }
 
+/* STORY VIEWER */
+
+.story-viewer{
+  text-align:center;
+}
+
+.story-viewer-media{
+  max-width:100%;
+  max-height:65vh;
+  border-radius:12px;
+  margin:auto;
+  display:block;
+}
+
+.story-viewer-text{
+  padding:25px 15px;
+  border-radius:15px;
+  background:#103d29;
+  font-size:22px;
+  line-height:1.5;
+  color:#eafff2;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+
+.story-viewer-caption{
+  margin-top:12px;
+  color:#a9c6b6;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+
 /* =========================
    RESPONSIVE
 ========================= */
 
 @media(max-width:850px){
-  .home-grid{
+
+  .chat-layout{
     grid-template-columns:1fr;
+  }
+
+  .chat-users{
+    display:none;
+  }
+
+  .chat-window{
+    min-height:650px;
   }
 }
 
 @media(max-width:650px){
+
   .topbar{
     height:59px;
     padding:0 12px;
@@ -910,19 +1173,15 @@ button{
   }
 
   .main{
-    padding:14px 10px 85px;
+    padding:13px 9px 85px;
   }
 
   .hero{
-    padding:19px;
+    padding:18px;
   }
 
   .hero h2{
     font-size:23px;
-  }
-
-  .action-grid{
-    grid-template-columns:1fr;
   }
 
   .mobile-bottom-nav{
@@ -975,15 +1234,40 @@ button{
   .auth-card{
     padding:21px;
   }
+
+  .chat-window{
+    min-height:620px;
+  }
+
+  .messages-box{
+    min-height:400px;
+  }
+
+  .message{
+    max-width:86%;
+  }
+
+  .composer-options{
+    align-items:stretch;
+  }
+
+  .post-btn{
+    margin-left:0;
+    width:100%;
+  }
+
+  .media-preview{
+    grid-template-columns:repeat(2,1fr);
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     AUTH SCREEN
-========================= -->
+<!-- =====================================================
+     AUTH
+===================================================== -->
 
 <section id="authScreen" class="auth-screen">
 
@@ -995,16 +1279,23 @@ button{
     </div>
 
     <div class="auth-tabs">
-      <button id="loginTab" class="active" onclick="showAuth('login')">
+
+      <button
+        id="loginTab"
+        class="active"
+        onclick="showAuth('login')"
+      >
         Login
       </button>
 
-      <button id="signupTab" onclick="showAuth('signup')">
+      <button
+        id="signupTab"
+        onclick="showAuth('signup')"
+      >
         Create Account
       </button>
-    </div>
 
-    <!-- LOGIN -->
+    </div>
 
     <div id="loginForm">
 
@@ -1019,9 +1310,11 @@ button{
       </div>
 
       <div class="field">
+
         <label>Password</label>
 
         <div class="password-wrap">
+
           <input
             id="loginPassword"
             type="password"
@@ -1036,7 +1329,9 @@ button{
           >
             Show
           </button>
+
         </div>
+
       </div>
 
       <button
@@ -1054,12 +1349,12 @@ button{
 
     </div>
 
-    <!-- SIGNUP -->
 
     <div id="signupForm" class="hidden">
 
       <div class="field">
         <label>Full Name</label>
+
         <input
           id="signupName"
           type="text"
@@ -1070,6 +1365,7 @@ button{
 
       <div class="field">
         <label>Phone Number</label>
+
         <input
           id="signupPhone"
           type="tel"
@@ -1080,6 +1376,7 @@ button{
 
       <div class="field">
         <label>Username</label>
+
         <input
           id="signupUsername"
           type="text"
@@ -1089,9 +1386,11 @@ button{
       </div>
 
       <div class="field">
+
         <label>Password</label>
 
         <div class="password-wrap">
+
           <input
             id="signupPassword"
             type="password"
@@ -1106,7 +1405,9 @@ button{
           >
             Show
           </button>
+
         </div>
+
       </div>
 
       <button
@@ -1129,505 +1430,536 @@ button{
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      APP
-========================= -->
+===================================================== -->
 
 <section id="app" class="hidden">
 
-  <!-- TOPBAR -->
+<header class="topbar">
 
-  <header class="topbar">
+  <div class="topbar-inner">
 
-    <div class="topbar-inner">
+    <button
+      class="brand"
+      type="button"
+      onclick="go('home')"
+    >
+      ঘুষ সাইট
+    </button>
+
+
+    <nav class="nav">
 
       <button
-        class="brand"
-        type="button"
+        id="navHome"
+        class="active"
         onclick="go('home')"
       >
-        ঘুষ সাইট
+        Home
       </button>
 
-      <!-- ONLY HOME / HELP / PROFILE -->
+      <button
+        id="navChat"
+        onclick="go('chat')"
+      >
+        Chat
+      </button>
 
-      <nav class="nav">
+      <button
+        id="navProfile"
+        onclick="go('profile')"
+      >
+        Profile
+      </button>
+
+    </nav>
+
+
+    <div class="mini-user">
+
+      <div
+        id="miniAvatar"
+        class="avatar"
+      >
+        U
+      </div>
+
+      <span id="miniName">
+        User
+      </span>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<main class="main">
+
+<!-- =====================================================
+     HOME
+===================================================== -->
+
+<section
+  id="homePage"
+  class="page active"
+>
+
+  <div class="hero">
+
+    <h2>
+      Welcome to <span>ঘুষ সাইট</span>
+    </h2>
+
+    <p>
+      Share your experience responsibly. Report corruption,
+      bribery, middlemen, fraud and public-service problems.
+    </p>
+
+  </div>
+
+
+  <!-- STORIES -->
+
+  <div class="card">
+
+    <div class="card-title">
+      Stories
+    </div>
+
+    <div
+      id="storiesBox"
+      class="stories"
+    >
+
+      <div class="story">
 
         <button
-          id="navHome"
-          class="active"
-          type="button"
-          onclick="go('home')"
+          class="add-story"
+          onclick="openStoryModal()"
         >
-          Home
+          +
         </button>
 
-        <button
-          id="navHelp"
-          type="button"
-          onclick="go('help')"
-        >
-          Help
-        </button>
-
-        <button
-          id="navProfile"
-          type="button"
-          onclick="go('profile')"
-        >
-          Profile
-        </button>
-
-      </nav>
-
-      <div class="mini-user">
-
-        <div
-          id="miniAvatar"
-          class="avatar"
-        >
-          U
+        <div class="story-name">
+          Add Story
         </div>
-
-        <span id="miniName">User</span>
 
       </div>
 
     </div>
 
-  </header>
+  </div>
 
 
-  <!-- MAIN -->
+  <!-- COMPOSER -->
 
-  <main class="main">
-
-    <!-- =====================
-         HOME
-    ====================== -->
-
-    <section
-      id="homePage"
-      class="page active"
-    >
-
-      <div class="hero">
-
-        <h2>
-          Welcome to <span>ঘুষ সাইট</span>
-        </h2>
-
-        <p>
-          Share your experience responsibly. You can report corruption,
-          bribery, middlemen, fraud and public-service problems.
-        </p>
-
-      </div>
-
-
-      <!-- QUICK ACTIONS -->
-
-      <div class="card">
-
-        <div class="card-title">
-          Quick Actions
-        </div>
-
-        <div class="action-grid">
-
-          <button
-            class="action-btn"
-            type="button"
-            onclick="focusComposer()"
-          >
-            <strong>Create Report</strong>
-            <small>Share a problem or experience</small>
-          </button>
-
-          <button
-            class="action-btn"
-            type="button"
-            onclick="go('help')"
-          >
-            <strong>Help</strong>
-            <small>Learn how to use the site</small>
-          </button>
-
-          <button
-            class="action-btn"
-            type="button"
-            onclick="go('profile')"
-          >
-            <strong>Profile</strong>
-            <small>Manage your account</small>
-          </button>
-
-          <button
-            class="action-btn"
-            type="button"
-            onclick="logout()"
-          >
-            <strong>Logout</strong>
-            <small>Sign out securely</small>
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <!-- STORIES -->
-
-      <div class="card">
-
-        <div class="card-title">
-          Stories
-        </div>
-
-        <div id="storiesBox" class="stories">
-
-          <div class="story">
-            <button
-              class="add-story"
-              type="button"
-              onclick="openStoryModal()"
-            >
-              +
-            </button>
-
-            <div class="story-name">
-              Add Story
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- COMPOSER -->
-
-      <div
-        id="composer"
-        class="composer"
-      >
-
-        <div class="composer-head">
-
-          <div
-            id="composerAvatar"
-            class="avatar"
-          >
-            U
-          </div>
-
-          <div class="composer-head-text">
-            What happened?
-          </div>
-
-        </div>
-
-        <textarea
-          id="postText"
-          maxlength="5000"
-          placeholder="Write your report or experience here..."
-        ></textarea>
-
-
-        <div
-          id="mediaPreview"
-          class="media-preview"
-        ></div>
-
-
-        <div class="composer-options">
-
-          <label class="file-label">
-            📷 Photo / Video
-
-            <input
-              id="postMedia"
-              type="file"
-              accept="image/*,video/*"
-              multiple
-              onchange="previewPostMedia(this)"
-            >
-          </label>
-
-
-          <label class="check">
-
-            <input
-              id="anonymousPost"
-              type="checkbox"
-            >
-
-            Post anonymously
-
-          </label>
-
-
-          <button
-            id="postButton"
-            class="post-btn"
-            type="button"
-            onclick="createPost()"
-          >
-            Post
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <!-- FEED -->
-
-      <div id="feed">
-
-        <div class="loading">
-          <div class="spinner"></div>
-          Loading...
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================
-         HELP
-    ====================== -->
-
-    <section
-      id="helpPage"
-      class="page"
-    >
-
-      <div class="hero">
-
-        <h2>
-          Help
-        </h2>
-
-        <p>
-          Important information for using ঘুষ সাইট safely and responsibly.
-        </p>
-
-      </div>
-
-
-      <div class="help-item">
-
-        <h3>How do I create a report?</h3>
-
-        <p>
-          Go to Home, write your experience in the report box and press
-          Post. You can also attach photos or videos.
-        </p>
-
-      </div>
-
-
-      <div class="help-item">
-
-        <h3>Can I post anonymously?</h3>
-
-        <p>
-          Yes. Turn on “Post anonymously” before submitting your report.
-          Your profile name will not be displayed with that post.
-        </p>
-
-      </div>
-
-
-      <div class="help-item">
-
-        <h3>What should I report?</h3>
-
-        <p>
-          You may share experiences involving bribery, middlemen,
-          extortion, fraud, abuse of power, public-service harassment,
-          job-related money demands and other corruption-related issues.
-        </p>
-
-      </div>
-
-
-      <div class="help-item">
-
-        <h3>Important</h3>
-
-        <p>
-          Do not publish passwords, OTP codes, bank PINs, NID numbers,
-          private addresses or other highly sensitive personal information.
-        </p>
-
-      </div>
-
-
-      <div class="help-item">
-
-        <h3>Responsible reporting</h3>
-
-        <p>
-          Describe what you personally experienced and avoid unsupported
-          accusations against identifiable people. Keep reports factual
-          and respectful.
-        </p>
-
-      </div>
-
-
-      <div class="card">
-
-        <button
-          class="primary-btn"
-          type="button"
-          onclick="go('home')"
-        >
-          Back to Home
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================
-         PROFILE
-    ====================== -->
-
-    <section
-      id="profilePage"
-      class="page"
-    >
-
-      <div class="profile-box">
-
-        <div class="profile-cover"></div>
-
-        <div class="profile-main">
-
-          <div
-            id="profileAvatar"
-            class="profile-avatar"
-          >
-            U
-          </div>
-
-          <div
-            id="profileName"
-            class="profile-name"
-          >
-            User
-          </div>
-
-          <div
-            id="profileUsername"
-            class="profile-username"
-          >
-            @username
-          </div>
-
-          <div
-            id="profileBio"
-            class="profile-bio"
-          >
-            No bio yet.
-          </div>
-
-
-          <div class="profile-actions">
-
-            <button
-              class="secondary-btn"
-              type="button"
-              onclick="openProfileModal()"
-            >
-              Edit Profile
-            </button>
-
-            <button
-              class="secondary-btn"
-              type="button"
-              onclick="logout()"
-            >
-              Logout
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="card">
-
-        <div class="card-title">
-          My Reports
-        </div>
-
-        <div id="myPosts">
-
-          <div class="loading">
-            <div class="spinner"></div>
-            Loading...
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- MOBILE NAV -->
-
-  <nav
-    class="mobile-bottom-nav"
-    aria-label="Mobile navigation"
+  <div
+    id="composer"
+    class="composer"
   >
 
-    <button
-      type="button"
-      data-page="home"
-      class="active"
-      onclick="go('home')"
-    >
-      <span>⌂</span>
-      <small>Home</small>
-    </button>
+    <div class="composer-head">
 
-    <button
-      type="button"
-      data-page="help"
-      onclick="go('help')"
-    >
-      <span>?</span>
-      <small>Help</small>
-    </button>
+      <div
+        id="composerAvatar"
+        class="avatar"
+      >
+        U
+      </div>
 
-    <button
-      type="button"
-      data-page="profile"
-      onclick="go('profile')"
-    >
-      <span>●</span>
-      <small>Profile</small>
-    </button>
+      <div class="composer-head-text">
+        What happened?
+      </div>
 
-  </nav>
+    </div>
+
+
+    <textarea
+      id="postText"
+      maxlength="5000"
+      placeholder="Write your report or experience here..."
+    ></textarea>
+
+
+    <div
+      id="mediaPreview"
+      class="media-preview"
+    ></div>
+
+
+    <div class="composer-options">
+
+      <label class="file-label">
+
+        📷 Photo / Video
+
+        <input
+          id="postMedia"
+          type="file"
+          accept="image/*,video/*"
+          multiple
+          onchange="previewPostMedia(this)"
+        >
+
+      </label>
+
+
+      <label class="check">
+
+        <input
+          id="anonymousPost"
+          type="checkbox"
+        >
+
+        Post anonymously
+
+      </label>
+
+
+      <button
+        id="postButton"
+        class="post-btn"
+        onclick="createPost()"
+      >
+        Post
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- FEED -->
+
+  <div id="feed">
+
+    <div class="loading">
+      <div class="spinner"></div>
+      Loading...
+    </div>
+
+  </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
+     CHAT
+===================================================== -->
+
+<section
+  id="chatPage"
+  class="page"
+>
+
+  <div class="hero">
+
+    <h2>Chat</h2>
+
+    <p>
+      Find a user and start a private conversation.
+    </p>
+
+  </div>
+
+
+  <div class="chat-layout">
+
+    <!-- USER LIST -->
+
+    <aside class="chat-users">
+
+      <div class="chat-search">
+
+        <input
+          id="chatSearch"
+          type="search"
+          placeholder="Search users..."
+          oninput="searchUsers()"
+        >
+
+      </div>
+
+
+      <div
+        id="userList"
+        class="user-list"
+      >
+
+        <div class="empty">
+          Search for a user to start chatting.
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- CHAT WINDOW -->
+
+    <div class="chat-window">
+
+      <div
+        id="chatHeader"
+        class="chat-header hidden"
+      >
+
+        <div
+          id="chatHeaderAvatar"
+          class="avatar"
+        >
+          U
+        </div>
+
+        <div class="chat-header-info">
+
+          <strong id="chatHeaderName">
+            User
+          </strong>
+
+          <small id="chatHeaderUsername">
+            @user
+          </small>
+
+        </div>
+
+        <button
+          id="callButton"
+          class="call-btn"
+          onclick="callSelectedUser()"
+        >
+          📞 Call
+        </button>
+
+      </div>
+
+
+      <div
+        id="chatEmpty"
+        class="chat-empty"
+      >
+
+        <div>
+          <div style="font-size:38px;margin-bottom:10px;">
+            💬
+          </div>
+
+          Select a user to start a conversation.
+        </div>
+
+      </div>
+
+
+      <div
+        id="messagesBox"
+        class="messages-box hidden"
+      ></div>
+
+
+      <div
+        id="chatInputArea"
+        class="chat-input-area hidden"
+      >
+
+        <div class="chat-file-row">
+
+          <label class="chat-file-label">
+
+            📷 Photo / Video
+
+            <input
+              id="chatMedia"
+              type="file"
+              accept="image/*,video/*"
+              onchange="showChatFile(this)"
+            >
+
+          </label>
+
+          <span
+            id="chatSelectedFile"
+            class="chat-selected-file"
+          ></span>
+
+        </div>
+
+
+        <div class="chat-send-row">
+
+          <textarea
+            id="messageInput"
+            rows="1"
+            maxlength="5000"
+            placeholder="Write a message..."
+          ></textarea>
+
+          <button
+            id="sendMessageButton"
+            onclick="sendMessage()"
+          >
+            Send
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROFILE
+===================================================== -->
+
+<section
+  id="profilePage"
+  class="page"
+>
+
+  <div class="profile-box">
+
+    <div class="profile-cover"></div>
+
+    <div class="profile-main">
+
+      <div
+        id="profileAvatar"
+        class="profile-avatar"
+      >
+        U
+      </div>
+
+
+      <div
+        id="profileName"
+        class="profile-name"
+      >
+        User
+      </div>
+
+
+      <div
+        id="profileUsername"
+        class="profile-username"
+      >
+        @username
+      </div>
+
+
+      <div
+        id="profilePhone"
+        class="profile-phone"
+      ></div>
+
+
+      <div
+        id="profileBio"
+        class="profile-bio"
+      >
+        No bio yet.
+      </div>
+
+
+      <div class="profile-actions">
+
+        <button
+          class="secondary-btn"
+          onclick="openProfileModal()"
+        >
+          Edit Profile
+        </button>
+
+        <button
+          class="secondary-btn"
+          onclick="go('chat')"
+        >
+          💬 Chat
+        </button>
+
+        <button
+          class="secondary-btn"
+          onclick="logout()"
+        >
+          Logout
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      My Reports
+    </div>
+
+    <div id="myPosts">
+
+      <div class="loading">
+        <div class="spinner"></div>
+        Loading...
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     MOBILE NAV
+===================================================== -->
+
+<nav class="mobile-bottom-nav">
+
+  <button
+    data-page="home"
+    class="active"
+    onclick="go('home')"
+  >
+    <span>⌂</span>
+    <small>Home</small>
+  </button>
+
+
+  <button
+    data-page="chat"
+    onclick="go('chat')"
+  >
+    <span>💬</span>
+    <small>Chat</small>
+  </button>
+
+
+  <button
+    data-page="profile"
+    onclick="go('profile')"
+  >
+    <span>●</span>
+    <small>Profile</small>
+  </button>
+
+</nav>
+
+</section>
+
+
+<!-- =====================================================
      PROFILE MODAL
-========================= -->
+===================================================== -->
 
 <div
   id="profileModal"
@@ -1644,7 +1976,6 @@ button{
 
       <button
         class="modal-close"
-        type="button"
         onclick="closeModal('profileModal')"
       >
         ×
@@ -1681,7 +2012,6 @@ button{
 
     <button
       class="primary-btn"
-      type="button"
       onclick="saveProfile()"
     >
       Save Changes
@@ -1692,9 +2022,9 @@ button{
 </div>
 
 
-<!-- =========================
-     STORY MODAL
-========================= -->
+<!-- =====================================================
+     STORY CREATE MODAL
+===================================================== -->
 
 <div
   id="storyModal"
@@ -1711,7 +2041,6 @@ button{
 
       <button
         class="modal-close"
-        type="button"
         onclick="closeModal('storyModal')"
       >
         ×
@@ -1722,7 +2051,25 @@ button{
 
     <div class="field">
 
-      <label>Story photo/video</label>
+      <label>
+        Story text
+      </label>
+
+      <textarea
+        id="storyText"
+        maxlength="1500"
+        rows="5"
+        placeholder="Write your story..."
+      ></textarea>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Photo / Video — optional
+      </label>
 
       <input
         id="storyMedia"
@@ -1735,25 +2082,64 @@ button{
 
     <div class="field">
 
-      <label>Caption</label>
+      <label class="check">
 
-      <textarea
-        id="storyCaption"
-        maxlength="1000"
-        rows="4"
-        placeholder="Optional caption..."
-      ></textarea>
+        <input
+          id="anonymousStory"
+          type="checkbox"
+        >
+
+        Post Story anonymously
+
+      </label>
 
     </div>
 
 
     <button
+      id="storyPublishButton"
       class="primary-btn"
-      type="button"
       onclick="createStory()"
     >
       Publish Story
     </button>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     STORY VIEW MODAL
+===================================================== -->
+
+<div
+  id="storyViewModal"
+  class="modal hidden"
+>
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <strong id="storyViewerName">
+        Story
+      </strong>
+
+      <button
+        class="modal-close"
+        onclick="closeModal('storyViewModal')"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div
+      id="storyViewerContent"
+      class="story-viewer"
+    ></div>
 
   </div>
 
@@ -1783,7 +2169,6 @@ const SUPABASE_KEY =
 const AUTH_DOMAIN =
 "ghussite.local";
 
-
 const db =
 window.supabase &&
 window.supabase.createClient
@@ -1802,7 +2187,15 @@ null;
 
 let currentUser = null;
 let currentProfile = null;
+
 let selectedPostFiles = [];
+
+let selectedChatUser = null;
+
+let chatUsersTimer = null;
+
+let chatMessagesTimer = null;
+
 let loadingFeed = false;
 
 
@@ -1828,7 +2221,9 @@ function validUsername(value){
 
 
 function authEmail(username){
-  return normalizeUsername(username) + "@" + AUTH_DOMAIN;
+  return normalizeUsername(username) +
+    "@" +
+    AUTH_DOMAIN;
 }
 
 
@@ -1843,42 +2238,59 @@ function escapeHTML(value){
 
 
 function getInitial(name){
-  const value = String(name || "U").trim();
-  return value ? value.charAt(0).toUpperCase() : "U";
+  const value =
+    String(name || "U").trim();
+
+  return value
+    ? value.charAt(0).toUpperCase()
+    : "U";
 }
 
 
 function formatDate(value){
+
   if(!value){
     return "";
   }
 
   try{
-    return new Date(value).toLocaleString("en-BD",{
-      dateStyle:"medium",
-      timeStyle:"short"
-    });
+
+    return new Date(value)
+      .toLocaleString("en-BD",{
+        dateStyle:"medium",
+        timeStyle:"short"
+      });
+
   }catch{
+
     return "";
   }
 }
 
 
 function toast(message,type=""){
-  const container = $("toastContainer");
+
+  const container =
+    $("toastContainer");
 
   if(!container){
     return;
   }
 
-  const item = document.createElement("div");
+  const item =
+    document.createElement("div");
 
   item.className =
     "toast " +
-    (type === "error" ? "error " : "") +
-    (type === "success" ? "success" : "");
+    (type === "error"
+      ? "error "
+      : "") +
+    (type === "success"
+      ? "success"
+      : "");
 
-  item.textContent = message;
+  item.textContent =
+    message;
 
   container.appendChild(item);
 
@@ -1889,18 +2301,31 @@ function toast(message,type=""){
 
 
 function setButtonLoading(button,loading,text){
+
   if(!button){
     return;
   }
 
   if(loading){
-    button.dataset.oldText = button.textContent;
-    button.disabled = true;
-    button.textContent = text || "Please wait...";
-  }else{
-    button.disabled = false;
+
+    button.dataset.oldText =
+      button.textContent;
+
+    button.disabled =
+      true;
+
     button.textContent =
-      button.dataset.oldText || text || "Submit";
+      text || "Please wait...";
+
+  }else{
+
+    button.disabled =
+      false;
+
+    button.textContent =
+      button.dataset.oldText ||
+      text ||
+      "Submit";
   }
 }
 
@@ -1911,11 +2336,18 @@ function setButtonLoading(button,loading,text){
 
 function showAuth(type){
 
-  const loginForm = $("loginForm");
-  const signupForm = $("signupForm");
+  const loginForm =
+    $("loginForm");
 
-  const loginTab = $("loginTab");
-  const signupTab = $("signupTab");
+  const signupForm =
+    $("signupForm");
+
+  const loginTab =
+    $("loginTab");
+
+  const signupTab =
+    $("signupTab");
+
 
   if(type === "signup"){
 
@@ -1938,18 +2370,26 @@ function showAuth(type){
 
 function togglePassword(id,button){
 
-  const input = $(id);
+  const input =
+    $(id);
 
   if(!input){
     return;
   }
 
   if(input.type === "password"){
+
     input.type = "text";
-    button.textContent = "Hide";
+
+    button.textContent =
+      "Hide";
+
   }else{
+
     input.type = "password";
-    button.textContent = "Show";
+
+    button.textContent =
+      "Show";
   }
 }
 
@@ -1961,44 +2401,61 @@ function togglePassword(id,button){
 async function login(){
 
   if(!db){
+
     toast(
       "Supabase connection is unavailable.",
       "error"
     );
+
     return;
   }
 
+
   const username =
-    normalizeUsername($("loginUsername").value);
+    normalizeUsername(
+      $("loginUsername").value
+    );
 
   const password =
     $("loginPassword").value;
 
+
   if(!username){
+
     toast(
       "Please enter your username.",
       "error"
     );
+
     $("loginUsername").focus();
+
     return;
   }
 
+
   if(!password){
+
     toast(
       "Please enter your password.",
       "error"
     );
+
     $("loginPassword").focus();
+
     return;
   }
 
-  const button = $("loginButton");
+
+  const button =
+    $("loginButton");
+
 
   setButtonLoading(
     button,
     true,
     "Logging in..."
   );
+
 
   try{
 
@@ -2008,49 +2465,64 @@ async function login(){
         password:password
       });
 
-    const data = result.data;
-    const error = result.error;
 
-    if(error){
-      console.error("LOGIN ERROR:",error);
+    if(result.error){
 
       let message =
-        error.message ||
+        result.error.message ||
         "Login failed.";
 
       if(
-        message.toLowerCase().includes("invalid login")
+        message
+          .toLowerCase()
+          .includes("invalid login")
       ){
+
         message =
           "Username or password is incorrect.";
       }
 
-      toast(message,"error");
-      return;
-    }
-
-    if(!data || !data.user){
-
       toast(
-        "Login failed. User session was not created.",
+        message,
         "error"
       );
 
       return;
     }
 
-    currentUser = data.user;
+
+    if(
+      !result.data ||
+      !result.data.user
+    ){
+
+      toast(
+        "Login failed.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    currentUser =
+      result.data.user;
 
     await loadCurrentUser();
+
 
     toast(
       "Login successful.",
       "success"
     );
 
+
   }catch(error){
 
-    console.error("LOGIN EXCEPTION:",error);
+    console.error(
+      "LOGIN ERROR:",
+      error
+    );
 
     toast(
       error?.message ||
@@ -2087,68 +2559,87 @@ function validBangladeshPhone(phone){
 async function signup(){
 
   if(!db){
+
     toast(
       "Supabase connection is unavailable.",
       "error"
     );
+
     return;
   }
 
+
   const name =
-    $("signupName").value.trim();
+    $("signupName")
+      .value
+      .trim();
+
 
   const phone =
-    $("signupPhone").value
+    $("signupPhone")
+      .value
       .replace(/\s+/g,"")
       .replace(/-/g,"")
       .trim();
+
 
   const username =
     normalizeUsername(
       $("signupUsername").value
     );
 
+
   const password =
     $("signupPassword").value;
 
 
   if(name.length < 2){
+
     toast(
       "Please enter your full name.",
       "error"
     );
+
     return;
   }
 
 
   if(!validBangladeshPhone(phone)){
+
     toast(
       "Enter a valid Bangladesh mobile number.",
       "error"
     );
+
     return;
   }
 
 
   if(!validUsername(username)){
+
     toast(
       "Username must be 3-24 characters using only a-z, 0-9 and underscore.",
       "error"
     );
+
     return;
   }
 
 
   if(password.length < 6){
+
     toast(
       "Password must be at least 6 characters.",
       "error"
     );
+
     return;
   }
 
 
-  const button = $("signupButton");
+  const button =
+    $("signupButton");
+
 
   setButtonLoading(
     button,
@@ -2159,8 +2650,6 @@ async function signup(){
 
   try{
 
-    /* Check username */
-
     const existing =
       await db
         .from("profiles")
@@ -2169,14 +2658,19 @@ async function signup(){
         .maybeSingle();
 
 
-    if(existing.error){
+    if(
+      existing.error &&
+      existing.error.code !== "PGRST116"
+    ){
 
       console.error(
         "PROFILE CHECK ERROR:",
         existing.error
       );
+    }
 
-    }else if(existing.data){
+
+    if(existing.data){
 
       toast(
         "This username is already taken.",
@@ -2186,8 +2680,6 @@ async function signup(){
       return;
     }
 
-
-    /* Create Supabase Auth account */
 
     const result =
       await db.auth.signUp({
@@ -2203,19 +2695,10 @@ async function signup(){
       });
 
 
-    const data = result.data;
-    const error = result.error;
-
-
-    if(error){
-
-      console.error(
-        "SIGNUP ERROR:",
-        error
-      );
+    if(result.error){
 
       toast(
-        error.message ||
+        result.error.message ||
         "Account creation failed.",
         "error"
       );
@@ -2224,7 +2707,10 @@ async function signup(){
     }
 
 
-    if(!data || !data.user){
+    if(
+      !result.data ||
+      !result.data.user
+    ){
 
       toast(
         "Account could not be created.",
@@ -2235,16 +2721,11 @@ async function signup(){
     }
 
 
-    /*
-      Create/update profile.
-      This is done even when the session is available.
-    */
-
     const profileResult =
       await db
         .from("profiles")
         .upsert({
-          id:data.user.id,
+          id:result.data.user.id,
           display_name:name,
           username:username,
           phone:phone,
@@ -2260,18 +2741,13 @@ async function signup(){
         "PROFILE CREATE ERROR:",
         profileResult.error
       );
-
     }
 
 
-    /*
-      Email confirmation is expected to be OFF
-      according to the current project setup.
-    */
+    if(result.data.session){
 
-    if(data.session){
-
-      currentUser = data.user;
+      currentUser =
+        result.data.user;
 
       await loadCurrentUser();
 
@@ -2282,16 +2758,6 @@ async function signup(){
 
     }else{
 
-      /*
-        If Supabase returns no session, do not show
-        a misleading email-confirmation requirement.
-      */
-
-      toast(
-        "Account created. Please login now.",
-        "success"
-      );
-
       $("loginUsername").value =
         username;
 
@@ -2299,13 +2765,18 @@ async function signup(){
         "";
 
       showAuth("login");
+
+      toast(
+        "Account created. Please login now.",
+        "success"
+      );
     }
 
 
   }catch(error){
 
     console.error(
-      "SIGNUP EXCEPTION:",
+      "SIGNUP ERROR:",
       error
     );
 
@@ -2322,7 +2793,6 @@ async function signup(){
       false,
       "Create Account"
     );
-
   }
 }
 
@@ -2337,6 +2807,7 @@ async function loadCurrentUser(){
     return;
   }
 
+
   try{
 
     const sessionResult =
@@ -2346,9 +2817,13 @@ async function loadCurrentUser(){
       sessionResult?.data?.session;
 
 
-    if(!session || !session.user){
+    if(
+      !session ||
+      !session.user
+    ){
 
       showAuthScreen();
+
       return;
     }
 
@@ -2356,12 +2831,6 @@ async function loadCurrentUser(){
     currentUser =
       session.user;
 
-
-    /*
-      Load profile.
-      If profile does not exist, create a fallback
-      from Auth metadata.
-    */
 
     let profile = null;
 
@@ -2374,18 +2843,13 @@ async function loadCurrentUser(){
         .maybeSingle();
 
 
-    if(!profileResult.error){
+    if(
+      !profileResult.error &&
+      profileResult.data
+    ){
 
       profile =
-        profileResult.data || null;
-
-    }else{
-
-      console.error(
-        "LOAD PROFILE ERROR:",
-        profileResult.error
-      );
-
+        profileResult.data;
     }
 
 
@@ -2411,10 +2875,8 @@ async function loadCurrentUser(){
         phone:
           metadata.phone ||
           "",
-        bio:
-          ""
+        bio:""
       };
-
     }
 
 
@@ -2426,29 +2888,25 @@ async function loadCurrentUser(){
 
     showApp();
 
-    await loadFeed();
 
-    await loadMyPosts();
-
-    await loadStories();
+    await Promise.all([
+      loadFeed(),
+      loadMyPosts(),
+      loadStories()
+    ]);
 
 
   }catch(error){
 
     console.error(
-      "LOAD CURRENT USER ERROR:",
+      "LOAD USER ERROR:",
       error
     );
-
-    /*
-      Even if profile/feed has a problem,
-      keep the authenticated user inside the app.
-    */
 
     showApp();
 
     toast(
-      "Logged in, but some profile data could not be loaded.",
+      "Logged in, but some data could not be loaded.",
       "error"
     );
   }
@@ -2461,15 +2919,25 @@ async function loadCurrentUser(){
 
 function showAuthScreen(){
 
-  $("authScreen").classList.remove("hidden");
-  $("app").classList.add("hidden");
+  $("authScreen")
+    .classList
+    .remove("hidden");
+
+  $("app")
+    .classList
+    .add("hidden");
 }
 
 
 function showApp(){
 
-  $("authScreen").classList.add("hidden");
-  $("app").classList.remove("hidden");
+  $("authScreen")
+    .classList
+    .add("hidden");
+
+  $("app")
+    .classList
+    .remove("hidden");
 }
 
 
@@ -2478,20 +2946,21 @@ function updateUserUI(){
   const profile =
     currentProfile || {};
 
+
   const name =
     profile.display_name ||
     profile.name ||
     "User";
 
+
   const username =
     profile.username ||
     "user";
 
+
   const initial =
     getInitial(name);
 
-
-  /* Mini */
 
   $("miniName").textContent =
     name;
@@ -2508,9 +2977,7 @@ function updateUserUI(){
   }
 
 
-  /* Composer */
-
-  $("composerAvatar").textContent =
+  $("composerAvatar").innerHTML =
     initial;
 
 
@@ -2521,20 +2988,26 @@ function updateUserUI(){
   }
 
 
-  /* Profile */
-
   $("profileName").textContent =
     name;
 
+
   $("profileUsername").textContent =
     "@" + username;
+
 
   $("profileBio").textContent =
     profile.bio ||
     "No bio yet.";
 
 
-  $("profileAvatar").textContent =
+  $("profilePhone").textContent =
+    profile.phone
+      ? "📱 " + profile.phone
+      : "";
+
+
+  $("profileAvatar").innerHTML =
     initial;
 
 
@@ -2554,7 +3027,7 @@ function go(page){
 
   const pages = [
     "home",
-    "help",
+    "chat",
     "profile"
   ];
 
@@ -2588,7 +3061,9 @@ function go(page){
 
 
   const nav =
-    $("nav" + page.charAt(0).toUpperCase() + page.slice(1));
+    $("nav" +
+      page.charAt(0).toUpperCase() +
+      page.slice(1));
 
 
   if(nav){
@@ -2597,7 +3072,9 @@ function go(page){
 
 
   document
-    .querySelectorAll(".mobile-bottom-nav button")
+    .querySelectorAll(
+      ".mobile-bottom-nav button"
+    )
     .forEach(button=>{
 
       button.classList.toggle(
@@ -2614,13 +3091,21 @@ function go(page){
   });
 
 
+  if(page === "home"){
+    loadFeed();
+  }
+
+
   if(page === "profile"){
     loadMyPosts();
   }
 
 
-  if(page === "home"){
-    loadFeed();
+  if(page === "chat"){
+
+    setTimeout(()=>{
+      $("chatSearch")?.focus();
+    },250);
   }
 }
 
@@ -2653,7 +3138,7 @@ function focusComposer(){
 
 
 /* =========================================================
-   MEDIA PREVIEW
+   POST MEDIA
 ========================================================= */
 
 function previewPostMedia(input){
@@ -2661,82 +3146,7 @@ function previewPostMedia(input){
   selectedPostFiles =
     Array.from(input.files || []);
 
-
-  const preview =
-    $("mediaPreview");
-
-
-  preview.innerHTML =
-    "";
-
-
-  selectedPostFiles.forEach((file,index)=>{
-
-    const item =
-      document.createElement("div");
-
-    item.className =
-      "preview-item";
-
-
-    const url =
-      URL.createObjectURL(file);
-
-
-    let media;
-
-
-    if(file.type.startsWith("video/")){
-
-      media =
-        document.createElement("video");
-
-      media.controls =
-        true;
-
-    }else{
-
-      media =
-        document.createElement("img");
-
-    }
-
-
-    media.src =
-      url;
-
-
-    const remove =
-      document.createElement("button");
-
-    remove.type =
-      "button";
-
-    remove.className =
-      "preview-remove";
-
-    remove.textContent =
-      "×";
-
-
-    remove.onclick = ()=>{
-
-      selectedPostFiles.splice(
-        index,
-        1
-      );
-
-      renderSelectedMedia();
-
-    };
-
-
-    item.appendChild(media);
-    item.appendChild(remove);
-
-    preview.appendChild(item);
-
-  });
+  renderSelectedMedia();
 }
 
 
@@ -2745,93 +3155,85 @@ function renderSelectedMedia(){
   const preview =
     $("mediaPreview");
 
+
   preview.innerHTML =
     "";
 
 
-  selectedPostFiles.forEach((file,index)=>{
+  selectedPostFiles.forEach(
+    (file,index)=>{
 
-    const item =
-      document.createElement("div");
+      const item =
+        document.createElement("div");
 
-    item.className =
-      "preview-item";
-
-
-    const url =
-      URL.createObjectURL(file);
+      item.className =
+        "preview-item";
 
 
-    let media;
+      const url =
+        URL.createObjectURL(file);
 
 
-    if(file.type.startsWith("video/")){
+      let media;
 
-      media =
-        document.createElement("video");
 
-      media.controls =
-        true;
+      if(file.type.startsWith("video/")){
 
-    }else{
+        media =
+          document.createElement("video");
 
-      media =
-        document.createElement("img");
+        media.controls =
+          true;
 
+      }else{
+
+        media =
+          document.createElement("img");
+      }
+
+
+      media.src =
+        url;
+
+
+      const remove =
+        document.createElement("button");
+
+      remove.type =
+        "button";
+
+      remove.className =
+        "preview-remove";
+
+      remove.textContent =
+        "×";
+
+
+      remove.onclick = ()=>{
+
+        selectedPostFiles.splice(
+          index,
+          1
+        );
+
+        renderSelectedMedia();
+      };
+
+
+      item.appendChild(media);
+      item.appendChild(remove);
+
+      preview.appendChild(item);
     }
-
-
-    media.src =
-      url;
-
-
-    const remove =
-      document.createElement("button");
-
-    remove.type =
-      "button";
-
-    remove.className =
-      "preview-remove";
-
-    remove.textContent =
-      "×";
-
-
-    remove.onclick = ()=>{
-
-      selectedPostFiles.splice(
-        index,
-        1
-      );
-
-      renderSelectedMedia();
-
-    };
-
-
-    item.appendChild(media);
-    item.appendChild(remove);
-
-    preview.appendChild(item);
-
-  });
+  );
 }
 
 
 /* =========================================================
-   STORAGE UPLOAD
+   STORAGE
 ========================================================= */
 
 async function uploadFile(file,folder){
-
-  /*
-    Expected Supabase Storage bucket:
-    media
-
-    If your existing bucket has another name,
-    change ONLY the bucket name below.
-  */
 
   const bucket =
     "media";
@@ -2839,7 +3241,10 @@ async function uploadFile(file,folder){
 
   const safeName =
     file.name
-      .replace(/[^a-zA-Z0-9._-]/g,"_");
+      .replace(
+        /[^a-zA-Z0-9._-]/g,
+        "_"
+      );
 
 
   const path =
@@ -2871,7 +3276,6 @@ async function uploadFile(file,folder){
 
 
   if(result.error){
-
     throw result.error;
   }
 
@@ -2897,7 +3301,10 @@ async function uploadFile(file,folder){
 
 async function createPost(){
 
-  if(!db || !currentUser){
+  if(
+    !db ||
+    !currentUser
+  ){
 
     toast(
       "Please login first.",
@@ -2909,10 +3316,15 @@ async function createPost(){
 
 
   const text =
-    $("postText").value.trim();
+    $("postText")
+      .value
+      .trim();
 
 
-  if(!text && selectedPostFiles.length === 0){
+  if(
+    !text &&
+    selectedPostFiles.length === 0
+  ){
 
     toast(
       "Write something or add a photo/video.",
@@ -2940,10 +3352,6 @@ async function createPost(){
 
   try{
 
-    /*
-      Create post.
-    */
-
     const postResult =
       await db
         .from("posts")
@@ -2957,7 +3365,6 @@ async function createPost(){
 
 
     if(postResult.error){
-
       throw postResult.error;
     }
 
@@ -2966,11 +3373,9 @@ async function createPost(){
       postResult.data;
 
 
-    /*
-      Upload media one by one.
-    */
-
-    for(const file of selectedPostFiles){
+    for(
+      const file of selectedPostFiles
+    ){
 
       const uploaded =
         await uploadFile(
@@ -2986,7 +3391,8 @@ async function createPost(){
             post_id:post.id,
             media_url:uploaded.url,
             media_type:
-              uploaded.type.startsWith("video/")
+              uploaded.type
+                .startsWith("video/")
                 ? "video"
                 : "image"
           });
@@ -2995,10 +3401,9 @@ async function createPost(){
       if(mediaResult.error){
 
         console.error(
-          "MEDIA DB ERROR:",
+          "POST MEDIA ERROR:",
           mediaResult.error
         );
-
       }
     }
 
@@ -3050,7 +3455,6 @@ async function createPost(){
       false,
       "Post"
     );
-
   }
 }
 
@@ -3061,7 +3465,10 @@ async function createPost(){
 
 async function loadFeed(){
 
-  if(!db || loadingFeed){
+  if(
+    !db ||
+    loadingFeed
+  ){
     return;
   }
 
@@ -3075,8 +3482,10 @@ async function loadFeed(){
 
 
   if(!feed){
+
     loadingFeed =
       false;
+
     return;
   }
 
@@ -3102,13 +3511,14 @@ async function loadFeed(){
         `)
         .order(
           "created_at",
-          {ascending:false}
+          {
+            ascending:false
+          }
         )
         .limit(50);
 
 
     if(result.error){
-
       throw result.error;
     }
 
@@ -3133,7 +3543,7 @@ async function loadFeed(){
 
     feed.innerHTML =
       posts
-        .map(post=>renderPost(post))
+        .map(renderPost)
         .join("");
 
 
@@ -3181,20 +3591,20 @@ function renderPost(post){
     anonymous
       ? "Anonymous User"
       : (
-          profile.display_name ||
-          profile.username ||
-          "User"
-        );
+        profile.display_name ||
+        profile.username ||
+        "User"
+      );
 
 
   const username =
     anonymous
       ? ""
       : (
-          profile.username
-            ? "@" + profile.username
-            : ""
-        );
+        profile.username
+          ? "@" + profile.username
+          : ""
+      );
 
 
   const initial =
@@ -3207,7 +3617,10 @@ function renderPost(post){
     `<div class="avatar">${escapeHTML(initial)}</div>`;
 
 
-  if(!anonymous && profile.avatar_url){
+  if(
+    !anonymous &&
+    profile.avatar_url
+  ){
 
     avatarHTML =
       `
@@ -3242,29 +3655,33 @@ function renderPost(post){
     mediaHTML =
       `
       <div class="${mediaClass}">
-        ${media.map(item=>{
+        ${
+          media.map(item=>{
 
-          if(item.media_type === "video"){
+            if(
+              item.media_type === "video"
+            ){
+
+              return `
+                <video
+                  src="${escapeHTML(item.media_url)}"
+                  controls
+                  preload="metadata"
+                ></video>
+              `;
+            }
+
 
             return `
-              <video
+              <img
                 src="${escapeHTML(item.media_url)}"
-                controls
-                preload="metadata"
-              ></video>
+                alt="Post media"
+                loading="lazy"
+              >
             `;
 
-          }
-
-          return `
-            <img
-              src="${escapeHTML(item.media_url)}"
-              alt="Post media"
-              loading="lazy"
-            >
-          `;
-
-        }).join("")}
+          }).join("")
+        }
       </div>
       `;
   }
@@ -3273,6 +3690,7 @@ function renderPost(post){
   return `
   <article
     class="post"
+    id="post-${escapeHTML(post.id)}"
     data-post-id="${escapeHTML(post.id)}"
   >
 
@@ -3333,21 +3751,18 @@ function renderPost(post){
     <div class="post-actions">
 
       <button
-        type="button"
         onclick="toggleReaction('${escapeHTML(post.id)}',this)"
       >
         👍 Like
       </button>
 
       <button
-        type="button"
         onclick="toggleComments('${escapeHTML(post.id)}')"
       >
         💬 Comment
       </button>
 
       <button
-        type="button"
         onclick="sharePost('${escapeHTML(post.id)}')"
       >
         ↗ Share
@@ -3365,6 +3780,7 @@ function renderPost(post){
         id="commentList-${escapeHTML(post.id)}"
       ></div>
 
+
       <div class="comment-form">
 
         <input
@@ -3372,10 +3788,10 @@ function renderPost(post){
           type="text"
           maxlength="1000"
           placeholder="Write a comment..."
+          onkeydown="if(event.key==='Enter')addComment('${escapeHTML(post.id)}')"
         >
 
         <button
-          type="button"
           onclick="addComment('${escapeHTML(post.id)}')"
         >
           Send
@@ -3396,7 +3812,10 @@ function renderPost(post){
 
 async function loadReactionState(){
 
-  if(!db || !currentUser){
+  if(
+    !db ||
+    !currentUser
+  ){
     return;
   }
 
@@ -3406,8 +3825,11 @@ async function loadReactionState(){
     const result =
       await db
         .from("reactions")
-        .select("post_id,user_id")
-        .eq("user_id",currentUser.id);
+        .select("id,post_id,user_id")
+        .eq(
+          "user_id",
+          currentUser.id
+        );
 
 
     if(result.error){
@@ -3418,7 +3840,9 @@ async function loadReactionState(){
     const reacted =
       new Set(
         (result.data || [])
-          .map(item=>String(item.post_id))
+          .map(item =>
+            String(item.post_id)
+          )
       );
 
 
@@ -3444,13 +3868,8 @@ async function loadReactionState(){
       if(button){
         button.classList.add("active");
       }
-
     });
 
-
-    /*
-      Counts
-    */
 
     const counts =
       await db
@@ -3462,12 +3881,12 @@ async function loadReactionState(){
 
       const map = {};
 
+
       (counts.data || [])
         .forEach(item=>{
 
           map[item.post_id] =
             (map[item.post_id] || 0) + 1;
-
         });
 
 
@@ -3485,9 +3904,7 @@ async function loadReactionState(){
             el.textContent =
               `${map[postId]} reactions`;
           }
-
         });
-
     }
 
 
@@ -3503,11 +3920,16 @@ async function loadReactionState(){
 
 async function toggleReaction(postId,button){
 
-  if(!db || !currentUser){
+  if(
+    !db ||
+    !currentUser
+  ){
+
     toast(
       "Please login first.",
       "error"
     );
+
     return;
   }
 
@@ -3518,8 +3940,14 @@ async function toggleReaction(postId,button){
       await db
         .from("reactions")
         .select("id")
-        .eq("post_id",postId)
-        .eq("user_id",currentUser.id)
+        .eq(
+          "post_id",
+          postId
+        )
+        .eq(
+          "user_id",
+          currentUser.id
+        )
         .maybeSingle();
 
 
@@ -3534,7 +3962,10 @@ async function toggleReaction(postId,button){
         await db
           .from("reactions")
           .delete()
-          .eq("id",existing.data.id);
+          .eq(
+            "id",
+            existing.data.id
+          );
 
 
       if(deleted.error){
@@ -3542,7 +3973,9 @@ async function toggleReaction(postId,button){
       }
 
 
-      button.classList.remove("active");
+      button.classList.remove(
+        "active"
+      );
 
     }else{
 
@@ -3561,7 +3994,9 @@ async function toggleReaction(postId,button){
       }
 
 
-      button.classList.add("active");
+      button.classList.add(
+        "active"
+      );
     }
 
 
@@ -3599,19 +4034,20 @@ async function toggleComments(postId){
   }
 
 
-  box.classList.toggle("hidden");
+  box.classList.toggle(
+    "hidden"
+  );
 
 
-  if(!box.classList.contains("hidden")){
+  if(
+    !box.classList.contains(
+      "hidden"
+    )
+  ){
 
     await loadComments(postId);
 
-    const input =
-      $(`commentInput-${postId}`);
-
-    if(input){
-      input.focus();
-    }
+    $(`commentInput-${postId}`)?.focus();
   }
 }
 
@@ -3622,13 +4058,20 @@ async function loadComments(postId){
     $(`commentList-${postId}`);
 
 
-  if(!list || !db){
+  if(
+    !list ||
+    !db
+  ){
     return;
   }
 
 
   list.innerHTML =
-    `<div class="loading">Loading comments...</div>`;
+    `
+    <div class="loading">
+      Loading comments...
+    </div>
+    `;
 
 
   try{
@@ -3643,10 +4086,15 @@ async function loadComments(postId){
             username
           )
         `)
-        .eq("post_id",postId)
+        .eq(
+          "post_id",
+          postId
+        )
         .order(
           "created_at",
-          {ascending:true}
+          {
+            ascending:true
+          }
         );
 
 
@@ -3681,7 +4129,10 @@ async function loadComments(postId){
 
       list.innerHTML =
         `
-        <div class="empty" style="padding:15px">
+        <div
+          class="empty"
+          style="padding:15px"
+        >
           No comments yet.
         </div>
         `;
@@ -3697,10 +4148,12 @@ async function loadComments(postId){
           const profile =
             comment.profiles || {};
 
+
           const name =
             profile.display_name ||
             profile.username ||
             "User";
+
 
           return `
           <div class="comment">
@@ -3730,7 +4183,10 @@ async function loadComments(postId){
 
     list.innerHTML =
       `
-      <div class="empty" style="padding:15px">
+      <div
+        class="empty"
+        style="padding:15px"
+      >
         Could not load comments.
       </div>
       `;
@@ -3740,11 +4196,16 @@ async function loadComments(postId){
 
 async function addComment(postId){
 
-  if(!db || !currentUser){
+  if(
+    !db ||
+    !currentUser
+  ){
+
     toast(
       "Please login first.",
       "error"
     );
+
     return;
   }
 
@@ -3814,7 +4275,8 @@ async function addComment(postId){
 async function sharePost(postId){
 
   const url =
-    window.location.href.split("#")[0] +
+    window.location.href
+      .split("#")[0] +
     "#post-" +
     postId;
 
@@ -3846,14 +4308,13 @@ async function sharePost(postId){
       );
     }
 
+
   }catch(error){
 
-    if(error?.name !== "AbortError"){
-
-      console.error(
-        "SHARE ERROR:",
-        error
-      );
+    if(
+      error?.name !==
+      "AbortError"
+    ){
 
       toast(
         "Could not share this post.",
@@ -3874,7 +4335,11 @@ async function loadMyPosts(){
     $("myPosts");
 
 
-  if(!box || !db || !currentUser){
+  if(
+    !box ||
+    !db ||
+    !currentUser
+  ){
     return;
   }
 
@@ -3907,10 +4372,15 @@ async function loadMyPosts(){
             media_type
           )
         `)
-        .eq("user_id",currentUser.id)
+        .eq(
+          "user_id",
+          currentUser.id
+        )
         .order(
           "created_at",
-          {ascending:false}
+          {
+            ascending:false
+          }
         )
         .limit(50);
 
@@ -3927,7 +4397,11 @@ async function loadMyPosts(){
     if(!posts.length){
 
       box.innerHTML =
-        '<div class="empty">You have not posted anything yet.</div>';
+        `
+        <div class="empty">
+          You have not posted anything yet.
+        </div>
+        `;
 
       return;
     }
@@ -3935,7 +4409,7 @@ async function loadMyPosts(){
 
     box.innerHTML =
       posts
-        .map(post=>renderPost(post))
+        .map(renderPost)
         .join("");
 
 
@@ -3948,7 +4422,11 @@ async function loadMyPosts(){
 
 
     box.innerHTML =
-      '<div class="empty">Could not load your reports.</div>';
+      `
+      <div class="empty">
+        Could not load your reports.
+      </div>
+      `;
   }
 }
 
@@ -3982,17 +4460,24 @@ function openProfileModal(){
 
 async function saveProfile(){
 
-  if(!db || !currentUser){
+  if(
+    !db ||
+    !currentUser
+  ){
     return;
   }
 
 
   const name =
-    $("editName").value.trim();
+    $("editName")
+      .value
+      .trim();
 
 
   const bio =
-    $("editBio").value.trim();
+    $("editBio")
+      .value
+      .trim();
 
 
   if(name.length < 2){
@@ -4040,7 +4525,9 @@ async function saveProfile(){
 
     updateUserUI();
 
-    closeModal("profileModal");
+    closeModal(
+      "profileModal"
+    );
 
 
     toast(
@@ -4055,7 +4542,6 @@ async function saveProfile(){
       "SAVE PROFILE ERROR:",
       error
     );
-
 
     toast(
       error?.message ||
@@ -4072,11 +4558,14 @@ async function saveProfile(){
 
 function openStoryModal(){
 
+  $("storyText").value =
+    "";
+
   $("storyMedia").value =
     "";
 
-  $("storyCaption").value =
-    "";
+  $("anonymousStory").checked =
+    false;
 
   $("storyModal")
     .classList
@@ -4086,23 +4575,13 @@ function openStoryModal(){
 
 async function createStory(){
 
-  if(!db || !currentUser){
-    return;
-  }
-
-
-  const file =
-    $("storyMedia").files[0];
-
-
-  const caption =
-    $("storyCaption").value.trim();
-
-
-  if(!file){
+  if(
+    !db ||
+    !currentUser
+  ){
 
     toast(
-      "Please select a photo or video.",
+      "Please login first.",
       "error"
     );
 
@@ -4110,13 +4589,99 @@ async function createStory(){
   }
 
 
+  const text =
+    $("storyText")
+      .value
+      .trim();
+
+
+  const file =
+    $("storyMedia")
+      .files[0];
+
+
+  const anonymous =
+    $("anonymousStory")
+      .checked;
+
+
+  if(
+    !text &&
+    !file
+  ){
+
+    toast(
+      "Write something or select a photo/video.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  const button =
+    $("storyPublishButton");
+
+
+  setButtonLoading(
+    button,
+    true,
+    "Publishing..."
+  );
+
+
   try{
 
-    const uploaded =
-      await uploadFile(
-        file,
-        "stories"
-      );
+    let mediaUrl = null;
+
+    let mediaType = "text";
+
+
+    if(file){
+
+      const uploaded =
+        await uploadFile(
+          file,
+          "stories"
+        );
+
+
+      mediaUrl =
+        uploaded.url;
+
+
+      mediaType =
+        uploaded.type
+          .startsWith("video/")
+          ? "video"
+          : "image";
+    }
+
+
+    /*
+      stories table:
+
+      id
+      user_id
+      media_url
+      media_type
+      caption
+      created_at
+
+      For text-only story:
+      media_url = null
+      media_type = text
+      caption = story text
+
+      Anonymous state is represented
+      inside caption only when needed.
+    */
+
+
+    const finalCaption =
+      anonymous
+        ? "[Anonymous Story]\n" + text
+        : text;
 
 
     const result =
@@ -4124,12 +4689,9 @@ async function createStory(){
         .from("stories")
         .insert({
           user_id:currentUser.id,
-          media_url:uploaded.url,
-          media_type:
-            uploaded.type.startsWith("video/")
-              ? "video"
-              : "image",
-          caption:caption
+          media_url:mediaUrl,
+          media_type:mediaType,
+          caption:finalCaption
         });
 
 
@@ -4138,7 +4700,10 @@ async function createStory(){
     }
 
 
-    closeModal("storyModal");
+    closeModal(
+      "storyModal"
+    );
+
 
     toast(
       "Story published.",
@@ -4161,6 +4726,14 @@ async function createStory(){
       error?.message ||
       "Could not publish story.",
       "error"
+    );
+
+  }finally{
+
+    setButtonLoading(
+      button,
+      false,
+      "Publish Story"
     );
   }
 }
@@ -4208,7 +4781,9 @@ async function loadStories(){
         )
         .order(
           "created_at",
-          {ascending:false}
+          {
+            ascending:false
+          }
         );
 
 
@@ -4233,7 +4808,6 @@ async function loadStories(){
 
         <button
           class="add-story"
-          type="button"
           onclick="openStoryModal()"
         >
           +
@@ -4254,39 +4828,95 @@ async function loadStories(){
           const profile =
             story.profiles || {};
 
-          const name =
+
+          const anonymous =
+            String(
+              story.caption || ""
+            ).startsWith(
+              "[Anonymous Story]"
+            );
+
+
+          let name =
             profile.display_name ||
             profile.username ||
             "User";
 
 
+          if(anonymous){
+            name =
+              "Anonymous";
+          }
+
+
+          let innerHTML = "";
+
+
+          if(
+            story.media_type ===
+            "video" &&
+            story.media_url
+          ){
+
+            innerHTML =
+              `
+              <video
+                src="${escapeHTML(story.media_url)}"
+                muted
+              ></video>
+              `;
+
+          }else if(
+            story.media_type ===
+            "image" &&
+            story.media_url
+          ){
+
+            innerHTML =
+              `
+              <img
+                src="${escapeHTML(story.media_url)}"
+                alt=""
+              >
+              `;
+
+          }else{
+
+            let text =
+              story.caption ||
+              "Story";
+
+            text =
+              text
+                .replace(
+                  "[Anonymous Story]",
+                  ""
+                )
+                .trim();
+
+
+            innerHTML =
+              `
+              <div class="story-text-circle">
+                ${escapeHTML(
+                  text.slice(0,70)
+                )}
+              </div>
+              `;
+          }
+
+
           return `
           <div
             class="story"
-            onclick="viewStory('${escapeHTML(story.media_url)}','${escapeHTML(story.caption || "")}')"
+            onclick="viewStory('${escapeHTML(String(story.id))}')"
           >
 
             <div class="story-ring">
 
               <div class="story-inner">
 
-                ${
-                  story.media_type === "video"
-
-                  ?
-
-                  `<video
-                    src="${escapeHTML(story.media_url)}"
-                    muted
-                  ></video>`
-
-                  :
-
-                  `<img
-                    src="${escapeHTML(story.media_url)}"
-                    alt=""
-                  >`
-                }
+                ${innerHTML}
 
               </div>
 
@@ -4311,35 +4941,912 @@ async function loadStories(){
   }catch(error){
 
     console.error(
-      "STORIES EXCEPTION:",
+      "STORIES ERROR:",
       error
     );
   }
 }
 
 
-function viewStory(url,caption){
+async function viewStory(storyId){
 
-  if(!url){
+  if(!db){
     return;
   }
 
 
-  window.open(
-    url,
-    "_blank"
+  try{
+
+    const result =
+      await db
+        .from("stories")
+        .select(`
+          *,
+          profiles:user_id(
+            display_name,
+            username
+          )
+        `)
+        .eq(
+          "id",
+          storyId
+        )
+        .maybeSingle();
+
+
+    if(result.error){
+      throw result.error;
+    }
+
+
+    const story =
+      result.data;
+
+
+    if(!story){
+      return;
+    }
+
+
+    const profile =
+      story.profiles || {};
+
+
+    const anonymous =
+      String(
+        story.caption || ""
+      ).startsWith(
+        "[Anonymous Story]"
+      );
+
+
+    const name =
+      anonymous
+        ? "Anonymous Story"
+        : (
+          profile.display_name ||
+          profile.username ||
+          "User"
+        );
+
+
+    $("storyViewerName")
+      .textContent =
+      name;
+
+
+    let caption =
+      story.caption || "";
+
+
+    caption =
+      caption
+        .replace(
+          "[Anonymous Story]",
+          ""
+        )
+        .trim();
+
+
+    let html = "";
+
+
+    if(
+      story.media_type ===
+      "video" &&
+      story.media_url
+    ){
+
+      html +=
+        `
+        <video
+          class="story-viewer-media"
+          src="${escapeHTML(story.media_url)}"
+          controls
+          autoplay
+        ></video>
+        `;
+
+    }else if(
+      story.media_type ===
+      "image" &&
+      story.media_url
+    ){
+
+      html +=
+        `
+        <img
+          class="story-viewer-media"
+          src="${escapeHTML(story.media_url)}"
+          alt="Story"
+        >
+        `;
+
+    }else{
+
+      html +=
+        `
+        <div class="story-viewer-text">
+          ${escapeHTML(caption)}
+        </div>
+        `;
+
+      caption = "";
+    }
+
+
+    if(
+      caption &&
+      story.media_type !== "text"
+    ){
+
+      html +=
+        `
+        <div class="story-viewer-caption">
+          ${escapeHTML(caption)}
+        </div>
+        `;
+    }
+
+
+    $("storyViewerContent")
+      .innerHTML =
+      html;
+
+
+    $("storyViewModal")
+      .classList
+      .remove("hidden");
+
+
+  }catch(error){
+
+    console.error(
+      "VIEW STORY ERROR:",
+      error
+    );
+
+    toast(
+      "Could not open story.",
+      "error"
+    );
+  }
+}
+
+
+/* =========================================================
+   CHAT - SEARCH USERS
+========================================================= */
+
+async function searchUsers(){
+
+  clearTimeout(
+    chatUsersTimer
   );
 
 
-  if(caption){
+  chatUsersTimer =
+    setTimeout(
+      loadChatUsers,
+      300
+    );
+}
 
-    setTimeout(()=>{
-      toast(
-        caption,
-        "success"
-      );
-    },300);
+
+async function loadChatUsers(){
+
+  if(
+    !db ||
+    !currentUser
+  ){
+    return;
   }
+
+
+  const box =
+    $("userList");
+
+
+  const search =
+    $("chatSearch")
+      .value
+      .trim()
+      .toLowerCase();
+
+
+  box.innerHTML =
+    `
+    <div class="loading">
+      Searching...
+    </div>
+    `;
+
+
+  try{
+
+    let query =
+      db
+        .from("profiles")
+        .select(
+          "id,display_name,username,avatar_url,phone"
+        )
+        .neq(
+          "id",
+          currentUser.id
+        )
+        .limit(30);
+
+
+    if(search){
+
+      query =
+        query.or(
+          `username.ilike.%${search}%,display_name.ilike.%${search}%`
+        );
+    }
+
+
+    const result =
+      await query;
+
+
+    if(result.error){
+      throw result.error;
+    }
+
+
+    const users =
+      result.data || [];
+
+
+    if(!users.length){
+
+      box.innerHTML =
+        `
+        <div class="empty">
+          ${
+            search
+              ? "No users found."
+              : "No other users found."
+          }
+        </div>
+        `;
+
+      return;
+    }
+
+
+    box.innerHTML =
+      users
+        .map(user=>{
+
+          const name =
+            user.display_name ||
+            user.username ||
+            "User";
+
+
+          const initial =
+            getInitial(name);
+
+
+          const avatar =
+            user.avatar_url
+              ?
+              `
+              <div class="avatar">
+                <img
+                  src="${escapeHTML(user.avatar_url)}"
+                  alt=""
+                >
+              </div>
+              `
+              :
+              `
+              <div class="avatar">
+                ${escapeHTML(initial)}
+              </div>
+              `;
+
+
+          return `
+          <button
+            class="chat-user"
+            onclick="selectChatUser('${escapeHTML(user.id)}')"
+          >
+
+            ${avatar}
+
+            <div class="chat-user-info">
+
+              <strong>
+                ${escapeHTML(name)}
+              </strong>
+
+              <small>
+                @${escapeHTML(user.username || "")}
+              </small>
+
+            </div>
+
+          </button>
+          `;
+
+        })
+        .join("");
+
+
+  }catch(error){
+
+    console.error(
+      "SEARCH USERS ERROR:",
+      error
+    );
+
+
+    box.innerHTML =
+      `
+      <div class="empty">
+        Could not search users.
+      </div>
+      `;
+  }
+}
+
+
+/* =========================================================
+   CHAT - SELECT USER
+========================================================= */
+
+async function selectChatUser(userId){
+
+  if(
+    !db ||
+    !currentUser
+  ){
+    return;
+  }
+
+
+  try{
+
+    const result =
+      await db
+        .from("profiles")
+        .select(
+          "id,display_name,username,avatar_url,phone"
+        )
+        .eq(
+          "id",
+          userId
+        )
+        .maybeSingle();
+
+
+    if(result.error){
+      throw result.error;
+    }
+
+
+    if(!result.data){
+      return;
+    }
+
+
+    selectedChatUser =
+      result.data;
+
+
+    const user =
+      selectedChatUser;
+
+
+    const name =
+      user.display_name ||
+      user.username ||
+      "User";
+
+
+    $("chatEmpty")
+      .classList
+      .add("hidden");
+
+
+    $("messagesBox")
+      .classList
+      .remove("hidden");
+
+
+    $("chatInputArea")
+      .classList
+      .remove("hidden");
+
+
+    $("chatHeader")
+      .classList
+      .remove("hidden");
+
+
+    $("chatHeaderName")
+      .textContent =
+      name;
+
+
+    $("chatHeaderUsername")
+      .textContent =
+      user.username
+        ? "@" + user.username
+        : "";
+
+
+    $("chatHeaderAvatar")
+      .innerHTML =
+      getInitial(name);
+
+
+    if(user.avatar_url){
+
+      $("chatHeaderAvatar")
+        .innerHTML =
+        `<img src="${escapeHTML(user.avatar_url)}" alt="">`;
+    }
+
+
+    $("callButton")
+      .classList
+      .toggle(
+        "hidden",
+        !user.phone
+      );
+
+
+    document
+      .querySelectorAll(
+        ".chat-user"
+      )
+      .forEach(item=>{
+        item.classList.remove(
+          "active"
+        );
+      });
+
+
+    await loadMessages();
+
+
+    startMessageRefresh();
+
+
+    $("messageInput")
+      .focus();
+
+
+  }catch(error){
+
+    console.error(
+      "SELECT CHAT USER ERROR:",
+      error
+    );
+
+    toast(
+      "Could not open this chat.",
+      "error"
+    );
+  }
+}
+
+
+/* =========================================================
+   CHAT - LOAD MESSAGES
+========================================================= */
+
+async function loadMessages(){
+
+  if(
+    !db ||
+    !currentUser ||
+    !selectedChatUser
+  ){
+    return;
+  }
+
+
+  const box =
+    $("messagesBox");
+
+
+  try{
+
+    const result =
+      await db
+        .from("messages")
+        .select("*")
+        .or(
+          `and(sender_id.eq.${currentUser.id},receiver_id.eq.${selectedChatUser.id}),and(sender_id.eq.${selectedChatUser.id},receiver_id.eq.${currentUser.id})`
+        )
+        .order(
+          "created_at",
+          {
+            ascending:true
+          }
+        )
+        .limit(200);
+
+
+    if(result.error){
+      throw result.error;
+    }
+
+
+    const messages =
+      result.data || [];
+
+
+    if(!messages.length){
+
+      box.innerHTML =
+        `
+        <div class="empty">
+          No messages yet.<br>
+          Say hello 👋
+        </div>
+        `;
+
+      return;
+    }
+
+
+    box.innerHTML =
+      messages
+        .map(renderMessage)
+        .join("");
+
+
+    box.scrollTop =
+      box.scrollHeight;
+
+
+    /*
+      Mark received messages as read.
+    */
+
+    await db
+      .from("messages")
+      .update({
+        is_read:true
+      })
+      .eq(
+        "sender_id",
+        selectedChatUser.id
+      )
+      .eq(
+        "receiver_id",
+        currentUser.id
+      );
+
+
+  }catch(error){
+
+    console.error(
+      "LOAD MESSAGES ERROR:",
+      error
+    );
+
+
+    box.innerHTML =
+      `
+      <div class="empty">
+        Could not load messages.
+      </div>
+      `;
+  }
+}
+
+
+function renderMessage(message){
+
+  const mine =
+    message.sender_id ===
+    currentUser.id;
+
+
+  let mediaHTML =
+    "";
+
+
+  if(
+    message.media_url &&
+    message.media_type ===
+    "image"
+  ){
+
+    mediaHTML =
+      `
+      <img
+        class="message-media"
+        src="${escapeHTML(message.media_url)}"
+        alt="Message image"
+      >
+      `;
+
+  }else if(
+    message.media_url &&
+    message.media_type ===
+    "video"
+  ){
+
+    mediaHTML =
+      `
+      <video
+        class="message-media"
+        src="${escapeHTML(message.media_url)}"
+        controls
+      ></video>
+      `;
+  }
+
+
+  return `
+  <div
+    class="message-row ${mine ? "mine" : ""}"
+  >
+
+    <div class="message">
+
+      ${mediaHTML}
+
+      ${
+        message.content
+          ?
+          `
+          <div>
+            ${escapeHTML(message.content)}
+          </div>
+          `
+          : ""
+      }
+
+      <div class="message-time">
+        ${escapeHTML(
+          formatDate(
+            message.created_at
+          )
+        )}
+      </div>
+
+    </div>
+
+  </div>
+  `;
+}
+
+
+/* =========================================================
+   CHAT - SEND MESSAGE
+========================================================= */
+
+function showChatFile(input){
+
+  const file =
+    input.files[0];
+
+
+  $("chatSelectedFile")
+    .textContent =
+    file
+      ? file.name
+      : "";
+}
+
+
+async function sendMessage(){
+
+  if(
+    !db ||
+    !currentUser ||
+    !selectedChatUser
+  ){
+
+    toast(
+      "Select a user first.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  const input =
+    $("messageInput");
+
+
+  const content =
+    input.value.trim();
+
+
+  const file =
+    $("chatMedia")
+      .files[0];
+
+
+  if(
+    !content &&
+    !file
+  ){
+
+    return;
+  }
+
+
+  const button =
+    $("sendMessageButton");
+
+
+  setButtonLoading(
+    button,
+    true,
+    "Sending..."
+  );
+
+
+  try{
+
+    let mediaUrl = null;
+
+    let mediaType = null;
+
+
+    if(file){
+
+      const uploaded =
+        await uploadFile(
+          file,
+          "messages"
+        );
+
+
+      mediaUrl =
+        uploaded.url;
+
+
+      mediaType =
+        uploaded.type
+          .startsWith("video/")
+          ? "video"
+          : "image";
+    }
+
+
+    const result =
+      await db
+        .from("messages")
+        .insert({
+          sender_id:currentUser.id,
+          receiver_id:selectedChatUser.id,
+          content:content,
+          media_url:mediaUrl,
+          media_type:mediaType,
+          is_read:false
+        });
+
+
+    if(result.error){
+      throw result.error;
+    }
+
+
+    input.value =
+      "";
+
+    $("chatMedia").value =
+      "";
+
+    $("chatSelectedFile")
+      .textContent =
+      "";
+
+
+    await loadMessages();
+
+
+  }catch(error){
+
+    console.error(
+      "SEND MESSAGE ERROR:",
+      error
+    );
+
+
+    toast(
+      error?.message ||
+      "Could not send message.",
+      "error"
+    );
+
+  }finally{
+
+    setButtonLoading(
+      button,
+      false,
+      "Send"
+    );
+  }
+}
+
+
+/* =========================================================
+   CHAT - AUTO REFRESH
+========================================================= */
+
+function startMessageRefresh(){
+
+  clearInterval(
+    chatMessagesTimer
+  );
+
+
+  chatMessagesTimer =
+    setInterval(
+      async ()=>{
+
+        if(
+          selectedChatUser &&
+          $("chatPage")
+            .classList
+            .contains("active")
+        ){
+
+          await loadMessages();
+        }
+
+      },
+      5000
+    );
+}
+
+
+/* =========================================================
+   CHAT - CALL
+========================================================= */
+
+function callSelectedUser(){
+
+  if(
+    !selectedChatUser ||
+    !selectedChatUser.phone
+  ){
+
+    toast(
+      "This user has no phone number available.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  const phone =
+    String(
+      selectedChatUser.phone
+    )
+    .replace(
+      /[^0-9+]/g,
+      ""
+    );
+
+
+  if(!phone){
+    return;
+  }
+
+
+  /*
+    This opens the device phone dialer.
+    It is not an in-app WebRTC call.
+  */
+
+  window.location.href =
+    "tel:" + phone;
 }
 
 
@@ -4354,7 +5861,9 @@ function closeModal(id){
 
 
   if(modal){
-    modal.classList.add("hidden");
+    modal.classList.add(
+      "hidden"
+    );
   }
 }
 
@@ -4372,6 +5881,11 @@ async function logout(){
 
   try{
 
+    clearInterval(
+      chatMessagesTimer
+    );
+
+
     const result =
       await db.auth.signOut();
 
@@ -4385,6 +5899,9 @@ async function logout(){
       null;
 
     currentProfile =
+      null;
+
+    selectedChatUser =
       null;
 
 
@@ -4438,7 +5955,10 @@ if(db){
       );
 
 
-      if(event === "SIGNED_OUT"){
+      if(
+        event ===
+        "SIGNED_OUT"
+      ){
 
         currentUser =
           null;
@@ -4447,12 +5967,10 @@ if(db){
           null;
 
         showAuthScreen();
-
       }
 
     }
   );
-
 }
 
 
@@ -4485,7 +6003,10 @@ async function startApp(){
       result?.data?.session;
 
 
-    if(session && session.user){
+    if(
+      session &&
+      session.user
+    ){
 
       currentUser =
         session.user;
@@ -4495,7 +6016,6 @@ async function startApp(){
     }else{
 
       showAuthScreen();
-
     }
 
 
@@ -4507,13 +6027,12 @@ async function startApp(){
     );
 
     showAuthScreen();
-
   }
 }
 
 
 /* =========================================================
-   ENTER KEY SUPPORT
+   ENTER KEY
 ========================================================= */
 
 $("loginPassword")
@@ -4555,6 +6074,25 @@ $("signupPassword")
   );
 
 
+$("messageInput")
+  .addEventListener(
+    "keydown",
+    event=>{
+
+      if(
+        event.key === "Enter" &&
+        !event.shiftKey
+      ){
+
+        event.preventDefault();
+
+        sendMessage();
+      }
+
+    }
+  );
+
+
 /* =========================================================
    GLOBAL ERROR SAFETY
 ========================================================= */
@@ -4565,7 +6103,8 @@ window.addEventListener(
 
     console.error(
       "GLOBAL JS ERROR:",
-      event.error || event.message
+      event.error ||
+      event.message
     );
 
   }
