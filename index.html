@@ -1,29 +1,48 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ঘুষ সাইট</title>
+
+<title>Ghus Site</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{
+ box-sizing:border-box;
+}
+
+html{
+ scroll-behavior:smooth;
+}
 
 body{
  margin:0;
- font-family:Arial,"Noto Sans Bengali",sans-serif;
+ font-family:Arial,"Noto Sans",sans-serif;
  background:#f0f2f5;
  color:#172b1f;
 }
 
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
+button,
+input,
+textarea,
+select{
+ font:inherit;
+}
 
-.hidden{display:none!important}
+button{
+ cursor:pointer;
+}
 
-/* BOOT */
+.hidden{
+ display:none!important;
+}
+
+/* =========================
+   BOOT
+========================= */
+
 #boot{
  min-height:100vh;
  display:flex;
@@ -34,13 +53,27 @@ button{cursor:pointer}
 
 .bootBox{
  background:#fff;
- padding:28px;
- border-radius:16px;
+ padding:30px;
+ border-radius:18px;
  box-shadow:0 5px 25px #0002;
  text-align:center;
+ min-width:250px;
 }
 
-/* AUTH */
+.bootLogo{
+ font-size:38px;
+ margin-bottom:8px;
+}
+
+.bootBox b{
+ font-size:22px;
+ color:#138a45;
+}
+
+/* =========================
+   AUTH
+========================= */
+
 #authPage{
  min-height:100vh;
  background:linear-gradient(135deg,#e8f7ee,#f7fffa);
@@ -52,10 +85,10 @@ button{cursor:pointer}
 
 .authBox{
  width:100%;
- max-width:420px;
+ max-width:430px;
  background:#fff;
- border-radius:18px;
- padding:24px;
+ border-radius:20px;
+ padding:25px;
  box-shadow:0 8px 30px #0002;
 }
 
@@ -69,15 +102,18 @@ button{cursor:pointer}
 .sub{
  text-align:center;
  color:#667;
- margin:8px 0 20px;
+ margin:8px 0 22px;
+ line-height:1.5;
 }
 
-.field{margin:10px 0}
+.field{
+ margin:11px 0;
+}
 
 .field label{
  display:block;
  font-weight:bold;
- margin-bottom:5px;
+ margin-bottom:6px;
 }
 
 .field input,
@@ -89,6 +125,13 @@ button{cursor:pointer}
  border-radius:9px;
  outline:none;
  background:#fff;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+ border-color:#138a45;
+ box-shadow:0 0 0 2px #138a4520;
 }
 
 .field textarea{
@@ -107,6 +150,11 @@ button{cursor:pointer}
  font-weight:bold;
 }
 
+.primary:hover,
+.greenBtn:hover{
+ background:#0d7438;
+}
+
 .secondary{
  width:100%;
  border:1px solid #138a45;
@@ -118,11 +166,14 @@ button{cursor:pointer}
  margin-top:8px;
 }
 
-/* TOPBAR */
+/* =========================
+   TOPBAR
+========================= */
+
 .topbar{
  position:sticky;
  top:0;
- z-index:20;
+ z-index:50;
  background:#fff;
  border-bottom:1px solid #ddd;
  height:58px;
@@ -138,20 +189,28 @@ button{cursor:pointer}
  color:#138a45;
 }
 
+.topActions{
+ display:flex;
+ align-items:center;
+}
+
 .topActions button{
  border:0;
  background:#eef7f1;
  border-radius:50%;
  width:38px;
  height:38px;
- margin-left:5px;
+ margin-left:6px;
 }
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
+
 .container{
  max-width:760px;
  margin:14px auto;
- padding:0 10px 80px;
+ padding:0 10px 85px;
 }
 
 .card{
@@ -168,15 +227,96 @@ button{cursor:pointer}
  margin:12px 0;
 }
 
-/* POST */
+/* =========================
+   CATEGORY
+========================= */
+
+.categoryBox{
+ margin:8px 0;
+}
+
+.categoryBox label{
+ font-weight:bold;
+ display:block;
+ margin-bottom:5px;
+}
+
+.categoryBox select{
+ width:100%;
+ padding:11px;
+ border:1px solid #ccd8d0;
+ border-radius:9px;
+ background:#fff;
+}
+
+/* =========================
+   POST
+========================= */
+
 .postBox textarea{
- min-height:90px;
+ min-height:100px;
+ width:100%;
+ padding:12px;
+ border:1px solid #ccd8d0;
+ border-radius:9px;
+ resize:vertical;
+ outline:none;
+}
+
+.postBox textarea:focus{
+ border-color:#138a45;
 }
 
 .mediaInput{
- margin:8px 0;
+ margin:9px 0;
  width:100%;
 }
+
+.mediaInfo{
+ font-size:12px;
+ color:#666;
+ margin-top:-3px;
+ margin-bottom:8px;
+ line-height:1.5;
+}
+
+.previewGrid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:6px;
+ margin:8px 0;
+}
+
+.previewItem{
+ position:relative;
+ background:#f4f6f5;
+ border-radius:8px;
+ overflow:hidden;
+ min-height:90px;
+}
+
+.previewItem img,
+.previewItem video{
+ width:100%;
+ height:110px;
+ object-fit:cover;
+ display:block;
+}
+
+.previewType{
+ position:absolute;
+ left:5px;
+ bottom:5px;
+ background:#0009;
+ color:#fff;
+ font-size:10px;
+ padding:3px 6px;
+ border-radius:5px;
+}
+
+/* =========================
+   POST HEADER
+========================= */
 
 .postHead{
  display:flex;
@@ -197,11 +337,25 @@ button{cursor:pointer}
  flex-shrink:0;
 }
 
-.postName{font-weight:bold}
+.postName{
+ font-weight:bold;
+}
 
 .postTime{
  font-size:12px;
  color:#777;
+ margin-top:2px;
+}
+
+.postCategory{
+ display:inline-block;
+ margin-top:5px;
+ background:#e8f7ee;
+ color:#138a45;
+ border-radius:20px;
+ padding:3px 8px;
+ font-size:11px;
+ font-weight:bold;
 }
 
 .postMenu{
@@ -217,15 +371,56 @@ button{cursor:pointer}
  white-space:pre-wrap;
  line-height:1.6;
  margin:12px 0;
+ overflow-wrap:anywhere;
 }
 
-.postMedia{
+/* =========================
+   MEDIA
+========================= */
+
+.postMediaGrid{
+ display:grid;
+ gap:6px;
+ margin-top:8px;
+}
+
+.postMediaGrid.count-1{
+ grid-template-columns:1fr;
+}
+
+.postMediaGrid.count-2{
+ grid-template-columns:repeat(2,1fr);
+}
+
+.postMediaGrid.count-3,
+.postMediaGrid.count-4{
+ grid-template-columns:repeat(2,1fr);
+}
+
+.postMediaItem{
  width:100%;
  max-height:500px;
  object-fit:cover;
  border-radius:10px;
- margin-top:7px;
+ background:#000;
+ display:block;
 }
+
+.postMediaGrid.count-1 .postMediaItem{
+ max-height:550px;
+}
+
+.mediaError{
+ background:#f8eeee;
+ color:#a33;
+ padding:10px;
+ border-radius:8px;
+ font-size:13px;
+}
+
+/* =========================
+   REACTION
+========================= */
 
 .reactionBar{
  display:flex;
@@ -242,23 +437,35 @@ button{cursor:pointer}
  background:transparent;
  padding:8px;
  border-radius:7px;
+ color:#444;
 }
 
 .reactionBar button:hover{
  background:#f3f6f4;
 }
 
-/* COMMENTS */
+.reactionBar button.active{
+ color:#138a45;
+ font-weight:bold;
+}
+
+/* =========================
+   COMMENTS
+========================= */
+
 .comment{
  padding:8px 0;
  border-bottom:1px solid #eee;
 }
 
-.comment b{font-size:14px}
+.comment b{
+ font-size:14px;
+}
 
 .comment p{
  margin:3px 0 0;
  line-height:1.4;
+ overflow-wrap:anywhere;
 }
 
 .commentForm{
@@ -272,6 +479,8 @@ button{cursor:pointer}
  padding:10px;
  border:1px solid #ccd8d0;
  border-radius:9px;
+ outline:none;
+ min-width:0;
 }
 
 .commentForm button{
@@ -282,7 +491,10 @@ button{cursor:pointer}
  padding:0 14px;
 }
 
-/* BOTTOM NAV */
+/* =========================
+   BOTTOM NAV
+========================= */
+
 .bottomNav{
  position:fixed;
  bottom:0;
@@ -291,7 +503,7 @@ button{cursor:pointer}
  background:#fff;
  border-top:1px solid #ddd;
  display:flex;
- z-index:30;
+ z-index:60;
 }
 
 .bottomNav button{
@@ -308,7 +520,10 @@ button{cursor:pointer}
  font-weight:bold;
 }
 
-/* HELP */
+/* =========================
+   HELP
+========================= */
+
 .helpSection{
  background:#fff;
  border-radius:12px;
@@ -326,7 +541,7 @@ button{cursor:pointer}
  text-decoration:none;
  color:#138a45;
  font-weight:bold;
- padding:9px;
+ padding:10px;
  border:1px solid #e0e9e3;
  border-radius:8px;
  margin:7px 0;
@@ -341,7 +556,10 @@ button{cursor:pointer}
  margin:10px 0;
 }
 
-/* JOURNALIST DIRECTORY */
+/* =========================
+   JOURNALIST
+========================= */
+
 .journalistBox{
  background:linear-gradient(135deg,#eef8ff,#fff);
  border-left:5px solid #138a45;
@@ -426,7 +644,10 @@ button{cursor:pointer}
  font-weight:bold;
 }
 
-/* NEWS */
+/* =========================
+   NEWS
+========================= */
+
 .news a{
  display:block;
  padding:11px;
@@ -436,8 +657,13 @@ button{cursor:pointer}
  font-weight:bold;
 }
 
-/* PROFILE */
-.profileHeader{text-align:center}
+/* =========================
+   PROFILE
+========================= */
+
+.profileHeader{
+ text-align:center;
+}
 
 .profileAvatar{
  width:80px;
@@ -453,7 +679,10 @@ button{cursor:pointer}
  font-weight:bold;
 }
 
-/* SEARCH */
+/* =========================
+   SEARCH
+========================= */
+
 .searchRow{
  display:flex;
  gap:7px;
@@ -461,6 +690,7 @@ button{cursor:pointer}
 
 .searchRow input{
  flex:1;
+ min-width:0;
 }
 
 .searchRow button{
@@ -477,7 +707,38 @@ button{cursor:pointer}
  padding:25px;
 }
 
-/* TOAST */
+/* =========================
+   LOADING
+========================= */
+
+.loading{
+ text-align:center;
+ padding:20px;
+ color:#777;
+}
+
+.spinner{
+ display:inline-block;
+ width:22px;
+ height:22px;
+ border:3px solid #dcebe1;
+ border-top-color:#138a45;
+ border-radius:50%;
+ animation:spin .8s linear infinite;
+ vertical-align:middle;
+ margin-right:7px;
+}
+
+@keyframes spin{
+ to{
+  transform:rotate(360deg);
+ }
+}
+
+/* =========================
+   TOAST
+========================= */
+
 .toast{
  position:fixed;
  left:50%;
@@ -489,90 +750,192 @@ button{cursor:pointer}
  border-radius:9px;
  z-index:100;
  display:none;
+ max-width:90%;
+ text-align:center;
 }
 
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:650px){
+
  .locationGrid{
   grid-template-columns:1fr;
  }
 
  .container{
-  padding-bottom:75px;
+  padding-bottom:78px;
  }
+
+ .previewGrid{
+  grid-template-columns:repeat(2,1fr);
+ }
+
+ .postMediaGrid.count-2,
+ .postMediaGrid.count-3,
+ .postMediaGrid.count-4{
+  grid-template-columns:repeat(2,1fr);
+ }
+
+ .reactionBar button{
+  font-size:12px;
+ }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- BOOT -->
+<!-- =========================
+     BOOT
+========================= -->
+
 <div id="boot">
+
  <div class="bootBox">
-  <div style="font-size:28px">🌿</div>
-  <b>ঘুষ সাইট</b>
-  <p style="color:#777">লোড হচ্ছে…</p>
+
+  <div class="bootLogo">🌿</div>
+
+  <b>Ghus Site</b>
+
+  <p style="color:#777">
+   Loading...
+  </p>
+
  </div>
+
 </div>
 
-<!-- AUTH -->
+
+<!-- =========================
+     AUTH
+========================= -->
+
 <section id="authPage" class="hidden">
 
  <div class="authBox">
 
-  <div class="logo">ঘুষ সাইট</div>
-
-  <div class="sub">
-   দুর্নীতি ও অনিয়মের বিরুদ্ধে সচেতনতার একটি প্ল্যাটফর্ম
+  <div class="logo">
+   Ghus Site
   </div>
 
+  <div class="sub">
+   A public awareness platform against corruption,
+   bribery, middlemen and abuse of power.
+  </div>
+
+
   <!-- LOGIN -->
+
   <div id="loginForm">
 
    <div class="field">
-    <label>মোবাইল / ইমেইল</label>
-    <input id="loginId" placeholder="মোবাইল বা ইমেইল">
+
+    <label>
+     Mobile / Email
+    </label>
+
+    <input
+     id="loginId"
+     type="text"
+     placeholder="Enter mobile or email">
+
    </div>
+
 
    <div class="field">
-    <label>নাম</label>
-    <input id="loginName" placeholder="আপনার নাম">
+
+    <label>
+     Name
+    </label>
+
+    <input
+     id="loginName"
+     type="text"
+     placeholder="Enter your name">
+
    </div>
 
-   <button class="primary" onclick="login()">
-    প্রবেশ করুন
+
+   <button
+    class="primary"
+    onclick="login()">
+
+    Login
+
    </button>
 
-   <button class="secondary" onclick="showSignup()">
-    নতুন অ্যাকাউন্ট
+
+   <button
+    class="secondary"
+    onclick="showSignup()">
+
+    Create New Account
+
    </button>
 
   </div>
 
+
   <!-- SIGNUP -->
+
   <div id="signupForm" class="hidden">
 
    <div class="field">
-    <label>নাম</label>
-    <input id="signupName" placeholder="আপনার নাম">
+
+    <label>
+     Name
+    </label>
+
+    <input
+     id="signupName"
+     type="text"
+     placeholder="Enter your name">
+
    </div>
+
 
    <div class="field">
-    <label>মোবাইল / ইমেইল</label>
-    <input id="signupId" placeholder="মোবাইল বা ইমেইল">
+
+    <label>
+     Mobile / Email
+    </label>
+
+    <input
+     id="signupId"
+     type="text"
+     placeholder="Enter mobile or email">
+
    </div>
 
-   <button class="primary" onclick="signup()">
-    অ্যাকাউন্ট তৈরি করুন
+
+   <button
+    class="primary"
+    onclick="signup()">
+
+    Create Account
+
    </button>
 
-   <button class="secondary" onclick="showLogin()">
-    আগের অ্যাকাউন্টে প্রবেশ
+
+   <button
+    class="secondary"
+    onclick="showLogin()">
+
+    Back to Login
+
    </button>
 
   </div>
 
+
   <p style="font-size:12px;color:#777;line-height:1.5;margin-top:15px">
-   আপনার পরিচয় গোপন রেখে পোস্ট করার অপশন রয়েছে।
+
+   You can publish posts anonymously.
+   Do not publish private information or unverified accusations.
+
   </p>
 
  </div>
@@ -580,23 +943,35 @@ button{cursor:pointer}
 </section>
 
 
-<!-- APP -->
+<!-- =========================
+     APP
+========================= -->
+
 <section id="appPage" class="hidden">
 
 <header class="topbar">
 
  <div class="brand">
-  ঘুষ সাইট
+  Ghus Site
  </div>
 
  <div class="topActions">
 
-  <button onclick="showPage('searchPage')" title="Search">
+  <button
+   onclick="showPage('searchPage')"
+   title="Search">
+
    🔎
+
   </button>
 
-  <button onclick="logout()" title="Logout">
+
+  <button
+   onclick="logout()"
+   title="Logout">
+
    ↪
+
   </button>
 
  </div>
@@ -606,28 +981,61 @@ button{cursor:pointer}
 
 <main class="container">
 
-<!-- HOME -->
+
+<!-- =========================
+     HOME
+========================= -->
+
 <section id="homePage" class="page">
 
  <div class="card" id="awarenessBox">
 
-  <b>🌿 আজকের সচেতনতা</b>
+  <b>🌿 Daily Awareness</b>
 
   <p id="awarenessText">
-   লোড হচ্ছে…
+   Loading...
   </p>
 
  </div>
 
 
+ <!-- CREATE POST -->
+
  <div class="card postBox">
 
-  <h3>📝 কী ঘটেছে বলুন</h3>
+  <h3>
+   📝 What happened?
+  </h3>
+
+
+  <div class="categoryBox">
+
+   <label>
+    Category
+   </label>
+
+   <select id="postCategory">
+
+    <!-- ONLY BENGALI OPTIONS -->
+
+    <option value="ঘুষ">
+     ঘুষ
+    </option>
+
+    <option value="দালালি">
+     দালালি
+    </option>
+
+   </select>
+
+  </div>
+
 
   <textarea
    id="postText"
-   placeholder="আপনার অভিজ্ঞতা লিখুন…">
+   placeholder="Write about your experience...">
   </textarea>
+
 
   <input
    id="postMedia"
@@ -636,30 +1044,56 @@ button{cursor:pointer}
    accept="image/*,video/*"
    multiple>
 
+
+  <div class="mediaInfo">
+   You can select multiple photos and videos.
+   Please avoid private or sensitive information.
+  </div>
+
+
+  <div
+   id="mediaPreview"
+   class="previewGrid">
+  </div>
+
+
   <label>
-   <input id="anonymousPost" type="checkbox">
-   পরিচয় গোপন রেখে পোস্ট করুন
+
+   <input
+    id="anonymousPost"
+    type="checkbox">
+
+   Post anonymously
+
   </label>
 
+
   <button
+   id="publishBtn"
    class="primary"
    style="margin-top:10px"
    onclick="createPost()">
-   পোস্ট প্রকাশ করুন
+
+   Publish Post
+
   </button>
 
  </div>
+
 
  <div id="feed"></div>
 
 </section>
 
 
-<!-- PUBLIC -->
+<!-- =========================
+     PUBLIC POSTS
+========================= -->
+
 <section id="publicPage" class="page hidden">
 
  <div class="pageTitle">
-  🌐 পাবলিক পোস্ট
+  🌐 Public Posts
  </div>
 
  <div id="publicFeed"></div>
@@ -667,60 +1101,96 @@ button{cursor:pointer}
 </section>
 
 
-<!-- PROFILE -->
+<!-- =========================
+     PROFILE
+========================= -->
+
 <section id="profilePage" class="page hidden">
 
  <div class="card profileHeader">
 
-  <div id="profileAvatar" class="profileAvatar">
+  <div
+   id="profileAvatar"
+   class="profileAvatar">
+
    A
+
   </div>
 
+
   <h2 id="profileName">
-   প্রোফাইল
+   Profile
   </h2>
+
 
   <p
    id="profileBio"
    style="color:#666">
   </p>
 
+
   <button
    class="secondary"
    onclick="openEditProfile()">
-   ✏️ প্রোফাইল এডিট
+
+   ✏️ Edit Profile
+
   </button>
 
  </div>
+
 
  <div id="profilePosts"></div>
 
 </section>
 
 
-<!-- EDIT PROFILE -->
+<!-- =========================
+     EDIT PROFILE
+========================= -->
+
 <section id="editProfilePage" class="page hidden">
 
  <div class="pageTitle">
-  ✏️ প্রোফাইল পরিবর্তন
+  ✏️ Edit Profile
  </div>
+
 
  <div class="card">
 
   <div class="field">
-   <label>নাম</label>
-   <input id="editName">
+
+   <label>
+    Name
+   </label>
+
+   <input
+    id="editName"
+    placeholder="Your name">
+
   </div>
 
+
   <div class="field">
-   <label>Bio</label>
-   <textarea id="editBio"></textarea>
+
+   <label>
+    Bio
+   </label>
+
+   <textarea
+    id="editBio"
+    placeholder="Write something about yourself">
+   </textarea>
+
   </div>
+
 
   <button
    class="primary"
    onclick="saveProfile()">
-   সংরক্ষণ করুন
+
+   Save Changes
+
   </button>
 
  </div>
@@ -728,12 +1198,16 @@ button{cursor:pointer}
 </section>
 
 
-<!-- SEARCH -->
+<!-- =========================
+     SEARCH
+========================= -->
+
 <section id="searchPage" class="page hidden">
 
  <div class="pageTitle">
-  🔎 মানুষ খুঁজুন
+  🔎 Find People
  </div>
+
 
  <div class="card">
 
@@ -741,22 +1215,29 @@ button{cursor:pointer}
 
    <input
     id="searchInput"
-    placeholder="নাম লিখুন">
+    placeholder="Search by name">
 
-   <button onclick="doSearchUsers()">
-    খুঁজুন
+   <button
+    onclick="doSearchUsers()">
+
+    Search
+
    </button>
 
   </div>
 
  </div>
 
+
  <div id="searchResults"></div>
 
 </section>
 
 
-<!-- HELP DESK -->
+<!-- =========================
+     HELP DESK
+========================= -->
+
 <section id="helpPage" class="page hidden">
 
  <div class="pageTitle">
@@ -764,22 +1245,19 @@ button{cursor:pointer}
  </div>
 
 
- <!-- =====================================================
-      সাংবাদিক DIRECTORY — HELP DESK-এর একদম উপরে
- ====================================================== -->
-
  <div class="helpSection journalistBox">
 
   <h3 class="journalistTitle">
-   📰 সাংবাদিক / সংবাদমাধ্যম Directory
+   📰 Journalist / Media Directory
   </h3>
+
 
   <div class="journalistSub">
 
-   বিভাগ ও জেলা নির্বাচন করে সংশ্লিষ্ট
-   সাংবাদিক/সংবাদমাধ্যমের যাচাইযোগ্য contact খুঁজুন।
+   Select a division and district to find
+   available verified media contacts.
 
-   ব্যক্তিগত বা অযাচাইকৃত নম্বর এখানে প্রকাশ করা হবে না।
+   Personal or unverified numbers are not published.
 
   </div>
 
@@ -788,14 +1266,16 @@ button{cursor:pointer}
 
    <div class="field">
 
-    <label>বিভাগ</label>
+    <label>
+     Division
+    </label>
 
     <select
      id="journalistDivision"
      onchange="journalistDivisionChanged()">
 
      <option value="">
-      বিভাগ নির্বাচন করুন
+      Select Division
      </option>
 
     </select>
@@ -805,7 +1285,9 @@ button{cursor:pointer}
 
    <div class="field">
 
-    <label>জেলা</label>
+    <label>
+     District
+    </label>
 
     <select
      id="journalistDistrict"
@@ -813,7 +1295,7 @@ button{cursor:pointer}
      disabled>
 
      <option value="">
-      আগে বিভাগ নির্বাচন করুন
+      Select Division First
      </option>
 
     </select>
@@ -823,14 +1305,16 @@ button{cursor:pointer}
 
    <div class="field">
 
-    <label>উপজেলা</label>
+    <label>
+     Upazila
+    </label>
 
     <select
      id="journalistUpazila"
      disabled>
 
      <option>
-      বর্তমানে আলাদা contact dataset নেই
+      No separate contact dataset available
      </option>
 
     </select>
@@ -840,14 +1324,16 @@ button{cursor:pointer}
 
    <div class="field">
 
-    <label>ইউনিয়ন</label>
+    <label>
+     Union
+    </label>
 
     <select
      id="journalistUnion"
      disabled>
 
      <option>
-      বর্তমানে আলাদা contact dataset নেই
+      No separate contact dataset available
      </option>
 
     </select>
@@ -861,20 +1347,20 @@ button{cursor:pointer}
    class="journalistSearchBtn"
    onclick="findJournalists()">
 
-   🔎 Journalist / Media Contact খুঁজুন
+   🔎 Find Journalist / Media Contact
 
   </button>
 
 
   <div class="warningBox">
 
-   ⚠️ গুরুত্বপূর্ণ:
+   ⚠️ Important:
 
-   সাংবাদিকদের ব্যক্তিগত মোবাইল নম্বর প্রকাশ করা হচ্ছে না।
+   Personal journalist phone numbers are not published.
 
-   শুধু official office/newsroom বা সরকারি directory ব্যবহার করুন।
-
-   কোনো অভিযোগ পাঠানোর আগে তথ্য ও প্রমাণ যাচাই করুন।
+   Use official newsroom, media office or government
+   directories. Verify information before submitting
+   any complaint.
 
   </div>
 
@@ -885,11 +1371,10 @@ button{cursor:pointer}
   </div>
 
 
-  <!-- OFFICIAL MEDIA -->
   <div class="helpSection">
 
    <h3>
-    🏢 Official Media Contact
+    🏢 Official Media Contacts
    </h3>
 
 
@@ -1023,7 +1508,7 @@ button{cursor:pointer}
     </div>
 
     <div class="journalistMeta">
-     সরকারি তথ্য ও সংবাদমাধ্যম সংক্রান্ত directory
+     Government information and media directory
     </div>
 
     <a
@@ -1044,19 +1529,22 @@ button{cursor:pointer}
 
 
  <!-- EMERGENCY -->
+
  <div class="helpSection">
 
   <h3>
-   🚨 জরুরি সহায়তা
+   🚨 Emergency Help
   </h3>
+
 
   <a
    class="helpLinks"
    href="tel:999">
 
-   📞 জাতীয় জরুরি সেবা — 999
+   📞 National Emergency Service — 999
 
   </a>
+
 
   <a
    class="helpLinks"
@@ -1072,18 +1560,21 @@ button{cursor:pointer}
 
 
  <!-- ACC -->
+
  <div class="helpSection">
 
   <h3>
-   ⚖️ দুর্নীতি দমন কমিশন (ACC)
+   ⚖️ Anti-Corruption Commission (ACC)
   </h3>
+
 
   <div class="warningBox">
 
-   দুর্নীতির অভিযোগে তথ্য, প্রমাণ এবং
-   ঘটনার সময়/স্থান যতটা সম্ভব পরিষ্কারভাবে সংরক্ষণ করুন।
+   Keep available information, evidence,
+   time and location details as clearly as possible.
 
   </div>
+
 
   <a
    class="helpLinks"
@@ -1094,6 +1585,7 @@ button{cursor:pointer}
    ACC Official Website
 
   </a>
+
 
   <a
    class="helpLinks"
@@ -1107,21 +1599,23 @@ button{cursor:pointer}
 
 
  <!-- REPORTING -->
+
  <div class="helpSection">
 
   <h3>
-   📝 অভিযোগ করার আগে
+   📝 Before Reporting
   </h3>
+
 
   <p style="line-height:1.7">
 
-   অভিযোগে যাচাইযোগ্য তথ্য দিন।
+   Provide verifiable information.
 
-   কারও বিরুদ্ধে প্রমাণ ছাড়া ব্যক্তিগত অভিযোগ
-   বা মানহানিকর বক্তব্য প্রকাশ করবেন না।
+   Do not publish unverified allegations,
+   defamatory statements or private information.
 
-   ছবি/ভিডিও প্রকাশের আগে ব্যক্তিগত তথ্য
-   এবং শিশুদের পরিচয় গোপন রাখুন।
+   Before uploading photos or videos,
+   protect personal information and children's identities.
 
   </p>
 
@@ -1130,12 +1624,16 @@ button{cursor:pointer}
 </section>
 
 
-<!-- NEWS -->
+<!-- =========================
+     NEWS
+========================= -->
+
 <section id="newsPage" class="page hidden">
 
  <div class="pageTitle">
   📰 News
  </div>
+
 
  <div class="card news">
 
@@ -1143,89 +1641,132 @@ button{cursor:pointer}
    href="https://www.bbc.com/bengali"
    target="_blank"
    rel="noopener">
-   BBC বাংলা
+
+   BBC Bangla
+
   </a>
+
 
   <a
    href="https://www.prothomalo.com"
    target="_blank"
    rel="noopener">
-   প্রথম আলো
+
+   Prothom Alo
+
   </a>
+
 
   <a
    href="https://bangla.bdnews24.com"
    target="_blank"
    rel="noopener">
+
    bdnews24
+
   </a>
+
 
   <a
    href="https://www.somoynews.tv"
    target="_blank"
    rel="noopener">
+
    Somoy TV
+
   </a>
+
 
   <a
    href="https://jamuna.tv"
    target="_blank"
    rel="noopener">
+
    Jamuna TV
+
   </a>
+
 
   <a
    href="https://www.channel24bd.tv"
    target="_blank"
    rel="noopener">
+
    Channel 24
+
   </a>
+
 
   <a
    href="https://ekattor.tv"
    target="_blank"
    rel="noopener">
+
    Ekattor TV
+
   </a>
 
  </div>
 
 </section>
 
+
 </main>
 
 
-<!-- BOTTOM NAV -->
+<!-- =========================
+     BOTTOM NAV
+========================= -->
+
 <nav class="bottomNav">
 
  <button
   id="navHome"
   onclick="showPage('homePage')">
-  🏠<br>হোম
+
+  🏠<br>
+  Home
+
  </button>
+
 
  <button
   id="navPublic"
   onclick="showPage('publicPage')">
-  🌐<br>পোস্ট
+
+  🌐<br>
+  Posts
+
  </button>
+
 
  <button
   id="navProfile"
   onclick="showPage('profilePage')">
-  👤<br>প্রোফাইল
+
+  👤<br>
+  Profile
+
  </button>
+
 
  <button
   id="navHelp"
   onclick="showPage('helpPage')">
-  🆘<br>Help
+
+  🆘<br>
+  Help
+
  </button>
+
 
  <button
   id="navNews"
   onclick="showPage('newsPage')">
-  📰<br>News
+
+  📰<br>
+  News
+
  </button>
 
 </nav>
@@ -1261,7 +1802,7 @@ null;
 
 
 /* =========================================================
-   BASIC FUNCTIONS
+   BASIC
 ========================================================= */
 
 const $ =
@@ -1289,19 +1830,34 @@ function escapeHTML(value){
 }
 
 
+function safeAttribute(value){
+
+ return escapeHTML(value);
+
+}
+
+
 function toast(message){
 
- const t = $("toast");
+ const t =
+ $("toast");
 
- t.textContent = message;
- t.style.display = "block";
+ t.textContent =
+ message;
 
- clearTimeout(window.toastTimer);
+ t.style.display =
+ "block";
+
+ clearTimeout(
+  window.toastTimer
+ );
 
  window.toastTimer =
  setTimeout(
-  ()=>t.style.display="none",
-  2600
+  ()=>{
+   t.style.display="none";
+  },
+  2800
  );
 
 }
@@ -1330,6 +1886,27 @@ function saveLocalUser(user){
   sessionKey,
   JSON.stringify(user)
  );
+
+}
+
+
+function makeId(){
+
+ if(
+  window.crypto &&
+  typeof crypto.randomUUID === "function"
+ ){
+
+  return crypto.randomUUID();
+
+ }
+
+ return String(
+  Date.now()
+ )+
+ Math.random()
+ .toString(36)
+ .slice(2);
 
 }
 
@@ -1367,26 +1944,30 @@ function showSignup(){
 async function signup(){
 
  const name =
- $("signupName").value.trim();
+ $("signupName")
+ .value
+ .trim();
 
  const ident =
- $("signupId").value.trim();
+ $("signupId")
+ .value
+ .trim();
+
 
  if(!name || !ident){
 
-  toast("নাম ও মোবাইল/ইমেইল দিন");
+  toast(
+   "Please enter your name and mobile/email."
+  );
+
   return;
 
  }
 
+
  const user = {
 
-  id:
-   crypto.randomUUID
-   ?
-   crypto.randomUUID()
-   :
-   String(Date.now()),
+  id:makeId(),
 
   name:name,
 
@@ -1399,9 +1980,13 @@ async function signup(){
 
  saveLocalUser(user);
 
+ await ensureProfile(user);
+
  enterApp();
 
- toast("অ্যাকাউন্ট তৈরি হয়েছে");
+ toast(
+  "Account created successfully."
+ );
 
 }
 
@@ -1409,49 +1994,142 @@ async function signup(){
 async function login(){
 
  const ident =
- $("loginId").value.trim();
+ $("loginId")
+ .value
+ .trim();
 
  const name =
- $("loginName").value.trim();
+ $("loginName")
+ .value
+ .trim();
+
 
  if(!ident){
 
-  toast("মোবাইল/ইমেইল দিন");
+  toast(
+   "Please enter your mobile/email."
+  );
+
   return;
 
  }
+
 
  const old =
  currentUser();
 
+
  if(old && old.ident === ident){
 
+  if(name){
+   old.name=name;
+   saveLocalUser(old);
+  }
+
+  await ensureProfile(old);
+
   enterApp();
+
+  toast(
+   "Login successful."
+  );
+
   return;
 
  }
 
- saveLocalUser({
 
-  id:
-   crypto.randomUUID
-   ?
-   crypto.randomUUID()
-   :
-   String(Date.now()),
+ const user = {
+
+  id:makeId(),
 
   name:
-   name || "ব্যবহারকারী",
+   name ||
+   "User",
 
   ident:ident,
 
   bio:""
 
- });
+ };
+
+
+ saveLocalUser(user);
+
+ await ensureProfile(user);
 
  enterApp();
 
- toast("প্রবেশ সফল");
+ toast(
+  "Login successful."
+ );
+
+}
+
+
+async function ensureProfile(user){
+
+ if(!db || !user)return;
+
+ try{
+
+  const existing =
+  await db
+  .from("profiles")
+  .select("id")
+  .eq("id",user.id)
+  .maybeSingle();
+
+
+  if(existing.error){
+
+   console.log(
+    "Profile lookup:",
+    existing.error
+   );
+
+   return;
+
+  }
+
+
+  if(!existing.data){
+
+   const result =
+   await db
+   .from("profiles")
+   .insert({
+
+    id:user.id,
+
+    display_name:
+     user.name || "User",
+
+    username:
+     user.name || "User",
+
+    bio:
+     user.bio || ""
+
+   });
+
+
+   if(result.error){
+
+    console.log(
+     "Profile create:",
+     result.error
+    );
+
+   }
+
+  }
+
+ }catch(e){
+
+  console.log(e);
+
+ }
 
 }
 
@@ -1473,7 +2151,9 @@ function enterApp(){
 
 function logout(){
 
- localStorage.removeItem(sessionKey);
+ localStorage.removeItem(
+  sessionKey
+ );
 
  $("appPage")
  .classList
@@ -1485,7 +2165,9 @@ function logout(){
 
  showLogin();
 
- toast("লগআউট হয়েছে");
+ toast(
+  "Logged out."
+ );
 
 }
 
@@ -1499,30 +2181,47 @@ function showPage(id){
  document
  .querySelectorAll(".page")
  .forEach(
-  p => p.classList.add("hidden")
+  p =>
+  p.classList.add("hidden")
  );
 
+
  if($(id)){
-  $(id).classList.remove("hidden");
+
+  $(id)
+  .classList
+  .remove("hidden");
+
  }
+
 
  document
  .querySelectorAll(".bottomNav button")
  .forEach(
-  b => b.classList.remove("active")
+  b =>
+  b.classList.remove("active")
  );
+
 
  const map = {
 
   homePage:"navHome",
+
   publicPage:"navPublic",
+
   profilePage:"navProfile",
+
   helpPage:"navHelp",
+
   newsPage:"navNews"
 
  };
 
- if(map[id] && $(map[id])){
+
+ if(
+  map[id] &&
+  $(map[id])
+ ){
 
   $(map[id])
   .classList
@@ -1530,18 +2229,22 @@ function showPage(id){
 
  }
 
+
  if(id === "homePage"){
 
   loadAwareness();
+
   loadFeed("feed");
 
  }
+
 
  if(id === "publicPage"){
 
   loadFeed("publicFeed");
 
  }
+
 
  if(id === "profilePage"){
 
@@ -1558,21 +2261,25 @@ function showPage(id){
 
 const awarenessFallback = [
 
- "ঘুষের বিরুদ্ধে কথা বলার আগে তথ্য ও প্রমাণ যাচাই করুন।",
+ "Verify information and evidence before reporting corruption.",
 
- "অন্যায় দেখলে নিরাপদ ও আইনসম্মত পথে অভিযোগ করুন।",
+ "Use safe and lawful channels when reporting wrongdoing.",
 
- "সৎভাবে দায়িত্ব পালন একটি সমাজকে শক্তিশালী করে।",
+ "Honesty and accountability help build a stronger society.",
 
- "ক্ষমতার অপব্যবহার নয়, জবাবদিহি নিশ্চিত হোক।",
+ "Power should be used responsibly, not abused.",
 
- "চাঁদাবাজি, ঘুষ ও প্রতারণার বিরুদ্ধে সচেতনতা গড়ে তুলুন।",
+ "Stay aware of bribery, middlemen, fraud and extortion.",
 
- "অভিযোগ করুন, কিন্তু প্রমাণ ছাড়া কাউকে অভিযুক্ত করবেন না।",
+ "Do not accuse anyone publicly without reliable evidence.",
 
- "সঠিক তথ্যই দায়িত্বশীল নাগরিকের সবচেয়ে বড় শক্তি।",
+ "Accurate information is essential for responsible reporting.",
 
- "দুর্নীতির বিরুদ্ধে সচেতনতা শুরু হোক নিজের জায়গা থেকে।"
+ "Awareness against corruption starts with every citizen.",
+
+ "Protect your personal information when submitting a report.",
+
+ "Responsible reporting can help create a more accountable society."
 
 ];
 
@@ -1586,6 +2293,7 @@ async function loadAwareness(){
   awarenessFallback.length
  ];
 
+
  if(db){
 
   try{
@@ -1595,14 +2303,20 @@ async function loadAwareness(){
     "get_daily_awareness"
    );
 
+
    let data =
    result.data;
+
 
    if(data){
 
     if(Array.isArray(data)){
-     data=data[0];
+
+     data =
+     data[0];
+
     }
+
 
     text =
      data?.sentence ||
@@ -1614,17 +2328,107 @@ async function loadAwareness(){
   }catch(e){
 
    console.log(
-    "Awareness RPC unavailable"
+    "Awareness RPC unavailable."
    );
 
   }
 
  }
 
+
  $("awarenessText")
- .textContent = text;
+ .textContent =
+ text;
 
 }
+
+
+/* =========================================================
+   MEDIA PREVIEW
+========================================================= */
+
+$("postMedia")
+.addEventListener(
+ "change",
+ function(){
+
+  const box =
+  $("mediaPreview");
+
+  box.innerHTML="";
+
+
+  const files =
+  [...this.files];
+
+
+  if(!files.length){
+   return;
+  }
+
+
+  files.forEach(
+   file => {
+
+    const item =
+    document.createElement("div");
+
+    item.className =
+    "previewItem";
+
+
+    const type =
+    file.type.startsWith("video")
+    ?
+    "VIDEO"
+    :
+    "IMAGE";
+
+
+    if(file.type.startsWith("video")){
+
+     const video =
+     document.createElement("video");
+
+     video.src =
+     URL.createObjectURL(file);
+
+     video.muted=true;
+
+     video.controls=true;
+
+     item.appendChild(video);
+
+    }else{
+
+     const img =
+     document.createElement("img");
+
+     img.src =
+     URL.createObjectURL(file);
+
+     item.appendChild(img);
+
+    }
+
+
+    const label =
+    document.createElement("div");
+
+    label.className =
+    "previewType";
+
+    label.textContent =
+    type;
+
+    item.appendChild(label);
+
+    box.appendChild(item);
+
+   }
+  );
+
+ });
 
 
 /* =========================================================
@@ -1636,38 +2440,89 @@ async function createPost(){
  const u =
  currentUser();
 
- if(!u)return;
+
+ if(!u){
+
+  toast(
+   "Please login first."
+  );
+
+  return;
+
+ }
+
 
  const text =
  $("postText")
  .value
  .trim();
 
+
  const files =
  [...$("postMedia").files];
 
+
  const anonymous =
- $("anonymousPost").checked;
+ $("anonymousPost")
+ .checked;
 
 
- if(!text && !files.length){
+ const category =
+ $("postCategory")
+ .value;
 
-  toast("কিছু লিখুন বা ছবি/ভিডিও দিন");
+
+ if(
+  !text &&
+  !files.length
+ ){
+
+  toast(
+   "Write something or select media."
+  );
+
   return;
 
  }
+
 
  if(!db){
 
-  toast("Supabase সংযোগ পাওয়া যাচ্ছে না");
+  toast(
+   "Supabase connection is unavailable."
+  );
+
   return;
 
  }
+
+
+ const publishBtn =
+ $("publishBtn");
+
+
+ publishBtn.disabled=true;
+
+ publishBtn.textContent =
+ "Publishing...";
 
 
  try{
 
-  const result =
+  /*
+   IMPORTANT:
+   Create profile first.
+  */
+
+  await ensureProfile(u);
+
+
+  /*
+   STEP 1:
+   Create post
+  */
+
+  const postResult =
   await db
   .from("posts")
   .insert({
@@ -1675,6 +2530,8 @@ async function createPost(){
    user_id:u.id,
 
    content:text,
+
+   category:category,
 
    is_anonymous:anonymous,
 
@@ -1685,26 +2542,89 @@ async function createPost(){
   .single();
 
 
-  if(result.error){
+  if(postResult.error){
 
-   throw result.error;
+   throw postResult.error;
 
   }
 
 
   const postId =
-  result.data.id;
+  postResult.data.id;
 
 
-  for(const file of files){
+  /*
+   STEP 2:
+   Upload every media file
+  */
 
-   const safeName =
+  let uploadedCount=0;
+
+
+  for(
+   let i=0;
+   i<files.length;
+   i++
+  ){
+
+   const file =
+   files[i];
+
+
+   /*
+    Keep image/video only.
+   */
+
+   if(
+    !file.type.startsWith("image/") &&
+    !file.type.startsWith("video/")
+   ){
+
+    continue;
+
+   }
+
+
+   /*
+    File size protection:
+    100 MB maximum per file.
+   */
+
+   if(
+    file.size >
+    100 * 1024 * 1024
+   ){
+
+    console.warn(
+     "Skipped large file:",
+     file.name
+    );
+
+    continue;
+
+   }
+
+
+   const originalName =
    file.name
-   .replace(/[^\w.\-]/g,"_");
+   .replace(
+    /[^\w.\-]/g,
+    "_"
+   );
+
+
+   const unique =
+   Date.now() +
+   "_" +
+   i +
+   "_" +
+   Math.random()
+   .toString(36)
+   .slice(2,8);
 
 
    const path =
-   `${u.id}/${Date.now()}_${safeName}`;
+   `${u.id}/${postId}/${unique}_${originalName}`;
 
 
    const upload =
@@ -1714,13 +2634,21 @@ async function createPost(){
    .upload(
     path,
     file,
-    {upsert:false}
+    {
+     cacheControl:"3600",
+     upsert:false,
+     contentType:file.type
+    }
    );
 
 
    if(upload.error){
 
-    console.error(upload.error);
+    console.error(
+     "Media upload failed:",
+     upload.error
+    );
+
     continue;
 
    }
@@ -1735,6 +2663,19 @@ async function createPost(){
    .publicUrl;
 
 
+   if(!publicUrl){
+
+    continue;
+
+   }
+
+
+   /*
+    STEP 3:
+    Save media record
+   */
+
+   const mediaResult =
    await db
    .from("post_media")
    .insert({
@@ -1744,7 +2685,7 @@ async function createPost(){
     media_url:publicUrl,
 
     media_type:
-     file.type.startsWith("video")
+     file.type.startsWith("video/")
      ?
      "video"
      :
@@ -1752,24 +2693,74 @@ async function createPost(){
 
    });
 
+
+   if(mediaResult.error){
+
+    console.error(
+     "Media database insert failed:",
+     mediaResult.error
+    );
+
+    continue;
+
+   }
+
+
+   uploadedCount++;
+
   }
 
 
+  /*
+   Clear form only after successful
+   post creation.
+  */
+
   $("postText").value="";
+
   $("postMedia").value="";
+
   $("anonymousPost").checked=false;
 
-  toast("পোস্ট প্রকাশ হয়েছে");
+  $("mediaPreview").innerHTML="";
 
-  loadFeed("feed");
+
+  if(files.length && uploadedCount===0){
+
+   toast(
+    "Post created, but media upload failed. Check Storage policy."
+   );
+
+  }else{
+
+   toast(
+    "Post published successfully."
+   );
+
+  }
+
+
+  await loadFeed("feed");
+
 
  }catch(e){
 
-  console.error(e);
+  console.error(
+   "CREATE POST ERROR:",
+   e
+  );
+
 
   toast(
-   "পোস্ট প্রকাশ করা যায়নি। Database/RLS সেটিং দেখুন।"
+   "Post could not be published. Check Supabase Database/RLS/Storage settings."
   );
+
+ }finally{
+
+  publishBtn.disabled=false;
+
+  publishBtn.textContent =
+  "Publish Post";
 
  }
 
@@ -1785,19 +2776,27 @@ async function loadFeed(target){
  const box =
  $(target);
 
+
  if(!box)return;
+
 
  if(!db){
 
   box.innerHTML =
-  '<div class="card empty">Supabase সংযোগ নেই।</div>';
+  '<div class="card empty">Supabase connection unavailable.</div>';
 
   return;
 
  }
 
+
  box.innerHTML =
- '<div class="card empty">পোস্ট লোড হচ্ছে…</div>';
+ `
+ <div class="card loading">
+  <span class="spinner"></span>
+  Loading posts...
+ </div>
+ `;
 
 
  try{
@@ -1809,9 +2808,11 @@ async function loadFeed(target){
   .eq("published",true)
   .order(
    "created_at",
-   {ascending:false}
+   {
+    ascending:false
+   }
   )
-  .limit(30);
+  .limit(50);
 
 
   if(result.error){
@@ -1828,7 +2829,7 @@ async function loadFeed(target){
   if(!posts.length){
 
    box.innerHTML =
-   '<div class="card empty">এখনও কোনো পোস্ট নেই।</div>';
+   '<div class="card empty">No posts yet.</div>';
 
    return;
 
@@ -1838,27 +2839,94 @@ async function loadFeed(target){
   box.innerHTML="";
 
 
-  for(const post of posts){
+  /*
+   Render in parallel.
+  */
 
-   box.insertAdjacentHTML(
-    "beforeend",
-    await renderPost(post)
+  const rendered =
+  await Promise.all(
+   posts.map(
+    post =>
+    renderPost(post)
+   )
+  );
+
+
+  box.innerHTML =
+  rendered.join("");
+
+
+  posts.forEach(
+   p =>
+   loadComments(p.id)
+  );
+
+
+ }catch(e){
+
+  console.error(
+   "LOAD FEED ERROR:",
+   e
+  );
+
+
+  box.innerHTML =
+  `
+  <div class="card empty">
+   Posts could not be loaded.
+  </div>
+  `;
+
+ }
+
+}
+
+
+/* =========================================================
+   LOAD POST MEDIA
+========================================================= */
+
+async function getPostMedia(postId){
+
+ if(!db){
+  return [];
+ }
+
+
+ try{
+
+  const result =
+  await db
+  .from("post_media")
+  .select("*")
+  .eq("post_id",postId)
+  .order(
+   "id",
+   {
+    ascending:true
+   }
+  );
+
+
+  if(result.error){
+
+   console.error(
+    result.error
    );
+
+   return [];
 
   }
 
 
-  posts.forEach(
-   p => loadComments(p.id)
-  );
+  return result.data || [];
 
 
  }catch(e){
 
   console.error(e);
 
-  box.innerHTML =
-  '<div class="card empty">পোস্ট লোড করা যায়নি।</div>';
+  return [];
 
  }
 
@@ -1872,7 +2940,6 @@ async function loadFeed(target){
 async function renderPost(post){
 
  let profile=null;
- let media=[];
 
 
  if(db){
@@ -1886,26 +2953,19 @@ async function renderPost(post){
    .eq("id",post.user_id)
    .maybeSingle();
 
+
    profile =
    result.data;
 
   }catch(e){}
 
-
-  try{
-
-   const result =
-   await db
-   .from("post_media")
-   .select("*")
-   .eq("post_id",post.id);
-
-   media =
-   result.data || [];
-
-  }catch(e){}
-
  }
+
+
+ const media =
+ await getPostMedia(
+  post.id
+ );
 
 
  const u =
@@ -1915,18 +2975,20 @@ async function renderPost(post){
  const name =
  post.is_anonymous
  ?
- "গোপন ব্যবহারকারী"
+ "Anonymous User"
  :
  (
   profile?.display_name ||
   profile?.username ||
-  "ব্যবহারকারী"
+  "User"
  );
 
 
  const avatar =
  escapeHTML(
-  (name || "ব").charAt(0)
+  (name || "U")
+  .charAt(0)
+  .toUpperCase()
  );
 
 
@@ -1936,11 +2998,16 @@ async function renderPost(post){
  String(post.user_id);
 
 
+ const category =
+ post.category ||
+ "ঘুষ";
+
+
  let html = `
 
  <article
   class="card"
-  id="post-${escapeHTML(post.id)}">
+  id="post-${safeAttribute(post.id)}">
 
   <div class="postHead">
 
@@ -1959,11 +3026,17 @@ async function renderPost(post){
       post.created_at
       ?
       new Date(post.created_at)
-      .toLocaleString("bn-BD")
+      .toLocaleString(
+       "en-BD"
+      )
       :
       ""
      }
     </div>
+
+    <span class="postCategory">
+     ${escapeHTML(category)}
+    </span>
 
    </div>
 
@@ -1973,7 +3046,7 @@ async function renderPost(post){
     `
     <button
      class="postMenu"
-     onclick="deletePost('${escapeHTML(post.id)}')">
+     onclick="deletePost('${safeAttribute(post.id)}')">
 
      🗑️
 
@@ -1986,49 +3059,85 @@ async function renderPost(post){
   </div>
 
 
-  <div class="postText">
-   ${escapeHTML(post.content || "")}
-  </div>
+  ${
+   post.content
+   ?
+   `
+   <div class="postText">
+    ${escapeHTML(post.content)}
+   </div>
+   `
+   :
+   ""
+  }
+
  `;
 
 
- for(const m of media){
+ /*
+  MEDIA
+ */
 
-  const url =
-  escapeHTML(
-   m.media_url ||
-   m.url ||
-   ""
+ if(media.length){
+
+  html += `
+
+   <div
+    class="postMediaGrid count-${Math.min(media.length,4)}">
+
+  `;
+
+
+  media.forEach(
+   m => {
+
+    const url =
+    safeAttribute(
+     m.media_url ||
+     m.url ||
+     ""
+    );
+
+
+    if(
+     String(m.media_type || "")
+     .toLowerCase()
+     .startsWith("video")
+    ){
+
+     html += `
+
+      <video
+       class="postMediaItem"
+       controls
+       playsinline
+       preload="metadata"
+       src="${url}">
+      </video>
+
+     `;
+
+    }else{
+
+     html += `
+
+      <img
+       class="postMediaItem"
+       src="${url}"
+       loading="lazy"
+       alt="Post image">
+
+     `;
+
+    }
+
+   }
   );
 
 
-  if(
-   String(m.media_type || "")
-   .startsWith("video")
-  ){
-
-   html += `
-
-   <video
-    class="postMedia"
-    controls
-    src="${url}">
-   </video>
-
-   `;
-
-  }else{
-
-   html += `
-
-   <img
-    class="postMedia"
-    src="${url}"
-    loading="lazy">
-
-   `;
-
-  }
+  html += `
+   </div>
+  `;
 
  }
 
@@ -2038,21 +3147,23 @@ async function renderPost(post){
   <div class="reactionBar">
 
    <button
-    onclick="react('${escapeHTML(post.id)}','like')">
+    onclick="react('${safeAttribute(post.id)}','like')">
 
     👍 Like
 
    </button>
 
+
    <button
-    onclick="focusComment('${escapeHTML(post.id)}')">
+    onclick="focusComment('${safeAttribute(post.id)}')">
 
     💬 Comment
 
    </button>
 
+
    <button
-    onclick="sharePost('${escapeHTML(post.id)}')">
+    onclick="sharePost('${safeAttribute(post.id)}')">
 
     ↗ Share
 
@@ -2062,20 +3173,20 @@ async function renderPost(post){
 
 
   <div
-   id="comments-${escapeHTML(post.id)}">
+   id="comments-${safeAttribute(post.id)}">
   </div>
 
 
   <div class="commentForm">
 
    <input
-    id="commentInput-${escapeHTML(post.id)}"
-    placeholder="মন্তব্য লিখুন…">
+    id="commentInput-${safeAttribute(post.id)}"
+    placeholder="Write a comment...">
 
    <button
-    onclick="addComment('${escapeHTML(post.id)}')">
+    onclick="addComment('${safeAttribute(post.id)}')">
 
-    পাঠান
+    Send
 
    </button>
 
@@ -2095,16 +3206,32 @@ async function renderPost(post){
    REACTION
 ========================================================= */
 
-async function react(postId,type){
+async function react(
+ postId,
+ type
+){
 
  const u =
  currentUser();
 
- if(!u)return;
+
+ if(!u){
+
+  toast(
+   "Please login first."
+  );
+
+  return;
+
+ }
+
 
  if(!db){
 
-  toast("Supabase সংযোগ নেই");
+  toast(
+   "Supabase connection unavailable."
+  );
+
   return;
 
  }
@@ -2130,17 +3257,24 @@ async function react(postId,type){
 
 
   if(result.error){
+
    throw result.error;
+
   }
 
 
-  toast("Reaction দেওয়া হয়েছে");
+  toast(
+   "Reaction added."
+  );
+
 
  }catch(e){
 
   console.error(e);
 
-  toast("Reaction দেওয়া যায়নি");
+  toast(
+   "Reaction could not be added."
+  );
 
  }
 
@@ -2156,8 +3290,11 @@ function focusComment(id){
  const input =
  $("commentInput-"+id);
 
+
  if(input){
+
   input.focus();
+
  }
 
 }
@@ -2168,18 +3305,39 @@ async function addComment(postId){
  const u =
  currentUser();
 
+
  const input =
  $("commentInput-"+postId);
+
 
  const text =
  input?.value.trim();
 
 
- if(!u || !text)return;
+ if(!u){
+
+  toast(
+   "Please login first."
+  );
+
+  return;
+
+ }
+
+
+ if(!text){
+
+  return;
+
+ }
+
 
  if(!db){
 
-  toast("Supabase সংযোগ নেই");
+  toast(
+   "Supabase connection unavailable."
+  );
+
   return;
 
  }
@@ -2202,21 +3360,32 @@ async function addComment(postId){
 
 
   if(result.error){
+
    throw result.error;
+
   }
 
 
   input.value="";
 
-  loadComments(postId);
 
-  toast("মন্তব্য যোগ হয়েছে");
+  await loadComments(
+   postId
+  );
+
+
+  toast(
+   "Comment added."
+  );
+
 
  }catch(e){
 
   console.error(e);
 
-  toast("মন্তব্য যোগ করা যায়নি");
+  toast(
+   "Comment could not be added."
+  );
 
  }
 
@@ -2227,6 +3396,7 @@ async function loadComments(postId){
 
  const box =
  $("comments-"+postId);
+
 
  if(!box || !db)return;
 
@@ -2240,31 +3410,60 @@ async function loadComments(postId){
   .eq("post_id",postId)
   .order(
    "created_at",
-   {ascending:true}
+   {
+    ascending:true
+   }
   );
+
+
+  if(result.error){
+
+   throw result.error;
+
+  }
 
 
   const data =
   result.data || [];
 
 
+  if(!data.length){
+
+   box.innerHTML="";
+
+   return;
+
+  }
+
+
   box.innerHTML =
-  data.map(c=>`
+  data.map(
+   c => `
 
-   <div class="comment">
+    <div class="comment">
 
-    <b>ব্যবহারকারী</b>
+     <b>
+      User
+     </b>
 
-    <p>
-     ${escapeHTML(c.content)}
-    </p>
+     <p>
+      ${escapeHTML(c.content)}
+     </p>
 
-   </div>
+    </div>
 
-  `).join("");
+   `
+  ).join("");
 
 
- }catch(e){}
+ }catch(e){
+
+  console.error(
+   "COMMENTS ERROR:",
+   e
+  );
+
+ }
 
 }
 
@@ -2285,11 +3484,16 @@ async function sharePost(id){
 
  try{
 
-  if(navigator.share){
+  if(
+   navigator.share
+  ){
 
    await navigator.share({
 
-    title:"ঘুষ সাইট",
+    title:"Ghus Site",
+
+    text:
+     "View this post on Ghus Site",
 
     url:url
 
@@ -2300,11 +3504,17 @@ async function sharePost(id){
    await navigator.clipboard
    .writeText(url);
 
-   toast("লিংক কপি হয়েছে");
+   toast(
+    "Post link copied."
+   );
 
   }
 
- }catch(e){}
+ }catch(e){
+
+  console.log(e);
+
+ }
 
 }
 
@@ -2315,14 +3525,60 @@ async function sharePost(id){
 
 async function deletePost(id){
 
- if(!confirm("পোস্টটি মুছে ফেলবেন?")){
+ if(
+  !confirm(
+   "Delete this post?"
+  )
+ ){
+
   return;
+
  }
 
- if(!db)return;
+
+ if(!db){
+
+  return;
+
+ }
 
 
  try{
+
+  /*
+   Delete media records first.
+  */
+
+  const media =
+  await db
+  .from("post_media")
+  .select("media_url")
+  .eq("post_id",id);
+
+
+  /*
+   Delete database media rows.
+  */
+
+  const mediaDelete =
+  await db
+  .from("post_media")
+  .delete()
+  .eq("post_id",id);
+
+
+  if(mediaDelete.error){
+
+   console.error(
+    mediaDelete.error
+   );
+
+  }
+
+
+  /*
+   Delete post.
+  */
 
   const result =
   await db
@@ -2332,23 +3588,42 @@ async function deletePost(id){
 
 
   if(result.error){
+
    throw result.error;
+
   }
 
 
-  toast("পোস্ট মুছে গেছে");
+  toast(
+   "Post deleted."
+  );
 
-  loadFeed("feed");
-  loadFeed("publicFeed");
+
+  await loadFeed("feed");
+
+  await loadFeed("publicFeed");
+
+
+  if(
+   !$("profilePage")
+   .classList.contains("hidden")
+  ){
+
+   await loadMyPosts();
+
+  }
 
 
  }catch(e){
 
   console.error(e);
 
-  toast("পোস্ট মুছতে পারিনি");
+  toast(
+   "Post could not be deleted."
+  );
 
  }
+
 
 }
 
@@ -2362,22 +3637,30 @@ async function loadProfile(){
  const u =
  currentUser();
 
+
  if(!u)return;
 
 
  $("profileName")
  .textContent =
- u.name || "ব্যবহারকারী";
+ u.name ||
+ "User";
 
 
  $("profileBio")
  .textContent =
- u.bio || "";
+ u.bio ||
+ "";
 
 
  $("profileAvatar")
  .textContent =
- (u.name || "A").charAt(0);
+ (
+  u.name ||
+  "U"
+ )
+ .charAt(0)
+ .toUpperCase();
 
 
  if(db){
@@ -2398,16 +3681,33 @@ async function loadProfile(){
     .textContent =
     result.data.display_name ||
     result.data.username ||
-    u.name;
+    u.name ||
+    "User";
 
 
     $("profileBio")
     .textContent =
-    result.data.bio || "";
+    result.data.bio ||
+    "";
+
+
+    $("profileAvatar")
+    .textContent =
+    (
+     result.data.display_name ||
+     result.data.username ||
+     "U"
+    )
+    .charAt(0)
+    .toUpperCase();
 
    }
 
-  }catch(e){}
+  }catch(e){
+
+   console.log(e);
+
+  }
 
  }
 
@@ -2422,11 +3722,29 @@ async function loadMyPosts(){
  const box =
  $("profilePosts");
 
+
  const u =
  currentUser();
 
 
- if(!box || !u || !db)return;
+ if(
+  !box ||
+  !u ||
+  !db
+ ){
+
+  return;
+
+ }
+
+
+ box.innerHTML =
+ `
+ <div class="card loading">
+  <span class="spinner"></span>
+  Loading your posts...
+ </div>
+ `;
 
 
  try{
@@ -2438,9 +3756,18 @@ async function loadMyPosts(){
   .eq("user_id",u.id)
   .order(
    "created_at",
-   {ascending:false}
+   {
+    ascending:false
+   }
   )
-  .limit(20);
+  .limit(30);
+
+
+  if(result.error){
+
+   throw result.error;
+
+  }
 
 
   const data =
@@ -2450,29 +3777,46 @@ async function loadMyPosts(){
   if(!data.length){
 
    box.innerHTML =
-   '<div class="card empty">আপনার কোনো পোস্ট নেই।</div>';
+   `
+   <div class="card empty">
+    You have no posts yet.
+   </div>
+   `;
 
    return;
 
   }
 
 
-  box.innerHTML="";
+  const rendered =
+  await Promise.all(
+   data.map(
+    p =>
+    renderPost(p)
+   )
+  );
 
 
-  for(const post of data){
+  box.innerHTML =
+  rendered.join("");
 
-   box.insertAdjacentHTML(
-    "beforeend",
-    await renderPost(post)
-   );
 
-  }
+  data.forEach(
+   p =>
+   loadComments(p.id)
+  );
+
 
  }catch(e){
 
+  console.error(e);
+
   box.innerHTML =
-  '<div class="card empty">পোস্ট লোড করা যায়নি।</div>';
+  `
+  <div class="card empty">
+   Your posts could not be loaded.
+  </div>
+  `;
 
  }
 
@@ -2488,15 +3832,18 @@ function openEditProfile(){
  const u =
  currentUser();
 
+
  if(!u)return;
 
 
  $("editName").value =
- u.name || "";
+ u.name ||
+ "";
 
 
  $("editBio").value =
- u.bio || "";
+ u.bio ||
+ "";
 
 
  showPage(
@@ -2511,26 +3858,38 @@ async function saveProfile(){
  const u =
  currentUser();
 
+
  if(!u)return;
 
 
  const name =
- $("editName").value.trim();
+ $("editName")
+ .value
+ .trim();
+
 
  const bio =
- $("editBio").value.trim();
+ $("editBio")
+ .value
+ .trim();
 
 
  if(!name){
 
-  toast("নাম দিন");
+  toast(
+   "Please enter your name."
+  );
+
   return;
 
  }
 
 
- u.name=name;
- u.bio=bio;
+ u.name =
+ name;
+
+ u.bio =
+ bio;
 
 
  saveLocalUser(u);
@@ -2540,6 +3899,7 @@ async function saveProfile(){
 
   try{
 
+   const result =
    await db
    .from("profiles")
    .update({
@@ -2551,14 +3911,32 @@ async function saveProfile(){
    })
    .eq("id",u.id);
 
-  }catch(e){}
+
+   if(result.error){
+
+    console.error(
+     result.error
+    );
+
+   }
+
+  }catch(e){
+
+   console.error(e);
+
+  }
 
  }
 
 
- toast("প্রোফাইল আপডেট হয়েছে");
+ toast(
+  "Profile updated."
+ );
 
- showPage("profilePage");
+
+ showPage(
+  "profilePage"
+ );
 
 }
 
@@ -2574,33 +3952,63 @@ async function doSearchUsers(){
  .value
  .trim();
 
+
  const box =
  $("searchResults");
 
 
- if(!q)return;
-
-
- if(!db){
+ if(!q){
 
   box.innerHTML =
-  '<div class="card empty">Supabase সংযোগ নেই।</div>';
+  `
+  <div class="card empty">
+   Enter a name to search.
+  </div>
+  `;
 
   return;
 
  }
 
 
+ if(!db){
+
+  box.innerHTML =
+  `
+  <div class="card empty">
+   Supabase connection unavailable.
+  </div>
+  `;
+
+  return;
+
+ }
+
+
+ box.innerHTML =
+ `
+ <div class="card loading">
+  <span class="spinner"></span>
+  Searching...
+ </div>
+ `;
+
+
  try{
 
   const safe =
-  q.replace(/[%_]/g,"");
+  q.replace(
+   /[%_]/g,
+   ""
+  );
 
 
   const result =
   await db
   .from("profiles")
-  .select("*")
+  .select(
+   "id,display_name,username,bio"
+  )
   .ilike(
    "display_name",
    "%"+safe+"%"
@@ -2609,7 +4017,9 @@ async function doSearchUsers(){
 
 
   if(result.error){
+
    throw result.error;
+
   }
 
 
@@ -2618,27 +4028,38 @@ async function doSearchUsers(){
 
 
   box.innerHTML =
-  data.map(x=>`
+  data.map(
+   x => `
 
-   <div class="card">
+    <div class="card">
 
-    <b>
-     ${escapeHTML(
-      x.display_name ||
-      x.username ||
-      "ব্যবহারকারী"
-     )}
-    </b>
+     <b>
+      ${escapeHTML(
+       x.display_name ||
+       x.username ||
+       "User"
+      )}
+     </b>
 
-    <p style="color:#777">
-     ${escapeHTML(x.bio || "")}
-    </p>
+     <p style="color:#777">
 
-   </div>
+      ${escapeHTML(
+       x.bio ||
+       ""
+      )}
 
-  `).join("")
+     </p>
+
+    </div>
+
+   `
+  ).join("")
   ||
-  '<div class="card empty">কোনো ব্যবহারকারী পাওয়া যায়নি।</div>';
+  `
+  <div class="card empty">
+   No users found.
+  </div>
+  `;
 
 
  }catch(e){
@@ -2646,7 +4067,11 @@ async function doSearchUsers(){
   console.error(e);
 
   box.innerHTML =
-  '<div class="card empty">Search করা যায়নি।</div>';
+  `
+  <div class="card empty">
+   Search failed.
+  </div>
+  `;
 
  }
 
@@ -2659,92 +4084,92 @@ async function doSearchUsers(){
 
 const journalistAreas = {
 
- "ঢাকা বিভাগ":[
-  "ঢাকা",
-  "ফরিদপুর",
-  "গাজীপুর",
-  "গোপালগঞ্জ",
-  "কিশোরগঞ্জ",
-  "মাদারীপুর",
-  "মানিকগঞ্জ",
-  "মুন্সীগঞ্জ",
-  "নারায়ণগঞ্জ",
-  "নরসিংদী",
-  "রাজবাড়ী",
-  "শরীয়তপুর",
-  "টাঙ্গাইল"
+ "Dhaka Division":[
+  "Dhaka",
+  "Faridpur",
+  "Gazipur",
+  "Gopalganj",
+  "Kishoreganj",
+  "Madaripur",
+  "Manikganj",
+  "Munshiganj",
+  "Narayanganj",
+  "Narsingdi",
+  "Rajbari",
+  "Shariatpur",
+  "Tangail"
  ],
 
- "খুলনা বিভাগ":[
-  "বাগেরহাট",
-  "চুয়াডাঙ্গা",
-  "যশোর",
-  "ঝিনাইদহ",
-  "খুলনা",
-  "কুষ্টিয়া",
-  "মাগুরা",
-  "মেহেরপুর",
-  "নড়াইল",
-  "সাতক্ষীরা"
+ "Khulna Division":[
+  "Bagerhat",
+  "Chuadanga",
+  "Jashore",
+  "Jhenaidah",
+  "Khulna",
+  "Kushtia",
+  "Magura",
+  "Meherpur",
+  "Narail",
+  "Satkhira"
  ],
 
- "চট্টগ্রাম বিভাগ":[
-  "বান্দরবান",
-  "ব্রাহ্মণবাড়িয়া",
-  "চাঁদপুর",
-  "চট্টগ্রাম",
-  "কুমিল্লা",
-  "কক্সবাজার",
-  "ফেনী",
-  "খাগড়াছড়ি",
-  "লক্ষ্মীপুর",
-  "নোয়াখালী",
-  "রাঙ্গামাটি"
+ "Chattogram Division":[
+  "Bandarban",
+  "Brahmanbaria",
+  "Chandpur",
+  "Chattogram",
+  "Cumilla",
+  "Cox's Bazar",
+  "Feni",
+  "Khagrachhari",
+  "Lakshmipur",
+  "Noakhali",
+  "Rangamati"
  ],
 
- "রাজশাহী বিভাগ":[
-  "বগুড়া",
-  "জয়পুরহাট",
-  "নওগাঁ",
-  "নাটোর",
-  "চাঁপাইনবাবগঞ্জ",
-  "পাবনা",
-  "রাজশাহী",
-  "সিরাজগঞ্জ"
+ "Rajshahi Division":[
+  "Bogura",
+  "Joypurhat",
+  "Naogaon",
+  "Natore",
+  "Chapainawabganj",
+  "Pabna",
+  "Rajshahi",
+  "Sirajganj"
  ],
 
- "সিলেট বিভাগ":[
-  "হবিগঞ্জ",
-  "মৌলভীবাজার",
-  "সুনামগঞ্জ",
-  "সিলেট"
+ "Sylhet Division":[
+  "Habiganj",
+  "Moulvibazar",
+  "Sunamganj",
+  "Sylhet"
  ],
 
- "রংপুর বিভাগ":[
-  "দিনাজপুর",
-  "গাইবান্ধা",
-  "কুড়িগ্রাম",
-  "লালমনিরহাট",
-  "নীলফামারী",
-  "পঞ্চগড়",
-  "রংপুর",
-  "ঠাকুরগাঁও"
+ "Rangpur Division":[
+  "Dinajpur",
+  "Gaibandha",
+  "Kurigram",
+  "Lalmonirhat",
+  "Nilphamari",
+  "Panchagarh",
+  "Rangpur",
+  "Thakurgaon"
  ],
 
- "ময়মনসিংহ বিভাগ":[
-  "জামালপুর",
-  "ময়মনসিংহ",
-  "নেত্রকোণা",
-  "শেরপুর"
+ "Mymensingh Division":[
+  "Jamalpur",
+  "Mymensingh",
+  "Netrokona",
+  "Sherpur"
  ],
 
- "বরিশাল বিভাগ":[
-  "বরগুনা",
-  "বরিশাল",
-  "ভোলা",
-  "ঝালকাঠি",
-  "পটুয়াখালী",
-  "পিরোজপুর"
+ "Barishal Division":[
+  "Barguna",
+  "Barishal",
+  "Bhola",
+  "Jhalokathi",
+  "Patuakhali",
+  "Pirojpur"
  ]
 
 };
@@ -2754,8 +4179,8 @@ const journalistContacts = [
 
  {
   name:"Somoy News / Somoy TV",
-  division:"ঢাকা বিভাগ",
-  district:"ঢাকা",
+  division:"Dhaka Division",
+  district:"Dhaka",
   type:"Official Office / Newsroom",
   phone:"9632521-23, 30-31",
   url:"https://www.somoynews.tv/contact-us"
@@ -2763,8 +4188,8 @@ const journalistContacts = [
 
  {
   name:"NTV",
-  division:"ঢাকা বিভাগ",
-  district:"ঢাকা",
+  division:"Dhaka Division",
+  district:"Dhaka",
   type:"Official Office / Newsroom",
   phone:"+880255012281-5",
   url:"https://www.ntvbd.com/info/contact-us"
@@ -2772,8 +4197,8 @@ const journalistContacts = [
 
  {
   name:"Ekattor TV",
-  division:"ঢাকা বিভাগ",
-  district:"ঢাকা",
+  division:"Dhaka Division",
+  district:"Dhaka",
   type:"Official Office",
   phone:"+8809666717100",
   url:"https://ekattor.tv/about"
@@ -2781,8 +4206,8 @@ const journalistContacts = [
 
  {
   name:"RTV Newsroom",
-  division:"ঢাকা বিভাগ",
-  district:"ঢাকা",
+  division:"Dhaka Division",
+  district:"Dhaka",
   type:"Official Newsroom",
   phone:"+8801878184369-70",
   url:"https://rtvonline.com"
@@ -2801,22 +4226,38 @@ function initJournalistDirectory(){
 
 
  division.innerHTML =
- '<option value="">বিভাগ নির্বাচন করুন</option>';
+ `
+ <option value="">
+  Select Division
+ </option>
+ `;
 
 
- Object.keys(journalistAreas)
- .forEach(function(name){
+ Object.keys(
+  journalistAreas
+ )
+ .forEach(
+  function(name){
 
-  const option =
-  document.createElement("option");
+   const option =
+   document.createElement(
+    "option"
+   );
 
-  option.value=name;
 
-  option.textContent=name;
+   option.value =
+   name;
 
-  division.appendChild(option);
+   option.textContent =
+   name;
 
- });
+
+   division.appendChild(
+    option
+   );
+
+  }
+ );
 
 }
 
@@ -2826,18 +4267,32 @@ function journalistDivisionChanged(){
  const division =
  $("journalistDivision");
 
+
  const district =
  $("journalistDistrict");
+
 
  const result =
  $("journalistResult");
 
 
- if(!division || !district)return;
+ if(
+  !division ||
+  !district
+ ){
+
+  return;
+
+ }
 
 
  district.innerHTML =
- '<option value="">জেলা নির্বাচন করুন</option>';
+ `
+ <option value="">
+  Select District
+ </option>
+ `;
+
 
  district.disabled=true;
 
@@ -2853,24 +4308,39 @@ function journalistDivisionChanged(){
  division.value;
 
 
- if(!selected)return;
+ if(!selected){
+
+  return;
+
+ }
 
 
  (
-  journalistAreas[selected] || []
+  journalistAreas[selected] ||
+  []
  )
- .forEach(function(name){
+ .forEach(
+  function(name){
 
-  const option =
-  document.createElement("option");
+   const option =
+   document.createElement(
+    "option"
+   );
 
-  option.value=name;
 
-  option.textContent=name;
+   option.value =
+   name;
 
-  district.appendChild(option);
+   option.textContent =
+   name;
 
- });
+
+   district.appendChild(
+    option
+   );
+
+  }
+ );
 
 
  district.disabled=false;
@@ -2882,6 +4352,7 @@ function journalistDistrictChanged(){
 
  const result =
  $("journalistResult");
+
 
  if(result){
 
@@ -2895,10 +4366,14 @@ function journalistDistrictChanged(){
 function findJournalists(){
 
  const division =
- $("journalistDivision")?.value || "";
+ $("journalistDivision")?.value ||
+ "";
+
 
  const district =
- $("journalistDistrict")?.value || "";
+ $("journalistDistrict")?.value ||
+ "";
+
 
  const result =
  $("journalistResult");
@@ -2910,7 +4385,11 @@ function findJournalists(){
  if(!division){
 
   result.innerHTML =
-  '<div class="journalistEmpty">প্রথমে বিভাগ নির্বাচন করুন।</div>';
+  `
+  <div class="journalistEmpty">
+   Please select a division.
+  </div>
+  `;
 
   return;
 
@@ -2920,7 +4399,11 @@ function findJournalists(){
  if(!district){
 
   result.innerHTML =
-  '<div class="journalistEmpty">জেলা নির্বাচন করুন।</div>';
+  `
+  <div class="journalistEmpty">
+   Please select a district.
+  </div>
+  `;
 
   return;
 
@@ -2937,20 +4420,20 @@ function findJournalists(){
 
  if(!matches.length){
 
-  result.innerHTML = `
+  result.innerHTML =
+  `
+  <div class="journalistEmpty">
 
-   <div class="journalistEmpty">
+   No separate verified journalist
+   contact dataset is currently available
+   for this area.
 
-    এই এলাকার জন্য বর্তমানে আলাদা
-    Verified Journalist Contact dataset পাওয়া যায়নি।
+   <br><br>
 
-    <br><br>
+   Please use the official PID directory
+   or the official contact page of a news organization.
 
-    সরকারি PID Directory অথবা সংশ্লিষ্ট
-    সংবাদমাধ্যমের Official Contact ব্যবহার করুন।
-
-   </div>
-
+  </div>
   `;
 
   return;
@@ -2959,61 +4442,68 @@ function findJournalists(){
 
 
  result.innerHTML =
+ `
+ <h3 style="color:#138a45">
+  🔎 Results
+ </h3>
+ `;
 
- '<h3 style="color:#138a45">🔎 পাওয়া গেছে</h3>' +
 
- matches.map(function(item){
+ result.innerHTML +=
+ matches.map(
+  function(item){
 
-  return `
+   return `
 
-   <div class="journalistCard">
+    <div class="journalistCard">
 
-    <div class="journalistName">
+     <div class="journalistName">
 
-     ${escapeHTML(item.name)}
+      ${escapeHTML(item.name)}
 
-     <span style="color:#138a45">
-      ✓ Official
-     </span>
+      <span style="color:#138a45">
+       ✓ Official
+      </span>
+
+     </div>
+
+
+     <div class="journalistMeta">
+
+      ${escapeHTML(item.type)}
+
+      <br>
+
+      ${escapeHTML(item.division)}
+      —
+      ${escapeHTML(item.district)}
+
+     </div>
+
+
+     <div class="journalistPhone">
+
+      ${escapeHTML(item.phone)}
+
+     </div>
+
+
+     <a
+      class="officialBtn"
+      href="${safeAttribute(item.url)}"
+      target="_blank"
+      rel="noopener">
+
+      Official Contact
+
+     </a>
 
     </div>
 
+   `;
 
-    <div class="journalistMeta">
-
-     ${escapeHTML(item.type)}
-
-     <br>
-
-     ${escapeHTML(item.division)}
-     —
-     ${escapeHTML(item.district)}
-
-    </div>
-
-
-    <div class="journalistPhone">
-
-     ${escapeHTML(item.phone)}
-
-    </div>
-
-
-    <a
-     class="officialBtn"
-     href="${escapeHTML(item.url)}"
-     target="_blank"
-     rel="noopener">
-
-     Official Contact
-
-    </a>
-
-   </div>
-
-  `;
-
- }).join("");
+  }
+ ).join("");
 
 }
 
@@ -3028,13 +4518,13 @@ window.addEventListener(
 
   initJournalistDirectory();
 
+
   setTimeout(
    restoreSession,
-   250
+   300
   );
 
- }
-);
+ });
 
 
 function restoreSession(){
@@ -3044,7 +4534,9 @@ function restoreSession(){
  .add("hidden");
 
 
- if(currentUser()){
+ if(
+  currentUser()
+ ){
 
   enterApp();
 
@@ -3059,6 +4551,10 @@ function restoreSession(){
 }
 
 
+/* =========================================================
+   GLOBAL ERROR HANDLER
+========================================================= */
+
 window.addEventListener(
  "error",
  function(event){
@@ -3068,8 +4564,7 @@ window.addEventListener(
    event.message
   );
 
- }
-);
+ });
 
 </script>
 
