@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Ghush Site</title>
+<title>ঘুষ সাইট</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -11,479 +11,1036 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
- margin:0;
- font-family:Arial,"Noto Sans",sans-serif;
- background:#07150f;
- color:#eef7f0;
+margin:0;
+font-family:Arial,"Noto Sans",sans-serif;
+background:#07150f;
+color:#eef7f0;
 }
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
 
 :root{
- --bg:#07150f;
- --panel:#0d2117;
- --panel2:#102a1c;
- --green:#25c46a;
- --green2:#159957;
- --text:#eef7f0;
- --muted:#9fb5a7;
- --border:#1e4931;
- --danger:#e45757;
- --gold:#d8b44a;
+--bg:#07150f;
+--panel:#0d2117;
+--panel2:#102a1c;
+--green:#25c46a;
+--green2:#159957;
+--text:#eef7f0;
+--muted:#9fb5a7;
+--border:#1e4931;
+--danger:#e45757;
+--gold:#d8b44a
 }
 
 #toast{
- position:fixed;
- top:18px;
- right:18px;
- z-index:9999;
- padding:13px 18px;
- border-radius:12px;
- background:#173b26;
- border:1px solid var(--border);
- box-shadow:0 12px 30px #0008;
- max-width:330px;
- display:none;
+position:fixed;
+top:18px;
+right:18px;
+z-index:9999;
+padding:13px 18px;
+border-radius:12px;
+background:#173b26;
+border:1px solid var(--border);
+box-shadow:0 12px 30px #0008;
+max-width:330px;
+display:none
 }
-#toast.error{background:#451b1b;border-color:#783333}
-#toast.success{background:#123b25;border-color:#26794a}
+
+#toast.error{
+background:#451b1b;
+border-color:#783333
+}
+
+#toast.success{
+background:#123b25;
+border-color:#26794a
+}
 
 .auth-wrap{
- min-height:100vh;
- display:flex;
- justify-content:center;
- align-items:center;
- padding:20px;
- background:
- radial-gradient(circle at top right,#164f2d55,transparent 35%),
- radial-gradient(circle at bottom left,#123b2555,transparent 35%),
- var(--bg);
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+background:
+radial-gradient(circle at top right,#164f2d55,transparent 35%),
+radial-gradient(circle at bottom left,#123b2555,transparent 35%),
+var(--bg)
 }
+
 .auth-card{
- width:100%;
- max-width:450px;
- background:#0b1d13;
- border:1px solid var(--border);
- border-radius:24px;
- padding:28px;
- box-shadow:0 25px 70px #0008;
+width:100%;
+max-width:450px;
+background:#0b1d13;
+border:1px solid var(--border);
+border-radius:24px;
+padding:28px;
+box-shadow:0 25px 70px #0008
 }
+
 .logo{
- display:flex;
- align-items:center;
- gap:12px;
- margin-bottom:22px;
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:22px
 }
+
 .logo-icon{
- width:48px;
- height:48px;
- border-radius:14px;
- display:grid;
- place-items:center;
- background:linear-gradient(135deg,#22c96b,#08733c);
- font-size:25px;
+width:48px;
+height:48px;
+border-radius:14px;
+display:grid;
+place-items:center;
+background:linear-gradient(135deg,#22c96b,#08733c);
+font-size:25px
 }
-.logo h1{margin:0;font-size:26px}
-.logo small{display:block;color:var(--muted);margin-top:3px}
+
+.logo h1{
+margin:0;
+font-size:26px
+}
+
+.logo small{
+display:block;
+color:var(--muted);
+margin-top:3px
+}
 
 .tabs{
- display:flex;
- background:#07150f;
- border-radius:12px;
- padding:4px;
- margin-bottom:20px;
-}
-.tabs button{
- flex:1;
- border:0;
- background:transparent;
- color:var(--muted);
- padding:11px;
- border-radius:9px;
-}
-.tabs button.active{
- background:#16472a;
- color:white;
+display:flex;
+background:#07150f;
+border-radius:12px;
+padding:4px;
+margin-bottom:20px
 }
 
-.field{margin-bottom:15px}
+.tabs button{
+flex:1;
+border:0;
+background:transparent;
+color:var(--muted);
+padding:11px;
+border-radius:9px
+}
+
+.tabs button.active{
+background:#16472a;
+color:white
+}
+
+.field{
+margin-bottom:15px
+}
+
 .field label{
- display:block;
- color:#bcd1c3;
- font-size:14px;
- margin-bottom:7px;
+display:block;
+color:#bcd1c3;
+font-size:14px;
+margin-bottom:7px
 }
+
 input,textarea,select{
- width:100%;
- background:#07150f;
- border:1px solid #245337;
- color:white;
- border-radius:11px;
- padding:12px 13px;
- outline:none;
+width:100%;
+background:#07150f;
+border:1px solid #245337;
+color:white;
+border-radius:11px;
+padding:12px 13px;
+outline:none
 }
-input:focus,textarea:focus,select:focus{
- border-color:var(--green);
- box-shadow:0 0 0 3px #25c46a18;
+
+input:focus,
+textarea:focus,
+select:focus{
+border-color:var(--green);
+box-shadow:0 0 0 3px #25c46a18
 }
-textarea{min-height:120px;resize:vertical}
+
+textarea{
+min-height:120px;
+resize:vertical
+}
 
 .primary{
- width:100%;
- border:0;
- border-radius:12px;
- padding:13px;
- background:linear-gradient(135deg,#25c46a,#159957);
- color:white;
- font-weight:bold;
+width:100%;
+border:0;
+border-radius:12px;
+padding:13px;
+background:linear-gradient(135deg,#25c46a,#159957);
+color:white;
+font-weight:bold
 }
+
+.primary:disabled{
+opacity:.6;
+cursor:not-allowed
+}
+
 .secondary{
- border:1px solid var(--border);
- background:#10281a;
- color:white;
- border-radius:10px;
- padding:10px 14px;
+border:1px solid var(--border);
+background:#10281a;
+color:white;
+border-radius:10px;
+padding:10px 14px
 }
+
 .danger{
- border:1px solid #743535;
- background:#3a1717;
- color:#ffb1b1;
- border-radius:10px;
- padding:10px 14px;
+border:1px solid #743535;
+background:#3a1717;
+color:#ffb1b1;
+border-radius:10px;
+padding:10px 14px
 }
+
 .muted{color:var(--muted)}
 .small{font-size:13px}
+
 .auth-note{
- color:#8fa99a;
- font-size:12px;
- line-height:1.6;
- margin-top:14px;
+color:#8fa99a;
+font-size:12px;
+line-height:1.6;
+margin-top:14px
 }
 
-.app{min-height:100vh}
+.app{
+min-height:100vh
+}
 
 .topbar{
- position:sticky;
- top:0;
- z-index:100;
- background:#081910ee;
- backdrop-filter:blur(15px);
- border-bottom:1px solid var(--border);
+position:sticky;
+top:0;
+z-index:100;
+background:#081910ee;
+backdrop-filter:blur(15px);
+border-bottom:1px solid var(--border)
 }
+
 .topbar-inner{
- max-width:1180px;
- margin:auto;
- min-height:64px;
- padding:10px 16px;
- display:flex;
- align-items:center;
- gap:14px;
+max-width:1180px;
+margin:auto;
+min-height:64px;
+padding:10px 16px;
+display:flex;
+align-items:center;
+gap:14px
 }
+
 .brand{
- display:flex;
- align-items:center;
- gap:9px;
- font-weight:bold;
- white-space:nowrap;
+display:flex;
+align-items:center;
+gap:9px;
+font-weight:bold;
+white-space:nowrap
 }
+
 .brand-icon{
- width:35px;
- height:35px;
- display:grid;
- place-items:center;
- background:#1b713e;
- border-radius:10px;
+width:35px;
+height:35px;
+display:grid;
+place-items:center;
+background:#1b713e;
+border-radius:10px
 }
+
 .nav{
- display:flex;
- gap:5px;
- overflow:auto;
- flex:1;
+display:flex;
+gap:5px;
+overflow:auto;
+flex:1
 }
+
 .nav button{
- white-space:nowrap;
- border:0;
- background:transparent;
- color:#a9beaf;
- padding:9px 11px;
- border-radius:9px;
+white-space:nowrap;
+border:0;
+background:transparent;
+color:#a9beaf;
+padding:9px 11px;
+border-radius:9px
 }
-.nav button.active,.nav button:hover{
- background:#12351f;
- color:white;
+
+.nav button.active,
+.nav button:hover{
+background:#12351f;
+color:white
 }
+
 .user-mini{
- display:flex;
- align-items:center;
- gap:8px;
+display:flex;
+align-items:center;
+gap:8px
 }
+
 .avatar{
- width:38px;
- height:38px;
- border-radius:50%;
- display:grid;
- place-items:center;
- background:linear-gradient(135deg,#269c58,#0d5530);
- font-weight:bold;
+width:38px;
+height:38px;
+border-radius:50%;
+display:grid;
+place-items:center;
+background:linear-gradient(135deg,#269c58,#0d5530);
+font-weight:bold;
+flex:none
 }
 
 .container{
- max-width:1180px;
- margin:auto;
- padding:22px 16px 60px;
+max-width:1180px;
+margin:auto;
+padding:22px 16px 60px
 }
+
 .grid{
- display:grid;
- grid-template-columns:minmax(0,1fr) 330px;
- gap:20px;
+display:grid;
+grid-template-columns:minmax(0,1fr) 330px;
+gap:20px
 }
+
 @media(max-width:850px){
- .grid{grid-template-columns:1fr}
- .side{display:none}
- .nav button{padding:8px}
- .brand span{display:none}
+.grid{grid-template-columns:1fr}
+.side{display:none}
+.nav button{padding:8px}
+.brand span{display:none}
 }
 
 .card{
- background:linear-gradient(180deg,#0d2117,#0b1d13);
- border:1px solid var(--border);
- border-radius:18px;
- padding:18px;
- margin-bottom:16px;
- box-shadow:0 10px 35px #0002;
+background:linear-gradient(180deg,#0d2117,#0b1d13);
+border:1px solid var(--border);
+border-radius:18px;
+padding:18px;
+margin-bottom:16px;
+box-shadow:0 10px 35px #0002
 }
+
 .card-title{
- font-size:18px;
- font-weight:bold;
- margin:0 0 12px;
+font-size:18px;
+font-weight:bold;
+margin:0 0 12px
 }
 
 .hero{
- padding:25px;
- background:
- linear-gradient(135deg,#103e23,#0b2117 55%,#0d2b1b);
+padding:25px;
+background:
+linear-gradient(135deg,#103e23,#0b2117 55%,#0d2b1b)
 }
-.hero h2{margin:0 0 7px;font-size:28px}
-.hero p{margin:0;color:#adc1b3;line-height:1.6}
+
+.hero h2{
+margin:0 0 7px;
+font-size:28px
+}
+
+.hero p{
+margin:0;
+color:#adc1b3;
+line-height:1.6
+}
 
 .stats{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:10px;
- margin-top:18px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:18px
 }
+
 .stat{
- padding:13px;
- border:1px solid var(--border);
- border-radius:13px;
- background:#07150f88;
+padding:13px;
+border:1px solid var(--border);
+border-radius:13px;
+background:#07150f88
 }
-.stat b{display:block;font-size:21px}
-.stat span{font-size:12px;color:var(--muted)}
+
+.stat b{
+display:block;
+font-size:21px
+}
+
+.stat span{
+font-size:12px;
+color:var(--muted)
+}
 
 .category-grid{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:8px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:8px
 }
+
 @media(min-width:650px){
- .category-grid{grid-template-columns:repeat(3,1fr)}
+.category-grid{
+grid-template-columns:repeat(3,1fr)
 }
+}
+
 .cat{
- padding:11px;
- border:1px solid var(--border);
- border-radius:10px;
- color:#b8cdbf;
- cursor:pointer;
- background:#091b11;
+padding:11px;
+border:1px solid var(--border);
+border-radius:10px;
+color:#b8cdbf;
+cursor:pointer;
+background:#091b11
 }
-.cat:hover,.cat.active{
- border-color:#2dbf69;
- background:#124324;
- color:white;
+
+.cat:hover,
+.cat.active{
+border-color:#2dbf69;
+background:#124324;
+color:white
 }
 
 .upload-box{
- border:1px dashed #326845;
- padding:14px;
- border-radius:13px;
- background:#07150f;
+border:1px dashed #326845;
+padding:14px;
+border-radius:13px;
+background:#07150f
 }
+
 .preview{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:8px;
- margin-top:10px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:8px;
+margin-top:10px
 }
+
 .preview-item{
- position:relative;
- border-radius:10px;
- overflow:hidden;
- background:#000;
- aspect-ratio:1;
+position:relative;
+border-radius:10px;
+overflow:hidden;
+background:#000;
+aspect-ratio:1
 }
-.preview-item img,.preview-item video{
- width:100%;
- height:100%;
- object-fit:cover;
+
+.preview-item img,
+.preview-item video{
+width:100%;
+height:100%;
+object-fit:cover
 }
+
 .preview-item span{
- position:absolute;
- top:5px;
- right:5px;
- background:#000b;
- border-radius:6px;
- padding:3px 6px;
- font-size:11px;
+position:absolute;
+top:5px;
+right:5px;
+background:#000b;
+border-radius:6px;
+padding:3px 6px;
+font-size:11px
 }
 
 .post{
- overflow:hidden;
+overflow:hidden
 }
+
 .post-head{
- display:flex;
- align-items:center;
- gap:10px;
+display:flex;
+align-items:center;
+gap:10px
 }
-.post-user{flex:1}
-.post-user b{display:block}
+
+.post-user{
+flex:1;
+min-width:0
+}
+
+.post-user b{
+display:block
+}
+
 .post-user span{
- color:var(--muted);
- font-size:12px;
+color:var(--muted);
+font-size:12px
 }
+
 .badge{
- display:inline-block;
- padding:4px 8px;
- border-radius:20px;
- background:#16472a;
- color:#9ff0bc;
- font-size:11px;
+display:inline-block;
+padding:4px 8px;
+border-radius:20px;
+background:#16472a;
+color:#9ff0bc;
+font-size:11px;
+white-space:nowrap
 }
+
 .post-content{
- margin:15px 0;
- line-height:1.7;
- white-space:pre-wrap;
- word-break:break-word;
+margin:15px 0;
+line-height:1.7;
+white-space:pre-wrap;
+word-break:break-word
 }
+
 .media-grid{
- display:grid;
- gap:4px;
- margin:0 -18px;
+display:grid;
+gap:4px;
+margin:0 -18px
 }
-.media-grid.one{grid-template-columns:1fr}
-.media-grid.two{grid-template-columns:1fr 1fr}
-.media-grid.three,.media-grid.more{grid-template-columns:repeat(3,1fr)}
-.media-grid img,.media-grid video{
- width:100%;
- max-height:480px;
- object-fit:cover;
- background:#000;
+
+.media-grid.one{
+grid-template-columns:1fr
 }
+
+.media-grid.two{
+grid-template-columns:1fr 1fr
+}
+
+.media-grid.three{
+grid-template-columns:repeat(3,1fr)
+}
+
+.media-grid.more{
+grid-template-columns:repeat(3,1fr)
+}
+
+.media-cell{
+position:relative;
+min-width:0;
+background:#000;
+overflow:hidden
+}
+
+.media-grid img,
+.media-grid video{
+display:block;
+width:100%;
+height:100%;
+min-height:180px;
+max-height:500px;
+object-fit:cover;
+background:#000
+}
+
+.media-grid.one .media-cell img,
+.media-grid.one .media-cell video{
+max-height:560px
+}
+
+.media-type{
+position:absolute;
+left:8px;
+bottom:8px;
+background:#000b;
+color:#fff;
+border-radius:7px;
+padding:4px 7px;
+font-size:11px
+}
+
+.media-error{
+min-height:180px;
+display:grid;
+place-items:center;
+color:#9fb5a7;
+padding:20px;
+text-align:center
+}
+
 .actions{
- display:flex;
- gap:6px;
- border-top:1px solid var(--border);
- padding-top:10px;
- margin-top:12px;
+display:flex;
+gap:6px;
+border-top:1px solid var(--border);
+padding-top:10px;
+margin-top:12px
 }
+
 .action{
- flex:1;
- border:0;
- background:transparent;
- color:#9db4a4;
- padding:9px 5px;
- border-radius:9px;
+flex:1;
+border:0;
+background:transparent;
+color:#9db4a4;
+padding:9px 5px;
+border-radius:9px
 }
-.action:hover,.action.liked{
- background:#12351f;
- color:#42db7e;
+
+.action:hover,
+.action.liked{
+background:#12351f;
+color:#42db7e
 }
+
+.post-menu{
+position:relative
+}
+
+.menu-btn{
+border:0;
+background:transparent;
+color:#9db4a4;
+font-size:22px;
+padding:3px 8px;
+border-radius:8px
+}
+
+.menu-btn:hover{
+background:#12351f;
+color:#fff
+}
+
+.menu{
+position:absolute;
+right:0;
+top:36px;
+z-index:20;
+min-width:155px;
+background:#10281a;
+border:1px solid var(--border);
+border-radius:11px;
+padding:5px;
+box-shadow:0 15px 35px #0008
+}
+
+.menu button{
+display:block;
+width:100%;
+text-align:left;
+border:0;
+background:transparent;
+color:#dcebe1;
+padding:9px;
+border-radius:7px
+}
+
+.menu button:hover{
+background:#173b26
+}
+
 .comments{
- margin-top:10px;
- border-top:1px solid var(--border);
- padding-top:10px;
+margin-top:10px;
+border-top:1px solid var(--border);
+padding-top:10px
 }
+
 .comment{
- background:#081910;
- border-radius:10px;
- padding:9px 11px;
- margin:7px 0;
+background:#081910;
+border-radius:10px;
+padding:9px 11px;
+margin:7px 0
 }
-.comment b{font-size:13px}
-.comment p{margin:4px 0 0;color:#c2d2c7;font-size:14px}
+
+.comment b{
+font-size:13px
+}
+
+.comment p{
+margin:4px 0 0;
+color:#c2d2c7;
+font-size:14px
+}
 
 .side-card{
- position:sticky;
- top:85px;
+position:sticky;
+top:85px
 }
 
 .news{
- padding:13px;
- border:1px solid var(--border);
- border-radius:12px;
- margin-bottom:9px;
- background:#091b11;
+padding:13px;
+border:1px solid var(--border);
+border-radius:12px;
+margin-bottom:9px;
+background:#091b11
 }
-.news b{display:block;margin-bottom:4px}
-.news span{color:#8fa99a;font-size:12px;line-height:1.5}
+
+.news b{
+display:block;
+margin-bottom:4px
+}
+
+.news span{
+color:#8fa99a;
+font-size:12px;
+line-height:1.5
+}
 
 .profile-cover{
- height:145px;
- border-radius:18px 18px 0 0;
- background:linear-gradient(135deg,#124d2a,#0b2116);
+height:145px;
+border-radius:18px 18px 0 0;
+background:linear-gradient(135deg,#124d2a,#0b2116)
 }
+
 .profile-info{
- margin-top:-35px;
- position:relative;
- padding:0 20px 20px;
+margin-top:-35px;
+position:relative;
+padding:0 20px 20px
 }
+
 .big-avatar{
- width:76px;
- height:76px;
- border-radius:50%;
- display:grid;
- place-items:center;
- font-size:27px;
- font-weight:bold;
- border:4px solid #0b2117;
- background:linear-gradient(135deg,#2acb70,#0b6335);
+width:76px;
+height:76px;
+border-radius:50%;
+display:grid;
+place-items:center;
+font-size:27px;
+font-weight:bold;
+border:4px solid #0b2117;
+background:linear-gradient(135deg,#2acb70,#0b6335)
 }
-.profile-info h2{margin:8px 0 3px}
-.profile-info p{color:var(--muted);margin:4px 0}
+
+.profile-info h2{
+margin:8px 0 3px
+}
+
+.profile-info p{
+color:var(--muted);
+margin:4px 0
+}
 
 .search-row{
- display:flex;
- gap:8px;
+display:flex;
+gap:8px
 }
-.search-row input{flex:1}
+
+.search-row input{
+flex:1
+}
 
 .empty{
- padding:35px 15px;
- text-align:center;
- color:#8fa99a;
+padding:35px 15px;
+text-align:center;
+color:#8fa99a
 }
 
 .loader{
- text-align:center;
- padding:25px;
- color:#8fa99a;
+text-align:center;
+padding:25px;
+color:#8fa99a
 }
 
 .checkbox{
- display:flex;
- align-items:center;
- gap:9px;
- color:#b9cbbf;
- font-size:14px;
+display:flex;
+align-items:center;
+gap:9px;
+color:#b9cbbf;
+font-size:14px
 }
-.checkbox input{width:auto}
+
+.checkbox input{
+width:auto
+}
 
 .footer{
- text-align:center;
- color:#637b6c;
- padding:25px;
- font-size:12px;
+text-align:center;
+color:#637b6c;
+padding:25px;
+font-size:12px
+}
+
+/* MOBILE FACEBOOK STYLE */
+.mobile-bottom-nav{
+display:none
+}
+
+@media(max-width:850px){
+
+.mobile-bottom-nav{
+display:flex;
+position:fixed;
+left:0;
+right:0;
+bottom:0;
+z-index:5000;
+background:rgba(6,22,14,.97);
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
+border-top:1px solid rgba(255,255,255,.10);
+padding:6px 3px calc(6px + env(safe-area-inset-bottom));
+justify-content:space-around;
+box-shadow:0 -8px 25px rgba(0,0,0,.22)
+}
+
+.mobile-bottom-nav button{
+appearance:none;
+border:0;
+background:transparent;
+color:#aebdb4;
+min-width:52px;
+padding:5px 4px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:2px;
+border-radius:12px;
+font:inherit;
+cursor:pointer
+}
+
+.mobile-bottom-nav button span{
+font-size:20px;
+line-height:20px
+}
+
+.mobile-bottom-nav button small{
+font-size:10px;
+line-height:12px;
+white-space:nowrap
+}
+
+.mobile-bottom-nav button.active{
+color:#d9f7e6;
+background:rgba(44,116,76,.22)
+}
+
+.container{
+padding-bottom:96px!important
+}
+
+.topbar .nav{
+display:none!important
+}
+}
+
+/* STORIES */
+.stories-section{
+max-width:760px;
+margin:18px auto;
+padding:14px;
+background:#0b2117;
+border:1px solid var(--border);
+border-radius:18px;
+box-shadow:0 10px 35px #0003
+}
+
+.stories-head{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+margin-bottom:12px
+}
+
+.stories-title{
+font-size:18px;
+font-weight:bold
+}
+
+.stories-row{
+display:flex;
+gap:10px;
+overflow-x:auto;
+padding-bottom:4px;
+scrollbar-width:none
+}
+
+.stories-row::-webkit-scrollbar{
+display:none
+}
+
+.story-card{
+position:relative;
+flex:0 0 105px;
+height:170px;
+border-radius:15px;
+overflow:hidden;
+background:#10281a;
+border:1px solid #28583a;
+cursor:pointer
+}
+
+.story-card img,
+.story-card video{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block
+}
+
+.story-card:first-child{
+border:2px solid #2bc86d
+}
+
+.story-add{
+flex:0 0 105px;
+height:170px;
+border-radius:15px;
+overflow:hidden;
+background:linear-gradient(180deg,#123a23,#0b1d13);
+border:1px solid #28583a;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:8px;
+cursor:pointer;
+color:#d9f7e6
+}
+
+.story-add-icon{
+width:42px;
+height:42px;
+border-radius:50%;
+display:grid;
+place-items:center;
+background:#25c46a;
+color:#062414;
+font-size:28px;
+font-weight:bold
+}
+
+.story-ring{
+position:absolute;
+top:8px;
+left:8px;
+width:38px;
+height:38px;
+border-radius:50%;
+border:3px solid #25c46a;
+background:#12351f;
+overflow:hidden
+}
+
+.story-ring img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.story-overlay{
+position:absolute;
+left:0;
+right:0;
+bottom:0;
+padding:30px 8px 9px;
+background:linear-gradient(transparent,#000b);
+font-size:12px;
+font-weight:bold
+}
+
+.story-empty{
+color:#8fa99a;
+font-size:13px;
+padding:20px 4px
+}
+
+.story-viewer{
+position:fixed;
+inset:0;
+z-index:10000;
+display:none;
+align-items:center;
+justify-content:center;
+background:rgba(0,0,0,.92);
+padding:20px
+}
+
+.story-viewer-inner{
+position:relative;
+width:min(460px,100%);
+height:min(760px,90vh);
+background:#050b07;
+border-radius:18px;
+overflow:hidden;
+border:1px solid #315c40
+}
+
+.story-viewer-media{
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center
+}
+
+.story-viewer-media img,
+.story-viewer-media video{
+max-width:100%;
+max-height:100%;
+width:100%;
+height:100%;
+object-fit:contain
+}
+
+.story-viewer-top{
+position:absolute;
+top:0;
+left:0;
+right:0;
+z-index:2;
+padding:12px;
+display:flex;
+justify-content:flex-end
+}
+
+.story-close{
+border:0;
+width:38px;
+height:38px;
+border-radius:50%;
+background:#0009;
+color:white;
+font-size:22px
+}
+
+.story-viewer-caption{
+position:absolute;
+bottom:0;
+left:0;
+right:0;
+padding:35px 14px 15px;
+background:linear-gradient(transparent,#000d);
+color:white
+}
+
+/* PRIVATE PROFILE */
+.private-profile-panel{
+position:fixed;
+inset:0;
+z-index:9998;
+display:none;
+align-items:center;
+justify-content:center;
+padding:18px;
+background:rgba(0,0,0,.78)
+}
+
+.private-profile-box{
+width:min(600px,100%);
+max-height:92vh;
+overflow:auto;
+background:#0b1d13;
+border:1px solid var(--border);
+border-radius:20px;
+padding:20px;
+box-shadow:0 25px 80px #000b
+}
+
+.private-profile-head{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+margin-bottom:15px
+}
+
+.private-profile-head h2{
+margin:0
+}
+
+.close-btn{
+border:0;
+background:#173b26;
+color:#fff;
+width:38px;
+height:38px;
+border-radius:50%;
+font-size:20px
+}
+
+.private-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px
+}
+
+@media(max-width:600px){
+.private-grid{
+grid-template-columns:1fr
+}
+}
+
+.private-note{
+padding:11px;
+border-radius:10px;
+background:#10281a;
+border:1px solid var(--border);
+color:#9fb5a7;
+font-size:12px;
+line-height:1.6;
+margin-bottom:14px
 }
 </style>
 </head>
@@ -492,381 +1049,696 @@ textarea{min-height:120px;resize:vertical}
 
 <div id="toast"></div>
 
-<!-- AUTH -->
+<!-- AUTH: UNCHANGED -->
 <section id="authScreen" class="auth-wrap">
- <div class="auth-card">
+<div class="auth-card">
 
-  <div class="logo">
-   <div class="logo-icon">🛡️</div>
-   <div>
-    <h1>Ghus Site</h1>
-    <small>Anti-Corruption Community</small>
-   </div>
-  </div>
+<div class="logo">
+<div class="logo-icon">🛡️</div>
+<div>
+<h1>ঘুষ সাইট</h1>
+<small>Anti-Corruption Community</small>
+</div>
+</div>
 
-  <div class="tabs">
-   <button id="loginTab" class="active" onclick="showAuth('login')">Login</button>
-   <button id="signupTab" onclick="showAuth('signup')">Create Account</button>
-  </div>
+<div class="tabs">
+<button id="loginTab" class="active" onclick="showAuth('login')">Login</button>
+<button id="signupTab" onclick="showAuth('signup')">Create Account</button>
+</div>
 
-  <!-- LOGIN -->
-  <div id="loginBox">
-   <div class="field">
-    <label>Username</label>
-    <input id="loginUsername" autocomplete="username" placeholder="Enter username">
-   </div>
+<div id="loginBox">
 
-   <div class="field">
-    <label>Password</label>
-    <input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter password">
-   </div>
+<div class="field">
+<label>Username</label>
+<input id="loginUsername"
+autocomplete="username"
+placeholder="Enter username">
+</div>
 
-   <button class="primary" onclick="login()">Login</button>
+<div class="field">
+<label>Password</label>
+<input id="loginPassword"
+type="password"
+autocomplete="current-password"
+placeholder="Enter password">
+</div>
 
-   <p class="auth-note">
-    Use the username and password created for your Ghus Site account.
-   </p>
-  </div>
+<button class="primary" onclick="login()">Login</button>
 
-  <!-- SIGNUP -->
-  <div id="signupBox" class="hidden">
+<p class="auth-note">
+Use the username and password created for your ঘুষ সাইট account.
+</p>
 
-   <div class="field">
-    <label>Name</label>
-    <input id="signupName" placeholder="Your name">
-   </div>
+</div>
 
-   <div class="field">
-    <label>Phone Number</label>
-    <input id="signupPhone" type="tel" placeholder="01XXXXXXXXX">
-   </div>
+<div id="signupBox" class="hidden">
 
-   <div class="field">
-    <label>Username</label>
-    <input id="signupUsername" autocomplete="username" placeholder="3-24 letters, numbers or _">
-   </div>
+<div class="field">
+<label>Name</label>
+<input id="signupName"
+placeholder="Your name">
+</div>
 
-   <div class="field">
-    <label>Password</label>
-    <input id="signupPassword" type="password" autocomplete="new-password" placeholder="Minimum 6 characters">
-   </div>
+<div class="field">
+<label>Phone Number</label>
+<input id="signupPhone"
+type="tel"
+placeholder="01XXXXXXXXX">
+</div>
 
-   <button class="primary" onclick="signup()">Create Account</button>
+<div class="field">
+<label>Username</label>
+<input id="signupUsername"
+autocomplete="username"
+placeholder="3-24 letters, numbers or _">
+</div>
 
-   <p class="auth-note">
-    Username must be unique. Keep your password private.
-   </p>
-  </div>
+<div class="field">
+<label>Password</label>
+<input id="signupPassword"
+type="password"
+autocomplete="new-password"
+placeholder="Minimum 6 characters">
+</div>
 
- </div>
+<button class="primary" onclick="signup()">Create Account</button>
+
+<p class="auth-note">
+Username must be unique. Keep your password private.
+</p>
+
+</div>
+
+</div>
 </section>
 
 <!-- APP -->
 <section id="app" class="app hidden">
 
- <header class="topbar">
-  <div class="topbar-inner">
-
-   <div class="brand">
-    <div class="brand-icon">🛡️</div>
-    <span>Ghus Site</span>
-   </div>
-
-   <nav class="nav">
-    <button id="navHome" class="active" onclick="go('home')">Home</button>
-    <button id="navPosts" onclick="go('posts')">Reports</button>
-    <button id="navSearch" onclick="go('search')">Search</button>
-    <button id="navNews" onclick="go('news')">News</button>
-    <button id="navHelp" onclick="go('help')">Help Desk</button>
-    <button id="navProfile" onclick="go('profile')">Profile</button>
-   </nav>
-
-   <div class="user-mini">
-    <div id="miniAvatar" class="avatar">U</div>
-    <button class="danger" onclick="logout()">Logout</button>
-   </div>
-
-  </div>
- </header>
-
- <main class="container">
-
-  <!-- HOME -->
-  <section id="homePage">
-
-   <div class="hero card">
-    <h2>Speak Up Against Corruption</h2>
-    <p>
-     Share information responsibly. Protect your identity when needed.
-     Together we can raise awareness and support a cleaner Bangladesh.
-    </p>
-
-    <div class="stats">
-     <div class="stat">
-      <b id="statReports">0</b>
-      <span>Reports</span>
-     </div>
-     <div class="stat">
-      <b id="statComments">0</b>
-      <span>Comments</span>
-     </div>
-     <div class="stat">
-      <b>24/7</b>
-      <span>Community</span>
-     </div>
-    </div>
-   </div>
-
-   <div class="grid">
-
-    <div>
-
-     <!-- CREATE POST -->
-     <div class="card">
-      <h3 class="card-title">Create a Report</h3>
-
-      <div class="field">
-       <label>Complaint Category</label>
-       <div id="categoryGrid" class="category-grid"></div>
-      </div>
-
-      <div class="field">
-       <label>Details</label>
-       <textarea id="postText" placeholder="Describe what happened. Avoid unsupported accusations against identifiable people."></textarea>
-      </div>
-
-      <div class="field">
-       <label>Photos / Videos</label>
-
-       <div class="upload-box">
-        <input
-         id="mediaInput"
-         type="file"
-         accept="image/*,video/*"
-         multiple
-         onchange="previewMedia()"
-        >
-        <div class="small muted">
-         You can select multiple photos and videos.
-        </div>
-
-        <div id="preview" class="preview"></div>
-       </div>
-      </div>
-
-      <div class="field">
-       <label class="checkbox">
-        <input id="anonymousCheck" type="checkbox">
-        Post anonymously
-       </label>
-      </div>
-
-      <button id="postButton" class="primary" onclick="createPost()">
-       Publish Report
-      </button>
-     </div>
-
-     <!-- FEED -->
-     <div>
-      <h3 class="card-title">Latest Reports</h3>
-      <div id="feed">
-       <div class="loader">Loading reports...</div>
-      </div>
-     </div>
-
-    </div>
-
-    <aside class="side">
-     <div class="card side-card">
-      <h3 class="card-title">Awareness</h3>
-
-      <div class="news">
-       <b>Report Responsibly</b>
-       <span>Share facts and experiences without deliberately spreading false information.</span>
-      </div>
-
-      <div class="news">
-       <b>Protect Privacy</b>
-       <span>Do not publish private information such as NID numbers, passwords or sensitive personal data.</span>
-      </div>
-
-      <div class="news">
-       <b>Stay Safe</b>
-       <span>If a situation is dangerous, contact appropriate emergency or legal authorities.</span>
-      </div>
-
-     </div>
-    </aside>
-
-   </div>
-
-  </section>
-
-  <!-- POSTS -->
-  <section id="postsPage" class="hidden">
-   <div class="card">
-    <h2 class="card-title">All Reports</h2>
-    <div id="allPosts"></div>
-   </div>
-  </section>
-
-  <!-- SEARCH -->
-  <section id="searchPage" class="hidden">
-
-   <div class="card">
-    <h2 class="card-title">Search Reports</h2>
-
-    <div class="search-row">
-     <input id="searchInput" placeholder="Search reports..." onkeydown="if(event.key==='Enter')searchPosts()">
-     <button class="primary" style="width:auto" onclick="searchPosts()">Search</button>
-    </div>
-   </div>
-
-   <div id="searchResults"></div>
-
-  </section>
-
-  <!-- NEWS -->
-  <section id="newsPage" class="hidden">
-
-   <div class="card">
-    <h2 class="card-title">News & Awareness</h2>
-
-    <div class="news">
-     <b>Anti-Corruption Awareness</b>
-     <span>
-      Corruption affects public services, trust and development.
-      Responsible reporting can help increase awareness.
-     </span>
-    </div>
-
-    <div class="news">
-     <b>Evidence Matters</b>
-     <span>
-      When sharing a complaint, describe the facts clearly and distinguish
-      personal experience from assumptions.
-     </span>
-    </div>
+<header class="topbar">
+<div class="topbar-inner">
 
-    <div class="news">
-     <b>Do Not Share Sensitive Data</b>
-     <span>
-      Never publish passwords, financial credentials, NID numbers or
-      unnecessary private information.
-     </span>
-    </div>
+<div class="brand">
+<div class="brand-icon">🛡️</div>
+<span>ঘুষ সাইট</span>
+</div>
 
-    <div class="news">
-     <b>Community Responsibility</b>
-     <span>
-      The platform is intended for awareness and responsible community discussion.
-     </span>
-    </div>
+<nav class="nav">
+<button id="navHome" class="active" onclick="go('home')">Home</button>
+<button id="navPosts" onclick="go('posts')">Reports</button>
+<button id="navSearch" onclick="go('search')">Search</button>
+<button id="navNews" onclick="go('news')">News</button>
+<button id="navHelp" onclick="go('help')">Help Desk</button>
+<button id="navProfile" onclick="go('profile')">Profile</button>
+</nav>
 
-   </div>
+<div class="user-mini">
+<div id="miniAvatar" class="avatar">U</div>
+<button class="danger" onclick="logout()">Logout</button>
+</div>
 
-  </section>
+</div>
+</header>
 
-  <!-- HELP -->
-  <section id="helpPage" class="hidden">
+<main class="container">
 
-   <div class="card">
-    <h2 class="card-title">Help Desk</h2>
+<!-- STORIES -->
+<section id="storiesSection" class="stories-section">
 
-    <div class="news">
-     <b>How to create a report?</b>
-     <span>
-      Select a complaint category, describe the incident, optionally attach
-      photos or videos, then choose whether you want to post anonymously.
-     </span>
-    </div>
+<div class="stories-head">
+<div class="stories-title">Stories</div>
 
-    <div class="news">
-     <b>How does Anonymous mode work?</b>
-     <span>
-      Your public post displays an anonymous identity instead of your profile name.
-     </span>
-    </div>
+<button class="secondary"
+onclick="openStoryPicker()">
+＋ Add Story
+</button>
+</div>
 
-    <div class="news">
-     <b>Account Security</b>
-     <span>
-      Never share your username or password with anyone. Each username is unique.
-     </span>
-    </div>
+<div class="stories-row" id="storiesRow">
 
-    <div class="news">
-     <b>Content Responsibility</b>
-     <span>
-      Do not use the platform to spread knowingly false claims, threats,
-      harassment or private information.
-     </span>
-    </div>
+<div class="story-add"
+onclick="openStoryPicker()">
 
-   </div>
+<div class="story-add-icon">＋</div>
 
-  </section>
+<b>Add Story</b>
 
-  <!-- PROFILE -->
-  <section id="profilePage" class="hidden">
+<small class="muted">
+Photo / Video
+</small>
 
-   <div class="card" style="padding:0;overflow:hidden">
+</div>
 
-    <div class="profile-cover"></div>
+</div>
 
-    <div class="profile-info">
+<input
+id="storyFileInput"
+type="file"
+accept="image/*,video/*"
+multiple
+hidden
+onchange="uploadStories(this.files)"
+>
 
-     <div id="bigAvatar" class="big-avatar">U</div>
-
-     <h2 id="profileName">User</h2>
-     <p id="profileUsername">@username</p>
-     <p id="profilePhone"></p>
-     <p id="profileBio"></p>
-
-     <div style="margin-top:15px">
-      <button class="secondary" onclick="openEditProfile()">Edit Profile</button>
-     </div>
-
-    </div>
-
-   </div>
-
-   <div id="editProfileBox" class="card hidden">
-
-    <h3 class="card-title">Edit Profile</h3>
-
-    <div class="field">
-     <label>Name</label>
-     <input id="editName">
-    </div>
-
-    <div class="field">
-     <label>Bio</label>
-     <textarea id="editBio" style="min-height:80px"></textarea>
-    </div>
-
-    <button class="primary" onclick="saveProfile()">Save Changes</button>
-
-   </div>
-
-   <div class="card">
-    <h3 class="card-title">My Reports</h3>
-    <div id="myPosts"></div>
-   </div>
-
-  </section>
-
-  <div class="footer">
-   Ghus Site • Responsible reporting & public awareness
-  </div>
-
- </main>
 </section>
 
+<!-- HOME -->
+<section id="homePage">
+
+<div class="hero card">
+
+<h2>Speak Up Against Corruption</h2>
+
+<p>
+Share information responsibly. Protect your identity when needed.
+Together we can raise awareness and support a cleaner Bangladesh.
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<b id="statReports">0</b>
+<span>Reports</span>
+</div>
+
+<div class="stat">
+<b id="statComments">0</b>
+<span>Comments</span>
+</div>
+
+<div class="stat">
+<b>24/7</b>
+<span>Community</span>
+</div>
+
+</div>
+</div>
+
+<div class="grid">
+
+<div>
+
+<div class="card">
+
+<h3 class="card-title">Create a Report</h3>
+
+<div class="field">
+
+<label>Report Type</label>
+
+<div class="category-grid" id="categoryGrid"></div>
+
+</div>
+
+<div class="field">
+
+<label>Details</label>
+
+<textarea
+id="postText"
+placeholder="Describe what happened. Avoid unsupported accusations against identifiable people."
+></textarea>
+
+</div>
+
+<div class="field">
+
+<label>Photos / Videos</label>
+
+<div class="upload-box">
+
+<input
+id="mediaInput"
+type="file"
+accept="image/*,video/*"
+multiple
+onchange="previewMedia()"
+>
+
+<div class="small muted">
+You can select multiple photos and videos.
+</div>
+
+<div id="preview" class="preview"></div>
+
+</div>
+
+</div>
+
+<div class="field">
+
+<label class="checkbox">
+
+<input id="anonymousCheck" type="checkbox">
+
+Post anonymously
+
+</label>
+
+</div>
+
+<button
+id="postButton"
+class="primary"
+onclick="createPost()">
+
+Publish Report
+
+</button>
+
+</div>
+
+<div>
+
+<h3 class="card-title">
+Latest Reports
+</h3>
+
+<div id="feed">
+
+<div class="loader">
+Loading reports...
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<aside class="side">
+
+<div class="card side-card">
+
+<h3 class="card-title">
+Awareness
+</h3>
+
+<div class="news">
+<b>Report Responsibly</b>
+<span>
+Share facts and experiences without deliberately spreading false information.
+</span>
+</div>
+
+<div class="news">
+<b>Protect Privacy</b>
+<span>
+Do not publish private information such as NID numbers, passwords or sensitive personal data.
+</span>
+</div>
+
+<div class="news">
+<b>Stay Safe</b>
+<span>
+If a situation is dangerous, contact appropriate emergency or legal authorities.
+</span>
+</div>
+
+</div>
+
+</aside>
+
+</div>
+
+</section>
+
+<!-- POSTS -->
+<section id="postsPage" class="hidden">
+
+<div class="card">
+
+<h2 class="card-title">
+All Reports
+</h2>
+
+<div id="allPosts"></div>
+
+</div>
+
+</section>
+
+<!-- SEARCH -->
+<section id="searchPage" class="hidden">
+
+<div class="card">
+
+<h2 class="card-title">
+Search Reports
+</h2>
+
+<div class="search-row">
+
+<input
+id="searchInput"
+placeholder="Search reports..."
+onkeydown="if(event.key==='Enter')searchPosts()"
+>
+
+<button
+class="primary"
+style="width:auto"
+onclick="searchPosts()">
+
+Search
+
+</button>
+
+</div>
+
+</div>
+
+<div id="searchResults"></div>
+
+</section>
+
+<!-- NEWS -->
+<section id="newsPage" class="hidden">
+
+<div class="card">
+
+<h2 class="card-title">
+News & Awareness
+</h2>
+
+<div class="news">
+<b>Anti-Corruption Awareness</b>
+<span>
+Corruption affects public services, trust and development.
+Responsible reporting can help increase awareness.
+</span>
+</div>
+
+<div class="news">
+<b>Evidence Matters</b>
+<span>
+When sharing a complaint, describe the facts clearly and distinguish
+personal experience from assumptions.
+</span>
+</div>
+
+<div class="news">
+<b>Do Not Share Sensitive Data</b>
+<span>
+Never publish passwords, financial credentials, NID numbers or
+unnecessary private information.
+</span>
+</div>
+
+<div class="news">
+<b>Community Responsibility</b>
+<span>
+The platform is intended for awareness and responsible community discussion.
+</span>
+</div>
+
+</div>
+
+</section>
+
+<!-- HELP -->
+<section id="helpPage" class="hidden">
+
+<div class="card">
+
+<h2 class="card-title">
+Help Desk
+</h2>
+
+<div class="news">
+<b>How to create a report?</b>
+<span>
+Select a report type, describe the incident, optionally attach
+photos or videos, then choose whether you want to post anonymously.
+</span>
+</div>
+
+<div class="news">
+<b>How does Anonymous mode work?</b>
+<span>
+Your public post displays an anonymous identity instead of your profile name.
+</span>
+</div>
+
+<div class="news">
+<b>Account Security</b>
+<span>
+Never share your username or password with anyone. Each username is unique.
+</span>
+</div>
+
+<div class="news">
+<b>Content Responsibility</b>
+<span>
+Do not use the platform to spread knowingly false claims, threats,
+harassment or private information.
+</span>
+</div>
+
+</div>
+
+</section>
+
+<!-- PROFILE -->
+<section id="profilePage" class="hidden">
+
+<div class="card" style="padding:0;overflow:hidden">
+
+<div class="profile-cover"></div>
+
+<div class="profile-info">
+
+<div id="bigAvatar" class="big-avatar">
+U
+</div>
+
+<h2 id="profileName">
+User
+</h2>
+
+<p id="profileUsername">
+@username
+</p>
+
+<p id="profilePhone"></p>
+
+<p id="profileBio"></p>
+
+<div style="margin-top:15px">
+
+<button
+class="secondary"
+onclick="openEditProfile()">
+
+Edit Profile
+
+</button>
+
+<button
+id="openPrivateProfileBtn"
+class="secondary"
+onclick="openPrivateProfile()">
+
+🔒 Private Profile
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="editProfileBox" class="card hidden">
+
+<h3 class="card-title">
+Edit Profile
+</h3>
+
+<div class="field">
+<label>Name</label>
+<input id="editName">
+</div>
+
+<div class="field">
+<label>Bio</label>
+<textarea
+id="editBio"
+style="min-height:80px">
+</textarea>
+</div>
+
+<button
+class="primary"
+onclick="saveProfile()">
+
+Save Changes
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h3 class="card-title">
+My Reports
+</h3>
+
+<div id="myPosts"></div>
+
+</div>
+
+</section>
+
+<div class="footer">
+ঘুষ সাইট • Responsible reporting & public awareness
+</div>
+
+</main>
+
+</section>
+
+<!-- STORY VIEWER -->
+<div
+id="storyViewer"
+class="story-viewer"
+onclick="closeStoryViewer(event)"
+>
+
+<div class="story-viewer-inner">
+
+<div class="story-viewer-top">
+
+<button
+class="story-close"
+onclick="closeStoryViewer()">
+
+×
+</button>
+
+</div>
+
+<div
+id="storyViewerMedia"
+class="story-viewer-media">
+</div>
+
+<div
+id="storyViewerCaption"
+class="story-viewer-caption">
+</div>
+
+</div>
+
+</div>
+
+<!-- PRIVATE PROFILE -->
+<div
+id="privateProfilePanel"
+class="private-profile-panel"
+onclick="if(event.target===this)closePrivateProfile()"
+>
+
+<div class="private-profile-box">
+
+<div class="private-profile-head">
+
+<h2>
+🔒 Private Profile
+</h2>
+
+<button
+class="close-btn"
+onclick="closePrivateProfile()">
+
+×
+</button>
+
+</div>
+
+<div class="private-note">
+
+Your private information is only for your account.
+Your password is never displayed or stored in the profile table.
+You can securely change your password below.
+
+</div>
+
+<div class="private-grid">
+
+<div class="field">
+<label>Name</label>
+<input id="privateName">
+</div>
+
+<div class="field">
+<label>Phone Number</label>
+<input id="privatePhone" readonly>
+</div>
+
+<div class="field">
+<label>Username</label>
+<input id="privateUsername" readonly>
+</div>
+
+<div class="field">
+<label>Profession</label>
+<input id="privateProfession"
+placeholder="Your profession">
+</div>
+
+<div class="field">
+<label>Date of Birth</label>
+<input id="privateDob" type="date">
+</div>
+
+<div class="field">
+<label>Address</label>
+<input id="privateAddress"
+placeholder="Your address">
+</div>
+
+</div>
+
+<div class="field">
+
+<label>Bio</label>
+
+<textarea
+id="privateBio"
+style="min-height:90px"
+placeholder="About you">
+</textarea>
+
+</div>
+
+<div class="field">
+
+<label>New Password</label>
+
+<input
+id="privateNewPassword"
+type="password"
+autocomplete="new-password"
+placeholder="Leave empty to keep current password"
+>
+
+</div>
+
+<button
+class="primary"
+onclick="savePrivateProfile()">
+
+Save Private Profile
+
+</button>
+
+</div>
+
+</div>
+
 <script>
-/* ================================
-   SUPABASE
-================================ */
+/* SUPABASE */
 
 const SUPABASE_URL =
 "https://klreqkbqyyiwmohlmgkh.supabase.co";
@@ -879,1689 +1751,2679 @@ window.supabase &&
 window.supabase.createClient
 ?
 window.supabase.createClient(
- SUPABASE_URL,
- SUPABASE_KEY
+SUPABASE_URL,
+SUPABASE_KEY
 )
 :
 null;
 
+/* GLOBAL */
 
-/* ================================
-   GLOBAL
-================================ */
+let currentUser=null;
+let currentProfile=null;
+let selectedCategory="ঘুষ";
+let selectedFiles=[];
+let currentPage="home";
 
-let currentUser = null;
-let currentProfile = null;
-let selectedCategory = "ঘুষ";
-let selectedFiles = [];
-let currentPage = "home";
+const AUTH_DOMAIN="ghussite.local";
 
-const AUTH_DOMAIN = "ghussite.local";
-
-
-/* ================================
-   CATEGORIES
-================================ */
-
-const categories = [
- "ঘুষ",
- "দালালি",
- "চাঁদাবাজি",
- "প্রতারণা",
- "ক্ষমতার অপব্যবহার",
- "সরকারি সেবা হয়রানি",
- "চাকরির নামে টাকা দাবি",
- "টেন্ডার অনিয়ম",
- "জমি/দখল সংক্রান্ত অনিয়ম",
- "ভুয়া কাগজপত্র",
- "অর্থ আত্মসাৎ",
- "অন্যান্য"
+/* সব অভিযোগ এক Report Type-এর ভিতরে */
+const categories=[
+"ঘুষ",
+"দালালি",
+"চাঁদাবাজি",
+"প্রতারণা",
+"ক্ষমতার অপব্যবহার",
+"সরকারি সেবা হয়রানি",
+"চাকরির নামে টাকা দাবি",
+"টেন্ডার অনিয়ম",
+"জমি/দখল সংক্রান্ত অনিয়ম",
+"ভুয়া কাগজপত্র",
+"অর্থ আত্মসাৎ",
+"অন্যান্য"
 ];
 
-
-/* ================================
-   HELPERS
-================================ */
+/* HELPERS */
 
 function $(id){
- return document.getElementById(id);
+return document.getElementById(id);
 }
 
 function toast(message,type="success"){
- const el=$("toast");
- el.textContent=message;
- el.className="";
- el.classList.add(type);
- el.style.display="block";
+const el=$("toast");
+el.textContent=message;
+el.className="";
+el.classList.add(type);
+el.style.display="block";
 
- clearTimeout(window.toastTimer);
+clearTimeout(window.toastTimer);
 
- window.toastTimer=setTimeout(()=>{
-  el.style.display="none";
- },3500);
+window.toastTimer=setTimeout(()=>{
+el.style.display="none";
+},3500);
 }
 
 function normalizeUsername(v){
- return String(v||"").trim().toLowerCase();
+return String(v||"").trim().toLowerCase();
 }
 
 function validUsername(v){
- return /^[a-z0-9_]{3,24}$/.test(v);
+return /^[a-z0-9_]{3,24}$/.test(v);
 }
 
 function authEmail(username){
- return normalizeUsername(username)+"@"+AUTH_DOMAIN;
+return normalizeUsername(username)+"@"+AUTH_DOMAIN;
 }
 
 function escapeHTML(value){
- return String(value??"")
-  .replaceAll("&","&amp;")
-  .replaceAll("<","&lt;")
-  .replaceAll(">","&gt;")
-  .replaceAll('"',"&quot;")
-  .replaceAll("'","&#039;");
+return String(value??"")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+}
+
+function escapeAttr(v){
+return String(v??"")
+.replace(/&/g,"&amp;")
+.replace(/"/g,"&quot;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;");
+}
+
+function escapeHtml(v){
+return escapeAttr(v);
 }
 
 function initials(name){
- const s=String(name||"User").trim();
- if(!s)return "U";
+const s=String(name||"User").trim();
 
- const parts=s.split(/\s+/);
+if(!s)return "U";
 
- if(parts.length===1)
-  return parts[0].slice(0,1).toUpperCase();
+const parts=s.split(/\s+/);
 
- return (
-  parts[0].slice(0,1)+
-  parts[parts.length-1].slice(0,1)
- ).toUpperCase();
+if(parts.length===1)
+return parts[0].slice(0,1).toUpperCase();
+
+return (
+parts[0].slice(0,1)+
+parts[parts.length-1].slice(0,1)
+).toUpperCase();
 }
 
 function timeAgo(date){
- const diff=Math.max(
-  0,
-  Date.now()-new Date(date).getTime()
- );
 
- const sec=Math.floor(diff/1000);
+const diff=Math.max(
+0,
+Date.now()-new Date(date).getTime()
+);
 
- if(sec<60)return "Just now";
+const sec=Math.floor(diff/1000);
 
- const min=Math.floor(sec/60);
+if(sec<60)return "Just now";
 
- if(min<60)
-  return min+"m ago";
+const min=Math.floor(sec/60);
 
- const hour=Math.floor(min/60);
+if(min<60)return min+"m ago";
 
- if(hour<24)
-  return hour+"h ago";
+const hour=Math.floor(min/60);
 
- const day=Math.floor(hour/24);
+if(hour<24)return hour+"h ago";
 
- if(day<30)
-  return day+"d ago";
+const day=Math.floor(hour/24);
 
- return new Date(date).toLocaleDateString();
+if(day<30)return day+"d ago";
+
+return new Date(date).toLocaleDateString();
 }
 
-
-/* ================================
-   AUTH SCREEN
-================================ */
+/* AUTH */
 
 function showAuth(type){
 
- if(type==="login"){
-  $("loginBox").classList.remove("hidden");
-  $("signupBox").classList.add("hidden");
+if(type==="login"){
 
-  $("loginTab").classList.add("active");
-  $("signupTab").classList.remove("active");
- }else{
-  $("loginBox").classList.add("hidden");
-  $("signupBox").classList.remove("hidden");
+$("loginBox").classList.remove("hidden");
+$("signupBox").classList.add("hidden");
 
-  $("loginTab").classList.remove("active");
-  $("signupTab").classList.add("active");
- }
+$("loginTab").classList.add("active");
+$("signupTab").classList.remove("active");
+
+}else{
+
+$("loginBox").classList.add("hidden");
+$("signupBox").classList.remove("hidden");
+
+$("loginTab").classList.remove("active");
+$("signupTab").classList.add("active");
+
+}
 }
 
-
-/* ================================
-   SIGNUP
-================================ */
+/* SIGNUP — ORIGINAL SYSTEM */
 
 async function signup(){
 
- if(!db){
-  toast("Database connection is unavailable.","error");
-  return;
- }
-
- const name=$("signupName").value.trim();
- const phone=$("signupPhone").value.trim();
- const username=normalizeUsername($("signupUsername").value);
- const password=$("signupPassword").value;
-
- if(name.length<2){
-  toast("Please enter your name.","error");
-  return;
- }
-
- if(!/^01[0-9]{9}$/.test(phone)){
-  toast("Enter a valid Bangladesh phone number.","error");
-  return;
- }
-
- if(!validUsername(username)){
-  toast(
-   "Username must contain only lowercase letters, numbers or underscore.",
-   "error"
-  );
-  return;
- }
-
- if(password.length<6){
-  toast("Password must be at least 6 characters.","error");
-  return;
- }
-
- try{
-
-  const {data:existing,error:existingError}
-   =await db
-   .from("profiles")
-   .select("id")
-   .eq("username",username)
-   .maybeSingle();
-
-  if(existingError){
-   console.error(existingError);
-   toast(
-    "Could not check username. Please make sure the Supabase SQL setup was completed.",
-    "error"
-   );
-   return;
-  }
-
-  if(existing){
-   toast("That username is already taken.","error");
-   return;
-  }
-
-  const {
-   data,
-   error
-  }=await db.auth.signUp({
-   email:authEmail(username),
-   password:password,
-   options:{
-    data:{
-     name:name,
-     username:username,
-     phone:phone
-    }
-   }
-  });
-
-  if(error){
-   console.error(error);
-   toast(error.message,"error");
-   return;
-  }
-
-  if(!data.user){
-   toast("Account creation failed.","error");
-   return;
-  }
-
-  /*
-    Insert profile.
-    RLS allows the authenticated user to insert
-    only their own profile.
-  */
-
-  const {
-   error:profileError
-  }=await db
-   .from("profiles")
-   .insert({
-    id:data.user.id,
-    display_name:name,
-    username:username,
-    phone:phone,
-    bio:""
-   });
-
-  if(profileError){
-
-   console.error(profileError);
-
-   /*
-    If email confirmation is enabled, user may not be
-    immediately authenticated. We still show useful info.
-   */
-
-   toast(
-    "Account was created, but profile setup needs attention: "+
-    profileError.message,
-    "error"
-   );
-
-   return;
-  }
-
-  toast("Account created successfully.","success");
-
-  await loadCurrentUser();
-
- }catch(err){
-
-  console.error(err);
-
-  toast(
-   "Something went wrong while creating the account.",
-   "error"
-  );
- }
+if(!db){
+toast("Database connection is unavailable.","error");
+return;
 }
 
+const name=$("signupName").value.trim();
+const phone=$("signupPhone").value.trim();
+const username=normalizeUsername($("signupUsername").value);
+const password=$("signupPassword").value;
 
-/* ================================
-   LOGIN
-================================ */
+if(name.length<2){
+toast("Please enter your name.","error");
+return;
+}
+
+if(!/^01[0-9]{9}$/.test(phone)){
+toast("Enter a valid Bangladesh phone number.","error");
+return;
+}
+
+if(!validUsername(username)){
+toast(
+"Username must contain only lowercase letters, numbers or underscore.",
+"error"
+);
+return;
+}
+
+if(password.length<6){
+toast("Password must be at least 6 characters.","error");
+return;
+}
+
+try{
+
+const {
+data:existing,
+error:existingError
+}=await db
+.from("profiles")
+.select("id")
+.eq("username",username)
+.maybeSingle();
+
+if(existingError){
+console.error(existingError);
+toast(
+"Could not check username. Please make sure the Supabase SQL setup was completed.",
+"error"
+);
+return;
+}
+
+if(existing){
+toast("That username is already taken.","error");
+return;
+}
+
+const {
+data,
+error
+}=await db.auth.signUp({
+email:authEmail(username),
+password:password,
+options:{
+data:{
+name:name,
+username:username,
+phone:phone
+}
+}
+});
+
+if(error){
+console.error(error);
+toast(error.message,"error");
+return;
+}
+
+if(!data.user){
+toast("Account creation failed.","error");
+return;
+}
+
+const {
+error:profileError
+}=await db
+.from("profiles")
+.insert({
+id:data.user.id,
+display_name:name,
+username:username,
+phone:phone,
+bio:""
+});
+
+if(profileError){
+
+console.error(profileError);
+
+toast(
+"Account was created, but profile setup needs attention: "+
+profileError.message,
+"error"
+);
+
+return;
+}
+
+toast(
+"Account created successfully.",
+"success"
+);
+
+await loadCurrentUser();
+
+}catch(err){
+
+console.error(err);
+
+toast(
+"Something went wrong while creating the account.",
+"error"
+);
+
+}
+}
+
+/* LOGIN — UNCHANGED */
 
 async function login(){
 
- if(!db){
-  toast("Database connection is unavailable.","error");
-  return;
- }
-
- const username=normalizeUsername($("loginUsername").value);
- const password=$("loginPassword").value;
-
- if(!validUsername(username)){
-  toast("Enter a valid username.","error");
-  return;
- }
-
- if(!password){
-  toast("Enter your password.","error");
-  return;
- }
-
- try{
-
-  const {
-   data,
-   error
-  }=await db.auth.signInWithPassword({
-   email:authEmail(username),
-   password:password
-  });
-
-  if(error){
-   console.error(error);
-   toast("Invalid username or password.","error");
-   return;
-  }
-
-  if(!data.user){
-   toast("Login failed.","error");
-   return;
-  }
-
-  await loadCurrentUser();
-
- }catch(err){
-
-  console.error(err);
-  toast("Login failed. Please try again.","error");
- }
+if(!db){
+toast("Database connection is unavailable.","error");
+return;
 }
 
+const username=normalizeUsername(
+$("loginUsername").value
+);
 
-/* ================================
-   LOAD CURRENT USER
-================================ */
+const password=$("loginPassword").value;
+
+if(!validUsername(username)){
+toast("Enter a valid username.","error");
+return;
+}
+
+if(!password){
+toast("Enter your password.","error");
+return;
+}
+
+try{
+
+const {
+data,
+error
+}=await db.auth.signInWithPassword({
+email:authEmail(username),
+password:password
+});
+
+if(error){
+console.error(error);
+toast(
+"Invalid username or password.",
+"error"
+);
+return;
+}
+
+if(!data.user){
+toast("Login failed.","error");
+return;
+}
+
+await loadCurrentUser();
+
+}catch(err){
+
+console.error(err);
+
+toast(
+"Login failed. Please try again.",
+"error"
+);
+
+}
+}
+
+/* CURRENT USER */
 
 async function loadCurrentUser(){
 
- if(!db)return;
+if(!db)return;
 
- const {
-  data:{
-   user
-  }
- }=await db.auth.getUser();
+const {
+data:{
+user
+}
+}=await db.auth.getUser();
 
- if(!user){
-  showAuthScreen();
-  return;
- }
+if(!user){
+showAuthScreen();
+return;
+}
 
- currentUser=user;
+currentUser=user;
 
- let {
-  data:profile,
-  error
- }=await db
-  .from("profiles")
-  .select("*")
-  .eq("id",user.id)
-  .maybeSingle();
+let {
+data:profile,
+error
+}=await db
+.from("profiles")
+.select("*")
+.eq("id",user.id)
+.maybeSingle();
 
- if(error){
-  console.error(error);
- }
+if(error){
+console.error(error);
+}
 
- if(!profile){
+if(!profile){
 
-  const meta=user.user_metadata||{};
+const meta=user.user_metadata||{};
 
-  profile={
-   id:user.id,
-   display_name:meta.name||"User",
-   username:meta.username||"user",
-   phone:meta.phone||"",
-   bio:""
-  };
- }
-
- currentProfile=profile;
-
- showApp();
-
- renderProfile();
-
- loadFeed();
+profile={
+id:user.id,
+display_name:meta.name||"User",
+username:meta.username||"user",
+phone:meta.phone||"",
+bio:""
+};
 
 }
 
+currentProfile=profile;
 
-/* ================================
-   UI SWITCH
-================================ */
+showApp();
+
+renderProfile();
+
+loadFeed();
+
+try{
+await loadStories();
+}catch(e){
+console.warn(e);
+}
+
+}
+
+/* UI */
 
 function showApp(){
 
- $("authScreen").classList.add("hidden");
- $("app").classList.remove("hidden");
+$("authScreen").classList.add("hidden");
+$("app").classList.remove("hidden");
 
- updateMiniUser();
+updateMiniUser();
+
 }
 
 function showAuthScreen(){
 
- $("app").classList.add("hidden");
- $("authScreen").classList.remove("hidden");
+$("app").classList.add("hidden");
+$("authScreen").classList.remove("hidden");
+
 }
 
 function updateMiniUser(){
 
- if(!currentProfile)return;
+if(!currentProfile)return;
 
- const av=initials(currentProfile.display_name);
-
- $("miniAvatar").textContent=av;
+$("miniAvatar").textContent=
+initials(currentProfile.display_name);
 
 }
 
-
-/* ================================
-   NAVIGATION
-================================ */
+/* NAVIGATION */
 
 function go(page){
 
- currentPage=page;
+currentPage=page;
 
- const pages=[
-  "homePage",
-  "postsPage",
-  "searchPage",
-  "newsPage",
-  "helpPage",
-  "profilePage"
- ];
+const pages=[
+"homePage",
+"postsPage",
+"searchPage",
+"newsPage",
+"helpPage",
+"profilePage"
+];
 
- pages.forEach(id=>{
-  $(id).classList.add("hidden");
- });
+pages.forEach(id=>{
+$(id).classList.add("hidden");
+});
 
- const target=page+"Page";
+const target=page+"Page";
 
- if($(target))
-  $(target).classList.remove("hidden");
+if($(target))
+$(target).classList.remove("hidden");
 
- const navs=[
-  "navHome",
-  "navPosts",
-  "navSearch",
-  "navNews",
-  "navHelp",
-  "navProfile"
- ];
+const navs=[
+"navHome",
+"navPosts",
+"navSearch",
+"navNews",
+"navHelp",
+"navProfile"
+];
 
- navs.forEach(id=>{
-  $(id).classList.remove("active");
- });
+navs.forEach(id=>{
+$(id).classList.remove("active");
+});
 
- const navId="nav"+
- page.charAt(0).toUpperCase()+
- page.slice(1);
+const navId=
+"nav"+
+page.charAt(0).toUpperCase()+
+page.slice(1);
 
- if($(navId))
-  $(navId).classList.add("active");
+if($(navId))
+$(navId).classList.add("active");
 
- if(page==="posts"){
-  loadAllPosts();
- }
+document.querySelectorAll(
+".mobile-bottom-nav button"
+).forEach(btn=>{
+btn.classList.toggle(
+"active",
+btn.dataset.page===
+(page==="posts"?"reports":page)
+);
+});
 
- if(page==="profile"){
-  renderProfile();
-  loadMyPosts();
- }
+if(page==="posts")
+loadAllPosts();
 
- if(page==="home"){
-  loadFeed();
- }
+if(page==="profile"){
+renderProfile();
+loadMyPosts();
 }
 
+if(page==="home")
+loadFeed();
 
-/* ================================
-   CATEGORY UI
-================================ */
+}
+
+/* CATEGORY */
 
 function renderCategories(){
 
- const box=$("categoryGrid");
+const box=$("categoryGrid");
 
- box.innerHTML="";
+box.innerHTML="";
 
- categories.forEach(category=>{
+categories.forEach(category=>{
 
-  const div=document.createElement("div");
+const div=document.createElement("div");
 
-  div.className="cat"+
-   (category===selectedCategory?" active":"");
+div.className=
+"cat"+
+(category===selectedCategory?" active":"");
 
-  div.textContent=category;
+div.textContent=category;
 
-  div.onclick=()=>{
-   selectedCategory=category;
-   renderCategories();
-  };
+div.onclick=()=>{
+selectedCategory=category;
+renderCategories();
+};
 
-  box.appendChild(div);
- });
+box.appendChild(div);
+
+});
+
 }
 
-
-/* ================================
-   MEDIA PREVIEW
-================================ */
+/* MEDIA PREVIEW */
 
 function previewMedia(){
 
- const input=$("mediaInput");
+const input=$("mediaInput");
 
- selectedFiles=Array.from(input.files||[]);
+selectedFiles=
+Array.from(input.files||[]);
 
- const preview=$("preview");
+const preview=$("preview");
 
- preview.innerHTML="";
+preview.innerHTML="";
 
- selectedFiles.forEach(file=>{
+selectedFiles.forEach(file=>{
 
-  const item=document.createElement("div");
+const item=document.createElement("div");
 
-  item.className="preview-item";
+item.className="preview-item";
 
-  if(file.type.startsWith("image/")){
+if(file.type.startsWith("image/")){
 
-   const img=document.createElement("img");
+const img=document.createElement("img");
 
-   img.src=URL.createObjectURL(file);
+img.src=URL.createObjectURL(file);
 
-   item.appendChild(img);
+item.appendChild(img);
 
-  }else if(file.type.startsWith("video/")){
+}else if(file.type.startsWith("video/")){
 
-   const video=document.createElement("video");
+const video=document.createElement("video");
 
-   video.src=URL.createObjectURL(file);
+video.src=URL.createObjectURL(file);
 
-   video.controls=true;
+video.controls=true;
 
-   item.appendChild(video);
+item.appendChild(video);
 
-  }
-
-  const span=document.createElement("span");
-
-  span.textContent=file.type.startsWith("video/")
-   ?"VIDEO"
-   :"PHOTO";
-
-  item.appendChild(span);
-
-  preview.appendChild(item);
-
- });
 }
 
+const span=document.createElement("span");
 
-/* ================================
-   CREATE POST
-================================ */
+span.textContent=
+file.type.startsWith("video/")
+?"VIDEO"
+:"PHOTO";
+
+item.appendChild(span);
+
+preview.appendChild(item);
+
+});
+
+}
+
+/* CREATE POST */
 
 async function createPost(){
 
- if(!currentUser){
-  toast("Please login first.","error");
-  return;
- }
-
- const text=$("postText").value.trim();
- const anonymous=$("anonymousCheck").checked;
-
- if(!text && selectedFiles.length===0){
-  toast("Write something or attach a photo/video.","error");
-  return;
- }
-
- if(selectedFiles.length>10){
-  toast("You can upload up to 10 files at a time.","error");
-  return;
- }
-
- for(const file of selectedFiles){
-
-  if(file.size>100*1024*1024){
-   toast(
-    file.name+" is larger than 100 MB.",
-    "error"
-   );
-   return;
-  }
-
- }
-
- const button=$("postButton");
-
- button.disabled=true;
- button.textContent="Publishing...";
-
- try{
-
-  const {
-   data:post,
-   error
-  }=await db
-   .from("posts")
-   .insert({
-    user_id:currentUser.id,
-    content:text,
-    category:selectedCategory,
-    is_anonymous:anonymous
-   })
-   .select()
-   .single();
-
-  if(error){
-   console.error(error);
-
-   toast(
-    "Could not publish report: "+error.message,
-    "error"
-   );
-
-   return;
-  }
-
-  /*
-    Upload selected files.
-  */
-
-  for(const file of selectedFiles){
-
-   const safeName=file.name
-    .replace(/[^a-zA-Z0-9._-]/g,"_");
-
-   const path=
-    currentUser.id+
-    "/"+
-    post.id+
-    "/"+
-    Date.now()+
-    "_"+
-    safeName;
-
-   const {
-    error:uploadError
-   }=await db
-    .storage
-    .from("media")
-    .upload(path,file,{
-     cacheControl:"3600",
-     upsert:false,
-     contentType:file.type
-    });
-
-   if(uploadError){
-
-    console.error(uploadError);
-
-    toast(
-     "Report created, but one media file failed to upload.",
-     "error"
-    );
-
-    continue;
-   }
-
-   const {
-    data:publicData
-   }=db
-    .storage
-    .from("media")
-    .getPublicUrl(path);
-
-   const mediaUrl=publicData.publicUrl;
-
-   const mediaType=
-    file.type.startsWith("video/")
-    ?"video"
-    :"image";
-
-   const {
-    error:mediaDbError
-   }=await db
-    .from("post_media")
-    .insert({
-     post_id:post.id,
-     media_url:mediaUrl,
-     media_type:mediaType
-    });
-
-   if(mediaDbError){
-    console.error(mediaDbError);
-   }
-  }
-
-  $("postText").value="";
-  $("mediaInput").value="";
-  $("preview").innerHTML="";
-  $("anonymousCheck").checked=false;
-
-  selectedFiles=[];
-
-  toast("Report published successfully.","success");
-
-  loadFeed();
-
- }catch(err){
-
-  console.error(err);
-
-  toast(
-   "Something went wrong while publishing.",
-   "error"
-  );
-
- }finally{
-
-  button.disabled=false;
-  button.textContent="Publish Report";
-
- }
+if(!currentUser){
+toast("Please login first.","error");
+return;
 }
 
+const text=$("postText").value.trim();
+const anonymous=$("anonymousCheck").checked;
 
-/* ================================
-   LOAD POSTS
-================================ */
+if(!text && selectedFiles.length===0){
+toast(
+"Write something or attach a photo/video.",
+"error"
+);
+return;
+}
+
+if(selectedFiles.length>10){
+toast(
+"You can upload up to 10 files at a time.",
+"error"
+);
+return;
+}
+
+for(const file of selectedFiles){
+
+if(file.size>100*1024*1024){
+
+toast(
+file.name+" is larger than 100 MB.",
+"error"
+);
+
+return;
+
+}
+
+}
+
+const button=$("postButton");
+
+button.disabled=true;
+button.textContent="Publishing...";
+
+try{
+
+const {
+data:post,
+error
+}=await db
+.from("posts")
+.insert({
+user_id:currentUser.id,
+content:text,
+category:selectedCategory,
+is_anonymous:anonymous
+})
+.select()
+.single();
+
+if(error){
+
+console.error(error);
+
+toast(
+"Could not publish report: "+
+error.message,
+"error"
+);
+
+return;
+
+}
+
+for(const file of selectedFiles){
+
+const safeName=
+file.name.replace(
+/[^a-zA-Z0-9._-]/g,
+"_"
+);
+
+const path=
+currentUser.id+
+"/"+
+post.id+
+"/"+
+Date.now()+
+"_"+safeName;
+
+const {
+error:uploadError
+}=await db
+.storage
+.from("media")
+.upload(
+path,
+file,
+{
+cacheControl:"3600",
+upsert:false,
+contentType:file.type
+}
+);
+
+if(uploadError){
+
+console.error(uploadError);
+
+toast(
+"Report created, but one media file failed to upload.",
+"error"
+);
+
+continue;
+
+}
+
+const {
+data:publicData
+}=db
+.storage
+.from("media")
+.getPublicUrl(path);
+
+const mediaUrl=
+publicData.publicUrl;
+
+const mediaType=
+file.type.startsWith("video/")
+?"video"
+:"image";
+
+const {
+error:mediaDbError
+}=await db
+.from("post_media")
+.insert({
+post_id:post.id,
+media_url:mediaUrl,
+media_type:mediaType
+});
+
+if(mediaDbError)
+console.error(mediaDbError);
+
+}
+
+$("postText").value="";
+$("mediaInput").value="";
+$("preview").innerHTML="";
+$("anonymousCheck").checked=false;
+
+selectedFiles=[];
+
+toast(
+"Report published successfully.",
+"success"
+);
+
+loadFeed();
+
+}catch(err){
+
+console.error(err);
+
+toast(
+"Something went wrong while publishing.",
+"error"
+);
+
+}finally{
+
+button.disabled=false;
+button.textContent="Publish Report";
+
+}
+
+}
+
+/* FETCH POSTS */
 
 async function fetchPosts(limit=50){
 
- const {
-  data,
-  error
- }=await db
-  .from("posts")
-  .select(`
-   id,
-   user_id,
-   content,
-   category,
-   is_anonymous,
-   created_at,
-   post_media(
-    id,
-    media_url,
-    media_type,
-    created_at
-   )
-  `)
-  .order("created_at",{ascending:false})
-  .limit(limit);
+const {
+data,
+error
+}=await db
+.from("posts")
+.select(`
+id,
+user_id,
+content,
+category,
+is_anonymous,
+created_at,
+post_media(
+id,
+media_url,
+media_type,
+created_at
+)
+`)
+.order("created_at",{ascending:false})
+.limit(limit);
 
- if(error){
-  console.error(error);
-  throw error;
- }
-
- return data||[];
+if(error){
+console.error(error);
+throw error;
 }
 
+return data||[];
 
-/* ================================
-   GET PROFILES
-================================ */
+}
+
+/* PROFILES */
 
 async function getProfiles(userIds){
 
- if(!userIds.length)
-  return {};
+if(!userIds.length)
+return {};
 
- const unique=[...new Set(userIds)];
+const unique=
+[...new Set(userIds)];
 
- const {
-  data,
-  error
- }=await db
-  .from("profiles")
-  .select("id,display_name,username")
-  .in("id",unique);
+const {
+data,
+error
+}=await db
+.from("profiles")
+.select(
+"id,display_name,username,avatar_url"
+)
+.in("id",unique);
 
- if(error){
-  console.error(error);
-  return {};
- }
-
- const map={};
-
- (data||[]).forEach(profile=>{
-  map[profile.id]=profile;
- });
-
- return map;
+if(error){
+console.error(error);
+return {};
 }
 
+const map={};
 
-/* ================================
-   LOAD FEED
-================================ */
+(data||[]).forEach(profile=>{
+map[profile.id]=profile;
+});
+
+return map;
+
+}
+
+/* FEED */
 
 async function loadFeed(){
 
- const feed=$("feed");
+const feed=$("feed");
 
- feed.innerHTML=
-  '<div class="loader">Loading reports...</div>';
+feed.innerHTML=
+'<div class="loader">Loading reports...</div>';
 
- try{
+try{
 
-  const posts=await fetchPosts(50);
+const posts=
+await fetchPosts(50);
 
-  const profiles=await getProfiles(
-   posts.map(p=>p.user_id)
-  );
+const profiles=
+await getProfiles(
+posts.map(p=>p.user_id)
+);
 
-  await renderPosts(posts,profiles,feed);
+await renderPosts(
+posts,
+profiles,
+feed
+);
 
-  updateStats(posts);
+updateStats(posts);
 
- }catch(error){
+}catch(error){
 
-  feed.innerHTML=
-   '<div class="card empty">'+
-   'Could not load reports.<br>'+
-   '<span class="small">'+
-   escapeHTML(error.message||"Unknown error")+
-   '</span>'+
-   '</div>';
- }
+feed.innerHTML=
+'<div class="card empty">'+
+'Could not load reports.<br>'+
+'<span class="small">'+
+escapeHTML(
+error.message||
+"Unknown error"
+)+
+'</span>'+
+'</div>';
+
 }
 
-
-/* ================================
-   RENDER POSTS
-================================ */
-
-async function renderPosts(posts,profiles,container){
-
- if(!posts.length){
-  container.innerHTML=
-   '<div class="empty">No reports yet.</div>';
-  return;
- }
-
- container.innerHTML="";
-
- for(const post of posts){
-
-  const profile=profiles[post.user_id]||{
-   display_name:"User",
-   username:"user"
-  };
-
-  const card=await buildPostCard(post,profile);
-
-  container.appendChild(card);
- }
 }
 
-
-/* ================================
-   POST CARD
-================================ */
-
-async function buildPostCard(post,profile){
-
- const card=document.createElement("article");
-
- card.className="card post";
-
- const displayName=
-  post.is_anonymous
-  ?"Anonymous User"
-  :(profile.display_name||"User");
-
- const username=
-  post.is_anonymous
-  ?""
-  :("@"+(profile.username||"user"));
-
- const avatar=
-  post.is_anonymous
-  ?"?"
-  :initials(profile.display_name);
-
- let mediaHTML="";
-
- const media=post.post_media||[];
-
- if(media.length){
-
-  let cls="one";
-
-  if(media.length===2)cls="two";
-  else if(media.length===3)cls="three";
-  else if(media.length>3)cls="more";
-
-  mediaHTML=
-   '<div class="media-grid '+cls+'">'+
-   media.map(m=>{
-
-    if(m.media_type==="video"){
-
-     return `
-      <video
-       controls
-       preload="metadata"
-       src="${escapeHTML(m.media_url)}">
-      </video>
-     `;
-
-    }
-
-    return `
-     <img
-      src="${escapeHTML(m.media_url)}"
-      loading="lazy"
-      alt="Report media">
-    `;
-
-   }).join("")+
-   '</div>';
- }
-
- card.innerHTML=`
-
-  <div class="post-head">
-
-   <div class="avatar">
-    ${escapeHTML(avatar)}
-   </div>
-
-   <div class="post-user">
-    <b>${escapeHTML(displayName)}</b>
-    <span>
-     ${escapeHTML(username)}
-     ${username?" • ":""}
-     ${escapeHTML(timeAgo(post.created_at))}
-    </span>
-   </div>
-
-   <span class="badge">
-    ${escapeHTML(post.category)}
-   </span>
-
-  </div>
-
-  <div class="post-content">
-   ${escapeHTML(post.content||"")}
-  </div>
-
-  ${mediaHTML}
-
-  <div class="actions">
-
-   <button class="action" data-like>
-    👍 Like <span data-like-count>0</span>
-   </button>
-
-   <button class="action" data-comment>
-    💬 Comment
-   </button>
-
-   <button class="action" data-share>
-    🔗 Share
-   </button>
-
-  </div>
-
-  <div class="comments hidden" data-comments>
-
-   <div data-comments-list></div>
-
-   <div style="display:flex;gap:7px;margin-top:8px">
-
-    <input
-     data-comment-input
-     placeholder="Write a comment...">
-
-    <button
-     class="secondary"
-     data-comment-submit>
-     Send
-    </button>
-
-   </div>
-
-  </div>
- `;
-
-
- const likeButton=card.querySelector("[data-like]");
- const likeCount=card.querySelector("[data-like-count]");
-
- await updateLikeState(
-  post.id,
-  likeButton,
-  likeCount
- );
-
- likeButton.onclick=async()=>{
-
-  await toggleLike(
-   post.id,
-   likeButton,
-   likeCount
-  );
-
- };
-
-
- const commentButton=
-  card.querySelector("[data-comment]");
-
- const commentsBox=
-  card.querySelector("[data-comments]");
-
- commentButton.onclick=async()=>{
-
-  commentsBox.classList.toggle("hidden");
-
-  if(!commentsBox.classList.contains("hidden")){
-
-   await loadComments(
-    post.id,
-    commentsBox.querySelector("[data-comments-list]")
-   );
-
-  }
- };
-
-
- const commentSubmit=
-  card.querySelector("[data-comment-submit]");
-
- const commentInput=
-  card.querySelector("[data-comment-input]");
-
- commentSubmit.onclick=async()=>{
-
-  await addComment(
-   post.id,
-   commentInput,
-   commentsBox.querySelector("[data-comments-list]")
-  );
-
- };
-
-
- const shareButton=
-  card.querySelector("[data-share]");
-
- shareButton.onclick=async()=>{
-
-  const shareText=
-   (post.content||"").slice(0,100);
-
-  if(navigator.share){
-
-   try{
-
-    await navigator.share({
-     title:"Ghus Site Report",
-     text:shareText,
-     url:location.href
-    });
-
-   }catch(e){}
-
-  }else{
-
-   try{
-
-    await navigator.clipboard.writeText(
-     location.href
-    );
-
-    toast("Link copied.","success");
-
-   }catch(e){
-
-    toast("Could not copy link.","error");
-
-   }
-  }
- };
-
- return card;
-}
-
-
-/* ================================
-   LIKES
-================================ */
-
-async function updateLikeState(
- postId,
- button,
- countElement
+/* RENDER POSTS */
+
+async function renderPosts(
+posts,
+profiles,
+container
 ){
 
- const {
-  count
- }=await getLikeInfo(postId);
+if(!posts.length){
 
- countElement.textContent=count;
+container.innerHTML=
+'<div class="empty">No reports yet.</div>';
 
- if(!currentUser)return;
+return;
 
- const {
-  data
- }=await db
-  .from("reactions")
-  .select("id")
-  .eq("post_id",postId)
-  .eq("user_id",currentUser.id)
-  .eq("reaction_type","like")
-  .maybeSingle();
+}
 
- if(data)
-  button.classList.add("liked");
+container.innerHTML="";
+
+for(const post of posts){
+
+const profile=
+profiles[post.user_id]||
+{
+display_name:"User",
+username:"user"
+};
+
+const card=
+await buildPostCard(
+post,
+profile
+);
+
+container.appendChild(card);
+
+}
+
+}
+
+/* POST CARD */
+
+async function buildPostCard(
+post,
+profile
+){
+
+const card=
+document.createElement("article");
+
+card.className="card post";
+
+const displayName=
+post.is_anonymous
+?"Anonymous User"
+:(profile.display_name||"User");
+
+const username=
+post.is_anonymous
+?""
+:("@"+(profile.username||"user"));
+
+const avatar=
+post.is_anonymous
+?"?"
+:initials(profile.display_name);
+
+let mediaHTML="";
+
+const media=
+post.post_media||[];
+
+if(media.length){
+
+let cls="one";
+
+if(media.length===2)
+cls="two";
+else if(media.length===3)
+cls="three";
+else if(media.length>3)
+cls="more";
+
+mediaHTML=
+'<div class="media-grid '+cls+'">'+
+
+media.map(m=>{
+
+const mediaSrc=
+escapeAttr(m.media_url);
+
+if(m.media_type==="video"){
+
+return `
+<div class="media-cell">
+<video
+controls
+preload="metadata"
+src="${mediaSrc}">
+</video>
+<div class="media-type">VIDEO</div>
+</div>
+`;
+
+}
+
+return `
+<div class="media-cell">
+<img
+src="${mediaSrc}"
+loading="lazy"
+alt="Report media"
+onerror="this.parentElement.innerHTML='<div class=&quot;media-error&quot;>Media could not be loaded.</div>'">
+</div>
+`;
+
+}).join("")+
+
+'</div>';
+
+}
+
+card.innerHTML=`
+
+<div class="post-head">
+
+<div class="avatar">
+${escapeHTML(avatar)}
+</div>
+
+<div class="post-user">
+
+<b>
+${escapeHTML(displayName)}
+</b>
+
+<span>
+${escapeHTML(username)}
+${username?" • ":""}
+${escapeHTML(timeAgo(post.created_at))}
+</span>
+
+</div>
+
+<span class="badge">
+${escapeHTML(post.category)}
+</span>
+
+<div class="post-menu">
+
+<button
+class="menu-btn"
+data-menu-btn>
+⋯
+</button>
+
+<div
+class="menu hidden"
+data-menu>
+
+<button data-copy>
+🔗 Copy Report Link
+</button>
+
+<button data-share>
+↗ Share
+</button>
+
+${currentUser &&
+post.user_id===currentUser.id
+?`
+<button data-delete class="danger">
+Delete Report
+</button>
+`
+:""}
+
+</div>
+
+</div>
+
+</div>
+
+<div class="post-content">
+${escapeHTML(post.content||"")}
+</div>
+
+${mediaHTML}
+
+<div class="actions">
+
+<button
+class="action"
+data-like>
+
+👍 Like
+<span data-like-count>0</span>
+
+</button>
+
+<button
+class="action"
+data-comment>
+
+💬 Comment
+
+</button>
+
+<button
+class="action"
+data-share-main>
+
+🔗 Share
+
+</button>
+
+</div>
+
+<div
+class="comments hidden"
+data-comments>
+
+<div data-comments-list></div>
+
+<div
+style="display:flex;gap:7px;margin-top:8px">
+
+<input
+data-comment-input
+placeholder="Write a comment...">
+
+<button
+class="secondary"
+data-comment-submit>
+
+Send
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+const likeButton=
+card.querySelector("[data-like]");
+
+const likeCount=
+card.querySelector("[data-like-count]");
+
+await updateLikeState(
+post.id,
+likeButton,
+likeCount
+);
+
+likeButton.onclick=async()=>{
+await toggleLike(
+post.id,
+likeButton,
+likeCount
+);
+};
+
+const commentButton=
+card.querySelector("[data-comment]");
+
+const commentsBox=
+card.querySelector("[data-comments]");
+
+commentButton.onclick=async()=>{
+
+commentsBox.classList.toggle("hidden");
+
+if(!commentsBox.classList.contains("hidden")){
+
+await loadComments(
+post.id,
+commentsBox.querySelector(
+"[data-comments-list]"
+)
+);
+
+}
+
+};
+
+const commentSubmit=
+card.querySelector(
+"[data-comment-submit]"
+);
+
+const commentInput=
+card.querySelector(
+"[data-comment-input]"
+);
+
+commentSubmit.onclick=async()=>{
+
+await addComment(
+post.id,
+commentInput,
+commentsBox.querySelector(
+"[data-comments-list]"
+)
+);
+
+};
+
+const shareButton=
+card.querySelector(
+"[data-share-main]"
+);
+
+const shareMenuButton=
+card.querySelector(
+"[data-share]"
+);
+
+async function shareReport(){
+
+const shareText=
+(post.content||"").slice(0,100);
+
+if(navigator.share){
+
+try{
+
+await navigator.share({
+title:"ঘুষ সাইট Report",
+text:shareText,
+url:location.href
+});
+
+}catch(e){}
+
+}else{
+
+try{
+
+await navigator.clipboard.writeText(
+location.href
+);
+
+toast(
+"Link copied.",
+"success"
+);
+
+}catch(e){
+
+toast(
+"Could not copy link.",
+"error"
+);
+
+}
+
+}
+
+}
+
+shareButton.onclick=shareReport;
+
+if(shareMenuButton)
+shareMenuButton.onclick=shareReport;
+
+const menuButton=
+card.querySelector("[data-menu-btn]");
+
+const menu=
+card.querySelector("[data-menu]");
+
+menuButton.onclick=e=>{
+e.stopPropagation();
+menu.classList.toggle("hidden");
+};
+
+const copyButton=
+card.querySelector("[data-copy]");
+
+if(copyButton){
+
+copyButton.onclick=async()=>{
+
+try{
+
+await navigator.clipboard.writeText(
+location.href
+);
+
+toast(
+"Report link copied.",
+"success"
+);
+
+}catch(e){
+
+toast(
+"Could not copy link.",
+"error"
+);
+
+}
+
+menu.classList.add("hidden");
+
+};
+
+}
+
+const deleteButton=
+card.querySelector("[data-delete]");
+
+if(deleteButton){
+
+deleteButton.onclick=async()=>{
+
+if(!confirm(
+"Delete this report?"
+))return;
+
+const {
+error
+}=await db
+.from("posts")
+.delete()
+.eq("id",post.id)
+.eq("user_id",currentUser.id);
+
+if(error){
+
+toast(
+"Could not delete report.",
+"error"
+);
+
+return;
+
+}
+
+toast(
+"Report deleted.",
+"success"
+);
+
+card.remove();
+
+};
+
+}
+
+document.addEventListener(
+"click",
+()=>{
+menu.classList.add("hidden");
+},
+{once:false}
+);
+
+return card;
+
+}
+
+/* LIKES */
+
+async function updateLikeState(
+postId,
+button,
+countElement
+){
+
+const {
+count
+}=await getLikeInfo(postId);
+
+countElement.textContent=count;
+
+if(!currentUser)return;
+
+const {
+data
+}=await db
+.from("reactions")
+.select("id")
+.eq("post_id",postId)
+.eq("user_id",currentUser.id)
+.eq("reaction_type","like")
+.maybeSingle();
+
+if(data)
+button.classList.add("liked");
+
 }
 
 async function getLikeInfo(postId){
 
- const {
-  data,
-  error
- }=await db
-  .from("reactions")
-  .select("id,user_id")
-  .eq("post_id",postId)
-  .eq("reaction_type","like");
+const {
+data,
+error
+}=await db
+.from("reactions")
+.select("id,user_id")
+.eq("post_id",postId)
+.eq("reaction_type","like");
 
- if(error){
-  console.error(error);
-  return {count:0};
- }
+if(error){
 
- return {
-  count:(data||[]).length
- };
+console.error(error);
+
+return {
+count:0
+};
+
+}
+
+return {
+count:(data||[]).length
+};
+
 }
 
 async function toggleLike(
- postId,
- button,
- countElement
+postId,
+button,
+countElement
 ){
 
- if(!currentUser){
-  toast("Please login first.","error");
-  return;
- }
+if(!currentUser){
 
- try{
+toast(
+"Please login first.",
+"error"
+);
 
-  const {
-   data:existing
-  }=await db
-   .from("reactions")
-   .select("id")
-   .eq("post_id",postId)
-   .eq("user_id",currentUser.id)
-   .eq("reaction_type","like")
-   .maybeSingle();
+return;
 
-  if(existing){
-
-   await db
-    .from("reactions")
-    .delete()
-    .eq("id",existing.id);
-
-   button.classList.remove("liked");
-
-  }else{
-
-   const {
-    error
-   }=await db
-    .from("reactions")
-    .insert({
-     post_id:postId,
-     user_id:currentUser.id,
-     reaction_type:"like"
-    });
-
-   if(error){
-    console.error(error);
-    toast("Could not like this report.","error");
-    return;
-   }
-
-   button.classList.add("liked");
-  }
-
-  const {
-   count
-  }=await getLikeInfo(postId);
-
-  countElement.textContent=count;
-
- }catch(error){
-
-  console.error(error);
-
-  toast("Could not update like.","error");
- }
 }
 
+try{
 
-/* ================================
-   COMMENTS
-================================ */
+const {
+data:existing
+}=await db
+.from("reactions")
+.select("id")
+.eq("post_id",postId)
+.eq("user_id",currentUser.id)
+.eq("reaction_type","like")
+.maybeSingle();
 
-async function loadComments(postId,container){
+if(existing){
 
- container.innerHTML=
-  '<div class="small muted">Loading comments...</div>';
+await db
+.from("reactions")
+.delete()
+.eq("id",existing.id);
 
- const {
-  data,
-  error
- }=await db
-  .from("comments")
-  .select(`
-   id,
-   user_id,
-   content,
-   created_at
-  `)
-  .eq("post_id",postId)
-  .order("created_at",{ascending:true});
+button.classList.remove("liked");
 
- if(error){
+}else{
 
-  console.error(error);
+const {
+error
+}=await db
+.from("reactions")
+.insert({
+post_id:postId,
+user_id:currentUser.id,
+reaction_type:"like"
+});
 
-  container.innerHTML=
-   '<div class="small muted">Could not load comments.</div>';
+if(error){
 
-  return;
- }
+console.error(error);
 
- if(!data||!data.length){
+toast(
+"Could not like this report.",
+"error"
+);
 
-  container.innerHTML=
-   '<div class="small muted">No comments yet.</div>';
+return;
 
-  return;
- }
+}
 
- const profiles=
-  await getProfiles(data.map(c=>c.user_id));
+button.classList.add("liked");
 
- container.innerHTML="";
+}
 
- data.forEach(comment=>{
+const {
+count
+}=await getLikeInfo(postId);
 
-  const profile=
-   profiles[comment.user_id]||{
-    display_name:"User"
-   };
+countElement.textContent=count;
 
-  const div=document.createElement("div");
+}catch(error){
 
-  div.className="comment";
+console.error(error);
 
-  div.innerHTML=`
-   <b>${escapeHTML(profile.display_name||"User")}</b>
-   <span class="small muted">
-    • ${escapeHTML(timeAgo(comment.created_at))}
-   </span>
-   <p>${escapeHTML(comment.content)}</p>
-  `;
+toast(
+"Could not update like.",
+"error"
+);
 
-  container.appendChild(div);
- });
+}
+
+}
+
+/* COMMENTS */
+
+async function loadComments(
+postId,
+container
+){
+
+container.innerHTML=
+'<div class="small muted">Loading comments...</div>';
+
+const {
+data,
+error
+}=await db
+.from("comments")
+.select(`
+id,
+user_id,
+content,
+created_at
+`)
+.eq("post_id",postId)
+.order("created_at",{ascending:true});
+
+if(error){
+
+console.error(error);
+
+container.innerHTML=
+'<div class="small muted">Could not load comments.</div>';
+
+return;
+
+}
+
+if(!data||!data.length){
+
+container.innerHTML=
+'<div class="small muted">No comments yet.</div>';
+
+return;
+
+}
+
+const profiles=
+await getProfiles(
+data.map(c=>c.user_id)
+);
+
+container.innerHTML="";
+
+data.forEach(comment=>{
+
+const profile=
+profiles[comment.user_id]||
+{
+display_name:"User"
+};
+
+const div=
+document.createElement("div");
+
+div.className="comment";
+
+div.innerHTML=`
+
+<b>
+${escapeHTML(
+profile.display_name||"User"
+)}
+</b>
+
+<span class="small muted">
+• ${escapeHTML(
+timeAgo(comment.created_at)
+)}
+</span>
+
+<p>
+${escapeHTML(comment.content)}
+</p>
+
+`;
+
+container.appendChild(div);
+
+});
+
 }
 
 async function addComment(
- postId,
- input,
- list
+postId,
+input,
+list
 ){
 
- if(!currentUser){
-  toast("Please login first.","error");
-  return;
- }
+if(!currentUser){
 
- const content=input.value.trim();
+toast(
+"Please login first.",
+"error"
+);
 
- if(!content){
-  toast("Write a comment first.","error");
-  return;
- }
+return;
 
- const {
-  error
- }=await db
-  .from("comments")
-  .insert({
-   post_id:postId,
-   user_id:currentUser.id,
-   content:content
-  });
-
- if(error){
-
-  console.error(error);
-
-  toast(
-   "Could not add comment: "+error.message,
-   "error"
-  );
-
-  return;
- }
-
- input.value="";
-
- await loadComments(postId,list);
 }
 
+const content=
+input.value.trim();
 
-/* ================================
-   ALL POSTS
-================================ */
+if(!content){
+
+toast(
+"Write a comment first.",
+"error"
+);
+
+return;
+
+}
+
+const {
+error
+}=await db
+.from("comments")
+.insert({
+post_id:postId,
+user_id:currentUser.id,
+content:content
+});
+
+if(error){
+
+console.error(error);
+
+toast(
+"Could not add comment: "+
+error.message,
+"error"
+);
+
+return;
+
+}
+
+input.value="";
+
+await loadComments(
+postId,
+list
+);
+
+}
+
+/* ALL POSTS */
 
 async function loadAllPosts(){
 
- const box=$("allPosts");
+const box=$("allPosts");
 
- box.innerHTML=
-  '<div class="loader">Loading reports...</div>';
+box.innerHTML=
+'<div class="loader">Loading reports...</div>';
 
- try{
+try{
 
-  const posts=await fetchPosts(100);
+const posts=
+await fetchPosts(100);
 
-  const profiles=
-   await getProfiles(posts.map(p=>p.user_id));
+const profiles=
+await getProfiles(
+posts.map(p=>p.user_id)
+);
 
-  await renderPosts(posts,profiles,box);
+await renderPosts(
+posts,
+profiles,
+box
+);
 
- }catch(error){
+}catch(error){
 
-  box.innerHTML=
-   '<div class="empty">'+
-   escapeHTML(error.message||"Could not load reports.")+
-   '</div>';
- }
+box.innerHTML=
+'<div class="empty">'+
+escapeHTML(
+error.message||
+"Could not load reports."
+)+
+'</div>';
+
 }
 
+}
 
-/* ================================
-   SEARCH
-================================ */
+/* SEARCH */
 
 async function searchPosts(){
 
- const term=$("searchInput").value.trim().toLowerCase();
+const term=
+$("searchInput").value
+.trim()
+.toLowerCase();
 
- const box=$("searchResults");
+const box=
+$("searchResults");
 
- if(!term){
-  box.innerHTML=
-   '<div class="empty">Enter something to search.</div>';
-  return;
- }
+if(!term){
 
- box.innerHTML=
-  '<div class="loader">Searching...</div>';
+box.innerHTML=
+'<div class="empty">Enter something to search.</div>';
 
- try{
+return;
 
-  const posts=await fetchPosts(100);
-
-  const filtered=posts.filter(post=>{
-
-   return (
-    String(post.content||"").toLowerCase().includes(term) ||
-    String(post.category||"").toLowerCase().includes(term)
-   );
-
-  });
-
-  const profiles=
-   await getProfiles(filtered.map(p=>p.user_id));
-
-  await renderPosts(filtered,profiles,box);
-
- }catch(error){
-
-  box.innerHTML=
-   '<div class="empty">Search failed.</div>';
- }
 }
 
+box.innerHTML=
+'<div class="loader">Searching...</div>';
 
-/* ================================
-   PROFILE
-================================ */
+try{
+
+const posts=
+await fetchPosts(100);
+
+const filtered=
+posts.filter(post=>{
+
+return(
+String(post.content||"")
+.toLowerCase()
+.includes(term)||
+
+String(post.category||"")
+.toLowerCase()
+.includes(term)
+);
+
+});
+
+const profiles=
+await getProfiles(
+filtered.map(p=>p.user_id)
+);
+
+await renderPosts(
+filtered,
+profiles,
+box
+);
+
+}catch(error){
+
+box.innerHTML=
+'<div class="empty">Search failed.</div>';
+
+}
+
+}
+
+/* PROFILE */
 
 function renderProfile(){
 
- if(!currentProfile)return;
+if(!currentProfile)return;
 
- const name=currentProfile.display_name||"User";
+const name=
+currentProfile.display_name||
+"User";
 
- $("profileName").textContent=name;
+$("profileName").textContent=name;
 
- $("profileUsername").textContent=
-  "@"+(currentProfile.username||"user");
+$("profileUsername").textContent=
+"@"+
+(currentProfile.username||"user");
 
- $("profilePhone").textContent=
-  currentProfile.phone
-  ?"Phone: "+currentProfile.phone
-  :"";
+$("profilePhone").textContent=
+currentProfile.phone
+?"Phone: "+currentProfile.phone
+:"";
 
- $("profileBio").textContent=
-  currentProfile.bio||"";
+$("profileBio").textContent=
+currentProfile.bio||"";
 
- $("bigAvatar").textContent=
-  initials(name);
+$("bigAvatar").textContent=
+initials(name);
 
- $("editName").value=name;
+$("editName").value=name;
 
- $("editBio").value=
-  currentProfile.bio||"";
+$("editBio").value=
+currentProfile.bio||"";
+
 }
 
 function openEditProfile(){
 
- $("editProfileBox")
-  .classList.remove("hidden");
+$("editProfileBox")
+.classList.remove("hidden");
+
 }
 
 async function saveProfile(){
 
- if(!currentUser)return;
+if(!currentUser)return;
 
- const name=$("editName").value.trim();
- const bio=$("editBio").value.trim();
+const name=
+$("editName").value.trim();
 
- if(name.length<2){
-  toast("Name is too short.","error");
-  return;
- }
+const bio=
+$("editBio").value.trim();
 
- const {
-  data,
-  error
- }=await db
-  .from("profiles")
-  .update({
-   display_name:name,
-   bio:bio
-  })
-  .eq("id",currentUser.id)
-  .select()
-  .single();
+if(name.length<2){
 
- if(error){
+toast(
+"Name is too short.",
+"error"
+);
 
-  console.error(error);
+return;
 
-  toast(
-   "Could not update profile: "+error.message,
-   "error"
-  );
-
-  return;
- }
-
- currentProfile=data;
-
- renderProfile();
- updateMiniUser();
-
- $("editProfileBox")
-  .classList.add("hidden");
-
- toast("Profile updated.","success");
 }
 
+const {
+data,
+error
+}=await db
+.from("profiles")
+.update({
+display_name:name,
+bio:bio
+})
+.eq("id",currentUser.id)
+.select()
+.single();
 
-/* ================================
-   MY POSTS
-================================ */
+if(error){
+
+console.error(error);
+
+toast(
+"Could not update profile: "+
+error.message,
+"error"
+);
+
+return;
+
+}
+
+currentProfile=data;
+
+renderProfile();
+
+updateMiniUser();
+
+$("editProfileBox")
+.classList.add("hidden");
+
+toast(
+"Profile updated.",
+"success"
+);
+
+}
+
+/* MY POSTS */
 
 async function loadMyPosts(){
 
- if(!currentUser)return;
+if(!currentUser)return;
 
- const box=$("myPosts");
+const box=$("myPosts");
 
- box.innerHTML=
-  '<div class="loader">Loading...</div>';
+box.innerHTML=
+'<div class="loader">Loading...</div>';
 
- try{
+try{
 
-  const {
-   data,
-   error
-  }=await db
-   .from("posts")
-   .select(`
-    id,
-    user_id,
-    content,
-    category,
-    is_anonymous,
-    created_at,
-    post_media(
-     id,
-     media_url,
-     media_type,
-     created_at
-    )
-   `)
-   .eq("user_id",currentUser.id)
-   .order("created_at",{ascending:false});
+const {
+data,
+error
+}=await db
+.from("posts")
+.select(`
+id,
+user_id,
+content,
+category,
+is_anonymous,
+created_at,
+post_media(
+id,
+media_url,
+media_type,
+created_at
+)
+`)
+.eq("user_id",currentUser.id)
+.order("created_at",{ascending:false});
 
-  if(error)throw error;
+if(error)throw error;
 
-  await renderPosts(
-   data||[],
-   {[currentUser.id]:currentProfile},
-   box
-  );
+await renderPosts(
+data||[],
+{[currentUser.id]:currentProfile},
+box
+);
 
- }catch(error){
+}catch(error){
 
-  console.error(error);
+console.error(error);
 
-  box.innerHTML=
-   '<div class="empty">Could not load your reports.</div>';
- }
+box.innerHTML=
+'<div class="empty">
+Could not load your reports.
+</div>';
+
 }
 
-
-/* ================================
-   STATS
-================================ */
-
-function updateStats(posts){
-
- $("statReports").textContent=
-  posts.length;
-
- const totalComments=0;
-
- $("statComments").textContent=
-  totalComments;
 }
 
+/* STATS */
 
-/* ================================
-   LOGOUT
-================================ */
+async function updateStats(posts){
+
+$("statReports").textContent=
+posts.length;
+
+try{
+
+const {
+count
+}=await db
+.from("comments")
+.select("id",{count:"exact",head:true});
+
+$("statComments").textContent=
+count||0;
+
+}catch(e){
+
+$("statComments").textContent="0";
+
+}
+
+}
+
+/* STORIES */
+
+async function openStoryPicker(){
+
+const input=
+document.getElementById(
+"storyFileInput"
+);
+
+if(input)
+input.click();
+
+}
+
+async function uploadStories(files){
+
+if(
+!files||
+!files.length||
+!db||
+!currentUser
+)return;
+
+const filesArr=
+[...files].slice(0,5);
+
+const postId=
+crypto.randomUUID
+?
+crypto.randomUUID()
+:
+Date.now().toString();
+
+let uploaded=0;
+
+for(const file of filesArr){
+
+try{
+
+if(file.size>100*1024*1024)
+continue;
+
+const ext=
+(file.name.split(".").pop()||"bin")
+.toLowerCase();
+
+const type=
+file.type.startsWith("video/")
+?"video"
+:"image";
+
+const path=
+`${currentUser.id}/stories/${postId}-${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+
+const up=
+await db
+.storage
+.from("media")
+.upload(
+path,
+file,
+{
+upsert:false,
+contentType:file.type
+}
+);
+
+if(up.error)
+throw up.error;
+
+const pub=
+db.storage
+.from("media")
+.getPublicUrl(path);
+
+const ins=
+await db
+.from("stories")
+.insert({
+user_id:currentUser.id,
+media_url:pub.data.publicUrl,
+media_type:type,
+caption:""
+});
+
+if(ins.error)
+throw ins.error;
+
+uploaded++;
+
+}catch(err){
+
+console.error(
+"Story upload error",
+err
+);
+
+}
+
+}
+
+const input=
+document.getElementById(
+"storyFileInput"
+);
+
+if(input)
+input.value="";
+
+if(uploaded){
+
+toast(
+uploaded+
+" story uploaded.",
+"success"
+);
+
+await loadStories();
+
+}else{
+
+toast(
+"Could not upload story.",
+"error"
+);
+
+}
+
+}
+
+async function loadStories(){
+
+const section=
+document.getElementById(
+"storiesSection"
+);
+
+const row=
+document.getElementById(
+"storiesRow"
+);
+
+if(
+!section||
+!row||
+!db||
+!currentUser
+)return;
+
+section.style.display="block";
+
+const since=
+new Date(
+Date.now()-24*60*60*1000
+).toISOString();
+
+const {
+data,
+error
+}=
+await db
+.from("stories")
+.select(`
+id,
+user_id,
+media_url,
+media_type,
+caption,
+created_at
+`)
+.gte("created_at",since)
+.order("created_at",{ascending:false});
+
+if(error){
+
+console.warn(
+"Stories table not ready:",
+error.message
+);
+
+row.innerHTML=`
+
+<div class="story-add"
+onclick="openStoryPicker()">
+
+<div class="story-add-icon">＋</div>
+
+<b>Add Story</b>
+
+<small class="muted">
+Setup required
+</small>
+
+</div>
+
+<div class="story-empty">
+Stories database setup is required.
+</div>
+
+`;
+
+return;
+
+}
+
+if(!data||!data.length){
+
+row.innerHTML=`
+
+<div class="story-add"
+onclick="openStoryPicker()">
+
+<div class="story-add-icon">＋</div>
+
+<b>Add Story</b>
+
+<small class="muted">
+Be first
+</small>
+
+</div>
+
+<div class="story-empty">
+No stories yet.
+</div>
+
+`;
+
+return;
+
+}
+
+const ids=
+[...new Set(
+data.map(x=>x.user_id)
+)];
+
+let profiles=[];
+
+if(ids.length){
+
+const p=
+await db
+.from("profiles")
+.select(
+"id,display_name,avatar_url"
+)
+.in("id",ids);
+
+profiles=p.data||[];
+
+}
+
+const pm=
+new Map(
+profiles.map(
+p=>[p.id,p]
+)
+);
+
+row.innerHTML=
+
+`<div class="story-add"
+onclick="openStoryPicker()">
+<div class="story-add-icon">＋</div>
+<b>Add Story</b>
+<small class="muted">Photo / Video</small>
+</div>`+
+
+data.map(st=>{
+
+const p=
+pm.get(st.user_id)||
+{
+display_name:"User",
+avatar_url:""
+};
+
+const name=
+escapeHtml(
+p.display_name||"User"
+);
+
+const media=
+st.media_type==="video"
+?
+`<video
+src="${escapeAttr(st.media_url)}"
+muted
+playsinline
+preload="metadata">
+</video>`
+:
+`<img
+src="${escapeAttr(st.media_url)}"
+alt="">`;
+
+const avatar=
+p.avatar_url
+?
+`<div class="story-ring">
+<img
+src="${escapeAttr(p.avatar_url)}"
+alt="">
+</div>`
+:
+`<div class="story-ring"></div>`;
+
+return `
+<div
+class="story-card"
+onclick='openStoryViewer(${JSON.stringify(st)})'>
+
+${media}
+
+${avatar}
+
+<div class="story-overlay">
+${name}
+</div>
+
+</div>
+`;
+
+}).join("");
+
+}
+
+/* STORY VIEWER */
+
+function openStoryViewer(st){
+
+const viewer=
+document.getElementById(
+"storyViewer"
+);
+
+const media=
+document.getElementById(
+"storyViewerMedia"
+);
+
+const cap=
+document.getElementById(
+"storyViewerCaption"
+);
+
+if(!viewer||!media)return;
+
+media.innerHTML=
+st.media_type==="video"
+?
+`<video
+src="${escapeAttr(st.media_url)}"
+controls
+autoplay
+playsinline>
+</video>`
+:
+`<img
+src="${escapeAttr(st.media_url)}"
+alt="">`;
+
+cap.textContent=
+st.caption||"";
+
+viewer.style.display="flex";
+
+}
+
+function closeStoryViewer(e){
+
+if(
+e&&
+e.target&&
+e.target.id!=="storyViewer"
+)return;
+
+const v=
+document.getElementById(
+"storyViewer"
+);
+
+if(v)
+v.style.display="none";
+
+const m=
+document.getElementById(
+"storyViewerMedia"
+);
+
+if(m)
+m.innerHTML="";
+
+}
+
+/* PRIVATE PROFILE */
+
+async function openPrivateProfile(){
+
+if(!currentUser||!db)
+return;
+
+const {
+data,
+error
+}=
+await db
+.from("profiles")
+.select("*")
+.eq("id",currentUser.id)
+.maybeSingle();
+
+if(error){
+
+toast(
+error.message,
+"error"
+);
+
+return;
+
+}
+
+const p=data||{};
+
+$("privateName").value=
+p.display_name||"";
+
+$("privatePhone").value=
+p.phone||"";
+
+$("privateUsername").value=
+p.username||"";
+
+$("privateProfession").value=
+p.profession||"";
+
+$("privateDob").value=
+p.date_of_birth||"";
+
+$("privateAddress").value=
+p.address||"";
+
+$("privateBio").value=
+p.bio||"";
+
+$("privateNewPassword").value="";
+
+$("privateProfilePanel").style.display=
+"flex";
+
+}
+
+function closePrivateProfile(){
+
+const el=
+$("privateProfilePanel");
+
+if(el)
+el.style.display="none";
+
+}
+
+async function savePrivateProfile(){
+
+if(!currentUser||!db)
+return;
+
+const payload={
+
+display_name:
+$("privateName").value.trim()||
+"User",
+
+profession:
+$("privateProfession").value.trim(),
+
+date_of_birth:
+$("privateDob").value||
+null,
+
+address:
+$("privateAddress").value.trim(),
+
+bio:
+$("privateBio").value.trim()
+
+};
+
+const {
+error
+}=
+await db
+.from("profiles")
+.update(payload)
+.eq("id",currentUser.id);
+
+if(error){
+
+toast(
+error.message,
+"error"
+);
+
+return;
+
+}
+
+const newPassword=
+$("privateNewPassword").value;
+
+if(newPassword){
+
+if(newPassword.length<6){
+
+toast(
+"Password must be at least 6 characters.",
+"error"
+);
+
+return;
+
+}
+
+const pw=
+await db.auth.updateUser({
+password:newPassword
+});
+
+if(pw.error){
+
+toast(
+pw.error.message,
+"error"
+);
+
+return;
+
+}
+
+}
+
+toast(
+"Private profile updated successfully.",
+"success"
+);
+
+$("privateNewPassword").value="";
+
+closePrivateProfile();
+
+await loadCurrentUser();
+
+}
+
+/* LOGOUT */
 
 async function logout(){
 
- if(!db)return;
+if(!db)return;
 
- const {
-  error
- }=await db.auth.signOut();
+const {
+error
+}=
+await db.auth.signOut();
 
- if(error){
-  toast("Could not logout.","error");
-  return;
- }
+if(error){
 
- currentUser=null;
- currentProfile=null;
+toast(
+"Could not logout.",
+"error"
+);
 
- showAuthScreen();
+return;
 
- $("loginPassword").value="";
-
- toast("Logged out.","success");
 }
 
+currentUser=null;
+currentProfile=null;
 
-/* ================================
-   SESSION LISTENER
-================================ */
+showAuthScreen();
+
+$("loginPassword").value="";
+
+toast(
+"Logged out.",
+"success"
+);
+
+}
+
+/* SESSION */
 
 if(db){
 
- db.auth.onAuthStateChange(
-  (event,session)=>{
+db.auth.onAuthStateChange(
+(event,session)=>{
 
-   if(event==="SIGNED_OUT"){
-    currentUser=null;
-    currentProfile=null;
-    showAuthScreen();
-   }
+if(event==="SIGNED_OUT"){
 
-  }
- );
+currentUser=null;
+currentProfile=null;
+
+showAuthScreen();
+
 }
 
-
-/* ================================
-   ENTER KEY LOGIN
-================================ */
-
-$("loginPassword").addEventListener(
- "keydown",
- e=>{
-  if(e.key==="Enter")
-   login();
- }
+}
 );
 
+}
 
-/* ================================
-   START
-================================ */
+/* ENTER LOGIN */
+
+$("loginPassword").addEventListener(
+"keydown",
+e=>{
+
+if(e.key==="Enter")
+login();
+
+}
+);
+
+/* START */
 
 renderCategories();
 
-(async function(){
+(async()=>{
 
- if(!db){
+if(!db){
 
-  toast(
-   "Supabase could not be initialized.",
-   "error"
-  );
+toast(
+"Supabase could not be initialized.",
+"error"
+);
 
-  return;
- }
+return;
 
- try{
+}
 
-  const {
-   data:{
-    session
-   }
-  }=await db.auth.getSession();
+try{
 
-  if(session){
+const {
+data:{
+session
+}
+}=
+await db.auth.getSession();
 
-   await loadCurrentUser();
+if(session){
 
-  }else{
+await loadCurrentUser();
 
-   showAuthScreen();
+}else{
 
-  }
+showAuthScreen();
 
- }catch(error){
+}
 
-  console.error(error);
+}catch(error){
 
-  showAuthScreen();
- }
+console.error(error);
+
+showAuthScreen();
+
+}
 
 })();
 </script>
+
+<nav
+class="mobile-bottom-nav"
+aria-label="Mobile navigation">
+
+<button
+type="button"
+data-page="home"
+onclick="go('home')">
+
+<span>⌂</span>
+<small>Home</small>
+
+</button>
+
+<button
+type="button"
+data-page="reports"
+onclick="go('posts')">
+
+<span>▣</span>
+<small>Reports</small>
+
+</button>
+
+<button
+type="button"
+data-page="search"
+onclick="go('search')">
+
+<span>⌕</span>
+<small>Search</small>
+
+</button>
+
+<button
+type="button"
+data-page="news"
+onclick="go('news')">
+
+<span>◉</span>
+<small>News</small>
+
+</button>
+
+<button
+type="button"
+data-page="help"
+onclick="go('help')">
+
+<span>?</span>
+<small>Help</small>
+
+</button>
+
+<button
+type="button"
+data-page="profile"
+onclick="go('profile')">
+
+<span>●</span>
+<small>Profile</small>
+
+</button>
+
+</nav>
 
 </body>
 </html>
