@@ -15,135 +15,80 @@ body{
  margin:0;
  font-family:Arial,"Noto Sans Bengali",sans-serif;
  background:#f0f2f5;
- color:#17202a;
-}
-
-/* Prevent login-page flash while session is checking */
-body.booting #authPage,
-body.booting #appPage{
- display:none!important;
+ color:#172b1f;
 }
 
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
+
 .hidden{display:none!important}
 
-.topbar{
- position:sticky;
- top:0;
- z-index:1000;
- min-height:60px;
- background:#138a45;
- color:white;
- display:flex;
- align-items:center;
- gap:10px;
- padding:0 14px;
- box-shadow:0 2px 8px #0002;
-}
-
-.logo{
- font-size:21px;
- font-weight:bold;
- white-space:nowrap;
-}
-
-.searchBox{
- flex:1;
- max-width:430px;
-}
-
-.searchBox input{
- width:100%;
- border:0;
- outline:0;
- border-radius:22px;
- padding:10px 16px;
- background:#fff;
- color:#222;
-}
-
-.nav{
- display:flex;
- gap:4px;
- align-items:center;
- margin-left:auto;
-}
-
-.nav button{
- border:0;
- background:#ffffff22;
- color:white;
- border-radius:8px;
- padding:7px 9px;
- font-size:12px;
-}
-
-.nav button:hover{
- background:#ffffff35;
-}
-
-.container{
- width:min(1050px,100%);
- margin:auto;
- padding:15px;
-}
-
-.card{
- background:white;
- border-radius:12px;
- padding:15px;
- margin-bottom:14px;
- box-shadow:0 1px 4px #0001;
-}
-
-.auth{
+/* BOOT */
+#boot{
  min-height:100vh;
  display:flex;
  align-items:center;
  justify-content:center;
- padding:20px;
- background:linear-gradient(135deg,#0c7439,#20a45b);
+ background:#eef8f1;
+}
+
+.bootBox{
+ background:#fff;
+ padding:28px;
+ border-radius:16px;
+ box-shadow:0 5px 25px #0002;
+ text-align:center;
+}
+
+/* AUTH */
+#authPage{
+ min-height:100vh;
+ background:linear-gradient(135deg,#e8f7ee,#f7fffa);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:18px;
 }
 
 .authBox{
- width:min(430px,100%);
- background:white;
+ width:100%;
+ max-width:420px;
+ background:#fff;
  border-radius:18px;
- padding:25px;
- box-shadow:0 10px 35px #0004;
+ padding:24px;
+ box-shadow:0 8px 30px #0002;
 }
 
-.authLogo{
- text-align:center;
+.logo{
+ font-size:32px;
+ font-weight:800;
  color:#138a45;
- font-size:34px;
- font-weight:bold;
- margin-bottom:6px;
-}
-
-.authSub{
  text-align:center;
- color:#777;
- margin-bottom:22px;
 }
 
-.field{margin-bottom:12px}
+.sub{
+ text-align:center;
+ color:#667;
+ margin:8px 0 20px;
+}
+
+.field{margin:10px 0}
 
 .field label{
  display:block;
  font-weight:bold;
- margin-bottom:6px;
+ margin-bottom:5px;
 }
 
 .field input,
 .field textarea,
 .field select{
  width:100%;
- border:1px solid #ddd;
+ padding:12px;
+ border:1px solid #ccd8d0;
  border-radius:9px;
- padding:11px;
- outline:0;
+ outline:none;
+ background:#fff;
 }
 
 .field textarea{
@@ -151,132 +96,86 @@ button{cursor:pointer}
  resize:vertical;
 }
 
-.primary{
+.primary,
+.greenBtn{
  width:100%;
  border:0;
  border-radius:9px;
  padding:12px;
  background:#138a45;
- color:white;
+ color:#fff;
  font-weight:bold;
 }
 
 .secondary{
- border:0;
- border-radius:8px;
- padding:10px 14px;
- background:#e8f5ed;
- color:#087334;
- font-weight:bold;
-}
-
-.linkBtn{
- border:0;
- background:none;
- color:#138a45;
- font-weight:bold;
- margin-top:12px;
-}
-
-.status{
- padding:10px;
- border-radius:8px;
- background:#f0f7f3;
- margin-bottom:12px;
-}
-
-.error{
- color:#b00020;
- background:#fff0f0;
- padding:10px;
- border-radius:8px;
- margin-bottom:12px;
-}
-
-.success{
- color:#087334;
- background:#effaf3;
- padding:10px;
- border-radius:8px;
- margin-bottom:12px;
-}
-
-.bottomNav{
- position:fixed;
- bottom:0;
- left:0;
- right:0;
- background:white;
- border-top:1px solid #ddd;
- display:flex;
- justify-content:space-around;
- padding:7px;
- z-index:999;
-}
-
-.bottomNav button{
- border:0;
- background:none;
- color:#555;
- font-size:11px;
- min-width:70px;
-}
-
-.bottomNav button span{
- display:block;
- font-size:19px;
- margin-bottom:2px;
-}
-
-.page{
- padding-bottom:75px;
-}
-
-.awareness{
- background:linear-gradient(135deg,#e9f8ef,#fff);
- border-left:5px solid #138a45;
-}
-
-.awareness h3{
- color:#138a45;
- margin-top:0;
-}
-
-.awarenessText{
- font-size:17px;
- line-height:1.7;
-}
-
-.create textarea{
  width:100%;
- border:1px solid #ddd;
- border-radius:10px;
- padding:12px;
- min-height:90px;
- resize:vertical;
-}
-
-.createActions{
- display:flex;
- gap:8px;
- flex-wrap:wrap;
- margin-top:10px;
-}
-
-.fileLabel{
- background:#edf8f1;
+ border:1px solid #138a45;
+ border-radius:9px;
+ padding:11px;
+ background:#fff;
  color:#138a45;
- padding:9px 12px;
- border-radius:8px;
  font-weight:bold;
- cursor:pointer;
+ margin-top:8px;
 }
 
-.fileLabel input{display:none}
+/* TOPBAR */
+.topbar{
+ position:sticky;
+ top:0;
+ z-index:20;
+ background:#fff;
+ border-bottom:1px solid #ddd;
+ height:58px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 14px;
+}
 
-.post{
- overflow:visible;
- position:relative;
+.brand{
+ font-size:21px;
+ font-weight:800;
+ color:#138a45;
+}
+
+.topActions button{
+ border:0;
+ background:#eef7f1;
+ border-radius:50%;
+ width:38px;
+ height:38px;
+ margin-left:5px;
+}
+
+/* MAIN */
+.container{
+ max-width:760px;
+ margin:14px auto;
+ padding:0 10px 80px;
+}
+
+.card{
+ background:#fff;
+ border-radius:12px;
+ padding:14px;
+ margin:12px 0;
+ box-shadow:0 1px 4px #0001;
+}
+
+.pageTitle{
+ font-size:22px;
+ font-weight:800;
+ margin:12px 0;
+}
+
+/* POST */
+.postBox textarea{
+ min-height:90px;
+}
+
+.mediaInput{
+ margin:8px 0;
+ width:100%;
 }
 
 .postHead{
@@ -286,258 +185,204 @@ button{cursor:pointer}
 }
 
 .avatar{
- width:43px;
- height:43px;
+ width:42px;
+ height:42px;
  border-radius:50%;
- object-fit:cover;
- background:#dff1e6;
+ background:#dff1e5;
  display:flex;
  align-items:center;
  justify-content:center;
- color:#138a45;
  font-weight:bold;
+ color:#138a45;
  flex-shrink:0;
 }
 
-.postUser{font-weight:bold}
+.postName{font-weight:bold}
 
-.postMeta{
- color:#777;
+.postTime{
  font-size:12px;
+ color:#777;
+}
+
+.postMenu{
+ margin-left:auto;
+ border:0;
+ background:#f1f3f2;
+ border-radius:50%;
+ width:32px;
+ height:32px;
 }
 
 .postText{
- margin:13px 0;
- line-height:1.65;
  white-space:pre-wrap;
+ line-height:1.6;
+ margin:12px 0;
 }
 
-.mediaGrid{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:5px;
- margin:0 -15px;
-}
-
-.mediaGrid img,
-.mediaGrid video{
+.postMedia{
  width:100%;
- max-height:450px;
+ max-height:500px;
  object-fit:cover;
- background:#111;
-}
-
-.actions{
- display:flex;
- gap:5px;
- border-top:1px solid #eee;
- border-bottom:1px solid #eee;
- margin-top:12px;
- padding:6px 0;
-}
-
-.actions button{
- flex:1;
- border:0;
- background:white;
- padding:9px 3px;
- border-radius:7px;
- color:#444;
-}
-
-.actions button:hover{
- background:#f0f2f5;
-}
-
-.reactionWrap{
- position:relative;
- flex:1;
-}
-
-.reactionWrap>button{
- width:100%;
- border:0;
- background:white;
- padding:9px 3px;
- border-radius:7px;
- color:#444;
-}
-
-.reactionMenu{
- position:absolute;
- bottom:44px;
- left:0;
- background:white;
- border-radius:25px;
- box-shadow:0 3px 15px #0003;
- padding:6px;
- display:flex;
- gap:3px;
- z-index:50;
- white-space:nowrap;
-}
-
-.reactionMenu button{
- border:0;
- background:white;
- padding:7px;
- border-radius:50%;
- font-size:20px;
-}
-
-.reactionMenu button:hover{
- background:#eee;
-}
-
-/* Three dot menu */
-.postMenu{
- margin-left:auto;
- position:relative;
-}
-
-.postMenu>button{
- width:36px;
- height:36px;
- border:0;
- background:transparent;
- border-radius:50%;
- font-size:23px;
- color:#555;
-}
-
-.postMenu>button:hover{
- background:#f0f2f5;
-}
-
-.postMenuBox{
- position:absolute;
- right:0;
- top:38px;
- min-width:150px;
- background:white;
  border-radius:10px;
- box-shadow:0 4px 18px #0003;
- padding:5px;
- z-index:200;
-}
-
-.postMenuBox button{
- width:100%;
- border:0;
- background:white;
- text-align:left;
- padding:10px 12px;
- border-radius:7px;
- color:#333;
-}
-
-.postMenuBox button:hover{
- background:#f0f2f5;
-}
-
-.postMenuBox .danger{
- color:#b00020;
-}
-
-.commentBox{
- display:flex;
- gap:7px;
- margin-top:10px;
-}
-
-.commentBox input{
- flex:1;
- border:1px solid #ddd;
- border-radius:20px;
- padding:9px 13px;
- outline:0;
-}
-
-.commentBox button{
- border:0;
- border-radius:20px;
- padding:8px 13px;
- background:#138a45;
- color:white;
-}
-
-.comments{
- margin-top:10px;
-}
-
-.comment{
- background:#f0f2f5;
- border-radius:12px;
- padding:8px 11px;
  margin-top:7px;
 }
 
-.commentName{
- font-weight:bold;
- font-size:13px;
-}
-
-.commentText{
- margin-top:3px;
- line-height:1.45;
-}
-
-.profileCover{
- background:linear-gradient(135deg,#138a45,#0b6633);
- height:130px;
- border-radius:12px 12px 0 0;
-}
-
-.profileInfo{
- text-align:center;
- margin-top:-45px;
-}
-
-.profileInfo .avatar{
- width:90px;
- height:90px;
- margin:auto;
- border:4px solid white;
- font-size:28px;
-}
-
-.profileName{
- font-size:22px;
- font-weight:bold;
- margin-top:8px;
-}
-
-.profileUsername{
- color:#777;
-}
-
-.row{
+.reactionBar{
  display:flex;
- gap:10px;
- align-items:center;
+ gap:4px;
+ border-top:1px solid #eee;
+ border-bottom:1px solid #eee;
+ margin-top:10px;
+ padding:7px 0;
 }
 
-.helpLinks a{
- display:block;
+.reactionBar button{
+ flex:1;
+ border:0;
+ background:transparent;
+ padding:8px;
+ border-radius:7px;
+}
+
+.reactionBar button:hover{
+ background:#f3f6f4;
+}
+
+/* COMMENTS */
+.comment{
+ padding:8px 0;
+ border-bottom:1px solid #eee;
+}
+
+.comment b{font-size:14px}
+
+.comment p{
+ margin:3px 0 0;
+ line-height:1.4;
+}
+
+.commentForm{
+ display:flex;
+ gap:6px;
+ margin-top:9px;
+}
+
+.commentForm input{
+ flex:1;
  padding:10px;
- margin:7px 0;
- border-radius:8px;
- background:#eff8f2;
- color:#087334;
- text-decoration:none;
+ border:1px solid #ccd8d0;
+ border-radius:9px;
+}
+
+.commentForm button{
+ border:0;
+ background:#138a45;
+ color:#fff;
+ border-radius:9px;
+ padding:0 14px;
+}
+
+/* BOTTOM NAV */
+.bottomNav{
+ position:fixed;
+ bottom:0;
+ left:0;
+ right:0;
+ background:#fff;
+ border-top:1px solid #ddd;
+ display:flex;
+ z-index:30;
+}
+
+.bottomNav button{
+ flex:1;
+ border:0;
+ background:#fff;
+ padding:8px 3px;
+ font-size:12px;
+ color:#555;
+}
+
+.bottomNav button.active{
+ color:#138a45;
  font-weight:bold;
 }
 
+/* HELP */
 .helpSection{
- margin-top:15px;
+ background:#fff;
+ border-radius:12px;
+ padding:14px;
+ margin:10px 0;
+ box-shadow:0 1px 4px #0001;
 }
 
 .helpSection h3{
- margin-bottom:8px;
- color:#138a45;
+ margin:0 0 8px;
 }
 
-.contactCard{
+.helpLinks{
+ display:block;
+ text-decoration:none;
+ color:#138a45;
+ font-weight:bold;
+ padding:9px;
+ border:1px solid #e0e9e3;
+ border-radius:8px;
+ margin:7px 0;
+}
+
+.warningBox{
+ background:#fff7df;
+ border-left:4px solid #e5a800;
+ padding:11px;
+ border-radius:7px;
+ line-height:1.6;
+ margin:10px 0;
+}
+
+/* JOURNALIST DIRECTORY */
+.journalistBox{
+ background:linear-gradient(135deg,#eef8ff,#fff);
+ border-left:5px solid #138a45;
+}
+
+.journalistTitle{
+ color:#138a45;
+ font-size:20px;
+ font-weight:bold;
+ margin-bottom:6px;
+}
+
+.journalistSub{
+ color:#666;
+ line-height:1.6;
+ margin-bottom:12px;
+}
+
+.locationGrid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:10px;
+ margin-top:12px;
+}
+
+.journalistSearchBtn{
+ width:100%;
+ border:0;
+ border-radius:9px;
+ padding:11px;
+ background:#138a45;
+ color:white;
+ font-weight:bold;
+ margin-top:10px;
+}
+
+.journalistResult{
+ margin-top:12px;
+}
+
+.journalistCard{
  background:#f8faf9;
  border:1px solid #e1ebe5;
  border-radius:10px;
@@ -545,18 +390,32 @@ button{cursor:pointer}
  margin:8px 0;
 }
 
-.contactTitle{
+.journalistName{
  font-weight:bold;
- margin-bottom:5px;
+ font-size:16px;
 }
 
-.contactNumber{
+.journalistMeta{
+ color:#666;
+ font-size:13px;
+ margin-top:3px;
+ line-height:1.5;
+}
+
+.journalistPhone{
+ color:#087334;
  font-size:18px;
  font-weight:bold;
- color:#087334;
+ margin-top:7px;
 }
 
-.callBtn{
+.journalistEmpty{
+ text-align:center;
+ color:#777;
+ padding:15px;
+}
+
+.officialBtn{
  display:inline-block;
  margin-top:8px;
  background:#138a45;
@@ -567,881 +426,807 @@ button{cursor:pointer}
  font-weight:bold;
 }
 
-.verified{
- display:inline-block;
- background:#e7f7ed;
- color:#087334;
- padding:3px 7px;
- border-radius:10px;
- font-size:11px;
+/* NEWS */
+.news a{
+ display:block;
+ padding:11px;
+ border-bottom:1px solid #eee;
+ color:#138a45;
+ text-decoration:none;
  font-weight:bold;
 }
 
-.warningBox{
- background:#fff9e8;
- border-left:4px solid #e0a400;
- padding:11px;
- border-radius:7px;
- line-height:1.6;
- margin-top:10px;
-}
+/* PROFILE */
+.profileHeader{text-align:center}
 
-.newsItem{
- display:flex;
- gap:12px;
- padding:13px 4px;
- border-bottom:1px solid #eee;
- align-items:center;
-}
-
-.newsIcon{
- width:48px;
- height:48px;
- border-radius:10px;
- background:#e9f7ef;
+.profileAvatar{
+ width:80px;
+ height:80px;
+ border-radius:50%;
+ background:#dff1e5;
+ margin:auto;
  display:flex;
  align-items:center;
  justify-content:center;
- font-size:24px;
- flex-shrink:0;
-}
-
-.newsItem h3{
- margin:0 0 4px;
- font-size:16px;
-}
-
-.newsItem p{
- margin:0;
- color:#777;
- font-size:12px;
- line-height:1.5;
-}
-
-.newsItem a{
- text-decoration:none;
- color:#17202a;
-}
-
-.newsHeader{
- background:linear-gradient(135deg,#e9f8ef,#fff);
- border-left:5px solid #138a45;
-}
-
-.publicHeader{
- background:linear-gradient(135deg,#eef8ff,#fff);
- border-left:5px solid #138a45;
-}
-
-.searchResult{
- padding:10px;
- border-bottom:1px solid #eee;
- cursor:pointer;
-}
-
-.searchResult:hover{
- background:#f5f5f5;
-}
-
-.searchTitle{
- font-weight:bold;
- padding:5px 10px 10px;
+ font-size:28px;
  color:#138a45;
+ font-weight:bold;
 }
 
+/* SEARCH */
+.searchRow{
+ display:flex;
+ gap:7px;
+}
+
+.searchRow input{
+ flex:1;
+}
+
+.searchRow button{
+ border:0;
+ background:#138a45;
+ color:#fff;
+ border-radius:9px;
+ padding:0 16px;
+}
+
+.empty{
+ text-align:center;
+ color:#777;
+ padding:25px;
+}
+
+/* TOAST */
 .toast{
  position:fixed;
  left:50%;
- bottom:80px;
+ bottom:76px;
  transform:translateX(-50%);
- background:#222;
- color:white;
- padding:11px 18px;
- border-radius:22px;
- z-index:5000;
+ background:#172b1f;
+ color:#fff;
+ padding:10px 15px;
+ border-radius:9px;
+ z-index:100;
  display:none;
- max-width:90%;
- text-align:center;
-}
-
-.toast.show{
- display:block;
-}
-
-.loading{
- text-align:center;
- padding:25px;
- color:#777;
 }
 
 @media(max-width:650px){
-
- .topbar{
-  min-height:56px;
-  padding:0 7px;
-  gap:5px;
- }
-
- .logo{
-  font-size:17px;
- }
-
- .searchBox{
-  max-width:none;
- }
-
- .searchBox input{
-  padding:8px 11px;
-  font-size:12px;
- }
-
- .nav{
-  gap:2px;
- }
-
- .nav button{
-  padding:7px 5px;
-  font-size:10px;
- }
-
- .container{
-  padding:9px;
- }
-
- .card{
-  border-radius:9px;
- }
-
- .mediaGrid{
+ .locationGrid{
   grid-template-columns:1fr;
  }
 
- .actions button{
-  font-size:11px;
+ .container{
+  padding-bottom:75px;
  }
-
- .reactionMenu{
-  left:-20px;
- }
-
- .bottomNav button{
-  min-width:55px;
-  font-size:10px;
- }
-
 }
 </style>
 </head>
 
-<body class="booting">
+<body>
 
-<!-- ================= LOGIN ================= -->
-
-<section id="authPage" class="auth">
-
-<div class="authBox">
-
-<div class="authLogo">ঘুষ সাইট</div>
-
-<div class="authSub">
-দুর্নীতি ও অনিয়মের বিরুদ্ধে সচেতনতার প্ল্যাটফর্ম
+<!-- BOOT -->
+<div id="boot">
+ <div class="bootBox">
+  <div style="font-size:28px">🌿</div>
+  <b>ঘুষ সাইট</b>
+  <p style="color:#777">লোড হচ্ছে…</p>
+ </div>
 </div>
 
-<div id="loginBox">
+<!-- AUTH -->
+<section id="authPage" class="hidden">
 
-<h2>Login</h2>
+ <div class="authBox">
 
-<div id="loginMsg"></div>
+  <div class="logo">ঘুষ সাইট</div>
 
-<div class="field">
-<label>Username অথবা Phone Number</label>
-<input
- id="loginIdentity"
- type="text"
- placeholder="Username অথবা Phone Number"
- autocomplete="username">
-</div>
+  <div class="sub">
+   দুর্নীতি ও অনিয়মের বিরুদ্ধে সচেতনতার একটি প্ল্যাটফর্ম
+  </div>
 
-<button class="primary" onclick="login()">
-Login
-</button>
+  <!-- LOGIN -->
+  <div id="loginForm">
 
-<div style="text-align:center">
-<button class="linkBtn" onclick="showSignup()">
-Create Account
-</button>
-</div>
+   <div class="field">
+    <label>মোবাইল / ইমেইল</label>
+    <input id="loginId" placeholder="মোবাইল বা ইমেইল">
+   </div>
 
-</div>
+   <div class="field">
+    <label>নাম</label>
+    <input id="loginName" placeholder="আপনার নাম">
+   </div>
 
-<div id="signupBox" class="hidden">
+   <button class="primary" onclick="login()">
+    প্রবেশ করুন
+   </button>
 
-<h2>Create Account</h2>
+   <button class="secondary" onclick="showSignup()">
+    নতুন অ্যাকাউন্ট
+   </button>
 
-<div id="signupMsg"></div>
+  </div>
 
-<div class="field">
-<label>আপনার নাম</label>
-<input id="signupName" type="text" placeholder="নাম">
-</div>
+  <!-- SIGNUP -->
+  <div id="signupForm" class="hidden">
 
-<div class="field">
-<label>Username</label>
-<input id="signupUsername" type="text" placeholder="username">
-</div>
+   <div class="field">
+    <label>নাম</label>
+    <input id="signupName" placeholder="আপনার নাম">
+   </div>
 
-<div class="field">
-<label>Phone Number</label>
-<input id="signupPhone" type="text" placeholder="+8801XXXXXXXXX">
-</div>
+   <div class="field">
+    <label>মোবাইল / ইমেইল</label>
+    <input id="signupId" placeholder="মোবাইল বা ইমেইল">
+   </div>
 
-<button class="primary" onclick="signup()">
-Create Account
-</button>
+   <button class="primary" onclick="signup()">
+    অ্যাকাউন্ট তৈরি করুন
+   </button>
 
-<div style="text-align:center">
-<button class="linkBtn" onclick="showLogin()">
-Already have an account? Login
-</button>
-</div>
+   <button class="secondary" onclick="showLogin()">
+    আগের অ্যাকাউন্টে প্রবেশ
+   </button>
 
-</div>
+  </div>
 
-</div>
+  <p style="font-size:12px;color:#777;line-height:1.5;margin-top:15px">
+   আপনার পরিচয় গোপন রেখে পোস্ট করার অপশন রয়েছে।
+  </p>
+
+ </div>
+
 </section>
 
 
-<!-- ================= APP ================= -->
-
+<!-- APP -->
 <section id="appPage" class="hidden">
 
 <header class="topbar">
 
-<div class="logo">
-🌱 ঘুষ সাইট
-</div>
+ <div class="brand">
+  ঘুষ সাইট
+ </div>
 
-<div class="searchBox">
-<input
- id="searchInput"
- type="search"
- placeholder="🔍 Search people"
- oninput="searchUsers(this.value)">
-</div>
+ <div class="topActions">
 
-<div class="nav">
+  <button onclick="showPage('searchPage')" title="Search">
+   🔎
+  </button>
 
-<button onclick="showPage('profilePage')">
-👤 Profile
-</button>
+  <button onclick="logout()" title="Logout">
+   ↪
+  </button>
 
-<button onclick="logout()">
-↪️ Logout
-</button>
-
-</div>
+ </div>
 
 </header>
 
 
-<div class="container page">
+<main class="container">
 
-<div id="searchResults" class="card hidden"></div>
+<!-- HOME -->
+<section id="homePage" class="page">
 
+ <div class="card" id="awarenessBox">
 
-<!-- ================= HOME ================= -->
+  <b>🌿 আজকের সচেতনতা</b>
 
-<div id="homePage">
+  <p id="awarenessText">
+   লোড হচ্ছে…
+  </p>
 
-<div class="card awareness">
+ </div>
 
-<h3>🌱 আজকের সচেতনতার কথা</h3>
 
-<div id="awarenessText" class="awarenessText">
-লোড হচ্ছে...
-</div>
+ <div class="card postBox">
 
-</div>
+  <h3>📝 কী ঘটেছে বলুন</h3>
 
+  <textarea
+   id="postText"
+   placeholder="আপনার অভিজ্ঞতা লিখুন…">
+  </textarea>
 
-<div class="card create">
+  <input
+   id="postMedia"
+   class="mediaInput"
+   type="file"
+   accept="image/*,video/*"
+   multiple>
 
-<h3>What's on your mind?</h3>
+  <label>
+   <input id="anonymousPost" type="checkbox">
+   পরিচয় গোপন রেখে পোস্ট করুন
+  </label>
 
-<div class="field">
+  <button
+   class="primary"
+   style="margin-top:10px"
+   onclick="createPost()">
+   পোস্ট প্রকাশ করুন
+  </button>
 
-<textarea
- id="postText"
- placeholder="আপনার সমস্যা, অভিজ্ঞতা বা সচেতনতার কথা লিখুন..."></textarea>
+ </div>
 
-</div>
+ <div id="feed"></div>
 
-<div class="field">
+</section>
 
-<select id="postCategory">
 
-<option value="সাধারণ">সাধারণ</option>
-<option value="ঘুষ">ঘুষ</option>
-<option value="দুর্নীতি">দুর্নীতি</option>
-<option value="চাঁদাবাজি">চাঁদাবাজি</option>
-<option value="দালালি">দালালি</option>
-<option value="প্রতারণা">প্রতারণা</option>
-<option value="অনিয়ম">অনিয়ম</option>
-<option value="সচেতনতা">সচেতনতা</option>
+<!-- PUBLIC -->
+<section id="publicPage" class="page hidden">
 
-</select>
+ <div class="pageTitle">
+  🌐 পাবলিক পোস্ট
+ </div>
 
-</div>
+ <div id="publicFeed"></div>
 
-<div class="createActions">
+</section>
 
-<label class="fileLabel">
-📷 Photo
-<input id="photoInput" type="file" accept="image/*" multiple>
-</label>
 
-<label class="fileLabel">
-🎥 Video
-<input id="videoInput" type="file" accept="video/*" multiple>
-</label>
+<!-- PROFILE -->
+<section id="profilePage" class="page hidden">
 
-<label style="display:flex;align-items:center;gap:5px">
-<input id="anonymousPost" type="checkbox">
-Anonymous
-</label>
+ <div class="card profileHeader">
 
-</div>
+  <div id="profileAvatar" class="profileAvatar">
+   A
+  </div>
 
-<div style="margin-top:10px">
+  <h2 id="profileName">
+   প্রোফাইল
+  </h2>
 
-<label>
+  <p
+   id="profileBio"
+   style="color:#666">
+  </p>
 
-<input id="rulesConfirm" type="checkbox">
+  <button
+   class="secondary"
+   onclick="openEditProfile()">
+   ✏️ প্রোফাইল এডিট
+  </button>
 
-আমি মিথ্যা অভিযোগ, ব্যক্তিগত আক্রমণ বা অবৈধ তথ্য প্রকাশ করব না।
+ </div>
 
-</label>
+ <div id="profilePosts"></div>
 
-</div>
+</section>
 
-<button class="primary" style="margin-top:12px" onclick="createPost()">
-Post
-</button>
 
-</div>
+<!-- EDIT PROFILE -->
+<section id="editProfilePage" class="page hidden">
 
-</div>
+ <div class="pageTitle">
+  ✏️ প্রোফাইল পরিবর্তন
+ </div>
 
+ <div class="card">
 
-<!-- ================= PUBLIC POST ================= -->
+  <div class="field">
+   <label>নাম</label>
+   <input id="editName">
+  </div>
 
-<div id="publicPostPage" class="hidden">
+  <div class="field">
+   <label>Bio</label>
+   <textarea id="editBio"></textarea>
+  </div>
 
-<div class="card publicHeader">
+  <button
+   class="primary"
+   onclick="saveProfile()">
+   সংরক্ষণ করুন
+  </button>
 
-<h2 style="margin-top:0">
-📰 Public Post
-</h2>
+ </div>
 
-<p style="margin-bottom:0;color:#666">
-সবার প্রকাশিত পোস্ট এখানে দেখা যাবে।
-</p>
+</section>
 
-</div>
 
-<div id="feed">
-<div class="loading">Post loading...</div>
-</div>
+<!-- SEARCH -->
+<section id="searchPage" class="page hidden">
 
-</div>
+ <div class="pageTitle">
+  🔎 মানুষ খুঁজুন
+ </div>
 
+ <div class="card">
 
-<!-- ================= PROFILE ================= -->
+  <div class="searchRow">
 
-<div id="profilePage" class="hidden">
+   <input
+    id="searchInput"
+    placeholder="নাম লিখুন">
 
-<div class="card">
+   <button onclick="doSearchUsers()">
+    খুঁজুন
+   </button>
 
-<div class="profileCover"></div>
+  </div>
 
-<div class="profileInfo">
+ </div>
 
-<div id="profileAvatar" class="avatar">
-A
-</div>
+ <div id="searchResults"></div>
 
-<div id="profileName" class="profileName">
--
-</div>
+</section>
 
-<div id="profileUsername" class="profileUsername">
--
-</div>
 
-<div id="profileBio" style="margin-top:8px;color:#555">
-</div>
+<!-- HELP DESK -->
+<section id="helpPage" class="page hidden">
 
-<button class="secondary" style="margin-top:12px" onclick="openEditProfile()">
-✏️ Edit Profile
-</button>
+ <div class="pageTitle">
+  🆘 Help Desk
+ </div>
 
-</div>
 
-</div>
+ <!-- =====================================================
+      সাংবাদিক DIRECTORY — HELP DESK-এর একদম উপরে
+ ====================================================== -->
 
-<div class="card">
+ <div class="helpSection journalistBox">
 
-<h3>My Posts</h3>
+  <h3 class="journalistTitle">
+   📰 সাংবাদিক / সংবাদমাধ্যম Directory
+  </h3>
 
-<div id="myPosts"></div>
+  <div class="journalistSub">
 
-</div>
+   বিভাগ ও জেলা নির্বাচন করে সংশ্লিষ্ট
+   সাংবাদিক/সংবাদমাধ্যমের যাচাইযোগ্য contact খুঁজুন।
 
-</div>
+   ব্যক্তিগত বা অযাচাইকৃত নম্বর এখানে প্রকাশ করা হবে না।
 
+  </div>
 
-<!-- ================= EDIT PROFILE ================= -->
 
-<div id="editProfilePage" class="hidden">
+  <div class="locationGrid">
 
-<div class="card">
+   <div class="field">
 
-<h3>✏️ Edit Profile</h3>
+    <label>বিভাগ</label>
 
-<div class="field">
-<label>নাম</label>
-<input id="editName">
-</div>
+    <select
+     id="journalistDivision"
+     onchange="journalistDivisionChanged()">
 
-<div class="field">
-<label>Bio</label>
-<textarea id="editBio"></textarea>
-</div>
+     <option value="">
+      বিভাগ নির্বাচন করুন
+     </option>
 
-<div class="field">
-<label>Avatar URL</label>
-<input id="editAvatar" placeholder="https://...">
-</div>
+    </select>
 
-<button class="primary" onclick="saveProfile()">
-Save
-</button>
+   </div>
 
-<button class="secondary"
-style="width:100%;margin-top:8px"
-onclick="showPage('profilePage')">
-Cancel
-</button>
 
-</div>
+   <div class="field">
 
-</div>
+    <label>জেলা</label>
 
+    <select
+     id="journalistDistrict"
+     onchange="journalistDistrictChanged()"
+     disabled>
 
-<!-- ================= HELP DESK ================= -->
+     <option value="">
+      আগে বিভাগ নির্বাচন করুন
+     </option>
 
-<div id="helpPage" class="hidden">
+    </select>
 
-<div class="card">
+   </div>
 
-<h2 style="margin-top:0">
-🆘 Help Desk
-</h2>
 
-<p style="color:#666;line-height:1.6">
-জরুরি পরিস্থিতি, দুর্নীতি, পুলিশি সহায়তা বা সংবাদমাধ্যমে তথ্য দেওয়ার প্রয়োজন হলে নিচের নির্ভরযোগ্য যোগাযোগগুলো ব্যবহার করুন।
-</p>
+   <div class="field">
 
-<div class="helpSection">
+    <label>উপজেলা</label>
 
-<h3>🚨 জরুরি পুলিশ সহায়তা</h3>
+    <select
+     id="journalistUpazila"
+     disabled>
 
-<div class="contactCard">
+     <option>
+      বর্তমানে আলাদা contact dataset নেই
+     </option>
 
-<div class="contactTitle">
-জাতীয় জরুরি সেবা
-<span class="verified">✓ Verified</span>
-</div>
+    </select>
 
-<div class="contactNumber">
-999
-</div>
+   </div>
 
-<a class="callBtn" href="tel:999">
-📞 Call 999
-</a>
 
-</div>
+   <div class="field">
 
-</div>
+    <label>ইউনিয়ন</label>
 
+    <select
+     id="journalistUnion"
+     disabled>
 
-<div class="helpSection">
+     <option>
+      বর্তমানে আলাদা contact dataset নেই
+     </option>
 
-<h3>👮 বাংলাদেশ পুলিশ</h3>
+    </select>
 
-<div class="contactCard">
+   </div>
 
-<div class="contactTitle">
-বাংলাদেশ পুলিশ — Police Headquarters
-<span class="verified">✓ Official</span>
-</div>
+  </div>
 
-<div>
-Operation Control Room
-</div>
 
-<div class="contactNumber">
-01320-001299
-</div>
+  <button
+   class="journalistSearchBtn"
+   onclick="findJournalists()">
 
-<a class="callBtn" href="tel:01320001299">
-📞 Call
-</a>
+   🔎 Journalist / Media Contact খুঁজুন
 
-<br>
+  </button>
 
-<div class="contactNumber" style="margin-top:8px">
-01320-001300
-</div>
 
-<a class="callBtn" href="tel:01320001300">
-📞 Call
-</a>
+  <div class="warningBox">
 
-</div>
+   ⚠️ গুরুত্বপূর্ণ:
 
-<a class="helpLinks"
-href="https://www.police.gov.bd"
-target="_blank">
-বাংলাদেশ পুলিশের Official Website
-</a>
+   সাংবাদিকদের ব্যক্তিগত মোবাইল নম্বর প্রকাশ করা হচ্ছে না।
 
-<a class="helpLinks"
-href="https://gd.police.gov.bd"
-target="_blank">
-Online GD — Official
-</a>
+   শুধু official office/newsroom বা সরকারি directory ব্যবহার করুন।
 
-</div>
+   কোনো অভিযোগ পাঠানোর আগে তথ্য ও প্রমাণ যাচাই করুন।
 
+  </div>
 
-<div class="helpSection">
 
-<h3>🏢 জেলা পুলিশ</h3>
+  <div
+   id="journalistResult"
+   class="journalistResult">
+  </div>
 
-<div class="contactCard">
 
-<div class="contactTitle">
-জেলার পুলিশ সুপার (SP)
-<span class="verified">✓ Official Police Directory</span>
-</div>
+  <!-- OFFICIAL MEDIA -->
+  <div class="helpSection">
 
-<p style="line-height:1.6">
-প্রতিটি জেলার বর্তমান SP-এর official mobile/contact দেখতে বাংলাদেশ পুলিশের অফিসিয়াল তালিকা ব্যবহার করুন।
-</p>
+   <h3>
+    🏢 Official Media Contact
+   </h3>
 
-<a class="callBtn"
-href="https://www.police.gov.bd/en/সেবা_প্রদান_প্রতিশ্রুতি"
-target="_blank">
-📋 জেলা পুলিশের Contact List
-</a>
 
-</div>
+   <div class="journalistCard">
 
-<div class="warningBox">
-⚠️ জেলা/উপজেলার ব্যক্তিগত পুলিশ কর্মকর্তার নম্বর পরিবর্তন হতে পারে। তাই যাচাই ছাড়া কোনো নম্বরকে স্থায়ী নম্বর হিসেবে দেখানো হচ্ছে না।
-</div>
+    <div class="journalistName">
+     Somoy News / Somoy TV
+     <span style="color:#138a45">
+      ✓ Official
+     </span>
+    </div>
 
-</div>
+    <div class="journalistMeta">
+     Official Office / Newsroom
+    </div>
 
+    <div class="journalistPhone">
+     9632521-23, 30-31
+    </div>
 
-<!-- DUDOK -->
+    <a
+     class="officialBtn"
+     href="https://www.somoynews.tv/contact-us"
+     target="_blank"
+     rel="noopener">
 
-<div class="helpSection">
+     Official Contact
 
-<h3>🛡️ দুর্নীতি দমন কমিশন (দুদক)</h3>
+    </a>
 
-<div class="contactCard">
+   </div>
 
-<div class="contactTitle">
-দুদক অভিযোগকেন্দ্র
-<span class="verified">✓ Official ACC</span>
-</div>
 
-<div class="contactNumber">
-106
-</div>
+   <div class="journalistCard">
 
-<p style="line-height:1.6">
-দুদকের official toll-free অভিযোগ hotline।
-</p>
+    <div class="journalistName">
+     NTV
+     <span style="color:#138a45">
+      ✓ Official
+     </span>
+    </div>
 
-<a class="callBtn" href="tel:106">
-📞 Call 106
-</a>
+    <div class="journalistMeta">
+     Official Office / Newsroom
+    </div>
 
-</div>
+    <div class="journalistPhone">
+     +880255012281-5
+    </div>
 
-<div class="contactCard">
+    <a
+     class="officialBtn"
+     href="https://www.ntvbd.com/info/contact-us"
+     target="_blank"
+     rel="noopener">
 
-<div class="contactTitle">
-দুদক Email
-</div>
+     Official Contact
 
-<div style="font-weight:bold">
-chairman@acc.org.bd
-</div>
+    </a>
 
-</div>
+   </div>
 
-<a class="helpLinks"
-href="https://acc.org.bd"
-target="_blank">
-দুদকের Official Website
-</a>
 
-</div>
+   <div class="journalistCard">
 
+    <div class="journalistName">
+     Ekattor TV
+     <span style="color:#138a45">
+      ✓ Official
+     </span>
+    </div>
 
-<!-- JOURNALIST -->
+    <div class="journalistMeta">
+     Official Office
+    </div>
 
-<div class="helpSection">
+    <div class="journalistPhone">
+     +8809666717100
+    </div>
 
-<h3>📰 সাংবাদিক / সংবাদমাধ্যম</h3>
+    <a
+     class="officialBtn"
+     href="https://ekattor.tv/about"
+     target="_blank"
+     rel="noopener">
 
-<div class="contactCard">
+     Official Website
 
-<div class="contactTitle">
-সরকারি PID Media/Journalist Directory
-<span class="verified">✓ Government Source</span>
-</div>
+    </a>
 
-<p style="line-height:1.7">
-বিভাগ, জেলা ও বিভিন্ন সংবাদমাধ্যমের সাংবাদিক/মিডিয়া contact খুঁজতে সরকারি তথ্য ও সম্প্রচার মন্ত্রণালয়ের অধীন PID-এর Telephone Guide ব্যবহার করুন।
-</p>
+   </div>
 
-<a class="callBtn"
-href="https://pressinform.gov.bd"
-target="_blank">
-📋 PID Official Directory
-</a>
 
-</div>
+   <div class="journalistCard">
 
-<div class="warningBox">
-⚠️ সাংবাদিকদের নাম ও মোবাইল নম্বর নিয়মিত পরিবর্তন হতে পারে। তাই যাচাই ছাড়া কোনো ব্যক্তির নম্বরকে “বর্তমান Verified Journalist” হিসেবে প্রকাশ করা হবে না। ইউনিয়ন পর্যায়ের সাংবাদিকের ক্ষেত্রেও সংশ্লিষ্ট সংবাদমাধ্যম/PID-এর বর্তমান পরিচয় যাচাই করা উচিত।
-</div>
+    <div class="journalistName">
+     RTV Newsroom
+     <span style="color:#138a45">
+      ✓ Official
+     </span>
+    </div>
 
-</div>
+    <div class="journalistMeta">
+     Official Newsroom
+    </div>
 
+    <div class="journalistPhone">
+     +8801878184369-70
+    </div>
 
-<!-- REPORTING -->
+    <a
+     class="officialBtn"
+     href="https://rtvonline.com"
+     target="_blank"
+     rel="noopener">
 
-<div class="helpSection">
+     Official Website
 
-<h3>📢 অভিযোগ করার আগে</h3>
+    </a>
 
-<div class="contactCard">
+   </div>
 
-<ul style="line-height:1.8;margin-bottom:0;padding-left:20px">
 
-<li>ঘটনার তারিখ ও স্থান লিখে রাখুন।</li>
+   <div class="journalistCard">
 
-<li>যথাসম্ভব বৈধ প্রমাণ সংরক্ষণ করুন।</li>
+    <div class="journalistName">
+     PID — Press Information Department
+     <span style="color:#138a45">
+      ✓ Government
+     </span>
+    </div>
 
-<li>কারও ব্যক্তিগত তথ্য অপ্রয়োজনে প্রকাশ করবেন না।</li>
+    <div class="journalistMeta">
+     সরকারি তথ্য ও সংবাদমাধ্যম সংক্রান্ত directory
+    </div>
 
-<li>মিথ্যা অভিযোগ বা যাচাই না করা তথ্য প্রকাশ করবেন না।</li>
+    <a
+     class="officialBtn"
+     href="https://pressinform.gov.bd"
+     target="_blank"
+     rel="noopener">
 
-<li>জরুরি বিপদে আগে 999-এ যোগাযোগ করুন।</li>
+     PID Official Website
 
-<li>দুর্নীতির অভিযোগে দুদকের 106 ব্যবহার করতে পারেন।</li>
+    </a>
 
-</ul>
+   </div>
 
-</div>
+  </div>
 
-</div>
+ </div>
 
-</div>
 
-</div>
+ <!-- EMERGENCY -->
+ <div class="helpSection">
 
+  <h3>
+   🚨 জরুরি সহায়তা
+  </h3>
 
-<!-- ================= NEWS ================= -->
+  <a
+   class="helpLinks"
+   href="tel:999">
 
-<div id="newsPage" class="hidden">
+   📞 জাতীয় জরুরি সেবা — 999
 
-<div class="card newsHeader">
+  </a>
 
-<h2 style="margin-top:0">
-🗞️ News
-</h2>
+  <a
+   class="helpLinks"
+   href="https://www.police.gov.bd"
+   target="_blank"
+   rel="noopener">
 
-<p style="margin-bottom:0;color:#666">
-বাংলাদেশ ও বিশ্বের গুরুত্বপূর্ণ সংবাদমাধ্যমের খবর দেখতে ভিজিট করুন।
-</p>
+   👮 Bangladesh Police — Official Website
 
-</div>
+  </a>
 
-<div class="card">
+ </div>
 
-<div class="newsItem">
 
-<div class="newsIcon">🌍</div>
+ <!-- ACC -->
+ <div class="helpSection">
 
-<div>
-<a href="https://www.bbc.com/bengali" target="_blank">
-<h3>BBC News বাংলা</h3>
-<p>বাংলাদেশ ও বিশ্বের খবর।</p>
-</a>
-</div>
+  <h3>
+   ⚖️ দুর্নীতি দমন কমিশন (ACC)
+  </h3>
 
-</div>
+  <div class="warningBox">
 
+   দুর্নীতির অভিযোগে তথ্য, প্রমাণ এবং
+   ঘটনার সময়/স্থান যতটা সম্ভব পরিষ্কারভাবে সংরক্ষণ করুন।
 
-<div class="newsItem">
+  </div>
 
-<div class="newsIcon">📰</div>
+  <a
+   class="helpLinks"
+   href="https://acc.org.bd"
+   target="_blank"
+   rel="noopener">
 
-<div>
-<a href="https://www.prothomalo.com" target="_blank">
-<h3>প্রথম আলো</h3>
-<p>বাংলাদেশ ও আন্তর্জাতিক সংবাদ।</p>
-</a>
-</div>
+   ACC Official Website
 
-</div>
+  </a>
 
+  <a
+   class="helpLinks"
+   href="tel:106">
 
-<div class="newsItem">
+   📞 ACC Hotline — 106
 
-<div class="newsIcon">🔴</div>
+  </a>
 
-<div>
-<a href="https://bdnews24.com" target="_blank">
-<h3>bdnews24.com</h3>
-<p>বাংলাদেশ ও আন্তর্জাতিক সংবাদ।</p>
-</a>
-</div>
+ </div>
 
-</div>
 
+ <!-- REPORTING -->
+ <div class="helpSection">
 
-<div class="newsItem">
+  <h3>
+   📝 অভিযোগ করার আগে
+  </h3>
 
-<div class="newsIcon">📺</div>
+  <p style="line-height:1.7">
 
-<div>
-<a href="https://www.somoynews.tv" target="_blank">
-<h3>Somoy TV</h3>
-<p>সর্বশেষ সংবাদ ও প্রতিবেদন।</p>
-</a>
-</div>
+   অভিযোগে যাচাইযোগ্য তথ্য দিন।
 
-</div>
+   কারও বিরুদ্ধে প্রমাণ ছাড়া ব্যক্তিগত অভিযোগ
+   বা মানহানিকর বক্তব্য প্রকাশ করবেন না।
 
+   ছবি/ভিডিও প্রকাশের আগে ব্যক্তিগত তথ্য
+   এবং শিশুদের পরিচয় গোপন রাখুন।
 
-<div class="newsItem">
+  </p>
 
-<div class="newsIcon">📺</div>
+ </div>
 
-<div>
-<a href="https://jamuna.tv" target="_blank">
-<h3>Jamuna TV</h3>
-<p>দেশের সর্বশেষ সংবাদ।</p>
-</a>
-</div>
+</section>
 
-</div>
 
+<!-- NEWS -->
+<section id="newsPage" class="page hidden">
 
-<div class="newsItem">
+ <div class="pageTitle">
+  📰 News
+ </div>
 
-<div class="newsIcon">📺</div>
+ <div class="card news">
 
-<div>
-<a href="https://www.channel24bd.tv" target="_blank">
-<h3>Channel 24</h3>
-<p>বাংলাদেশ ও আন্তর্জাতিক সংবাদ।</p>
-</a>
-</div>
+  <a
+   href="https://www.bbc.com/bengali"
+   target="_blank"
+   rel="noopener">
+   BBC বাংলা
+  </a>
 
-</div>
+  <a
+   href="https://www.prothomalo.com"
+   target="_blank"
+   rel="noopener">
+   প্রথম আলো
+  </a>
 
+  <a
+   href="https://bangla.bdnews24.com"
+   target="_blank"
+   rel="noopener">
+   bdnews24
+  </a>
 
-<div class="newsItem">
+  <a
+   href="https://www.somoynews.tv"
+   target="_blank"
+   rel="noopener">
+   Somoy TV
+  </a>
 
-<div class="newsIcon">📺</div>
+  <a
+   href="https://jamuna.tv"
+   target="_blank"
+   rel="noopener">
+   Jamuna TV
+  </a>
 
-<div>
-<a href="https://ekattor.tv" target="_blank">
-<h3>Ekattor TV</h3>
-<p>সর্বশেষ দেশি ও আন্তর্জাতিক খবর।</p>
-</a>
-</div>
+  <a
+   href="https://www.channel24bd.tv"
+   target="_blank"
+   rel="noopener">
+   Channel 24
+  </a>
 
-</div>
+  <a
+   href="https://ekattor.tv"
+   target="_blank"
+   rel="noopener">
+   Ekattor TV
+  </a>
 
+ </div>
 
-<div class="newsItem">
+</section>
 
-<div class="newsIcon">📺</div>
+</main>
 
-<div>
-<a href="https://www.news24bd.tv" target="_blank">
-<h3>News24</h3>
-<p>বাংলাদেশের সর্বশেষ সংবাদ।</p>
-</a>
-</div>
 
-</div>
-
-
-<div class="newsItem">
-
-<div class="newsIcon">⭐</div>
-
-<div>
-<a href="https://www.thedailystar.net" target="_blank">
-<h3>The Daily Star</h3>
-<p>বাংলাদেশের ইংরেজি সংবাদপত্র।</p>
-</a>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ================= BOTTOM NAV ================= -->
-
+<!-- BOTTOM NAV -->
 <nav class="bottomNav">
 
-<button onclick="showPage('homePage')">
-<span>🏠</span>
-Home
-</button>
+ <button
+  id="navHome"
+  onclick="showPage('homePage')">
+  🏠<br>হোম
+ </button>
 
-<button onclick="showPage('helpPage')">
-<span>🆘</span>
-Help
-</button>
+ <button
+  id="navPublic"
+  onclick="showPage('publicPage')">
+  🌐<br>পোস্ট
+ </button>
 
-<button onclick="showPage('publicPostPage')">
-<span>📰</span>
-Public Post
-</button>
+ <button
+  id="navProfile"
+  onclick="showPage('profilePage')">
+  👤<br>প্রোফাইল
+ </button>
 
-<button onclick="showPage('newsPage')">
-<span>🗞️</span>
-News
-</button>
+ <button
+  id="navHelp"
+  onclick="showPage('helpPage')">
+  🆘<br>Help
+ </button>
+
+ <button
+  id="navNews"
+  onclick="showPage('newsPage')">
+  📰<br>News
+ </button>
 
 </nav>
 
@@ -1453,6 +1238,10 @@ News
 
 <script>
 
+/* =========================================================
+   SUPABASE
+========================================================= */
+
 const SUPABASE_URL =
 "https://klreqkbqyyiwmohlmgkh.supabase.co";
 
@@ -1460,776 +1249,526 @@ const SUPABASE_KEY =
 "sb_publishable_xlqcHTsDaMpBq4n54iMs4A_S7gKpiZc";
 
 const db =
-supabase.createClient(
+window.supabase &&
+window.supabase.createClient
+?
+window.supabase.createClient(
  SUPABASE_URL,
  SUPABASE_KEY
-);
-
-let currentUser=null;
-let currentProfile=null;
-
-const STORAGE_KEY="ghus_guest_user";
+)
+:
+null;
 
 
-function $(id){
- return document.getElementById(id);
-}
+/* =========================================================
+   BASIC FUNCTIONS
+========================================================= */
+
+const $ =
+id => document.getElementById(id);
+
+const sessionKey =
+"ghus_guest_user";
 
 
 function escapeHTML(value){
 
- if(value===null || value===undefined){
-  return "";
- }
+ return String(value ?? "")
+ .replace(/[&<>"']/g,function(m){
 
- return String(value)
- .replace(/&/g,"&amp;")
- .replace(/</g,"&lt;")
- .replace(/>/g,"&gt;")
- .replace(/"/g,"&quot;")
- .replace(/'/g,"&#039;");
+  return {
+   "&":"&amp;",
+   "<":"&lt;",
+   ">":"&gt;",
+   '"':"&quot;",
+   "'":"&#039;"
+  }[m];
+
+ });
 
 }
 
 
 function toast(message){
 
- const el=$("toast");
+ const t = $("toast");
 
- el.textContent=message;
+ t.textContent = message;
+ t.style.display = "block";
 
- el.classList.add("show");
+ clearTimeout(window.toastTimer);
 
- setTimeout(()=>{
-  el.classList.remove("show");
- },2500);
-
-}
-
-
-function normalizePhone(phone){
-
- return String(phone||"")
- .replace(/[^\d+]/g,"")
- .trim();
+ window.toastTimer =
+ setTimeout(
+  ()=>t.style.display="none",
+  2600
+ );
 
 }
 
 
-/* ================= PAGE SYSTEM ================= */
+function currentUser(){
 
-function showPage(pageId){
+ try{
 
- [
-  "homePage",
-  "publicPostPage",
-  "profilePage",
-  "editProfilePage",
-  "helpPage",
-  "newsPage"
- ].forEach(id=>{
+  return JSON.parse(
+   localStorage.getItem(sessionKey) || "null"
+  );
 
-  const el=$(id);
+ }catch(e){
 
-  if(el){
-   el.classList.add("hidden");
-  }
+  return null;
 
- });
-
- const page=$(pageId);
-
- if(page){
-  page.classList.remove("hidden");
- }
-
- $("searchResults").classList.add("hidden");
-
- if(pageId==="homePage"){
-  loadAwareness();
- }
-
- if(pageId==="publicPostPage"){
-  loadFeed();
- }
-
- if(pageId==="profilePage"){
-  loadProfile();
  }
 
 }
 
 
-/* ================= AUTH ================= */
+function saveLocalUser(user){
 
-function showSignup(){
-
- $("loginBox").classList.add("hidden");
-
- $("signupBox").classList.remove("hidden");
+ localStorage.setItem(
+  sessionKey,
+  JSON.stringify(user)
+ );
 
 }
 
+
+/* =========================================================
+   AUTH
+========================================================= */
 
 function showLogin(){
 
- $("signupBox").classList.add("hidden");
+ $("loginForm")
+ .classList
+ .remove("hidden");
 
- $("loginBox").classList.remove("hidden");
+ $("signupForm")
+ .classList
+ .add("hidden");
+
+}
+
+
+function showSignup(){
+
+ $("loginForm")
+ .classList
+ .add("hidden");
+
+ $("signupForm")
+ .classList
+ .remove("hidden");
 
 }
 
 
 async function signup(){
 
- const name=$("signupName").value.trim();
+ const name =
+ $("signupName").value.trim();
 
- const username=
- $("signupUsername").value.trim().toLowerCase();
+ const ident =
+ $("signupId").value.trim();
 
- const phone=
- normalizePhone($("signupPhone").value);
+ if(!name || !ident){
 
- $("signupMsg").innerHTML="";
-
- if(!name || !username || !phone){
-
-  $("signupMsg").innerHTML=
-  '<div class="error">সব তথ্য পূরণ করুন।</div>';
-
+  toast("নাম ও মোবাইল/ইমেইল দিন");
   return;
 
  }
 
- if(username.length<3){
+ const user = {
 
-  $("signupMsg").innerHTML=
-  '<div class="error">Username কমপক্ষে ৩ অক্ষরের হতে হবে।</div>';
+  id:
+   crypto.randomUUID
+   ?
+   crypto.randomUUID()
+   :
+   String(Date.now()),
 
-  return;
+  name:name,
 
- }
+  ident:ident,
 
- try{
+  bio:""
 
-  const checkUsername=
-  await db
-  .from("profiles")
-  .select("id")
-  .eq("username",username)
-  .limit(1);
+ };
 
-  if(checkUsername.error){
-   throw checkUsername.error;
-  }
 
-  if((checkUsername.data||[]).length){
+ saveLocalUser(user);
 
-   $("signupMsg").innerHTML=
-   '<div class="error">এই Username আগে থেকেই আছে।</div>';
+ enterApp();
 
-   return;
-
-  }
-
-  const checkPhone=
-  await db
-  .from("profiles")
-  .select("id")
-  .eq("phone",phone)
-  .limit(1);
-
-  if(checkPhone.error){
-   throw checkPhone.error;
-  }
-
-  if((checkPhone.data||[]).length){
-
-   $("signupMsg").innerHTML=
-   '<div class="error">এই Phone Number দিয়ে ইতিমধ্যে account আছে।</div>';
-
-   return;
-
-  }
-
-  const {data,error}=await db
-  .from("profiles")
-  .insert({
-   display_name:name,
-   username:username,
-   phone:phone,
-   role:"user"
-  })
-  .select("*")
-  .limit(1);
-
-  if(error){
-   throw error;
-  }
-
-  const user=(data||[])[0];
-
-  if(!user){
-   throw new Error("Account তৈরি হয়নি।");
-  }
-
-  localStorage.setItem(
-   STORAGE_KEY,
-   JSON.stringify({id:user.id})
-  );
-
-  currentUser={id:user.id};
-  currentProfile=user;
-
-  $("signupMsg").innerHTML=
-  '<div class="success">Account সফলভাবে তৈরি হয়েছে।</div>';
-
-  setTimeout(()=>{
-   enterApp();
-  },300);
-
- }catch(err){
-
-  console.error("SIGNUP ERROR:",err);
-
-  $("signupMsg").innerHTML=
-  '<div class="error">'+
-  escapeHTML(
-   err.message||
-   "Account তৈরি করতে সমস্যা হয়েছে।"
-  )+
-  '</div>';
-
- }
+ toast("অ্যাকাউন্ট তৈরি হয়েছে");
 
 }
 
 
 async function login(){
 
- const identity=
- $("loginIdentity").value.trim();
+ const ident =
+ $("loginId").value.trim();
 
- $("loginMsg").innerHTML="";
+ const name =
+ $("loginName").value.trim();
 
- if(!identity){
+ if(!ident){
 
-  $("loginMsg").innerHTML=
-  '<div class="error">Username অথবা Phone Number দিন।</div>';
-
+  toast("মোবাইল/ইমেইল দিন");
   return;
 
  }
 
- $("loginMsg").innerHTML=
- '<div class="status">Account খোঁজা হচ্ছে...</div>';
+ const old =
+ currentUser();
 
- try{
-
-  let result=
-  await db
-  .from("profiles")
-  .select("*")
-  .ilike("username",identity)
-  .limit(1);
-
-  if(result.error){
-   throw result.error;
-  }
-
-  let user=
-  (result.data||[])[0]||
-  null;
-
-  if(!user){
-
-   const phone=
-   normalizePhone(identity);
-
-   const phoneResult=
-   await db
-   .from("profiles")
-   .select("*")
-   .eq("phone",phone)
-   .limit(1);
-
-   if(phoneResult.error){
-    throw phoneResult.error;
-   }
-
-   user=
-   (phoneResult.data||[])[0]||
-   null;
-
-  }
-
-  if(!user){
-
-   $("loginMsg").innerHTML=
-   '<div class="error">No account found.</div>';
-
-   return;
-
-  }
-
-  currentUser={id:user.id};
-  currentProfile=user;
-
-  localStorage.setItem(
-   STORAGE_KEY,
-   JSON.stringify({id:user.id})
-  );
+ if(old && old.ident === ident){
 
   enterApp();
-
- }catch(err){
-
-  console.error("LOGIN ERROR:",err);
-
-  $("loginMsg").innerHTML=
-  '<div class="error">'+
-  escapeHTML(
-   err.message||
-   "Login failed."
-  )+
-  '</div>';
-
- }
-
-}
-
-
-/* FIXED REFRESH SESSION */
-
-async function restoreSession(){
-
- const saved=
- localStorage.getItem(STORAGE_KEY);
-
- if(!saved){
-
-  showAuth();
-
   return;
 
  }
 
- try{
+ saveLocalUser({
 
-  const obj=
-  JSON.parse(saved);
+  id:
+   crypto.randomUUID
+   ?
+   crypto.randomUUID()
+   :
+   String(Date.now()),
 
-  if(!obj.id){
-   throw new Error("Invalid session");
-  }
+  name:
+   name || "ব্যবহারকারী",
 
-  const {data,error}=
-  await db
-  .from("profiles")
-  .select("*")
-  .eq("id",obj.id)
-  .limit(1);
+  ident:ident,
 
-  if(error){
-   throw error;
-  }
+  bio:""
 
-  const user=
-  (data||[])[0];
+ });
 
-  if(!user){
+ enterApp();
 
-   localStorage.removeItem(STORAGE_KEY);
-
-   showAuth();
-
-   return;
-
-  }
-
-  currentUser={id:user.id};
-  currentProfile=user;
-
-  enterApp();
-
- }catch(err){
-
-  console.error(
-   "RESTORE ERROR:",
-   err
-  );
-
-  localStorage.removeItem(STORAGE_KEY);
-
-  showAuth();
-
- }
-
-}
-
-
-function showAuth(){
-
- $("appPage").classList.add("hidden");
-
- $("authPage").style.display="flex";
-
- document.body.classList.remove("booting");
-
- showLogin();
+ toast("প্রবেশ সফল");
 
 }
 
 
 function enterApp(){
 
- $("authPage").style.display="none";
+ $("authPage")
+ .classList
+ .add("hidden");
 
- $("authPage").classList.add("hidden");
-
- $("appPage").classList.remove("hidden");
-
- document.body.classList.remove("booting");
+ $("appPage")
+ .classList
+ .remove("hidden");
 
  showPage("homePage");
-
- loadAwareness();
 
 }
 
 
 function logout(){
 
- currentUser=null;
+ localStorage.removeItem(sessionKey);
 
- currentProfile=null;
+ $("appPage")
+ .classList
+ .add("hidden");
 
- localStorage.removeItem(STORAGE_KEY);
-
- $("appPage").classList.add("hidden");
-
- $("authPage").classList.remove("hidden");
-
- $("authPage").style.display="flex";
-
- $("loginIdentity").value="";
-
- $("loginMsg").innerHTML="";
-
- $("searchInput").value="";
-
- $("searchResults").classList.add("hidden");
+ $("authPage")
+ .classList
+ .remove("hidden");
 
  showLogin();
 
- toast("Logout হয়েছে।");
+ toast("লগআউট হয়েছে");
 
 }
 
 
-/* ================= AWARENESS ================= */
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
 
-const awarenessFallback=[
+function showPage(id){
 
-"ঘুষ দেওয়া ও নেওয়া—দুটিই দুর্নীতির অংশ। সচেতনতা থেকেই পরিবর্তনের শুরু।",
+ document
+ .querySelectorAll(".page")
+ .forEach(
+  p => p.classList.add("hidden")
+ );
 
-"কোনো সেবা পাওয়ার জন্য অবৈধ অর্থ দাবি করা হলে প্রমাণ সংরক্ষণ করুন এবং আইনগতভাবে অভিযোগের পথ খুঁজুন।",
+ if($(id)){
+  $(id).classList.remove("hidden");
+ }
 
-"দুর্নীতির বিরুদ্ধে কথা বলার আগে তথ্য যাচাই করা জরুরি।",
+ document
+ .querySelectorAll(".bottomNav button")
+ .forEach(
+  b => b.classList.remove("active")
+ );
 
-"অন্যায়কে স্বাভাবিক মনে না করে আইনসম্মত পথে প্রতিকার চাওয়া নাগরিক দায়িত্ব।",
+ const map = {
 
-"ক্ষমতার অপব্যবহার সমাজে আস্থার সংকট তৈরি করে।",
+  homePage:"navHome",
+  publicPage:"navPublic",
+  profilePage:"navProfile",
+  helpPage:"navHelp",
+  newsPage:"navNews"
 
-"স্বচ্ছতা ও জবাবদিহিতা একটি সুন্দর সমাজের ভিত্তি।",
+ };
 
-"ঘুষমুক্ত সেবা নাগরিকের অধিকার।",
+ if(map[id] && $(map[id])){
 
-"মিথ্যা অভিযোগ নয়—সত্য তথ্য ও দায়িত্বশীল বক্তব্যই হোক আমাদের শক্তি।",
+  $(map[id])
+  .classList
+  .add("active");
 
-"অনিয়ম দেখলে আবেগের বদলে তথ্য, প্রমাণ ও আইনসম্মত পদ্ধতিকে গুরুত্ব দিন।",
+ }
 
-"দুর্নীতির বিরুদ্ধে সবচেয়ে কার্যকর অস্ত্র হলো সচেতন নাগরিক সমাজ।",
+ if(id === "homePage"){
 
-"ব্যক্তিগত আক্রমণ নয়, সমস্যার সমাধানই হওয়া উচিত আমাদের লক্ষ্য।",
+  loadAwareness();
+  loadFeed("feed");
 
-"সততা ছোট জায়গা থেকেই শুরু হয়।",
+ }
 
-"চাঁদাবাজি, ঘুষ ও প্রতারণার বিরুদ্ধে সামাজিক সচেতনতা তৈরি করা জরুরি।",
+ if(id === "publicPage"){
 
-"কোনো অভিযোগ প্রকাশের আগে ব্যক্তিগত তথ্য ও গোপনীয়তার বিষয়টি বিবেচনা করুন।",
+  loadFeed("publicFeed");
 
-"আইনের প্রতি শ্রদ্ধা রেখে অন্যায়ের প্রতিবাদ করা যায়।"
+ }
+
+ if(id === "profilePage"){
+
+  loadProfile();
+
+ }
+
+}
+
+
+/* =========================================================
+   DAILY AWARENESS
+========================================================= */
+
+const awarenessFallback = [
+
+ "ঘুষের বিরুদ্ধে কথা বলার আগে তথ্য ও প্রমাণ যাচাই করুন।",
+
+ "অন্যায় দেখলে নিরাপদ ও আইনসম্মত পথে অভিযোগ করুন।",
+
+ "সৎভাবে দায়িত্ব পালন একটি সমাজকে শক্তিশালী করে।",
+
+ "ক্ষমতার অপব্যবহার নয়, জবাবদিহি নিশ্চিত হোক।",
+
+ "চাঁদাবাজি, ঘুষ ও প্রতারণার বিরুদ্ধে সচেতনতা গড়ে তুলুন।",
+
+ "অভিযোগ করুন, কিন্তু প্রমাণ ছাড়া কাউকে অভিযুক্ত করবেন না।",
+
+ "সঠিক তথ্যই দায়িত্বশীল নাগরিকের সবচেয়ে বড় শক্তি।",
+
+ "দুর্নীতির বিরুদ্ধে সচেতনতা শুরু হোক নিজের জায়গা থেকে।"
 
 ];
 
 
 async function loadAwareness(){
 
- let text="";
+ let text =
+ awarenessFallback[
+  new Date().getDate()
+  %
+  awarenessFallback.length
+ ];
 
- try{
+ if(db){
 
-  const {data,error}=
-  await db.rpc("get_daily_awareness");
+  try{
 
-  if(!error && data){
+   const result =
+   await db.rpc(
+    "get_daily_awareness"
+   );
 
-   if(typeof data==="string"){
+   let data =
+   result.data;
 
-    text=data;
+   if(data){
 
-   }else if(
-    Array.isArray(data) &&
-    data.length
-   ){
+    if(Array.isArray(data)){
+     data=data[0];
+    }
 
-    text=
-    data[0]?.text||
-    data[0]?.sentence||
-    "";
-
-   }else if(
-    typeof data==="object"
-   ){
-
-    text=
-    data.text||
-    data.sentence||
-    "";
+    text =
+     data?.sentence ||
+     data?.text ||
+     text;
 
    }
 
+  }catch(e){
+
+   console.log(
+    "Awareness RPC unavailable"
+   );
+
   }
 
- }catch(err){
-
-  console.log("Awareness RPC unavailable");
-
  }
 
- if(!text){
-
-  const day=
-  Math.floor(
-   Date.now()/
-   (1000*60*60*24)
-  );
-
-  text=
-  awarenessFallback[
-   day%awarenessFallback.length
-  ];
-
- }
-
- $("awarenessText").textContent=text;
+ $("awarenessText")
+ .textContent = text;
 
 }
 
 
-/* ================= CREATE POST ================= */
+/* =========================================================
+   CREATE POST
+========================================================= */
 
 async function createPost(){
 
- if(!currentUser){
+ const u =
+ currentUser();
 
-  toast("আগে Login করুন।");
+ if(!u)return;
 
-  return;
+ const text =
+ $("postText")
+ .value
+ .trim();
 
- }
+ const files =
+ [...$("postMedia").files];
 
- const text=
- $("postText").value.trim();
-
- const category=
- $("postCategory").value;
-
- const isAnonymous=
+ const anonymous =
  $("anonymousPost").checked;
 
- const rules=
- $("rulesConfirm").checked;
-
- const photos=[
-  ...($("photoInput").files||[])
- ];
-
- const videos=[
-  ...($("videoInput").files||[])
- ];
-
- const files=[
-  ...photos,
-  ...videos
- ];
 
  if(!text && !files.length){
 
-  toast("Post-এর জন্য কিছু লিখুন বা ছবি/video দিন।");
-
+  toast("কিছু লিখুন বা ছবি/ভিডিও দিন");
   return;
 
  }
 
- if(files.length>10){
+ if(!db){
 
-  toast("একটি post-এ সর্বোচ্চ ১০টি media দেওয়া যাবে।");
-
+  toast("Supabase সংযোগ পাওয়া যাচ্ছে না");
   return;
 
  }
 
- if(!rules){
-
-  toast("Rules confirmation দিন।");
-
-  return;
-
- }
 
  try{
 
-  const profileResult=
-  await db
-  .from("profiles")
-  .select("id")
-  .eq("id",currentUser.id)
-  .limit(1);
-
-  if(profileResult.error){
-   throw profileResult.error;
-  }
-
-  if(!(profileResult.data||[]).length){
-
-   throw new Error(
-    "আপনার profile পাওয়া যায়নি। আবার Login করুন।"
-   );
-
-  }
-
-  const {data:postData,error:postError}=
+  const result =
   await db
   .from("posts")
   .insert({
-   user_id:currentUser.id,
+
+   user_id:u.id,
+
    content:text,
-   category:category,
-   is_anonymous:isAnonymous,
-   status:"published"
+
+   is_anonymous:anonymous,
+
+   published:true
+
   })
-  .select("*")
-  .limit(1);
+  .select()
+  .single();
 
-  if(postError){
-   throw postError;
+
+  if(result.error){
+
+   throw result.error;
+
   }
 
-  const post=
-  (postData||[])[0];
 
-  if(!post){
-   throw new Error("Post তৈরি হয়নি।");
-  }
+  const postId =
+  result.data.id;
+
 
   for(const file of files){
 
-   const safeName=
-   file.name.replace(
-    /[^a-zA-Z0-9._-]/g,
-    "_"
-   );
+   const safeName =
+   file.name
+   .replace(/[^\w.\-]/g,"_");
 
-   const path=
-   currentUser.id+
-   "/"+
-   Date.now()+
-   "_"+
-   Math.random()
-    .toString(36)
-    .slice(2)+
-   "_"+
-   safeName;
 
-   const upload=
-   await db.storage
+   const path =
+   `${u.id}/${Date.now()}_${safeName}`;
+
+
+   const upload =
+   await db
+   .storage
    .from("media")
    .upload(
     path,
     file,
-    {
-     cacheControl:"3600",
-     upsert:false
-    }
+    {upsert:false}
    );
+
 
    if(upload.error){
 
-    console.error(
-     "MEDIA UPLOAD ERROR:",
-     upload.error
-    );
-
+    console.error(upload.error);
     continue;
 
    }
 
-   const publicUrl=
-   db.storage
+
+   const publicUrl =
+   db
+   .storage
    .from("media")
    .getPublicUrl(path)
-   .data.publicUrl;
+   .data
+   .publicUrl;
 
-   const mediaType=
-   file.type.startsWith("video/")
-   ? "video"
-   : "image";
 
-   const mediaInsert=
    await db
    .from("post_media")
    .insert({
-    post_id:post.id,
+
+    post_id:postId,
+
     media_url:publicUrl,
-    media_type:mediaType
+
+    media_type:
+     file.type.startsWith("video")
+     ?
+     "video"
+     :
+     "image"
+
    });
-
-   if(mediaInsert.error){
-
-    console.error(
-     "MEDIA DB ERROR:",
-     mediaInsert.error
-    );
-
-   }
 
   }
 
+
   $("postText").value="";
-  $("photoInput").value="";
-  $("videoInput").value="";
+  $("postMedia").value="";
   $("anonymousPost").checked=false;
-  $("rulesConfirm").checked=false;
 
-  toast("Post সফল হয়েছে।");
+  toast("পোস্ট প্রকাশ হয়েছে");
 
-  showPage("publicPostPage");
+  loadFeed("feed");
 
- }catch(err){
+ }catch(e){
 
-  console.error(
-   "CREATE POST ERROR:",
-   err
-  );
+  console.error(e);
 
   toast(
-   "Post failed: "+
-   (
-    err.message||
-    "Unknown error"
-   )
+   "পোস্ট প্রকাশ করা যায়নি। Database/RLS সেটিং দেখুন।"
   );
 
  }
@@ -2237,669 +1776,447 @@ async function createPost(){
 }
 
 
-/* ================= FEED ================= */
+/* =========================================================
+   LOAD FEED
+========================================================= */
 
-async function loadFeed(){
+async function loadFeed(target){
 
- const feed=$("feed");
+ const box =
+ $(target);
 
- feed.innerHTML=
- '<div class="loading">Post loading...</div>';
+ if(!box)return;
+
+ if(!db){
+
+  box.innerHTML =
+  '<div class="card empty">Supabase সংযোগ নেই।</div>';
+
+  return;
+
+ }
+
+ box.innerHTML =
+ '<div class="card empty">পোস্ট লোড হচ্ছে…</div>';
+
 
  try{
 
-  const postResult=
+  const result =
   await db
   .from("posts")
   .select("*")
-  .eq("status","published")
+  .eq("published",true)
   .order(
    "created_at",
    {ascending:false}
   )
-  .limit(50);
+  .limit(30);
 
-  if(postResult.error){
-   throw postResult.error;
+
+  if(result.error){
+
+   throw result.error;
+
   }
 
-  const posts=
-  postResult.data||[];
+
+  const posts =
+  result.data || [];
+
 
   if(!posts.length){
 
-   feed.innerHTML=
-   '<div class="card" style="text-align:center;color:#777">'+
-   'এখনও কোনো Public Post নেই। প্রথম Post করুন।'+
-   '</div>';
+   box.innerHTML =
+   '<div class="card empty">এখনও কোনো পোস্ট নেই।</div>';
 
    return;
 
   }
 
-  const ids=[
-   ...new Set(
-    posts
-    .map(p=>p.user_id)
-    .filter(Boolean)
-   )
-  ];
 
-  let profiles=[];
+  box.innerHTML="";
 
-  if(ids.length){
 
-   const profileResult=
-   await db
-   .from("profiles")
-   .select("*")
-   .in("id",ids);
+  for(const post of posts){
 
-   if(!profileResult.error){
-
-    profiles=
-    profileResult.data||[];
-
-   }
-
-  }
-
-  const userMap={};
-
-  profiles.forEach(profile=>{
-   userMap[profile.id]=profile;
-  });
-
-  posts.forEach(post=>{
-   post.profiles=
-   userMap[post.user_id]||{};
-  });
-
-  const postIds=
-  posts.map(p=>p.id);
-
-  let media=[];
-
-  if(postIds.length){
-
-   const mediaResult=
-   await db
-   .from("post_media")
-   .select("*")
-   .in("post_id",postIds)
-   .order(
-    "created_at",
-    {ascending:true}
+   box.insertAdjacentHTML(
+    "beforeend",
+    await renderPost(post)
    );
 
-   if(!mediaResult.error){
-
-    media=
-    mediaResult.data||[];
-
-   }
-
   }
 
-  const mediaMap={};
 
-  media.forEach(m=>{
-
-   if(!mediaMap[m.post_id]){
-    mediaMap[m.post_id]=[];
-   }
-
-   mediaMap[m.post_id].push(m);
-
-  });
-
-  posts.forEach(post=>{
-   post.media=
-   mediaMap[post.id]||[];
-  });
-
-  feed.innerHTML=
-  posts.map(renderPost).join("");
-
- }catch(err){
-
-  console.error(
-   "FEED ERROR:",
-   err
+  posts.forEach(
+   p => loadComments(p.id)
   );
 
-  feed.innerHTML=
-  '<div class="card error">'+
-  'Post loading failed: '+
-  escapeHTML(
-   err.message||
-   "Unknown error"
-  )+
-  '</div>';
+
+ }catch(e){
+
+  console.error(e);
+
+  box.innerHTML =
+  '<div class="card empty">পোস্ট লোড করা যায়নি।</div>';
 
  }
 
 }
 
 
-/* ================= RENDER POST ================= */
+/* =========================================================
+   RENDER POST
+========================================================= */
 
-function renderPost(post){
+async function renderPost(post){
 
- const profile=
- post.profiles||{};
+ let profile=null;
+ let media=[];
 
- const isAnonymous=
- post.is_anonymous===true;
 
- const displayName=
- isAnonymous
- ? "Anonymous"
- : (
-  profile.display_name||
-  profile.username||
-  "User"
- );
+ if(db){
 
- const username=
- isAnonymous
- ? ""
- : (
-  profile.username
-  ? "@"+profile.username
-  : ""
- );
+  try{
 
- const avatar=
- !isAnonymous &&
- profile.avatar_url
+   const result =
+   await db
+   .from("profiles")
+   .select("*")
+   .eq("id",post.user_id)
+   .maybeSingle();
 
- ? `<img class="avatar"
-      src="${escapeHTML(profile.avatar_url)}"
-      onerror="this.style.display='none'">`
+   profile =
+   result.data;
 
- : `<div class="avatar">
-     ${
-      isAnonymous
-      ? "👤"
-      : escapeHTML(
-       String(displayName)
-       .charAt(0)
-       .toUpperCase()
-      )
-     }
-    </div>`;
+  }catch(e){}
 
- const date=
- post.created_at
- ? new Date(
-    post.created_at
-   ).toLocaleString("bn-BD")
- : "";
 
- let mediaHTML="";
+  try{
 
- if(post.media && post.media.length){
+   const result =
+   await db
+   .from("post_media")
+   .select("*")
+   .eq("post_id",post.id);
 
-  mediaHTML=
-  `<div class="mediaGrid">`+
+   media =
+   result.data || [];
 
-  post.media
-  .map(m=>{
-
-   const url=
-   escapeHTML(
-    m.media_url||""
-   );
-
-   if(
-    m.media_type==="video"||
-    url.match(
-     /\.(mp4|webm|ogg)(\?|$)/i
-    )
-   ){
-
-    return `
-     <video
-      src="${url}"
-      controls
-      preload="metadata">
-     </video>
-    `;
-
-   }
-
-   return `
-    <img
-     src="${url}"
-     loading="lazy"
-     alt="Post image">
-   `;
-
-  })
-  .join("")+
-
-  `</div>`;
+  }catch(e){}
 
  }
 
 
- /* ONLY OWNER CAN SEE DELETE */
-
- const ownerMenu=
- currentUser &&
- !isAnonymous &&
- post.user_id===currentUser.id
-
- ? `
- <div class="postMenu">
-
-  <button
-   aria-label="Post menu"
-   onclick="togglePostMenu('${escapeHTML(post.id)}')">
-   ⋮
-  </button>
-
-  <div
-   id="postMenu-${escapeHTML(post.id)}"
-   class="postMenuBox hidden">
-
-   <button
-    class="danger"
-    onclick="deletePost('${escapeHTML(post.id)}')">
-    🗑️ Delete Post
-   </button>
-
-  </div>
-
- </div>
- `
- : "";
+ const u =
+ currentUser();
 
 
- return `
+ const name =
+ post.is_anonymous
+ ?
+ "গোপন ব্যবহারকারী"
+ :
+ (
+  profile?.display_name ||
+  profile?.username ||
+  "ব্যবহারকারী"
+ );
+
+
+ const avatar =
+ escapeHTML(
+  (name || "ব").charAt(0)
+ );
+
+
+ const owner =
+ u &&
+ String(u.id) ===
+ String(post.user_id);
+
+
+ let html = `
+
  <article
-  class="card post"
+  class="card"
   id="post-${escapeHTML(post.id)}">
 
   <div class="postHead">
 
-   ${avatar}
+   <div class="avatar">
+    ${avatar}
+   </div>
 
    <div>
 
-    <div class="postUser">
-     ${escapeHTML(displayName)}
+    <div class="postName">
+     ${escapeHTML(name)}
     </div>
 
-    <div class="postMeta">
-
-     ${escapeHTML(username)}
-
-     ${username?" · ":""}
-
-     ${escapeHTML(date)}
-
+    <div class="postTime">
      ${
-      post.category
-      ? " · "+escapeHTML(post.category)
-      : ""
+      post.created_at
+      ?
+      new Date(post.created_at)
+      .toLocaleString("bn-BD")
+      :
+      ""
      }
-
     </div>
 
    </div>
 
-   ${ownerMenu}
+   ${
+    owner
+    ?
+    `
+    <button
+     class="postMenu"
+     onclick="deletePost('${escapeHTML(post.id)}')">
+
+     🗑️
+
+    </button>
+    `
+    :
+    ""
+   }
 
   </div>
 
 
-  ${
-   post.content
-   ? `<div class="postText">
-       ${escapeHTML(post.content)}
-      </div>`
-   : ""
+  <div class="postText">
+   ${escapeHTML(post.content || "")}
+  </div>
+ `;
+
+
+ for(const m of media){
+
+  const url =
+  escapeHTML(
+   m.media_url ||
+   m.url ||
+   ""
+  );
+
+
+  if(
+   String(m.media_type || "")
+   .startsWith("video")
+  ){
+
+   html += `
+
+   <video
+    class="postMedia"
+    controls
+    src="${url}">
+   </video>
+
+   `;
+
+  }else{
+
+   html += `
+
+   <img
+    class="postMedia"
+    src="${url}"
+    loading="lazy">
+
+   `;
+
   }
 
+ }
 
-  ${mediaHTML}
 
+ html += `
 
-  <div class="actions">
+  <div class="reactionBar">
 
    <button
-    onclick="toggleReaction('${escapeHTML(post.id)}')">
+    onclick="react('${escapeHTML(post.id)}','like')">
+
     👍 Like
+
    </button>
-
-
-   <div class="reactionWrap">
-
-    <button
-     onclick="toggleReactionMenu('${escapeHTML(post.id)}')">
-     ❤️ React
-    </button>
-
-    <div
-     id="reaction-${escapeHTML(post.id)}"
-     class="reactionMenu hidden">
-
-     <button onclick="react('${escapeHTML(post.id)}','like')">
-      👍
-     </button>
-
-     <button onclick="react('${escapeHTML(post.id)}','love')">
-      ❤️
-     </button>
-
-     <button onclick="react('${escapeHTML(post.id)}','haha')">
-      😂
-     </button>
-
-     <button onclick="react('${escapeHTML(post.id)}','wow')">
-      😮
-     </button>
-
-     <button onclick="react('${escapeHTML(post.id)}','sad')">
-      😢
-     </button>
-
-     <button onclick="react('${escapeHTML(post.id)}','angry')">
-      😡
-     </button>
-
-    </div>
-
-   </div>
-
 
    <button
     onclick="focusComment('${escapeHTML(post.id)}')">
-    💬 Comment
-   </button>
 
+    💬 Comment
+
+   </button>
 
    <button
     onclick="sharePost('${escapeHTML(post.id)}')">
-    ↗️ Share
-   </button>
 
-  </div>
+    ↗ Share
 
-
-  <div class="commentBox">
-
-   <input
-    id="commentInput-${escapeHTML(post.id)}"
-    placeholder="Comment করুন...">
-
-   <button
-    onclick="addComment('${escapeHTML(post.id)}')">
-    Send
    </button>
 
   </div>
 
 
   <div
-   id="comments-${escapeHTML(post.id)}"
-   class="comments">
+   id="comments-${escapeHTML(post.id)}">
+  </div>
+
+
+  <div class="commentForm">
+
+   <input
+    id="commentInput-${escapeHTML(post.id)}"
+    placeholder="মন্তব্য লিখুন…">
+
+   <button
+    onclick="addComment('${escapeHTML(post.id)}')">
+
+    পাঠান
+
+   </button>
+
   </div>
 
  </article>
+
  `;
 
-}
 
-
-/* ================= THREE DOT ================= */
-
-function togglePostMenu(postId){
-
- const menu=
- $("postMenu-"+postId);
-
- if(!menu){
-  return;
- }
-
- document
- .querySelectorAll(".postMenuBox")
- .forEach(box=>{
-
-  if(box!==menu){
-   box.classList.add("hidden");
-  }
-
- });
-
- menu.classList.toggle("hidden");
+ return html;
 
 }
 
 
-/* ================= REACTIONS ================= */
-
-function toggleReactionMenu(postId){
-
- const menu=
- $("reaction-"+postId);
-
- if(!menu){
-  return;
- }
-
- menu.classList.toggle("hidden");
-
-}
-
-
-async function toggleReaction(postId){
-
- await react(
-  postId,
-  "like"
- );
-
-}
-
+/* =========================================================
+   REACTION
+========================================================= */
 
 async function react(postId,type){
 
- if(!currentUser){
+ const u =
+ currentUser();
 
-  toast("আগে Login করুন।");
+ if(!u)return;
 
+ if(!db){
+
+  toast("Supabase সংযোগ নেই");
   return;
 
  }
 
+
  try{
 
-  const result=
+  const result =
   await db
   .from("reactions")
-  .select("id,reaction_type")
-  .eq("post_id",postId)
-  .eq("user_id",currentUser.id)
-  .limit(1);
+  .upsert({
+
+   post_id:postId,
+
+   user_id:u.id,
+
+   reaction:type
+
+  },{
+   onConflict:
+   "post_id,user_id"
+  });
+
 
   if(result.error){
    throw result.error;
   }
 
-  const existing=
-  (result.data||[])[0]||
-  null;
 
-  if(existing){
+  toast("Reaction দেওয়া হয়েছে");
 
-   if(existing.reaction_type===type){
+ }catch(e){
 
-    const del=
-    await db
-    .from("reactions")
-    .delete()
-    .eq("id",existing.id);
+  console.error(e);
 
-    if(del.error){
-     throw del.error;
-    }
-
-   }else{
-
-    const update=
-    await db
-    .from("reactions")
-    .update({
-     reaction_type:type
-    })
-    .eq("id",existing.id);
-
-    if(update.error){
-     throw update.error;
-    }
-
-   }
-
-  }else{
-
-   const insert=
-   await db
-   .from("reactions")
-   .insert({
-    post_id:postId,
-    user_id:currentUser.id,
-    reaction_type:type
-   });
-
-   if(insert.error){
-    throw insert.error;
-   }
-
-  }
-
-  const menu=
-  $("reaction-"+postId);
-
-  if(menu){
-   menu.classList.add("hidden");
-  }
-
-  toast(
-   type==="like"
-   ? "👍 Like"
-   : "Reaction দেওয়া হয়েছে"
-  );
-
- }catch(err){
-
-  console.error(
-   "REACTION ERROR:",
-   err
-  );
-
-  toast(
-   "Reaction failed: "+
-   (
-    err.message||
-    "Unknown error"
-   )
-  );
+  toast("Reaction দেওয়া যায়নি");
 
  }
 
 }
 
 
-/* ================= COMMENTS ================= */
+/* =========================================================
+   COMMENTS
+========================================================= */
 
-function focusComment(postId){
+function focusComment(id){
 
- const input=
- $("commentInput-"+postId);
+ const input =
+ $("commentInput-"+id);
 
  if(input){
-
   input.focus();
-
-  input.scrollIntoView({
-   behavior:"smooth",
-   block:"center"
-  });
-
  }
-
- loadComments(postId);
 
 }
 
 
 async function addComment(postId){
 
- if(!currentUser){
+ const u =
+ currentUser();
 
-  toast("আগে Login করুন।");
-
-  return;
-
- }
-
- const input=
+ const input =
  $("commentInput-"+postId);
 
- if(!input){
-  return;
- }
+ const text =
+ input?.value.trim();
 
- const text=
- input.value.trim();
 
- if(!text){
+ if(!u || !text)return;
 
-  toast("Comment লিখুন।");
+ if(!db){
 
+  toast("Supabase সংযোগ নেই");
   return;
 
  }
+
 
  try{
 
-  const {error}=
+  const result =
   await db
   .from("comments")
   .insert({
+
    post_id:postId,
-   user_id:currentUser.id,
+
+   user_id:u.id,
+
    content:text
+
   });
 
-  if(error){
-   throw error;
+
+  if(result.error){
+   throw result.error;
   }
+
 
   input.value="";
 
-  await loadComments(postId);
+  loadComments(postId);
 
-  toast("Comment added");
+  toast("মন্তব্য যোগ হয়েছে");
 
- }catch(err){
+ }catch(e){
 
-  console.error(
-   "COMMENT ERROR:",
-   err
-  );
+  console.error(e);
 
-  toast(
-   "Comment failed: "+
-   (
-    err.message||
-    "Unknown error"
-   )
-  );
+  toast("মন্তব্য যোগ করা যায়নি");
 
  }
 
@@ -2908,16 +2225,15 @@ async function addComment(postId){
 
 async function loadComments(postId){
 
- const box=
+ const box =
  $("comments-"+postId);
 
- if(!box){
-  return;
- }
+ if(!box || !db)return;
+
 
  try{
 
-  const result=
+  const result =
   await db
   .from("comments")
   .select("*")
@@ -2927,925 +2243,829 @@ async function loadComments(postId){
    {ascending:true}
   );
 
-  if(result.error){
-   throw result.error;
-  }
 
-  const comments=
-  result.data||[];
+  const data =
+  result.data || [];
 
-  if(!comments.length){
 
-   box.innerHTML="";
+  box.innerHTML =
+  data.map(c=>`
 
-   return;
+   <div class="comment">
 
-  }
+    <b>ব্যবহারকারী</b>
 
-  const ids=[
-   ...new Set(
-    comments
-    .map(c=>c.user_id)
-    .filter(Boolean)
-   )
-  ];
+    <p>
+     ${escapeHTML(c.content)}
+    </p>
 
-  let profiles=[];
+   </div>
 
-  if(ids.length){
+  `).join("");
 
-   const profileResult=
-   await db
-   .from("profiles")
-   .select("*")
-   .in("id",ids);
 
-   if(!profileResult.error){
-
-    profiles=
-    profileResult.data||[];
-
-   }
-
-  }
-
-  const userMap={};
-
-  profiles.forEach(p=>{
-   userMap[p.id]=p;
-  });
-
-  box.innerHTML=
-  comments
-  .map(comment=>{
-
-   const profile=
-   userMap[comment.user_id]||{};
-
-   const name=
-   profile.display_name||
-   profile.username||
-   "User";
-
-   return `
-    <div class="comment">
-
-     <div class="commentName">
-      ${escapeHTML(name)}
-     </div>
-
-     <div class="commentText">
-      ${escapeHTML(comment.content||"")}
-     </div>
-
-    </div>
-   `;
-
-  })
-  .join("");
-
- }catch(err){
-
-  console.error(
-   "COMMENTS ERROR:",
-   err
-  );
-
-  box.innerHTML=
-  '<div style="color:#b00020;font-size:13px">'+
-  'Comment loading failed'+
-  '</div>';
-
- }
+ }catch(e){}
 
 }
 
 
-/* ================= SHARE ================= */
+/* =========================================================
+   SHARE
+========================================================= */
 
-async function sharePost(postId){
+async function sharePost(id){
 
- const url=
- location.href.split("#")[0]+
- "#post-"+postId;
+ const url =
+ location.href.split("#")[0]
+ +
+ "#post-"
+ +
+ id;
+
 
  try{
 
   if(navigator.share){
 
    await navigator.share({
+
     title:"ঘুষ সাইট",
-    text:"ঘুষ সাইটের একটি Public Post",
+
     url:url
+
    });
-
-  }else if(navigator.clipboard){
-
-   await navigator.clipboard.writeText(url);
-
-   toast("Post link copied");
 
   }else{
 
-   prompt(
-    "এই link copy করুন:",
-    url
-   );
+   await navigator.clipboard
+   .writeText(url);
+
+   toast("লিংক কপি হয়েছে");
 
   }
 
- }catch(err){
+ }catch(e){}
 
-  console.log("Share cancelled");
+}
+
+
+/* =========================================================
+   DELETE POST
+========================================================= */
+
+async function deletePost(id){
+
+ if(!confirm("পোস্টটি মুছে ফেলবেন?")){
+  return;
+ }
+
+ if(!db)return;
+
+
+ try{
+
+  const result =
+  await db
+  .from("posts")
+  .delete()
+  .eq("id",id);
+
+
+  if(result.error){
+   throw result.error;
+  }
+
+
+  toast("পোস্ট মুছে গেছে");
+
+  loadFeed("feed");
+  loadFeed("publicFeed");
+
+
+ }catch(e){
+
+  console.error(e);
+
+  toast("পোস্ট মুছতে পারিনি");
 
  }
 
 }
 
 
-/* ================= PROFILE ================= */
+/* =========================================================
+   PROFILE
+========================================================= */
 
 async function loadProfile(){
 
- if(!currentUser){
-  return;
- }
+ const u =
+ currentUser();
 
- try{
+ if(!u)return;
 
-  const result=
-  await db
-  .from("profiles")
-  .select("*")
-  .eq("id",currentUser.id)
-  .limit(1);
 
-  if(result.error){
-   throw result.error;
-  }
+ $("profileName")
+ .textContent =
+ u.name || "ব্যবহারকারী";
 
-  const profile=
-  (result.data||[])[0];
 
-  if(!profile){
-   return;
-  }
+ $("profileBio")
+ .textContent =
+ u.bio || "";
 
-  currentProfile=profile;
 
-  const name=
-  profile.display_name||
-  profile.username||
-  "User";
+ $("profileAvatar")
+ .textContent =
+ (u.name || "A").charAt(0);
 
-  $("profileName").textContent=name;
 
-  $("profileUsername").textContent=
-  profile.username
-  ? "@"+profile.username
-  : "";
+ if(db){
 
-  $("profileBio").textContent=
-  profile.bio||"";
+  try{
 
-  if(profile.avatar_url){
+   const result =
+   await db
+   .from("profiles")
+   .select("*")
+   .eq("id",u.id)
+   .maybeSingle();
 
-   $("profileAvatar").innerHTML=
-   `<img
-     class="avatar"
-     src="${escapeHTML(profile.avatar_url)}"
-     style="width:90px;height:90px"
-     onerror="this.style.display='none'">`;
 
-  }else{
+   if(result.data){
 
-   $("profileAvatar").textContent=
-   String(name)
-   .charAt(0)
-   .toUpperCase();
+    $("profileName")
+    .textContent =
+    result.data.display_name ||
+    result.data.username ||
+    u.name;
 
-  }
 
-  loadMyPosts();
+    $("profileBio")
+    .textContent =
+    result.data.bio || "";
 
- }catch(err){
+   }
 
-  console.error(
-   "PROFILE ERROR:",
-   err
-  );
+  }catch(e){}
 
  }
+
+
+ await loadMyPosts();
 
 }
 
 
 async function loadMyPosts(){
 
- const box=
- $("myPosts");
+ const box =
+ $("profilePosts");
 
- box.innerHTML=
- '<div class="loading">Loading...</div>';
+ const u =
+ currentUser();
+
+
+ if(!box || !u || !db)return;
+
 
  try{
 
-  const result=
+  const result =
   await db
   .from("posts")
   .select("*")
-  .eq("user_id",currentUser.id)
+  .eq("user_id",u.id)
   .order(
    "created_at",
    {ascending:false}
   )
-  .limit(30);
+  .limit(20);
 
-  if(result.error){
-   throw result.error;
-  }
 
-  const posts=
-  result.data||[];
+  const data =
+  result.data || [];
 
-  if(!posts.length){
 
-   box.innerHTML=
-   '<div style="text-align:center;color:#777">'+
-   'আপনার কোনো Post নেই।'+
-   '</div>';
+  if(!data.length){
+
+   box.innerHTML =
+   '<div class="card empty">আপনার কোনো পোস্ট নেই।</div>';
 
    return;
 
   }
 
-  const mediaResult=
-  await db
-  .from("post_media")
-  .select("*")
-  .in(
-   "post_id",
-   posts.map(p=>p.id)
-  );
 
-  const media=
-  mediaResult.error
-  ? []
-  : (
-    mediaResult.data||[]
+  box.innerHTML="";
+
+
+  for(const post of data){
+
+   box.insertAdjacentHTML(
+    "beforeend",
+    await renderPost(post)
    );
 
-  const mediaMap={};
+  }
 
-  media.forEach(m=>{
+ }catch(e){
 
-   if(!mediaMap[m.post_id]){
-    mediaMap[m.post_id]=[];
-   }
-
-   mediaMap[m.post_id].push(m);
-
-  });
-
-  posts.forEach(post=>{
-
-   post.profiles=
-   currentProfile||{};
-
-   post.media=
-   mediaMap[post.id]||[];
-
-  });
-
-  box.innerHTML=
-  posts
-  .map(renderPost)
-  .join("");
-
- }catch(err){
-
-  console.error(
-   "MY POSTS ERROR:",
-   err
-  );
-
-  box.innerHTML=
-  '<div class="error">'+
-  escapeHTML(
-   err.message||
-   "Loading failed"
-  )+
-  '</div>';
+  box.innerHTML =
+  '<div class="card empty">পোস্ট লোড করা যায়নি।</div>';
 
  }
 
 }
 
 
+/* =========================================================
+   EDIT PROFILE
+========================================================= */
+
 function openEditProfile(){
 
- if(!currentProfile){
+ const u =
+ currentUser();
 
-  loadProfile();
+ if(!u)return;
 
-  return;
 
- }
+ $("editName").value =
+ u.name || "";
 
- $("editName").value=
- currentProfile.display_name||"";
 
- $("editBio").value=
- currentProfile.bio||"";
+ $("editBio").value =
+ u.bio || "";
 
- $("editAvatar").value=
- currentProfile.avatar_url||"";
 
- showPage("editProfilePage");
+ showPage(
+  "editProfilePage"
+ );
 
 }
 
 
 async function saveProfile(){
 
- if(!currentUser){
-  return;
- }
+ const u =
+ currentUser();
 
- const display_name=
+ if(!u)return;
+
+
+ const name =
  $("editName").value.trim();
 
- const bio=
+ const bio =
  $("editBio").value.trim();
 
- const avatar_url=
- $("editAvatar").value.trim();
 
- if(!display_name){
+ if(!name){
 
-  toast("নাম দিন।");
+  toast("নাম দিন");
+  return;
+
+ }
+
+
+ u.name=name;
+ u.bio=bio;
+
+
+ saveLocalUser(u);
+
+
+ if(db){
+
+  try{
+
+   await db
+   .from("profiles")
+   .update({
+
+    display_name:name,
+
+    bio:bio
+
+   })
+   .eq("id",u.id);
+
+  }catch(e){}
+
+ }
+
+
+ toast("প্রোফাইল আপডেট হয়েছে");
+
+ showPage("profilePage");
+
+}
+
+
+/* =========================================================
+   USER SEARCH
+========================================================= */
+
+async function doSearchUsers(){
+
+ const q =
+ $("searchInput")
+ .value
+ .trim();
+
+ const box =
+ $("searchResults");
+
+
+ if(!q)return;
+
+
+ if(!db){
+
+  box.innerHTML =
+  '<div class="card empty">Supabase সংযোগ নেই।</div>';
 
   return;
 
  }
 
+
  try{
 
-  const result=
+  const safe =
+  q.replace(/[%_]/g,"");
+
+
+  const result =
   await db
   .from("profiles")
-  .update({
-   display_name:display_name,
-   bio:bio,
-   avatar_url:avatar_url||null
-  })
-  .eq(
-   "id",
-   currentUser.id
-  );
+  .select("*")
+  .ilike(
+   "display_name",
+   "%"+safe+"%"
+  )
+  .limit(20);
+
 
   if(result.error){
    throw result.error;
   }
 
-  toast("Profile updated");
 
-  await loadProfile();
+  const data =
+  result.data || [];
 
-  showPage("profilePage");
 
- }catch(err){
+  box.innerHTML =
+  data.map(x=>`
 
-  console.error(
-   "UPDATE PROFILE ERROR:",
-   err
-  );
+   <div class="card">
 
-  toast(
-   "Profile update failed: "+
-   (
-    err.message||
-    "Unknown error"
-   )
-  );
+    <b>
+     ${escapeHTML(
+      x.display_name ||
+      x.username ||
+      "ব্যবহারকারী"
+     )}
+    </b>
+
+    <p style="color:#777">
+     ${escapeHTML(x.bio || "")}
+    </p>
+
+   </div>
+
+  `).join("")
+  ||
+  '<div class="card empty">কোনো ব্যবহারকারী পাওয়া যায়নি।</div>';
+
+
+ }catch(e){
+
+  console.error(e);
+
+  box.innerHTML =
+  '<div class="card empty">Search করা যায়নি।</div>';
 
  }
 
 }
 
 
-/* ================= PEOPLE SEARCH ================= */
+/* =========================================================
+   JOURNALIST DIRECTORY
+========================================================= */
 
-let searchTimer=null;
+const journalistAreas = {
+
+ "ঢাকা বিভাগ":[
+  "ঢাকা",
+  "ফরিদপুর",
+  "গাজীপুর",
+  "গোপালগঞ্জ",
+  "কিশোরগঞ্জ",
+  "মাদারীপুর",
+  "মানিকগঞ্জ",
+  "মুন্সীগঞ্জ",
+  "নারায়ণগঞ্জ",
+  "নরসিংদী",
+  "রাজবাড়ী",
+  "শরীয়তপুর",
+  "টাঙ্গাইল"
+ ],
+
+ "খুলনা বিভাগ":[
+  "বাগেরহাট",
+  "চুয়াডাঙ্গা",
+  "যশোর",
+  "ঝিনাইদহ",
+  "খুলনা",
+  "কুষ্টিয়া",
+  "মাগুরা",
+  "মেহেরপুর",
+  "নড়াইল",
+  "সাতক্ষীরা"
+ ],
+
+ "চট্টগ্রাম বিভাগ":[
+  "বান্দরবান",
+  "ব্রাহ্মণবাড়িয়া",
+  "চাঁদপুর",
+  "চট্টগ্রাম",
+  "কুমিল্লা",
+  "কক্সবাজার",
+  "ফেনী",
+  "খাগড়াছড়ি",
+  "লক্ষ্মীপুর",
+  "নোয়াখালী",
+  "রাঙ্গামাটি"
+ ],
+
+ "রাজশাহী বিভাগ":[
+  "বগুড়া",
+  "জয়পুরহাট",
+  "নওগাঁ",
+  "নাটোর",
+  "চাঁপাইনবাবগঞ্জ",
+  "পাবনা",
+  "রাজশাহী",
+  "সিরাজগঞ্জ"
+ ],
+
+ "সিলেট বিভাগ":[
+  "হবিগঞ্জ",
+  "মৌলভীবাজার",
+  "সুনামগঞ্জ",
+  "সিলেট"
+ ],
+
+ "রংপুর বিভাগ":[
+  "দিনাজপুর",
+  "গাইবান্ধা",
+  "কুড়িগ্রাম",
+  "লালমনিরহাট",
+  "নীলফামারী",
+  "পঞ্চগড়",
+  "রংপুর",
+  "ঠাকুরগাঁও"
+ ],
+
+ "ময়মনসিংহ বিভাগ":[
+  "জামালপুর",
+  "ময়মনসিংহ",
+  "নেত্রকোণা",
+  "শেরপুর"
+ ],
+
+ "বরিশাল বিভাগ":[
+  "বরগুনা",
+  "বরিশাল",
+  "ভোলা",
+  "ঝালকাঠি",
+  "পটুয়াখালী",
+  "পিরোজপুর"
+ ]
+
+};
 
 
-function searchUsers(value){
+const journalistContacts = [
 
- clearTimeout(searchTimer);
+ {
+  name:"Somoy News / Somoy TV",
+  division:"ঢাকা বিভাগ",
+  district:"ঢাকা",
+  type:"Official Office / Newsroom",
+  phone:"9632521-23, 30-31",
+  url:"https://www.somoynews.tv/contact-us"
+ },
 
- const q=
- value.trim();
+ {
+  name:"NTV",
+  division:"ঢাকা বিভাগ",
+  district:"ঢাকা",
+  type:"Official Office / Newsroom",
+  phone:"+880255012281-5",
+  url:"https://www.ntvbd.com/info/contact-us"
+ },
 
- const box=
- $("searchResults");
+ {
+  name:"Ekattor TV",
+  division:"ঢাকা বিভাগ",
+  district:"ঢাকা",
+  type:"Official Office",
+  phone:"+8809666717100",
+  url:"https://ekattor.tv/about"
+ },
 
- if(!q){
+ {
+  name:"RTV Newsroom",
+  division:"ঢাকা বিভাগ",
+  district:"ঢাকা",
+  type:"Official Newsroom",
+  phone:"+8801878184369-70",
+  url:"https://rtvonline.com"
+ }
 
-  box.classList.add("hidden");
+];
 
-  box.innerHTML="";
+
+function initJournalistDirectory(){
+
+ const division =
+ $("journalistDivision");
+
+
+ if(!division)return;
+
+
+ division.innerHTML =
+ '<option value="">বিভাগ নির্বাচন করুন</option>';
+
+
+ Object.keys(journalistAreas)
+ .forEach(function(name){
+
+  const option =
+  document.createElement("option");
+
+  option.value=name;
+
+  option.textContent=name;
+
+  division.appendChild(option);
+
+ });
+
+}
+
+
+function journalistDivisionChanged(){
+
+ const division =
+ $("journalistDivision");
+
+ const district =
+ $("journalistDistrict");
+
+ const result =
+ $("journalistResult");
+
+
+ if(!division || !district)return;
+
+
+ district.innerHTML =
+ '<option value="">জেলা নির্বাচন করুন</option>';
+
+ district.disabled=true;
+
+
+ if(result){
+
+  result.innerHTML="";
+
+ }
+
+
+ const selected =
+ division.value;
+
+
+ if(!selected)return;
+
+
+ (
+  journalistAreas[selected] || []
+ )
+ .forEach(function(name){
+
+  const option =
+  document.createElement("option");
+
+  option.value=name;
+
+  option.textContent=name;
+
+  district.appendChild(option);
+
+ });
+
+
+ district.disabled=false;
+
+}
+
+
+function journalistDistrictChanged(){
+
+ const result =
+ $("journalistResult");
+
+ if(result){
+
+  result.innerHTML="";
+
+ }
+
+}
+
+
+function findJournalists(){
+
+ const division =
+ $("journalistDivision")?.value || "";
+
+ const district =
+ $("journalistDistrict")?.value || "";
+
+ const result =
+ $("journalistResult");
+
+
+ if(!result)return;
+
+
+ if(!division){
+
+  result.innerHTML =
+  '<div class="journalistEmpty">প্রথমে বিভাগ নির্বাচন করুন।</div>';
 
   return;
 
  }
 
- searchTimer=
- setTimeout(
-  ()=>doSearchUsers(q),
-  350
+
+ if(!district){
+
+  result.innerHTML =
+  '<div class="journalistEmpty">জেলা নির্বাচন করুন।</div>';
+
+  return;
+
+ }
+
+
+ const matches =
+ journalistContacts.filter(
+  item =>
+   item.division === division &&
+   item.district === district
  );
 
-}
+
+ if(!matches.length){
+
+  result.innerHTML = `
+
+   <div class="journalistEmpty">
+
+    এই এলাকার জন্য বর্তমানে আলাদা
+    Verified Journalist Contact dataset পাওয়া যায়নি।
+
+    <br><br>
+
+    সরকারি PID Directory অথবা সংশ্লিষ্ট
+    সংবাদমাধ্যমের Official Contact ব্যবহার করুন।
+
+   </div>
+
+  `;
+
+  return;
+
+ }
 
 
-async function doSearchUsers(q){
+ result.innerHTML =
 
- const box=
- $("searchResults");
+ '<h3 style="color:#138a45">🔎 পাওয়া গেছে</h3>' +
 
- box.classList.remove("hidden");
+ matches.map(function(item){
 
- box.innerHTML=
- '<div class="loading">Searching...</div>';
+  return `
 
- try{
+   <div class="journalistCard">
 
-  const safeQ=
-  q.replace(
-   /[%_,]/g,
-   ""
-  );
+    <div class="journalistName">
 
-  if(!safeQ){
+     ${escapeHTML(item.name)}
 
-   box.innerHTML=
-   '<div style="text-align:center;color:#777">'+
-   'Search করুন।'+
-   '</div>';
-
-   return;
-
-  }
-
-  const result=
-  await db
-  .from("profiles")
-  .select(
-   "id,display_name,username,avatar_url,bio"
-  )
-  .or(
-   `username.ilike.%${safeQ}%,display_name.ilike.%${safeQ}%`
-  )
-  .limit(15);
-
-  if(result.error){
-   throw result.error;
-  }
-
-  const users=
-  result.data||[];
-
-  if(!users.length){
-
-   box.innerHTML=
-   '<div style="text-align:center;color:#777">'+
-   'কোনো user পাওয়া যায়নি।'+
-   '</div>';
-
-   return;
-
-  }
-
-  box.innerHTML=
-  '<div class="searchTitle">People</div>'+
-  users
-  .map(user=>{
-
-   const name=
-   user.display_name||
-   user.username||
-   "User";
-
-   return `
-    <div
-     class="searchResult"
-     onclick="openUser('${escapeHTML(user.id)}')">
-
-     <div class="row">
-
-      ${
-       user.avatar_url
-
-       ? `<img
-            class="avatar"
-            src="${escapeHTML(user.avatar_url)}">`
-
-       : `<div class="avatar">
-            ${escapeHTML(
-             String(name)
-             .charAt(0)
-             .toUpperCase()
-            )}
-          </div>`
-      }
-
-      <div>
-
-       <div style="font-weight:bold">
-        ${escapeHTML(name)}
-       </div>
-
-       <div style="font-size:12px;color:#777">
-
-        ${
-         user.username
-         ? "@"+
-           escapeHTML(
-            user.username
-           )
-         : ""
-        }
-
-       </div>
-
-      </div>
-
-     </div>
+     <span style="color:#138a45">
+      ✓ Official
+     </span>
 
     </div>
-   `;
-
-  })
-  .join("");
-
- }catch(err){
-
-  console.error(
-   "SEARCH ERROR:",
-   err
-  );
-
-  box.innerHTML=
-  '<div class="error">'+
-  escapeHTML(
-   err.message||
-   "Search failed"
-  )+
-  '</div>';
-
- }
-
-}
 
 
-async function openUser(id){
+    <div class="journalistMeta">
 
- try{
+     ${escapeHTML(item.type)}
 
-  const result=
-  await db
-  .from("profiles")
-  .select("*")
-  .eq("id",id)
-  .limit(1);
+     <br>
 
-  if(result.error){
-   throw result.error;
-  }
+     ${escapeHTML(item.division)}
+     —
+     ${escapeHTML(item.district)}
 
-  const user=
-  (result.data||[])[0];
+    </div>
 
-  if(!user){
-   return;
-  }
 
-  const name=
-  user.display_name||
-  user.username||
-  "User";
+    <div class="journalistPhone">
 
-  $("profileName").textContent=name;
+     ${escapeHTML(item.phone)}
 
-  $("profileUsername").textContent=
-  user.username
-  ? "@"+user.username
-  : "";
+    </div>
 
-  $("profileBio").textContent=
-  user.bio||"";
 
-  if(user.avatar_url){
+    <a
+     class="officialBtn"
+     href="${escapeHTML(item.url)}"
+     target="_blank"
+     rel="noopener">
 
-   $("profileAvatar").innerHTML=
-   `<img
-     class="avatar"
-     src="${escapeHTML(user.avatar_url)}"
-     style="width:90px;height:90px">`;
+     Official Contact
 
-  }else{
+    </a>
 
-   $("profileAvatar").textContent=
-   String(name)
-   .charAt(0)
-   .toUpperCase();
+   </div>
 
-  }
+  `;
 
-  $("searchResults").classList.add("hidden");
-
-  $("searchInput").value="";
-
-  showPage("profilePage");
-
-  const postBox=
-  $("myPosts");
-
-  postBox.innerHTML=
-  '<div class="loading">Loading...</div>';
-
-  const postsResult=
-  await db
-  .from("posts")
-  .select("*")
-  .eq("user_id",id)
-  .eq("status","published")
-  .order(
-   "created_at",
-   {ascending:false}
-  )
-  .limit(30);
-
-  if(postsResult.error){
-   throw postsResult.error;
-  }
-
-  const posts=
-  postsResult.data||[];
-
-  if(!posts.length){
-
-   postBox.innerHTML=
-   '<div style="text-align:center;color:#777">'+
-   'কোনো Post নেই।'+
-   '</div>';
-
-   return;
-
-  }
-
-  const mediaResult=
-  await db
-  .from("post_media")
-  .select("*")
-  .in(
-   "post_id",
-   posts.map(p=>p.id)
-  );
-
-  const media=
-  mediaResult.error
-  ? []
-  : (
-    mediaResult.data||[]
-   );
-
-  const mediaMap={};
-
-  media.forEach(m=>{
-
-   if(!mediaMap[m.post_id]){
-    mediaMap[m.post_id]=[];
-   }
-
-   mediaMap[m.post_id].push(m);
-
-  });
-
-  posts.forEach(post=>{
-
-   post.profiles=user;
-
-   post.media=
-   mediaMap[post.id]||[];
-
-  });
-
-  postBox.innerHTML=
-  posts
-  .map(renderPost)
-  .join("");
-
- }catch(err){
-
-  console.error(
-   "OPEN USER ERROR:",
-   err
-  );
-
-  toast(
-   err.message||
-   "User loading failed"
-  );
-
- }
+ }).join("");
 
 }
 
 
-/* ================= DELETE POST ================= */
-
-async function deletePost(postId){
-
- if(!currentUser){
-  return;
- }
-
- if(!confirm(
-  "এই Post delete করতে চান?"
-  )){
-  return;
- }
-
- try{
-
-  /* Verify ownership first */
-
-  const ownerCheck=
-  await db
-  .from("posts")
-  .select("id,user_id")
-  .eq("id",postId)
-  .eq("user_id",currentUser.id)
-  .limit(1);
-
-  if(ownerCheck.error){
-   throw ownerCheck.error;
-  }
-
-  if(!(ownerCheck.data||[]).length){
-
-   toast(
-    "এই Post delete করার অনুমতি আপনার নেই।"
-   );
-
-   return;
-
-  }
-
-
-  /* Delete related data */
-
-  const mediaDelete=
-  await db
-  .from("post_media")
-  .delete()
-  .eq("post_id",postId);
-
-  if(mediaDelete.error){
-   throw mediaDelete.error;
-  }
-
-
-  const commentDelete=
-  await db
-  .from("comments")
-  .delete()
-  .eq("post_id",postId);
-
-  if(commentDelete.error){
-   throw commentDelete.error;
-  }
-
-
-  const reactionDelete=
-  await db
-  .from("reactions")
-  .delete()
-  .eq("post_id",postId);
-
-  if(reactionDelete.error){
-   throw reactionDelete.error;
-  }
-
-
-  const result=
-  await db
-  .from("posts")
-  .delete()
-  .eq("id",postId)
-  .eq("user_id",currentUser.id);
-
-  if(result.error){
-   throw result.error;
-  }
-
-
-  const postEl=
-  $("post-"+postId);
-
-  if(postEl){
-   postEl.remove();
-  }
-
-
-  document
-  .querySelectorAll(".postMenuBox")
-  .forEach(menu=>{
-   menu.classList.add("hidden");
-  });
-
-
-  toast("Post deleted successfully");
-
-  loadFeed();
-
-  if(!$("profilePage").classList.contains("hidden")){
-   loadMyPosts();
-  }
-
- }catch(err){
-
-  console.error(
-   "DELETE ERROR:",
-   err
-  );
-
-  toast(
-   "Delete failed: "+
-   (
-    err.message||
-    "Unknown error"
-   )
-  );
-
- }
-
-}
-
-
-/* ================= CLOSE MENUS ================= */
-
-document.addEventListener(
- "click",
- function(e){
-
-  if(!e.target.closest(".reactionWrap")){
-
-   document
-   .querySelectorAll(".reactionMenu")
-   .forEach(menu=>{
-
-    menu.classList.add("hidden");
-
-   });
-
-  }
-
-  if(!e.target.closest(".postMenu")){
-
-   document
-   .querySelectorAll(".postMenuBox")
-   .forEach(menu=>{
-
-    menu.classList.add("hidden");
-
-   });
-
-  }
-
- }
-);
-
-
-/* ================= START ================= */
+/* =========================================================
+   START
+========================================================= */
 
 window.addEventListener(
  "load",
- ()=>{
-  restoreSession();
+ function(){
+
+  initJournalistDirectory();
+
+  setTimeout(
+   restoreSession,
+   250
+  );
+
  }
 );
+
+
+function restoreSession(){
+
+ $("boot")
+ .classList
+ .add("hidden");
+
+
+ if(currentUser()){
+
+  enterApp();
+
+ }else{
+
+  $("authPage")
+  .classList
+  .remove("hidden");
+
+ }
+
+}
 
 
 window.addEventListener(
  "error",
- function(e){
+ function(event){
 
   console.error(
-   "GLOBAL JS ERROR:",
-   e.error||
-   e.message
+   event.error ||
+   event.message
   );
 
  }
