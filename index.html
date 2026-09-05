@@ -18,6 +18,12 @@ body{
  color:#17202a;
 }
 
+/* Prevent login-page flash while session is checking */
+body.booting #authPage,
+body.booting #appPage{
+ display:none!important;
+}
+
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
@@ -268,7 +274,10 @@ button{cursor:pointer}
 
 .fileLabel input{display:none}
 
-.post{overflow:hidden}
+.post{
+ overflow:visible;
+ position:relative;
+}
 
 .postHead{
  display:flex;
@@ -336,7 +345,9 @@ button{cursor:pointer}
  color:#444;
 }
 
-.actions button:hover{background:#f0f2f5}
+.actions button:hover{
+ background:#f0f2f5;
+}
 
 .reactionWrap{
  position:relative;
@@ -374,7 +385,59 @@ button{cursor:pointer}
  font-size:20px;
 }
 
-.reactionMenu button:hover{background:#eee}
+.reactionMenu button:hover{
+ background:#eee;
+}
+
+/* Three dot menu */
+.postMenu{
+ margin-left:auto;
+ position:relative;
+}
+
+.postMenu>button{
+ width:36px;
+ height:36px;
+ border:0;
+ background:transparent;
+ border-radius:50%;
+ font-size:23px;
+ color:#555;
+}
+
+.postMenu>button:hover{
+ background:#f0f2f5;
+}
+
+.postMenuBox{
+ position:absolute;
+ right:0;
+ top:38px;
+ min-width:150px;
+ background:white;
+ border-radius:10px;
+ box-shadow:0 4px 18px #0003;
+ padding:5px;
+ z-index:200;
+}
+
+.postMenuBox button{
+ width:100%;
+ border:0;
+ background:white;
+ text-align:left;
+ padding:10px 12px;
+ border-radius:7px;
+ color:#333;
+}
+
+.postMenuBox button:hover{
+ background:#f0f2f5;
+}
+
+.postMenuBox .danger{
+ color:#b00020;
+}
 
 .commentBox{
  display:flex;
@@ -398,7 +461,9 @@ button{cursor:pointer}
  color:white;
 }
 
-.comments{margin-top:10px}
+.comments{
+ margin-top:10px;
+}
 
 .comment{
  background:#f0f2f5;
@@ -442,7 +507,9 @@ button{cursor:pointer}
  margin-top:8px;
 }
 
-.profileUsername{color:#777}
+.profileUsername{
+ color:#777;
+}
 
 .row{
  display:flex;
@@ -459,6 +526,64 @@ button{cursor:pointer}
  color:#087334;
  text-decoration:none;
  font-weight:bold;
+}
+
+.helpSection{
+ margin-top:15px;
+}
+
+.helpSection h3{
+ margin-bottom:8px;
+ color:#138a45;
+}
+
+.contactCard{
+ background:#f8faf9;
+ border:1px solid #e1ebe5;
+ border-radius:10px;
+ padding:12px;
+ margin:8px 0;
+}
+
+.contactTitle{
+ font-weight:bold;
+ margin-bottom:5px;
+}
+
+.contactNumber{
+ font-size:18px;
+ font-weight:bold;
+ color:#087334;
+}
+
+.callBtn{
+ display:inline-block;
+ margin-top:8px;
+ background:#138a45;
+ color:white;
+ padding:7px 11px;
+ border-radius:7px;
+ text-decoration:none;
+ font-weight:bold;
+}
+
+.verified{
+ display:inline-block;
+ background:#e7f7ed;
+ color:#087334;
+ padding:3px 7px;
+ border-radius:10px;
+ font-size:11px;
+ font-weight:bold;
+}
+
+.warningBox{
+ background:#fff9e8;
+ border-left:4px solid #e0a400;
+ padding:11px;
+ border-radius:7px;
+ line-height:1.6;
+ margin-top:10px;
 }
 
 .newsItem{
@@ -514,7 +639,9 @@ button{cursor:pointer}
  cursor:pointer;
 }
 
-.searchResult:hover{background:#f5f5f5}
+.searchResult:hover{
+ background:#f5f5f5;
+}
 
 .searchTitle{
  font-weight:bold;
@@ -537,7 +664,9 @@ button{cursor:pointer}
  text-align:center;
 }
 
-.toast.show{display:block}
+.toast.show{
+ display:block;
+}
 
 .loading{
  text-align:center;
@@ -553,9 +682,13 @@ button{cursor:pointer}
   gap:5px;
  }
 
- .logo{font-size:17px}
+ .logo{
+  font-size:17px;
+ }
 
- .searchBox{max-width:none}
+ .searchBox{
+  max-width:none;
+ }
 
  .searchBox input{
   padding:8px 11px;
@@ -571,15 +704,25 @@ button{cursor:pointer}
   font-size:10px;
  }
 
- .container{padding:9px}
+ .container{
+  padding:9px;
+ }
 
- .card{border-radius:9px}
+ .card{
+  border-radius:9px;
+ }
 
- .mediaGrid{grid-template-columns:1fr}
+ .mediaGrid{
+  grid-template-columns:1fr;
+ }
 
- .actions button{font-size:11px}
+ .actions button{
+  font-size:11px;
+ }
 
- .reactionMenu{left:-20px}
+ .reactionMenu{
+  left:-20px;
+ }
 
  .bottomNav button{
   min-width:55px;
@@ -590,7 +733,7 @@ button{cursor:pointer}
 </style>
 </head>
 
-<body>
+<body class="booting">
 
 <!-- ================= LOGIN ================= -->
 
@@ -612,10 +755,11 @@ button{cursor:pointer}
 
 <div class="field">
 <label>Username অথবা Phone Number</label>
-<input id="loginIdentity"
-type="text"
-placeholder="Username অথবা Phone Number"
-autocomplete="username">
+<input
+ id="loginIdentity"
+ type="text"
+ placeholder="Username অথবা Phone Number"
+ autocomplete="username">
 </div>
 
 <button class="primary" onclick="login()">
@@ -648,9 +792,7 @@ Create Account
 
 <div class="field">
 <label>Phone Number</label>
-<input id="signupPhone"
-type="text"
-placeholder="+8801XXXXXXXXX">
+<input id="signupPhone" type="text" placeholder="+8801XXXXXXXXX">
 </div>
 
 <button class="primary" onclick="signup()">
@@ -681,10 +823,10 @@ Already have an account? Login
 
 <div class="searchBox">
 <input
-id="searchInput"
-type="search"
-placeholder="🔍 Search people"
-oninput="searchUsers(this.value)">
+ id="searchInput"
+ type="search"
+ placeholder="🔍 Search people"
+ oninput="searchUsers(this.value)">
 </div>
 
 <div class="nav">
@@ -703,8 +845,6 @@ oninput="searchUsers(this.value)">
 
 
 <div class="container page">
-
-<!-- SEARCH -->
 
 <div id="searchResults" class="card hidden"></div>
 
@@ -731,8 +871,8 @@ oninput="searchUsers(this.value)">
 <div class="field">
 
 <textarea
-id="postText"
-placeholder="আপনার সমস্যা, অভিজ্ঞতা বা সচেতনতার কথা লিখুন..."></textarea>
+ id="postText"
+ placeholder="আপনার সমস্যা, অভিজ্ঞতা বা সচেতনতার কথা লিখুন..."></textarea>
 
 </div>
 
@@ -757,18 +897,12 @@ placeholder="আপনার সমস্যা, অভিজ্ঞতা বা
 
 <label class="fileLabel">
 📷 Photo
-<input id="photoInput"
-type="file"
-accept="image/*"
-multiple>
+<input id="photoInput" type="file" accept="image/*" multiple>
 </label>
 
 <label class="fileLabel">
 🎥 Video
-<input id="videoInput"
-type="file"
-accept="video/*"
-multiple>
+<input id="videoInput" type="file" accept="video/*" multiple>
 </label>
 
 <label style="display:flex;align-items:center;gap:5px">
@@ -790,12 +924,8 @@ Anonymous
 
 </div>
 
-<button class="primary"
-style="margin-top:12px"
-onclick="createPost()">
-
+<button class="primary" style="margin-top:12px" onclick="createPost()">
 Post
-
 </button>
 
 </div>
@@ -820,11 +950,7 @@ Post
 </div>
 
 <div id="feed">
-
-<div class="loading">
-Post loading...
-</div>
-
+<div class="loading">Post loading...</div>
 </div>
 
 </div>
@@ -852,16 +978,11 @@ A
 -
 </div>
 
-<div id="profileBio"
-style="margin-top:8px;color:#555">
+<div id="profileBio" style="margin-top:8px;color:#555">
 </div>
 
-<button class="secondary"
-style="margin-top:12px"
-onclick="openEditProfile()">
-
+<button class="secondary" style="margin-top:12px" onclick="openEditProfile()">
 ✏️ Edit Profile
-
 </button>
 
 </div>
@@ -899,12 +1020,10 @@ onclick="openEditProfile()">
 
 <div class="field">
 <label>Avatar URL</label>
-<input id="editAvatar"
-placeholder="https://...">
+<input id="editAvatar" placeholder="https://...">
 </div>
 
-<button class="primary"
-onclick="saveProfile()">
+<button class="primary" onclick="saveProfile()">
 Save
 </button>
 
@@ -919,33 +1038,231 @@ Cancel
 </div>
 
 
-<!-- ================= HELP ================= -->
+<!-- ================= HELP DESK ================= -->
 
 <div id="helpPage" class="hidden">
 
-<div class="card helpLinks">
+<div class="card">
 
-<h2>🆘 Help</h2>
+<h2 style="margin-top:0">
+🆘 Help Desk
+</h2>
 
-<p style="color:#666">
-জরুরি বা আইনগত সহায়তার প্রয়োজন হলে নিচের সরকারি/বিশ্বস্ত সেবাগুলো ব্যবহার করুন।
+<p style="color:#666;line-height:1.6">
+জরুরি পরিস্থিতি, দুর্নীতি, পুলিশি সহায়তা বা সংবাদমাধ্যমে তথ্য দেওয়ার প্রয়োজন হলে নিচের নির্ভরযোগ্য যোগাযোগগুলো ব্যবহার করুন।
 </p>
 
-<a href="https://acc.org.bd" target="_blank">
-দুর্নীতি দমন কমিশন (ACC)
+<div class="helpSection">
+
+<h3>🚨 জরুরি পুলিশ সহায়তা</h3>
+
+<div class="contactCard">
+
+<div class="contactTitle">
+জাতীয় জরুরি সেবা
+<span class="verified">✓ Verified</span>
+</div>
+
+<div class="contactNumber">
+999
+</div>
+
+<a class="callBtn" href="tel:999">
+📞 Call 999
 </a>
 
-<a href="https://www.police.gov.bd" target="_blank">
-বাংলাদেশ পুলিশ
+</div>
+
+</div>
+
+
+<div class="helpSection">
+
+<h3>👮 বাংলাদেশ পুলিশ</h3>
+
+<div class="contactCard">
+
+<div class="contactTitle">
+বাংলাদেশ পুলিশ — Police Headquarters
+<span class="verified">✓ Official</span>
+</div>
+
+<div>
+Operation Control Room
+</div>
+
+<div class="contactNumber">
+01320-001299
+</div>
+
+<a class="callBtn" href="tel:01320001299">
+📞 Call
 </a>
 
-<a href="https://gd.police.gov.bd" target="_blank">
-Online GD
+<br>
+
+<div class="contactNumber" style="margin-top:8px">
+01320-001300
+</div>
+
+<a class="callBtn" href="tel:01320001300">
+📞 Call
 </a>
 
-<a href="tel:999">
-📞 জরুরি সেবা 999
+</div>
+
+<a class="helpLinks"
+href="https://www.police.gov.bd"
+target="_blank">
+বাংলাদেশ পুলিশের Official Website
 </a>
+
+<a class="helpLinks"
+href="https://gd.police.gov.bd"
+target="_blank">
+Online GD — Official
+</a>
+
+</div>
+
+
+<div class="helpSection">
+
+<h3>🏢 জেলা পুলিশ</h3>
+
+<div class="contactCard">
+
+<div class="contactTitle">
+জেলার পুলিশ সুপার (SP)
+<span class="verified">✓ Official Police Directory</span>
+</div>
+
+<p style="line-height:1.6">
+প্রতিটি জেলার বর্তমান SP-এর official mobile/contact দেখতে বাংলাদেশ পুলিশের অফিসিয়াল তালিকা ব্যবহার করুন।
+</p>
+
+<a class="callBtn"
+href="https://www.police.gov.bd/en/সেবা_প্রদান_প্রতিশ্রুতি"
+target="_blank">
+📋 জেলা পুলিশের Contact List
+</a>
+
+</div>
+
+<div class="warningBox">
+⚠️ জেলা/উপজেলার ব্যক্তিগত পুলিশ কর্মকর্তার নম্বর পরিবর্তন হতে পারে। তাই যাচাই ছাড়া কোনো নম্বরকে স্থায়ী নম্বর হিসেবে দেখানো হচ্ছে না।
+</div>
+
+</div>
+
+
+<!-- DUDOK -->
+
+<div class="helpSection">
+
+<h3>🛡️ দুর্নীতি দমন কমিশন (দুদক)</h3>
+
+<div class="contactCard">
+
+<div class="contactTitle">
+দুদক অভিযোগকেন্দ্র
+<span class="verified">✓ Official ACC</span>
+</div>
+
+<div class="contactNumber">
+106
+</div>
+
+<p style="line-height:1.6">
+দুদকের official toll-free অভিযোগ hotline।
+</p>
+
+<a class="callBtn" href="tel:106">
+📞 Call 106
+</a>
+
+</div>
+
+<div class="contactCard">
+
+<div class="contactTitle">
+দুদক Email
+</div>
+
+<div style="font-weight:bold">
+chairman@acc.org.bd
+</div>
+
+</div>
+
+<a class="helpLinks"
+href="https://acc.org.bd"
+target="_blank">
+দুদকের Official Website
+</a>
+
+</div>
+
+
+<!-- JOURNALIST -->
+
+<div class="helpSection">
+
+<h3>📰 সাংবাদিক / সংবাদমাধ্যম</h3>
+
+<div class="contactCard">
+
+<div class="contactTitle">
+সরকারি PID Media/Journalist Directory
+<span class="verified">✓ Government Source</span>
+</div>
+
+<p style="line-height:1.7">
+বিভাগ, জেলা ও বিভিন্ন সংবাদমাধ্যমের সাংবাদিক/মিডিয়া contact খুঁজতে সরকারি তথ্য ও সম্প্রচার মন্ত্রণালয়ের অধীন PID-এর Telephone Guide ব্যবহার করুন।
+</p>
+
+<a class="callBtn"
+href="https://pressinform.gov.bd"
+target="_blank">
+📋 PID Official Directory
+</a>
+
+</div>
+
+<div class="warningBox">
+⚠️ সাংবাদিকদের নাম ও মোবাইল নম্বর নিয়মিত পরিবর্তন হতে পারে। তাই যাচাই ছাড়া কোনো ব্যক্তির নম্বরকে “বর্তমান Verified Journalist” হিসেবে প্রকাশ করা হবে না। ইউনিয়ন পর্যায়ের সাংবাদিকের ক্ষেত্রেও সংশ্লিষ্ট সংবাদমাধ্যম/PID-এর বর্তমান পরিচয় যাচাই করা উচিত।
+</div>
+
+</div>
+
+
+<!-- REPORTING -->
+
+<div class="helpSection">
+
+<h3>📢 অভিযোগ করার আগে</h3>
+
+<div class="contactCard">
+
+<ul style="line-height:1.8;margin-bottom:0;padding-left:20px">
+
+<li>ঘটনার তারিখ ও স্থান লিখে রাখুন।</li>
+
+<li>যথাসম্ভব বৈধ প্রমাণ সংরক্ষণ করুন।</li>
+
+<li>কারও ব্যক্তিগত তথ্য অপ্রয়োজনে প্রকাশ করবেন না।</li>
+
+<li>মিথ্যা অভিযোগ বা যাচাই না করা তথ্য প্রকাশ করবেন না।</li>
+
+<li>জরুরি বিপদে আগে 999-এ যোগাযোগ করুন।</li>
+
+<li>দুর্নীতির অভিযোগে দুদকের 106 ব্যবহার করতে পারেন।</li>
+
+</ul>
+
+</div>
+
+</div>
 
 </div>
 
@@ -963,216 +1280,134 @@ Online GD
 </h2>
 
 <p style="margin-bottom:0;color:#666">
-বাংলাদেশ ও বিশ্বের গুরুত্বপূর্ণ সংবাদমাধ্যমের সর্বশেষ খবর দেখতে ভিজিট করুন।
+বাংলাদেশ ও বিশ্বের গুরুত্বপূর্ণ সংবাদমাধ্যমের খবর দেখতে ভিজিট করুন।
 </p>
 
 </div>
 
-
 <div class="card">
-
-<!-- BBC -->
 
 <div class="newsItem">
 
 <div class="newsIcon">🌍</div>
 
 <div>
-
 <a href="https://www.bbc.com/bengali" target="_blank">
-
 <h3>BBC News বাংলা</h3>
-
-<p>
-বাংলাদেশ ও বিশ্বের খবর — BBC-এর বাংলা সংবাদ।
-</p>
-
+<p>বাংলাদেশ ও বিশ্বের খবর।</p>
 </a>
-
 </div>
 
 </div>
 
-
-<!-- Prothom Alo -->
 
 <div class="newsItem">
 
 <div class="newsIcon">📰</div>
 
 <div>
-
 <a href="https://www.prothomalo.com" target="_blank">
-
 <h3>প্রথম আলো</h3>
-
-<p>
-বাংলাদেশ, রাজনীতি, অর্থনীতি, খেলাধুলা ও বিশ্বের খবর।
-</p>
-
+<p>বাংলাদেশ ও আন্তর্জাতিক সংবাদ।</p>
 </a>
-
 </div>
 
 </div>
 
-
-<!-- bdnews24 -->
 
 <div class="newsItem">
 
 <div class="newsIcon">🔴</div>
 
 <div>
-
 <a href="https://bdnews24.com" target="_blank">
-
 <h3>bdnews24.com</h3>
-
-<p>
-বাংলাদেশ ও আন্তর্জাতিক সংবাদ।
-</p>
-
+<p>বাংলাদেশ ও আন্তর্জাতিক সংবাদ।</p>
 </a>
-
 </div>
 
 </div>
 
-
-<!-- Somoy -->
 
 <div class="newsItem">
 
 <div class="newsIcon">📺</div>
 
 <div>
-
 <a href="https://www.somoynews.tv" target="_blank">
-
 <h3>Somoy TV</h3>
-
-<p>
-বাংলাদেশের টেলিভিশন ও অনলাইন সংবাদ।
-</p>
-
+<p>সর্বশেষ সংবাদ ও প্রতিবেদন।</p>
 </a>
-
 </div>
 
 </div>
 
-
-<!-- Jamuna -->
 
 <div class="newsItem">
 
 <div class="newsIcon">📺</div>
 
 <div>
-
 <a href="https://jamuna.tv" target="_blank">
-
 <h3>Jamuna TV</h3>
-
-<p>
-দেশের সর্বশেষ সংবাদ ও বিশেষ প্রতিবেদন।
-</p>
-
+<p>দেশের সর্বশেষ সংবাদ।</p>
 </a>
-
 </div>
 
 </div>
 
-
-<!-- Channel 24 -->
 
 <div class="newsItem">
 
 <div class="newsIcon">📺</div>
 
 <div>
-
 <a href="https://www.channel24bd.tv" target="_blank">
-
 <h3>Channel 24</h3>
-
-<p>
-বাংলাদেশ ও আন্তর্জাতিক সংবাদ।
-</p>
-
+<p>বাংলাদেশ ও আন্তর্জাতিক সংবাদ।</p>
 </a>
-
 </div>
 
 </div>
 
-
-<!-- Ekattor -->
 
 <div class="newsItem">
 
 <div class="newsIcon">📺</div>
 
 <div>
-
 <a href="https://ekattor.tv" target="_blank">
-
 <h3>Ekattor TV</h3>
-
-<p>
-সর্বশেষ দেশি ও আন্তর্জাতিক খবর।
-</p>
-
+<p>সর্বশেষ দেশি ও আন্তর্জাতিক খবর।</p>
 </a>
-
 </div>
 
 </div>
 
-
-<!-- News24 -->
 
 <div class="newsItem">
 
 <div class="newsIcon">📺</div>
 
 <div>
-
 <a href="https://www.news24bd.tv" target="_blank">
-
 <h3>News24</h3>
-
-<p>
-বাংলাদেশের সর্বশেষ সংবাদ।
-</p>
-
+<p>বাংলাদেশের সর্বশেষ সংবাদ।</p>
 </a>
-
 </div>
 
 </div>
 
-
-<!-- The Daily Star -->
 
 <div class="newsItem">
 
 <div class="newsIcon">⭐</div>
 
 <div>
-
 <a href="https://www.thedailystar.net" target="_blank">
-
 <h3>The Daily Star</h3>
-
-<p>
-বাংলাদেশের ইংরেজি সংবাদপত্র।
-</p>
-
+<p>বাংলাদেশের ইংরেজি সংবাদপত্র।</p>
 </a>
-
 </div>
 
 </div>
@@ -1302,26 +1537,21 @@ function showPage(pageId){
 
  });
 
-
  const page=$(pageId);
 
  if(page){
   page.classList.remove("hidden");
  }
 
-
  $("searchResults").classList.add("hidden");
-
 
  if(pageId==="homePage"){
   loadAwareness();
  }
 
-
  if(pageId==="publicPostPage"){
   loadFeed();
  }
-
 
  if(pageId==="profilePage"){
   loadProfile();
@@ -1355,144 +1585,120 @@ async function signup(){
  const name=$("signupName").value.trim();
 
  const username=
-  $("signupUsername").value.trim().toLowerCase();
+ $("signupUsername").value.trim().toLowerCase();
 
  const phone=
-  normalizePhone($("signupPhone").value);
+ normalizePhone($("signupPhone").value);
 
  $("signupMsg").innerHTML="";
-
 
  if(!name || !username || !phone){
 
   $("signupMsg").innerHTML=
-   '<div class="error">সব তথ্য পূরণ করুন।</div>';
+  '<div class="error">সব তথ্য পূরণ করুন।</div>';
 
   return;
 
  }
-
 
  if(username.length<3){
 
   $("signupMsg").innerHTML=
-   '<div class="error">Username কমপক্ষে ৩ অক্ষরের হতে হবে।</div>';
+  '<div class="error">Username কমপক্ষে ৩ অক্ষরের হতে হবে।</div>';
 
   return;
 
  }
 
-
  try{
 
   const checkUsername=
-   await db
-   .from("profiles")
-   .select("id")
-   .eq("username",username)
-   .limit(1);
-
+  await db
+  .from("profiles")
+  .select("id")
+  .eq("username",username)
+  .limit(1);
 
   if(checkUsername.error){
    throw checkUsername.error;
   }
 
-
   if((checkUsername.data||[]).length){
 
    $("signupMsg").innerHTML=
-    '<div class="error">এই Username আগে থেকেই আছে।</div>';
+   '<div class="error">এই Username আগে থেকেই আছে।</div>';
 
    return;
 
   }
 
-
   const checkPhone=
-   await db
-   .from("profiles")
-   .select("id")
-   .eq("phone",phone)
-   .limit(1);
-
+  await db
+  .from("profiles")
+  .select("id")
+  .eq("phone",phone)
+  .limit(1);
 
   if(checkPhone.error){
    throw checkPhone.error;
   }
 
-
   if((checkPhone.data||[]).length){
 
    $("signupMsg").innerHTML=
-    '<div class="error">এই Phone Number দিয়ে ইতিমধ্যে account আছে।</div>';
+   '<div class="error">এই Phone Number দিয়ে ইতিমধ্যে account আছে।</div>';
 
    return;
 
   }
 
-
   const {data,error}=await db
-   .from("profiles")
-   .insert({
-    display_name:name,
-    username:username,
-    phone:phone,
-    role:"user"
-   })
-   .select("*")
-   .limit(1);
-
+  .from("profiles")
+  .insert({
+   display_name:name,
+   username:username,
+   phone:phone,
+   role:"user"
+  })
+  .select("*")
+  .limit(1);
 
   if(error){
    throw error;
   }
 
-
   const user=(data||[])[0];
-
 
   if(!user){
    throw new Error("Account তৈরি হয়নি।");
   }
 
-
   localStorage.setItem(
    STORAGE_KEY,
-   JSON.stringify({
-    id:user.id
-   })
+   JSON.stringify({id:user.id})
   );
 
-
-  currentUser={
-   id:user.id
-  };
-
-
+  currentUser={id:user.id};
   currentProfile=user;
 
-
   $("signupMsg").innerHTML=
-   '<div class="success">Account সফলভাবে তৈরি হয়েছে।</div>';
-
+  '<div class="success">Account সফলভাবে তৈরি হয়েছে।</div>';
 
   setTimeout(()=>{
    enterApp();
-  },500);
-
+  },300);
 
  }catch(err){
 
   console.error("SIGNUP ERROR:",err);
 
-
   $("signupMsg").innerHTML=
-   '<div class="error">'+
-   escapeHTML(
-    err.message||
-    "Account তৈরি করতে সমস্যা হয়েছে।"
-   )+
-   '</div>';
+  '<div class="error">'+
+  escapeHTML(
+   err.message||
+   "Account তৈরি করতে সমস্যা হয়েছে।"
+  )+
+  '</div>';
 
  }
 
@@ -1502,182 +1708,149 @@ async function signup(){
 async function login(){
 
  const identity=
-  $("loginIdentity").value.trim();
+ $("loginIdentity").value.trim();
 
  $("loginMsg").innerHTML="";
-
 
  if(!identity){
 
   $("loginMsg").innerHTML=
-   '<div class="error">Username অথবা Phone Number দিন।</div>';
+  '<div class="error">Username অথবা Phone Number দিন।</div>';
 
   return;
 
  }
 
-
  $("loginMsg").innerHTML=
-  '<div class="status">Account খোঁজা হচ্ছে...</div>';
-
+ '<div class="status">Account খোঁজা হচ্ছে...</div>';
 
  try{
 
   let result=
-   await db
-   .from("profiles")
-   .select("*")
-   .ilike("username",identity)
-   .limit(1);
-
+  await db
+  .from("profiles")
+  .select("*")
+  .ilike("username",identity)
+  .limit(1);
 
   if(result.error){
    throw result.error;
   }
 
-
   let user=
-   (result.data||[])[0]||
-   null;
-
+  (result.data||[])[0]||
+  null;
 
   if(!user){
 
    const phone=
-    normalizePhone(identity);
-
+   normalizePhone(identity);
 
    const phoneResult=
-    await db
-    .from("profiles")
-    .select("*")
-    .eq("phone",phone)
-    .limit(1);
-
+   await db
+   .from("profiles")
+   .select("*")
+   .eq("phone",phone)
+   .limit(1);
 
    if(phoneResult.error){
     throw phoneResult.error;
    }
 
-
    user=
-    (phoneResult.data||[])[0]||
-    null;
+   (phoneResult.data||[])[0]||
+   null;
 
   }
-
 
   if(!user){
 
    $("loginMsg").innerHTML=
-    '<div class="error">No account found.</div>';
+   '<div class="error">No account found.</div>';
 
    return;
 
   }
 
-
-  currentUser={
-   id:user.id
-  };
-
-
+  currentUser={id:user.id};
   currentProfile=user;
-
 
   localStorage.setItem(
    STORAGE_KEY,
-   JSON.stringify({
-    id:user.id
-   })
+   JSON.stringify({id:user.id})
   );
 
-
-  $("loginMsg").innerHTML=
-   '<div class="success">Login successful.</div>';
-
-
-  setTimeout(()=>{
-   enterApp();
-  },300);
-
+  enterApp();
 
  }catch(err){
 
   console.error("LOGIN ERROR:",err);
 
-
   $("loginMsg").innerHTML=
-   '<div class="error">'+
-   escapeHTML(
-    err.message||
-    "Login failed."
-   )+
-   '</div>';
+  '<div class="error">'+
+  escapeHTML(
+   err.message||
+   "Login failed."
+  )+
+  '</div>';
 
  }
 
 }
 
 
+/* FIXED REFRESH SESSION */
+
 async function restoreSession(){
 
  const saved=
-  localStorage.getItem(STORAGE_KEY);
-
+ localStorage.getItem(STORAGE_KEY);
 
  if(!saved){
-  return;
- }
 
+  showAuth();
+
+  return;
+
+ }
 
  try{
 
   const obj=
-   JSON.parse(saved);
-
+  JSON.parse(saved);
 
   if(!obj.id){
-   return;
+   throw new Error("Invalid session");
   }
 
-
   const {data,error}=
-   await db
-   .from("profiles")
-   .select("*")
-   .eq("id",obj.id)
-   .limit(1);
-
+  await db
+  .from("profiles")
+  .select("*")
+  .eq("id",obj.id)
+  .limit(1);
 
   if(error){
    throw error;
   }
 
-
   const user=
-   (data||[])[0];
-
+  (data||[])[0];
 
   if(!user){
 
    localStorage.removeItem(STORAGE_KEY);
 
+   showAuth();
+
    return;
 
   }
 
-
-  currentUser={
-   id:user.id
-  };
-
-
+  currentUser={id:user.id};
   currentProfile=user;
 
-
   enterApp();
-
 
  }catch(err){
 
@@ -1686,21 +1859,37 @@ async function restoreSession(){
    err
   );
 
+  localStorage.removeItem(STORAGE_KEY);
 
-  localStorage.removeItem(
-   STORAGE_KEY
-  );
+  showAuth();
 
  }
 
 }
 
 
+function showAuth(){
+
+ $("appPage").classList.add("hidden");
+
+ $("authPage").style.display="flex";
+
+ document.body.classList.remove("booting");
+
+ showLogin();
+
+}
+
+
 function enterApp(){
+
+ $("authPage").style.display="none";
 
  $("authPage").classList.add("hidden");
 
  $("appPage").classList.remove("hidden");
+
+ document.body.classList.remove("booting");
 
  showPage("homePage");
 
@@ -1715,13 +1904,13 @@ function logout(){
 
  currentProfile=null;
 
- localStorage.removeItem(
-  STORAGE_KEY
- );
+ localStorage.removeItem(STORAGE_KEY);
 
  $("appPage").classList.add("hidden");
 
  $("authPage").classList.remove("hidden");
+
+ $("authPage").style.display="flex";
 
  $("loginIdentity").value="";
 
@@ -1779,14 +1968,10 @@ async function loadAwareness(){
 
  let text="";
 
-
  try{
 
   const {data,error}=
-   await db.rpc(
-    "get_daily_awareness"
-   );
-
+  await db.rpc("get_daily_awareness");
 
   if(!error && data){
 
@@ -1800,18 +1985,18 @@ async function loadAwareness(){
    ){
 
     text=
-     data[0]?.text||
-     data[0]?.sentence||
-     "";
+    data[0]?.text||
+    data[0]?.sentence||
+    "";
 
    }else if(
     typeof data==="object"
    ){
 
     text=
-     data.text||
-     data.sentence||
-     "";
+    data.text||
+    data.sentence||
+    "";
 
    }
 
@@ -1819,32 +2004,26 @@ async function loadAwareness(){
 
  }catch(err){
 
-  console.log(
-   "Awareness RPC unavailable"
-  );
+  console.log("Awareness RPC unavailable");
 
  }
-
 
  if(!text){
 
   const day=
-   Math.floor(
-    Date.now()/
-    (1000*60*60*24)
-   );
-
+  Math.floor(
+   Date.now()/
+   (1000*60*60*24)
+  );
 
   text=
-   awarenessFallback[
-    day%awarenessFallback.length
-   ];
+  awarenessFallback[
+   day%awarenessFallback.length
+  ];
 
  }
 
-
- $("awarenessText").textContent=
-  text;
+ $("awarenessText").textContent=text;
 
 }
 
@@ -1861,86 +2040,67 @@ async function createPost(){
 
  }
 
-
  const text=
-  $("postText").value.trim();
-
+ $("postText").value.trim();
 
  const category=
-  $("postCategory").value;
-
+ $("postCategory").value;
 
  const isAnonymous=
-  $("anonymousPost").checked;
-
+ $("anonymousPost").checked;
 
  const rules=
-  $("rulesConfirm").checked;
-
+ $("rulesConfirm").checked;
 
  const photos=[
   ...($("photoInput").files||[])
  ];
 
-
  const videos=[
   ...($("videoInput").files||[])
  ];
-
 
  const files=[
   ...photos,
   ...videos
  ];
 
-
  if(!text && !files.length){
 
-  toast(
-   "Post-এর জন্য কিছু লিখুন বা ছবি/video দিন।"
-  );
+  toast("Post-এর জন্য কিছু লিখুন বা ছবি/video দিন।");
 
   return;
 
  }
-
 
  if(files.length>10){
 
-  toast(
-   "একটি post-এ সর্বোচ্চ ১০টি media দেওয়া যাবে।"
-  );
+  toast("একটি post-এ সর্বোচ্চ ১০টি media দেওয়া যাবে।");
 
   return;
 
  }
-
 
  if(!rules){
 
-  toast(
-   "Rules confirmation দিন।"
-  );
+  toast("Rules confirmation দিন।");
 
   return;
 
  }
-
 
  try{
 
   const profileResult=
-   await db
-   .from("profiles")
-   .select("id")
-   .eq("id",currentUser.id)
-   .limit(1);
-
+  await db
+  .from("profiles")
+  .select("id")
+  .eq("id",currentUser.id)
+  .limit(1);
 
   if(profileResult.error){
    throw profileResult.error;
   }
-
 
   if(!(profileResult.data||[]).length){
 
@@ -1950,73 +2110,60 @@ async function createPost(){
 
   }
 
-
   const {data:postData,error:postError}=
-   await db
-   .from("posts")
-   .insert({
-    user_id:currentUser.id,
-    content:text,
-    category:category,
-    is_anonymous:isAnonymous,
-    status:"published"
-   })
-   .select("*")
-   .limit(1);
-
+  await db
+  .from("posts")
+  .insert({
+   user_id:currentUser.id,
+   content:text,
+   category:category,
+   is_anonymous:isAnonymous,
+   status:"published"
+  })
+  .select("*")
+  .limit(1);
 
   if(postError){
    throw postError;
   }
 
-
   const post=
-   (postData||[])[0];
-
+  (postData||[])[0];
 
   if(!post){
-
-   throw new Error(
-    "Post তৈরি হয়নি।"
-   );
-
+   throw new Error("Post তৈরি হয়নি।");
   }
-
 
   for(const file of files){
 
    const safeName=
-    file.name
-    .replace(
-     /[^a-zA-Z0-9._-]/g,
-     "_"
-    );
-
+   file.name.replace(
+    /[^a-zA-Z0-9._-]/g,
+    "_"
+   );
 
    const path=
-    currentUser.id+
-    "/"+
-    Date.now()+
-    "_"+
-    Math.random()
-     .toString(36)
-     .slice(2)+
-    "_"+
-    safeName;
-
+   currentUser.id+
+   "/"+
+   Date.now()+
+   "_"+
+   Math.random()
+    .toString(36)
+    .slice(2)+
+   "_"+
+   safeName;
 
    const upload=
-    await db.storage
-    .from("media")
-    .upload(
-     path,
-     file,
-     {
-      cacheControl:"3600",
-      upsert:false
-     }
-    );
-
+   await db.storage
+   .from("media")
+   .upload(
+    path,
+    file,
+    {
+     cacheControl:"3600",
+     upsert:false
+    }
+   );
 
    if(upload.error){
 
@@ -2029,29 +2176,25 @@ async function createPost(){
 
    }
 
-
    const publicUrl=
-    db.storage
-    .from("media")
-    .getPublicUrl(path)
-    .data.publicUrl;
-
+   db.storage
+   .from("media")
+   .getPublicUrl(path)
+   .data.publicUrl;
 
    const mediaType=
-    file.type.startsWith("video/")
-    ? "video"
-    : "image";
-
+   file.type.startsWith("video/")
+   ? "video"
+   : "image";
 
    const mediaInsert=
-    await db
-    .from("post_media")
-    .insert({
-     post_id:post.id,
-     media_url:publicUrl,
-     media_type:mediaType
-    });
-
+   await db
+   .from("post_media")
+   .insert({
+    post_id:post.id,
+    media_url:publicUrl,
+    media_type:mediaType
+   });
 
    if(mediaInsert.error){
 
@@ -2064,25 +2207,15 @@ async function createPost(){
 
   }
 
-
   $("postText").value="";
-
   $("photoInput").value="";
-
   $("videoInput").value="";
-
   $("anonymousPost").checked=false;
-
   $("rulesConfirm").checked=false;
 
-
-  toast(
-   "Post সফল হয়েছে।"
-  );
-
+  toast("Post সফল হয়েছে।");
 
   showPage("publicPostPage");
-
 
  }catch(err){
 
@@ -2090,7 +2223,6 @@ async function createPost(){
    "CREATE POST ERROR:",
    err
   );
-
 
   toast(
    "Post failed: "+
@@ -2111,45 +2243,39 @@ async function loadFeed(){
 
  const feed=$("feed");
 
-
  feed.innerHTML=
-  '<div class="loading">Post loading...</div>';
-
+ '<div class="loading">Post loading...</div>';
 
  try{
 
   const postResult=
-   await db
-   .from("posts")
-   .select("*")
-   .eq("status","published")
-   .order(
-    "created_at",
-    {ascending:false}
-   )
-   .limit(50);
-
+  await db
+  .from("posts")
+  .select("*")
+  .eq("status","published")
+  .order(
+   "created_at",
+   {ascending:false}
+  )
+  .limit(50);
 
   if(postResult.error){
    throw postResult.error;
   }
 
-
   const posts=
-   postResult.data||[];
-
+  postResult.data||[];
 
   if(!posts.length){
 
    feed.innerHTML=
-    '<div class="card" style="text-align:center;color:#777">'+
-    'এখনও কোনো Public Post নেই। প্রথম Post করুন।'+
-    '</div>';
+   '<div class="card" style="text-align:center;color:#777">'+
+   'এখনও কোনো Public Post নেই। প্রথম Post করুন।'+
+   '</div>';
 
    return;
 
   }
-
 
   const ids=[
    ...new Set(
@@ -2159,75 +2285,63 @@ async function loadFeed(){
    )
   ];
 
-
   let profiles=[];
-
 
   if(ids.length){
 
    const profileResult=
-    await db
-    .from("profiles")
-    .select("*")
-    .in("id",ids);
-
+   await db
+   .from("profiles")
+   .select("*")
+   .in("id",ids);
 
    if(!profileResult.error){
 
     profiles=
-     profileResult.data||[];
+    profileResult.data||[];
 
    }
 
   }
 
-
   const userMap={};
-
 
   profiles.forEach(profile=>{
    userMap[profile.id]=profile;
   });
 
-
   posts.forEach(post=>{
    post.profiles=
-    userMap[post.user_id]||{};
+   userMap[post.user_id]||{};
   });
 
-
   const postIds=
-   posts.map(p=>p.id);
-
+  posts.map(p=>p.id);
 
   let media=[];
-
 
   if(postIds.length){
 
    const mediaResult=
-    await db
-    .from("post_media")
-    .select("*")
-    .in("post_id",postIds)
-    .order(
-     "created_at",
-     {ascending:true}
-    );
-
+   await db
+   .from("post_media")
+   .select("*")
+   .in("post_id",postIds)
+   .order(
+    "created_at",
+    {ascending:true}
+   );
 
    if(!mediaResult.error){
 
     media=
-     mediaResult.data||[];
+    mediaResult.data||[];
 
    }
 
   }
 
-
   const mediaMap={};
-
 
   media.forEach(m=>{
 
@@ -2239,16 +2353,13 @@ async function loadFeed(){
 
   });
 
-
   posts.forEach(post=>{
    post.media=
-    mediaMap[post.id]||[];
+   mediaMap[post.id]||[];
   });
 
-
   feed.innerHTML=
-   posts.map(renderPost).join("");
-
+  posts.map(renderPost).join("");
 
  }catch(err){
 
@@ -2257,15 +2368,14 @@ async function loadFeed(){
    err
   );
 
-
   feed.innerHTML=
-   '<div class="card error">'+
-   'Post loading failed: '+
-   escapeHTML(
-    err.message||
-    "Unknown error"
-   )+
-   '</div>';
+  '<div class="card error">'+
+  'Post loading failed: '+
+  escapeHTML(
+   err.message||
+   "Unknown error"
+  )+
+  '</div>';
 
  }
 
@@ -2277,116 +2387,140 @@ async function loadFeed(){
 function renderPost(post){
 
  const profile=
-  post.profiles||{};
-
+ post.profiles||{};
 
  const isAnonymous=
-  post.is_anonymous===true;
-
+ post.is_anonymous===true;
 
  const displayName=
-  isAnonymous
-  ? "Anonymous"
-  : (
-   profile.display_name||
-   profile.username||
-   "User"
-  );
-
+ isAnonymous
+ ? "Anonymous"
+ : (
+  profile.display_name||
+  profile.username||
+  "User"
+ );
 
  const username=
-  isAnonymous
-  ? ""
-  : (
-   profile.username
-   ? "@"+profile.username
-   : ""
-  );
-
+ isAnonymous
+ ? ""
+ : (
+  profile.username
+  ? "@"+profile.username
+  : ""
+ );
 
  const avatar=
-  !isAnonymous &&
-  profile.avatar_url
+ !isAnonymous &&
+ profile.avatar_url
 
-  ? `<img class="avatar"
-       src="${escapeHTML(profile.avatar_url)}"
-       onerror="this.style.display='none'">`
+ ? `<img class="avatar"
+      src="${escapeHTML(profile.avatar_url)}"
+      onerror="this.style.display='none'">`
 
-  : `<div class="avatar">
-      ${
-       isAnonymous
-       ? "👤"
-       : escapeHTML(
-        String(displayName)
-        .charAt(0)
-        .toUpperCase()
-       )
-      }
-     </div>`;
-
+ : `<div class="avatar">
+     ${
+      isAnonymous
+      ? "👤"
+      : escapeHTML(
+       String(displayName)
+       .charAt(0)
+       .toUpperCase()
+      )
+     }
+    </div>`;
 
  const date=
-  post.created_at
-  ? new Date(
-     post.created_at
-    ).toLocaleString("bn-BD")
-  : "";
-
+ post.created_at
+ ? new Date(
+    post.created_at
+   ).toLocaleString("bn-BD")
+ : "";
 
  let mediaHTML="";
-
 
  if(post.media && post.media.length){
 
   mediaHTML=
-   `<div class="mediaGrid">`+
+  `<div class="mediaGrid">`+
 
-   post.media
-   .map(m=>{
+  post.media
+  .map(m=>{
 
-    const url=
-     escapeHTML(
-      m.media_url||""
-     );
+   const url=
+   escapeHTML(
+    m.media_url||""
+   );
 
-
-    if(
-     m.media_type==="video"||
-     url.match(
-      /\.(mp4|webm|ogg)(\?|$)/i
-     )
-    ){
-
-     return `
-      <video
-       src="${url}"
-       controls
-       preload="metadata">
-      </video>
-     `;
-
-    }
-
+   if(
+    m.media_type==="video"||
+    url.match(
+     /\.(mp4|webm|ogg)(\?|$)/i
+    )
+   ){
 
     return `
-     <img
+     <video
       src="${url}"
-      loading="lazy"
-      alt="Post image">
+      controls
+      preload="metadata">
+     </video>
     `;
 
-   })
-   .join("")+
+   }
 
-   `</div>`;
+   return `
+    <img
+     src="${url}"
+     loading="lazy"
+     alt="Post image">
+   `;
+
+  })
+  .join("")+
+
+  `</div>`;
 
  }
 
 
+ /* ONLY OWNER CAN SEE DELETE */
+
+ const ownerMenu=
+ currentUser &&
+ !isAnonymous &&
+ post.user_id===currentUser.id
+
+ ? `
+ <div class="postMenu">
+
+  <button
+   aria-label="Post menu"
+   onclick="togglePostMenu('${escapeHTML(post.id)}')">
+   ⋮
+  </button>
+
+  <div
+   id="postMenu-${escapeHTML(post.id)}"
+   class="postMenuBox hidden">
+
+   <button
+    class="danger"
+    onclick="deletePost('${escapeHTML(post.id)}')">
+    🗑️ Delete Post
+   </button>
+
+  </div>
+
+ </div>
+ `
+ : "";
+
+
  return `
  <article
- class="card post"
- id="post-${escapeHTML(post.id)}">
+  class="card post"
+  id="post-${escapeHTML(post.id)}">
 
   <div class="postHead">
 
@@ -2415,6 +2549,8 @@ function renderPost(post){
     </div>
 
    </div>
+
+   ${ownerMenu}
 
   </div>
 
@@ -2446,38 +2582,31 @@ function renderPost(post){
      ❤️ React
     </button>
 
-
     <div
      id="reaction-${escapeHTML(post.id)}"
      class="reactionMenu hidden">
 
-     <button
-      onclick="react('${escapeHTML(post.id)}','like')">
+     <button onclick="react('${escapeHTML(post.id)}','like')">
       👍
      </button>
 
-     <button
-      onclick="react('${escapeHTML(post.id)}','love')">
+     <button onclick="react('${escapeHTML(post.id)}','love')">
       ❤️
      </button>
 
-     <button
-      onclick="react('${escapeHTML(post.id)}','haha')">
+     <button onclick="react('${escapeHTML(post.id)}','haha')">
       😂
      </button>
 
-     <button
-      onclick="react('${escapeHTML(post.id)}','wow')">
+     <button onclick="react('${escapeHTML(post.id)}','wow')">
       😮
      </button>
 
-     <button
-      onclick="react('${escapeHTML(post.id)}','sad')">
+     <button onclick="react('${escapeHTML(post.id)}','sad')">
       😢
      </button>
 
-     <button
-      onclick="react('${escapeHTML(post.id)}','angry')">
+     <button onclick="react('${escapeHTML(post.id)}','angry')">
       😡
      </button>
 
@@ -2525,22 +2654,44 @@ function renderPost(post){
 }
 
 
-/* ================= REACTIONS ================= */
+/* ================= THREE DOT ================= */
 
-function toggleReactionMenu(postId){
+function togglePostMenu(postId){
 
  const menu=
-  $("reaction-"+postId);
-
+ $("postMenu-"+postId);
 
  if(!menu){
   return;
  }
 
+ document
+ .querySelectorAll(".postMenuBox")
+ .forEach(box=>{
 
- menu.classList.toggle(
-  "hidden"
- );
+  if(box!==menu){
+   box.classList.add("hidden");
+  }
+
+ });
+
+ menu.classList.toggle("hidden");
+
+}
+
+
+/* ================= REACTIONS ================= */
+
+function toggleReactionMenu(postId){
+
+ const menu=
+ $("reaction-"+postId);
+
+ if(!menu){
+  return;
+ }
+
+ menu.classList.toggle("hidden");
 
 }
 
@@ -2559,77 +2710,53 @@ async function react(postId,type){
 
  if(!currentUser){
 
-  toast(
-   "আগে Login করুন।"
-  );
+  toast("আগে Login করুন।");
 
   return;
 
  }
 
-
  try{
 
   const result=
-   await db
-   .from("reactions")
-   .select("id,reaction_type")
-   .eq(
-    "post_id",
-    postId
-   )
-   .eq(
-    "user_id",
-    currentUser.id
-   )
-   .limit(1);
-
+  await db
+  .from("reactions")
+  .select("id,reaction_type")
+  .eq("post_id",postId)
+  .eq("user_id",currentUser.id)
+  .limit(1);
 
   if(result.error){
    throw result.error;
   }
 
-
   const existing=
-   (result.data||[])[0]||
-   null;
-
+  (result.data||[])[0]||
+  null;
 
   if(existing){
 
-   if(
-    existing.reaction_type===
-    type
-   ){
+   if(existing.reaction_type===type){
 
     const del=
-     await db
-     .from("reactions")
-     .delete()
-     .eq(
-      "id",
-      existing.id
-     );
-
+    await db
+    .from("reactions")
+    .delete()
+    .eq("id",existing.id);
 
     if(del.error){
      throw del.error;
     }
 
-
    }else{
 
     const update=
-     await db
-     .from("reactions")
-     .update({
-      reaction_type:type
-     })
-     .eq(
-      "id",
-      existing.id
-     );
-
+    await db
+    .from("reactions")
+    .update({
+     reaction_type:type
+    })
+    .eq("id",existing.id);
 
     if(update.error){
      throw update.error;
@@ -2637,18 +2764,16 @@ async function react(postId,type){
 
    }
 
-
   }else{
 
    const insert=
-    await db
-    .from("reactions")
-    .insert({
-     post_id:postId,
-     user_id:currentUser.id,
-     reaction_type:type
-    });
-
+   await db
+   .from("reactions")
+   .insert({
+    post_id:postId,
+    user_id:currentUser.id,
+    reaction_type:type
+   });
 
    if(insert.error){
     throw insert.error;
@@ -2656,15 +2781,12 @@ async function react(postId,type){
 
   }
 
-
   const menu=
-   $("reaction-"+postId);
-
+  $("reaction-"+postId);
 
   if(menu){
    menu.classList.add("hidden");
   }
-
 
   toast(
    type==="like"
@@ -2672,14 +2794,12 @@ async function react(postId,type){
    : "Reaction দেওয়া হয়েছে"
   );
 
-
  }catch(err){
 
   console.error(
    "REACTION ERROR:",
    err
   );
-
 
   toast(
    "Reaction failed: "+
@@ -2699,8 +2819,7 @@ async function react(postId,type){
 function focusComment(postId){
 
  const input=
-  $("commentInput-"+postId);
-
+ $("commentInput-"+postId);
 
  if(input){
 
@@ -2713,7 +2832,6 @@ function focusComment(postId){
 
  }
 
-
  loadComments(postId);
 
 }
@@ -2723,68 +2841,50 @@ async function addComment(postId){
 
  if(!currentUser){
 
-  toast(
-   "আগে Login করুন।"
-  );
+  toast("আগে Login করুন।");
 
   return;
 
  }
 
-
  const input=
-  $("commentInput-"+postId);
-
+ $("commentInput-"+postId);
 
  if(!input){
   return;
  }
 
-
  const text=
-  input.value.trim();
-
+ input.value.trim();
 
  if(!text){
 
-  toast(
-   "Comment লিখুন।"
-  );
+  toast("Comment লিখুন।");
 
   return;
 
  }
 
-
  try{
 
   const {error}=
-   await db
-   .from("comments")
-   .insert({
-    post_id:postId,
-    user_id:currentUser.id,
-    content:text
-   });
-
+  await db
+  .from("comments")
+  .insert({
+   post_id:postId,
+   user_id:currentUser.id,
+   content:text
+  });
 
   if(error){
    throw error;
   }
 
-
   input.value="";
 
+  await loadComments(postId);
 
-  await loadComments(
-   postId
-  );
-
-
-  toast(
-   "Comment added"
-  );
-
+  toast("Comment added");
 
  }catch(err){
 
@@ -2792,7 +2892,6 @@ async function addComment(postId){
    "COMMENT ERROR:",
    err
   );
-
 
   toast(
    "Comment failed: "+
@@ -2810,38 +2909,30 @@ async function addComment(postId){
 async function loadComments(postId){
 
  const box=
-  $("comments-"+postId);
-
+ $("comments-"+postId);
 
  if(!box){
   return;
  }
 
-
  try{
 
   const result=
-   await db
-   .from("comments")
-   .select("*")
-   .eq(
-    "post_id",
-    postId
-   )
-   .order(
-    "created_at",
-    {ascending:true}
-   );
-
+  await db
+  .from("comments")
+  .select("*")
+  .eq("post_id",postId)
+  .order(
+   "created_at",
+   {ascending:true}
+  );
 
   if(result.error){
    throw result.error;
   }
 
-
   const comments=
-   result.data||[];
-
+  result.data||[];
 
   if(!comments.length){
 
@@ -2851,7 +2942,6 @@ async function loadComments(postId){
 
   }
 
-
   const ids=[
    ...new Set(
     comments
@@ -2860,70 +2950,59 @@ async function loadComments(postId){
    )
   ];
 
-
   let profiles=[];
-
 
   if(ids.length){
 
    const profileResult=
-    await db
-    .from("profiles")
-    .select("*")
-    .in("id",ids);
-
+   await db
+   .from("profiles")
+   .select("*")
+   .in("id",ids);
 
    if(!profileResult.error){
 
     profiles=
-     profileResult.data||[];
+    profileResult.data||[];
 
    }
 
   }
 
-
   const userMap={};
-
 
   profiles.forEach(p=>{
    userMap[p.id]=p;
   });
 
-
   box.innerHTML=
-   comments
-   .map(comment=>{
+  comments
+  .map(comment=>{
 
-    const profile=
-     userMap[comment.user_id]||{};
+   const profile=
+   userMap[comment.user_id]||{};
 
+   const name=
+   profile.display_name||
+   profile.username||
+   "User";
 
-    const name=
-     profile.display_name||
-     profile.username||
-     "User";
+   return `
+    <div class="comment">
 
-
-    return `
-     <div class="comment">
-
-      <div class="commentName">
-       ${escapeHTML(name)}
-      </div>
-
-      <div class="commentText">
-       ${escapeHTML(
-        comment.content||""
-       )}
-      </div>
-
+     <div class="commentName">
+      ${escapeHTML(name)}
      </div>
-    `;
 
-   })
-   .join("");
+     <div class="commentText">
+      ${escapeHTML(comment.content||"")}
+     </div>
 
+    </div>
+   `;
+
+  })
+  .join("");
 
  }catch(err){
 
@@ -2932,11 +3011,10 @@ async function loadComments(postId){
    err
   );
 
-
   box.innerHTML=
-   '<div style="color:#b00020;font-size:13px">'+
-   'Comment loading failed'+
-   '</div>';
+  '<div style="color:#b00020;font-size:13px">'+
+  'Comment loading failed'+
+  '</div>';
 
  }
 
@@ -2948,9 +3026,8 @@ async function loadComments(postId){
 async function sharePost(postId){
 
  const url=
-  location.href.split("#")[0]+
-  "#post-"+postId;
-
+ location.href.split("#")[0]+
+ "#post-"+postId;
 
  try{
 
@@ -2962,18 +3039,11 @@ async function sharePost(postId){
     url:url
    });
 
-
   }else if(navigator.clipboard){
 
-   await navigator.clipboard.writeText(
-    url
-   );
+   await navigator.clipboard.writeText(url);
 
-
-   toast(
-    "Post link copied"
-   );
-
+   toast("Post link copied");
 
   }else{
 
@@ -2984,12 +3054,9 @@ async function sharePost(postId){
 
   }
 
-
  }catch(err){
 
-  console.log(
-   "Share cancelled"
-  );
+  console.log("Share cancelled");
 
  }
 
@@ -3004,76 +3071,62 @@ async function loadProfile(){
   return;
  }
 
-
  try{
 
   const result=
-   await db
-   .from("profiles")
-   .select("*")
-   .eq("id",currentUser.id)
-   .limit(1);
-
+  await db
+  .from("profiles")
+  .select("*")
+  .eq("id",currentUser.id)
+  .limit(1);
 
   if(result.error){
    throw result.error;
   }
 
-
   const profile=
-   (result.data||[])[0];
-
+  (result.data||[])[0];
 
   if(!profile){
    return;
   }
 
-
-  currentProfile=
-   profile;
-
+  currentProfile=profile;
 
   const name=
-   profile.display_name||
-   profile.username||
-   "User";
+  profile.display_name||
+  profile.username||
+  "User";
 
-
-  $("profileName").textContent=
-   name;
-
+  $("profileName").textContent=name;
 
   $("profileUsername").textContent=
-   profile.username
-   ? "@"+profile.username
-   : "";
-
+  profile.username
+  ? "@"+profile.username
+  : "";
 
   $("profileBio").textContent=
-   profile.bio||"";
-
+  profile.bio||"";
 
   if(profile.avatar_url){
 
    $("profileAvatar").innerHTML=
-    `<img
-      class="avatar"
-      src="${escapeHTML(profile.avatar_url)}"
-      style="width:90px;height:90px"
-      onerror="this.style.display='none'">`;
+   `<img
+     class="avatar"
+     src="${escapeHTML(profile.avatar_url)}"
+     style="width:90px;height:90px"
+     onerror="this.style.display='none'">`;
 
   }else{
 
    $("profileAvatar").textContent=
-    String(name)
-    .charAt(0)
-    .toUpperCase();
+   String(name)
+   .charAt(0)
+   .toUpperCase();
 
   }
 
-
   loadMyPosts();
-
 
  }catch(err){
 
@@ -3090,71 +3143,59 @@ async function loadProfile(){
 async function loadMyPosts(){
 
  const box=
-  $("myPosts");
-
+ $("myPosts");
 
  box.innerHTML=
-  '<div class="loading">Loading...</div>';
-
+ '<div class="loading">Loading...</div>';
 
  try{
 
   const result=
-   await db
-   .from("posts")
-   .select("*")
-   .eq(
-    "user_id",
-    currentUser.id
-   )
-   .order(
-    "created_at",
-    {ascending:false}
-   )
-   .limit(30);
-
+  await db
+  .from("posts")
+  .select("*")
+  .eq("user_id",currentUser.id)
+  .order(
+   "created_at",
+   {ascending:false}
+  )
+  .limit(30);
 
   if(result.error){
    throw result.error;
   }
 
-
   const posts=
-   result.data||[];
-
+  result.data||[];
 
   if(!posts.length){
 
    box.innerHTML=
-    '<div style="text-align:center;color:#777">'+
-    'আপনার কোনো Post নেই।'+
-    '</div>';
+   '<div style="text-align:center;color:#777">'+
+   'আপনার কোনো Post নেই।'+
+   '</div>';
 
    return;
 
   }
 
-
   const mediaResult=
-   await db
-   .from("post_media")
-   .select("*")
-   .in(
-    "post_id",
-    posts.map(p=>p.id)
-   );
-
+  await db
+  .from("post_media")
+  .select("*")
+  .in(
+   "post_id",
+   posts.map(p=>p.id)
+  );
 
   const media=
-   mediaResult.error
-   ? []
-   : (
-     mediaResult.data||[]
-    );
-
+  mediaResult.error
+  ? []
+  : (
+    mediaResult.data||[]
+   );
 
   const mediaMap={};
-
 
   media.forEach(m=>{
 
@@ -3166,23 +3207,20 @@ async function loadMyPosts(){
 
   });
 
-
   posts.forEach(post=>{
 
    post.profiles=
-    currentProfile||{};
+   currentProfile||{};
 
    post.media=
-    mediaMap[post.id]||[];
+   mediaMap[post.id]||[];
 
   });
 
-
   box.innerHTML=
-   posts
-   .map(renderPost)
-   .join("");
-
+  posts
+  .map(renderPost)
+  .join("");
 
  }catch(err){
 
@@ -3191,14 +3229,13 @@ async function loadMyPosts(){
    err
   );
 
-
   box.innerHTML=
-   '<div class="error">'+
-   escapeHTML(
-    err.message||
-    "Loading failed"
-   )+
-   '</div>';
+  '<div class="error">'+
+  escapeHTML(
+   err.message||
+   "Loading failed"
+  )+
+  '</div>';
 
  }
 
@@ -3215,22 +3252,16 @@ function openEditProfile(){
 
  }
 
-
  $("editName").value=
-  currentProfile.display_name||"";
-
+ currentProfile.display_name||"";
 
  $("editBio").value=
-  currentProfile.bio||"";
-
+ currentProfile.bio||"";
 
  $("editAvatar").value=
-  currentProfile.avatar_url||"";
+ currentProfile.avatar_url||"";
 
-
- showPage(
-  "editProfilePage"
- );
+ showPage("editProfilePage");
 
 }
 
@@ -3241,63 +3272,47 @@ async function saveProfile(){
   return;
  }
 
-
  const display_name=
-  $("editName").value.trim();
-
+ $("editName").value.trim();
 
  const bio=
-  $("editBio").value.trim();
-
+ $("editBio").value.trim();
 
  const avatar_url=
-  $("editAvatar").value.trim();
-
+ $("editAvatar").value.trim();
 
  if(!display_name){
 
-  toast(
-   "নাম দিন।"
-  );
+  toast("নাম দিন।");
 
   return;
 
  }
 
-
  try{
 
   const result=
-   await db
-   .from("profiles")
-   .update({
-    display_name:display_name,
-    bio:bio,
-    avatar_url:avatar_url||null
-   })
-   .eq(
-    "id",
-    currentUser.id
-   );
-
+  await db
+  .from("profiles")
+  .update({
+   display_name:display_name,
+   bio:bio,
+   avatar_url:avatar_url||null
+  })
+  .eq(
+   "id",
+   currentUser.id
+  );
 
   if(result.error){
    throw result.error;
   }
 
-
-  toast(
-   "Profile updated"
-  );
-
+  toast("Profile updated");
 
   await loadProfile();
 
-
-  showPage(
-   "profilePage"
-  );
-
+  showPage("profilePage");
 
  }catch(err){
 
@@ -3305,7 +3320,6 @@ async function saveProfile(){
    "UPDATE PROFILE ERROR:",
    err
   );
-
 
   toast(
    "Profile update failed: "+
@@ -3327,24 +3341,17 @@ let searchTimer=null;
 
 function searchUsers(value){
 
- clearTimeout(
-  searchTimer
- );
-
+ clearTimeout(searchTimer);
 
  const q=
-  value.trim();
-
+ value.trim();
 
  const box=
-  $("searchResults");
-
+ $("searchResults");
 
  if(!q){
 
-  box.classList.add(
-   "hidden"
-  );
+  box.classList.add("hidden");
 
   box.innerHTML="";
 
@@ -3352,12 +3359,11 @@ function searchUsers(value){
 
  }
 
-
  searchTimer=
-  setTimeout(
-   ()=>doSearchUsers(q),
-   350
-  );
+ setTimeout(
+  ()=>doSearchUsers(q),
+  350
+ );
 
 }
 
@@ -3365,136 +3371,122 @@ function searchUsers(value){
 async function doSearchUsers(q){
 
  const box=
-  $("searchResults");
+ $("searchResults");
 
-
- box.classList.remove(
-  "hidden"
- );
-
+ box.classList.remove("hidden");
 
  box.innerHTML=
-  '<div class="loading">Searching...</div>';
-
+ '<div class="loading">Searching...</div>';
 
  try{
 
   const safeQ=
-   q.replace(
-    /[%_,]/g,
-    ""
-   );
-
+  q.replace(
+   /[%_,]/g,
+   ""
+  );
 
   if(!safeQ){
 
    box.innerHTML=
-    '<div style="text-align:center;color:#777">'+
-    'Search করুন।'+
-    '</div>';
+   '<div style="text-align:center;color:#777">'+
+   'Search করুন।'+
+   '</div>';
 
    return;
 
   }
 
-
   const result=
-   await db
-   .from("profiles")
-   .select(
-    "id,display_name,username,avatar_url,bio"
-   )
-   .or(
-    `username.ilike.%${safeQ}%,display_name.ilike.%${safeQ}%`
-   )
-   .limit(15);
-
+  await db
+  .from("profiles")
+  .select(
+   "id,display_name,username,avatar_url,bio"
+  )
+  .or(
+   `username.ilike.%${safeQ}%,display_name.ilike.%${safeQ}%`
+  )
+  .limit(15);
 
   if(result.error){
    throw result.error;
   }
 
-
   const users=
-   result.data||[];
-
+  result.data||[];
 
   if(!users.length){
 
    box.innerHTML=
-    '<div style="text-align:center;color:#777">'+
-    'কোনো user পাওয়া যায়নি।'+
-    '</div>';
+   '<div style="text-align:center;color:#777">'+
+   'কোনো user পাওয়া যায়নি।'+
+   '</div>';
 
    return;
 
   }
 
-
   box.innerHTML=
-   '<div class="searchTitle">People</div>'+
-   users
-   .map(user=>{
+  '<div class="searchTitle">People</div>'+
+  users
+  .map(user=>{
 
-    const name=
-     user.display_name||
-     user.username||
-     "User";
+   const name=
+   user.display_name||
+   user.username||
+   "User";
 
+   return `
+    <div
+     class="searchResult"
+     onclick="openUser('${escapeHTML(user.id)}')">
 
-    return `
-     <div
-      class="searchResult"
-      onclick="openUser('${escapeHTML(user.id)}')">
+     <div class="row">
 
-      <div class="row">
+      ${
+       user.avatar_url
 
-       ${
-        user.avatar_url
+       ? `<img
+            class="avatar"
+            src="${escapeHTML(user.avatar_url)}">`
 
-        ? `<img
-             class="avatar"
-             src="${escapeHTML(user.avatar_url)}">`
+       : `<div class="avatar">
+            ${escapeHTML(
+             String(name)
+             .charAt(0)
+             .toUpperCase()
+            )}
+          </div>`
+      }
 
-        : `<div class="avatar">
-             ${escapeHTML(
-              String(name)
-              .charAt(0)
-              .toUpperCase()
-             )}
-           </div>`
-       }
+      <div>
 
+       <div style="font-weight:bold">
+        ${escapeHTML(name)}
+       </div>
 
-       <div>
+       <div style="font-size:12px;color:#777">
 
-        <div style="font-weight:bold">
-         ${escapeHTML(name)}
-        </div>
-
-        <div style="font-size:12px;color:#777">
-
-         ${
-          user.username
-          ? "@"+
-            escapeHTML(
-             user.username
-            )
-          : ""
-         }
-
-        </div>
+        ${
+         user.username
+         ? "@"+
+           escapeHTML(
+            user.username
+           )
+         : ""
+        }
 
        </div>
 
       </div>
 
      </div>
-    `;
 
-   })
-   .join("");
+    </div>
+   `;
 
+  })
+  .join("");
 
  }catch(err){
 
@@ -3503,14 +3495,13 @@ async function doSearchUsers(q){
    err
   );
 
-
   box.innerHTML=
-   '<div class="error">'+
-   escapeHTML(
-    err.message||
-    "Search failed"
-   )+
-   '</div>';
+  '<div class="error">'+
+  escapeHTML(
+   err.message||
+   "Search failed"
+  )+
+  '</div>';
 
  }
 
@@ -3522,140 +3513,114 @@ async function openUser(id){
  try{
 
   const result=
-   await db
-   .from("profiles")
-   .select("*")
-   .eq("id",id)
-   .limit(1);
-
+  await db
+  .from("profiles")
+  .select("*")
+  .eq("id",id)
+  .limit(1);
 
   if(result.error){
    throw result.error;
   }
 
-
   const user=
-   (result.data||[])[0];
-
+  (result.data||[])[0];
 
   if(!user){
    return;
   }
 
-
   const name=
-   user.display_name||
-   user.username||
-   "User";
+  user.display_name||
+  user.username||
+  "User";
 
-
-  $("profileName").textContent=
-   name;
-
+  $("profileName").textContent=name;
 
   $("profileUsername").textContent=
-   user.username
-   ? "@"+user.username
-   : "";
-
+  user.username
+  ? "@"+user.username
+  : "";
 
   $("profileBio").textContent=
-   user.bio||"";
-
+  user.bio||"";
 
   if(user.avatar_url){
 
    $("profileAvatar").innerHTML=
-    `<img
-      class="avatar"
-      src="${escapeHTML(user.avatar_url)}"
-      style="width:90px;height:90px">`;
+   `<img
+     class="avatar"
+     src="${escapeHTML(user.avatar_url)}"
+     style="width:90px;height:90px">`;
 
   }else{
 
    $("profileAvatar").textContent=
-    String(name)
-    .charAt(0)
-    .toUpperCase();
+   String(name)
+   .charAt(0)
+   .toUpperCase();
 
   }
 
-
-  $("searchResults").classList.add(
-   "hidden"
-  );
-
+  $("searchResults").classList.add("hidden");
 
   $("searchInput").value="";
 
-
-  showPage(
-   "profilePage"
-  );
-
+  showPage("profilePage");
 
   const postBox=
-   $("myPosts");
-
+  $("myPosts");
 
   postBox.innerHTML=
-   '<div class="loading">Loading...</div>';
-
+  '<div class="loading">Loading...</div>';
 
   const postsResult=
-   await db
-   .from("posts")
-   .select("*")
-   .eq("user_id",id)
-   .eq("status","published")
-   .order(
-    "created_at",
-    {ascending:false}
-   )
-   .limit(30);
-
+  await db
+  .from("posts")
+  .select("*")
+  .eq("user_id",id)
+  .eq("status","published")
+  .order(
+   "created_at",
+   {ascending:false}
+  )
+  .limit(30);
 
   if(postsResult.error){
    throw postsResult.error;
   }
 
-
   const posts=
-   postsResult.data||[];
-
+  postsResult.data||[];
 
   if(!posts.length){
 
    postBox.innerHTML=
-    '<div style="text-align:center;color:#777">'+
-    'কোনো Post নেই।'+
-    '</div>';
+   '<div style="text-align:center;color:#777">'+
+   'কোনো Post নেই।'+
+   '</div>';
 
    return;
 
   }
 
-
   const mediaResult=
-   await db
-   .from("post_media")
-   .select("*")
-   .in(
-    "post_id",
-    posts.map(p=>p.id)
-   );
-
+  await db
+  .from("post_media")
+  .select("*")
+  .in(
+   "post_id",
+   posts.map(p=>p.id)
+  );
 
   const media=
-   mediaResult.error
-   ? []
-   : (
-     mediaResult.data||[]
-    );
-
+  mediaResult.error
+  ? []
+  : (
+    mediaResult.data||[]
+   );
 
   const mediaMap={};
-
 
   media.forEach(m=>{
 
@@ -3667,22 +3632,19 @@ async function openUser(id){
 
   });
 
-
   posts.forEach(post=>{
 
    post.profiles=user;
 
    post.media=
-    mediaMap[post.id]||[];
+   mediaMap[post.id]||[];
 
   });
 
-
   postBox.innerHTML=
-   posts
-   .map(renderPost)
-   .join("");
-
+  posts
+  .map(renderPost)
+  .join("");
 
  }catch(err){
 
@@ -3690,7 +3652,6 @@ async function openUser(id){
    "OPEN USER ERROR:",
    err
   );
-
 
   toast(
    err.message||
@@ -3710,69 +3671,108 @@ async function deletePost(postId){
   return;
  }
 
-
  if(!confirm(
   "এই Post delete করতে চান?"
   )){
   return;
  }
 
-
  try{
 
+  /* Verify ownership first */
+
+  const ownerCheck=
   await db
-   .from("post_media")
-   .delete()
-   .eq(
-    "post_id",
-    postId
+  .from("posts")
+  .select("id,user_id")
+  .eq("id",postId)
+  .eq("user_id",currentUser.id)
+  .limit(1);
+
+  if(ownerCheck.error){
+   throw ownerCheck.error;
+  }
+
+  if(!(ownerCheck.data||[]).length){
+
+   toast(
+    "এই Post delete করার অনুমতি আপনার নেই।"
    );
 
+   return;
 
+  }
+
+
+  /* Delete related data */
+
+  const mediaDelete=
   await db
-   .from("comments")
-   .delete()
-   .eq(
-    "post_id",
-    postId
-   );
+  .from("post_media")
+  .delete()
+  .eq("post_id",postId);
+
+  if(mediaDelete.error){
+   throw mediaDelete.error;
+  }
 
 
+  const commentDelete=
   await db
-   .from("reactions")
-   .delete()
-   .eq(
-    "post_id",
-    postId
-   );
+  .from("comments")
+  .delete()
+  .eq("post_id",postId);
+
+  if(commentDelete.error){
+   throw commentDelete.error;
+  }
+
+
+  const reactionDelete=
+  await db
+  .from("reactions")
+  .delete()
+  .eq("post_id",postId);
+
+  if(reactionDelete.error){
+   throw reactionDelete.error;
+  }
 
 
   const result=
-   await db
-   .from("posts")
-   .delete()
-   .eq(
-    "id",
-    postId
-   )
-   .eq(
-    "user_id",
-    currentUser.id
-   );
-
+  await db
+  .from("posts")
+  .delete()
+  .eq("id",postId)
+  .eq("user_id",currentUser.id);
 
   if(result.error){
    throw result.error;
   }
 
 
-  toast(
-   "Post deleted"
-  );
+  const postEl=
+  $("post-"+postId);
 
+  if(postEl){
+   postEl.remove();
+  }
+
+
+  document
+  .querySelectorAll(".postMenuBox")
+  .forEach(menu=>{
+   menu.classList.add("hidden");
+  });
+
+
+  toast("Post deleted successfully");
 
   loadFeed();
 
+  if(!$("profilePage").classList.contains("hidden")){
+   loadMyPosts();
+  }
 
  }catch(err){
 
@@ -3780,7 +3780,6 @@ async function deletePost(postId){
    "DELETE ERROR:",
    err
   );
-
 
   toast(
    "Delete failed: "+
@@ -3795,27 +3794,31 @@ async function deletePost(postId){
 }
 
 
-/* ================= CLOSE REACTION MENU ================= */
+/* ================= CLOSE MENUS ================= */
 
 document.addEventListener(
  "click",
  function(e){
 
-  if(
-   !e.target.closest(
-    ".reactionWrap"
-   )
-  ){
+  if(!e.target.closest(".reactionWrap")){
 
    document
-   .querySelectorAll(
-    ".reactionMenu"
-   )
+   .querySelectorAll(".reactionMenu")
    .forEach(menu=>{
 
-    menu.classList.add(
-     "hidden"
-    );
+    menu.classList.add("hidden");
+
+   });
+
+  }
+
+  if(!e.target.closest(".postMenu")){
+
+   document
+   .querySelectorAll(".postMenuBox")
+   .forEach(menu=>{
+
+    menu.classList.add("hidden");
 
    });
 
