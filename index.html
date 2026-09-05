@@ -30,32 +30,34 @@ button{cursor:pointer}
 --muted:#9fb5a7;
 --border:#1e4931;
 --danger:#e45757;
---gold:#d8b44a
 }
 
 #toast{
 position:fixed;
 top:18px;
 right:18px;
-z-index:9999;
+z-index:99999;
 padding:13px 18px;
 border-radius:12px;
 background:#173b26;
 border:1px solid var(--border);
 box-shadow:0 12px 30px #0008;
 max-width:330px;
-display:none
+display:none;
+line-height:1.5;
 }
 
 #toast.error{
 background:#451b1b;
-border-color:#783333
+border-color:#783333;
 }
 
 #toast.success{
 background:#123b25;
-border-color:#26794a
+border-color:#26794a;
 }
+
+/* AUTH */
 
 .auth-wrap{
 min-height:100vh;
@@ -66,7 +68,7 @@ padding:20px;
 background:
 radial-gradient(circle at top right,#164f2d55,transparent 35%),
 radial-gradient(circle at bottom left,#123b2555,transparent 35%),
-var(--bg)
+var(--bg);
 }
 
 .auth-card{
@@ -76,14 +78,14 @@ background:#0b1d13;
 border:1px solid var(--border);
 border-radius:24px;
 padding:28px;
-box-shadow:0 25px 70px #0008
+box-shadow:0 25px 70px #0008;
 }
 
 .logo{
 display:flex;
 align-items:center;
 gap:12px;
-margin-bottom:22px
+margin-bottom:22px;
 }
 
 .logo-icon{
@@ -93,18 +95,18 @@ border-radius:14px;
 display:grid;
 place-items:center;
 background:linear-gradient(135deg,#22c96b,#08733c);
-font-size:25px
+font-size:25px;
 }
 
 .logo h1{
 margin:0;
-font-size:26px
+font-size:26px;
 }
 
 .logo small{
 display:block;
 color:var(--muted);
-margin-top:3px
+margin-top:3px;
 }
 
 .tabs{
@@ -112,7 +114,7 @@ display:flex;
 background:#07150f;
 border-radius:12px;
 padding:4px;
-margin-bottom:20px
+margin-bottom:20px;
 }
 
 .tabs button{
@@ -121,23 +123,23 @@ border:0;
 background:transparent;
 color:var(--muted);
 padding:11px;
-border-radius:9px
+border-radius:9px;
 }
 
 .tabs button.active{
 background:#16472a;
-color:white
+color:white;
 }
 
 .field{
-margin-bottom:15px
+margin-bottom:15px;
 }
 
 .field label{
 display:block;
 color:#bcd1c3;
 font-size:14px;
-margin-bottom:7px
+margin-bottom:7px;
 }
 
 input,textarea,select{
@@ -147,19 +149,19 @@ border:1px solid #245337;
 color:white;
 border-radius:11px;
 padding:12px 13px;
-outline:none
+outline:none;
 }
 
 input:focus,
 textarea:focus,
 select:focus{
 border-color:var(--green);
-box-shadow:0 0 0 3px #25c46a18
+box-shadow:0 0 0 3px #25c46a18;
 }
 
 textarea{
 min-height:120px;
-resize:vertical
+resize:vertical;
 }
 
 .primary{
@@ -169,12 +171,12 @@ border-radius:12px;
 padding:13px;
 background:linear-gradient(135deg,#25c46a,#159957);
 color:white;
-font-weight:bold
+font-weight:bold;
 }
 
 .primary:disabled{
 opacity:.6;
-cursor:not-allowed
+cursor:not-allowed;
 }
 
 .secondary{
@@ -182,7 +184,7 @@ border:1px solid var(--border);
 background:#10281a;
 color:white;
 border-radius:10px;
-padding:10px 14px
+padding:10px 14px;
 }
 
 .danger{
@@ -190,7 +192,7 @@ border:1px solid #743535;
 background:#3a1717;
 color:#ffb1b1;
 border-radius:10px;
-padding:10px 14px
+padding:10px 14px;
 }
 
 .muted{color:var(--muted)}
@@ -200,11 +202,13 @@ padding:10px 14px
 color:#8fa99a;
 font-size:12px;
 line-height:1.6;
-margin-top:14px
+margin-top:14px;
 }
 
+/* APP */
+
 .app{
-min-height:100vh
+min-height:100vh;
 }
 
 .topbar{
@@ -213,7 +217,7 @@ top:0;
 z-index:100;
 background:#081910ee;
 backdrop-filter:blur(15px);
-border-bottom:1px solid var(--border)
+border-bottom:1px solid var(--border);
 }
 
 .topbar-inner{
@@ -223,7 +227,7 @@ min-height:64px;
 padding:10px 16px;
 display:flex;
 align-items:center;
-gap:14px
+gap:14px;
 }
 
 .brand{
@@ -231,7 +235,7 @@ display:flex;
 align-items:center;
 gap:9px;
 font-weight:bold;
-white-space:nowrap
+white-space:nowrap;
 }
 
 .brand-icon{
@@ -240,14 +244,14 @@ height:35px;
 display:grid;
 place-items:center;
 background:#1b713e;
-border-radius:10px
+border-radius:10px;
 }
 
 .nav{
 display:flex;
 gap:5px;
 overflow:auto;
-flex:1
+flex:1;
 }
 
 .nav button{
@@ -256,19 +260,19 @@ border:0;
 background:transparent;
 color:#a9beaf;
 padding:9px 11px;
-border-radius:9px
+border-radius:9px;
 }
 
 .nav button.active,
 .nav button:hover{
 background:#12351f;
-color:white
+color:white;
 }
 
 .user-mini{
 display:flex;
 align-items:center;
-gap:8px
+gap:8px;
 }
 
 .avatar{
@@ -279,19 +283,19 @@ display:grid;
 place-items:center;
 background:linear-gradient(135deg,#269c58,#0d5530);
 font-weight:bold;
-flex:none
+flex:none;
 }
 
 .container{
 max-width:1180px;
 margin:auto;
-padding:22px 16px 60px
+padding:22px 16px 60px;
 }
 
 .grid{
 display:grid;
 grid-template-columns:minmax(0,1fr) 330px;
-gap:20px
+gap:20px;
 }
 
 @media(max-width:850px){
@@ -307,65 +311,65 @@ border:1px solid var(--border);
 border-radius:18px;
 padding:18px;
 margin-bottom:16px;
-box-shadow:0 10px 35px #0002
+box-shadow:0 10px 35px #0002;
 }
 
 .card-title{
 font-size:18px;
 font-weight:bold;
-margin:0 0 12px
+margin:0 0 12px;
 }
 
 .hero{
 padding:25px;
 background:
-linear-gradient(135deg,#103e23,#0b2117 55%,#0d2b1b)
+linear-gradient(135deg,#103e23,#0b2117 55%,#0d2b1b);
 }
 
 .hero h2{
 margin:0 0 7px;
-font-size:28px
+font-size:28px;
 }
 
 .hero p{
 margin:0;
 color:#adc1b3;
-line-height:1.6
+line-height:1.6;
 }
 
 .stats{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:10px;
-margin-top:18px
+margin-top:18px;
 }
 
 .stat{
 padding:13px;
 border:1px solid var(--border);
 border-radius:13px;
-background:#07150f88
+background:#07150f88;
 }
 
 .stat b{
 display:block;
-font-size:21px
+font-size:21px;
 }
 
 .stat span{
 font-size:12px;
-color:var(--muted)
+color:var(--muted);
 }
 
 .category-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:8px
+gap:8px;
 }
 
 @media(min-width:650px){
 .category-grid{
-grid-template-columns:repeat(3,1fr)
+grid-template-columns:repeat(3,1fr);
 }
 }
 
@@ -375,28 +379,28 @@ border:1px solid var(--border);
 border-radius:10px;
 color:#b8cdbf;
 cursor:pointer;
-background:#091b11
+background:#091b11;
 }
 
 .cat:hover,
 .cat.active{
 border-color:#2dbf69;
 background:#124324;
-color:white
+color:white;
 }
 
 .upload-box{
 border:1px dashed #326845;
 padding:14px;
 border-radius:13px;
-background:#07150f
+background:#07150f;
 }
 
 .preview{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:8px;
-margin-top:10px
+margin-top:10px;
 }
 
 .preview-item{
@@ -404,14 +408,14 @@ position:relative;
 border-radius:10px;
 overflow:hidden;
 background:#000;
-aspect-ratio:1
+aspect-ratio:1;
 }
 
 .preview-item img,
 .preview-item video{
 width:100%;
 height:100%;
-object-fit:cover
+object-fit:cover;
 }
 
 .preview-item span{
@@ -421,31 +425,31 @@ right:5px;
 background:#000b;
 border-radius:6px;
 padding:3px 6px;
-font-size:11px
+font-size:11px;
 }
 
 .post{
-overflow:hidden
+overflow:hidden;
 }
 
 .post-head{
 display:flex;
 align-items:center;
-gap:10px
+gap:10px;
 }
 
 .post-user{
 flex:1;
-min-width:0
+min-width:0;
 }
 
 .post-user b{
-display:block
+display:block;
 }
 
 .post-user span{
 color:var(--muted);
-font-size:12px
+font-size:12px;
 }
 
 .badge{
@@ -455,43 +459,32 @@ border-radius:20px;
 background:#16472a;
 color:#9ff0bc;
 font-size:11px;
-white-space:nowrap
+white-space:nowrap;
 }
 
 .post-content{
 margin:15px 0;
 line-height:1.7;
 white-space:pre-wrap;
-word-break:break-word
+word-break:break-word;
 }
 
 .media-grid{
 display:grid;
 gap:4px;
-margin:0 -18px
+margin:0 -18px;
 }
 
-.media-grid.one{
-grid-template-columns:1fr
-}
-
-.media-grid.two{
-grid-template-columns:1fr 1fr
-}
-
-.media-grid.three{
-grid-template-columns:repeat(3,1fr)
-}
-
-.media-grid.more{
-grid-template-columns:repeat(3,1fr)
-}
+.media-grid.one{grid-template-columns:1fr}
+.media-grid.two{grid-template-columns:1fr 1fr}
+.media-grid.three{grid-template-columns:repeat(3,1fr)}
+.media-grid.more{grid-template-columns:repeat(3,1fr)}
 
 .media-cell{
 position:relative;
 min-width:0;
 background:#000;
-overflow:hidden
+overflow:hidden;
 }
 
 .media-grid img,
@@ -502,12 +495,12 @@ height:100%;
 min-height:180px;
 max-height:500px;
 object-fit:cover;
-background:#000
+background:#000;
 }
 
 .media-grid.one .media-cell img,
 .media-grid.one .media-cell video{
-max-height:560px
+max-height:560px;
 }
 
 .media-type{
@@ -518,7 +511,7 @@ background:#000b;
 color:#fff;
 border-radius:7px;
 padding:4px 7px;
-font-size:11px
+font-size:11px;
 }
 
 .media-error{
@@ -527,7 +520,7 @@ display:grid;
 place-items:center;
 color:#9fb5a7;
 padding:20px;
-text-align:center
+text-align:center;
 }
 
 .actions{
@@ -535,7 +528,7 @@ display:flex;
 gap:6px;
 border-top:1px solid var(--border);
 padding-top:10px;
-margin-top:12px
+margin-top:12px;
 }
 
 .action{
@@ -544,17 +537,17 @@ border:0;
 background:transparent;
 color:#9db4a4;
 padding:9px 5px;
-border-radius:9px
+border-radius:9px;
 }
 
 .action:hover,
 .action.liked{
 background:#12351f;
-color:#42db7e
+color:#42db7e;
 }
 
 .post-menu{
-position:relative
+position:relative;
 }
 
 .menu-btn{
@@ -563,12 +556,12 @@ background:transparent;
 color:#9db4a4;
 font-size:22px;
 padding:3px 8px;
-border-radius:8px
+border-radius:8px;
 }
 
 .menu-btn:hover{
 background:#12351f;
-color:#fff
+color:#fff;
 }
 
 .menu{
@@ -581,7 +574,7 @@ background:#10281a;
 border:1px solid var(--border);
 border-radius:11px;
 padding:5px;
-box-shadow:0 15px 35px #0008
+box-shadow:0 15px 35px #0008;
 }
 
 .menu button{
@@ -592,70 +585,70 @@ border:0;
 background:transparent;
 color:#dcebe1;
 padding:9px;
-border-radius:7px
+border-radius:7px;
 }
 
 .menu button:hover{
-background:#173b26
+background:#173b26;
 }
 
 .comments{
 margin-top:10px;
 border-top:1px solid var(--border);
-padding-top:10px
+padding-top:10px;
 }
 
 .comment{
 background:#081910;
 border-radius:10px;
 padding:9px 11px;
-margin:7px 0
+margin:7px 0;
 }
 
 .comment b{
-font-size:13px
+font-size:13px;
 }
 
 .comment p{
 margin:4px 0 0;
 color:#c2d2c7;
-font-size:14px
+font-size:14px;
 }
 
 .side-card{
 position:sticky;
-top:85px
+top:85px;
 }
 
-.news{
+.info-box{
 padding:13px;
 border:1px solid var(--border);
 border-radius:12px;
 margin-bottom:9px;
-background:#091b11
+background:#091b11;
 }
 
-.news b{
+.info-box b{
 display:block;
-margin-bottom:4px
+margin-bottom:4px;
 }
 
-.news span{
+.info-box span{
 color:#8fa99a;
 font-size:12px;
-line-height:1.5
+line-height:1.5;
 }
 
 .profile-cover{
 height:145px;
 border-radius:18px 18px 0 0;
-background:linear-gradient(135deg,#124d2a,#0b2116)
+background:linear-gradient(135deg,#124d2a,#0b2116);
 }
 
 .profile-info{
 margin-top:-35px;
 position:relative;
-padding:0 20px 20px
+padding:0 20px 20px;
 }
 
 .big-avatar{
@@ -667,37 +660,37 @@ place-items:center;
 font-size:27px;
 font-weight:bold;
 border:4px solid #0b2117;
-background:linear-gradient(135deg,#2acb70,#0b6335)
+background:linear-gradient(135deg,#2acb70,#0b6335);
 }
 
 .profile-info h2{
-margin:8px 0 3px
+margin:8px 0 3px;
 }
 
 .profile-info p{
 color:var(--muted);
-margin:4px 0
+margin:4px 0;
 }
 
 .search-row{
 display:flex;
-gap:8px
+gap:8px;
 }
 
 .search-row input{
-flex:1
+flex:1;
 }
 
 .empty{
 padding:35px 15px;
 text-align:center;
-color:#8fa99a
+color:#8fa99a;
 }
 
 .loader{
 text-align:center;
 padding:25px;
-color:#8fa99a
+color:#8fa99a;
 }
 
 .checkbox{
@@ -705,23 +698,300 @@ display:flex;
 align-items:center;
 gap:9px;
 color:#b9cbbf;
-font-size:14px
+font-size:14px;
 }
 
 .checkbox input{
-width:auto
+width:auto;
 }
 
 .footer{
 text-align:center;
 color:#637b6c;
 padding:25px;
-font-size:12px
+font-size:12px;
 }
 
-/* MOBILE FACEBOOK STYLE */
+/* HOME MENU */
+
+.home-tools{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin-bottom:18px;
+}
+
+.home-tool{
+border:1px solid var(--border);
+background:#0d2117;
+color:#dcebe1;
+border-radius:14px;
+padding:14px 8px;
+text-align:center;
+transition:.2s;
+}
+
+.home-tool:hover{
+background:#12351f;
+border-color:#2dbf69;
+transform:translateY(-1px);
+}
+
+.home-tool-icon{
+display:block;
+font-size:24px;
+margin-bottom:5px;
+}
+
+.home-tool small{
+font-size:12px;
+}
+
+@media(max-width:600px){
+.home-tools{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+/* STORIES */
+
+.stories-section{
+margin:18px auto;
+padding:14px;
+background:#0b2117;
+border:1px solid var(--border);
+border-radius:18px;
+box-shadow:0 10px 35px #0003;
+}
+
+.stories-head{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+margin-bottom:12px;
+}
+
+.stories-title{
+font-size:18px;
+font-weight:bold;
+}
+
+.stories-row{
+display:flex;
+gap:10px;
+overflow-x:auto;
+padding-bottom:4px;
+scrollbar-width:none;
+}
+
+.stories-row::-webkit-scrollbar{
+display:none;
+}
+
+.story-card{
+position:relative;
+flex:0 0 105px;
+height:170px;
+border-radius:15px;
+overflow:hidden;
+background:#10281a;
+border:1px solid #28583a;
+cursor:pointer;
+}
+
+.story-card img,
+.story-card video{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+.story-add{
+flex:0 0 105px;
+height:170px;
+border-radius:15px;
+overflow:hidden;
+background:linear-gradient(180deg,#123a23,#0b1d13);
+border:1px solid #28583a;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:8px;
+cursor:pointer;
+color:#d9f7e6;
+}
+
+.story-add-icon{
+width:42px;
+height:42px;
+border-radius:50%;
+display:grid;
+place-items:center;
+background:#25c46a;
+color:#062414;
+font-size:28px;
+font-weight:bold;
+}
+
+.story-ring{
+position:absolute;
+top:8px;
+left:8px;
+width:38px;
+height:38px;
+border-radius:50%;
+border:3px solid #25c46a;
+background:#12351f;
+overflow:hidden;
+}
+
+.story-ring img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.story-overlay{
+position:absolute;
+left:0;
+right:0;
+bottom:0;
+padding:30px 8px 9px;
+background:linear-gradient(transparent,#000b);
+font-size:12px;
+font-weight:bold;
+}
+
+.story-empty{
+color:#8fa99a;
+font-size:13px;
+padding:20px 4px;
+}
+
+.story-viewer{
+position:fixed;
+inset:0;
+z-index:10000;
+display:none;
+align-items:center;
+justify-content:center;
+background:rgba(0,0,0,.92);
+padding:20px;
+}
+
+.story-viewer-inner{
+position:relative;
+width:min(460px,100%);
+height:min(760px,90vh);
+background:#050b07;
+border-radius:18px;
+overflow:hidden;
+border:1px solid #315c40;
+}
+
+.story-viewer-media{
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.story-viewer-media img,
+.story-viewer-media video{
+max-width:100%;
+max-height:100%;
+width:100%;
+height:100%;
+object-fit:contain;
+}
+
+.story-viewer-top{
+position:absolute;
+top:0;
+left:0;
+right:0;
+z-index:2;
+padding:12px;
+display:flex;
+justify-content:flex-end;
+}
+
+.story-close{
+border:0;
+width:38px;
+height:38px;
+border-radius:50%;
+background:#0009;
+color:white;
+font-size:22px;
+}
+
+/* PRIVATE PROFILE */
+
+.private-profile-panel{
+position:fixed;
+inset:0;
+z-index:9998;
+display:none;
+align-items:center;
+justify-content:center;
+padding:18px;
+background:rgba(0,0,0,.78);
+}
+
+.private-profile-box{
+width:min(600px,100%);
+max-height:92vh;
+overflow:auto;
+background:#0b1d13;
+border:1px solid var(--border);
+border-radius:20px;
+padding:20px;
+box-shadow:0 25px 80px #000b;
+}
+
+.private-profile-head{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+margin-bottom:15px;
+}
+
+.private-profile-head h2{
+margin:0;
+}
+
+.close-btn{
+border:0;
+background:#173b26;
+color:#fff;
+width:38px;
+height:38px;
+border-radius:50%;
+font-size:20px;
+}
+
+.private-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+@media(max-width:600px){
+.private-grid{
+grid-template-columns:1fr;
+}
+}
+
+/* MOBILE */
+
 .mobile-bottom-nav{
-display:none
+display:none;
 }
 
 @media(max-width:850px){
@@ -739,7 +1009,7 @@ backdrop-filter:blur(14px);
 border-top:1px solid rgba(255,255,255,.10);
 padding:6px 3px calc(6px + env(safe-area-inset-bottom));
 justify-content:space-around;
-box-shadow:0 -8px 25px rgba(0,0,0,.22)
+box-shadow:0 -8px 25px rgba(0,0,0,.22);
 }
 
 .mobile-bottom-nav button{
@@ -756,291 +1026,32 @@ justify-content:center;
 gap:2px;
 border-radius:12px;
 font:inherit;
-cursor:pointer
+cursor:pointer;
 }
 
 .mobile-bottom-nav button span{
 font-size:20px;
-line-height:20px
+line-height:20px;
 }
 
 .mobile-bottom-nav button small{
 font-size:10px;
 line-height:12px;
-white-space:nowrap
+white-space:nowrap;
 }
 
 .mobile-bottom-nav button.active{
 color:#d9f7e6;
-background:rgba(44,116,76,.22)
+background:rgba(44,116,76,.22);
 }
 
 .container{
-padding-bottom:96px!important
+padding-bottom:96px!important;
 }
 
 .topbar .nav{
-display:none!important
+display:none!important;
 }
-}
-
-/* STORIES */
-.stories-section{
-max-width:760px;
-margin:18px auto;
-padding:14px;
-background:#0b2117;
-border:1px solid var(--border);
-border-radius:18px;
-box-shadow:0 10px 35px #0003
-}
-
-.stories-head{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-margin-bottom:12px
-}
-
-.stories-title{
-font-size:18px;
-font-weight:bold
-}
-
-.stories-row{
-display:flex;
-gap:10px;
-overflow-x:auto;
-padding-bottom:4px;
-scrollbar-width:none
-}
-
-.stories-row::-webkit-scrollbar{
-display:none
-}
-
-.story-card{
-position:relative;
-flex:0 0 105px;
-height:170px;
-border-radius:15px;
-overflow:hidden;
-background:#10281a;
-border:1px solid #28583a;
-cursor:pointer
-}
-
-.story-card img,
-.story-card video{
-width:100%;
-height:100%;
-object-fit:cover;
-display:block
-}
-
-.story-card:first-child{
-border:2px solid #2bc86d
-}
-
-.story-add{
-flex:0 0 105px;
-height:170px;
-border-radius:15px;
-overflow:hidden;
-background:linear-gradient(180deg,#123a23,#0b1d13);
-border:1px solid #28583a;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-gap:8px;
-cursor:pointer;
-color:#d9f7e6
-}
-
-.story-add-icon{
-width:42px;
-height:42px;
-border-radius:50%;
-display:grid;
-place-items:center;
-background:#25c46a;
-color:#062414;
-font-size:28px;
-font-weight:bold
-}
-
-.story-ring{
-position:absolute;
-top:8px;
-left:8px;
-width:38px;
-height:38px;
-border-radius:50%;
-border:3px solid #25c46a;
-background:#12351f;
-overflow:hidden
-}
-
-.story-ring img{
-width:100%;
-height:100%;
-object-fit:cover
-}
-
-.story-overlay{
-position:absolute;
-left:0;
-right:0;
-bottom:0;
-padding:30px 8px 9px;
-background:linear-gradient(transparent,#000b);
-font-size:12px;
-font-weight:bold
-}
-
-.story-empty{
-color:#8fa99a;
-font-size:13px;
-padding:20px 4px
-}
-
-.story-viewer{
-position:fixed;
-inset:0;
-z-index:10000;
-display:none;
-align-items:center;
-justify-content:center;
-background:rgba(0,0,0,.92);
-padding:20px
-}
-
-.story-viewer-inner{
-position:relative;
-width:min(460px,100%);
-height:min(760px,90vh);
-background:#050b07;
-border-radius:18px;
-overflow:hidden;
-border:1px solid #315c40
-}
-
-.story-viewer-media{
-width:100%;
-height:100%;
-display:flex;
-align-items:center;
-justify-content:center
-}
-
-.story-viewer-media img,
-.story-viewer-media video{
-max-width:100%;
-max-height:100%;
-width:100%;
-height:100%;
-object-fit:contain
-}
-
-.story-viewer-top{
-position:absolute;
-top:0;
-left:0;
-right:0;
-z-index:2;
-padding:12px;
-display:flex;
-justify-content:flex-end
-}
-
-.story-close{
-border:0;
-width:38px;
-height:38px;
-border-radius:50%;
-background:#0009;
-color:white;
-font-size:22px
-}
-
-.story-viewer-caption{
-position:absolute;
-bottom:0;
-left:0;
-right:0;
-padding:35px 14px 15px;
-background:linear-gradient(transparent,#000d);
-color:white
-}
-
-/* PRIVATE PROFILE */
-.private-profile-panel{
-position:fixed;
-inset:0;
-z-index:9998;
-display:none;
-align-items:center;
-justify-content:center;
-padding:18px;
-background:rgba(0,0,0,.78)
-}
-
-.private-profile-box{
-width:min(600px,100%);
-max-height:92vh;
-overflow:auto;
-background:#0b1d13;
-border:1px solid var(--border);
-border-radius:20px;
-padding:20px;
-box-shadow:0 25px 80px #000b
-}
-
-.private-profile-head{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-margin-bottom:15px
-}
-
-.private-profile-head h2{
-margin:0
-}
-
-.close-btn{
-border:0;
-background:#173b26;
-color:#fff;
-width:38px;
-height:38px;
-border-radius:50%;
-font-size:20px
-}
-
-.private-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px
-}
-
-@media(max-width:600px){
-.private-grid{
-grid-template-columns:1fr
-}
-}
-
-.private-note{
-padding:11px;
-border-radius:10px;
-background:#10281a;
-border:1px solid var(--border);
-color:#9fb5a7;
-font-size:12px;
-line-height:1.6;
-margin-bottom:14px
 }
 </style>
 </head>
@@ -1049,82 +1060,152 @@ margin-bottom:14px
 
 <div id="toast"></div>
 
-<!-- AUTH: UNCHANGED -->
+<!-- ================= AUTH ================= -->
+
 <section id="authScreen" class="auth-wrap">
+
 <div class="auth-card">
 
 <div class="logo">
+
 <div class="logo-icon">🛡️</div>
+
 <div>
 <h1>ঘুষ সাইট</h1>
 <small>Anti-Corruption Community</small>
 </div>
+
 </div>
 
 <div class="tabs">
-<button id="loginTab" class="active" onclick="showAuth('login')">Login</button>
-<button id="signupTab" onclick="showAuth('signup')">Create Account</button>
+
+<button id="loginTab"
+class="active"
+onclick="showAuth('login')">
+Login
+</button>
+
+<button id="signupTab"
+onclick="showAuth('signup')">
+Create Account
+</button>
+
 </div>
+
+<!-- LOGIN -->
 
 <div id="loginBox">
 
 <div class="field">
+
 <label>Username</label>
-<input id="loginUsername"
+
+<input
+id="loginUsername"
 autocomplete="username"
-placeholder="Enter username">
+placeholder="Enter username"
+>
+
 </div>
 
 <div class="field">
+
 <label>Password</label>
-<input id="loginPassword"
+
+<input
+id="loginPassword"
 type="password"
 autocomplete="current-password"
-placeholder="Enter password">
+placeholder="Enter password"
+>
+
 </div>
 
-<button class="primary" onclick="login()">Login</button>
+<button
+id="loginButton"
+class="primary"
+onclick="login()">
+
+Login
+
+</button>
 
 <p class="auth-note">
-Use the username and password created for your ঘুষ সাইট account.
+
+Use the username and password created for your
+ঘুষ সাইট account.
+
 </p>
 
 </div>
 
+<!-- SIGNUP -->
+
 <div id="signupBox" class="hidden">
 
 <div class="field">
+
 <label>Name</label>
-<input id="signupName"
-placeholder="Your name">
+
+<input
+id="signupName"
+placeholder="Your name"
+>
+
 </div>
 
 <div class="field">
+
 <label>Phone Number</label>
-<input id="signupPhone"
+
+<input
+id="signupPhone"
 type="tel"
-placeholder="01XXXXXXXXX">
+inputmode="numeric"
+placeholder="01XXXXXXXXX"
+>
+
 </div>
 
 <div class="field">
+
 <label>Username</label>
-<input id="signupUsername"
+
+<input
+id="signupUsername"
 autocomplete="username"
-placeholder="3-24 letters, numbers or _">
+placeholder="3-24 letters, numbers or _"
+>
+
 </div>
 
 <div class="field">
+
 <label>Password</label>
-<input id="signupPassword"
+
+<input
+id="signupPassword"
 type="password"
 autocomplete="new-password"
-placeholder="Minimum 6 characters">
+placeholder="Minimum 6 characters"
+>
+
 </div>
 
-<button class="primary" onclick="signup()">Create Account</button>
+<button
+id="signupButton"
+class="primary"
+onclick="signup()">
+
+Create Account
+
+</button>
 
 <p class="auth-note">
-Username must be unique. Keep your password private.
+
+Username must be unique.
+Keep your password private.
+
 </p>
 
 </div>
@@ -1132,77 +1213,81 @@ Username must be unique. Keep your password private.
 </div>
 </section>
 
-<!-- APP -->
+
+<!-- ================= APP ================= -->
+
 <section id="app" class="app hidden">
 
 <header class="topbar">
+
 <div class="topbar-inner">
 
 <div class="brand">
+
 <div class="brand-icon">🛡️</div>
+
 <span>ঘুষ সাইট</span>
+
 </div>
 
 <nav class="nav">
-<button id="navHome" class="active" onclick="go('home')">Home</button>
-<button id="navPosts" onclick="go('posts')">Reports</button>
-<button id="navSearch" onclick="go('search')">Search</button>
-<button id="navNews" onclick="go('news')">News</button>
-<button id="navHelp" onclick="go('help')">Help Desk</button>
-<button id="navProfile" onclick="go('profile')">Profile</button>
+
+<button
+id="navHome"
+class="active"
+onclick="go('home')">
+Home
+</button>
+
+<button
+id="navPosts"
+onclick="go('posts')">
+Reports
+</button>
+
+<button
+id="navSearch"
+onclick="go('search')">
+Search
+</button>
+
+<button
+id="navHelp"
+onclick="go('help')">
+Help
+</button>
+
+<button
+id="navProfile"
+onclick="go('profile')">
+Profile
+</button>
+
 </nav>
 
 <div class="user-mini">
-<div id="miniAvatar" class="avatar">U</div>
-<button class="danger" onclick="logout()">Logout</button>
+
+<div id="miniAvatar" class="avatar">
+U
+</div>
+
+<button
+class="danger"
+onclick="logout()">
+Logout
+</button>
+
 </div>
 
 </div>
 </header>
 
+
 <main class="container">
 
-<!-- STORIES -->
-<section id="storiesSection" class="stories-section">
 
-<div class="stories-head">
-<div class="stories-title">Stories</div>
+<!-- ================= HOME ================= -->
 
-<button class="secondary"
-onclick="openStoryPicker()">
-＋ Add Story
-</button>
-</div>
-
-<div class="stories-row" id="storiesRow">
-
-<div class="story-add"
-onclick="openStoryPicker()">
-
-<div class="story-add-icon">＋</div>
-
-<b>Add Story</b>
-
-<small class="muted">
-Photo / Video
-</small>
-
-</div>
-
-</div>
-
-<input
-id="storyFileInput"
-type="file"
-accept="image/*,video/*"
-multiple
-hidden
-onchange="uploadStories(this.files)"
->
-
-</section>
-
-<!-- HOME -->
 <section id="homePage">
 
 <div class="hero card">
@@ -1232,21 +1317,126 @@ Together we can raise awareness and support a cleaner Bangladesh.
 </div>
 
 </div>
+
 </div>
+
+
+<!-- HOME INTERNAL MENU -->
+
+<div class="home-tools">
+
+<button class="home-tool"
+onclick="go('home');document.getElementById('createReportCard').scrollIntoView({behavior:'smooth'})">
+
+<span class="home-tool-icon">📝</span>
+<small>Create Report</small>
+
+</button>
+
+<button class="home-tool"
+onclick="go('posts')">
+
+<span class="home-tool-icon">▣</span>
+<small>All Reports</small>
+
+</button>
+
+<button class="home-tool"
+onclick="go('search')">
+
+<span class="home-tool-icon">⌕</span>
+<small>Search</small>
+
+</button>
+
+<button class="home-tool"
+onclick="go('help')">
+
+<span class="home-tool-icon">?</span>
+<small>Help</small>
+
+</button>
+
+</div>
+
+
+<!-- STORIES -->
+
+<section class="stories-section">
+
+<div class="stories-head">
+
+<div class="stories-title">
+Stories
+</div>
+
+<button
+class="secondary"
+onclick="openStoryPicker()">
+
+＋ Add Story
+
+</button>
+
+</div>
+
+<div
+class="stories-row"
+id="storiesRow">
+
+<div
+class="story-add"
+onclick="openStoryPicker()">
+
+<div class="story-add-icon">
+＋
+</div>
+
+<b>Add Story</b>
+
+<small class="muted">
+Photo / Video
+</small>
+
+</div>
+
+</div>
+
+<input
+id="storyFileInput"
+type="file"
+accept="image/*,video/*"
+multiple
+hidden
+onchange="uploadStories(this.files)"
+>
+
+</section>
+
 
 <div class="grid">
 
 <div>
 
-<div class="card">
 
-<h3 class="card-title">Create a Report</h3>
+<!-- CREATE REPORT -->
+
+<div
+id="createReportCard"
+class="card">
+
+<h3 class="card-title">
+Create a Report
+</h3>
 
 <div class="field">
 
 <label>Report Type</label>
 
-<div class="category-grid" id="categoryGrid"></div>
+<div
+class="category-grid"
+id="categoryGrid">
+</div>
 
 </div>
 
@@ -1279,7 +1469,10 @@ onchange="previewMedia()"
 You can select multiple photos and videos.
 </div>
 
-<div id="preview" class="preview"></div>
+<div
+id="preview"
+class="preview">
+</div>
 
 </div>
 
@@ -1289,7 +1482,10 @@ You can select multiple photos and videos.
 
 <label class="checkbox">
 
-<input id="anonymousCheck" type="checkbox">
+<input
+id="anonymousCheck"
+type="checkbox"
+>
 
 Post anonymously
 
@@ -1307,6 +1503,9 @@ Publish Report
 </button>
 
 </div>
+
+
+<!-- LATEST REPORTS -->
 
 <div>
 
@@ -1326,33 +1525,59 @@ Loading reports...
 
 </div>
 
+
+<!-- SIDE -->
+
 <aside class="side">
 
 <div class="card side-card">
 
 <h3 class="card-title">
-Awareness
+Community Guide
 </h3>
 
-<div class="news">
+<div class="info-box">
+
 <b>Report Responsibly</b>
+
 <span>
-Share facts and experiences without deliberately spreading false information.
+Share facts and experiences without deliberately
+spreading false information.
 </span>
+
 </div>
 
-<div class="news">
+<div class="info-box">
+
 <b>Protect Privacy</b>
+
 <span>
-Do not publish private information such as NID numbers, passwords or sensitive personal data.
+Do not publish NID numbers, passwords,
+financial credentials or unnecessary private data.
 </span>
+
 </div>
 
-<div class="news">
+<div class="info-box">
+
 <b>Stay Safe</b>
+
 <span>
-If a situation is dangerous, contact appropriate emergency or legal authorities.
+If a situation is dangerous, contact appropriate
+emergency or legal authorities.
 </span>
+
+</div>
+
+<div class="info-box">
+
+<b>Anonymous Reporting</b>
+
+<span>
+Use Anonymous mode when you do not want your
+public profile name shown with a report.
+</span>
+
 </div>
 
 </div>
@@ -1363,7 +1588,9 @@ If a situation is dangerous, contact appropriate emergency or legal authorities.
 
 </section>
 
-<!-- POSTS -->
+
+<!-- ================= REPORTS ================= -->
+
 <section id="postsPage" class="hidden">
 
 <div class="card">
@@ -1378,7 +1605,9 @@ All Reports
 
 </section>
 
-<!-- SEARCH -->
+
+<!-- ================= SEARCH ================= -->
+
 <section id="searchPage" class="hidden">
 
 <div class="card">
@@ -1412,51 +1641,9 @@ Search
 
 </section>
 
-<!-- NEWS -->
-<section id="newsPage" class="hidden">
 
-<div class="card">
+<!-- ================= HELP ================= -->
 
-<h2 class="card-title">
-News & Awareness
-</h2>
-
-<div class="news">
-<b>Anti-Corruption Awareness</b>
-<span>
-Corruption affects public services, trust and development.
-Responsible reporting can help increase awareness.
-</span>
-</div>
-
-<div class="news">
-<b>Evidence Matters</b>
-<span>
-When sharing a complaint, describe the facts clearly and distinguish
-personal experience from assumptions.
-</span>
-</div>
-
-<div class="news">
-<b>Do Not Share Sensitive Data</b>
-<span>
-Never publish passwords, financial credentials, NID numbers or
-unnecessary private information.
-</span>
-</div>
-
-<div class="news">
-<b>Community Responsibility</b>
-<span>
-The platform is intended for awareness and responsible community discussion.
-</span>
-</div>
-
-</div>
-
-</section>
-
-<!-- HELP -->
 <section id="helpPage" class="hidden">
 
 <div class="card">
@@ -1465,50 +1652,80 @@ The platform is intended for awareness and responsible community discussion.
 Help Desk
 </h2>
 
-<div class="news">
+<div class="info-box">
+
 <b>How to create a report?</b>
+
 <span>
-Select a report type, describe the incident, optionally attach
-photos or videos, then choose whether you want to post anonymously.
+Select a report type, describe the incident,
+optionally attach photos or videos, then publish.
 </span>
+
 </div>
 
-<div class="news">
+<div class="info-box">
+
 <b>How does Anonymous mode work?</b>
+
 <span>
-Your public post displays an anonymous identity instead of your profile name.
+Your public report displays an anonymous identity
+instead of your profile name.
 </span>
+
 </div>
 
-<div class="news">
+<div class="info-box">
+
+<b>How do Stories work?</b>
+
+<span>
+You can upload photos or videos as Stories.
+Stories are intended to remain visible for 24 hours.
+</span>
+
+</div>
+
+<div class="info-box">
+
 <b>Account Security</b>
+
 <span>
-Never share your username or password with anyone. Each username is unique.
+Never share your password with anyone.
+Your password is never displayed in your profile.
 </span>
+
 </div>
 
-<div class="news">
+<div class="info-box">
+
 <b>Content Responsibility</b>
+
 <span>
-Do not use the platform to spread knowingly false claims, threats,
-harassment or private information.
+Do not use the platform to spread knowingly false claims,
+threats, harassment or private information.
 </span>
+
 </div>
 
 </div>
 
 </section>
 
-<!-- PROFILE -->
+
+<!-- ================= PROFILE ================= -->
+
 <section id="profilePage" class="hidden">
 
-<div class="card" style="padding:0;overflow:hidden">
+<div class="card"
+style="padding:0;overflow:hidden">
 
 <div class="profile-cover"></div>
 
 <div class="profile-info">
 
-<div id="bigAvatar" class="big-avatar">
+<div
+id="bigAvatar"
+class="big-avatar">
 U
 </div>
 
@@ -1524,7 +1741,8 @@ User
 
 <p id="profileBio"></p>
 
-<div style="margin-top:15px">
+<div
+style="margin-top:15px;display:flex;gap:8px;flex-wrap:wrap">
 
 <button
 class="secondary"
@@ -1535,7 +1753,6 @@ Edit Profile
 </button>
 
 <button
-id="openPrivateProfileBtn"
 class="secondary"
 onclick="openPrivateProfile()">
 
@@ -1549,23 +1766,34 @@ onclick="openPrivateProfile()">
 
 </div>
 
-<div id="editProfileBox" class="card hidden">
+
+<!-- EDIT PROFILE -->
+
+<div
+id="editProfileBox"
+class="card hidden">
 
 <h3 class="card-title">
 Edit Profile
 </h3>
 
 <div class="field">
+
 <label>Name</label>
+
 <input id="editName">
+
 </div>
 
 <div class="field">
+
 <label>Bio</label>
+
 <textarea
 id="editBio"
 style="min-height:80px">
 </textarea>
+
 </div>
 
 <button
@@ -1577,6 +1805,9 @@ Save Changes
 </button>
 
 </div>
+
+
+<!-- MY REPORTS -->
 
 <div class="card">
 
@@ -1590,6 +1821,7 @@ My Reports
 
 </section>
 
+
 <div class="footer">
 ঘুষ সাইট • Responsible reporting & public awareness
 </div>
@@ -1598,12 +1830,13 @@ My Reports
 
 </section>
 
-<!-- STORY VIEWER -->
+
+<!-- ================= STORY VIEWER ================= -->
+
 <div
 id="storyViewer"
 class="story-viewer"
-onclick="closeStoryViewer(event)"
->
+onclick="closeStoryViewer(event)">
 
 <div class="story-viewer-inner">
 
@@ -1612,7 +1845,6 @@ onclick="closeStoryViewer(event)"
 <button
 class="story-close"
 onclick="closeStoryViewer()">
-
 ×
 </button>
 
@@ -1632,12 +1864,13 @@ class="story-viewer-caption">
 
 </div>
 
-<!-- PRIVATE PROFILE -->
+
+<!-- ================= PRIVATE PROFILE ================= -->
+
 <div
 id="privateProfilePanel"
 class="private-profile-panel"
-onclick="if(event.target===this)closePrivateProfile()"
->
+onclick="if(event.target===this)closePrivateProfile()">
 
 <div class="private-profile-box">
 
@@ -1650,52 +1883,77 @@ onclick="if(event.target===this)closePrivateProfile()"
 <button
 class="close-btn"
 onclick="closePrivateProfile()">
-
 ×
 </button>
 
 </div>
 
-<div class="private-note">
+<div class="info-box">
 
-Your private information is only for your account.
-Your password is never displayed or stored in the profile table.
-You can securely change your password below.
+Your private information is for your account.
+Your password is never displayed here.
+Use New Password below to securely change it.
 
 </div>
 
 <div class="private-grid">
 
 <div class="field">
+
 <label>Name</label>
+
 <input id="privateName">
+
 </div>
 
 <div class="field">
+
 <label>Phone Number</label>
-<input id="privatePhone" readonly>
+
+<input
+id="privatePhone"
+readonly>
+
 </div>
 
 <div class="field">
+
 <label>Username</label>
-<input id="privateUsername" readonly>
+
+<input
+id="privateUsername"
+readonly>
+
 </div>
 
 <div class="field">
+
 <label>Profession</label>
-<input id="privateProfession"
+
+<input
+id="privateProfession"
 placeholder="Your profession">
+
 </div>
 
 <div class="field">
+
 <label>Date of Birth</label>
-<input id="privateDob" type="date">
+
+<input
+id="privateDob"
+type="date">
+
 </div>
 
 <div class="field">
+
 <label>Address</label>
-<input id="privateAddress"
+
+<input
+id="privateAddress"
 placeholder="Your address">
+
 </div>
 
 </div>
@@ -1720,8 +1978,7 @@ placeholder="About you">
 id="privateNewPassword"
 type="password"
 autocomplete="new-password"
-placeholder="Leave empty to keep current password"
->
+placeholder="Leave empty to keep current password">
 
 </div>
 
@@ -1737,8 +1994,72 @@ Save Private Profile
 
 </div>
 
+
+<!-- MOBILE NAV -->
+
+<nav
+class="mobile-bottom-nav"
+aria-label="Mobile navigation">
+
+<button
+type="button"
+data-page="home"
+class="active"
+onclick="go('home')">
+
+<span>⌂</span>
+<small>Home</small>
+
+</button>
+
+<button
+type="button"
+data-page="reports"
+onclick="go('posts')">
+
+<span>▣</span>
+<small>Reports</small>
+
+</button>
+
+<button
+type="button"
+data-page="search"
+onclick="go('search')">
+
+<span>⌕</span>
+<small>Search</small>
+
+</button>
+
+<button
+type="button"
+data-page="help"
+onclick="go('help')">
+
+<span>?</span>
+<small>Help</small>
+
+</button>
+
+<button
+type="button"
+data-page="profile"
+onclick="go('profile')">
+
+<span>●</span>
+<small>Profile</small>
+
+</button>
+
+</nav>
+
+
 <script>
-/* SUPABASE */
+
+/* =========================================================
+   SUPABASE
+========================================================= */
 
 const SUPABASE_URL =
 "https://klreqkbqyyiwmohlmgkh.supabase.co";
@@ -1757,17 +2078,21 @@ SUPABASE_KEY
 :
 null;
 
-/* GLOBAL */
+
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 let currentUser=null;
 let currentProfile=null;
+
 let selectedCategory="ঘুষ";
 let selectedFiles=[];
 let currentPage="home";
 
 const AUTH_DOMAIN="ghussite.local";
 
-/* সব অভিযোগ এক Report Type-এর ভিতরে */
+
 const categories=[
 "ঘুষ",
 "দালালি",
@@ -1783,74 +2108,113 @@ const categories=[
 "অন্যান্য"
 ];
 
-/* HELPERS */
+
+/* =========================================================
+   HELPERS
+========================================================= */
 
 function $(id){
 return document.getElementById(id);
 }
 
+
 function toast(message,type="success"){
+
 const el=$("toast");
+
 el.textContent=message;
+
 el.className="";
 el.classList.add(type);
+
 el.style.display="block";
 
 clearTimeout(window.toastTimer);
 
 window.toastTimer=setTimeout(()=>{
 el.style.display="none";
-},3500);
+},4000);
+
 }
+
 
 function normalizeUsername(v){
-return String(v||"").trim().toLowerCase();
+
+return String(v||"")
+.trim()
+.toLowerCase();
+
 }
+
 
 function validUsername(v){
+
 return /^[a-z0-9_]{3,24}$/.test(v);
+
 }
+
 
 function authEmail(username){
+
 return normalizeUsername(username)+"@"+AUTH_DOMAIN;
+
 }
 
+
 function escapeHTML(value){
+
 return String(value??"")
 .replaceAll("&","&amp;")
 .replaceAll("<","&lt;")
 .replaceAll(">","&gt;")
 .replaceAll('"',"&quot;")
 .replaceAll("'","&#039;");
+
 }
 
+
 function escapeAttr(v){
+
 return String(v??"")
 .replace(/&/g,"&amp;")
 .replace(/"/g,"&quot;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;");
+
 }
+
 
 function escapeHtml(v){
+
 return escapeAttr(v);
+
 }
 
+
 function initials(name){
-const s=String(name||"User").trim();
+
+const s=
+String(name||"User").trim();
 
 if(!s)return "U";
 
 const parts=s.split(/\s+/);
 
-if(parts.length===1)
-return parts[0].slice(0,1).toUpperCase();
+if(parts.length===1){
 
-return (
+return parts[0]
+.slice(0,1)
+.toUpperCase();
+
+}
+
+return(
 parts[0].slice(0,1)+
 parts[parts.length-1].slice(0,1)
 ).toUpperCase();
+
 }
+
 
 function timeAgo(date){
 
@@ -1876,9 +2240,13 @@ const day=Math.floor(hour/24);
 if(day<30)return day+"d ago";
 
 return new Date(date).toLocaleDateString();
+
 }
 
-/* AUTH */
+
+/* =========================================================
+   AUTH TABS
+========================================================= */
 
 function showAuth(type){
 
@@ -1899,46 +2267,99 @@ $("loginTab").classList.remove("active");
 $("signupTab").classList.add("active");
 
 }
+
 }
 
-/* SIGNUP — ORIGINAL SYSTEM */
+
+/* =========================================================
+   SIGNUP
+========================================================= */
 
 async function signup(){
 
 if(!db){
-toast("Database connection is unavailable.","error");
+
+toast(
+"Database connection is unavailable.",
+"error"
+);
+
 return;
 }
 
-const name=$("signupName").value.trim();
-const phone=$("signupPhone").value.trim();
-const username=normalizeUsername($("signupUsername").value);
-const password=$("signupPassword").value;
+
+const name=
+$("signupName").value.trim();
+
+const phone=
+$("signupPhone").value.trim();
+
+const username=
+normalizeUsername(
+$("signupUsername").value
+);
+
+const password=
+$("signupPassword").value;
+
 
 if(name.length<2){
-toast("Please enter your name.","error");
+
+toast(
+"Please enter your name.",
+"error"
+);
+
 return;
+
 }
+
 
 if(!/^01[0-9]{9}$/.test(phone)){
-toast("Enter a valid Bangladesh phone number.","error");
+
+toast(
+"Enter a valid Bangladesh phone number.",
+"error"
+);
+
 return;
+
 }
 
+
 if(!validUsername(username)){
+
 toast(
 "Username must contain only lowercase letters, numbers or underscore.",
 "error"
 );
+
 return;
+
 }
+
 
 if(password.length<6){
-toast("Password must be at least 6 characters.","error");
+
+toast(
+"Password must be at least 6 characters.",
+"error"
+);
+
 return;
+
 }
 
+
+const button=$("signupButton");
+
+button.disabled=true;
+button.textContent="Creating Account...";
+
+
 try{
+
+/* Check username */
 
 const {
 data:existing,
@@ -1949,26 +2370,44 @@ error:existingError
 .eq("username",username)
 .maybeSingle();
 
+
 if(existingError){
+
 console.error(existingError);
+
 toast(
-"Could not check username. Please make sure the Supabase SQL setup was completed.",
+"Could not check username. Check your Supabase table/RLS setup.",
 "error"
 );
+
 return;
+
 }
 
+
 if(existing){
-toast("That username is already taken.","error");
+
+toast(
+"That username is already taken.",
+"error"
+);
+
 return;
+
 }
+
+
+/* Create Auth account */
 
 const {
 data,
 error
 }=await db.auth.signUp({
+
 email:authEmail(username),
+
 password:password,
+
 options:{
 data:{
 name:name,
@@ -1976,50 +2415,98 @@ username:username,
 phone:phone
 }
 }
+
 });
 
+
 if(error){
+
 console.error(error);
+
 toast(error.message,"error");
+
 return;
+
 }
 
-if(!data.user){
-toast("Account creation failed.","error");
+
+if(!data || !data.user){
+
+toast(
+"Account creation failed.",
+"error"
+);
+
 return;
+
 }
+
+
+/*
+Create profile only when possible.
+If a database trigger already creates it,
+duplicate error is ignored.
+*/
 
 const {
 error:profileError
 }=await db
 .from("profiles")
-.insert({
+.upsert({
+
 id:data.user.id,
 display_name:name,
 username:username,
 phone:phone,
 bio:""
+
+},{
+onConflict:"id"
 });
+
 
 if(profileError){
 
-console.error(profileError);
-
-toast(
-"Account was created, but profile setup needs attention: "+
-profileError.message,
-"error"
+console.warn(
+"Profile creation warning:",
+profileError
 );
 
-return;
 }
+
+
+/*
+If Supabase email confirmation is ON,
+session can be null.
+*/
+
+if(!data.session){
+
+toast(
+"Account created. If email confirmation is enabled in Supabase, confirm the account first, then login.",
+"success"
+);
+
+showAuth("login");
+
+$("loginUsername").value=username;
+$("loginPassword").value="";
+
+return;
+
+}
+
+
+currentUser=data.user;
+
+await loadCurrentUser();
+
 
 toast(
 "Account created successfully.",
 "success"
 );
 
-await loadCurrentUser();
 
 }catch(err){
 
@@ -2030,77 +2517,171 @@ toast(
 "error"
 );
 
-}
+}finally{
+
+button.disabled=false;
+button.textContent="Create Account";
+
 }
 
-/* LOGIN — UNCHANGED */
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
 
 async function login(){
 
 if(!db){
-toast("Database connection is unavailable.","error");
+
+toast(
+"Database connection is unavailable.",
+"error"
+);
+
 return;
+
 }
 
-const username=normalizeUsername(
+
+const username=
+normalizeUsername(
 $("loginUsername").value
 );
 
-const password=$("loginPassword").value;
+const password=
+$("loginPassword").value;
+
 
 if(!validUsername(username)){
-toast("Enter a valid username.","error");
+
+toast(
+"Enter a valid username.",
+"error"
+);
+
 return;
+
 }
+
 
 if(!password){
-toast("Enter your password.","error");
+
+toast(
+"Enter your password.",
+"error"
+);
+
 return;
+
 }
 
+
+const button=$("loginButton");
+
+button.disabled=true;
+button.textContent="Logging in...";
+
+
 try{
+
+/*
+Username is converted to the internal
+Supabase Auth email.
+*/
 
 const {
 data,
 error
 }=await db.auth.signInWithPassword({
+
 email:authEmail(username),
+
 password:password
+
 });
 
+
 if(error){
+
 console.error(error);
+
+let message="Invalid username or password.";
+
+if(
+String(error.message||"")
+.toLowerCase()
+.includes("email not confirmed")
+){
+
+message=
+"Your account email is not confirmed. Confirm it in Supabase or disable email confirmation in Supabase Auth settings.";
+
+}
+
+toast(message,"error");
+
+return;
+
+}
+
+
+if(!data || !data.user){
+
 toast(
-"Invalid username or password.",
+"Login failed.",
 "error"
 );
+
 return;
+
 }
 
-if(!data.user){
-toast("Login failed.","error");
-return;
-}
+
+currentUser=data.user;
 
 await loadCurrentUser();
+
+
+toast(
+"Login successful.",
+"success"
+);
+
 
 }catch(err){
 
 console.error(err);
 
 toast(
-"Login failed. Please try again.",
+"Login failed. Please check your username and password.",
 "error"
 );
 
-}
+}finally{
+
+button.disabled=false;
+button.textContent="Login";
+
 }
 
-/* CURRENT USER */
+}
+
+
+/* =========================================================
+   LOAD CURRENT USER
+========================================================= */
 
 async function loadCurrentUser(){
 
-if(!db)return;
+if(!db){
+
+showAuthScreen();
+return;
+
+}
+
 
 const {
 data:{
@@ -2108,12 +2689,21 @@ user
 }
 }=await db.auth.getUser();
 
+
 if(!user){
+
 showAuthScreen();
 return;
+
 }
 
+
 currentUser=user;
+
+
+/*
+Try profile from database.
+*/
 
 let {
 data:profile,
@@ -2124,23 +2714,54 @@ error
 .eq("id",user.id)
 .maybeSingle();
 
+
 if(error){
-console.error(error);
+
+console.warn(
+"Profile load warning:",
+error
+);
+
 }
+
 
 if(!profile){
 
 const meta=user.user_metadata||{};
 
 profile={
+
 id:user.id,
-display_name:meta.name||"User",
-username:meta.username||"user",
-phone:meta.phone||"",
-bio:""
+
+display_name:
+meta.name||
+"User",
+
+username:
+meta.username||
+(
+user.email
+?
+user.email.split("@")[0]
+:
+"user"
+),
+
+phone:
+meta.phone||
+"",
+
+bio:"",
+
+profession:"",
+date_of_birth:null,
+address:"",
+avatar_url:""
+
 };
 
 }
+
 
 currentProfile=profile;
 
@@ -2148,17 +2769,18 @@ showApp();
 
 renderProfile();
 
+renderCategories();
+
 loadFeed();
 
-try{
-await loadStories();
-}catch(e){
-console.warn(e);
-}
+loadStories();
 
 }
 
-/* UI */
+
+/* =========================================================
+   UI
+========================================================= */
 
 function showApp(){
 
@@ -2169,6 +2791,7 @@ updateMiniUser();
 
 }
 
+
 function showAuthScreen(){
 
 $("app").classList.add("hidden");
@@ -2176,90 +2799,137 @@ $("authScreen").classList.remove("hidden");
 
 }
 
+
 function updateMiniUser(){
 
 if(!currentProfile)return;
 
 $("miniAvatar").textContent=
-initials(currentProfile.display_name);
+initials(
+currentProfile.display_name
+);
 
 }
 
-/* NAVIGATION */
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 function go(page){
 
 currentPage=page;
 
+
 const pages=[
 "homePage",
 "postsPage",
 "searchPage",
-"newsPage",
 "helpPage",
 "profilePage"
 ];
 
+
 pages.forEach(id=>{
-$(id).classList.add("hidden");
+
+const el=$(id);
+
+if(el)
+el.classList.add("hidden");
+
 });
+
 
 const target=page+"Page";
 
 if($(target))
 $(target).classList.remove("hidden");
 
+
 const navs=[
 "navHome",
 "navPosts",
 "navSearch",
-"navNews",
 "navHelp",
 "navProfile"
 ];
 
+
 navs.forEach(id=>{
-$(id).classList.remove("active");
+
+const el=$(id);
+
+if(el)
+el.classList.remove("active");
+
 });
+
 
 const navId=
 "nav"+
 page.charAt(0).toUpperCase()+
 page.slice(1);
 
+
 if($(navId))
 $(navId).classList.add("active");
 
-document.querySelectorAll(
+
+document
+.querySelectorAll(
 ".mobile-bottom-nav button"
-).forEach(btn=>{
+)
+.forEach(btn=>{
+
 btn.classList.toggle(
 "active",
 btn.dataset.page===
-(page==="posts"?"reports":page)
+(
+page==="posts"
+?
+"reports"
+:
+page
+)
 );
+
 });
+
 
 if(page==="posts")
 loadAllPosts();
 
+
 if(page==="profile"){
+
 renderProfile();
 loadMyPosts();
+
 }
 
-if(page==="home")
+
+if(page==="home"){
+
 loadFeed();
+loadStories();
 
 }
 
-/* CATEGORY */
+}
+
+
+/* =========================================================
+   CATEGORIES
+========================================================= */
 
 function renderCategories(){
 
 const box=$("categoryGrid");
 
+if(!box)return;
+
 box.innerHTML="";
+
 
 categories.forEach(category=>{
 
@@ -2267,13 +2937,22 @@ const div=document.createElement("div");
 
 div.className=
 "cat"+
-(category===selectedCategory?" active":"");
+(
+category===selectedCategory
+?
+" active"
+:
+""
+);
 
 div.textContent=category;
 
 div.onclick=()=>{
+
 selectedCategory=category;
+
 renderCategories();
+
 };
 
 box.appendChild(div);
@@ -2282,7 +2961,10 @@ box.appendChild(div);
 
 }
 
-/* MEDIA PREVIEW */
+
+/* =========================================================
+   MEDIA PREVIEW
+========================================================= */
 
 function previewMedia(){
 
@@ -2291,29 +2973,37 @@ const input=$("mediaInput");
 selectedFiles=
 Array.from(input.files||[]);
 
+
 const preview=$("preview");
 
 preview.innerHTML="";
 
+
 selectedFiles.forEach(file=>{
 
-const item=document.createElement("div");
+const item=
+document.createElement("div");
 
 item.className="preview-item";
 
+
 if(file.type.startsWith("image/")){
 
-const img=document.createElement("img");
+const img=
+document.createElement("img");
 
-img.src=URL.createObjectURL(file);
+img.src=
+URL.createObjectURL(file);
 
 item.appendChild(img);
 
 }else if(file.type.startsWith("video/")){
 
-const video=document.createElement("video");
+const video=
+document.createElement("video");
 
-video.src=URL.createObjectURL(file);
+video.src=
+URL.createObjectURL(file);
 
 video.controls=true;
 
@@ -2321,12 +3011,16 @@ item.appendChild(video);
 
 }
 
-const span=document.createElement("span");
+
+const span=
+document.createElement("span");
 
 span.textContent=
 file.type.startsWith("video/")
-?"VIDEO"
-:"PHOTO";
+?
+"VIDEO"
+:
+"PHOTO";
 
 item.appendChild(span);
 
@@ -2336,40 +3030,63 @@ preview.appendChild(item);
 
 }
 
-/* CREATE POST */
+
+/* =========================================================
+   CREATE POST
+========================================================= */
 
 async function createPost(){
 
 if(!currentUser){
-toast("Please login first.","error");
+
+toast(
+"Please login first.",
+"error"
+);
+
 return;
+
 }
 
-const text=$("postText").value.trim();
-const anonymous=$("anonymousCheck").checked;
+
+const text=
+$("postText").value.trim();
+
+const anonymous=
+$("anonymousCheck").checked;
+
 
 if(!text && selectedFiles.length===0){
+
 toast(
 "Write something or attach a photo/video.",
 "error"
 );
+
 return;
+
 }
 
+
 if(selectedFiles.length>10){
+
 toast(
 "You can upload up to 10 files at a time.",
 "error"
 );
+
 return;
+
 }
+
 
 for(const file of selectedFiles){
 
 if(file.size>100*1024*1024){
 
 toast(
-file.name+" is larger than 100 MB.",
+file.name+
+" is larger than 100 MB.",
 "error"
 );
 
@@ -2379,10 +3096,12 @@ return;
 
 }
 
+
 const button=$("postButton");
 
 button.disabled=true;
 button.textContent="Publishing...";
+
 
 try{
 
@@ -2392,13 +3111,16 @@ error
 }=await db
 .from("posts")
 .insert({
+
 user_id:currentUser.id,
 content:text,
 category:selectedCategory,
 is_anonymous:anonymous
+
 })
 .select()
 .single();
+
 
 if(error){
 
@@ -2414,6 +3136,7 @@ return;
 
 }
 
+
 for(const file of selectedFiles){
 
 const safeName=
@@ -2422,6 +3145,7 @@ file.name.replace(
 "_"
 );
 
+
 const path=
 currentUser.id+
 "/"+
@@ -2429,6 +3153,7 @@ post.id+
 "/"+
 Date.now()+
 "_"+safeName;
+
 
 const {
 error:uploadError
@@ -2445,6 +3170,7 @@ contentType:file.type
 }
 );
 
+
 if(uploadError){
 
 console.error(uploadError);
@@ -2458,6 +3184,7 @@ continue;
 
 }
 
+
 const {
 data:publicData
 }=db
@@ -2465,28 +3192,37 @@ data:publicData
 .from("media")
 .getPublicUrl(path);
 
+
 const mediaUrl=
 publicData.publicUrl;
 
+
 const mediaType=
 file.type.startsWith("video/")
-?"video"
-:"image";
+?
+"video"
+:
+"image";
+
 
 const {
 error:mediaDbError
 }=await db
 .from("post_media")
 .insert({
+
 post_id:post.id,
 media_url:mediaUrl,
 media_type:mediaType
+
 });
+
 
 if(mediaDbError)
 console.error(mediaDbError);
 
 }
+
 
 $("postText").value="";
 $("mediaInput").value="";
@@ -2495,12 +3231,15 @@ $("anonymousCheck").checked=false;
 
 selectedFiles=[];
 
+
 toast(
 "Report published successfully.",
 "success"
 );
 
+
 loadFeed();
+
 
 }catch(err){
 
@@ -2520,7 +3259,10 @@ button.textContent="Publish Report";
 
 }
 
-/* FETCH POSTS */
+
+/* =========================================================
+   FETCH POSTS
+========================================================= */
 
 async function fetchPosts(limit=50){
 
@@ -2543,27 +3285,41 @@ media_type,
 created_at
 )
 `)
-.order("created_at",{ascending:false})
+.order(
+"created_at",
+{ascending:false}
+)
 .limit(limit);
 
+
 if(error){
+
 console.error(error);
+
 throw error;
+
 }
+
 
 return data||[];
 
 }
 
-/* PROFILES */
+
+/* =========================================================
+   PROFILES
+========================================================= */
 
 async function getProfiles(userIds){
 
 if(!userIds.length)
 return {};
 
-const unique=
-[...new Set(userIds)];
+
+const unique=[
+...new Set(userIds)
+];
+
 
 const {
 data,
@@ -2575,39 +3331,57 @@ error
 )
 .in("id",unique);
 
+
 if(error){
+
 console.error(error);
+
 return {};
+
 }
+
 
 const map={};
 
+
 (data||[]).forEach(profile=>{
+
 map[profile.id]=profile;
+
 });
+
 
 return map;
 
 }
 
-/* FEED */
+
+/* =========================================================
+   FEED
+========================================================= */
 
 async function loadFeed(){
 
 const feed=$("feed");
 
+if(!feed)return;
+
+
 feed.innerHTML=
 '<div class="loader">Loading reports...</div>';
+
 
 try{
 
 const posts=
 await fetchPosts(50);
 
+
 const profiles=
 await getProfiles(
 posts.map(p=>p.user_id)
 );
+
 
 await renderPosts(
 posts,
@@ -2615,9 +3389,13 @@ profiles,
 feed
 );
 
+
 updateStats(posts);
 
+
 }catch(error){
+
+console.error(error);
 
 feed.innerHTML=
 '<div class="card empty">'+
@@ -2634,7 +3412,10 @@ error.message||
 
 }
 
-/* RENDER POSTS */
+
+/* =========================================================
+   RENDER POSTS
+========================================================= */
 
 async function renderPosts(
 posts,
@@ -2651,7 +3432,9 @@ return;
 
 }
 
+
 container.innerHTML="";
+
 
 for(const post of posts){
 
@@ -2662,11 +3445,13 @@ display_name:"User",
 username:"user"
 };
 
+
 const card=
 await buildPostCard(
 post,
 profile
 );
+
 
 container.appendChild(card);
 
@@ -2674,7 +3459,10 @@ container.appendChild(card);
 
 }
 
-/* POST CARD */
+
+/* =========================================================
+   POST CARD
+========================================================= */
 
 async function buildPostCard(
 post,
@@ -2686,25 +3474,40 @@ document.createElement("article");
 
 card.className="card post";
 
+
 const displayName=
 post.is_anonymous
-?"Anonymous User"
-:(profile.display_name||"User");
+?
+"Anonymous User"
+:
+(profile.display_name||"User");
+
 
 const username=
 post.is_anonymous
-?""
-:("@"+(profile.username||"user"));
+?
+""
+:
+("@"+
+(profile.username||"user"));
+
 
 const avatar=
 post.is_anonymous
-?"?"
-:initials(profile.display_name);
+?
+"?"
+:
+initials(
+profile.display_name
+);
+
 
 let mediaHTML="";
 
+
 const media=
 post.post_media||[];
+
 
 if(media.length){
 
@@ -2717,6 +3520,7 @@ cls="three";
 else if(media.length>3)
 cls="more";
 
+
 mediaHTML=
 '<div class="media-grid '+cls+'">'+
 
@@ -2725,28 +3529,37 @@ media.map(m=>{
 const mediaSrc=
 escapeAttr(m.media_url);
 
+
 if(m.media_type==="video"){
 
 return `
 <div class="media-cell">
+
 <video
 controls
 preload="metadata"
 src="${mediaSrc}">
 </video>
-<div class="media-type">VIDEO</div>
+
+<div class="media-type">
+VIDEO
+</div>
+
 </div>
 `;
 
 }
 
+
 return `
 <div class="media-cell">
+
 <img
 src="${mediaSrc}"
 loading="lazy"
 alt="Report media"
 onerror="this.parentElement.innerHTML='<div class=&quot;media-error&quot;>Media could not be loaded.</div>'">
+
 </div>
 `;
 
@@ -2755,6 +3568,7 @@ onerror="this.parentElement.innerHTML='<div class=&quot;media-error&quot;>Media 
 '</div>';
 
 }
+
 
 card.innerHTML=`
 
@@ -2773,7 +3587,9 @@ ${escapeHTML(displayName)}
 <span>
 ${escapeHTML(username)}
 ${username?" • ":""}
-${escapeHTML(timeAgo(post.created_at))}
+${escapeHTML(
+timeAgo(post.created_at)
+)}
 </span>
 
 </div>
@@ -2802,26 +3618,35 @@ data-menu>
 ↗ Share
 </button>
 
-${currentUser &&
+${
+currentUser &&
 post.user_id===currentUser.id
-?`
-<button data-delete class="danger">
+?
+`
+<button
+data-delete
+class="danger">
 Delete Report
 </button>
 `
-:""}
+:
+""
+}
 
 </div>
 
 </div>
 
 </div>
+
 
 <div class="post-content">
 ${escapeHTML(post.content||"")}
 </div>
 
+
 ${mediaHTML}
+
 
 <div class="actions">
 
@@ -2852,6 +3677,7 @@ data-share-main>
 
 </div>
 
+
 <div
 class="comments hidden"
 data-comments>
@@ -2879,11 +3705,15 @@ Send
 
 `;
 
+
+/* LIKE */
+
 const likeButton=
 card.querySelector("[data-like]");
 
 const likeCount=
 card.querySelector("[data-like-count]");
+
 
 await updateLikeState(
 post.id,
@@ -2891,13 +3721,19 @@ likeButton,
 likeCount
 );
 
+
 likeButton.onclick=async()=>{
+
 await toggleLike(
 post.id,
 likeButton,
 likeCount
 );
+
 };
+
+
+/* COMMENT */
 
 const commentButton=
 card.querySelector("[data-comment]");
@@ -2905,11 +3741,15 @@ card.querySelector("[data-comment]");
 const commentsBox=
 card.querySelector("[data-comments]");
 
+
 commentButton.onclick=async()=>{
 
 commentsBox.classList.toggle("hidden");
 
-if(!commentsBox.classList.contains("hidden")){
+
+if(
+!commentsBox.classList.contains("hidden")
+){
 
 await loadComments(
 post.id,
@@ -2922,6 +3762,7 @@ commentsBox.querySelector(
 
 };
 
+
 const commentSubmit=
 card.querySelector(
 "[data-comment-submit]"
@@ -2931,6 +3772,7 @@ const commentInput=
 card.querySelector(
 "[data-comment-input]"
 );
+
 
 commentSubmit.onclick=async()=>{
 
@@ -2944,6 +3786,28 @@ commentsBox.querySelector(
 
 };
 
+
+commentInput.addEventListener(
+"keydown",
+e=>{
+
+if(
+e.key==="Enter" &&
+!e.shiftKey
+){
+
+e.preventDefault();
+
+commentSubmit.click();
+
+}
+
+}
+);
+
+
+/* SHARE */
+
 const shareButton=
 card.querySelector(
 "[data-share-main]"
@@ -2954,19 +3818,23 @@ card.querySelector(
 "[data-share]"
 );
 
+
 async function shareReport(){
 
 const shareText=
 (post.content||"").slice(0,100);
+
 
 if(navigator.share){
 
 try{
 
 await navigator.share({
+
 title:"ঘুষ সাইট Report",
 text:shareText,
 url:location.href
+
 });
 
 }catch(e){}
@@ -2997,10 +3865,17 @@ toast(
 
 }
 
-shareButton.onclick=shareReport;
+
+shareButton.onclick=
+shareReport;
+
 
 if(shareMenuButton)
-shareMenuButton.onclick=shareReport;
+shareMenuButton.onclick=
+shareReport;
+
+
+/* MENU */
 
 const menuButton=
 card.querySelector("[data-menu-btn]");
@@ -3008,13 +3883,19 @@ card.querySelector("[data-menu-btn]");
 const menu=
 card.querySelector("[data-menu]");
 
+
 menuButton.onclick=e=>{
+
 e.stopPropagation();
+
 menu.classList.toggle("hidden");
+
 };
+
 
 const copyButton=
 card.querySelector("[data-copy]");
+
 
 if(copyButton){
 
@@ -3046,8 +3927,10 @@ menu.classList.add("hidden");
 
 }
 
+
 const deleteButton=
 card.querySelector("[data-delete]");
+
 
 if(deleteButton){
 
@@ -3055,7 +3938,9 @@ deleteButton.onclick=async()=>{
 
 if(!confirm(
 "Delete this report?"
-))return;
+))
+return;
+
 
 const {
 error
@@ -3064,6 +3949,7 @@ error
 .delete()
 .eq("id",post.id)
 .eq("user_id",currentUser.id);
+
 
 if(error){
 
@@ -3076,10 +3962,12 @@ return;
 
 }
 
+
 toast(
 "Report deleted.",
 "success"
 );
+
 
 card.remove();
 
@@ -3087,19 +3975,15 @@ card.remove();
 
 }
 
-document.addEventListener(
-"click",
-()=>{
-menu.classList.add("hidden");
-},
-{once:false}
-);
 
 return card;
 
 }
 
-/* LIKES */
+
+/* =========================================================
+   LIKES
+========================================================= */
 
 async function updateLikeState(
 postId,
@@ -3107,13 +3991,16 @@ button,
 countElement
 ){
 
-const {
-count
-}=await getLikeInfo(postId);
+const {count}=
+await getLikeInfo(postId);
+
 
 countElement.textContent=count;
 
-if(!currentUser)return;
+
+if(!currentUser)
+return;
+
 
 const {
 data
@@ -3125,10 +4012,12 @@ data
 .eq("reaction_type","like")
 .maybeSingle();
 
+
 if(data)
 button.classList.add("liked");
 
 }
+
 
 async function getLikeInfo(postId){
 
@@ -3141,6 +4030,7 @@ error
 .eq("post_id",postId)
 .eq("reaction_type","like");
 
+
 if(error){
 
 console.error(error);
@@ -3151,11 +4041,13 @@ count:0
 
 }
 
+
 return {
 count:(data||[]).length
 };
 
 }
+
 
 async function toggleLike(
 postId,
@@ -3174,6 +4066,7 @@ return;
 
 }
 
+
 try{
 
 const {
@@ -3185,6 +4078,7 @@ data:existing
 .eq("user_id",currentUser.id)
 .eq("reaction_type","like")
 .maybeSingle();
+
 
 if(existing){
 
@@ -3202,10 +4096,13 @@ error
 }=await db
 .from("reactions")
 .insert({
+
 post_id:postId,
 user_id:currentUser.id,
 reaction_type:"like"
+
 });
+
 
 if(error){
 
@@ -3220,15 +4117,18 @@ return;
 
 }
 
+
 button.classList.add("liked");
 
 }
 
-const {
-count
-}=await getLikeInfo(postId);
+
+const {count}=
+await getLikeInfo(postId);
+
 
 countElement.textContent=count;
+
 
 }catch(error){
 
@@ -3243,7 +4143,10 @@ toast(
 
 }
 
-/* COMMENTS */
+
+/* =========================================================
+   COMMENTS
+========================================================= */
 
 async function loadComments(
 postId,
@@ -3252,6 +4155,7 @@ container
 
 container.innerHTML=
 '<div class="small muted">Loading comments...</div>';
+
 
 const {
 data,
@@ -3265,7 +4169,11 @@ content,
 created_at
 `)
 .eq("post_id",postId)
-.order("created_at",{ascending:true});
+.order(
+"created_at",
+{ascending:true}
+);
+
 
 if(error){
 
@@ -3278,6 +4186,7 @@ return;
 
 }
 
+
 if(!data||!data.length){
 
 container.innerHTML=
@@ -3287,12 +4196,15 @@ return;
 
 }
 
+
 const profiles=
 await getProfiles(
 data.map(c=>c.user_id)
 );
 
+
 container.innerHTML="";
+
 
 data.forEach(comment=>{
 
@@ -3302,10 +4214,12 @@ profiles[comment.user_id]||
 display_name:"User"
 };
 
+
 const div=
 document.createElement("div");
 
 div.className="comment";
+
 
 div.innerHTML=`
 
@@ -3327,11 +4241,13 @@ ${escapeHTML(comment.content)}
 
 `;
 
+
 container.appendChild(div);
 
 });
 
 }
+
 
 async function addComment(
 postId,
@@ -3350,8 +4266,10 @@ return;
 
 }
 
+
 const content=
 input.value.trim();
+
 
 if(!content){
 
@@ -3364,15 +4282,19 @@ return;
 
 }
 
+
 const {
 error
 }=await db
 .from("comments")
 .insert({
+
 post_id:postId,
 user_id:currentUser.id,
 content:content
+
 });
+
 
 if(error){
 
@@ -3388,7 +4310,9 @@ return;
 
 }
 
+
 input.value="";
+
 
 await loadComments(
 postId,
@@ -3397,7 +4321,10 @@ list
 
 }
 
-/* ALL POSTS */
+
+/* =========================================================
+   ALL POSTS
+========================================================= */
 
 async function loadAllPosts(){
 
@@ -3406,15 +4333,18 @@ const box=$("allPosts");
 box.innerHTML=
 '<div class="loader">Loading reports...</div>';
 
+
 try{
 
 const posts=
 await fetchPosts(100);
 
+
 const profiles=
 await getProfiles(
 posts.map(p=>p.user_id)
 );
+
 
 await renderPosts(
 posts,
@@ -3422,7 +4352,10 @@ profiles,
 box
 );
 
+
 }catch(error){
+
+console.error(error);
 
 box.innerHTML=
 '<div class="empty">'+
@@ -3436,17 +4369,23 @@ error.message||
 
 }
 
-/* SEARCH */
+
+/* =========================================================
+   SEARCH
+========================================================= */
 
 async function searchPosts(){
 
 const term=
-$("searchInput").value
+$("searchInput")
+.value
 .trim()
 .toLowerCase();
 
+
 const box=
 $("searchResults");
+
 
 if(!term){
 
@@ -3457,33 +4396,42 @@ return;
 
 }
 
+
 box.innerHTML=
 '<div class="loader">Searching...</div>';
+
 
 try{
 
 const posts=
 await fetchPosts(100);
 
+
 const filtered=
 posts.filter(post=>{
 
 return(
+
 String(post.content||"")
 .toLowerCase()
-.includes(term)||
+.includes(term)
+
+||
 
 String(post.category||"")
 .toLowerCase()
 .includes(term)
+
 );
 
 });
+
 
 const profiles=
 await getProfiles(
 filtered.map(p=>p.user_id)
 );
+
 
 await renderPosts(
 filtered,
@@ -3491,7 +4439,10 @@ profiles,
 box
 );
 
+
 }catch(error){
+
+console.error(error);
 
 box.innerHTML=
 '<div class="empty">Search failed.</div>';
@@ -3500,39 +4451,57 @@ box.innerHTML=
 
 }
 
-/* PROFILE */
+
+/* =========================================================
+   PROFILE
+========================================================= */
 
 function renderProfile(){
 
-if(!currentProfile)return;
+if(!currentProfile)
+return;
+
 
 const name=
 currentProfile.display_name||
 "User";
 
+
 $("profileName").textContent=name;
+
 
 $("profileUsername").textContent=
 "@"+
-(currentProfile.username||"user");
+(
+currentProfile.username||
+"user"
+);
+
 
 $("profilePhone").textContent=
 currentProfile.phone
-?"Phone: "+currentProfile.phone
-:"";
+?
+"Phone: "+currentProfile.phone
+:
+"";
+
 
 $("profileBio").textContent=
 currentProfile.bio||"";
 
+
 $("bigAvatar").textContent=
 initials(name);
 
+
 $("editName").value=name;
+
 
 $("editBio").value=
 currentProfile.bio||"";
 
 }
+
 
 function openEditProfile(){
 
@@ -3541,15 +4510,24 @@ $("editProfileBox")
 
 }
 
+
 async function saveProfile(){
 
-if(!currentUser)return;
+if(!currentUser)
+return;
+
 
 const name=
-$("editName").value.trim();
+$("editName")
+.value
+.trim();
+
 
 const bio=
-$("editBio").value.trim();
+$("editBio")
+.value
+.trim();
+
 
 if(name.length<2){
 
@@ -3562,18 +4540,22 @@ return;
 
 }
 
+
 const {
 data,
 error
 }=await db
 .from("profiles")
 .update({
+
 display_name:name,
 bio:bio
+
 })
 .eq("id",currentUser.id)
 .select()
 .single();
+
 
 if(error){
 
@@ -3589,14 +4571,18 @@ return;
 
 }
 
+
 currentProfile=data;
+
 
 renderProfile();
 
 updateMiniUser();
 
+
 $("editProfileBox")
 .classList.add("hidden");
+
 
 toast(
 "Profile updated.",
@@ -3605,16 +4591,23 @@ toast(
 
 }
 
-/* MY POSTS */
+
+/* =========================================================
+   MY POSTS
+========================================================= */
 
 async function loadMyPosts(){
 
-if(!currentUser)return;
+if(!currentUser)
+return;
+
 
 const box=$("myPosts");
 
+
 box.innerHTML=
 '<div class="loader">Loading...</div>';
+
 
 try{
 
@@ -3638,15 +4631,22 @@ created_at
 )
 `)
 .eq("user_id",currentUser.id)
-.order("created_at",{ascending:false});
+.order(
+"created_at",
+{ascending:false}
+);
 
-if(error)throw error;
+
+if(error)
+throw error;
+
 
 await renderPosts(
 data||[],
 {[currentUser.id]:currentProfile},
 box
 );
+
 
 }catch(error){
 
@@ -3661,12 +4661,16 @@ Could not load your reports.
 
 }
 
-/* STATS */
+
+/* =========================================================
+   STATS
+========================================================= */
 
 async function updateStats(posts){
 
 $("statReports").textContent=
 posts.length;
+
 
 try{
 
@@ -3674,10 +4678,18 @@ const {
 count
 }=await db
 .from("comments")
-.select("id",{count:"exact",head:true});
+.select(
+"id",
+{
+count:"exact",
+head:true
+}
+);
+
 
 $("statComments").textContent=
 count||0;
+
 
 }catch(e){
 
@@ -3687,19 +4699,21 @@ $("statComments").textContent="0";
 
 }
 
-/* STORIES */
 
-async function openStoryPicker(){
+/* =========================================================
+   STORIES
+========================================================= */
+
+function openStoryPicker(){
 
 const input=
-document.getElementById(
-"storyFileInput"
-);
+$("storyFileInput");
 
 if(input)
 input.click();
 
 }
+
 
 async function uploadStories(files){
 
@@ -3708,19 +4722,16 @@ if(
 !files.length||
 !db||
 !currentUser
-)return;
+)
+return;
+
 
 const filesArr=
 [...files].slice(0,5);
 
-const postId=
-crypto.randomUUID
-?
-crypto.randomUUID()
-:
-Date.now().toString();
 
 let uploaded=0;
+
 
 for(const file of filesArr){
 
@@ -3729,17 +4740,28 @@ try{
 if(file.size>100*1024*1024)
 continue;
 
+
 const ext=
-(file.name.split(".").pop()||"bin")
+(
+file.name
+.split(".")
+.pop()||
+"bin"
+)
 .toLowerCase();
+
 
 const type=
 file.type.startsWith("video/")
-?"video"
-:"image";
+?
+"video"
+:
+"image";
+
 
 const path=
-`${currentUser.id}/stories/${postId}-${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+`${currentUser.id}/stories/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+
 
 const up=
 await db
@@ -3754,28 +4776,36 @@ contentType:file.type
 }
 );
 
+
 if(up.error)
 throw up.error;
+
 
 const pub=
 db.storage
 .from("media")
 .getPublicUrl(path);
 
+
 const ins=
 await db
 .from("stories")
 .insert({
+
 user_id:currentUser.id,
 media_url:pub.data.publicUrl,
 media_type:type,
 caption:""
+
 });
+
 
 if(ins.error)
 throw ins.error;
 
+
 uploaded++;
+
 
 }catch(err){
 
@@ -3788,13 +4818,9 @@ err
 
 }
 
-const input=
-document.getElementById(
-"storyFileInput"
-);
 
-if(input)
-input.value="";
+$("storyFileInput").value="";
+
 
 if(uploaded){
 
@@ -3817,31 +4843,27 @@ toast(
 
 }
 
+
 async function loadStories(){
 
-const section=
-document.getElementById(
-"storiesSection"
-);
-
 const row=
-document.getElementById(
-"storiesRow"
-);
+$("storiesRow");
+
 
 if(
-!section||
 !row||
 !db||
 !currentUser
-)return;
+)
+return;
 
-section.style.display="block";
 
 const since=
 new Date(
-Date.now()-24*60*60*1000
+Date.now()-
+24*60*60*1000
 ).toISOString();
+
 
 const {
 data,
@@ -3857,22 +4879,33 @@ media_type,
 caption,
 created_at
 `)
-.gte("created_at",since)
-.order("created_at",{ascending:false});
+.gte(
+"created_at",
+since
+)
+.order(
+"created_at",
+{ascending:false}
+);
+
 
 if(error){
 
 console.warn(
-"Stories table not ready:",
+"Stories table issue:",
 error.message
 );
 
+
 row.innerHTML=`
 
-<div class="story-add"
+<div
+class="story-add"
 onclick="openStoryPicker()">
 
-<div class="story-add-icon">＋</div>
+<div class="story-add-icon">
+＋
+</div>
 
 <b>Add Story</b>
 
@@ -3892,14 +4925,18 @@ return;
 
 }
 
+
 if(!data||!data.length){
 
 row.innerHTML=`
 
-<div class="story-add"
+<div
+class="story-add"
 onclick="openStoryPicker()">
 
-<div class="story-add-icon">＋</div>
+<div class="story-add-icon">
+＋
+</div>
 
 <b>Add Story</b>
 
@@ -3919,12 +4956,16 @@ return;
 
 }
 
-const ids=
-[...new Set(
+
+const ids=[
+...new Set(
 data.map(x=>x.user_id)
-)];
+)
+];
+
 
 let profiles=[];
+
 
 if(ids.length){
 
@@ -3936,9 +4977,11 @@ await db
 )
 .in("id",ids);
 
+
 profiles=p.data||[];
 
 }
+
 
 const pm=
 new Map(
@@ -3947,14 +4990,28 @@ p=>[p.id,p]
 )
 );
 
+
 row.innerHTML=
 
-`<div class="story-add"
+`
+<div
+class="story-add"
 onclick="openStoryPicker()">
-<div class="story-add-icon">＋</div>
+
+<div class="story-add-icon">
+＋
+</div>
+
 <b>Add Story</b>
-<small class="muted">Photo / Video</small>
-</div>`+
+
+<small class="muted">
+Photo / Video
+</small>
+
+</div>
+`
+
++
 
 data.map(st=>{
 
@@ -3965,37 +5022,49 @@ display_name:"User",
 avatar_url:""
 };
 
+
 const name=
 escapeHtml(
-p.display_name||"User"
+p.display_name||
+"User"
 );
+
 
 const media=
 st.media_type==="video"
 ?
+
 `<video
 src="${escapeAttr(st.media_url)}"
 muted
 playsinline
 preload="metadata">
 </video>`
+
 :
+
 `<img
 src="${escapeAttr(st.media_url)}"
 alt="">`;
 
+
 const avatar=
 p.avatar_url
 ?
+
 `<div class="story-ring">
 <img
 src="${escapeAttr(p.avatar_url)}"
 alt="">
 </div>`
+
 :
+
 `<div class="story-ring"></div>`;
 
+
 return `
+
 <div
 class="story-card"
 onclick='openStoryViewer(${JSON.stringify(st)})'>
@@ -4009,53 +5078,61 @@ ${name}
 </div>
 
 </div>
+
 `;
 
 }).join("");
 
 }
 
-/* STORY VIEWER */
+
+/* =========================================================
+   STORY VIEWER
+========================================================= */
 
 function openStoryViewer(st){
 
 const viewer=
-document.getElementById(
-"storyViewer"
-);
+$("storyViewer");
 
 const media=
-document.getElementById(
-"storyViewerMedia"
-);
+$("storyViewerMedia");
 
 const cap=
-document.getElementById(
-"storyViewerCaption"
-);
+$("storyViewerCaption");
 
-if(!viewer||!media)return;
+
+if(!viewer||!media)
+return;
+
 
 media.innerHTML=
 st.media_type==="video"
+
 ?
+
 `<video
 src="${escapeAttr(st.media_url)}"
 controls
 autoplay
 playsinline>
 </video>`
+
 :
+
 `<img
 src="${escapeAttr(st.media_url)}"
 alt="">`;
 
+
 cap.textContent=
 st.caption||"";
+
 
 viewer.style.display="flex";
 
 }
+
 
 function closeStoryViewer(e){
 
@@ -4063,42 +5140,47 @@ if(
 e&&
 e.target&&
 e.target.id!=="storyViewer"
-)return;
+)
+return;
+
 
 const v=
-document.getElementById(
-"storyViewer"
-);
+$("storyViewer");
+
 
 if(v)
 v.style.display="none";
 
+
 const m=
-document.getElementById(
-"storyViewerMedia"
-);
+$("storyViewerMedia");
+
 
 if(m)
 m.innerHTML="";
 
 }
 
-/* PRIVATE PROFILE */
+
+/* =========================================================
+   PRIVATE PROFILE
+========================================================= */
 
 async function openPrivateProfile(){
 
 if(!currentUser||!db)
 return;
 
+
 const {
 data,
 error
-}=
-await db
+}=await db
 .from("profiles")
 .select("*")
 .eq("id",currentUser.id)
 .maybeSingle();
+
 
 if(error){
 
@@ -4111,83 +5193,120 @@ return;
 
 }
 
-const p=data||{};
+
+const p=
+data||
+currentProfile||
+{};
+
 
 $("privateName").value=
 p.display_name||"";
 
+
 $("privatePhone").value=
 p.phone||"";
+
 
 $("privateUsername").value=
 p.username||"";
 
+
 $("privateProfession").value=
 p.profession||"";
+
 
 $("privateDob").value=
 p.date_of_birth||"";
 
+
 $("privateAddress").value=
 p.address||"";
+
 
 $("privateBio").value=
 p.bio||"";
 
+
 $("privateNewPassword").value="";
 
-$("privateProfilePanel").style.display=
-"flex";
+
+$("privateProfilePanel")
+.style.display="flex";
 
 }
+
 
 function closePrivateProfile(){
 
 const el=
 $("privateProfilePanel");
 
+
 if(el)
 el.style.display="none";
 
 }
+
+
+/* =========================================================
+   SAVE PRIVATE PROFILE
+========================================================= */
 
 async function savePrivateProfile(){
 
 if(!currentUser||!db)
 return;
 
+
 const payload={
 
 display_name:
-$("privateName").value.trim()||
+$("privateName")
+.value
+.trim()||
 "User",
 
 profession:
-$("privateProfession").value.trim(),
+$("privateProfession")
+.value
+.trim(),
 
 date_of_birth:
-$("privateDob").value||
+$("privateDob")
+.value||
 null,
 
 address:
-$("privateAddress").value.trim(),
+$("privateAddress")
+.value
+.trim(),
 
 bio:
-$("privateBio").value.trim()
+$("privateBio")
+.value
+.trim()
 
 };
 
+
 const {
+data,
 error
-}=
-await db
+}=await db
 .from("profiles")
 .update(payload)
-.eq("id",currentUser.id);
+.eq("id",currentUser.id)
+.select()
+.single();
+
 
 if(error){
 
+console.error(error);
+
 toast(
+"Could not save profile: "+
 error.message,
 "error"
 );
@@ -4196,8 +5315,16 @@ return;
 
 }
 
+
+currentProfile=data;
+
+
+/* CHANGE PASSWORD */
+
 const newPassword=
-$("privateNewPassword").value;
+$("privateNewPassword")
+.value;
+
 
 if(newPassword){
 
@@ -4212,10 +5339,14 @@ return;
 
 }
 
+
 const pw=
 await db.auth.updateUser({
+
 password:newPassword
+
 });
+
 
 if(pw.error){
 
@@ -4230,29 +5361,40 @@ return;
 
 }
 
+
+$("privateNewPassword").value="";
+
+
+closePrivateProfile();
+
+
+renderProfile();
+
+updateMiniUser();
+
+
 toast(
 "Private profile updated successfully.",
 "success"
 );
 
-$("privateNewPassword").value="";
-
-closePrivateProfile();
-
-await loadCurrentUser();
-
 }
 
-/* LOGOUT */
+
+/* =========================================================
+   LOGOUT
+========================================================= */
 
 async function logout(){
 
-if(!db)return;
+if(!db)
+return;
+
 
 const {
 error
-}=
-await db.auth.signOut();
+}=await db.auth.signOut();
+
 
 if(error){
 
@@ -4265,12 +5407,16 @@ return;
 
 }
 
+
 currentUser=null;
 currentProfile=null;
 
+
 showAuthScreen();
 
+
 $("loginPassword").value="";
+
 
 toast(
 "Logged out.",
@@ -4279,12 +5425,15 @@ toast(
 
 }
 
-/* SESSION */
+
+/* =========================================================
+   AUTH SESSION
+========================================================= */
 
 if(db){
 
 db.auth.onAuthStateChange(
-(event,session)=>{
+async(event,session)=>{
 
 if(event==="SIGNED_OUT"){
 
@@ -4300,21 +5449,39 @@ showAuthScreen();
 
 }
 
-/* ENTER LOGIN */
 
-$("loginPassword").addEventListener(
+/* =========================================================
+   ENTER LOGIN
+========================================================= */
+
+$("loginPassword")
+.addEventListener(
 "keydown",
 e=>{
 
 if(e.key==="Enter")
 login();
 
-}
-);
+});
 
-/* START */
+
+$("loginUsername")
+.addEventListener(
+"keydown",
+e=>{
+
+if(e.key==="Enter")
+login();
+
+});
+
+
+/* =========================================================
+   START
+========================================================= */
 
 renderCategories();
+
 
 (async()=>{
 
@@ -4329,14 +5496,15 @@ return;
 
 }
 
+
 try{
 
 const {
 data:{
 session
 }
-}=
-await db.auth.getSession();
+}=await db.auth.getSession();
+
 
 if(session){
 
@@ -4357,73 +5525,8 @@ showAuthScreen();
 }
 
 })();
+
 </script>
-
-<nav
-class="mobile-bottom-nav"
-aria-label="Mobile navigation">
-
-<button
-type="button"
-data-page="home"
-onclick="go('home')">
-
-<span>⌂</span>
-<small>Home</small>
-
-</button>
-
-<button
-type="button"
-data-page="reports"
-onclick="go('posts')">
-
-<span>▣</span>
-<small>Reports</small>
-
-</button>
-
-<button
-type="button"
-data-page="search"
-onclick="go('search')">
-
-<span>⌕</span>
-<small>Search</small>
-
-</button>
-
-<button
-type="button"
-data-page="news"
-onclick="go('news')">
-
-<span>◉</span>
-<small>News</small>
-
-</button>
-
-<button
-type="button"
-data-page="help"
-onclick="go('help')">
-
-<span>?</span>
-<small>Help</small>
-
-</button>
-
-<button
-type="button"
-data-page="profile"
-onclick="go('profile')">
-
-<span>●</span>
-<small>Profile</small>
-
-</button>
-
-</nav>
 
 </body>
 </html>
